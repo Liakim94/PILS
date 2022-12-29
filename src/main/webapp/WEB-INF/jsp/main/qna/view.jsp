@@ -1,0 +1,101 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" 	%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" 		prefix="page" 		%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 				prefix="c" 			%>
+<%@ taglib uri="http://egovframework.gov/ctl/ui" 				prefix="ui" 		%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" 		prefix="fn" 		%>
+<%@ taglib uri="http://www.springframework.org/tags" 			prefix="spring" 	%>
+<%@ taglib uri="fx" prefix="fx" %>
+<%pageContext.setAttribute("crcf", "\r\n"); %>
+<head>
+<title>${menuName }</title>
+
+</head>
+<script>
+$(function(){                 
+	
+	$("#frmWrite").validate({
+		ignore: "",   
+	    rules: {
+	    	name:{required:true},
+	    	passwd:{required:true},
+	    	title:{required:true},
+	    	body:{required:true}
+	    },
+	    onkeyup:false,
+	    onclick:false,
+	    onfocusout:false,   
+	    messages: {
+	     	name:{required:"이름을 입력하세요."},
+	    	passwd:{required:"비밀번호를 입력하세요."},
+	    	title:{required:"제목을 입력하세요."},
+	    	body:{required:"내용을 입력하세요."}
+	    },        
+	    submitHandler: function (frm) {
+
+	    	frm.submit();
+	    	
+	    },
+	    showErrors:function(errorMap, errorList){
+			if(!$.isEmptyObject(errorList)){
+		       	$.each(errorList, function() {
+	            	alert(this.message); //summary += " * " + this.message + "<br>" ;
+	            	return false;
+	        	});
+			}
+		}
+	});
+	
+	
+	
+});
+
+</script>
+
+<page:applyDecorator name="menu" />
+<div class="article">	
+	<page:applyDecorator name="location" />
+	<div class="content">
+	<!-- 컨텐츠 start -->
+	    <div class="tbl-wrap separate2 mb50">
+	        <table class="tbl-list02">
+	            <caption>회원수정 목록</caption>
+	            <colgroup>
+	                <col width="17%" />
+	                <col width="*" />
+	            </colgroup>
+	            <tbody>
+	                <tr>
+	                    <th class="txt_alcnt" scope="row">이름</th>
+	                    <td>${rs.name }</td>
+	                </tr>
+	                <tr>
+	                    <th class="txt_alcnt" scope="row">제목</th>
+	                    <td>${rs.title }</td>
+	                </tr>
+	                <tr>
+	                    <th class="txt_alcnt" scope="row">내용</th>
+	                    <td>
+	                    	${fn:replace(rs.body, crcf, "<br>") }       
+	                    </td>
+	                </tr>
+	                <c:if test="${not empty rs.reply}">     
+					<tr>
+                        <th class="txt_alcnt" scope="row">답변</th>    
+                        <td>    
+                            ${fn:replace(rs.reply, crcf, "<br>") }               
+                        </td>
+                    </tr>
+                    </c:if>
+	            </tbody>
+	        </table>
+	    </div>
+	    <div class="btn-wrap type04"> 
+	    	<c:if test="${sessionScope.ID eq rs.id and empty rs.reply}">      
+	        <a href='${pageContext.request.contextPath}/111?no=${rs.no}' class="btn blue">수정</a>
+	        </c:if>	        
+	        <a href="${pageContext.request.contextPath}/108" class="btn blue">목록</a>
+	    </div>
+	    <!-- 컨텐츠 end -->
+	</div>
+</div>

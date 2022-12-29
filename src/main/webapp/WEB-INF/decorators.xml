@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/WEB-INF/jsp">
+    <excludes>
+        <pattern>/js/*</pattern>
+        <pattern>/css/*</pattern>
+        <pattern>/images/*</pattern>
+        <pattern>/x2/*</pattern>
+        <pattern>/x4/*</pattern>
+        <pattern>/editor/*</pattern>
+        <pattern>/common/*</pattern>
+        <pattern>/exclude/*</pattern>
+    </excludes>
+
+    <decorator name="header" page="/header.do"/>
+    <decorator name="footer" page="/footer.do"/>
+    <decorator name="menu" page="/menu.do"/>
+    <decorator name="location" page="/location.do"/>
+    <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
+        <pattern>/*</pattern>
+        <pattern>/common/deny.jsp</pattern>
+    </decorator>
+
+    <decorator name="header" page="/header.do"/>
+    <decorator name="footer" page="/footer.do"/>
+    <decorator name="menu" page="/menu.do"/>
+    <decorator name="layout2" page="/WEB-INF/jsp/template/front/layout2.jsp">
+        <pattern>/index.do</pattern>
+    </decorator>
+
+</decorators>

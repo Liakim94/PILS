@@ -1,0 +1,14 @@
+applications:
+- name: cobiz-green                     # 앱 이름
+  memory: 2G                            # 앱 메모리 크기
+  disk_quota: 2G                        # 앱 디스크 크기
+  instances: 2                          # 앱 인스턴스 수
+  routes:
+  - route: cobiz-green.paas.smes-tipa.go.kr/cobiz
+  path: ./target/ncobiz-1.0.0.war        # war 파일 경로
+  buildpacks:
+  - pinpoint_buildpack_offline
+  env:
+    JBP_CONFIG_TOMCAT: '[tomcat: {context_path: "/cobiz"}]'
+    JAVA_OPTS : -Dspring.profiles.active=cloud -Xbootclasspath/p:/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz/WEB-INF/wt5/lib/wsthk.jar:/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz/WEB-INF/wt5/lib/wsthk_i.jar:/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz/WEB-INF/wt5/lib/wstdb_i.jar:/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz/WEB-INF/wt5/lib/wstu.jar -DWJCONTEXTENV=/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz/WEB-INF/wt5/config/cobiz/walconf/_db/weeds_jf.properties -DW_WALENV=/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz/WEB-INF/wt5/config/cobiz -Dclh.prop=/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz/WEB-INF/wt5/config/cobiz/walconf/clh/clh.properties -javaagent:/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz/WEB-INF/wt5/lib/wsthkt.jar
+    TZ: Asia/Seoul

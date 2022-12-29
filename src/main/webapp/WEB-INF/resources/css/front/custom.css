@@ -1,0 +1,173 @@
+
+.paging_wrap { margin: 40px 0 40px 0; text-align: center; }
+.paging{margin:0;display:inline-block; vertical-align: top; align-items:center;}
+.paging:after { content:''; display: table; clear: both;}
+.paging.pg_control > li > a { width: 52px; }
+.paging.pg_control { margin-right: 16px;}
+.paging + .paging.pg_control { margin-right: 0px; margin-left: 16px;}
+.paging > li { float: left; display: block;}
+.paging li a i { display: block;}
+.paging li a i.first, .paging li a i.last{margin:0;}
+.paging li.active a,
+.paging li a i:hover{opacity:1;border-color:#0e457a;background:#0e457a;color:#fff;text-decoration:none;}
+.paging li a i.prev{border:0;width:100%;height:100%;overflow:hidden;font-size:0;text-indent:-2000px;background:url(../../images/front/contents/page-left.png);background-size:40px 26px;     background-position: center; position:relative;}
+.paging li a:hover i.prev {background:url(../../images/front/contents/page-left-on.png);background-size:40px 26px; background-position: center;}
+.paging li a i.next{border:0;width:100%;height:100%;overflow:hidden;font-size:0;text-indent:-2000px;background:url(../../images/front/contents/page-right.png);background-size:40px 26px; background-position: center;position:relative;}
+.paging li a:hover i.next {background:url(../../images/front/contents/page-right-on.png);background-size:40px 26px;background-position: center;}
+.paging li a i.first{border:0;width:100%;height:100%;overflow:hidden;font-size:0;text-indent:-2000px;background:url(../../images/front/contents/page-first.png);background-size:40px 26px;background-position: center;position:relative;}
+.paging li a:hover i.first {background:url(../../images/front/contents/page-first-on.png);background-size:40px 26px;background-position: center;}
+.paging li a i.last{border:0;width:100%;height:100%;overflow:hidden;font-size:0;text-indent:-2000px;background:url(../../images/front/contents/page-end.png);background-size:40px 26px;background-position: center;position:relative;}
+.paging li a:hover i.last {background:url(../../images/front/contents/page-end-on.png);background-size:40px 26px;background-position: center;}
+ 
+/*** 2019. 12. 16 ***/
+.board-view-wrap01 .cont{padding:15px 20px;line-height:1.5em;font-size:14px;color:#333;width:calc( 100% - 40px );height:auto;min-height:413px !important; overflow:hidden;overflow-y:auto;background:#fafafa;}
+.board-view-wrap .item-wrap .cont{padding:15px 0;line-height:1.5em;font-size:14px;color:#333;width:100%;height:auto;min-height:164px !important;overflow:hidden;overflow-y:auto;}
+.normal-wrap .lnb{float:left;width:250px;min-height:550px;border-top:1px solid #ddd; }
+
+.board-search-wrap .select{margin-left:6px}
+.board-bottom-wrap {height:200px;}
+.board-view-page-list {margin-top:50px}
+
+.board-comment{margin:20px 0px 20px 0px}
+.board-comment:after{content:'';display:block;clear:both;}
+.board-comment .title{font-size:17px;color:#333333;font-weight:bold}
+.board-comment ul{overflow:hidden;margin-top:10px;}
+.board-comment ul li:last-child {border-bottom:0px}
+.board-comment ul li {border-top:0px}
+.board-comment .comment-write {margin-bottom:20px;}
+.board-comment .comment-item {border-top:1px solid #dee2e8}
+.board-comment .comment-item:last-child {border-bottom:1px solid #dee2e8}
+.board-comment .comment-list{overflow:hidden; background-color:#fafafa;padding:20px 20px 10px 20px;}
+.board-comment .comment-list .top-element{overflow:hidden}
+.board-comment .comment-list .top-element dt{font-size:15px;color:#0e457a;font-weight:bold;float:left;margin-right:10px}
+.board-comment .comment-list .top-element dd{float:left;margin-right:10px;font-size:12px;color:#999999;margin-top:3px}
+.board-comment .comment-list .body-element{clear:both;margin-top:10px;font-size:16px;color:#333333;line-height:22px;}
+.board-comment .comment-list .bottom-element{margin-top:20px;}
+.board-comment .comment-list .bottom-element a{display:inline-block;font-size:14px;color:#777777;border-bottom:1px solid #ddd;padding-bottom:3px;text-decoration:none;}
+.board-comment .comment-input{overflow:hidden}
+.board-comment .comment-input textarea{border:1px solid #cccccc;padding:5px;height:80px;width:100%;box-sizing:border-box;}
+.board-comment .comment-input .comment-send{margin-top:10px;}
+.board-comment .comment-input .comment-send .txt{display:block;float:left;font-size:15px;color:#999999}
+.board-comment .comment-input .comment-send .txt strong{color:#333;font-weight:bold}
+.board-comment .comment-input .comment-send .send-btn{float:right}
+.board-comment .comment-input .comment-send .send-btn input{display:block;width:45px;height:30px;background-color:#0e457a;line-height:29px;font-size:14px;color:#fff;text-align:center;border-radius:3px;border:0}
+.board-comment .errorMsg {padding-left:20px;}
+
+.webzine-wrap ul li dl dd {word-break:break-word !important;}
+
+.replyGap {float:left;}
+.replyIcon {float:left;}
+
+/* 2020-02-19 회원가입 약관동의 팝업 추가 */
+.dialog_agre{display:none;z-index:999;justify-content:center;align-items:center;position:fixed;left:0;top:0;width:100%;height:100%;overflow:hidden;background:rgba(0,0,0,.5);}
+.dialog_agre.on{display:flex;}
+.dialog_agre .pop-wrap{width:840px;padding:5px;height:calc(100% - 300px);overflow:hidden;border-radius:2px;background:#fff;}
+.dialog_agre .pop-wrap.type01{width:800px;}
+.dialog_agre .pop-wrap .pop-header{position:absolute; width:840px;height:47px;overflow:hidden;background:url(../../images/front/contents/pop-header.svg) no-repeat;background-size:cover;}
+.dialog_agre .pop-wrap .tit{float:left;height:47px;line-height:47px;padding-left:20px;font-size:20px;color:#fff;font-weight:500;}
+.dialog_agre .pop-wrap a{float:right;margin:10px 10px 0 0;}
+.dialog_agre .pop-wrap a i{font-size:30px;color:#fff;}
+
+.dialog_agre .pop-cont{width:calc(100% - 20px);height:calc(100% - 58px);overflow:auto;margin:58px 0px 0 0px; padding:0 10px 0 10px;}
+.dialog_agre .pop-cont .tbl-register{width:510px;margin:0 auto;}
+.dialog_agre .pop-cont .tbl-register td{padding-right:10px;}
+.dialog_agre .pop-cont .btn-wrap{width:510px;margin:26px auto 0 auto;}
+.dialog_agre .pop-cont .btn-wrap .btn{margin:0;width:100%;}
+.dialog_agre .pop-cont .btn-wrap.type01{margin-top:46px;}
+.dialog_agre .pop-cont .btn-wrap.type01 .btn{width:160px;margin:0 5px;}
+
+@media (max-width:1024px) {
+    .dialog_agre .pop-wrap{width:calc(100% - 340px);padding:5px;height:calc(100% - 300px);overflow:hidden;border-radius:2px;background:#fff;}
+    .dialog_agre .pop-wrap .pop-header{position:absolute; width:calc(100% - 340px);height:47px;overflow:hidden;background:url(../../images/front/contents/pop-header.svg) no-repeat;background-size:cover;}
+}
+
+@media (max-width:768px) {
+    .dialog_agre .pop-wrap{width:calc(100% - 50px);padding:5px;height:calc(100% - 300px);overflow:hidden;border-radius:2px;background:#fff;}
+    .dialog_agre .pop-wrap .pop-header{position:absolute; width:calc(100% - 50px);height:47px;overflow:hidden;background:url(../../images/front/contents/pop-header.svg) no-repeat;background-size:cover;}
+}
+
+/* 2020-02-26 간편 로그인 추가 */
+.login-tabs-easy {margin:0 auto;width:900px;height:auto;overflow:hidden;}
+.login-tabs-easy li{width:33%;height:66px;overflow:hidden;float:left;}
+.login-tabs-easy li:last-child{width:34%}
+.login-tabs-easy li a{ display:flex; overflow:hidden; width:calc( 100% - 2px ); height:64px; background:#f1f1f1; border-bottom:1px solid #40a7ff; font-size:20px; color:#aaa; font-weight:500; justify-content:center; align-items:center; }
+.login-tabs-easy li a:hover{text-decoration:none;}
+.login-tabs-easy li a.on{ border-bottom:1px solid #40a7ff; background:#40a7ff; color:#fff; }
+
+@media (max-width:1024px) {
+    .login-tabs-easy{width:calc( 100% - 40px );}
+    .login-tabs-easy li a{font-size:18px;}
+}
+
+.login-wrap{box-sizing:border-box;}
+
+@media (max-width:1024px) {
+    .login-wrap{box-sizing:content-box;}
+}
+
+#secureKeyBox {margin:10px auto !important;}
+
+/*** 2020. 02. 27 임모빈 ***/
+.site-wrap .mui-select__menu>div{height:30px;line-height:30px;} /*메인 하단 사이트 링크 높이 조정*/
+.tbl-register select.select.phone {width:100px;}    /*가입 페이지 전하번호 첫자리 너비 고정*/
+
+.confirmation-list li.cert01{background-image:url(../../images/front/contents/confirmation-list08.jpg);background-position:right bottom}
+.confirmation-list li.cert02{background-image:url(../../images/front/contents/confirmation-list06.jpg);background-position:right 68px}
+.confirmation-list li.cert04{background-image:url(../../images/front/contents/confirmation-list02.jpg);background-position:right 75px}
+.confirmation-list li.cert07{background-image:url(../../images/front/contents/confirmation-list03.jpg);background-position:right 68px}
+.confirmation-list li.cert03{background-image:url(../../images/front/contents/confirmation-list01.jpg);background-position:right 75px}
+.confirmation-list li.cert06{background-image:url(../../images/front/contents/confirmation-list04.jpg);background-position:right 77px}
+.confirmation-list li.cert05{background-image:url(../../images/front/contents/confirmation-list05.jpg);background-position:right 75px}
+.confirmation-list li.cert08{background-image:url(../../images/front/contents/confirmation-list07.jpg);background-position:70px 85px}
+
+/* 2020-03-04 간편 로그인 버튼 css 추가 */
+.radio-inline{overflow:hidden;padding:5px 0px}
+.radio-inline input[type=radio]{display:inline-block;vertical-align:middle;margin-right:5px}
+.no_result{display:block;width:100%;text-align:center;font-size:16px;font-weight:bold}
+.api-login-btn{  }
+.api-login-btn a{
+    overflow:hidden;
+    display:inline-block; 
+    position:relative; 
+    width:400px; 
+    height:110px; 
+    padding:40px 0px 47px 52px; 
+    border-radius:6px;
+    background:#0e457a url('../../images/front/common/easylogin.png') no-repeat 325px center;
+    box-sizing:border-box;
+    text-decoration:none !important;
+    line-height:28px;
+    font-weight:400;
+    font-size:22px;
+    text-align:left;
+    color:#fff;
+}
+.api-login-btn a:after{ content:''; position:absolute; top:33px; right:109px; width:1px; height:49px; background-color:#0a2c4f; z-index:1;  }
+.api-login-btn a span{ display:inline-block; margin-left:5px; font-weight:400; color:#8ae4ff; }
+
+@media (max-width:500px) {
+    .api-login-btn a{
+        width:100%;
+        background-position:95% center;
+    }
+}
+
+@media (max-width:465px) {
+    .api-login-btn a{
+        width:100%;
+        padding:27px 0px 47px 52px; 
+        background-position:95% center;
+    }
+    .api-login-btn a span{ 
+        display:block;
+        margin-left:0;
+    }
+}
+@media (max-width:385px) {
+    .api-login-btn a{
+        padding:27px 0px 47px 28px; 
+    }
+    .api-login-btn a:after{
+        right: 90px;
+    }
+}

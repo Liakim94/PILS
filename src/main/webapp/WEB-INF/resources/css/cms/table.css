@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+
+
+table thead th{font-family:'Noto Sans Korean', 'Nanum Square','Nanum Gothic','나눔고딕','맑은고딕','Malgun Gothic','돋움',Dotum,'굴림',Gulim,'Helvetica Neue','Helvetica','Arial','sans-serif'!important;}
+
+.table-nowrap {
+	table-layout:fixed;
+}
+
+.table-nowrap td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.table-fixed thead {
+    width: 96%;
+}
+
+.table-fixed tbody {
+    height: 230px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+    display: block;
+}
+
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+
+.table-responsive {
+  overflow-y: visible !important;
+}
+
+.table-borderless td, .table-borderless{
+	border:none!important
+}
+
+.table-borderless a:hover{color:#fff!important}

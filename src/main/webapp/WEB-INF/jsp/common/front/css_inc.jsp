@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
+
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/x2/bootstrap/css/bootstrap.min.css" /> --%>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/front/style.css" />
+
+<%--    &lt;%&ndash; 중소벤처24 공통메뉴 적용 &ndash;%&gt;--%>
+<%--    <link rel="stylesheet" href="https://www.smes.go.kr/smes-api/api/css/smes-common-menu-1.0.css" type="text/css" />--%>
+<%--    <link rel="stylesheet" href="https://www.smes.go.kr/smes-api/api/css/smes-common-login-1.0.css" type="text/css"/>--%>
+
+

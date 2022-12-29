@@ -1,0 +1,16 @@
+applications:
+- name: cobiz-test                        # 앱 이름
+  memory: 1024M                           # 앱 메모리 크기
+  instances: 2                            # 앱 인스턴스 수
+# host: cobiz-test                        # 앱과 바인드될 호스트
+  routes:
+# - route: www.smes.go.kr/cobiz-dev
+  - route: cobiz-test.paas.smes-tipa.go.kr/cobiz-test
+  path: ./target/ncobiz-1.0.0.war         # war 파일 경로
+  buildpacks:
+# - java_buildpack_offline
+  - pinpoint_buildpack_offline
+  env:
+    JBP_CONFIG_TOMCAT: '[tomcat: {context_path: "/cobiz-test"}]'
+    JAVA_OPTS : -Dspring.profiles.active=cloud
+    TZ: Asia/Seoul

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37" height="32" viewBox="0 0 37 32">
+  <defs>
+    <polygon id="site_icon0-a" points="0 31 35.264 31 35.264 .347 0 .347"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" opacity=".8" transform="translate(1)">
+    <polygon fill="#CECECE" points="14.231 29.191 14.843 16.372 20.422 16.372 21.034 29.191"/>
+    <polygon stroke="#333133" stroke-linecap="round" stroke-linejoin="round" points="14.231 29.191 14.843 16.372 20.422 16.372 21.034 29.191"/>
+    <g transform="translate(0 .152)">
+      <path fill="#5F6685" d="M33.97385,23.5808 L1.29035,23.5808 C0.71585,23.5808 0.25035,23.1148 0.25035,22.5403 L0.25035,1.6378 C0.25035,1.0633 0.71585,0.5978 1.29035,0.5978 L33.97385,0.5978 C34.54835,0.5978 35.01435,1.0633 35.01435,1.6378 L35.01435,22.5403 C35.01435,23.1148 34.54835,23.5808 33.97385,23.5808"/>
+      <path stroke="#333133" stroke-linecap="round" stroke-linejoin="round" d="M33.97385,23.5808 L1.29035,23.5808 C0.71585,23.5808 0.25035,23.1148 0.25035,22.5403 L0.25035,1.6378 C0.25035,1.0633 0.71585,0.5978 1.29035,0.5978 L33.97385,0.5978 C34.54835,0.5978 35.01435,1.0633 35.01435,1.6378 L35.01435,22.5403 C35.01435,23.1148 34.54835,23.5808 33.97385,23.5808 Z"/>
+      <mask id="site_icon0-b" fill="#fff">
+        <use xlink:href="#site_icon0-a"/>
+      </mask>
+      <polygon fill="#FFF" points="2.249 21.581 33.014 21.581 33.014 2.598 2.249 2.598" mask="url(#site_icon0-b)"/>
+      <polygon stroke="#333133" stroke-linecap="round" stroke-linejoin="round" points="2.249 21.581 33.014 21.581 33.014 2.598 2.249 2.598" mask="url(#site_icon0-b)"/>
+      <path fill="#CECECE" d="M25.2375,30.75 L10.0265,30.75 C10.0265,29.788 10.8065,29.0085 11.7685,29.0085 L23.496,29.0085 C24.4575,29.0085 25.2375,29.788 25.2375,30.75" mask="url(#site_icon0-b)"/>
+      <path stroke="#333133" stroke-linecap="round" stroke-linejoin="round" d="M25.2375,30.75 L10.0265,30.75 C10.0265,29.788 10.8065,29.0085 11.7685,29.0085 L23.496,29.0085 C24.4575,29.0085 25.2375,29.788 25.2375,30.75 Z" mask="url(#site_icon0-b)"/>
+    </g>
+    <rect width="4" height="4" x="6" y="5.5" fill="#459EFA" stroke="#666266" rx="1"/>
+    <rect width="4" height="4" x="12.5" y="5.5" fill="#57C5CB" stroke="#666266" rx="1"/>
+    <rect width="4" height="4" x="19" y="5.5" fill="#4555FA" stroke="#666266" rx="1"/>
+    <rect width="4" height="4" x="25.5" y="5.5" fill="#CAE4FF" stroke="#666266" rx="1"/>
+    <rect width="4" height="4" x="6" y="11.5" fill="#B1B8C0" stroke="#666266" rx="1"/>
+    <rect width="4" height="4" x="12.5" y="11.5" fill="#FFF" stroke="#666266" rx="1"/>
+    <rect width="4" height="4" x="19" y="11.5" fill="#ABD593" stroke="#666266" rx="1"/>
+    <rect width="4" height="4" x="25.5" y="11.5" fill="#FFEBCA" stroke="#666266" rx="1"/>
+    <line x1="11.75" x2="24.25" y1="18.75" y2="18.75" stroke="#333" stroke-linecap="square"/>
+  </g>
+</svg>
