@@ -125,7 +125,6 @@ public class CoworkBbsQnaController extends Alerts{
 			} catch (Exception e) {
 				System.out.println(e.toString());
 			}
-
 	}
 	
 	/**
@@ -134,24 +133,28 @@ public class CoworkBbsQnaController extends Alerts{
 	* @return 	
 	* @exception BusinessLogicException
 	*/
+	@ResponseBody
 	@RequestMapping(value="/chkPasswd.do", method={RequestMethod.POST})
 	public String chkPasswd(ModelMap model,
 			@RequestParam(value="no") int no,
 			@RequestParam(value ="passwd") String passwd,
 			@ModelAttribute("BbsQnaVO")BbsQnaVO bbsQnaVO,
 			HttpServletRequest request,
-			HttpServletResponse response)throws Exception{
-			
-			model.clear();
-			
-			int result = 0;
-			bbsQnaVO.setNo(no);
-			bbsQnaVO.setPasswd(passwd);
-			result = service.chkPasswd(bbsQnaVO);
-			model.addAttribute("result", result);
-			
-			return "jsonView";
-		
+			HttpServletResponse response)throws Exception {
+
+		int result =0;
+		try {
+			result = service.chkPasswd(passwd,no);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		if (result == 1) {
+			return "1";
+		} else {
+			return "0";
+
+		}
 	}
 	
 	/**
@@ -160,28 +163,28 @@ public class CoworkBbsQnaController extends Alerts{
 	* @return 	
 	* @exception BusinessLogicException
 	*/
-	@GetMapping(value="/view.do")
+	@GetMapping(value="/qnaView.do")
 	public ModelAndView view(ModelMap model,
 			@ModelAttribute("BbsQnaVO")BbsQnaVO bbsQnaVO,
 			@RequestParam(value="no") int no,
 			HttpSession session,
 			HttpServletRequest request,
 			HttpServletResponse response)throws Exception{
-		
-			ModelAndView mav = new ModelAndView("front/cowork/bbsQna/view");
-			
+
+			ModelAndView mav = new ModelAndView("main/qna/view");
+
 			bbsQnaVO.setId(session.getAttribute("ID").toString());
-			
+
 			bbsQnaVO.setNo(no);
 			BbsQnaVO rs = service.getBbsQnabyId(bbsQnaVO);
-			
+
 			if(rs == null){
 				writeAlert("비정상적인 접근입니다.", request, response);
 			}
-			
+
 			mav.addObject("rs", rs);
 			mav.addObject("vo", bbsQnaVO);
-			
+
 			return mav;
 	}
 	

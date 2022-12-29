@@ -238,7 +238,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.10</version> <!--버전은 그때 맞춰서 -->
+            <version>1.18.24</version> <!--버전은 그때 맞춰서 -->
         </dependency>
 
         <!-- db -->

@@ -4,6 +4,7 @@ import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import kr.co.xicom.front.model.BbsQnaVO;
+import org.springframework.data.repository.query.Param;
 
 @Mapper("CoworkBbsQnaMapper")
 public interface CoworkBbsQnaMapper {
@@ -14,7 +15,7 @@ public interface CoworkBbsQnaMapper {
 
 	int insertBbsQna(BbsQnaVO vo)throws Exception;
 
-	int chkPasswd(BbsQnaVO vo)throws Exception;
+	int chkPasswd(@Param("passwd") String passwd, @Param("no") int no)throws Exception;
 
 	BbsQnaVO getBbsQnabyId(BbsQnaVO bbsQnaVO)throws Exception;
 

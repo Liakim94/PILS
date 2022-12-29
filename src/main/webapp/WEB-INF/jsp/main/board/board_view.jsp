@@ -46,7 +46,7 @@
         <div class="btn-wrap type02 low_margin">
             <a href="${pageContext.request.contextPath}/boardEdit.do?no=${rs.boardSeq}&bbsId=${bbsId}" class="btn blue" title="등록">게시물 수정</a>
             <button onclick="javascript:deleteBbs()" class="btn blue" title="등록">게시물 삭제</button>
-            <a href="${pageContext.request.contextPath}//boardList.do?bbsId=${bbsId}" class="btn blue" title="목록">목록</a>
+            <a href="${pageContext.request.contextPath}/boardList.do?bbsId=${bbsId}" class="btn blue" title="목록">목록</a>
         </div>
         <!-- 컨텐츠 end -->
 	</div>

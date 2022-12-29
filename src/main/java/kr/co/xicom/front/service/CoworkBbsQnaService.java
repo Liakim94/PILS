@@ -12,7 +12,7 @@ public interface CoworkBbsQnaService {
 
 	int insertBbsQna(BbsQnaVO vo)throws Exception;
 
-	int chkPasswd(BbsQnaVO vo)throws Exception;
+	int chkPasswd(String passwd,int no)throws Exception;
 
 	BbsQnaVO getBbsQnabyId(BbsQnaVO bbsQnaVO)throws Exception;
 

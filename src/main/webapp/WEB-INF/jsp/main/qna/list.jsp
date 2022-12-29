@@ -8,6 +8,9 @@
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
     <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 <script>
@@ -16,6 +19,7 @@
         form.pageIndex.value = num;
         form.submit();
     }
+
 </script>
 <page:applyDecorator name="menu" />
 <div class="article">
@@ -23,6 +27,7 @@
         <!-- 컨텐츠 start -->
         <form action="" name="frmSearch" method="get">
             <input type="hidden" name="pageIndex" id="pageIndex" value="1">
+
             <div class="article-header">
                 <h3>질의응답</h3>
                 <div class="side-wrap">
@@ -33,7 +38,6 @@
             </div>
         <div class="tbl-wrap separate1">
             <table class="tbl-list01">
-                <caption>회원수정 목록</caption>
                 <colgroup>
                     <col width="15%" />
                     <col width="55%" />
@@ -47,15 +51,16 @@
                 <th class="txt_alcnt" scope="col">작성일</th>
                 </thead>
                 <tbody>
-                <c:forEach var="list" items="${list }" varStatus="status">
+                <c:forEach var="list" items="${list }" varStatus="status" >
+                    <input type="hidden" name="no" id="no" value="${list.no}">
                     <tr>
                         <td class="txt_alcnt">${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
                         <td class="al">
-                            <a href="${pageContext.request.contextPath}/147?no=${list.no }" >
-                                <c:if test="${not empty list.reply }">
-                                    <strong>[답변완료] </strong>
-                                </c:if>${list.title }
-                            </a>
+                            <a href="checkPw" data-toggle="modal" data-target="#checkPw" >
+                            <c:if test="${not empty list.reply }">
+                            <strong>[답변완료] </strong>
+                            </c:if>${list.title }
+                        </a>
                         </td>
                         <td class="txt_alcnt"> ${list.name }</td>
                         <td class="txt_alcnt">${list.rdate }</td>
@@ -83,3 +88,51 @@
         </form>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="checkPw" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">비밀번호 확인</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="modalFrm" >
+                    <label text="비밀번호"> </label>
+<%--                    <input type="hidden"value="${list.no}" id="no">--%>
+                    <input id="passwd" type="password" name="passwd" class="form-control">
+                    <div class="d-flex justify-content-center">
+                        <input id="btnPw" type="submit" class="btn bg-gradient-dark mt-3" onclick="">확인</input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $("#btnPw").click(function () {
+            try {
+                $.ajax({
+                    type: "post",
+                    url: "${pageContext.request.contextPath}/chkPasswd.do",
+                    data: "no=" + $("#no").val() + "&passwd=" + $('#passwd').val(),
+                    success: function (data) {
+                        if (data == "1") {
+                            location.href = "${pageContext.request.contextPath}/qnaView.do?no=${no}"
+                        } else {
+                            alert("비밀번호를 확인해주세요.")
+                        }
+                    },
+                    error: function (test) {
+                        alert("error");
+                    }
+                })
+            } catch (e) {
+                alert(e);
+            }
+        })
+    });
+
+</script>

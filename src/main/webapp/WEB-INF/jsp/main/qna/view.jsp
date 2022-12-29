@@ -8,7 +8,7 @@
 <%@ taglib uri="fx" prefix="fx" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <head>
-<title>${menuName }</title>
+<title></title>
 
 </head>
 <script>
@@ -54,19 +54,25 @@ $(function(){
 
 <page:applyDecorator name="menu" />
 <div class="article">	
-	<page:applyDecorator name="location" />
 	<div class="content">
+
+		<div class="article-header">
+			<h3>질의응답</h3>
+			<div class="side-wrap">
+			</div>
+		</div>
 	<!-- 컨텐츠 start -->
 	    <div class="tbl-wrap separate2 mb50">
 	        <table class="tbl-list02">
-	            <caption>회원수정 목록</caption>
+	            <caption>질의응답</caption>
 	            <colgroup>
 	                <col width="17%" />
 	                <col width="*" />
 	            </colgroup>
+	<input type="hidden" id="no" name="no" value="${rs.no}"/>
 	            <tbody>
 	                <tr>
-	                    <th class="txt_alcnt" scope="row">이름</th>
+	                    <th class="txt_alcnt" scope="row">작성자</th>
 	                    <td>${rs.name }</td>
 	                </tr>
 	                <tr>
@@ -79,22 +85,14 @@ $(function(){
 	                    	${fn:replace(rs.body, crcf, "<br>") }       
 	                    </td>
 	                </tr>
-	                <c:if test="${not empty rs.reply}">     
-					<tr>
-                        <th class="txt_alcnt" scope="row">답변</th>    
-                        <td>    
-                            ${fn:replace(rs.reply, crcf, "<br>") }               
-                        </td>
-                    </tr>
-                    </c:if>
-	            </tbody>
+				</tbody>
 	        </table>
 	    </div>
 	    <div class="btn-wrap type04"> 
 	    	<c:if test="${sessionScope.ID eq rs.id and empty rs.reply}">      
-	        <a href='${pageContext.request.contextPath}/111?no=${rs.no}' class="btn blue">수정</a>
+	        <a href='${pageContext.request.contextPath}/111?no=${rs.no}' class="btn blue">답변달기</a>
 	        </c:if>	        
-	        <a href="${pageContext.request.contextPath}/108" class="btn blue">목록</a>
+	        <a href="${pageContext.request.contextPath}/qnaList.do" class="btn blue">목록</a>
 	    </div>
 	    <!-- 컨텐츠 end -->
 	</div>

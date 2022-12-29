@@ -6,7 +6,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd
 http://java.sun.com/xml/ns/javaee/jsp "
          id="WebApp_ID" version="2.5">
-    <display-name>COBIZ</display-name>
+    <display-name>PILS</display-name>
 
     <!-- 이상진 추가 2020-11-04 -->
     <!-- 출처: https://offbyone.tistory.com/181 [쉬고 싶은 개발자] -->

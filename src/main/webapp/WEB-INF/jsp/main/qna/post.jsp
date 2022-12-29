@@ -23,40 +23,6 @@
 		});
 	});
 
-	// $(function(){
-		//
-		// $("#frmWrite").validate({
-		// 	ignore: "",
-		// 	rules: {
-		// 		name:{required:true},
-		// 		title:{required:true},
-		// 		body:{required:true}
-		// 	},
-		// 	onkeyup:false,
-		// 	onclick:false,
-		// 	onfocusout:false,
-		// 	messages: {
-		// 		name:{required:"이름을 입력하세요."},
-		// 		title:{required:"제목을 입력하세요."},
-		// 		body:{required:"내용을 입력하세요."}
-		// 	},
-		// 	submitHandler: function (frm) {
-		//
-		// 		frm.submit();
-		//
-		// 	},
-		// 	showErrors:function(errorMap, errorList){
-		// 		if(!$.isEmptyObject(errorList)){
-		// 			$.each(errorList, function() {
-		// 				alert(this.message); //summary += " * " + this.message + "<br>" ;
-		// 				return false;
-		// 			});
-		// 		}
-		// 	}
-		// });
-
-	// });
-
 	$(function(){
 		$(document).on('change', 'input[name="id"]', function(){
 		// $("input:radio[name='radio']").change(function(){
