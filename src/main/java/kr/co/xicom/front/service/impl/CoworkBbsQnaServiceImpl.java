@@ -39,8 +39,8 @@ public class CoworkBbsQnaServiceImpl implements CoworkBbsQnaService {
 	}
 
 	@Override
-	public int chkPasswd(String passwd, int no) throws Exception {
-		return mapper.chkPasswd(passwd,no);
+	public int chkPasswd(BbsQnaVO vo) throws Exception {
+		return mapper.chkPasswd(vo);
 	}
 
 	@Override
@@ -49,8 +49,8 @@ public class CoworkBbsQnaServiceImpl implements CoworkBbsQnaService {
 	}
 
 	@Override
-	public int updateBbsQna(BbsQnaVO vo) throws Exception {
-		return mapper.updateBbsQna(vo);
+	public int repostBbsQna(BbsQnaVO vo) throws Exception {
+		return mapper.repostBbsQna(vo);
 	}
 
 }

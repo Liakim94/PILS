@@ -111,7 +111,7 @@
 		            <tr>
 		                <th class="txt_alcnt" scope="row">내용</th>
 		                <td>
-							<textarea id="cont" class="uni_txtarea" name="body"></textarea>
+							<textarea id="cont"  class="form-control"  name="body"></textarea>
 		                </td>
 		            </tr>
 		        </tbody>

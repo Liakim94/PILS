@@ -9,6 +9,7 @@
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <head>
 <title></title>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
 
 </head>
 <script>
@@ -70,6 +71,7 @@ $(function(){
 	                <col width="*" />
 	            </colgroup>
 	<input type="hidden" id="no" name="no" value="${rs.no}"/>
+
 	            <tbody>
 	                <tr>
 	                    <th class="txt_alcnt" scope="row">작성자</th>
@@ -82,16 +84,16 @@ $(function(){
 	                <tr>
 	                    <th class="txt_alcnt" scope="row">내용</th>
 	                    <td>
-	                    	${fn:replace(rs.body, crcf, "<br>") }       
+	                    	${fn:replace(rs.body, crcf, "<br>") }
 	                    </td>
 	                </tr>
 				</tbody>
 	        </table>
 	    </div>
 	    <div class="btn-wrap type04"> 
-	    	<c:if test="${sessionScope.ID eq rs.id and empty rs.reply}">      
-	        <a href='${pageContext.request.contextPath}/111?no=${rs.no}' class="btn blue">답변달기</a>
-	        </c:if>	        
+<%--	    	<c:if test="${sessionScope.ID eq rs.id and empty rs.reply}">      --%>
+	        <a href='${pageContext.request.contextPath}/qnaRepost.do?no=${rs.no}' class="btn blue">답변달기</a>
+<%--	        </c:if>	        --%>
 	        <a href="${pageContext.request.contextPath}/qnaList.do" class="btn blue">목록</a>
 	    </div>
 	    <!-- 컨텐츠 end -->

@@ -15,10 +15,10 @@ public interface CoworkBbsQnaMapper {
 
 	int insertBbsQna(BbsQnaVO vo)throws Exception;
 
-	int chkPasswd(@Param("passwd") String passwd, @Param("no") int no)throws Exception;
+	int chkPasswd( BbsQnaVO vo)throws Exception;
 
 	BbsQnaVO getBbsQnabyId(BbsQnaVO bbsQnaVO)throws Exception;
 
-	int updateBbsQna(BbsQnaVO vo)throws Exception;
+	int repostBbsQna(BbsQnaVO vo)throws Exception;
 
 }
