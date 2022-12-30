@@ -56,7 +56,7 @@
                     <tr>
                         <td class="txt_alcnt">${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
                         <td class="al">
-                            <a href="checkPw" data-toggle="modal" data-target="#checkPw" >
+                            <a href="checkPw" data-toggle="modal" data-target="#checkPw" onclick="modalData(${list.no})" >
                             <c:if test="${not empty list.reply }">
                             <strong>[답변완료] </strong>
                             </c:if>${list.title }
@@ -99,7 +99,7 @@
             <div class="modal-body">
                 <form id="modalFrm" >
                     <label text="비밀번호"> </label>
-<%--                    <input type="hidden"value="${list.no}" id="no">--%>
+                    <input type="hidden"value="" id="hiddenNo">
                     <input id="passwd" type="password" name="passwd" class="form-control">
                     <div class="d-flex justify-content-center">
                         <input id="btnPw" type="submit" class="btn bg-gradient-dark mt-3" onclick="">확인</input>
@@ -117,10 +117,10 @@
                 $.ajax({
                     type: "post",
                     url: "${pageContext.request.contextPath}/chkPasswd.do",
-                    data: "no=" + $("#no").val() + "&passwd=" + $('#passwd').val(),
+                    data: "no=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),
                     success: function (data) {
                         if (data == "1") {
-                            location.href = "${pageContext.request.contextPath}/qnaView.do?no=${no}"
+                            location.href = "${pageContext.request.contextPath}/qnaView.do?no="+ $("#hiddenNo").val()
                         } else {
                             alert("비밀번호를 확인해주세요.")
                         }
@@ -134,5 +134,10 @@
             }
         })
     });
+function modalData(num){
+    $('#checkPw').on('show.bs.modal', function (event) {
+        $("#hiddenNo").val( num );
+    })
+};
 
 </script>

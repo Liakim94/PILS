@@ -142,9 +142,12 @@ public class CoworkBbsQnaController extends Alerts{
 			HttpServletRequest request,
 			HttpServletResponse response)throws Exception {
 
+		bbsQnaVO.setNo(no);
+		bbsQnaVO.setPasswd(passwd);
+
 		int result =0;
 		try {
-			result = service.chkPasswd(passwd,no);
+			result = service.chkPasswd(bbsQnaVO);
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
@@ -173,8 +176,6 @@ public class CoworkBbsQnaController extends Alerts{
 
 			ModelAndView mav = new ModelAndView("main/qna/view");
 
-			bbsQnaVO.setId(session.getAttribute("ID").toString());
-
 			bbsQnaVO.setNo(no);
 			BbsQnaVO rs = service.getBbsQnabyId(bbsQnaVO);
 
@@ -189,23 +190,21 @@ public class CoworkBbsQnaController extends Alerts{
 	}
 	
 	/**
-	* 1:1문의 수정 화면
+	* 1:1문의 답변 화면
 	* @param 	
 	* @return 	
 	* @exception BusinessLogicException
 	*/
-	@GetMapping(value="/edit.do")
-	public ModelAndView edit(ModelMap model,
+	@GetMapping(value="/qnaRepost.do")
+	public ModelAndView repost(ModelMap model,
 			@ModelAttribute("BbsQnaVO")BbsQnaVO bbsQnaVO,
 			@RequestParam(value="no") int no,
 			HttpSession session,
 			HttpServletRequest request,
 			HttpServletResponse response)throws Exception{
 		
-			ModelAndView mav = new ModelAndView("front/cowork/bbsQna/edit");
-			
-			bbsQnaVO.setId(session.getAttribute("ID").toString());
-			
+			ModelAndView mav = new ModelAndView("main/qna/repost");
+
 			bbsQnaVO.setNo(no);
 			BbsQnaVO rs = service.getBbsQnabyId(bbsQnaVO);
 			
@@ -215,60 +214,39 @@ public class CoworkBbsQnaController extends Alerts{
 			return mav;
 	}
 	/**
-	* 1:1문의 수정
+	* 1:1문의 답변
 	* @param 	
 	* @return 	
 	* @exception BusinessLogicException
 	*/
-	@RequestMapping(value="/edit.do",  method={RequestMethod.POST})
-	public void doEdit(ModelMap model,
+	@RequestMapping(value="/qnaRepost.do",  method={RequestMethod.POST})
+	public void doRepost(ModelMap model,
 			@ModelAttribute("BbsQnaVO")BbsQnaVO bbsQnaVO,
 			HttpServletRequest request,
 			HttpServletResponse response)throws Exception{
-			
-	  		// hidden으로 넘어온 sid를 받는다.
-			String sid = request.getParameter("sid");
-			//session 에 담겨서 넘어온 hid를 String로 받는다.
-			String hid = (String)request.getSession().getAttribute("hid");
 
-			if(sid.equals(hid)){
-			// hid와 sid가 같으면 통과
-		
-				String clientIp = request.getHeader("X-FORWARDED-FOR");
-				
-				if(clientIp == null) clientIp = request.getRemoteAddr();		
-				bbsQnaVO.setIp(clientIp);
-				
-				int result = 0;
-				result = service.updateBbsQna(bbsQnaVO);				
-				if(result > 0){
-					
-					request.setAttribute("hid", "");
-					response.sendRedirect(request.getContextPath()+"/108"); 
-					
-				}else{
-					PrintWriter writer = response.getWriter(); 
-	
-					response.setContentType("text/html; charset=UTF-8;");
-					request.setCharacterEncoding("utf-8");
-					writer.println("<script type='text/javascript'>");
-				    writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
-				    writer.println("history.back();");
-				    writer.println("</script>");
-					writer.flush();
-				}
-				
-			} else {
-				PrintWriter writer = response.getWriter(); 
-				
+		try {
+			int result = service.repostBbsQna(bbsQnaVO);
+
+			if(result > 0){
+
+				request.setAttribute("hid", "");
+				response.sendRedirect(request.getContextPath()+"/qnaList.do");
+
+			}else{
+				PrintWriter writer = response.getWriter();
+
 				response.setContentType("text/html; charset=UTF-8;");
 				request.setCharacterEncoding("utf-8");
 				writer.println("<script type='text/javascript'>");
-			    writer.println("alert('비정상적인 접근입니다.');");
-			    writer.println("history.back();");
-			    writer.println("</script>");
+				writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
+				writer.println("history.back();");
+				writer.println("</script>");
 				writer.flush();
 			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 			
 	}
 

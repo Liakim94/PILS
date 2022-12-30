@@ -560,43 +560,6 @@ function getDislike(num){
 
                 </div><!-- /.box-body -->
                 <div class="box-footer">
-
-
-<%--              <c:if test="${not empty attach }">--%>
-<%--              <div class="form-group">--%>
-<%--               	<label>첨부된 파일</label>--%>
-<%--               	<div id="delete_files"></div>--%>
-<%--               	<ul class="mailbox-attachments clearfix">--%>
-<%--               		<c:forEach var="list" items="${attach }">--%>
-<%--	                <li id="addedFile_${list.attchSeq }">--%>
-<%--	                 <c:choose>--%>
-<%--	                 	<c:when test="${fn:substring(list.fileMime,0,5) eq 'image' }"><span class="mailbox-attachment-icon has-img noImg"><img src="${pageContext.request.contextPath }/upload/${list.filePath }/${list.svFileNm}" alt="${list.fileNm }" onerror="src='/images/no-img.jpg'"/></span></c:when>--%>
-<%--	                 	<c:otherwise>--%>
-<%--	                 		<span class="mailbox-attachment-icon">--%>
-<%--	                 			<i class="fa fa-${fx:getFileExt(list.fileExt) }"></i>--%>
-<%--	                 		</span>--%>
-<%--	                 	</c:otherwise>--%>
-<%--					 </c:choose>--%>
-<%--	                  <div class="mailbox-attachment-info">--%>
-
-<%--	                    <a href="#" class="mailbox-attachment-name text-ellipsis" title="${list.fileNm }">--%>
-<%--	                    	<c:choose>--%>
-<%--	                    	<c:when test="${fn:substring(list.fileMime,0,5) eq 'image' }"><i class="fa fa-camera"></i></c:when>--%>
-<%--	                    	<c:otherwise><i class="fa fa-paperclip"></i></c:otherwise>--%>
-<%--	                    	</c:choose>--%>
-<%--	                    ${list.fileNm }--%>
-<%--	                    </a>--%>
-<%--	                        <span class="mailbox-attachment-size">--%>
-<%--	                          ${fx:getFileSize(list.fileSz) }--%>
-<%--	                          <a href="javascript:deleteFile(${list.attchSeq })" class="btn btn-default btn-xs pull-right" data-toggle="tooltip" title="파일삭제"><i class="fa fa-trash"></i></a>--%>
-<%--	                          <a href="${pageContext.request.contextPath }/cms/board/download.do?no=${list.attchSeq}" class="btn btn-default btn-xs pull-right" data-toggle="tooltip" title="다운로드"><i class="fa fa-cloud-download"></i></a>--%>
-<%--	                        </span>--%>
-<%--	                  </div>--%>
-<%--	                </li>--%>
-<%--	                </c:forEach>--%>
-<%--	              </ul>--%>
-<%--               </div>--%>
-<%--	           </c:if>--%>
               </div>
               </div><!-- /. box -->
     	</div>

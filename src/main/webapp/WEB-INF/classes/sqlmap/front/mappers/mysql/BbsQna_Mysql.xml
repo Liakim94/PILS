@@ -49,12 +49,12 @@
     </select>
     
     <update id="insertBbsQna">
-<!--       <selectKey resultType="int" keyProperty="headnum" order="BEFORE">-->
-<!--           SELECT min(hedofc_no)+(-1) FROM tb_banner_qust_answr      -->
-<!--       </selectKey>-->
-        INSERT INTO tb_banner_qust_answr                      
-        (
-            sort_no
+       <selectKey resultType="int" keyProperty="headnum" order="BEFORE">
+           SELECT min(hedofc_no)+(-1) FROM tb_banner_qust_answr
+       </selectKey>
+        INSERT INTO tb_banner_qust_answr
+        (   hedofc_no
+           , sort_no
            , dp
            , id
            , nm
@@ -65,8 +65,8 @@
            , regist_date
         )
         values 
-        (
-             0
+        (  #{headnum}::INT4
+           , 0
            , 0
            , #{id}
            , #{name}
@@ -95,32 +95,43 @@
     </select>
     
     <select id="getBbsQnabyId" resultMap="bbsQna">
-        select no           AS no           
-                , hedofc_no AS headnum      
-                , sort_no   AS arrangenum   
-                , dp        AS depth        
-                , id        AS id           
-                , nm        AS name     
-                , pswd      AS passwd       
-                , ttl       AS title        
-                , bdtxt     AS body     
-                , rspns     AS reply        
+        select no           AS no
+                , hedofc_no AS headnum
+                , sort_no   AS arrangenum
+                , dp        AS depth
+                , id        AS id
+                , nm        AS name
+                , pswd      AS passwd
+                , ttl       AS title
+                , bdtxt     AS body
+                , rspns     AS reply
         from tb_banner_qust_answr
-        where 1 = 1 
+        where 1 = 1
         and no = #{no}::INT4
-        <if test="!id.equals('')">
-            and id = #{id}
-        </if>
     </select>
     
-    <update id="updateBbsQna">
-        update tb_banner_qust_answr 
-        set id = #{id}
-            , nm = #{name}
-            <!-- , passwd = OLD_PASSWORD(#{passwd}) -->
-            , ttl = #{title}
-            , bdtxt = #{body}
-            , ip_addr = #{ip}
-        where no = #{no}::INT4
+    <update id="repostBbsQna">
+        insert into tb_banner_qust_answr
+            (
+             hedofc_no
+            , dp
+            , id
+            , nm
+            , pswd
+            , ttl
+            , bdtxt
+            , regist_date
+        )
+        values (
+           #{headnum}
+           , 0
+           , #{id}
+            , #{name}
+            , #{passwd}
+            , #{title}
+            , #{body}
+            , extract(epoch from now() at time zone 'utc')
+        )
+
     </update>
 </mapper>
