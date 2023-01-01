@@ -2,6 +2,7 @@ package kr.co.xicom.front.controller;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.cmmn.EgovExcepHndlr;
+import kr.co.xicom.cms.service.BoardService;
 import kr.co.xicom.front.model.BbsQnaVO;
 import kr.co.xicom.front.service.CoworkBbsQnaService;
 import kr.co.xicom.service.MessageSource;
@@ -32,6 +33,7 @@ public class CoworkBbsQnaController extends Alerts{
     private static final Logger LOGGER = LoggerFactory.getLogger(EgovExcepHndlr.class);
 	@Autowired
 	private CoworkBbsQnaService service;
+
 	/**
 	* 1:1문의 목록
 	* @param 	
@@ -56,13 +58,12 @@ public class CoworkBbsQnaController extends Alerts{
 			bbsQnaVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
 			bbsQnaVO.setLastIndex(paginationInfo.getLastRecordIndex());
 			bbsQnaVO.setPageUnit(paginationInfo.getRecordCountPerPage());
-			
+
 			Map<String, Object> rs = new HashMap<String, Object>();
 			rs = service.list(bbsQnaVO);
 
 			int totalCnt = 0;
 			totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
-			
 			paginationInfo.setTotalRecordCount(totalCnt);
 			
 			mav.addObject("totalCnt", rs.get("resultCnt"));
@@ -70,6 +71,7 @@ public class CoworkBbsQnaController extends Alerts{
 			mav.addObject("paginationInfo", paginationInfo);
 			mav.addObject("vo", bbsQnaVO);
 			mav.addObject("rwx", request.getAttribute("rwx"));
+
 			
 			return mav; 
 	}

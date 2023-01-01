@@ -192,5 +192,10 @@ public class BoardServiceImpl implements BoardService {
 	public int updateStat(BoardVO boardVO) throws Exception {
 		return boardMapper.updateStat(boardVO);
 	}
-	
+
+	@Override
+	public String getMenu(int bbsId) throws Exception {
+		return boardMapper.getMenu(bbsId);
+	}
+
 }

@@ -105,11 +105,11 @@
 
 		      <col width="17%" />
 		      <col width="*" />
-			  <div class="box box-primary">
-				  <div class="box-header with-border">
-					  <h3 class="box-title">컨설팅 신청</h3>
-				  </div><!-- /.box-header -->
-			  </div>
+				<div class="article-header">
+					<h3>컨설팅 신청</h3>
+					<div class="side-wrap">
+					</div>
+				</div>
 		        <tbody>
 		            <tr>
 		                <th class="txt_alcnt" scope="row">기업명</th>
@@ -308,11 +308,11 @@
 					<tr>
 						<th class="txt_alcnt" scope="row">비밀번호</th>
 						<td>
-							<input type="text" class="uni_input_text wdh100" name="deptNm" value="" />
+							<input type="text" class="uni_input_text wdh100" name="passwd" value="" />
 						</td>
 						<th class="txt_alcnt" scope="row">비밀번호 재입력</th>
 						<td>
-							<input type="text" class="uni_input_text wdh100" id="passwd" name="position" value="" />
+							<input type="text" class="uni_input_text wdh100" id="passwdChk" name="passwdChk" value="" />
 						</td>
 					</tr>
 				</tbody>

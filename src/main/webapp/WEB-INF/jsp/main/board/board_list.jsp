@@ -26,15 +26,8 @@ function linkPage(num){
 
 <page:applyDecorator name="menu" />
 <div class="article">
-	<ul class="loc-list">
-		홈 &nbsp;>
-		<a>소통마당</a> &nbsp;>
-		<a>공지사항</a>
-
-	</ul>
-
 	<div class="article-header">
-		<h3>공지사항</h3>
+		<h3>${bbsNm}</h3>
 		<div class="side-wrap">
 		</div>
 	</div>

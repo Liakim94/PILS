@@ -23,5 +23,6 @@ public interface BoardService {
 	void read(BoardVO boardVO) throws Exception;
 
 	int updateStat(BoardVO boardVO) throws Exception;
-	
+
+    String getMenu(int bbsId) throws Exception;
 }

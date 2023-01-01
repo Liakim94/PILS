@@ -72,7 +72,9 @@ public class BoardController extends Alerts{
 		/*데이터 가져오기*/
 		Map<String, Object> rs = new HashMap<String, Object>();
 		rs = boardService.list(boardVO);
-		
+		// 게시판 이름 가져오는 메소드
+		String menu = boardService.getMenu(bbsNo);
+
 		int totalCnt = 0;
 		totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
 		
@@ -86,6 +88,8 @@ public class BoardController extends Alerts{
 		mav.addObject("menuName", request.getAttribute("menuName"));
 		mav.addObject("bbsId", request.getParameter("bbsId"));
 		mav.addObject("rwx", request.getAttribute("rwx"));
+		mav.addObject("bbsNm", menu);
+
 		return mav;
 	}
 	

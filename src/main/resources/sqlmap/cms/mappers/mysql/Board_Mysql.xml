@@ -360,6 +360,9 @@
         REDNG_NMBRS = REDNG_NMBRS + 1
         WHERE BBS_SN = #{boardSeq}
     </update>
-    
+
+    <select id="getMenu" resultType="String">
+        select bbs_nm from tb_bbs_data where bbs_id =#{bbsId};
+    </select>
 
 </mapper>

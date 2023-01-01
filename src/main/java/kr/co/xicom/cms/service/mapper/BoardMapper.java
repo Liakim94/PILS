@@ -28,5 +28,6 @@ public interface BoardMapper {
 
 	int updateStat(BoardVO vo) throws Exception;
 
+	String getMenu(int bbsId) throws Exception;
 
 }
