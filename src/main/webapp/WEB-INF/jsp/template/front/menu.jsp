@@ -21,7 +21,7 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
             <li><a href ="${pageContext.request.contextPath}/boardList.do?bbsId=7">자주 묻는 질문</a></li>
             <li><a href ="${pageContext.request.contextPath}/qnaList.do">질의응답 게시판</a></li>
             <li><a href ="${pageContext.request.contextPath}/boardList.do?bbsId=9">자료실</a></li>
-            <li><a href ="#">컨설팅 신청</a></li>
+            <li><a href ="${pageContext.request.contextPath}/consulting.do">컨설팅 신청</a></li>
         </ul>
     </div>
 </aside>
