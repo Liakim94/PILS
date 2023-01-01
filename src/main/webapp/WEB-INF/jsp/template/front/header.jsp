@@ -102,7 +102,7 @@ function setCookie(name, value, expire){
 								<li><a href ="${pageContext.request.contextPath}/boardList.do?bbsId=7"  class="menu_depth2">자주 묻는 질문</a></li>
 								<li><a href ="${pageContext.request.contextPath}/qnaList.do"  class="menu_depth2">질의응답 게시판</a></li>
 								<li><a href ="${pageContext.request.contextPath}/boardList.do?bbsId=9"  class="menu_depth2">자료실</a></li>
-								<li><a href ="#"  class="menu_depth2">컨설팅 신청</a></li>
+								<li><a href ="${pageContext.request.contextPath}/consulting.do" class="menu_depth2">컨설팅 신청</a></li>
 							</ul>
 					</li>
 					<li><button type="button" class="menu_depth1">관리자</button>

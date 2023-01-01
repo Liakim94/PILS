@@ -2,7 +2,7 @@ package kr.co.xicom.front.model;
 
 public class CmpMemberVo {
     private String bizNo ="";
-    private String mem_cd ="";
+    private String mem_cd ="";  //기업회원구분(컨설팅:1)
     private String cmpNm ="";
     private String fdate ="";
     private String  ceo="";
@@ -10,20 +10,33 @@ public class CmpMemberVo {
     private String address_dtl ="";
     private String telNo ="";
     private String faxNo ="";
-    private String induty ="";
+    private String bizType="";
     private int  capital=0;
     private String  product="";
+    private String  conQ="";
     private String deal_type ="";
     private String deal_scale ="";
     private String material ="";
     private String appdate ="";
-    private String update ="";
+    private String id ="";
+    private String passwd ="";
+    private String name ="";
+    private String deptNm="";
+    private String position ="";
+    private String mbphno ="";
+    private String email ="";
+    private String memTelNo ="";
+    private String memFaxNo ="";
+    private String join_confm =""; //가입승인여부
+    private String join_dt="";
+    private String delete_yn =""; //삭제여부
+    private String auth_cd =""; //권한코드
 
     public String getBizNo() {
         return bizNo;
     }
 
-    public void setBizno(String bizNo) {
+    public void setBizNo(String bizNo) {
         this.bizNo = bizNo;
     }
 
@@ -91,12 +104,12 @@ public class CmpMemberVo {
         this.faxNo = faxNo;
     }
 
-    public String getInduty() {
-        return induty;
+    public String getBizType() {
+        return bizType;
     }
 
-    public void setInduty(String induty) {
-        this.induty = induty;
+    public void setBizType(String bizType) {
+        this.bizType = bizType;
     }
 
     public int getCapital() {
@@ -113,6 +126,13 @@ public class CmpMemberVo {
 
     public void setProduct(String product) {
         this.product = product;
+    }
+    public String getConQ() {
+        return conQ;
+    }
+
+    public void setConQ(String conQ) {
+        this.conQ = conQ;
     }
 
     public String getDeal_type() {
@@ -147,12 +167,108 @@ public class CmpMemberVo {
         this.appdate = appdate;
     }
 
-    public String getUpdate() {
-        return update;
+    public String getId() {
+        return id;
     }
 
-    public void setUpdate(String update) {
-        this.update = update;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getPasswd() {
+        return passwd;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDeptNm() {
+        return deptNm;
+    }
+
+    public void setDeptNm(String deptNm) {
+        this.deptNm = deptNm;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getMbphno() {
+        return mbphno;
+    }
+
+    public void setMbphno(String mbphno) {
+        this.mbphno = mbphno;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMemTelNo() {
+        return memTelNo;
+    }
+
+    public void setMemTelNo(String memTelNo) {
+        this.memTelNo = memTelNo;
+    }
+
+    public String getMemFaxNo() {
+        return memFaxNo;
+    }
+
+    public void setMemFaxNo(String memFaxNo) {
+        this.memFaxNo = memFaxNo;
+    }
+
+    public String getJoin_confm() {
+        return join_confm;
+    }
+
+    public void setJoin_confm(String join_confm) {
+        this.join_confm = join_confm;
+    }
+
+    public String getJoin_dt() {
+        return join_dt;
+    }
+
+    public void setJoin_dt(String join_dt) {
+        this.join_dt = join_dt;
+    }
+
+    public String getDelete_yn() {
+        return delete_yn;
+    }
+
+    public void setDelete_yn(String delete_yn) {
+        this.delete_yn = delete_yn;
+    }
+
+    public String getAuth_cd() {
+        return auth_cd;
+    }
+
+    public void setAuth_cd(String auth_cd) {
+        this.auth_cd = auth_cd;
     }
 
 }

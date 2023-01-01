@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.xicom.front.service.mapper.ConsultingMapper">
+
+    <insert id="insertConsulting">
+        insert into tb_pils_cmpmbr
+        (cmp_nm
+        ,bizno
+        ,cmp_mbr_cd
+        ,ceo
+        ,fdate
+        ,addr
+        ,addr_dtl
+        ,telno
+        ,faxno
+        ,biz_ty
+        ,capl
+        ,deal_ty
+        ,yr_deal_scale
+        ,prmy_mat
+        ,con_q)
+        values (
+                   #{cmpNm}
+               , #{bizNo}
+               ,'01'
+               ,#{ceo}
+               ,#{fdate}
+               ,#{address}
+               ,#{address_dtl}
+               ,#{telNo}
+               ,#{faxNo}
+               ,#{bizType}
+               ,#{capital}
+               ,#{deal_type}
+               ,#{deal_scale}
+               ,#{material}
+               ,#{conQ}
+    )
+    </insert>
+    <insert id="insertMemberInfo">
+        insert into tb_pils_mbr
+        (nm
+        ,mbphno
+        ,psitn_dept_nm
+        ,pstn
+        ,email_addr
+        ,telno
+        ,faxno
+        ,auth_cd
+        ,bizno
+        ,user_id
+        ,pswd
+        )
+        values (
+                   #{name}
+               ,#{mbphno}
+               ,#{deptNm}
+               ,#{position}
+               ,#{email}
+               ,#{memTelNo}
+               ,#{memFaxNo}
+               ,'2'
+               ,#{bizNo}
+               ,#{id}
+               ,#{passwd}
+               )
+    </insert>
+</mapper>
