@@ -9,23 +9,11 @@
 
 <head>
 <title></title>
-	<script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 </head>
 <script>
-
-	var oEditors = [];
-	$(function(){
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef: oEditors,
-			elPlaceHolder: "cont",
-			sSkinURI: "${pageContext.request.contextPath }/editor/naver/SmartEditor2Skin.html",
-			fCreator: "createSEditor2"
-		});
-	});
-
 	// submit
 	function fn_submit(){
 
@@ -93,23 +81,20 @@
 	}
 </script>
 
-<page:applyDecorator name="menu" />
+<page:applyDecorator name="menu2" />
 <div class="article">	
 	<div class="content">
 	<!-- 컨텐츠 start -->
-		<form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/consulting.do">
+		<form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/join/joinApply.do">
 
-		<div class="tbl-wrap separate2 mb50">
 		    <table class="tbl-list02">
-		        <caption>회원수정 목록</caption>
-
 		      <col width="17%" />
 		      <col width="*" />
-			  <div class="box box-primary">
-				  <div class="box-header with-border">
-					  <h3 class="box-title">컨설팅 신청</h3>
-				  </div><!-- /.box-header -->
-			  </div>
+				<div class="article-header">
+					<h3>동행기업 신청</h3>
+					<div class="side-wrap">
+					</div>
+				</div>
 		        <tbody>
 		            <tr>
 		                <th class="txt_alcnt" scope="row">기업명</th>
@@ -164,6 +149,12 @@
 						<th class="txt_alcnt" scope="row">자본금</th>
 						<td>
 							<input type="text" class="uni_input_text" id="capital" name="capital" style="padding:0"/>백만원
+						</td>
+					</tr>
+					<tr>
+						<th class="txt_alcnt" scope="row">기업 로고</th>
+						<td colspan="3">
+							파일찾기
 						</td>
 					</tr>
 <%--					<th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>--%>
@@ -260,40 +251,9 @@
 						</td>
 					</tr>
 					<tr>
-						<th colspan="4" class="txt_alcnt" scope="row">컨설팅시 주요 질의사항</th>
-					</tr>
-					<tr>
-						<td colspan="4">
-						<input type="text" class="uni_input_text wdh100" id="conQ" name="conQ" value="" />
-						</td>
-					</tr>
-				<tr>
-					<th colspan="4" class="txt_alcnt" scope="row">연동제 적용 대상이 되는 주요 수위탁거래 정보</th>
-				</tr>
-				<tr>
-					<th class="txt_alcnt" scope="row">수위탁 거래 유형</th>
-					<td  colspan="3">
-						<select id="deal_type" name="deal_type" class="uni_input_text">
-							<option value="">선택</option>
-							<option value="제조">제조</option>
-							<option value="공사">공사</option>
-							<option value="가공">가공</option>
-							<option value="수리">수리</option>
-							<option value="용역">용역</option>
-							<option value="기술개발">기술개발</option>
-						</select>
-					</td>
-				</tr>
-					<tr>
-						<th class="txt_alcnt" scope="row">연간 거래 규모</th>
-						<td  colspan="3">
-							<input type="text" class="form-control" name="deal_scale" id="deal_scale" />
-						</td>
-					</tr>
-					<tr>
-						<th class="txt_alcnt" scope="row">주요 원재료</th>
-						<td  colspan="3">
-							<input type="text" class="form-control" name="material" id="material" />
+						<th class="txt_alcnt" scope="row">첨부서류</th>
+						<td>
+							파일찾기
 						</td>
 					</tr>
 					<tr>
@@ -308,19 +268,18 @@
 					<tr>
 						<th class="txt_alcnt" scope="row">비밀번호</th>
 						<td>
-							<input type="text" class="uni_input_text wdh100" name="deptNm" value="" />
+							<input type="text" class="uni_input_text wdh100" name="passwd" value="" />
 						</td>
 						<th class="txt_alcnt" scope="row">비밀번호 재입력</th>
 						<td>
-							<input type="text" class="uni_input_text wdh100" id="passwd" name="position" value="" />
+							<input type="text" class="uni_input_text wdh100" id="passwdChk" name="passwdChk" value="" />
 						</td>
 					</tr>
 				</tbody>
 		    </table>
-		</div>
 		<div class="btn-wrap type04">
-			<button type="submit" class="btn blue" >저장</button>
-		    <a href="${pageContext.request.contextPath}/index.do" class="btn blue">취소</a>
+			<button type="submit" class="btn blue" >등록</button>
+		    <a href="${pageContext.request.contextPath}/join/joinList.do" class="btn blue">취소</a>
 		</div>
 		</form>
      <!-- 컨텐츠 end -->

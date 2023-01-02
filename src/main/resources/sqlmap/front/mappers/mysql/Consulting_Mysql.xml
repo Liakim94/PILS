@@ -2,6 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.xicom.front.service.mapper.ConsultingMapper">
 
+<resultMap id="CmpMemberVo"        type="kr.co.xicom.front.model.CmpMemberVo">
+    <result property="bizNo"              column="bizNo"/>
+    <result property="mem_cd"             column="mem_cd"/>
+    <result property="cmpNm"              column="cmpNm"/>
+    <result property="fdate"              column="fdate"/>
+    <result property="ceo"                column="ceo"/>
+    <result property="address"            column="address"/>
+    <result property="address_dtl"        column="address_dtl"/>
+    <result property="telNo"              column="telNo"/>
+    <result property="faxNo"              column="faxNo"/>
+    <result property="bizType"            column="bizType"/>
+    <result property="capital"            column="capital"/>
+    <result property="product"            column="product"/>
+    <result property="conQ"              column="conQ"/>
+    <result property="deal_type"         column="deal_type"/>
+    <result property="deal_scale"        column="deal_scale"/>
+    <result property="material"          column="material"/>
+    <result property="appdate"           column="appdate"/>
+    <result property="name"              column="name"/>
+    <result property="deptNm"            column="deptNm"/>
+    <result property="position"          column="position"/>
+    <result property="mbphno"            column="mbphno"/>
+    <result property="email"             column="email"/>
+    <result property="memTelNo"          column="memTelNo"/>
+    <result property="memFaxNo"          column="memFaxNo"/>
+</resultMap>
+
     <insert id="insertConsulting">
         insert into tb_pils_cmpmbr
         (cmp_nm
@@ -18,23 +45,25 @@
         ,deal_ty
         ,yr_deal_scale
         ,prmy_mat
-        ,con_q)
+        ,con_q
+        ,appdt)
         values (
                    #{cmpNm}
                , #{bizNo}
-               ,'01'
+               ,#{mem_cd}
                ,#{ceo}
                ,#{fdate}
                ,#{address}
                ,#{address_dtl}
                ,#{telNo}
-               ,#{faxNo}
+               ,#{telNo}
                ,#{bizType}
                ,#{capital}
                ,#{deal_type}
                ,#{deal_scale}
                ,#{material}
                ,#{conQ}
+               ,current_timestamp
     )
     </insert>
     <insert id="insertMemberInfo">
@@ -50,9 +79,9 @@
         ,bizno
         ,user_id
         ,pswd
-        )
+        ,join_dt)
         values (
-                   #{name}
+               #{name}
                ,#{mbphno}
                ,#{deptNm}
                ,#{position}
@@ -62,7 +91,161 @@
                ,'2'
                ,#{bizNo}
                ,#{id}
-               ,#{passwd}
+               ,encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+               ,current_date )
+    </insert>
+    <select id="list" resultMap="CmpMemberVo">
+        select
+              A.bizno as bizNo
+             ,A.cmp_mbr_cd as mem_cd
+             ,A.cmp_nm as  cmpNm
+             ,to_char(A.appdt, 'YYYY-MM-DD') as appdate
+             ,B.nm as name
+             ,B.user_id as id
+             ,B.pswd as passwd
+
+        from tb_pils_cmpmbr A join tb_pils_mbr B
+            on A.bizno =B.bizno
+        where cmp_mbr_cd= #{mem_cd}
+        order by appdt desc
+        <if test="pageIndex > 0">
+            LIMIT #{pageUnit} OFFSET #{firstIndex}
+        </if>
+    </select>
+    <select id="listCount" resultType="int" >
+        SELECT COUNT(1)
+        FROM tb_pils_cmpmbr A join tb_pils_mbr B
+                                ON  A.bizno =B.bizno
+        WHERE 1 = 1 and cmp_mbr_cd= #{mem_cd}
+
+    </select>
+    <select id="conChkPw" resultType="int" >
+        select
+            case when inPass = pswd then 1
+                 else 0 end as rslt
+        from
+            (select
+                 encode(encrypt(convert_to(#{passwd},'utf8'),'ENC_KEY','aes'),'hex') as inPass
+                  , pswd
+             from
+                 tb_pils_mbr where bizno = #{bizNo}
+            ) a;
+
+    </select>
+<select id="getViewByBizNo" resultMap="CmpMemberVo">
+    select
+          A.cmp_nm as  cmpNm
+         ,A.bizno  as bizNo
+            ,A.cmp_mbr_cd as mem_cd
+            ,A.ceo as ceo
+            ,A.fdate as fdate
+            ,A.addr as address
+            ,A.addr_dtl as address_dtl
+            ,A.telno as telNo
+            ,A.faxno as faxno
+            ,A.biz_ty as bizType
+            ,A.capl as capital
+            ,A.deal_ty as deal_type
+            ,A.yr_deal_scale as deal_scale
+            ,A.prmy_mat as material
+            ,A.con_q as conQ
+            ,B.nm as name
+            ,B.mbphno as mbphno
+            ,B.psitn_dept_nm as deptNm
+            ,B.pstn as position
+            ,B.email_addr as email
+            ,B.telno as memTelNo
+            ,B.faxno as memFaxNo
+            ,B.auth_cd as auth_cd
+    from tb_pils_cmpmbr A join tb_pils_mbr B
+                               on A.bizno =B.bizno
+    where 1=1 and cmp_mbr_cd='01' and A.bizno = #{bizNo}
+    order by appdt desc
+</select>
+    <update id="update" >
+        update tb_pils_cmpmbr set
+             cmp_nm =  #{cmpNm}
+             ,bizno  = #{bizNo}
+             ,ceo =  #{ceo}
+             ,fdate = #{fdate}
+             ,addr =  #{address}
+             ,addr_dtl  = #{address_dtl}
+             ,telno = #{telNo}
+             ,faxno = #{faxNo}
+             ,biz_ty = #{bizType}
+             ,capl = #{capital}
+             ,deal_ty = #{deal_type}
+             ,yr_deal_scale = #{deal_scale}
+             ,prmy_mat = #{material}
+             ,con_q = #{conQ}
+        where bizno=#{bizNo}
+    </update>
+    <update id="memUpdate">
+        update tb_pils_mbr set
+            nm = #{name}
+            ,mbphno = #{mbphno}
+            ,psitn_dept_nm = #{deptNm}
+            ,pstn = #{position}
+            ,email_addr = #{email}
+            ,telno = #{memTelNo}
+            ,faxno = #{memFaxNo}
+        where bizno=#{bizNo}
+    </update>
+    <insert id="insertJoin">
+        insert into tb_pils_cmpmbr
+        (cmp_nm
+        ,bizno
+        ,cmp_mbr_cd
+        ,ceo
+        ,fdate
+        ,addr
+        ,addr_dtl
+        ,telno
+        ,faxno
+        ,biz_ty
+        ,capl
+        ,appdt)
+        values (
+                #{cmpNm}
+               , #{bizNo}
+               ,#{mem_cd}
+               ,#{ceo}
+               ,#{fdate}
+               ,#{address}
+               ,#{address_dtl}
+               ,#{telNo}
+               ,#{telNo}
+               ,#{bizType}
+               ,#{capital}
+               ,current_timestamp
                )
+    </insert>
+    <insert id="insertMemberJoin">
+        insert into tb_pils_mbr
+        (nm
+        ,mbphno
+        ,psitn_dept_nm
+        ,pstn
+        ,email_addr
+        ,telno
+        ,faxno
+        ,auth_cd
+        ,bizno
+        ,user_id
+        ,pswd
+        ,join_dt)
+        values (
+                #{name}
+               ,#{mbphno}
+               ,#{deptNm}
+               ,#{position}
+               ,#{email}
+               ,#{memTelNo}
+               ,#{memFaxNo}
+               ,'2'
+               ,#{bizNo}
+               ,#{id}
+               ,encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+               ,current_date )
     </insert>
 </mapper>

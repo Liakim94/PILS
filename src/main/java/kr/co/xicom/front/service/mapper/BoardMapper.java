@@ -1,9 +1,9 @@
-package kr.co.xicom.cms.service.mapper;
+package kr.co.xicom.front.service.mapper;
 
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import kr.co.xicom.cms.model.BoardVO;
+import kr.co.xicom.front.model.BoardVO;
 
 @Mapper("BoardMapper")
 public interface BoardMapper {
@@ -28,5 +28,6 @@ public interface BoardMapper {
 
 	int updateStat(BoardVO vo) throws Exception;
 
+	String getMenu(int bbsId) throws Exception;
 
 }

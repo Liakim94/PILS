@@ -4,9 +4,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.cmmn.EgovExcepHndlr;
 import kr.co.xicom.front.model.BbsQnaVO;
 import kr.co.xicom.front.service.CoworkBbsQnaService;
-import kr.co.xicom.service.MessageSource;
 import kr.co.xicom.util.Alerts;
-import kr.co.xicom.util.NullUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,13 +22,14 @@ import java.util.Map;
 //import kr.go.smes.ems.EmsClient;
 //import kr.go.smes.ems.EmsResponse;
 
-//@RequestMapping(value="/bbsQna")
+@RequestMapping("/cmm")
 @Controller
 public class CoworkBbsQnaController extends Alerts{
 	
     private static final Logger LOGGER = LoggerFactory.getLogger(EgovExcepHndlr.class);
 	@Autowired
 	private CoworkBbsQnaService service;
+
 	/**
 	* 1:1문의 목록
 	* @param 	
@@ -45,7 +43,7 @@ public class CoworkBbsQnaController extends Alerts{
 			HttpServletRequest request, 
 			HttpServletResponse response)throws Exception{
 			
-			ModelAndView mav = new ModelAndView("main/qna/list");
+			ModelAndView mav = new ModelAndView("communication/qna/list");
 
 			/*페이징 초기설정*/
 			PaginationInfo paginationInfo = new PaginationInfo();
@@ -56,13 +54,12 @@ public class CoworkBbsQnaController extends Alerts{
 			bbsQnaVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
 			bbsQnaVO.setLastIndex(paginationInfo.getLastRecordIndex());
 			bbsQnaVO.setPageUnit(paginationInfo.getRecordCountPerPage());
-			
+
 			Map<String, Object> rs = new HashMap<String, Object>();
 			rs = service.list(bbsQnaVO);
 
 			int totalCnt = 0;
 			totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
-			
 			paginationInfo.setTotalRecordCount(totalCnt);
 			
 			mav.addObject("totalCnt", rs.get("resultCnt"));
@@ -70,6 +67,7 @@ public class CoworkBbsQnaController extends Alerts{
 			mav.addObject("paginationInfo", paginationInfo);
 			mav.addObject("vo", bbsQnaVO);
 			mav.addObject("rwx", request.getAttribute("rwx"));
+
 			
 			return mav; 
 	}
@@ -87,7 +85,7 @@ public class CoworkBbsQnaController extends Alerts{
 			HttpServletRequest request,
 			HttpServletResponse response)throws Exception{
 		
-			ModelAndView mav = new ModelAndView("main/qna/post");
+			ModelAndView mav = new ModelAndView("communication/qna/post");
 			
 			return mav;
 	}
@@ -174,7 +172,7 @@ public class CoworkBbsQnaController extends Alerts{
 			HttpServletRequest request,
 			HttpServletResponse response)throws Exception{
 
-			ModelAndView mav = new ModelAndView("main/qna/view");
+			ModelAndView mav = new ModelAndView("communication/qna/view");
 
 			bbsQnaVO.setNo(no);
 			BbsQnaVO rs = service.getBbsQnabyId(bbsQnaVO);
@@ -203,7 +201,7 @@ public class CoworkBbsQnaController extends Alerts{
 			HttpServletRequest request,
 			HttpServletResponse response)throws Exception{
 		
-			ModelAndView mav = new ModelAndView("main/qna/repost");
+			ModelAndView mav = new ModelAndView("communication/qna/repost");
 
 			bbsQnaVO.setNo(no);
 			BbsQnaVO rs = service.getBbsQnabyId(bbsQnaVO);

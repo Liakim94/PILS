@@ -91,18 +91,18 @@ function setCookie(name, value, expire){
 						<ul class="depth2_wrap">
 							<li><a href ="#"  class="menu_depth2">연동 절차</a></li>
 							<li><a href ="#" class="menu_depth2">약정서 작성</a></li>
-							<li><a href ="#" class="menu_depth2">동행기업 신청</a></li>
+							<li><a href ="${pageContext.request.contextPath}/join/joinList.do" class="menu_depth2">동행기업 신청</a></li>
 							<li><a href ="#" class="menu_depth2">기업들이 준비할 일</a></li>
 						</ul>
 					</li>
 					<li><button type="button" class="menu_depth1">소통마당</button>
-						<a href ="${pageContext.request.contextPath}/boardList.do?bbsId=11" class="menu_depth1">소통마당</a>
+						<a href ="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=11" class="menu_depth1">소통마당</a>
 							<ul class="depth2_wrap" >
-								<li><a href ="${pageContext.request.contextPath}/boardList.do?bbsId=11"  class="menu_depth2">공지사항</a></li>
-								<li><a href ="${pageContext.request.contextPath}/boardList.do?bbsId=7"  class="menu_depth2">자주 묻는 질문</a></li>
-								<li><a href ="${pageContext.request.contextPath}/qnaList.do"  class="menu_depth2">질의응답 게시판</a></li>
-								<li><a href ="${pageContext.request.contextPath}/boardList.do?bbsId=9"  class="menu_depth2">자료실</a></li>
-								<li><a href ="${pageContext.request.contextPath}/consulting.do" class="menu_depth2">컨설팅 신청</a></li>
+								<li><a href ="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=11"  class="menu_depth2">공지사항</a></li>
+								<li><a href ="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=7"  class="menu_depth2">자주 묻는 질문</a></li>
+								<li><a href ="${pageContext.request.contextPath}/cmm/qnaList.do"  class="menu_depth2">질의응답 게시판</a></li>
+								<li><a href ="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=9"  class="menu_depth2">자료실</a></li>
+								<li><a href ="${pageContext.request.contextPath}/cmm/consulting.do" class="menu_depth2">컨설팅 신청</a></li>
 							</ul>
 					</li>
 					<li><button type="button" class="menu_depth1">관리자</button>

@@ -26,24 +26,17 @@ function linkPage(num){
 
 <page:applyDecorator name="menu" />
 <div class="article">
-	<ul class="loc-list">
-		홈 &nbsp;>
-		<a>소통마당</a> &nbsp;>
-		<a>공지사항</a>
-
-	</ul>
-
 	<div class="article-header">
-		<h3>공지사항</h3>
+		<h3>${bbsNm}</h3>
 		<div class="side-wrap">
 		</div>
 	</div>
 	<div class="btn-wrap type02 low_margin">
-		<a href="${pageContext.request.contextPath}/boardPost.do?bbsId=${bbsId}" class="btn blue" title="등록">게시물 등록</a>
+		<a href="${pageContext.request.contextPath}/cmm/boardPost.do?bbsId=${bbsId}" class="btn blue" title="등록">게시물 등록</a>
 	</div>
 
 	<!-- 컨텐츠 start -->
-	<form name="viewfrm" action="${pageContext.request.contextPath}/boardView.do" method="get" id="viewfrm">
+	<form name="viewfrm" action="${pageContext.request.contextPath}/cmm/boardView.do" method="get" id="viewfrm">
 		<input type="hidden" id="no" name="no" value="">
 		<input type="hidden" name ="bbsId" id="bbsId" value="${bbsId}">
 	</form>

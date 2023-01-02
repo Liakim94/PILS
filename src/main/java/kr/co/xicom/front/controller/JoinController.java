@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import kr.co.xicom.util.Alerts;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,21 +16,22 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-@RequestMapping("/cmm")
+@RequestMapping("/join")
 @Controller
-public class ConsultingController extends Alerts {
+public class JoinController {
+
     @Autowired
     private ConsultingService service;
 
-    //컨설팅 신청 리스트
-    @GetMapping(value="/consulting.do")
+    //동행기업 신청 리스트
+    @GetMapping(value="/joinList.do")
     public ModelAndView list(ModelMap model,
                              @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                              HttpSession session,
                              HttpServletRequest request,
                              HttpServletResponse response)throws Exception{
 
-        ModelAndView mav = new ModelAndView("communication/consulting/con_list");
+        ModelAndView mav = new ModelAndView("join/apply/join_list");
 
         /*페이징 초기설정*/
         PaginationInfo paginationInfo = new PaginationInfo();
@@ -41,7 +42,7 @@ public class ConsultingController extends Alerts {
         cmpVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
         cmpVO.setLastIndex(paginationInfo.getLastRecordIndex());
         cmpVO.setPageUnit(paginationInfo.getRecordCountPerPage());
-        cmpVO.setMem_cd("01"); //회원구분
+        cmpVO.setMem_cd("02");
 
         Map<String, Object> rs = new HashMap<String, Object>();
         rs = service.list(cmpVO);
@@ -59,34 +60,34 @@ public class ConsultingController extends Alerts {
         return mav;
     }
 
-    //컨설팅 신청 화면
-    @GetMapping(value="/conApply.do")
+    //동행기업 신청 화면
+    @GetMapping(value="/joinApply.do")
     public ModelAndView apply(HttpSession session,
-                             HttpServletRequest request,
-                             HttpServletResponse response)throws Exception {
+                              HttpServletRequest request,
+                              HttpServletResponse response)throws Exception {
 
-        ModelAndView mav = new ModelAndView("communication/consulting/con_apply");
+        ModelAndView mav = new ModelAndView("join/apply/join_apply");
         return mav;
     }
 
-    @RequestMapping(value="/consulting.do",  method={RequestMethod.POST})
+    @RequestMapping(value="/joinApply.do",  method={RequestMethod.POST})
     public void doApply(ModelMap model,
-                       @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
-                       HttpServletRequest request,
-                       HttpServletResponse response)throws Exception{
+                        @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+                        HttpServletRequest request,
+                        HttpServletResponse response)throws Exception{
 
         try {
             String bizNo=cmpVO.getBizNo1()+cmpVO.getBizNo2()+cmpVO.getBizNo3();
             cmpVO.setBizNo(bizNo);
             String email=cmpVO.getEmail1()+'@'+cmpVO.getEmail2();
             cmpVO.setEmail(email);
-            cmpVO.setMem_cd("01");
+            cmpVO.setMem_cd("02"); //회원구분
 
-            int result = service.insertConsulting(cmpVO);
+            int result = service.insertJoinApply(cmpVO);
 
             if(result > 0){
 
-                response.sendRedirect(request.getContextPath()+"/consulting.do");
+                response.sendRedirect(request.getContextPath()+"/join/joinList.do");
 
             }else{
                 PrintWriter writer = response.getWriter();
@@ -103,10 +104,9 @@ public class ConsultingController extends Alerts {
             System.out.println(e.toString());
         }
     }
-
-   //비밀번호 확인
+    //비밀번호 확인
     @ResponseBody
-    @RequestMapping(value="/conChkPw.do", method={RequestMethod.POST})
+    @RequestMapping(value="/joinChkPw.do", method={RequestMethod.POST})
     public String chkPasswd(ModelMap model,
                             @RequestParam(value="bizNo") String bizNo,
                             @RequestParam(value ="passwd") String passwd,
@@ -132,7 +132,7 @@ public class ConsultingController extends Alerts {
         }
     }
     //신청 상세 화면
-    @GetMapping(value="/conView.do")
+    @GetMapping(value="/joinView.do")
     public ModelAndView view(ModelMap model,
                              @ModelAttribute("CmpMemberVo")CmpMemberVo cmpVO,
                              @RequestParam(value="bizNo") String bizNo,
@@ -140,38 +140,7 @@ public class ConsultingController extends Alerts {
                              HttpServletRequest request,
                              HttpServletResponse response)throws Exception{
 
-        ModelAndView mav = new ModelAndView("communication/consulting/con_view");
-
-        cmpVO.setBizNo(bizNo);
-        try {
-        CmpMemberVo rs = service.getViewByBizNo(cmpVO);
-        rs.setBizNo1(rs.getBizNo().substring(0,3));
-        rs.setBizNo2(rs.getBizNo().substring(3,5));
-        rs.setBizNo3(rs.getBizNo().substring(5,10));
-        if(rs == null){
-            writeAlert("비정상적인 접근입니다.", request, response);
-        }
-
-        mav.addObject("rs", rs);
-//        mav.addObject("vo", cmpVO);
-
-
-    }  catch (Exception e) {
-        System.out.println(e.toString());
-    }
-        return mav;
-    }
-    //수정 화면
-    @RequestMapping(value = "/conEdit.do", method={RequestMethod.GET})
-    public ModelAndView conEdit(
-            ModelMap model,
-            @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
-            @RequestParam(value="bizNo") String bizNo,
-            HttpServletRequest request,
-            HttpServletResponse response
-    ) throws Exception {
-        ModelAndView mav = null;
-        mav = new ModelAndView("communication/consulting/con_edit");
+        ModelAndView mav = new ModelAndView("join/apply/join_view");
 
         cmpVO.setBizNo(bizNo);
         try {
@@ -179,11 +148,8 @@ public class ConsultingController extends Alerts {
             rs.setBizNo1(rs.getBizNo().substring(0,3));
             rs.setBizNo2(rs.getBizNo().substring(3,5));
             rs.setBizNo3(rs.getBizNo().substring(5,10));
-            String[] email=rs.getEmail().split("@");
-            rs.setEmail1(email[0]);
-            rs.setEmail2(email[1]);
             if(rs == null){
-                writeAlert("비정상적인 접근입니다.", request, response);
+                System.out.println("비정상적인 접근입니다.");
             }
 
             mav.addObject("rs", rs);
@@ -194,32 +160,4 @@ public class ConsultingController extends Alerts {
         return mav;
     }
 
-   //수정 처리
-    @RequestMapping(value = "/conEdit.do", method={RequestMethod.POST})
-    public String doConEdit(
-            ModelMap model,
-            @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
-            HttpServletRequest request,
-            HttpServletResponse response,
-            HttpSession session) throws Exception {
-
-        try {
-            String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
-            cmpVO.setBizNo(bizNo);
-            String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
-            cmpVO.setEmail(email);
-
-            int result = service.update(cmpVO);
-
-            if (result > 0) {
-                return "redirect:conView.do?bizNo="+cmpVO.getBizNo();
-            } else {
-
-                return "forward:/common/error.jsp";
-            }
-        }catch (Exception e){
-            System.out.println(e.toString());
-        }
-        return "";
-    }
 }

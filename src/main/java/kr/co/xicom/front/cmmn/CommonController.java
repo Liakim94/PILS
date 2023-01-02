@@ -68,6 +68,16 @@ public class CommonController {
 		mav = new ModelAndView("template/front/menu");
 		return mav;
 	}
+	@GetMapping(value = "/menu2.do")
+	public ModelAndView menu2(ModelMap model,
+							 HttpServletRequest request,
+							 HttpServletResponse response,
+							 HttpSession session)
+			throws Exception {
+		ModelAndView mav = null;
+		mav = new ModelAndView("template/front/menu2");
+		return mav;
+	}
 	
 	/**
 	 * location 화면
