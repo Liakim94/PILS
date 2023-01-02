@@ -29,12 +29,12 @@
             <input type="hidden" name="pageIndex" id="pageIndex" value="1">
 
             <div class="article-header">
-                <h3>컨설팅 신청</h3>
+                <h3>동행기업 신청</h3>
                 <div class="side-wrap">
                 </div>
             </div>
             <div class="btn-wrap type02 low_margin">
-                <a href="${pageContext.request.contextPath}/conApply.do" class="btn blue">문의하기</a>
+                <a href="${pageContext.request.contextPath}/join/joinApply.do" class="btn blue">신청하기</a>
             </div>
         <div class="tbl-wrap separate1">
             <table class="tbl-list01">
@@ -113,11 +113,11 @@
             try {
                 $.ajax({
                     type: "post",
-                    url: "${pageContext.request.contextPath}/conChkPw.do",
+                    url: "${pageContext.request.contextPath}/join/joinChkPw.do",
                     data: "bizNo=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),
                     success: function (data) {
                         if (data == "1") {
-                            location.href = "${pageContext.request.contextPath}/qnaView.do?no="+ $("#hiddenNo").val()
+                            location.href = "${pageContext.request.contextPath}/join/joinApply.do?bizNo="+ $("#hiddenNo").val()
                         } else {
                             alert("비밀번호를 확인해주세요.")
                         }

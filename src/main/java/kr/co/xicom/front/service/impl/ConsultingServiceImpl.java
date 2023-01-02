@@ -1,6 +1,5 @@
 package kr.co.xicom.front.service.impl;
 
-import kr.co.xicom.front.model.BbsQnaVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.mapper.ConsultingMapper;
@@ -65,6 +64,54 @@ public class ConsultingServiceImpl implements ConsultingService {
     @Override
     public int conChkPw(CmpMemberVo vo) throws Exception {
         return mapper.conChkPw(vo);
+    }
+    @Override
+    public CmpMemberVo getViewByBizNo(CmpMemberVo vo) throws Exception{
+    return mapper.getViewByBizNo(vo);
+    }
+    @Override
+    public int update(CmpMemberVo vo) throws Exception{
+        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+
+        TransactionStatus status = transactionManager.getTransaction(def);
+
+        try{
+            int result= mapper.update(vo);
+            int result2=  mapper.memUpdate(vo);
+            if(result  > 0 && result2>0){
+                return 1;
+            }else{
+                return 0;
+            }
+
+        }catch (Exception e){
+            transactionManager.rollback(status);
+        }
+        return 0;
+    }
+
+    //동행기업 신청
+    @Override
+    public int insertJoinApply(CmpMemberVo vo) throws Exception {
+        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+
+        TransactionStatus status = transactionManager.getTransaction(def);
+
+        try{
+            int result= mapper.insertJoin(vo);
+            int result2=  mapper.insertMemberJoin(vo);
+            if(result  > 0 && result2>0){
+                return 1;
+            }else{
+                return 0;
+            }
+
+        }catch (Exception e){
+            transactionManager.rollback(status);
+        }
+        return 0;
     }
 
 }

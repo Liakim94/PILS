@@ -1,4 +1,4 @@
-package kr.co.xicom.cms.service.impl;
+package kr.co.xicom.front.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,12 +11,11 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import egovframework.rte.psl.dataaccess.util.EgovMap;
 import kr.co.xicom.cmmn.model.AttachVO;
 import kr.co.xicom.cmmn.web.EgovProperties;
-import kr.co.xicom.cms.model.BoardVO;
-import kr.co.xicom.cms.service.BoardService;
-import kr.co.xicom.cms.service.mapper.BoardMapper;
+import kr.co.xicom.front.model.BoardVO;
+import kr.co.xicom.front.service.BoardService;
+import kr.co.xicom.front.service.mapper.BoardMapper;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -94,14 +93,18 @@ public class BoardServiceImpl implements BoardService {
 		
 		List<BoardVO> list = null;
 		int cnt = 0;
-		
-		list = boardMapper.listBoard(vo);
-		cnt = boardMapper.boardCount(vo);
-		
-		map.put("resultList", list);
-		map.put("resultCnt", cnt);
-		
-		return map;
+
+		try {
+			list = boardMapper.listBoard(vo);
+			cnt = boardMapper.boardCount(vo);
+
+			map.put("resultList", list);
+			map.put("resultCnt", cnt);
+		}catch (Exception e){
+			System.out.println("error!!"+e.toString());
+		}
+			return map;
+
 	}
 
 	@Override

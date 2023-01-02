@@ -1,4 +1,4 @@
-package kr.co.xicom.cms.model;
+package kr.co.xicom.front.model;
 
 import kr.co.xicom.cmmn.model.DefaultVO;
 

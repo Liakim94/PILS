@@ -4,6 +4,9 @@ import kr.co.xicom.cmmn.model.DefaultVO;
 
 public class CmpMemberVo extends DefaultVO {
     private String bizNo ="";
+    private String bizNo1 ="";
+    private String bizNo2 = "";
+    private String bizNo3 ="";
     private String mem_cd ="";  //기업회원구분(컨설팅:1)
     private String cmpNm ="";
     private String fdate ="";
@@ -27,6 +30,8 @@ public class CmpMemberVo extends DefaultVO {
     private String position ="";
     private String mbphno ="";
     private String email ="";
+    private String email1 ="";
+    private String email2 ="";
     private String memTelNo ="";
     private String memFaxNo ="";
     private String join_confm =""; //가입승인여부
@@ -41,6 +46,31 @@ public class CmpMemberVo extends DefaultVO {
     public void setBizNo(String bizNo) {
         this.bizNo = bizNo;
     }
+
+    public String getBizNo1() {
+        return bizNo1;
+    }
+
+    public void setBizNo1(String bizNo1) {
+        this.bizNo1 = bizNo1;
+    }
+
+    public String getBizNo2() {
+        return bizNo2;
+    }
+
+    public void setBizNo2(String bizNo2) {
+        this.bizNo2 = bizNo2;
+    }
+
+    public String getBizNo3() {
+        return bizNo3;
+    }
+
+    public void setBizNo3(String bizNo3) {
+        this.bizNo3 = bizNo3;
+    }
+
 
     public String getMem_cd() {
         return mem_cd;
@@ -224,6 +254,23 @@ public class CmpMemberVo extends DefaultVO {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getEmail1() {
+        return email1;
+    }
+
+    public void setEmail1(String email1) {
+        this.email1 = email1;
+    }
+
+    public String getEmail2() {
+        return email2;
+    }
+
+    public void setEmail2(String email2) {
+        this.email2 = email2;
+    }
+
 
     public String getMemTelNo() {
         return memTelNo;

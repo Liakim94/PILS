@@ -15,9 +15,18 @@
     <decorator name="header" page="/header.do"/>
     <decorator name="footer" page="/footer.do"/>
     <decorator name="menu" page="/menu.do"/>
+<!--    <decorator name="location" page="/location.do"/>-->
+    <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
+        <pattern>/cmm/*</pattern>
+        <pattern>/common/deny.jsp</pattern>
+    </decorator>
+
+    <decorator name="header" page="/header.do"/>
+    <decorator name="footer" page="/footer.do"/>
+    <decorator name="menu2" page="/menu2.do"/>
     <decorator name="location" page="/location.do"/>
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
-        <pattern>/*</pattern>
+        <pattern>/join/*</pattern>
         <pattern>/common/deny.jsp</pattern>
     </decorator>
 

@@ -32,11 +32,11 @@ function linkPage(num){
 		</div>
 	</div>
 	<div class="btn-wrap type02 low_margin">
-		<a href="${pageContext.request.contextPath}/boardPost.do?bbsId=${bbsId}" class="btn blue" title="등록">게시물 등록</a>
+		<a href="${pageContext.request.contextPath}/cmm/boardPost.do?bbsId=${bbsId}" class="btn blue" title="등록">게시물 등록</a>
 	</div>
 
 	<!-- 컨텐츠 start -->
-	<form name="viewfrm" action="${pageContext.request.contextPath}/boardView.do" method="get" id="viewfrm">
+	<form name="viewfrm" action="${pageContext.request.contextPath}/cmm/boardView.do" method="get" id="viewfrm">
 		<input type="hidden" id="no" name="no" value="">
 		<input type="hidden" name ="bbsId" id="bbsId" value="${bbsId}">
 	</form>

@@ -6,5 +6,6 @@
 		<typeAlias alias="egovMap" 						type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 		<typeAlias alias="default" 						type="kr.co.xicom.cmmn.model.DefaultVO"/>
 		<typeAlias alias="bbsQna" 	     			  	type="kr.co.xicom.front.model.BbsQnaVO"/>
+		<typeAlias alias="board" 	                    type="kr.co.xicom.front.model.BoardVO"/>
     </typeAliases>
 </configuration>

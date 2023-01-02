@@ -12,4 +12,7 @@ public interface ConsultingService {
     int insertConsulting(CmpMemberVo vo) throws Exception;
     Map<String, Object> list(CmpMemberVo vo) throws Exception;
     int conChkPw(CmpMemberVo vo) throws Exception;
+    CmpMemberVo getViewByBizNo(CmpMemberVo vo) throws Exception;
+    int update(CmpMemberVo vo) throws Exception;
+    int insertJoinApply(CmpMemberVo vo) throws Exception;
 }

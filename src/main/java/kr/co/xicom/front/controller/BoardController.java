@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.co.xicom.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,15 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import egovframework.rte.psl.dataaccess.util.EgovMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.cmmn.model.AttachVO;
 import kr.co.xicom.cms.model.BbsVO;
-import kr.co.xicom.cms.model.BoardVO;
+import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.cms.service.BbsService;
-import kr.co.xicom.cms.service.BoardService;
+import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.util.Alerts;
 
+@RequestMapping("/cmm")
 @Controller
 public class BoardController extends Alerts{
 
@@ -53,7 +52,7 @@ public class BoardController extends Alerts{
 			HttpSession session
 			) throws Exception {
 		ModelAndView mav = null;
-		mav = new ModelAndView("main/board/board_list");
+		mav = new ModelAndView("communication/board/board_list");
 
 		/*페이징 초기설정*/
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -109,7 +108,7 @@ public class BoardController extends Alerts{
 			HttpSession session
 			) throws Exception {
 		ModelAndView mav = null; 
-		mav = new ModelAndView("main/board/board_view");
+		mav = new ModelAndView("communication/board/board_view");
 		
 		int seq = Integer.parseInt(request.getParameter("no"));
 		int bbsNo = Integer.parseInt(request.getParameter("bbsId"));
@@ -163,7 +162,7 @@ public class BoardController extends Alerts{
 			HttpServletResponse response
 			) throws Exception {
 		ModelAndView mav = null;
-		mav = new ModelAndView("main/board/board_post");
+		mav = new ModelAndView("communication/board/board_post");
 
 		mav.addObject("menuNo", request.getAttribute("menuNo"));
 		mav.addObject("menuName", request.getAttribute("menuName"));
@@ -222,7 +221,7 @@ public class BoardController extends Alerts{
 			HttpServletResponse response
 			) throws Exception {
 		ModelAndView mav = null;
-		mav = new ModelAndView("main/board/board_edit");
+		mav = new ModelAndView("communication/board/board_edit");
 		boardVO.setBoardSeq(Integer.parseInt(no));
 
 		BoardVO rs = boardService.getView(boardVO);
@@ -278,7 +277,7 @@ public class BoardController extends Alerts{
 	}
 	
 	/**
-	 * 게시물 수정 처리
+	 * 게시물 삭제 처리
 	 * 
 	 * @param
 	 * @return

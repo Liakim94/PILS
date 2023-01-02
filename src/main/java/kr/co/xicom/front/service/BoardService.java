@@ -1,13 +1,11 @@
-package kr.co.xicom.cms.service;
+package kr.co.xicom.front.service;
 
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import egovframework.rte.psl.dataaccess.util.EgovMap;
 import kr.co.xicom.cmmn.model.AttachVO;
-import kr.co.xicom.cms.model.BbsVO;
-import kr.co.xicom.cms.model.BoardVO;
+import kr.co.xicom.front.model.BoardVO;
 
 @Service
 public interface BoardService {
