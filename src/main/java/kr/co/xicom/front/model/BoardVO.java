@@ -1,7 +1,5 @@
 package kr.co.xicom.front.model;
 
-import kr.co.xicom.cmmn.model.DefaultVO;
-
 /**
  * @Class Name : BoardVO.java
  * @Description : BoardVO Class

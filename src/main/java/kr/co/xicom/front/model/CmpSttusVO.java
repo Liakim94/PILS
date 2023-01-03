@@ -4,7 +4,7 @@ public class CmpSttusVO {
     private String bizNo ="";
     private String base_year ="";
     private String index_dv ="";
-    private String index_val ="";
+    private String index_data ="";
     private String rgdate="";
     private String update ="";
 
@@ -32,12 +32,12 @@ public class CmpSttusVO {
         this.index_dv = index_dv;
     }
 
-    public String getIndex_val() {
-        return index_val;
+    public String getIndex_data() {
+        return index_data;
     }
 
-    public void setIndex_val(String index_val) {
-        this.index_val = index_val;
+    public void setIndex_data(String index_data) {
+        this.index_data = index_data;
     }
 
     public String getRgdate() {

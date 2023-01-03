@@ -28,6 +28,14 @@
     <result property="memTelNo"          column="memTelNo"/>
     <result property="memFaxNo"          column="memFaxNo"/>
 </resultMap>
+    <resultMap id="CmpSttusVO" type="kr.co.xicom.front.model.CmpSttusVO">
+        <result property="bizNo"          column="bizNo"/>
+        <result property="base_year"          column="base_year"/>
+        <result property="index_dv"          column="index_dv"/>
+        <result property="index_data"          column="index_data"/>
+        <result property="rgdate"          column="rgdate"/>
+        <result property="update"          column="update"/>
+    </resultMap>
 
     <insert id="insertConsulting">
         insert into tb_pils_cmpmbr
@@ -162,6 +170,34 @@
     where 1=1 and cmp_mbr_cd= #{mem_cd} and A.bizno = #{bizNo}
     order by appdt desc
 </select>
+    <select id="getCmpSttus" resultMap="CmpSttusVO">
+        select
+            b.bizno as bizNo
+             ,b.div as index_dv
+             ,sum(q3)
+             ,sum(q2)
+             ,sum(q1)
+        from (
+                 select
+                     a.bizno as bizno
+                      ,a.ix_dvsn as div
+                      , case
+                            when cast(a.base_yy as integer) = cast(to_char(now(),'YYYY') as integer)-4 then ix_data
+                     end as q3
+                      , case
+                            when cast(a.base_yy as integer) = cast(to_char(now(),'YYYY') as integer)-3 then ix_data
+                     end as q2
+                      , case
+                            when cast(a.base_yy as integer) = cast(to_char(now(),'YYYY') as integer)-2 then ix_data
+                     end as q1
+                 from
+                     tb_pils_cmp_sttus a
+                 where
+                     bizno  = #{bizNo}
+             ) b
+        group by b.bizno, b.div
+
+    </select>
     <update id="update" >
         update tb_pils_cmpmbr set
              cmp_nm =  #{cmpNm}

@@ -1,7 +1,5 @@
 package kr.co.xicom.front.model;
 
-import kr.co.xicom.cmmn.model.DefaultVO;
-
 public class BbsQnaVO extends DefaultVO{
 	
 	private int no = 0;

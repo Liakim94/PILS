@@ -11,8 +11,7 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import kr.co.xicom.cmmn.model.AttachVO;
-import kr.co.xicom.cmmn.web.EgovProperties;
+import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.front.service.mapper.BoardMapper;
@@ -20,8 +19,7 @@ import kr.co.xicom.front.service.mapper.BoardMapper;
 @Service
 public class BoardServiceImpl implements BoardService {
 	
-	private static String dbType = EgovProperties.getProperty("Globals.DbType").toString();
-	
+
 	@Autowired
 	private BoardMapper boardMapper;
 

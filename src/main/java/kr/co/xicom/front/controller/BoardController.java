@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
-import kr.co.xicom.cmmn.model.AttachVO;
-import kr.co.xicom.cms.model.BbsVO;
+import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.BoardVO;
-import kr.co.xicom.cms.service.BbsService;
 import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.util.Alerts;
 
@@ -32,9 +30,7 @@ public class BoardController extends Alerts{
 	@Autowired
 	private BoardService boardService;
 	
-	@Autowired
-	private BbsService bbsService;
-	
+
 	/**
 	 * 게시판 목록
 	 * 
@@ -46,7 +42,6 @@ public class BoardController extends Alerts{
 	public ModelAndView boardList(
 			ModelMap model, 
 			@ModelAttribute("BoardVO") BoardVO boardVO,
-			@ModelAttribute("BbsVO") BbsVO bbsVO,
 			HttpServletRequest request,
 			HttpServletResponse response,
 			HttpSession session

@@ -11,9 +11,8 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
-
 import kr.co.xicom.cmmn.web.EgovProperties;
+import org.apache.log4j.Logger;
 
 /**
  * @author developer

@@ -5,7 +5,7 @@
 <%@page import="org.apache.commons.fileupload.disk.*" %>
 <%@page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %>
 <%@page import="kr.co.xicom.file.FileController" %>
-<%@page import="kr.co.xicom.cmmn.model.AttachVO" %>
+<%@page import="kr.co.xicom.front.model.AttachVO" %>
 <%@page import="kr.co.xicom.cmmn.web.EgovWebUtil" %>
 <%@page import="kr.co.xicom.cmmn.web.EgovProperties" %>
 
