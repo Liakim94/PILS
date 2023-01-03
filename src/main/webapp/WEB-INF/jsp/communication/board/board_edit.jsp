@@ -63,26 +63,17 @@ $(function(){
 	                </div>
 
                 </div><!-- /.box-body -->
-                <div class="box-footer">
+				<div class="box-footer">
+					<div class="btn-wrap type02 low_margin">
+						<button type="button"  onclick="fn_submit('1')" class="btn btn-flat btn-primary">저장</button>
+						<a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=${bbsId}" class="btn blue" title="취소">취소</a>
+					</div>
               </div>
               </div><!-- /. box -->
     	</div>
 
 
-    	<div class="col-md-4">
-    		<div class="box box-danger">
-    			<div class="box-header with-border">
-                  <div class="box-tools pull-right">
-	                <button type="button" class="btn btn-box-tool" data-widget="collapse" onclick=""><i class="fa fa-minus"></i>
-	                </button>
-	              </div>
-                </div>
 
-    			<div class="box-footer">
-                  <div class="btn-wrap type02 low_margin">
-	                <button type="button"  onclick="fn_submit('1')" class="btn btn-flat btn-primary">저장</button>
-					<a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=${bbsId}" class="btn blue" title="취소">취소</a>
-                </div>
     		</div>
 
     	</div>

@@ -105,12 +105,6 @@ function setCookie(name, value, expire){
 								<li><a href ="${pageContext.request.contextPath}/cmm/consulting.do" class="menu_depth2">컨설팅 신청</a></li>
 							</ul>
 					</li>
-					<li><button type="button" class="menu_depth1">관리자</button>
-						<a href ="#" class="menu_depth1">관리자</a>
-					<ul class="depth2_wrap" >
-						<li><a href ="#">동행기업신청현황</a></li>
-					</ul>
-					</li>
 				</ul>
 
 			</nav>

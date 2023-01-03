@@ -23,7 +23,7 @@ public class MainController {
 			HttpServletResponse response)
 			throws Exception {
 		
-		ModelAndView mav = new ModelAndView("communication/main");
+		ModelAndView mav = new ModelAndView("main");
 		return mav;
 	}
 

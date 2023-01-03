@@ -166,23 +166,7 @@
             , STEP          AS step     
             , NOTICE_AT     AS noti_at      
             , REDNG_NMBRS   AS read_cnt 
-            , REGSTR_SN     AS reg_seq      
-            , (
-                SELECT
-                    SUM(LIKE_SN)
-                FROM
-                    TB_BBS_LIKE
-                WHERE
-                    BBS_SN = B.BBS_SN
-            )  AS lke       
-            , (        
-                SELECT
-                    SUM(PREFER)
-                FROM
-                    TB_BBS_LIKE
-                WHERE
-                    BBS_SN = B.BBS_SN
-            ) AS dislke
+            , REGSTR_SN     AS reg_seq
             , REGIST_DATE       AS reg_de       
             , UPDAT_DATE        AS upd_de       
             , REGSTR_NM         AS reg_nm       
@@ -230,131 +214,14 @@
             BBS_SN  = #{boardSeq}   
         
     </update>
-    
 
-    
-    <select id="getLike" resultType="int">
-        SELECT COALESCE(SUM(CNT),0) FROM(
-            SELECT SUM(LIKE_SN) CNT
-            FROM TB_BBS_LIKE
-            WHERE BBS_SN = #{boardSeq}
-            AND REGSTR_SN = #{regSeq}
-         UNION ALL
-            SELECT SUM(PREFER) CNT
-            FROM TB_BBS_LIKE
-            WHERE BBS_SN = #{boardSeq}
-            AND REGSTR_SN = #{regSeq}
-        ) T 
-    </select>
-    
-    <insert id="addLike">
-        INSERT INTO TB_BBS_LIKE
-        (
-            BBS_SN,
-            LIKE_SN,
-            PREFER,
-            REGSTR_SN,
-            REGIST_DATE,
-            REGIST_IP_ADDR
-        )
-        VALUES
-        (
-            #{boardSeq},
-            #{like},
-            #{dislike},
-            #{regSeq},
-            NOW(),
-            #{regIp}
-        )
-    </insert>
-    
-    <select id="getLikeCount" resultType="egovMap">
-        SELECT
-        (SELECT SUM(LIKE_SN) FROM TB_BBS_LIKE   WHERE BBS_SN = #{boardSeq}) as CNT,
-        (SELECT SUM(LIKE_SN) FROM TB_BBS_LIKE WHERE BBS_SN = #{boardSeq} AND REGSTR_SN = #{regSeq}) as  ME_LIKE 
-        
-    </select>
-    
-    <select id="getUnlikeCount" resultType="egovMap">
-        SELECT
-        (SELECT SUM(PREFER) FROM TB_BBS_LIKE WHERE BBS_SN = #{boardSeq}) as CNT,
-        (SELECT SUM(PREFER) FROM TB_BBS_LIKE WHERE BBS_SN = #{boardSeq} AND REGSTR_SN = #{regSeq}) as ME_DISLIKE 
-        
-    </select>
-    
     <update id="updateStat">
         UPDATE TB_BBS_INFO SET 
             STTS = #{stat}
         WHERE 1=1
             AND BBS_SN = #{boardSeq}
     </update>
-    
-    <update id="moveBoard">
-        UPDATE TB_BBS_INFO SET 
-            BBS_ID = #{bbsId},
-            UPDAT_SN    = #{updSeq},    
-            UPDAT_DATE  = NOW(),
-            UPDAT_NM    = #{updNm},
-            UPDAT_IP_ADDR   = #{updIp}
-        WHERE 1=1
-            AND BBS_SN IN 
-            <foreach collection="chkNo" item="chkNo" index="index"  open="(" close=")" separator=",">
-            #{chkNo}
-            </foreach>
-    </update>
-    
-    <update id="copyBoard">
-    INSERT INTO TB_BBS_INFO
-        (
-            TTL,        
-            BRKDW,      
-            PSWD,
-            REFRN,          
-            LVL,        
-            STEP,       
-            NOTICE_AT,
-            REDNG_NMBRS,        
-            REGSTR_SN,  
-            REGIST_DATE,    
-            UPDAT_DATE, 
-            REGSTR_NM,
-            REGIST_IP_ADDR,         
-            BBS_ID,
-            USER_TY,
-            STTS,       
-            NOTICE_BGN_DT,      
-            NOTICE_STPGE_DT,
-            BEGIN_AT,
-            TAG,
-            CNNC        
-        )
-        SELECT
-            CONCAT(TTL, ' - 복사본'),      
-            BRKDW,      
-            PSWD,
-            REFRN,          
-            LVL,        
-            STEP,       
-            NOTICE_AT,
-            0,      
-            REGSTR_SN,  
-            NOW(),
-            NOW(),      
-            REGSTR_NM,
-            REGIST_IP_ADDR,         
-            BBS_ID,
-            USER_TY,
-            STTS,       
-            NOTICE_BGN_DT,      
-            NOTICE_STPGE_DT,
-            BEGIN_AT,
-            TAG,
-            CNNC         
-        FROM TB_BBS_INFO B
-        WHERE 1 = 1
-        AND BBS_SN = #{boardSeq}
-    </update>
-     
+
     <update id="readBoard">
         UPDATE TB_BBS_INFO SET
         REDNG_NMBRS = REDNG_NMBRS + 1

@@ -76,7 +76,7 @@
 <div class="article">	
 	<div class="content">
 	<!-- 컨텐츠 start -->
-		<form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/qnaPost.do">
+		<form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/cmm/qnaPost.do">
 
 		<div class="tbl-wrap separate2 mb50">
 		    <table class="tbl-list02">
@@ -119,7 +119,7 @@
 		</div>
 		<div class="btn-wrap type04">
 			<button type="button" class="btn blue" onclick="fn_submit()">저장</button>
-		    <a href="${pageContext.request.contextPath}/qnaList.do" class="btn blue">취소</a>
+		    <a href="${pageContext.request.contextPath}/cmm/qnaList.do" class="btn blue">취소</a>
 		</div>
 		</form>
      <!-- 컨텐츠 end -->

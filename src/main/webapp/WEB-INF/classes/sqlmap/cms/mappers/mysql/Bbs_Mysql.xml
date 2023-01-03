@@ -69,68 +69,9 @@
         <result property="cpiAt"            column="CPI_AT"         />
         <result property="cpiTyp"           column="CPI_TYP"        />
         <result property="btm"              column="BTM"            />
-
-        
     </resultMap>
     
-    <!-- <insert id="addAuth">
-        INSERT INTO TB_BBS_AUTH_
-        (
-            BBS_ID,
-            SEQ,
-            AUTH,
-            TYPE
-        )
-        VALUES
-        (
-            #{bbsId},
-            #{authSeq},
-            #{authRwx},
-            #{authTyp}
-        )
-        
-    </insert>
-    <update id="updateAuth">
-        UPDATE TB_BBS_AUTH_ SET 
-        AUTH = #{authRwx} 
-        WHERE BBS_ID = #{bbsId}
-        AND SEQ = #{authSeq}
-        AND TYPE = #{authTyp}
-        MERGE INTO TB_BBS_AUTH_ USING DUAL
-            ON (BBS_ID = #{bbsId} AND SEQ = #{authSeq} AND TYPE = #{authTyp})
-            WHEN MATCHED THEN
-            UPDATE SET AUTH = #{authRwx} 
-            
-            WHEN NOT MATCHED THEN
-            INSERT 
-            (
-                BBS_ID,
-                SEQ,
-                AUTH,
-                TYPE
-            )
-            VALUES
-            (
-                #{bbsId},
-                #{authSeq},
-                #{authRwx},
-                #{authTyp}
-            )
-    </update> -->
-    
-<!--    <select id="getAuth" resultMap="BbsVO">
-    
-        SELECT 
-            BBS_ID,
-            SEQ,
-            AUTH,
-            TYPE
-        FROM TB_BBS_AUTH_
-        WHERE 
-            BBS_ID = #{bbsId}
-    
-    </select> -->
-    
+
     <insert id="addBbs" flushCache="true">
         INSERT INTO TB_BBS_DATA
         (
@@ -350,16 +291,5 @@
         , USER_NM       AS user_nm  
         FROM TB_BBS_AUTH_ WHERE BBS_ID = #{bbsId}::INT8
     </select>
-    
-    <update id="addAuth">
-        DELETE FROM TB_BBS_AUTH_ WHERE BBS_ID = #{bbsId}::INT8;
-        
-        INSERT INTO TB_BBS_AUTH_ (BBS_ID, USER_TY, USER_SN, AUTH, USER_NM)
-        VALUES
-        <foreach collection="list" item="list" index="index"  open="" close="" separator=",">
-            (#{bbsId}::INT8, #{list.authTyp}, #{list.authSeq}::INT8, #{list.authRwx}, #{list.authText}) 
-        </foreach>;
-    </update>
-    
 
 </mapper>
