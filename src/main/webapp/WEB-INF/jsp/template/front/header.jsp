@@ -87,7 +87,7 @@ function setCookie(name, value, expire){
 							</ul>
 					</li>
 					<li><button type="button" class="menu_depth1">납품대금연동제 동참하기</button>
-						<a href ="#" class="menu_depth1">납품대금연동제 동참하기</a>
+						<a href ="${pageContext.request.contextPath}/join/joinList.do" class="menu_depth1">납품대금연동제 동참하기</a>
 						<ul class="depth2_wrap">
 							<li><a href ="#"  class="menu_depth2">연동 절차</a></li>
 							<li><a href ="#" class="menu_depth2">약정서 작성</a></li>

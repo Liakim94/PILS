@@ -236,7 +236,7 @@ a{text-decoration:none;}
 .collaboration_box ul li img{ display:inline-block; margin-bottom:20px; }
 .collaboration_box ul li span{ display:block; font-family:'nanumsquare'; font-weight:800; font-size:18px; color:#333333; }
 
-.link_box{ padding:30px 0; background:#ebf4f8; }
+.link_box{ padding:30px 0; background: #ffffff; }
 .link_box ul{ overflow:hidden; width:1280px; margin:0 auto; }
 .link_box ul li{ width:410px; height:98px; float:left; margin-right:18px; border:1px solid #b7bbbd; background:#fff; text-align:center; }
 .link_box ul li:last-child{ margin-right:0; }
