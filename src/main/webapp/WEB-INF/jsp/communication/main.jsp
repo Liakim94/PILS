@@ -51,37 +51,32 @@ function getCookie( cookieName ){
 
 </script>
 
-<style>
+<%--<style>--%>
 
-    .list-company .ico-list {
-        border-radius:12px;
-        border-color:#4876ee;
-    }
+<%--    .list-company .ico-list {--%>
+<%--        border-radius:12px;--%>
+<%--        border-color:#4876ee;--%>
+<%--    }--%>
 
-    .list-company .ico-list:hover {
-        box-shadow: 5px 5px 0 0 rgba(72, 118, 238, 0.1);
-        border-color:#4876ee;
-    }
-    .list-company .ico-list:hover .corp-name {
-        color:#4876ee;
-    }
+<%--    .list-company .ico-list:hover {--%>
+<%--        box-shadow: 5px 5px 0 0 rgba(72, 118, 238, 0.1);--%>
+<%--        border-color:#4876ee;--%>
+<%--    }--%>
+<%--    .list-company .ico-list:hover .corp-name {--%>
+<%--        color:#4876ee;--%>
+<%--    }--%>
 
-</style>
-
+<%--</style>--%>
 </head>
 
        <!-- main-wrap -->
         <div class="main-wrap">
-
-<%--            <div class="visual_box">--%>
-<%--                <p class="visual_tit">--%>
-<%--                </p>--%>
-<%--            </div>--%>
-<%--            <!-- // visual_box -->--%>
-
             <!-- link_box -->
             <div class="link_box">
-
+                <div class="bg-gray visual-section">
+                    <div class="container">
+                        <div class="col-lg-9">
+                            <img src="${pageContext.request.contextPath}/images/main/main.png" class="company-logo" >
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="corporation">
 
@@ -116,18 +111,66 @@ function getCookie( cookieName ){
                                     <span>(주)대한항공</span>
                                 </div>
                             </div>
-
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci04.png" class="company-logo" alt="(주)두산">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)두산</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci05.png" class="company-logo" alt="(주)신세계디에프">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)신세계디에프</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci06.png" class="company-logo" alt="(주)한화">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)한화</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci07.png" class="company-logo" alt="(주)농심">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)농심</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci08.png" class="company-logo" alt="(주)LG화학">
+                                </div>
+                                <div class="corp-name">
+                                    <span>㈜LG화학</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci09.png" class="company-logo" alt="(주)KCC">
+                                </div>
+                                <div class="corp-name">
+                                    <span>㈜KCC</span>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
                 </div>
-
-                </div>
-            </div>
+                    </div>
 
 
-            </div>
+                 </div>
             <!-- // link_box -->
-
+                        </div>
+                    </div>
+                </div>
         </div>
         <!-- // main-wrap -->
+        </div>
