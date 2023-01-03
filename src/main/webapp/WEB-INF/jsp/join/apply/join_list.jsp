@@ -21,7 +21,7 @@
     }
 
 </script>
-<page:applyDecorator name="menu" />
+<page:applyDecorator name="menu2" />
 <div class="article">
     <div class="content">
         <!-- 컨텐츠 start -->
@@ -117,7 +117,7 @@
                     data: "bizNo=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),
                     success: function (data) {
                         if (data == "1") {
-                            location.href = "${pageContext.request.contextPath}/join/joinApply.do?bizNo="+ $("#hiddenNo").val()
+                            location.href = "${pageContext.request.contextPath}/join/joinView.do?bizNo="+ $("#hiddenNo").val()
                         } else {
                             alert("비밀번호를 확인해주세요.")
                         }

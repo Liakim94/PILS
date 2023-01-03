@@ -13,7 +13,7 @@
 
 </head>
 
-<page:applyDecorator name="menu" />
+<page:applyDecorator name="menu2" />
 <div class="article">	
 	<div class="content">
 		<div class="article-header">
@@ -140,7 +140,7 @@
 				</tr>
 				<tr>
 					<th class="txt_alcnt" scope="row">첨부서류</th>
-					<td>
+					<td colspan="3">
 						파일찾기
 					</td>
 				</tr>

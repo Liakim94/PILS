@@ -143,6 +143,7 @@ public class ConsultingController extends Alerts {
         ModelAndView mav = new ModelAndView("communication/consulting/con_view");
 
         cmpVO.setBizNo(bizNo);
+        cmpVO.setMem_cd("01");
         try {
         CmpMemberVo rs = service.getViewByBizNo(cmpVO);
         rs.setBizNo1(rs.getBizNo().substring(0,3));
@@ -174,6 +175,7 @@ public class ConsultingController extends Alerts {
         mav = new ModelAndView("communication/consulting/con_edit");
 
         cmpVO.setBizNo(bizNo);
+        cmpVO.setMem_cd("01");
         try {
             CmpMemberVo rs = service.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0,3));

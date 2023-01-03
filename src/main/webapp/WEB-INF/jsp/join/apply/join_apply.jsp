@@ -86,15 +86,12 @@
 	<div class="content">
 	<!-- 컨텐츠 start -->
 		<form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/join/joinApply.do">
-
-		    <table class="tbl-list02">
-		      <col width="17%" />
-		      <col width="*" />
-				<div class="article-header">
-					<h3>동행기업 신청</h3>
-					<div class="side-wrap">
-					</div>
+			<div class="article-header">
+				<h3>동행기업 신청</h3>
+				<div class="side-wrap">
 				</div>
+			</div>
+			<table class="tbl-list02">
 		        <tbody>
 		            <tr>
 		                <th class="txt_alcnt" scope="row">기업명</th>

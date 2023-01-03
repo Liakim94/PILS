@@ -58,12 +58,12 @@
 		}
 	}
 </script>
-<page:applyDecorator name="menu" />
+<page:applyDecorator name="menu2" />
 <form:form commandName="rs" name="frmEdit" id="frmEdit" method="POST" action="joinEdit.do">
 
 	<div class="article">
 		<div class="content">
-			<table class="tbl-list02">
+
 				<col width="17%" />
 				<col width="*" />
 				<div class="article-header">
@@ -71,6 +71,7 @@
 					<div class="side-wrap">
 					</div>
 				</div>
+			<table class="tbl-list02">
 				<tbody>
 				<tr>
 					<th class="txt_alcnt" scope="row">기업명</th>
@@ -126,6 +127,12 @@
 					<th class="txt_alcnt" scope="row">자본금</th>
 					<td>
 						<input type="text" class="uni_input_text" id="capital" name="capital" style="padding:0" value="${rs.capital}"/>백만원
+					</td>
+				</tr>
+				<tr>
+					<th class="txt_alcnt" scope="row">기업 로고</th>
+					<td colspan="3">
+						파일찾기
 					</td>
 				</tr>
 					<%--					<th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>--%>
@@ -222,40 +229,9 @@
 					</td>
 				</tr>
 				<tr>
-					<th colspan="4" class="txt_alcnt" scope="row">컨설팅시 주요 질의사항</th>
-				</tr>
-				<tr>
-					<td colspan="4">
-						<input type="text" class="uni_input_text wdh100" id="conQ" name="conQ" value="${rs.conQ}" />
-					</td>
-				</tr>
-				<tr>
-					<th colspan="4" class="txt_alcnt" scope="row">연동제 적용 대상이 되는 주요 수위탁거래 정보</th>
-				</tr>
-				<tr>
-					<th class="txt_alcnt" scope="row">수위탁 거래 유형</th>
-					<td  colspan="3">
-						<select id="deal_type" name="deal_type" class="uni_input_text">
-							<option value="${rs.deal_type}">${rs.deal_type} (현재정보)</option>
-							<option value="제조">제조</option>
-							<option value="공사">공사</option>
-							<option value="가공">가공</option>
-							<option value="수리">수리</option>
-							<option value="용역">용역</option>
-							<option value="기술개발">기술개발</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<th class="txt_alcnt" scope="row">연간 거래 규모</th>
-					<td  colspan="3">
-						<input type="text" class="form-control" name="deal_scale" id="deal_scale" value="${rs.deal_scale}"/>
-					</td>
-				</tr>
-				<tr>
-					<th class="txt_alcnt" scope="row">주요 원재료</th>
-					<td  colspan="3">
-						<input type="text" class="form-control" name="material" id="material" value="${rs.material}"/>
+					<th class="txt_alcnt" scope="row">첨부서류</th>
+					<td colspan="3">
+						파일찾기
 					</td>
 				</tr>
 				</tbody>

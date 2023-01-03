@@ -15,4 +15,7 @@ public interface ConsultingService {
     CmpMemberVo getViewByBizNo(CmpMemberVo vo) throws Exception;
     int update(CmpMemberVo vo) throws Exception;
     int insertJoinApply(CmpMemberVo vo) throws Exception;
+
+    //동행기업 수정
+    int updateJoin(CmpMemberVo vo) throws Exception;
 }
