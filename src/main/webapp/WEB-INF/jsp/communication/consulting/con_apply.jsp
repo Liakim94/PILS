@@ -272,13 +272,13 @@
 					<tr>
 						<th class="txt_alcnt" scope="row">연간 거래 규모</th>
 						<td  colspan="3">
-							<input type="text" class="form-control" name="deal_scale" id="deal_scale" />
+							<input type="text" class="uni_input_text wdh100" name="deal_scale" id="deal_scale" />
 						</td>
 					</tr>
 					<tr>
 						<th class="txt_alcnt" scope="row">주요 원재료</th>
 						<td  colspan="3">
-							<input type="text" class="form-control" name="material" id="material" />
+							<input type="text" class="uni_input_text wdh100" name="material" id="material" />
 						</td>
 					</tr>
 					<tr>
