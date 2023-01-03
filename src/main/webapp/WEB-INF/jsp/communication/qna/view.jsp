@@ -92,9 +92,9 @@ $(function(){
 	    </div>
 	    <div class="btn-wrap type04"> 
 <%--	    	<c:if test="${sessionScope.ID eq rs.id and empty rs.reply}">      --%>
-	        <a href='${pageContext.request.contextPath}/qnaRepost.do?no=${rs.no}' class="btn blue">답변달기</a>
+	        <a href='${pageContext.request.contextPath}/cmm/qnaRepost.do?no=${rs.no}' class="btn blue">답변달기</a>
 <%--	        </c:if>	        --%>
-	        <a href="${pageContext.request.contextPath}/qnaList.do" class="btn blue">목록</a>
+	        <a href="${pageContext.request.contextPath}/cmm/qnaList.do" class="btn blue">목록</a>
 	    </div>
 	    <!-- 컨텐츠 end -->
 	</div>

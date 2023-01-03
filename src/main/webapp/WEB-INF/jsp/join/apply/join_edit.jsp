@@ -67,7 +67,7 @@
 				<col width="17%" />
 				<col width="*" />
 				<div class="article-header">
-					<h3>컨설팅 신청</h3>
+					<h3>동행기업 신청</h3>
 					<div class="side-wrap">
 					</div>
 				</div>

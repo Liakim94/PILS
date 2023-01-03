@@ -17,14 +17,14 @@
 <div class="article">	
 	<div class="content">
 		<div class="article-header">
-			<h3>컨설팅 신청</h3>
+			<h3>동행기업 신청</h3>
 			<div class="side-wrap">
 			</div>
 		</div>
 	<!-- 컨텐츠 start -->
 	    <div class="tbl-wrap separate2 mb50">
 	        <table class="tbl-list02">
-	            <caption>컨설팅 신청</caption>
+	            <caption>동행기업 신청</caption>
 	            <colgroup>
 	                <col width="17%" />
 	                <col width="*" />

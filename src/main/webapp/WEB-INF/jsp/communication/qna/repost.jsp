@@ -47,7 +47,7 @@
 <div class="article">	
 	<div class="content">
 	<!-- 컨텐츠 start -->
-		<form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/qnaRepost.do">
+		<form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/cmm/qnaRepost.do">
 		<input type="hidden" name="passwd" value="${rs.passwd}"/>
 		<input type="hidden" name="headnum" value="${rs.headnum}"/>
 		<input type="hidden" name="id" value="${rs.id}"/>
@@ -83,7 +83,7 @@
 		</div>
 		<div class="btn-wrap type04">
 			<button type="submit" class="btn blue" onclick="fn_submit()">저장</button>
-		    <a href="${pageContext.request.contextPath}/qnaList.do" class="btn blue">취소</a>
+		    <a href="${pageContext.request.contextPath}/cmm/qnaList.do" class="btn blue">취소</a>
 		</div>
 		</form>
      <!-- 컨텐츠 end -->

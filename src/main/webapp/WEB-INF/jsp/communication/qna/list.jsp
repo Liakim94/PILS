@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="btn-wrap type02 low_margin">
-                <a href="${pageContext.request.contextPath}/qnaPost.do" class="btn blue">문의하기</a>
+                <a href="${pageContext.request.contextPath}/cmm/qnaPost.do" class="btn blue">문의하기</a>
             </div>
         <div class="tbl-wrap separate1">
             <table class="tbl-list01">
@@ -116,11 +116,11 @@
             try {
                 $.ajax({
                     type: "post",
-                    url: "${pageContext.request.contextPath}/chkPasswd.do",
+                    url: "${pageContext.request.contextPath}/cmm/chkPasswd.do",
                     data: "no=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),
                     success: function (data) {
                         if (data == "1") {
-                            location.href = "${pageContext.request.contextPath}/qnaView.do?no="+ $("#hiddenNo").val()
+                            location.href = "${pageContext.request.contextPath}/cmm/qnaView.do?no="+ $("#hiddenNo").val()
                         } else {
                             alert("비밀번호를 확인해주세요.")
                         }
