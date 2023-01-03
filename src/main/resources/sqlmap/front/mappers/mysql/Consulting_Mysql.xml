@@ -159,7 +159,7 @@
             ,B.auth_cd as auth_cd
     from tb_pils_cmpmbr A join tb_pils_mbr B
                                on A.bizno =B.bizno
-    where 1=1 and cmp_mbr_cd='01' and A.bizno = #{bizNo}
+    where 1=1 and cmp_mbr_cd= #{mem_cd} and A.bizno = #{bizNo}
     order by appdt desc
 </select>
     <update id="update" >
@@ -248,4 +248,33 @@
                ,encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
                ,current_date )
     </insert>
+    <update id="updateJoin" >
+        update tb_pils_cmpmbr set
+            cmp_nm =  #{cmpNm}
+                                ,bizno  = #{bizNo}
+                                ,ceo =  #{ceo}
+                                ,fdate = #{fdate}
+                                ,addr =  #{address}
+                                ,addr_dtl  = #{address_dtl}
+                                ,telno = #{telNo}
+                                ,faxno = #{faxNo}
+                                ,biz_ty = #{bizType}
+                                ,capl = #{capital}
+                                ,deal_ty = #{deal_type}
+                                ,yr_deal_scale = #{deal_scale}
+                                ,prmy_mat = #{material}
+                                ,con_q = #{conQ}
+        where bizno=#{bizNo}
+    </update>
+    <update id="updateMemJoin">
+        update tb_pils_mbr set
+            nm = #{name}
+                             ,mbphno = #{mbphno}
+                             ,psitn_dept_nm = #{deptNm}
+                             ,pstn = #{position}
+                             ,email_addr = #{email}
+                             ,telno = #{memTelNo}
+                             ,faxno = #{memFaxNo}
+        where bizno=#{bizNo}
+    </update>
 </mapper>

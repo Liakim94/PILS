@@ -22,7 +22,10 @@ public interface ConsultingMapper {
     int update(CmpMemberVo vo) throws Exception;
     int memUpdate(CmpMemberVo vo) throws Exception;
 
-    //동행신청
+    //동행기업 신청
     int insertJoin(CmpMemberVo vo) throws Exception;
     int insertMemberJoin(CmpMemberVo vo) throws Exception;
+    //동행기업 수정
+    int updateMemJoin(CmpMemberVo vo) throws Exception;
+    int updateJoin(CmpMemberVo vo) throws Exception;
 }

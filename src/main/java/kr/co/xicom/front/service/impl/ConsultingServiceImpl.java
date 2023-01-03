@@ -113,5 +113,27 @@ public class ConsultingServiceImpl implements ConsultingService {
         }
         return 0;
     }
+    //동행기업 수정
+    @Override
+    public int updateJoin(CmpMemberVo vo) throws Exception{
+        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+
+        TransactionStatus status = transactionManager.getTransaction(def);
+
+        try{
+            int result= mapper.updateMemJoin(vo);
+            int result2=  mapper.updateJoin(vo);
+            if(result  > 0 && result2>0){
+                return 1;
+            }else{
+                return 0;
+            }
+
+        }catch (Exception e){
+            transactionManager.rollback(status);
+        }
+        return 0;
+    }
 
 }

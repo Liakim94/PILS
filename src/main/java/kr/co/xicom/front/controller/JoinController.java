@@ -143,6 +143,7 @@ public class JoinController {
         ModelAndView mav = new ModelAndView("join/apply/join_view");
 
         cmpVO.setBizNo(bizNo);
+        cmpVO.setMem_cd("02");
         try {
             CmpMemberVo rs = service.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0,3));
@@ -159,5 +160,66 @@ public class JoinController {
         }
         return mav;
     }
+    //수정 화면
+    @RequestMapping(value = "/joinEdit.do", method={RequestMethod.GET})
+    public ModelAndView joinEdit(
+            ModelMap model,
+            @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+            @RequestParam(value="bizNo") String bizNo,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws Exception {
+        ModelAndView mav = null;
+        mav = new ModelAndView("join/apply/join_edit");
 
+        cmpVO.setBizNo(bizNo);
+        cmpVO.setMem_cd("02");
+        try {
+            CmpMemberVo rs = service.getViewByBizNo(cmpVO);
+            rs.setBizNo1(rs.getBizNo().substring(0,3));
+            rs.setBizNo2(rs.getBizNo().substring(3,5));
+            rs.setBizNo3(rs.getBizNo().substring(5,10));
+            String[] email=rs.getEmail().split("@");
+            rs.setEmail1(email[0]);
+            rs.setEmail2(email[1]);
+            if(rs == null){
+                System.out.println("비정상적인 접근입니다.");
+            }
+
+            mav.addObject("rs", rs);
+
+        }  catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+
+    //수정 처리
+    @RequestMapping(value = "/joinEdit.do", method={RequestMethod.POST})
+    public String doJoinEdit(
+            ModelMap model,
+            @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+            HttpServletRequest request,
+            HttpServletResponse response,
+            HttpSession session) throws Exception {
+
+        try {
+            String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
+            cmpVO.setBizNo(bizNo);
+            String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
+            cmpVO.setEmail(email);
+
+            int result = service.updateJoin(cmpVO);
+
+            if (result > 0) {
+                return "redirect:joinView.do?bizNo="+cmpVO.getBizNo();
+            } else {
+
+                return "forward:/common/error.jsp";
+            }
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
+        return "";
+    }
 }
