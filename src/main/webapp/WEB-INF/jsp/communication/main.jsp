@@ -74,9 +74,11 @@ function getCookie( cookieName ){
             <!-- link_box -->
             <div class="link_box">
                 <div class="bg-gray visual-section">
-                    <div class="container">
-                        <div class="col-lg-9">
+                    <div class="container" style="width:50%">
+                        <div class="col-lg-9" >
                             <img src="${pageContext.request.contextPath}/images/main/main.png" class="company-logo" >
+                        </div>
+                    </div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="corporation">
 
@@ -159,6 +161,80 @@ function getCookie( cookieName ){
                                     <span>㈜KCC</span>
                                 </div>
                             </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci01.png" class="company-logo" alt="(주) 한샘">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주) 한샘</span>
+                                </div>
+                            </div>
+
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci02.png" class="company-logo" alt="(주)농협유통">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)농협유통</span>
+                                </div>
+                            </div>
+
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci03.png" class="company-logo" alt="(주)대한항공">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)대한항공</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci04.png" class="company-logo" alt="(주)두산">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)두산</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci05.png" class="company-logo" alt="(주)신세계디에프">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)신세계디에프</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci06.png" class="company-logo" alt="(주)한화">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)한화</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci04.png" class="company-logo" alt="(주)두산">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)두산</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci05.png" class="company-logo" alt="(주)신세계디에프">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)신세계디에프</span>
+                                </div>
+                            </div>
+                            <div class="ico-list">
+                                <div class="container-logo">
+                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci06.png" class="company-logo" alt="(주)한화">
+                                </div>
+                                <div class="corp-name">
+                                    <span>(주)한화</span>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -168,8 +244,8 @@ function getCookie( cookieName ){
 
                  </div>
             <!-- // link_box -->
-                        </div>
-                    </div>
+
+
                 </div>
         </div>
         <!-- // main-wrap -->
