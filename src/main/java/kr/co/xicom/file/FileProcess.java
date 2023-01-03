@@ -1,7 +1,7 @@
 package kr.co.xicom.file;
 
 
-import kr.co.xicom.cmmn.model.AttachVO;
+import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.exception.businessException;
 import kr.co.xicom.util.Utils;
 //import kr.go.smes.fileservice.FileService;
@@ -13,8 +13,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;

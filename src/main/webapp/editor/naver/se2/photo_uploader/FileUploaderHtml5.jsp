@@ -1,6 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" %>
 <%@page import="kr.co.xicom.file.FileController" %>
-<%@page import="kr.co.xicom.cmmn.model.AttachVO" %>
+<%@page import="kr.co.xicom.front.model.AttachVO" %>
 <%@page import="kr.co.xicom.cmmn.web.EgovWebUtil" %>
 <%@page import="kr.co.xicom.cmmn.web.EgovProperties" %>
  

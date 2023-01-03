@@ -1,7 +1,6 @@
 package kr.co.xicom.front.controller;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
-import kr.co.xicom.cmmn.EgovExcepHndlr;
 import kr.co.xicom.front.model.BbsQnaVO;
 import kr.co.xicom.front.service.CoworkBbsQnaService;
 import kr.co.xicom.util.Alerts;
@@ -26,7 +25,6 @@ import java.util.Map;
 @Controller
 public class CoworkBbsQnaController extends Alerts{
 	
-    private static final Logger LOGGER = LoggerFactory.getLogger(EgovExcepHndlr.class);
 	@Autowired
 	private CoworkBbsQnaService service;
 

@@ -1,4 +1,4 @@
-package kr.co.xicom.cmmn.model;
+package kr.co.xicom.front.model;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 

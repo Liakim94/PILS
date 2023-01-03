@@ -1,7 +1,5 @@
 package kr.co.xicom.front.model;
 
-import kr.co.xicom.cmmn.model.DefaultVO;
-
 public class CmpMemberVo extends DefaultVO {
     private String bizNo ="";
     private String bizNo1 ="";

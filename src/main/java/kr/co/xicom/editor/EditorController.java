@@ -1,7 +1,7 @@
 package kr.co.xicom.editor;
 
 import egovframework.rte.fdl.property.EgovPropertyService;
-import kr.co.xicom.cmmn.model.AttachVO;
+import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.cmmn.web.EgovWebUtil;
 import kr.co.xicom.file.FileProcess;
 import org.apache.log4j.Logger;

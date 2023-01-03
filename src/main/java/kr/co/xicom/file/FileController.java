@@ -1,33 +1,12 @@
 package kr.co.xicom.file;
 
-import java.io.*;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 //import kr.go.smes.fileservice.FileService;
 //import kr.go.smes.fileservice.S3FileService;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import egovframework.rte.fdl.property.EgovPropertyService;
-import kr.co.xicom.cmmn.web.EgovWebUtil;
-import kr.co.xicom.cmmn.model.AttachVO;
-import kr.co.xicom.util.Utils;
+		import egovframework.rte.fdl.property.EgovPropertyService;
 
 /**
  * @deprecated

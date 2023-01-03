@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import kr.co.xicom.cmmn.model.AttachVO;
+import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.BoardVO;
 
 @Service
