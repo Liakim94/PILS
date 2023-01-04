@@ -2,6 +2,7 @@ package kr.co.xicom.front.controller;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.CmpMemberVo;
+import kr.co.xicom.front.model.CmpSttusVO;
 import kr.co.xicom.front.service.ConsultingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/join")
@@ -56,7 +58,6 @@ public class JoinController {
         mav.addObject("paginationInfo", paginationInfo);
         mav.addObject("vo", cmpVO);
 
-
         return mav;
     }
 
@@ -73,6 +74,7 @@ public class JoinController {
     @RequestMapping(value="/joinApply.do",  method={RequestMethod.POST})
     public void doApply(ModelMap model,
                         @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+                        @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
                         HttpServletRequest request,
                         HttpServletResponse response)throws Exception{
 
@@ -82,9 +84,8 @@ public class JoinController {
             String email=cmpVO.getEmail1()+'@'+cmpVO.getEmail2();
             cmpVO.setEmail(email);
             cmpVO.setMem_cd("02"); //회원구분
-
-            int result = service.insertJoinApply(cmpVO);
-
+            stVO.setBizNo(bizNo);
+            int result = service.insertJoinApply(cmpVO, stVO);
             if(result > 0){
 
                 response.sendRedirect(request.getContextPath()+"/join/joinList.do");
@@ -135,6 +136,7 @@ public class JoinController {
     @GetMapping(value="/joinView.do")
     public ModelAndView view(ModelMap model,
                              @ModelAttribute("CmpMemberVo")CmpMemberVo cmpVO,
+                             @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
                              @RequestParam(value="bizNo") String bizNo,
                              HttpSession session,
                              HttpServletRequest request,
@@ -145,15 +147,18 @@ public class JoinController {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("02");
         try {
+            List<CmpSttusVO>  sttus = service.getCmpSttus(stVO);
+
             CmpMemberVo rs = service.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0,3));
             rs.setBizNo2(rs.getBizNo().substring(3,5));
             rs.setBizNo3(rs.getBizNo().substring(5,10));
-            if(rs == null){
+            if(rs == null && sttus == null){
                 System.out.println("비정상적인 접근입니다.");
             }
 
             mav.addObject("rs", rs);
+            mav.addObject("st", sttus);
 
         }  catch (Exception e) {
             System.out.println(e.toString());
@@ -165,16 +170,17 @@ public class JoinController {
     public ModelAndView joinEdit(
             ModelMap model,
             @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+            @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
             @RequestParam(value="bizNo") String bizNo,
             HttpServletRequest request,
             HttpServletResponse response
     ) throws Exception {
-        ModelAndView mav = null;
-        mav = new ModelAndView("join/apply/join_edit");
+        ModelAndView mav = new ModelAndView("join/apply/join_edit");
 
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("02");
         try {
+            List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
             CmpMemberVo rs = service.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0,3));
             rs.setBizNo2(rs.getBizNo().substring(3,5));
@@ -187,6 +193,7 @@ public class JoinController {
             }
 
             mav.addObject("rs", rs);
+            mav.addObject("st",sttus);
 
         }  catch (Exception e) {
             System.out.println(e.toString());
@@ -199,6 +206,7 @@ public class JoinController {
     public String doJoinEdit(
             ModelMap model,
             @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+            @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
             HttpServletRequest request,
             HttpServletResponse response,
             HttpSession session) throws Exception {
@@ -208,8 +216,9 @@ public class JoinController {
             cmpVO.setBizNo(bizNo);
             String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
             cmpVO.setEmail(email);
+            stVO.setBizNo(bizNo);
 
-            int result = service.updateJoin(cmpVO);
+            int result = service.updateJoin(cmpVO, stVO);
 
             if (result > 0) {
                 return "redirect:joinView.do?bizNo="+cmpVO.getBizNo();

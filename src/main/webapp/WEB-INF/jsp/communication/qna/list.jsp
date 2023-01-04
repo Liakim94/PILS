@@ -73,15 +73,15 @@
             </table>
         </div>
 
-        <!-- paging -->
-        <div class="board_bottom_wrap">
-            <div class="paging_wrap">
-                <ul class="paging">
-                    <ui:pagination paginationInfo="${paginationInfo }" type="image" jsFunction="linkPage" />
-                </ul>
+            <!-- paging -->
+            <div class="board_bottom_wrap">
+                <div class="paging_wrap">
+                    <ul class="paging">
+                        <ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage" />
+                    </ul>
+                </div>
             </div>
-        </div>
-        <!-- // paging -->
+            <!-- // paging -->
 
 
         <!-- 컨텐츠 end -->
