@@ -2,6 +2,7 @@ package kr.co.xicom.front.service.mapper;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import kr.co.xicom.front.model.CmpMemberVo;
+import kr.co.xicom.front.model.CmpSttusVO;
 
 import java.util.List;
 
@@ -28,4 +29,9 @@ public interface ConsultingMapper {
     //동행기업 수정
     int updateMemJoin(CmpMemberVo vo) throws Exception;
     int updateJoin(CmpMemberVo vo) throws Exception;
+    int updateCmpSttus (CmpSttusVO vo) throws Exception;
+
+    //기업현황
+    List<CmpSttusVO> getCmpSttus(CmpSttusVO vo) throws Exception;
+    int insertCmpSttus(CmpSttusVO vo) throws Exception;
 }

@@ -2,6 +2,7 @@ package kr.co.xicom.front.controller;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.CmpMemberVo;
+import kr.co.xicom.front.model.CmpSttusVO;
 import kr.co.xicom.front.service.ConsultingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/cmm")
@@ -69,9 +71,10 @@ public class ConsultingController extends Alerts {
         return mav;
     }
 
-    @RequestMapping(value="/consulting.do",  method={RequestMethod.POST})
+    @RequestMapping(value="/conApply.do",  method={RequestMethod.POST})
     public void doApply(ModelMap model,
                        @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+                        @ModelAttribute("CmpSttusVO")CmpSttusVO stVO,
                        HttpServletRequest request,
                        HttpServletResponse response)throws Exception{
 
@@ -81,12 +84,12 @@ public class ConsultingController extends Alerts {
             String email=cmpVO.getEmail1()+'@'+cmpVO.getEmail2();
             cmpVO.setEmail(email);
             cmpVO.setMem_cd("01");
-
-            int result = service.insertConsulting(cmpVO);
+            stVO.setBizNo(bizNo);
+            int result = service.insertConsulting(cmpVO,stVO);
 
             if(result > 0){
 
-                response.sendRedirect(request.getContextPath()+"/consulting.do");
+                response.sendRedirect(request.getContextPath()+"/cmm/consulting.do");
 
             }else{
                 PrintWriter writer = response.getWriter();
@@ -135,6 +138,7 @@ public class ConsultingController extends Alerts {
     @GetMapping(value="/conView.do")
     public ModelAndView view(ModelMap model,
                              @ModelAttribute("CmpMemberVo")CmpMemberVo cmpVO,
+                             @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
                              @RequestParam(value="bizNo") String bizNo,
                              HttpSession session,
                              HttpServletRequest request,
@@ -145,6 +149,8 @@ public class ConsultingController extends Alerts {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("01");
         try {
+            List<CmpSttusVO>  sttus = service.getCmpSttus(stVO);
+
         CmpMemberVo rs = service.getViewByBizNo(cmpVO);
         rs.setBizNo1(rs.getBizNo().substring(0,3));
         rs.setBizNo2(rs.getBizNo().substring(3,5));
@@ -152,10 +158,8 @@ public class ConsultingController extends Alerts {
         if(rs == null){
             writeAlert("비정상적인 접근입니다.", request, response);
         }
-
         mav.addObject("rs", rs);
-//        mav.addObject("vo", cmpVO);
-
+        mav.addObject("st",sttus);
 
     }  catch (Exception e) {
         System.out.println(e.toString());
@@ -167,16 +171,17 @@ public class ConsultingController extends Alerts {
     public ModelAndView conEdit(
             ModelMap model,
             @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+            @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
             @RequestParam(value="bizNo") String bizNo,
             HttpServletRequest request,
             HttpServletResponse response
     ) throws Exception {
-        ModelAndView mav = null;
-        mav = new ModelAndView("communication/consulting/con_edit");
+        ModelAndView mav = new ModelAndView("communication/consulting/con_edit");
 
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("01");
         try {
+            List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
             CmpMemberVo rs = service.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0,3));
             rs.setBizNo2(rs.getBizNo().substring(3,5));
@@ -189,6 +194,7 @@ public class ConsultingController extends Alerts {
             }
 
             mav.addObject("rs", rs);
+            mav.addObject("st",sttus);
 
         }  catch (Exception e) {
             System.out.println(e.toString());
@@ -201,6 +207,7 @@ public class ConsultingController extends Alerts {
     public String doConEdit(
             ModelMap model,
             @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+            @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
             HttpServletRequest request,
             HttpServletResponse response,
             HttpSession session) throws Exception {
@@ -210,8 +217,9 @@ public class ConsultingController extends Alerts {
             cmpVO.setBizNo(bizNo);
             String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
             cmpVO.setEmail(email);
+            stVO.setBizNo(bizNo);
 
-            int result = service.update(cmpVO);
+            int result = service.update(cmpVO, stVO);
 
             if (result > 0) {
                 return "redirect:conView.do?bizNo="+cmpVO.getBizNo();

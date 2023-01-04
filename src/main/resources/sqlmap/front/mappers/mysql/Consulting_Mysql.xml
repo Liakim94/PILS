@@ -2,315 +2,351 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.xicom.front.service.mapper.ConsultingMapper">
 
-<resultMap id="CmpMemberVo"        type="kr.co.xicom.front.model.CmpMemberVo">
-    <result property="bizNo"              column="bizNo"/>
-    <result property="mem_cd"             column="mem_cd"/>
-    <result property="cmpNm"              column="cmpNm"/>
-    <result property="fdate"              column="fdate"/>
-    <result property="ceo"                column="ceo"/>
-    <result property="address"            column="address"/>
-    <result property="address_dtl"        column="address_dtl"/>
-    <result property="telNo"              column="telNo"/>
-    <result property="faxNo"              column="faxNo"/>
-    <result property="bizType"            column="bizType"/>
-    <result property="capital"            column="capital"/>
-    <result property="product"            column="product"/>
-    <result property="conQ"              column="conQ"/>
-    <result property="deal_type"         column="deal_type"/>
-    <result property="deal_scale"        column="deal_scale"/>
-    <result property="material"          column="material"/>
-    <result property="appdate"           column="appdate"/>
-    <result property="name"              column="name"/>
-    <result property="deptNm"            column="deptNm"/>
-    <result property="position"          column="position"/>
-    <result property="mbphno"            column="mbphno"/>
-    <result property="email"             column="email"/>
-    <result property="memTelNo"          column="memTelNo"/>
-    <result property="memFaxNo"          column="memFaxNo"/>
-</resultMap>
+    <resultMap id="CmpMemberVo" type="kr.co.xicom.front.model.CmpMemberVo">
+        <result property="bizNo" column="bizNo"/>
+        <result property="mem_cd" column="mem_cd"/>
+        <result property="cmpNm" column="cmpNm"/>
+        <result property="fdate" column="fdate"/>
+        <result property="ceo" column="ceo"/>
+        <result property="address" column="address"/>
+        <result property="address_dtl" column="address_dtl"/>
+        <result property="telNo" column="telNo"/>
+        <result property="faxNo" column="faxNo"/>
+        <result property="bizType" column="bizType"/>
+        <result property="capital" column="capital"/>
+        <result property="product" column="product"/>
+        <result property="conQ" column="conQ"/>
+        <result property="deal_type" column="deal_type"/>
+        <result property="deal_scale" column="deal_scale"/>
+        <result property="material" column="material"/>
+        <result property="appdate" column="appdate"/>
+        <result property="name" column="name"/>
+        <result property="deptNm" column="deptNm"/>
+        <result property="position" column="position"/>
+        <result property="mbphno" column="mbphno"/>
+        <result property="email" column="email"/>
+        <result property="memTelNo" column="memTelNo"/>
+        <result property="memFaxNo" column="memFaxNo"/>
+    </resultMap>
     <resultMap id="CmpSttusVO" type="kr.co.xicom.front.model.CmpSttusVO">
-        <result property="bizNo"          column="bizNo"/>
-        <result property="base_year"          column="base_year"/>
-        <result property="index_dv"          column="index_dv"/>
-        <result property="index_data"          column="index_data"/>
-        <result property="rgdate"          column="rgdate"/>
-        <result property="update"          column="update"/>
+        <result property="bizNo" column="bizNo"/>
+        <result property="base_year" column="base_year"/>
+        <result property="index_dv" column="index_dv"/>
+        <result property="index_data" column="index_data"/>
+        <result property="rgdate" column="rgdate"/>
+        <result property="update" column="update"/>
     </resultMap>
 
     <insert id="insertConsulting">
         insert into tb_pils_cmpmbr
-        (cmp_nm
-        ,bizno
-        ,cmp_mbr_cd
-        ,ceo
-        ,fdate
-        ,addr
-        ,addr_dtl
-        ,telno
-        ,faxno
-        ,biz_ty
-        ,capl
-        ,deal_ty
-        ,yr_deal_scale
-        ,prmy_mat
-        ,con_q
-        ,appdt)
-        values (
-                   #{cmpNm}
+        ( cmp_nm
+        , bizno
+        , cmp_mbr_cd
+        , ceo
+        , fdate
+        , addr
+        , addr_dtl
+        , telno
+        , faxno
+        , biz_ty
+        , capl
+        , deal_ty
+        , yr_deal_scale
+        , prmy_mat
+        , con_q
+        , appdt
+        ,product)
+        values ( #{cmpNm}
                , #{bizNo}
-               ,#{mem_cd}
-               ,#{ceo}
-               ,#{fdate}
-               ,#{address}
-               ,#{address_dtl}
-               ,#{telNo}
-               ,#{telNo}
-               ,#{bizType}
-               ,#{capital}
-               ,#{deal_type}
-               ,#{deal_scale}
-               ,#{material}
-               ,#{conQ}
-               ,current_timestamp
-    )
+               , #{mem_cd}
+               , #{ceo}
+               , #{fdate}
+               , #{address}
+               , #{address_dtl}
+               , #{telNo}
+               , #{telNo}
+               , #{bizType}
+               , #{capital}
+               , #{deal_type}
+               , #{deal_scale}
+               , #{material}
+               , #{conQ}
+               , current_timestamp
+               ,#{product})
     </insert>
     <insert id="insertMemberInfo">
         insert into tb_pils_mbr
-        (nm
-        ,mbphno
-        ,psitn_dept_nm
-        ,pstn
-        ,email_addr
-        ,telno
-        ,faxno
-        ,auth_cd
-        ,bizno
-        ,user_id
-        ,pswd
-        ,join_dt)
-        values (
-               #{name}
-               ,#{mbphno}
-               ,#{deptNm}
-               ,#{position}
-               ,#{email}
-               ,#{memTelNo}
-               ,#{memFaxNo}
-               ,'2'
-               ,#{bizNo}
-               ,#{id}
-               ,encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
-               ,current_date )
+        ( nm
+        , mbphno
+        , psitn_dept_nm
+        , pstn
+        , email_addr
+        , telno
+        , faxno
+        , auth_cd
+        , bizno
+        , user_id
+        , pswd
+        , join_dt)
+        values ( #{name}
+               , #{mbphno}
+               , #{deptNm}
+               , #{position}
+               , #{email}
+               , #{memTelNo}
+               , #{memFaxNo}
+               , '2'
+               , #{bizNo}
+               , #{id}
+               , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+               , current_date)
+    </insert>
+    <insert id="insertCmpSttus">
+        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data,rgstdt)
+        VALUES (#{bizNo}, 2019, 'M201', #{ix_data1},current_timestamp ),
+               (#{bizNo}, 2019, 'M202', #{ix_data2},current_timestamp ),
+               (#{bizNo}, 2019, 'M203', #{ix_data3},current_timestamp );
+
+
+        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data,rgstdt)
+        VALUES (#{bizNo}, 2020, 'M201', #{ix_data4},current_timestamp ),
+               (#{bizNo}, 2020, 'M202', #{ix_data5},current_timestamp ),
+               (#{bizNo}, 2020, 'M203', #{ix_data6},current_timestamp );
+
+        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data,rgstdt)
+        VALUES (#{bizNo}, 2021, 'M201', #{ix_data7},current_timestamp ),
+               (#{bizNo}, 2021, 'M202', #{ix_data8},current_timestamp ),
+               (#{bizNo}, 2021, 'M203', #{ix_data9},current_timestamp );
+
     </insert>
     <select id="list" resultMap="CmpMemberVo">
         select
-              A.bizno as bizNo
-             ,A.cmp_mbr_cd as mem_cd
-             ,A.cmp_nm as  cmpNm
-             ,to_char(A.appdt, 'YYYY-MM-DD') as appdate
-             ,B.nm as name
-             ,B.user_id as id
-             ,B.pswd as passwd
+        A.bizno as bizNo
+        ,A.cmp_mbr_cd as mem_cd
+        ,A.cmp_nm as cmpNm
+        ,to_char(A.appdt, 'YYYY-MM-DD') as appdate
+        ,B.nm as name
+        ,B.user_id as id
+        ,B.pswd as passwd
 
         from tb_pils_cmpmbr A join tb_pils_mbr B
-            on A.bizno =B.bizno
+        on A.bizno =B.bizno
         where cmp_mbr_cd= #{mem_cd}
         order by appdt desc
         <if test="pageIndex > 0">
             LIMIT #{pageUnit} OFFSET #{firstIndex}
         </if>
     </select>
-    <select id="listCount" resultType="int" >
+    <select id="listCount" resultType="int">
         SELECT COUNT(1)
-        FROM tb_pils_cmpmbr A join tb_pils_mbr B
-                                ON  A.bizno =B.bizno
-        WHERE 1 = 1 and cmp_mbr_cd= #{mem_cd}
+        FROM tb_pils_cmpmbr A
+                 join tb_pils_mbr B
+                      ON A.bizno = B.bizno
+        WHERE 1 = 1
+          and cmp_mbr_cd = #{mem_cd}
 
     </select>
-    <select id="conChkPw" resultType="int" >
-        select
-            case when inPass = pswd then 1
-                 else 0 end as rslt
-        from
-            (select
-                 encode(encrypt(convert_to(#{passwd},'utf8'),'ENC_KEY','aes'),'hex') as inPass
-                  , pswd
-             from
-                 tb_pils_mbr where bizno = #{bizNo}
-            ) a;
+    <select id="conChkPw" resultType="int">
+        select case
+                   when inPass = pswd then 1
+                   else 0 end as rslt
+        from (select encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex') as inPass
+                   , pswd
+              from tb_pils_mbr
+              where bizno = #{bizNo}
+             ) a;
 
     </select>
-<select id="getViewByBizNo" resultMap="CmpMemberVo">
-    select
-          A.cmp_nm as  cmpNm
-         ,A.bizno  as bizNo
-            ,A.cmp_mbr_cd as mem_cd
-            ,A.ceo as ceo
-            ,A.fdate as fdate
-            ,A.addr as address
-            ,A.addr_dtl as address_dtl
-            ,A.telno as telNo
-            ,A.faxno as faxno
-            ,A.biz_ty as bizType
-            ,A.capl as capital
-            ,A.deal_ty as deal_type
-            ,A.yr_deal_scale as deal_scale
-            ,A.prmy_mat as material
-            ,A.con_q as conQ
-            ,B.nm as name
-            ,B.mbphno as mbphno
-            ,B.psitn_dept_nm as deptNm
-            ,B.pstn as position
+    <select id="getViewByBizNo" resultMap="CmpMemberVo">
+        select A.cmp_nm        as cmpNm
+             , A.bizno         as bizNo
+             , A.cmp_mbr_cd    as mem_cd
+             , A.ceo           as ceo
+             , A.fdate         as fdate
+             , A.addr          as address
+             , A.addr_dtl      as address_dtl
+             , A.telno         as telNo
+             , A.faxno         as faxno
+             , A.biz_ty        as bizType
+             , A.capl          as capital
+             , A.deal_ty       as deal_type
+             , A.yr_deal_scale as deal_scale
+             , A.prmy_mat      as material
+             , A.con_q         as conQ
+             , A.product       as product
+             , B.nm            as name
+             , B.mbphno        as mbphno
+             , B.psitn_dept_nm as deptNm
+             , B.pstn as position
             ,B.email_addr as email
             ,B.telno as memTelNo
             ,B.faxno as memFaxNo
             ,B.auth_cd as auth_cd
-    from tb_pils_cmpmbr A join tb_pils_mbr B
-                               on A.bizno =B.bizno
-    where 1=1 and cmp_mbr_cd= #{mem_cd} and A.bizno = #{bizNo}
-    order by appdt desc
-</select>
+        from tb_pils_cmpmbr A join tb_pils_mbr B
+        on A.bizno =B.bizno
+        where 1=1
+          and cmp_mbr_cd= #{mem_cd}
+          and A.bizno = #{bizNo}
+        order by appdt desc
+    </select>
+
     <select id="getCmpSttus" resultMap="CmpSttusVO">
         select
-            b.bizno as bizNo
-             ,b.div as index_dv
-             ,sum(q3)
-             ,sum(q2)
-             ,sum(q1)
-        from (
-                 select
-                     a.bizno as bizno
-                      ,a.ix_dvsn as div
-                      , case
-                            when cast(a.base_yy as integer) = cast(to_char(now(),'YYYY') as integer)-4 then ix_data
-                     end as q3
-                      , case
-                            when cast(a.base_yy as integer) = cast(to_char(now(),'YYYY') as integer)-3 then ix_data
-                     end as q2
-                      , case
-                            when cast(a.base_yy as integer) = cast(to_char(now(),'YYYY') as integer)-2 then ix_data
-                     end as q1
-                 from
-                     tb_pils_cmp_sttus a
-                 where
-                     bizno  = #{bizNo}
-             ) b
-        group by b.bizno, b.div
-
+            base_yy as base_year
+             , ix_dvsn as index_dv
+             , ix_data as index_data
+             , bb.cd_nm as index_dv_nm
+        from
+            tb_pils_cmp_sttus AA,
+            ( select cd, cd_nm from tb_cd_data where cd_grp = 'M200') BB
+        where aa. bizno = #{bizNo}
+          and aa.ix_dvsn = bb.cd
+        order by ix_dvsn, base_yy
     </select>
-    <update id="update" >
-        update tb_pils_cmpmbr set
-             cmp_nm =  #{cmpNm}
-             ,bizno  = #{bizNo}
-             ,ceo =  #{ceo}
-             ,fdate = #{fdate}
-             ,addr =  #{address}
-             ,addr_dtl  = #{address_dtl}
-             ,telno = #{telNo}
-             ,faxno = #{faxNo}
-             ,biz_ty = #{bizType}
-             ,capl = #{capital}
-             ,deal_ty = #{deal_type}
-             ,yr_deal_scale = #{deal_scale}
-             ,prmy_mat = #{material}
-             ,con_q = #{conQ}
-        where bizno=#{bizNo}
+
+    <update id="update">
+        update tb_pils_cmpmbr
+        set cmp_nm        = #{cmpNm}
+          , bizno         = #{bizNo}
+          , ceo           = #{ceo}
+          , fdate         = #{fdate}
+          , addr          = #{address}
+          , addr_dtl      = #{address_dtl}
+          , telno         = #{telNo}
+          , faxno         = #{faxNo}
+          , biz_ty        = #{bizType}
+          , capl          = #{capital}
+          , deal_ty       = #{deal_type}
+          , yr_deal_scale = #{deal_scale}
+          , prmy_mat      = #{material}
+          , con_q         = #{conQ}
+          , product       = #{product}
+        where bizno = #{bizNo}
     </update>
     <update id="memUpdate">
-        update tb_pils_mbr set
-            nm = #{name}
-            ,mbphno = #{mbphno}
-            ,psitn_dept_nm = #{deptNm}
-            ,pstn = #{position}
-            ,email_addr = #{email}
-            ,telno = #{memTelNo}
-            ,faxno = #{memFaxNo}
-        where bizno=#{bizNo}
+        update tb_pils_mbr
+        set nm            = #{name}
+          , mbphno        = #{mbphno}
+          , psitn_dept_nm = #{deptNm}
+          , pstn          = #{position}
+          , email_addr    = #{email}
+          , telno         = #{memTelNo}
+          , faxno         = #{memFaxNo}
+        where bizno = #{bizNo}
+    </update>
+    <update id="updateCmpSttus">
+        update tb_pils_cmp_sttus set ix_data = #{ix_data1}
+        where bizno = #{bizNo} and base_yy= 2019 and ix_dvsn = 'M201';
+
+        update tb_pils_cmp_sttus set ix_data = #{ix_data2}
+        where bizno = #{bizNo} and base_yy= 2019 and ix_dvsn = 'M202';
+
+        update tb_pils_cmp_sttus set ix_data = #{ix_data3}
+        where bizno = #{bizNo} and base_yy= 2019 and ix_dvsn = 'M203';
+
+        update tb_pils_cmp_sttus set ix_data = #{ix_data4}
+        where bizno = #{bizNo} and base_yy= 2020 and ix_dvsn = 'M201';
+
+        update tb_pils_cmp_sttus set ix_data = #{ix_data5}
+        where bizno = #{bizNo} and base_yy= 2020 and ix_dvsn = 'M202';
+
+        update tb_pils_cmp_sttus set ix_data = #{ix_data6}
+        where bizno = #{bizNo} and base_yy= 2020 and ix_dvsn = 'M203';
+
+        update tb_pils_cmp_sttus set ix_data = #{ix_data7}
+        where bizno = #{bizNo} and base_yy= 2021 and ix_dvsn = 'M201';
+
+        update tb_pils_cmp_sttus set ix_data = #{ix_data8}
+        where bizno = #{bizNo} and base_yy= 2021 and ix_dvsn = 'M202';
+
+        update tb_pils_cmp_sttus set ix_data = #{ix_data9}
+        where bizno = #{bizNo} and base_yy= 2021 and ix_dvsn = 'M203';
+
+
     </update>
     <insert id="insertJoin">
         insert into tb_pils_cmpmbr
-        (cmp_nm
-        ,bizno
-        ,cmp_mbr_cd
-        ,ceo
-        ,fdate
-        ,addr
-        ,addr_dtl
-        ,telno
-        ,faxno
-        ,biz_ty
-        ,capl
-        ,appdt)
-        values (
-                #{cmpNm}
+        ( cmp_nm
+        , bizno
+        , cmp_mbr_cd
+        , ceo
+        , fdate
+        , addr
+        , addr_dtl
+        , telno
+        , faxno
+        , biz_ty
+        , capl
+        , appdt
+        , product)
+        values ( #{cmpNm}
                , #{bizNo}
-               ,#{mem_cd}
-               ,#{ceo}
-               ,#{fdate}
-               ,#{address}
-               ,#{address_dtl}
-               ,#{telNo}
-               ,#{telNo}
-               ,#{bizType}
-               ,#{capital}
-               ,current_timestamp
-               )
+               , #{mem_cd}
+               , #{ceo}
+               , #{fdate}
+               , #{address}
+               , #{address_dtl}
+               , #{telNo}
+               , #{telNo}
+               , #{bizType}
+               , #{capital}
+               , current_timestamp
+               , #{product})
     </insert>
     <insert id="insertMemberJoin">
         insert into tb_pils_mbr
-        (nm
-        ,mbphno
-        ,psitn_dept_nm
-        ,pstn
-        ,email_addr
-        ,telno
-        ,faxno
-        ,auth_cd
-        ,bizno
-        ,user_id
-        ,pswd
-        ,join_dt)
-        values (
-                #{name}
-               ,#{mbphno}
-               ,#{deptNm}
-               ,#{position}
-               ,#{email}
-               ,#{memTelNo}
-               ,#{memFaxNo}
-               ,'2'
-               ,#{bizNo}
-               ,#{id}
-               ,encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
-               ,current_date )
+        ( nm
+        , mbphno
+        , psitn_dept_nm
+        , pstn
+        , email_addr
+        , telno
+        , faxno
+        , auth_cd
+        , bizno
+        , user_id
+        , pswd
+        , join_dt)
+        values ( #{name}
+               , #{mbphno}
+               , #{deptNm}
+               , #{position}
+               , #{email}
+               , #{memTelNo}
+               , #{memFaxNo}
+               , '2'
+               , #{bizNo}
+               , #{id}
+               , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+               , current_date)
     </insert>
-    <update id="updateJoin" >
-        update tb_pils_cmpmbr set
-            cmp_nm =  #{cmpNm}
-                                ,bizno  = #{bizNo}
-                                ,ceo =  #{ceo}
-                                ,fdate = #{fdate}
-                                ,addr =  #{address}
-                                ,addr_dtl  = #{address_dtl}
-                                ,telno = #{telNo}
-                                ,faxno = #{faxNo}
-                                ,biz_ty = #{bizType}
-                                ,capl = #{capital}
-                                ,deal_ty = #{deal_type}
-                                ,yr_deal_scale = #{deal_scale}
-                                ,prmy_mat = #{material}
-                                ,con_q = #{conQ}
-        where bizno=#{bizNo}
+    <update id="updateJoin">
+        update tb_pils_cmpmbr
+        set cmp_nm        = #{cmpNm}
+          , bizno         = #{bizNo}
+          , ceo           = #{ceo}
+          , fdate         = #{fdate}
+          , addr          = #{address}
+          , addr_dtl      = #{address_dtl}
+          , telno         = #{telNo}
+          , faxno         = #{faxNo}
+          , biz_ty        = #{bizType}
+          , capl          = #{capital}
+          , deal_ty       = #{deal_type}
+          , yr_deal_scale = #{deal_scale}
+          , prmy_mat      = #{material}
+          , con_q         = #{conQ}
+        where bizno = #{bizNo}
     </update>
     <update id="updateMemJoin">
-        update tb_pils_mbr set
-            nm = #{name}
-                             ,mbphno = #{mbphno}
-                             ,psitn_dept_nm = #{deptNm}
-                             ,pstn = #{position}
-                             ,email_addr = #{email}
-                             ,telno = #{memTelNo}
-                             ,faxno = #{memFaxNo}
-        where bizno=#{bizNo}
+        update tb_pils_mbr
+        set nm            = #{name}
+          , mbphno        = #{mbphno}
+          , psitn_dept_nm = #{deptNm}
+          , pstn          = #{position}
+          , email_addr    = #{email}
+          , telno         = #{memTelNo}
+          , faxno         = #{memFaxNo}
+        where bizno = #{bizNo}
     </update>
 </mapper>

@@ -173,7 +173,7 @@
 					<%--		            <tr>--%>
 					<%--		                <th class="txt_alcnt" scope="row">주요생산품</th>--%>
 					<%--		                <td colspan="3">--%>
-					<%--							<input  type="text" id="product"  class="form-control"  name="product"/>--%>
+					<%--							<input  type="text" id="product"  class="uni_input_text"  name="product"/>--%>
 					<%--		                </td>--%>
 					<%--		            </tr>--%>
 				<th colspan="4" class="txt_alcnt" scope="row">담당자</th>
