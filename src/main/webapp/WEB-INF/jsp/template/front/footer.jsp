@@ -24,25 +24,20 @@
         <div class="rela">
 
             <div class="e-wrap">
-                <img src="${pageContext.request.contextPath}/images/etc/etc-logo.png" alt="" />
+                <img src="${pageContext.request.contextPath}/images/main/mainLogo1.png" alt="" />
             </div>
             <style>
                 .bnb-list {
                     float: right
                 }
             </style>
-            <ul class="bnb-list">
-               <li><a href="${pageContext.request.contextPath}/26">개인정보처리방침</a></li>
-               <li><a href="${pageContext.request.contextPath}/25">이용약관</a></li>
-               <li><a href="${pageContext.request.contextPath}/157">이메일 주소 무단수집거부</a></li>
-            </ul>
+
             <address>
-                <p class="addr">COBIZ 시스템 장애 문의 : (044) 300-0990, (044) 300-0991</span> | 메일문의 : smeshelp@tipa.or.kr</p>
                 <p class="addr">
-                대전광역시 유성구 가정북로 104(대전충남지방중소벤처기업청 3층) Tel. <span class="ft_bluetxt">042-331-0563,042-331-0564</span> Fax. <span class="ft_bluetxt">042-867-5508</span>
+                    30121세종특별자치시 가름로 180, 세종파이낸스센터 3차 중소벤처기업부 4층 ~ 6층 Tel. <span class="ft_bluetxt">042-331-0563,042-331-0564</span> 대표전화 : <span class="ft_bluetxt"> 국번없이 1357</span>
                 </p>
                 <p></p>
-                <p class="copyright">(c)2018. M&A KVCA. All rights reserved.</p>
+                <p class="copyright">COPYRIGHT ⓒ 중소벤처기업부. ALL RIGHTS RESERVED.</p>
             </address>
         </div>
     </div>
