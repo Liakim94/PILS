@@ -6,9 +6,6 @@
 		<typeAlias alias="egovMap" 	type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 		<typeAlias alias="default" 	type="kr.co.xicom.front.model.DefaultVO"/>
 		<typeAlias alias="attach" 	type="kr.co.xicom.front.model.AttachVO"/>
-		<typeAlias alias="code" 	type="kr.co.xicom.cms.model.CodeVO"/>
-		<typeAlias alias="bbs" 		type="kr.co.xicom.cms.model.BbsVO"/>
 		<typeAlias alias="board" 	type="kr.co.xicom.front.model.BoardVO"/>
-		<typeAlias alias="comment" 	type="kr.co.xicom.cms.model.CommentVO"/>
     </typeAliases>
 </configuration>

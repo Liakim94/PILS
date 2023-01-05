@@ -114,7 +114,7 @@ src: url(../../css/font/sq/NanumSquareEB.eot?#iefix) format('embedded-opentype')
 }
 
 *{ font-family: 'Noto Sans KR', sans-serif; font-weight: 300;color:#666;-webkit-overflow-scrolling: touch;}
-html,body,p, input, select, form, label, mark, ul, ul li, ol, ol li, dl, dl dt, dl dd, img, a, table, h1, h2, h3, h4, h5{margin:0;padding:0;}
+html,body,p, input, select, form, label, mark, ul, ul li, ol, ol li, dl, dl dt, dl dd, img, a, table, h1, h2, h3, h4, h5{margin:0;}
 em{ font-style:normal;}
 img{ border:0; }
 ul, ol{ list-style:none; }

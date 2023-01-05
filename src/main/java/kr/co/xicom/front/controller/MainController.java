@@ -32,7 +32,7 @@ public class MainController {
 							  HttpServletRequest request,
 							  HttpServletResponse response)throws Exception{
 
-		ModelAndView mav = new ModelAndView("communication/login");
+		ModelAndView mav = new ModelAndView("login");
 		return mav;
 	}
 
