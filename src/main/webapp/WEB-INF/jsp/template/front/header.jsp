@@ -70,8 +70,11 @@ function setCookie(name, value, expire){
 	<div class="site_menu_wrap">
         <div class="inner_ctwrap">
 			<h2>
-				<a href="${pageContext.request.contextPath}/index.do" title="납품대금 연동제"><img src="${pageContext.request.contextPath}/images/etc/etc-logo.png" alt=""></a>
+				<a href="${pageContext.request.contextPath}/index.do" title="납품대금 연동제">
+					<img src="${pageContext.request.contextPath}/images/main/mainLogo1.png">
+				</a>
 			</h2>
+			<img src="${pageContext.request.contextPath}/images/main/mainLogo.png">
 			<nav class="site_menu" id="gnb">
 				<button class="sitemenu_close_btn">전체 메뉴 닫기</button>
 				<ul>
