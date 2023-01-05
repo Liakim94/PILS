@@ -1,36 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" 	%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" 		prefix="page" 		%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 				prefix="c" 			%>
-<%@ taglib uri="http://egovframework.gov/ctl/ui" 				prefix="ui" 		%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" 		prefix="fn" 		%>
-<%@ taglib uri="http://www.springframework.org/tags" 			prefix="spring" 	%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
     <title></title>
 </head>
 <script>
 
-    $(function() {
+    $(function () {
         $("#frmLogin").validate({
             ignore: "",
             rules: {
-                memId:{required:true},
-                memPwd:{required:true}
+                memId: {required: true},
+                memPwd: {required: true}
             },
-            onkeyup:false,
-            onclick:false,
-            onfocusout:false,
+            onkeyup: false,
+            onclick: false,
+            onfocusout: false,
             messages: {
-                memId:{required:"아이디를 입력하세요."},
-                memPwd:{required:"패스워드를 입력하세요"}
+                memId: {required: "아이디를 입력하세요."},
+                memPwd: {required: "패스워드를 입력하세요"}
             },
             submitHandler: function (frm) {
                 frm.submit();
             },
-            showErrors:function(errorMap, errorList){
-                if(!$.isEmptyObject(errorList)){
-                    $.each(errorList, function() {
+            showErrors: function (errorMap, errorList) {
+                if (!$.isEmptyObject(errorList)) {
+                    $.each(errorList, function () {
                         alert(this.message);
                         //$('#modalAlert').modal('show');
                         return false;
@@ -56,10 +56,10 @@
             <div class="login-form">
                 <ul class="n_login_list ctgr2">
                     <li class="id_bx">
-                        <input name="id" id="id" class="idCheck" type="text" placeholder="아이디를 입력하세요." />
+                        <input name="id" id="id" class="idCheck" type="text" placeholder="아이디를 입력하세요."/>
                     </li>
                     <li class="pw_bx">
-                        <input name="passwd" id="passwd" class="pwCheck" type="password" placeholder="비밀번호를 입력하세요." />
+                        <input name="passwd" id="passwd" class="pwCheck" type="password" placeholder="비밀번호를 입력하세요."/>
                     </li>
                 </ul>
                 <div class="login-func">
