@@ -78,7 +78,7 @@
 
 						<div class="box-footer">
 							<div class="btn-wrap type02 low_margin">
-								<button type="button"  onclick="fn_submit('9')" class="btn btn-flat btn-default">임시저장</button>
+<%--								<button type="button"  onclick="fn_submit('9')" class="btn btn-flat btn-default">임시저장</button>--%>
 								<button type="button"  onclick="fn_submit('1')" class="btn blue">게시</button>
 							</div>
 						</div>

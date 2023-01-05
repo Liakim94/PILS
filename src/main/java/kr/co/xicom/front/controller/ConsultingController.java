@@ -43,7 +43,7 @@ public class ConsultingController extends Alerts {
         cmpVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
         cmpVO.setLastIndex(paginationInfo.getLastRecordIndex());
         cmpVO.setPageUnit(paginationInfo.getRecordCountPerPage());
-        cmpVO.setMem_cd("01"); //회원구분
+        cmpVO.setMem_cd("M301"); //회원구분
 
         Map<String, Object> rs = new HashMap<String, Object>();
         rs = service.list(cmpVO);
@@ -83,7 +83,7 @@ public class ConsultingController extends Alerts {
             cmpVO.setBizNo(bizNo);
             String email=cmpVO.getEmail1()+'@'+cmpVO.getEmail2();
             cmpVO.setEmail(email);
-            cmpVO.setMem_cd("01");
+            cmpVO.setMem_cd("M301");
             stVO.setBizNo(bizNo);
             int result = service.insertConsulting(cmpVO,stVO);
 
@@ -147,7 +147,7 @@ public class ConsultingController extends Alerts {
         ModelAndView mav = new ModelAndView("communication/consulting/con_view");
 
         cmpVO.setBizNo(bizNo);
-        cmpVO.setMem_cd("01");
+        cmpVO.setMem_cd("M301");
         try {
             List<CmpSttusVO>  sttus = service.getCmpSttus(stVO);
 
@@ -179,7 +179,7 @@ public class ConsultingController extends Alerts {
         ModelAndView mav = new ModelAndView("communication/consulting/con_edit");
 
         cmpVO.setBizNo(bizNo);
-        cmpVO.setMem_cd("01");
+        cmpVO.setMem_cd("M301");
         try {
             List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
             CmpMemberVo rs = service.getViewByBizNo(cmpVO);

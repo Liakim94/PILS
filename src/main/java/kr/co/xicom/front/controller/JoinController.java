@@ -44,7 +44,7 @@ public class JoinController {
         cmpVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
         cmpVO.setLastIndex(paginationInfo.getLastRecordIndex());
         cmpVO.setPageUnit(paginationInfo.getRecordCountPerPage());
-        cmpVO.setMem_cd("02");
+        cmpVO.setMem_cd("M302"); //회원구분
 
         Map<String, Object> rs = new HashMap<String, Object>();
         rs = service.list(cmpVO);
@@ -83,7 +83,7 @@ public class JoinController {
             cmpVO.setBizNo(bizNo);
             String email=cmpVO.getEmail1()+'@'+cmpVO.getEmail2();
             cmpVO.setEmail(email);
-            cmpVO.setMem_cd("02"); //회원구분
+            cmpVO.setMem_cd("M302");
             stVO.setBizNo(bizNo);
             int result = service.insertJoinApply(cmpVO, stVO);
             if(result > 0){
@@ -145,7 +145,7 @@ public class JoinController {
         ModelAndView mav = new ModelAndView("join/apply/join_view");
 
         cmpVO.setBizNo(bizNo);
-        cmpVO.setMem_cd("02");
+        cmpVO.setMem_cd("M302");
         try {
             List<CmpSttusVO>  sttus = service.getCmpSttus(stVO);
 
@@ -178,7 +178,7 @@ public class JoinController {
         ModelAndView mav = new ModelAndView("join/apply/join_edit");
 
         cmpVO.setBizNo(bizNo);
-        cmpVO.setMem_cd("02");
+        cmpVO.setMem_cd("M302");
         try {
             List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
             CmpMemberVo rs = service.getViewByBizNo(cmpVO);

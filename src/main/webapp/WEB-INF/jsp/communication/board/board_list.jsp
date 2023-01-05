@@ -31,9 +31,11 @@ function linkPage(num){
 		<div class="side-wrap">
 		</div>
 	</div>
+	<c:if test="${sessionId eq 'admin' }">
 	<div class="btn-wrap type02 low_margin">
 		<a href="${pageContext.request.contextPath}/cmm/boardPost.do?bbsId=${bbsId}" class="btn blue" title="등록">게시물 등록</a>
 	</div>
+	</c:if>
 
 	<!-- 컨텐츠 start -->
 	<form name="viewfrm" action="${pageContext.request.contextPath}/cmm/boardView.do" method="get" id="viewfrm">

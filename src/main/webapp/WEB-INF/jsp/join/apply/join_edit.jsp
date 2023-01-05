@@ -229,7 +229,7 @@
             </table>
             <div class="btn-wrap type04">
                 <button type="submit" class="btn blue">저장</button>
-                <a href="${pageContext.request.contextPath}/cmm/consulting.do" class="btn blue">취소</a>
+                <a href="${pageContext.request.contextPath}/join/joinList.do" class="btn blue">취소</a>
             </div>
         </div>
     </div>
