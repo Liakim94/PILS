@@ -75,10 +75,6 @@ function getCookie( cookieName ){
             <div class="link_box">
                 <div class="bg-gray visual-section">
                     <div class="container" style="width:50%">
-
-                        <div class="col-lg-9" >
-                            <img src="${pageContext.request.contextPath}/images/main/main.png" class="company-logo" >
-                        </div>
                     </div>
 
                 <div class="tab-content">
@@ -86,6 +82,11 @@ function getCookie( cookieName ){
 
           <!-- // logo list -->
                 <div class="list-company">
+
+                    <div class="col-lg-9" >
+                        <img src="${pageContext.request.contextPath}/images/main/main.png" class="company-logo" >
+                    </div>
+
                     <div class="row">
                         <div class="col-md-12">
 
@@ -241,6 +242,7 @@ function getCookie( cookieName ){
                         </div>
                     </div>
                 </div>
+
                     </div>
 
 

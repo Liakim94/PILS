@@ -24,7 +24,7 @@
         <div class="rela">
 
             <div class="e-wrap">
-                <img src="${pageContext.request.contextPath}/images/main/mainLogo1.png" alt="" />
+                <img src="${pageContext.request.contextPath}/images/main/main-footer-logo.png" alt="" />
             </div>
             <style>
                 .bnb-list {
