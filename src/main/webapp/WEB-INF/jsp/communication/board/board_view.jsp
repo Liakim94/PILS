@@ -44,8 +44,10 @@
         </div>
 
         <div class="btn-wrap type02 low_margin">
-            <a href="${pageContext.request.contextPath}/cmm/boardEdit.do?no=${rs.boardSeq}&bbsId=${bbsId}" class="btn blue" title="등록">게시물 수정</a>
-            <button onclick="javascript:deleteBbs()" class="btn blue" title="등록">게시물 삭제</button>
+            <c:if test="${sessionId eq 'admin' }">
+                <a href="${pageContext.request.contextPath}/cmm/boardEdit.do?no=${rs.boardSeq}&bbsId=${bbsId}" class="btn blue" title="등록">게시물 수정</a>
+                <button onclick="javascript:deleteBbs()" class="btn blue" title="등록">게시물 삭제</button>
+            </c:if>
             <a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=${bbsId}" class="btn blue" title="목록">목록</a>
         </div>
         <!-- 컨텐츠 end -->

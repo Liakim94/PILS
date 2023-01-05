@@ -128,54 +128,32 @@
 						<input type="text" class="uni_input_text" id="capital" name="capital" style="padding:0" value="${rs.capital}"/>백만원
 					</td>
 				</tr>
-					<%--					<th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>--%>
-					<%--					<tr>--%>
-					<%--						<th class="txt_alcnt" scope="row">지표</th>--%>
-					<%--						<th class="txt_alcnt" scope="row">2019년</th>--%>
-					<%--						<th class="txt_alcnt" scope="row">2020년</th>--%>
-					<%--						<th class="txt_alcnt" scope="row">2021년</th>--%>
-					<%--					<tr>--%>
-					<%--						<th class="txt_alcnt" scope="row">매출액(백만원)</th>--%>
-					<%--						<td>--%>
-					<%--							<input type="text" class="uni_input_text" id="induty" name="induty" value="" />--%>
-					<%--						</td>--%>
-					<%--						<td>--%>
-					<%--							<input type="text" class="uni_input_text" id="induty" name="induty" value="" />--%>
-					<%--						</td>--%>
-					<%--						<td>--%>
-					<%--							<input type="text" class="uni_input_text" id="induty" name="induty" value="" />--%>
-					<%--						</td>--%>
-					<%--					</tr>--%>
-					<%--					<tr>--%>
-					<%--						<th class="txt_alcnt" scope="row">영업이익(백만원)</th>--%>
-					<%--						<td>--%>
-					<%--							<input type="text" class="uni_input_text" id="induty" name="induty" value="" />--%>
-					<%--						</td>--%>
-					<%--						<td>--%>
-					<%--							<input type="text" class="uni_input_text" id="induty" name="induty" value="" />--%>
-					<%--						</td>--%>
-					<%--						<td>--%>
-					<%--							<input type="text" class="uni_input_text" id="induty" name="induty" value="" />--%>
-					<%--						</td>--%>
-					<%--					</tr>--%>
-					<%--					<tr>--%>
-					<%--						<th class="txt_alcnt" scope="row">종업원수(명)</th>--%>
-					<%--						<td>--%>
-					<%--							<input type="text" class="uni_input_text" id="induty" name="induty" value="" />--%>
-					<%--						</td>--%>
-					<%--						<td>--%>
-					<%--							<input type="text" class="uni_input_text" id="induty" name="induty" value="" />--%>
-					<%--						</td>--%>
-					<%--						<td>--%>
-					<%--							<input type="text" class="uni_input_text" id="induty" name="induty" value="" />--%>
-					<%--						</td>--%>
-					<%--					</tr>--%>
-					<%--		            <tr>--%>
-					<%--		                <th class="txt_alcnt" scope="row">주요생산품</th>--%>
-					<%--		                <td colspan="3">--%>
-					<%--							<input  type="text" id="product"  class="uni_input_text"  name="product"/>--%>
-					<%--		                </td>--%>
-					<%--		            </tr>--%>
+				<th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>
+				<tr>
+					<th class="txt_alcnt" scope="row">지표</th>
+					<th class="txt_alcnt" scope="row">2019년</th>
+					<th class="txt_alcnt" scope="row">2020년</th>
+					<th class="txt_alcnt" scope="row">2021년</th>
+				</tr>
+				<c:forEach var="st" items="${st}" varStatus="status">
+					<c:if test="${status.index mod 3 eq 0}" >
+						<tr>
+						<th class="txt_alcnt" scope="row">${st.index_dv_nm} </th>
+					</c:if>
+					<td align="center">
+						<input type="number" class="uni_input_text wdh100" id="ix_data${status.index+1}" name="ix_data${status.index+1}" value="${st.index_data}"/>
+					</td>
+					<c:if test="${status.index mod 3 eq 2}" >
+						</tr>
+					</c:if>
+				</c:forEach>
+
+				<tr>
+					<th class="txt_alcnt" scope="row">주요생산품</th>
+					<td colspan="3">
+						<input type="text" id="product" class="uni_input_text" name="product" value="${rs.product}"/>
+					</td>
+				</tr>
 				<th colspan="4" class="txt_alcnt" scope="row">담당자</th>
 				<tr>
 					<th class="txt_alcnt" scope="row">성명</th>
@@ -262,7 +240,7 @@
 			</table>
 	<div class="btn-wrap type04">
 		<button type="submit" class="btn blue" >저장</button>
-		<a href="${pageContext.request.contextPath}/cmm/consulting.do" class="btn blue">취소</a>
+		<a href="${pageContext.request.contextPath}/cmm/conView.do?bizNo=${rs.bizNo}" class="btn blue">취소</a>
 	</div>
 		</div>
 	</div>

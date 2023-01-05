@@ -5,7 +5,7 @@ public class CmpMemberVo extends DefaultVO {
     private String bizNo1 ="";
     private String bizNo2 = "";
     private String bizNo3 ="";
-    private String mem_cd ="";  //기업회원구분(컨설팅:1)
+    private String mem_cd ="";  //기업회원구분
     private String cmpNm ="";
     private String fdate ="";
     private String  ceo="";
