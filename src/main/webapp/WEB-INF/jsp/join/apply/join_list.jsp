@@ -55,8 +55,19 @@
                     <tr>
                         <td class="txt_alcnt">${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
                         <td class="al">
-                            <a href="checkPw" data-toggle="modal" data-target="#checkPw" onclick="modalData('${list.bizNo}')" >
-                            ${list.cmpNm }
+
+                            <c:choose>
+                                <c:when test="${sessionId ne null && sessionId eq 'admin'}">
+                                    <a href="${pageContext.request.contextPath}/join/joinView.do?bizNo=${list.bizNo}">
+                                        ${list.cmpNm }
+                                </c:when>
+                                <c:otherwise>
+                                <a href="checkPw" data-toggle="modal" data-target="#checkPw" onclick="modalData('${list.bizNo}')" >
+                                        ${list.cmpNm }
+                                </c:otherwise>
+                            </c:choose>
+
+
                         </a>
                         </td>
                         <td class="txt_alcnt"> ${list.name }</td>
