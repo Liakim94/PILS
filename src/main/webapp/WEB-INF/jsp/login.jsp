@@ -51,7 +51,7 @@
 <!-- container -->
 <div class="container" id="contents">
     <h2 class="sub-title">로그인</h2>
-    <form name="frmLogin" id="frmLogin" method="post" action="${pageContext.request.contextPath}/login.do">
+    <form name="frmLogin" id="frmLogin" method="post" action="${pageContext.request.contextPath}/main/login.do">
         <div class="login-wrap">
             <div class="login-form">
                 <ul class="n_login_list ctgr2">

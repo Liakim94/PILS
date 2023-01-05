@@ -24,6 +24,7 @@ import java.io.PrintWriter;
  *
  */
 
+@RequestMapping("/main")
 @Controller
 public class MainController {
 	@Autowired
@@ -69,7 +70,7 @@ public class MainController {
 			writer.flush();
 		}
 
-		return "redirect:/index.do";
+		return "redirect:/main/index.do";
 	}
 	@GetMapping("/logout.do")
 	public String logout(HttpServletRequest request){
@@ -77,7 +78,7 @@ public class MainController {
 		if (session != null) {
 			session.invalidate();
 		}
-		return "redirect:/index.do";
+		return "redirect:/main/index.do";
 	}
 
 }
