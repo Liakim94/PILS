@@ -34,7 +34,7 @@
     <decorator name="footer" page="/footer.do"/>
     <decorator name="menu" page="/menu.do"/>
     <decorator name="layout2" page="/WEB-INF/jsp/template/front/layout2.jsp">
-        <pattern>/index.do</pattern>
+        <pattern>/main/*</pattern>
     </decorator>
 
 </decorators>
