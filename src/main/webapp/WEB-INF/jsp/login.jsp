@@ -56,10 +56,10 @@
             <div class="login-form">
                 <ul class="n_login_list ctgr2">
                     <li class="id_bx">
-                        <input name="memId" id="memId" class="idCheck" type="text" placeholder="아이디를 입력하세요." />
+                        <input name="id" id="id" class="idCheck" type="text" placeholder="아이디를 입력하세요." />
                     </li>
                     <li class="pw_bx">
-                        <input name="memPwd" id="memPwd" class="pwCheck" type="password" placeholder="비밀번호를 입력하세요." />
+                        <input name="passwd" id="passwd" class="pwCheck" type="password" placeholder="비밀번호를 입력하세요." />
                     </li>
                 </ul>
                 <div class="login-func">

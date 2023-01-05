@@ -49,16 +49,12 @@ function setCookie(name, value, expire){
 		    <div class="header-link-item">
 
 		        <ul class="h-right">
-		        	<c:if test="${sessionScope.SEQ eq null }"> 
+		        	<c:if test="${sessionId eq null }">
 			            <li><a href="${pageContext.request.contextPath}/login.do">로그인</a></li>
 		            </c:if>
-		            <c:if test="${sessionScope.SEQ ne null }">
+		            <c:if test="${sessionId ne null }">
 						<li>
-							<a title="${sessionScope.ANAME }" style="cursor: default;">· ${sessionScope.NAME }&nbsp;${sessionScope.ANAME }(${sessionScope.ID })</a>
-						</li>					      
-
-						<li>
-							<a href="${pageContext.request.contextPath}/109" title="로그아웃">로그아웃</a>
+							<a href="${pageContext.request.contextPath}/logout.do" title="로그아웃">로그아웃</a>
 						</li>
 					</c:if>
 		        </ul>
@@ -71,7 +67,7 @@ function setCookie(name, value, expire){
         <div class="inner_ctwrap">
 			<h2>
 				<a href="${pageContext.request.contextPath}/index.do" title="납품대금 연동제">
-					<img src="${pageContext.request.contextPath}/images/main/mainLogo1.png">
+					<img src="${pageContext.request.contextPath}/images/main/mainLogo1.jpg">
 				</a>
 			</h2>
 			<img src="${pageContext.request.contextPath}/images/main/mainLogo.png">
