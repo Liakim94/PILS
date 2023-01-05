@@ -79,11 +79,11 @@
 					</td>
 					<th class="txt_alcnt" scope="row">사업자번호</th>
 					<td>
-						<input type="number" class="uni_input_text wdh100" id="bizNo1" name="bizNo1" value="${rs.bizNo1}"/>
+						<input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo1" name="bizNo1" value="${rs.bizNo1}"/>
 						-
-						<input type="number" class="uni_input_text wdh100" id="bizNo2" name="bizNo2" value="${rs.bizNo2}"/>
+						<input type="number" class="uni_input_text wdh100" style="width:50px;" id="bizNo2" name="bizNo2" value="${rs.bizNo2}"/>
 						-
-						<input type="number" class="uni_input_text wdh100" id="bizNo3" name="bizNo3" value="${rs.bizNo3}"/>
+						<input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo3" name="bizNo3" value="${rs.bizNo3}"/>
 					</td>
 				</tr>
 				<tr>
@@ -158,7 +158,7 @@
 				<tr>
 					<th class="txt_alcnt" scope="row">성명</th>
 					<td>
-						<input type="text" class="uni_input_text " name="name" id="name" value="${rs.name}" />
+						<input type="text" class="uni_input_text wdh100" name="name" id="name" value="${rs.name}" />
 					</td>
 					<th class="txt_alcnt" scope="row">전화번호</th>
 					<td>

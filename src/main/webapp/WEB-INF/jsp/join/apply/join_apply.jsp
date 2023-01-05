@@ -101,11 +101,11 @@
                     </td>
                     <th class="txt_alcnt" scope="row">사업자번호</th>
                     <td>
-                        <input type="number" class="uni_input_text wdh100" id="bizNo1" name="bizNo1"/>
+                        <input type="number" class="uni_input_text" style="width:60px;" id="bizNo1" name="bizNo1"/>
                         -
-                        <input type="number" class="uni_input_text wdh100" id="bizNo2" name="bizNo2"/>
+                        <input type="number" class="uni_input_text" style="width:50px;" id="bizNo2" name="bizNo2"/>
                         -
-                        <input type="number" class="uni_input_text wdh100" id="bizNo3" name="bizNo3"/>
+                        <input type="number" class="uni_input_text" style="width:60px;" id="bizNo3" name="bizNo3"/>
                     </td>
                 </tr>
                 <tr>
@@ -210,7 +210,7 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">성명</th>
                     <td>
-                        <input type="text" class="uni_input_text " name="name" id="name"/>
+                        <input type="text" class="uni_input_text wdh100" name="name" id="name"/>
                     </td>
                     <th class="txt_alcnt" scope="row">전화번호</th>
                     <td>
@@ -264,7 +264,7 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">사용자 ID</th>
                     <td colspan="3">
-                        <input type="text" class="uni_input_text " name="id" id="id"/>
+                        <input type="text" class="uni_input_text wdh100" name="id" id="id"/>
                     </td>
                 </tr>
                 <tr>
