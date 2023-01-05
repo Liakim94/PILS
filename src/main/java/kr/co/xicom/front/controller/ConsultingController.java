@@ -56,8 +56,6 @@ public class ConsultingController extends Alerts {
         mav.addObject("list", rs.get("resultList"));
         mav.addObject("paginationInfo", paginationInfo);
         mav.addObject("vo", cmpVO);
-
-
         return mav;
     }
 
