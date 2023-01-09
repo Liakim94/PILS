@@ -25,5 +25,10 @@ public class LoginServiceImpl implements LoginService {
         return result;
     }
 
+    @Override
+    public String memberInfo(String bizNo) throws Exception {
+        return mapper.memberInfo(bizNo);
+    }
+
 
 }

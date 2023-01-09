@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.xicom.front.service.mapper.AgreementMapper">
+
+<resultMap id="AgreementVO" type="kr.co.xicom.front.model.AgreementVO">
+    <result property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="prmy_mat" column="prmy_mat"/>
+    <result property="prmy_mat_std" column="prmy_mat_std"/>
+    <result property="std_point" column="std_point"/>
+    <result property="change_point" column="change_point"/>
+    <result property="rqrm_ust" column="rqrm_ust"/>
+    <result property="rqrm_cycl" column="rqrm_cycl"/>
+    <result property="rqrm_date" column="rqrm_date"/>
+    <result property="reflect_point" column="reflect_point"/>
+    <result property="formula" column="formula"/>
+    <result property="etc" column="etc"/>
+</resultMap>
+    <insert id="apply">
+        insert into tb_pils_cmp_agre
+            (id
+            ,name
+            ,prmy_mat
+            ,prmy_mat_std
+            ,std_point
+            ,change_point
+            ,rqrm_ust
+            ,rqrm_cycl
+            ,rqrm_date
+            ,reflect_point
+            ,formula
+            ,etc
+        ) values (
+             #{id}
+            ,#{name}
+            ,#{prmy_mat}
+            ,#{prmy_mat_std}
+            ,#{std_point}
+            ,#{change_point}
+            ,#{rqrm_ust}
+            ,#{rqrm_cycl}
+            ,#{rqrm_date}
+            ,#{reflect_point}
+            ,#{formula}
+            ,#{etc}
+        )
+    </insert>
+<select id="agreeView" resultMap="AgreementVO">
+    select id as id
+         , name as name
+         , prmy_mat as prmy_mat
+         , prmy_mat_std  as prmy_mat_std
+         , std_point as std_point
+         , change_point as change_point
+         , rqrm_ust  as rqrm_ust
+         , rqrm_cycl as rqrm_cycl
+         , rqrm_date as rqrm_date
+         , reflect_point as reflect_point
+         , formula  as formula
+         , etc as etc
+    from tb_pils_cmp_agre
+    where id = #{id}
+</select>
+</mapper>

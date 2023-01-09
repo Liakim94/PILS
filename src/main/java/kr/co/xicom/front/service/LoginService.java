@@ -6,4 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface LoginService {
     int memberLogin(CmpMemberVo memberVo) throws Exception;
+    String memberInfo(String bizNo) throws Exception;
+
+
 }

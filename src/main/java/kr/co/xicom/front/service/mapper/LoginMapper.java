@@ -6,5 +6,6 @@ import kr.co.xicom.front.model.CmpMemberVo;
 @Mapper("LoginMapper")
 public interface LoginMapper {
     int memberLogin(CmpMemberVo memberVo) throws Exception;
+    String memberInfo(String bizNo) throws Exception;
 
 }

@@ -287,15 +287,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <th colspan="4" class="txt_alcnt" scope="row">회원가입 정보</th>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">사용자 ID</th>
-                    <td colspan="3">
-                        <input type="text" class="uni_input_text wdh100" name="id" id="id"/>
-                    </td>
-                </tr>
-                <tr>
                     <th class="txt_alcnt" scope="row">비밀번호</th>
                     <td>
                         <input type="text" class="uni_input_text wdh100" name="passwd" value=""/>
