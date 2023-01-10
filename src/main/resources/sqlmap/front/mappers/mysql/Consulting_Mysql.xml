@@ -85,7 +85,6 @@
         , faxno
         , auth_cd
         , bizno
-        , user_id
         , pswd
         , join_dt)
         values ( #{name}
@@ -97,7 +96,6 @@
                , #{memFaxNo}
                , '2'
                , #{bizNo}
-               , #{id}
                , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
                , current_date)
     </insert>
@@ -336,6 +334,7 @@
           , yr_deal_scale = #{deal_scale}
           , prmy_mat      = #{material}
           , con_q         = #{conQ}
+          , product       = #{product}
         where bizno = #{bizNo}
     </update>
     <update id="updateMemJoin">

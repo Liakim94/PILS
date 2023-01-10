@@ -13,23 +13,22 @@
 
 </head>
 
-<page:applyDecorator name="menu2"/>
+<page:applyDecorator name="menu_myPage"/>
 <div class="article">
     <div class="content">
         <div class="article-header">
-            <h3>동행기업 신청</h3>
+            <h3>마이페이지</h3>
             <div class="side-wrap">
             </div>
         </div>
         <!-- 컨텐츠 start -->
         <div class="tbl-wrap separate2 mb50">
             <table class="tbl-list02">
-                <caption>동행기업 신청</caption>
+                <caption>마이페이지</caption>
                 <colgroup>
                     <col width="17%"/>
                     <col width="*"/>
                 </colgroup>
-                <input type="hidden" id="bizNo" name="bizNo" value="${rs.bizNo}"/>
 
                 <tbody>
                 <tr>
@@ -122,10 +121,8 @@
             </table>
         </div>
         <div class="btn-wrap type04">
-            <%--	    	<c:if test="${sessionScope.ID eq rs.id and empty rs.reply}">      --%>
-<%--            <a href='${pageContext.request.contextPath}/join/joinEdit.do?bizNo=${rs.bizNo}' class="btn blue">수정하기</a>--%>
-            <%--	        </c:if>	        --%>
-            <a href="${pageContext.request.contextPath}/join/joinList.do" class="btn blue">목록</a>
+            <a id ="edit" href='${pageContext.request.contextPath}/main/joinEdit.do' class="btn blue">수정하기</a>
+            <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">목록</a>
         </div>
         <!-- 컨텐츠 end -->
     </div>

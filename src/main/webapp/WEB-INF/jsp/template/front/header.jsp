@@ -54,6 +54,9 @@ function setCookie(name, value, expire){
 		            </c:if>
 		            <c:if test="${sessionId ne null }">
 						<li>
+							<a href="${pageContext.request.contextPath}/main/myPage.do" title="로그아웃">마이페이지</a>
+						</li>
+						<li>
 							<a href="${pageContext.request.contextPath}/main/logout.do" title="로그아웃">로그아웃</a>
 						</li>
 					</c:if>
@@ -89,7 +92,7 @@ function setCookie(name, value, expire){
 						<a href ="${pageContext.request.contextPath}/join/joinList.do" class="menu_depth1">납품대금연동제 동참하기</a>
 						<ul class="depth2_wrap">
 							<li><a href ="#"  class="menu_depth2">연동 절차</a></li>
-							<li><a href ="#" class="menu_depth2">약정서 작성</a></li>
+							<li><a href ="${pageContext.request.contextPath}/join/agree.do" class="menu_depth2">약정서 작성</a></li>
 							<li><a href ="${pageContext.request.contextPath}/join/joinList.do" class="menu_depth2">동행기업 신청</a></li>
 							<li><a href ="#" class="menu_depth2">기업들이 준비할 일</a></li>
 						</ul>
