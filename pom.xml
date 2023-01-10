@@ -48,6 +48,15 @@
     </repositories>
 
     <dependencies>
+
+        <dependency>
+            <groupId>kr.go.smes</groupId>
+            <artifactId>fileservice</artifactId>
+            <version>0.3.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/fileservice-0.3.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+
         <!-- 표준프레임워크 실행환경 -->
         <dependency>
             <groupId>egovframework.rte</groupId>

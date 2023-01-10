@@ -157,7 +157,8 @@ public class BoardController extends Alerts{
 			HttpServletResponse response
 			) throws Exception {
 		ModelAndView mav = null;
-		mav = new ModelAndView("communication/board/board_post");
+//		mav = new ModelAndView("communication/board/board_post");
+		mav = new ModelAndView("communication/board/post");
 
 		mav.addObject("menuNo", request.getAttribute("menuNo"));
 		mav.addObject("menuName", request.getAttribute("menuName"));
