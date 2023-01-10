@@ -168,7 +168,7 @@ public class MainController {
 			int result = consultingService.updateJoin(cmpVO, stVO);
 
 			if (result > 0) {
-				return "redirect:main/myPage.do";
+				return "redirect:myPage.do";
 			} else {
 
 				return "forward:/common/error.jsp";
@@ -176,6 +176,7 @@ public class MainController {
 		}catch (Exception e){
 			System.out.println(e.toString());
 		}
-		return "";
+		return "forward:/common/error.jsp";
+
 	}
 }
