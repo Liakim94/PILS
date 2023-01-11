@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.xicom.front.service.mapper.MainMapper">
+    <resultMap id="CmpMemberVo" type="kr.co.xicom.front.model.CmpMemberVo">
+        <result property="bizNo" column="bizNo"/>
+        <result property="mem_cd" column="mem_cd"/>
+        <result property="cmpNm" column="cmpNm"/>
+        <result property="fdate" column="fdate"/>
+        <result property="ceo" column="ceo"/>
+        <result property="address" column="address"/>
+        <result property="address_dtl" column="address_dtl"/>
+        <result property="telNo" column="telNo"/>
+        <result property="faxNo" column="faxNo"/>
+        <result property="bizType" column="bizType"/>
+        <result property="capital" column="capital"/>
+        <result property="product" column="product"/>
+        <result property="conQ" column="conQ"/>
+        <result property="deal_type" column="deal_type"/>
+        <result property="deal_scale" column="deal_scale"/>
+        <result property="material" column="material"/>
+        <result property="appdate" column="appdate"/>
+        <result property="name" column="name"/>
+        <result property="deptNm" column="deptNm"/>
+        <result property="position" column="position"/>
+        <result property="mbphno" column="mbphno"/>
+        <result property="email" column="email"/>
+        <result property="memTelNo" column="memTelNo"/>
+        <result property="memFaxNo" column="memFaxNo"/>
+    </resultMap>
+
+    <select id="memberLogin" resultType="int">
+        select case
+                   when inPass = pswd then 1
+                   else 0 end as rslt
+        from (select encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex') as inPass
+                   , pswd
+              from tb_pils_mbr tpm
+              where user_id = #{id}
+             ) a;
+    </select>
+    <select id="memberBizno" resultType="String">
+        select bizno as bizNo
+        from tb_pils_mbr tpm
+        where user_id = #{id}
+    </select>
+    <select id="memManage" resultMap="CmpMemberVo">
+        select user_id   as id
+             , nm        as name
+             , manage_cd as management_cd
+        from tb_pils_mbr tpm
+        where bizno = #{bizNo}
+        order by join_dt asc
+    </select>
+    <insert id="memAdd">
+        insert into tb_pils_mbr
+        ( nm
+        , mbphno
+        , psitn_dept_nm
+        , pstn
+        , email_addr
+        , telno
+        , faxno
+        , auth_cd
+        , bizno
+        , user_id
+        , pswd
+        , join_dt
+        , manage_cd)
+        values ( #{name}
+               , #{mbphno}
+               , #{deptNm}
+               , #{position}
+               , #{email}
+               , #{memTelNo}
+               , #{memFaxNo}
+               , 'M102'
+               , #{bizNo}
+               , #{id}
+               , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+               , current_date
+               , #{management_cd})
+    </insert>
+    <select id="getMemInfo" resultMap="CmpMemberVo">
+        select cmp_nm        as cmpNm
+             , bizno         as bizNo
+             , cmp_mbr_cd    as mem_cd
+             , ceo           as ceo
+             , fdate         as fdate
+             , addr          as address
+             , addr_dtl      as address_dtl
+             , telno         as telNo
+             , faxno         as faxno
+             , biz_ty        as bizType
+             , capl          as capital
+             , deal_ty       as deal_type
+             , yr_deal_scale as deal_scale
+             , prmy_mat      as material
+             , con_q         as conQ
+             , product       as product
+        from tb_pils_cmpmbr
+        where cmp_mbr_cd = #{mem_cd}
+          and bizno = #{bizNo}
+    </select>
+    <select id="memEdit" resultMap="CmpMemberVo">
+        select nm            as name
+             , mbphno        as mbphno
+             , psitn_dept_nm as deptNm
+             , pstn          as position
+             , email_addr    as email
+             , telno         as memTelNo
+             , faxno         as memFaxNo
+             , user_id       as id
+        from tb_pils_mbr
+        where bizno = #{bizNo}
+          and user_id =#{id}
+    </select>
+    <update id="updateMem">
+        update tb_pils_mbr
+        set nm            = #{name}
+          , mbphno        = #{mbphno}
+          , psitn_dept_nm = #{deptNm}
+          , pstn          = #{position}
+          , email_addr    = #{email}
+          , telno         = #{memTelNo}
+          , faxno         = #{memFaxNo}
+          , upd_dt        = current_date
+        where bizno = #{bizNo}
+          and user_id = #{id}
+    </update>
+    <update id="changePw">
+        update tb_pils_mbr
+        set pswd = encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+        where user_id = #{id}
+    </update>
+</mapper>

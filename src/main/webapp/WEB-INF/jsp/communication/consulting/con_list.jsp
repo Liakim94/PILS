@@ -127,6 +127,17 @@
                     success: function (data) {
                         if (data == "1") {
                             location.href = "${pageContext.request.contextPath}/cmm/conView.do?bizNo="+ $("#hiddenNo").val()
+                            <%--var form = document.createElement('form'); // 폼객체 생성--%>
+                            <%--var objs;--%>
+                            <%--objs = document.createElement('input'); // 값이 들어있는 녀석의 형식--%>
+                            <%--objs.setAttribute('type', 'text'); // 값이 들어있는 녀석의 type--%>
+                            <%--objs.setAttribute('name', 'bizNo'); // 객체이름--%>
+                            <%--objs.setAttribute('value', $("#hiddenNo").val()); //객체값--%>
+                            <%--form.appendChild(objs);--%>
+                            <%--form.setAttribute('method', 'post'); //get,post 가능--%>
+                            <%--form.setAttribute('action', "${pageContext.request.contextPath}/cmm/conView.do"); //보내는 url--%>
+                            <%--document.body.appendChild(form);--%>
+                            <%--form.submit();--%>
                         } else {
                             alert("비밀번호를 확인해주세요.")
                         }
@@ -138,6 +149,40 @@
             } catch (e) {
                 alert(e);
             }
+            <%--new Promise( (succ, fail)=>{--%>
+
+            <%--    $.ajax({--%>
+            <%--        url: "${pageContext.request.contextPath}/cmm/conChkPw.do",--%>
+            <%--        type: "POST",--%>
+            <%--        data: "bizNo=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),--%>
+            <%--        success: function(result) {--%>
+            <%--            succ(result);--%>
+            <%--            console.log(result); // 성공하면--%>
+            <%--        },--%>
+            <%--        fail: function(result) {--%>
+            <%--            fail(error);--%>
+            <%--            alert("비밀번호를 확인해주세요."); // 실패하면--%>
+            <%--        }--%>
+            <%--    });--%>
+
+            <%--}).then((arg) =>{    // 두번째 ajax를 실행한다.--%>
+
+            <%--    $.ajax({--%>
+            <%--        url: "${pageContext.request.contextPath}/cmm/conView.do",--%>
+            <%--        type: 'post',--%>
+            <%--        data: "bizNo=" + $("#hiddenNo").val(),--%>
+            <%--        success: function(result2) {--%>
+            <%--            succ(result2);--%>
+            <%--            console.log(result2); // 성공하면--%>
+            <%--        },--%>
+            <%--        fail: function(result2) {--%>
+            <%--            fail(error);--%>
+            <%--            console.log(result.responseText); // 실패하면--%>
+            <%--        }--%>
+
+            <%--    });--%>
+
+            <%--});--%>
         })
     });
 function modalData(num){
