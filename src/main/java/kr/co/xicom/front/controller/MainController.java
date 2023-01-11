@@ -188,7 +188,7 @@ public class MainController {
         try {
             List<CmpMemberVo> result = mainService.memManage(cmpVO);
             if (result == null) {
-                ModelAndView error = new ModelAndView("common/error");
+                ModelAndView error = new ModelAndView("common/error.jsp");
                 return error;
             }
             mav.addObject("rs", result);

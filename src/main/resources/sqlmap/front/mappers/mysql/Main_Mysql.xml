@@ -44,9 +44,12 @@
         where user_id = #{id}
     </select>
     <select id="memManage" resultMap="CmpMemberVo">
-        select user_id   as id
-             , nm        as name
-             , manage_cd as management_cd
+        select user_id       as id
+             , nm            as name
+             , manage_cd     as management_cd
+             , mbphno        as mbphno
+             , psitn_dept_nm as deptNm
+             , pstn          as position
         from tb_pils_mbr tpm
         where bizno = #{bizNo}
         order by join_dt asc
@@ -105,7 +108,7 @@
         select nm            as name
              , mbphno        as mbphno
              , psitn_dept_nm as deptNm
-             , pstn          as position
+             , pstn as position
              , email_addr    as email
              , telno         as memTelNo
              , faxno         as memFaxNo
