@@ -1,13 +1,13 @@
 package kr.co.xicom.front.model;
 
-public class BbsQnaVO extends DefaultVO{
+public class QnaVO extends DefaultVO{
 	
 	private int no = 0;
 	private int headnum = 0;
 	private int arrangenum =0;
 	private int depth =0;
 	private String id ="";
-	private String passwd ="";
+	private String passwd="";
 	private String name ="";
 	private String title ="";
 	private String body ="";

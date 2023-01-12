@@ -52,17 +52,15 @@ function linkPage(num){
 				<table class="tbl-list01">
 					<caption>공지사항 : 번호, 제목, 작성자, 작성일, 조회수</caption>
 					<colgroup>
-						<col width="10%" />
-						<col width="50%" />
 						<col width="12%" />
-						<col width="14%" />
-						<col width="14%" />
+						<col width="52%" />
+						<col width="18%" />
+						<col width="18%" />
 					</colgroup>
 					<thead>
 					<tr>
 						<th scope="col">번호</th>
 						<th scope="col">제목</th>
-						<th scope="col">작성자</th>
 						<th scope="col">작성일</th>
 						<th scope="col">조회수</th>
 					</tr>
@@ -72,7 +70,6 @@ function linkPage(num){
 						<tr>
 							<td>${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
 							<td class="al"><a href="javascript:showView('${list.boardSeq}')" >${list.title }</a></td>
-							<td>${list.regNm }</td>
 							<td>${fn:substring(list.regDe,0,10) }</td>
 							<td>${list.readCnt }</td>
 						</tr>

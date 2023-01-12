@@ -344,4 +344,14 @@
           , updt          = current_timestamp
         where bizno = #{bizNo}
     </update>
+    <select id="conCheck" resultType="int">
+        select case
+                   when inPass = pswd then 1
+                   else 0 end as rslt
+        from (select encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex') as inPass
+                   , pswd
+              from tb_pils_mbr
+              where bizno = #{bizNo}
+             ) a;
+    </select>
 </mapper>

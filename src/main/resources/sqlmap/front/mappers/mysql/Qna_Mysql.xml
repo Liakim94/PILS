@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.xicom.front.service.mapper.CoworkBbsQnaMapper">
+<mapper namespace="kr.co.xicom.front.service.mapper.QnaMapper">
 
     <resultMap type="bbsQna"                                id="bbsQna">
         <result property="no"                               column="no"/>
@@ -134,4 +134,7 @@
         )
 
     </update>
+    <delete id="qnaDelete">
+        delete from tb_banner_qust_answr where no=  #{no}
+    </delete>
 </mapper>

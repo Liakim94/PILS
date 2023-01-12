@@ -104,7 +104,8 @@ function setCookie(name, value, expire){
 								<li><a href ="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=7"  class="menu_depth2">자주 묻는 질문</a></li>
 								<li><a href ="${pageContext.request.contextPath}/cmm/qnaList.do"  class="menu_depth2">질의응답 게시판</a></li>
 								<li><a href ="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=9"  class="menu_depth2">자료실</a></li>
-								<li><a href ="${pageContext.request.contextPath}/cmm/consulting.do" class="menu_depth2">컨설팅 신청</a></li>
+								<li><a href ="${pageContext.request.contextPath}/cmm/conApply.do" class="menu_depth2">컨설팅 신청</a></li>
+								<li><a href ="${pageContext.request.contextPath}/cmm/conCheck.do" class="menu_depth2">컨설팅 신청 확인</a></li>
 							</ul>
 					</li>
 				</ul>

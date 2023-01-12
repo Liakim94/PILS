@@ -180,27 +180,18 @@ public class BoardController extends Alerts{
 	
 	/**
 	 * 게시물 등록 처리
-	 * 
-	 * @param
-	 * @return
-	 * @exception BusinessLogicException
 	 */
 	@RequestMapping(value = "/boardPost.do", method={RequestMethod.POST})
 	public String doBoardPost(
 			ModelMap model, 
 			@ModelAttribute("BoardVO") BoardVO boardVO,
-			@ModelAttribute("AttachVO") AttachVO attchVO,
-			HttpServletRequest request, 
-			HttpServletResponse response,
-			HttpSession session
+			@ModelAttribute("AttachVO") AttachVO attchVO
 			) throws Exception {
-		
-		//HttpSession session = request.getSession();
 
 		int result = boardService.add(boardVO,attchVO);
 		if(result > 0){
 			if(boardVO.getStat().equals("1")){
-				return "redirect:boardList.do?bbsId="+boardVO.getBbsId();
+				return "redirect:boardView.do?no="+boardVO.getBoardSeq()+"&bbsId="+boardVO.getBbsId();
 			}else{
 				return "redirect:boardEdit.do?no="+boardVO.getBbsId();
 			}
@@ -212,10 +203,6 @@ public class BoardController extends Alerts{
 	
 	/**
 	 * 게시물 수정
-	 * 
-	 * @param
-	 * @return
-	 * @exception BusinessLogicException
 	 */
 	@RequestMapping(value = "/boardEdit.do", method={RequestMethod.GET})
 	public ModelAndView boardEdit(
@@ -247,7 +234,7 @@ public class BoardController extends Alerts{
 	}
 	
 	/**
-	 * 게시물 수정 처리
+	 * 게시물 수정 처리(삭제)
 	 * 
 	 * @param
 	 * @return

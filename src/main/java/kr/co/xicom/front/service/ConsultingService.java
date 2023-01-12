@@ -1,6 +1,5 @@
 package kr.co.xicom.front.service;
 
-import kr.co.xicom.front.model.BbsQnaVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ public interface ConsultingService {
     CmpMemberVo getViewByBizNo(CmpMemberVo vo) throws Exception;
     int update(CmpMemberVo vo,CmpSttusVO stVO) throws Exception;
     int insertJoinApply(CmpMemberVo vo,CmpSttusVO stVO) throws Exception;
-
+    int conCheck(CmpMemberVo vo) throws Exception;
     //동행기업 수정
     int updateJoin(CmpMemberVo vo, CmpSttusVO stVO) throws Exception;
 

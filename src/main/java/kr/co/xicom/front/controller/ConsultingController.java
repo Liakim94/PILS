@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import kr.co.xicom.util.Alerts;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,19 +26,19 @@ public class ConsultingController extends Alerts {
     private ConsultingService service;
 
     //컨설팅 신청 리스트
-    @GetMapping(value="/consulting.do")
+    @GetMapping(value = "/consulting.do")
     public ModelAndView list(ModelMap model,
                              @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                              HttpSession session,
                              HttpServletRequest request,
-                             HttpServletResponse response)throws Exception{
+                             HttpServletResponse response) throws Exception {
 
         ModelAndView mav = new ModelAndView("communication/consulting/con_list");
 
         /*페이징 초기설정*/
         PaginationInfo paginationInfo = new PaginationInfo();
-        paginationInfo.setCurrentPageNo(cmpVO.getPageIndex());	// 현재페이지
-        paginationInfo.setRecordCountPerPage(15);					// 한 페이지당 게시물갯수
+        paginationInfo.setCurrentPageNo(cmpVO.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
         paginationInfo.setPageSize(cmpVO.getPageSize());
 
         cmpVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
@@ -60,36 +61,36 @@ public class ConsultingController extends Alerts {
     }
 
     //컨설팅 신청 화면
-    @GetMapping(value="/conApply.do")
+    @GetMapping(value = "/conApply.do")
     public ModelAndView apply(HttpSession session,
-                             HttpServletRequest request,
-                             HttpServletResponse response)throws Exception {
+                              HttpServletRequest request,
+                              HttpServletResponse response) throws Exception {
 
         ModelAndView mav = new ModelAndView("communication/consulting/con_apply");
         return mav;
     }
 
-    @RequestMapping(value="/conApply.do",  method={RequestMethod.POST})
+    @RequestMapping(value = "/conApply.do", method = {RequestMethod.POST})
     public void doApply(ModelMap model,
-                       @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
-                        @ModelAttribute("CmpSttusVO")CmpSttusVO stVO,
-                       HttpServletRequest request, HttpSession session,
-                       HttpServletResponse response)throws Exception{
+                        @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+                        @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
+                        HttpServletRequest request, HttpSession session,
+                        HttpServletResponse response) throws Exception {
 
         try {
-            String bizNo=cmpVO.getBizNo1()+cmpVO.getBizNo2()+cmpVO.getBizNo3();
+            String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
             cmpVO.setBizNo(bizNo);
-            String email=cmpVO.getEmail1()+'@'+cmpVO.getEmail2();
+            String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
             cmpVO.setEmail(email);
             cmpVO.setMem_cd("M301");
             stVO.setBizNo(bizNo);
             cmpVO.setId(session.getId());
-            int result = service.insertConsulting(cmpVO,stVO);
-            if(result > 0){
+            int result = service.insertConsulting(cmpVO, stVO);
+            if (result > 0) {
 
-                response.sendRedirect(request.getContextPath()+"/cmm/consulting.do");
+                response.sendRedirect(request.getContextPath() + "/cmm/conView.do");
 
-            }else{
+            } else {
                 PrintWriter writer = response.getWriter();
 
                 response.setContentType("text/html; charset=UTF-8;");
@@ -105,20 +106,20 @@ public class ConsultingController extends Alerts {
         }
     }
 
-   //비밀번호 확인
+    //비밀번호 확인
     @ResponseBody
-    @RequestMapping(value="/conChkPw.do", method={RequestMethod.POST})
+    @RequestMapping(value = "/conChkPw.do", method = {RequestMethod.POST})
     public String chkPasswd(ModelMap model,
-                            @RequestParam(value="bizNo") String bizNo,
-                            @RequestParam(value ="passwd") String passwd,
-                            @ModelAttribute("CmpMemberVo")CmpMemberVo cmpVO,
+                            @RequestParam(value = "bizNo") String bizNo,
+                            @RequestParam(value = "passwd") String passwd,
+                            @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                             HttpServletRequest request,
-                            HttpServletResponse response)throws Exception {
+                            HttpServletResponse response) throws Exception {
 
         cmpVO.setBizNo(bizNo);
         cmpVO.setPasswd(passwd);
 
-        int result =0;
+        int result = 0;
         try {
             result = service.conChkPw(cmpVO);
         } catch (Exception e) {
@@ -132,60 +133,61 @@ public class ConsultingController extends Alerts {
 
         }
     }
+
     //신청 상세 화면
-    @GetMapping(value="/conView.do")
+    @GetMapping(value = "/conView.do")
     public ModelAndView conView(ModelMap model,
-                             @ModelAttribute("CmpMemberVo")CmpMemberVo cmpVO,
-                             @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
-                             @RequestParam(value="bizNo") String bizNo,
-                             HttpServletRequest request,
-                             HttpServletResponse response)throws Exception{
+                                @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+                                @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
+                                @RequestParam(value = "bizNo") String bizNo,
+                                HttpServletRequest request,
+                                HttpServletResponse response) throws Exception {
 
         ModelAndView mav = new ModelAndView("communication/consulting/con_view");
 
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M301");
         try {
-            List<CmpSttusVO>  sttus = service.getCmpSttus(stVO);
+            List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
 
             CmpMemberVo rs = service.getViewByBizNo(cmpVO);
-            rs.setBizNo1(rs.getBizNo().substring(0,3));
-            rs.setBizNo2(rs.getBizNo().substring(3,5));
-            rs.setBizNo3(rs.getBizNo().substring(5,10));
-            if(rs == null){
+            rs.setBizNo1(rs.getBizNo().substring(0, 3));
+            rs.setBizNo2(rs.getBizNo().substring(3, 5));
+            rs.setBizNo3(rs.getBizNo().substring(5, 10));
+            if (rs == null) {
                 writeAlert("비정상적인 접근입니다.", request, response);
             }
             mav.addObject("rs", rs);
-            mav.addObject("st",sttus);
+            mav.addObject("st", sttus);
 
-        }  catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
         return mav;
     }
 
-    @RequestMapping(value="/conView.do",method = {RequestMethod.POST})
+    @RequestMapping(value = "/conView.do", method = {RequestMethod.POST})
     public String conView(ModelMap model,
-                             @ModelAttribute("CmpMemberVo")CmpMemberVo cmpVO,
-                             @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
-                             HttpServletRequest request,
-                             HttpServletResponse response)throws Exception{
+                          @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+                          @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
+                          HttpServletRequest request,
+                          HttpServletResponse response) throws Exception {
 
         cmpVO.setMem_cd("M301");
         try {
-            List<CmpSttusVO>  sttus = service.getCmpSttus(stVO);
+            List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
 
             CmpMemberVo rs = service.getViewByBizNo(cmpVO);
-            rs.setBizNo1(rs.getBizNo().substring(0,3));
-            rs.setBizNo2(rs.getBizNo().substring(3,5));
-            rs.setBizNo3(rs.getBizNo().substring(5,10));
-            if(rs == null){
+            rs.setBizNo1(rs.getBizNo().substring(0, 3));
+            rs.setBizNo2(rs.getBizNo().substring(3, 5));
+            rs.setBizNo3(rs.getBizNo().substring(5, 10));
+            if (rs == null) {
                 writeAlert("비정상적인 접근입니다.", request, response);
             }
             model.addAttribute("rs", rs);
-            model.addAttribute("st",sttus);
+            model.addAttribute("st", sttus);
 
-        }  catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
         return "redirect:/communication/consulting/con_view.jsp";
@@ -193,12 +195,12 @@ public class ConsultingController extends Alerts {
 
 
     //수정 화면
-    @RequestMapping(value = "/conEdit.do", method={RequestMethod.GET})
+    @RequestMapping(value = "/conEdit.do", method = {RequestMethod.GET})
     public ModelAndView conEdit(
             ModelMap model,
             @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
             @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
-            @RequestParam(value="bizNo") String bizNo,
+            @RequestParam(value = "bizNo") String bizNo,
             HttpServletRequest request,
             HttpServletResponse response
     ) throws Exception {
@@ -209,27 +211,27 @@ public class ConsultingController extends Alerts {
         try {
             List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
             CmpMemberVo rs = service.getViewByBizNo(cmpVO);
-            rs.setBizNo1(rs.getBizNo().substring(0,3));
-            rs.setBizNo2(rs.getBizNo().substring(3,5));
-            rs.setBizNo3(rs.getBizNo().substring(5,10));
-            String[] email=rs.getEmail().split("@");
+            rs.setBizNo1(rs.getBizNo().substring(0, 3));
+            rs.setBizNo2(rs.getBizNo().substring(3, 5));
+            rs.setBizNo3(rs.getBizNo().substring(5, 10));
+            String[] email = rs.getEmail().split("@");
             rs.setEmail1(email[0]);
             rs.setEmail2(email[1]);
-            if(rs == null){
+            if (rs == null) {
                 writeAlert("비정상적인 접근입니다.", request, response);
             }
 
             mav.addObject("rs", rs);
-            mav.addObject("st",sttus);
+            mav.addObject("st", sttus);
 
-        }  catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
         return mav;
     }
 
-   //수정 처리
-    @RequestMapping(value = "/conEdit.do", method={RequestMethod.POST})
+    //수정 처리
+    @RequestMapping(value = "/conEdit.do", method = {RequestMethod.POST})
     public String doConEdit(
             ModelMap model,
             @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
@@ -248,14 +250,41 @@ public class ConsultingController extends Alerts {
             int result = service.update(cmpVO, stVO);
 
             if (result > 0) {
-                return "redirect:conView.do?bizNo="+cmpVO.getBizNo();
+                return "redirect:conView.do?bizNo=" + cmpVO.getBizNo();
             } else {
 
                 return "forward:/common/error.jsp";
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
         return "";
     }
+
+    @GetMapping("/conCheck")
+    public ModelAndView conCheck() {
+        ModelAndView mav = new ModelAndView("communication/consulting/con_check");
+        return mav;
+    }
+
+    @PostMapping("/conCheck")
+    public void doConCheck(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
+                            ,HttpServletResponse response, HttpServletRequest request) throws Exception {
+        String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
+        cmpVO.setBizNo(bizNo);
+        int result = service.conCheck(cmpVO);
+        if (result > 0) {
+            response.sendRedirect(request.getContextPath() + "/cmm/conView.do");
+        }
+        PrintWriter writer = response.getWriter();
+
+        response.setContentType("text/html; charset=UTF-8;");
+        request.setCharacterEncoding("utf-8");
+        writer.println("<script type='text/javascript'>");
+        writer.println("alert('비밀번호를 확인해주세요.');");
+        writer.println("history.back();");
+        writer.println("</script>");
+        writer.flush();
+    }
+
 }

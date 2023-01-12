@@ -93,6 +93,11 @@ public class ConsultingServiceImpl implements ConsultingService {
         return 0;
     }
 
+    @Override
+    public int conCheck(CmpMemberVo vo) throws Exception {
+        return mapper.conCheck(vo);
+    }
+
     //동행기업 신청
     @Override
     public int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO) throws Exception {
@@ -116,6 +121,7 @@ public class ConsultingServiceImpl implements ConsultingService {
         }
         return 0;
     }
+
     //동행기업 수정
     @Override
     public int updateJoin(CmpMemberVo vo, CmpSttusVO stVO) throws Exception{

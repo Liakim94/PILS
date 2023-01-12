@@ -12,47 +12,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
 
 </head>
-<script>
-
-$(function(){
-
-	$("#frmWrite").validate({
-		ignore: "",   
-	    rules: {
-	    	name:{required:true},
-	    	passwd:{required:true},
-	    	title:{required:true},
-	    	body:{required:true}
-	    },
-	    onkeyup:false,
-	    onclick:false,
-	    onfocusout:false,   
-	    messages: {
-	     	name:{required:"이름을 입력하세요."},
-	    	passwd:{required:"비밀번호를 입력하세요."},
-	    	title:{required:"제목을 입력하세요."},
-	    	body:{required:"내용을 입력하세요."}
-	    },        
-	    submitHandler: function (frm) {
-
-	    	frm.submit();
-	    	
-	    },
-	    showErrors:function(errorMap, errorList){
-			if(!$.isEmptyObject(errorList)){
-		       	$.each(errorList, function() {
-	            	alert(this.message); //summary += " * " + this.message + "<br>" ;
-	            	return false;
-	        	});
-			}
-		}
-	});
-	
-	
-	
-});
-
-</script>
 
 <page:applyDecorator name="menu" />
 <div class="article">	
@@ -95,6 +54,7 @@ $(function(){
 			<c:if test="${sessionId eq 'admin' }">
 	        <a href='${pageContext.request.contextPath}/cmm/qnaRepost.do?no=${rs.no}' class="btn blue">답변달기</a>
 	        </c:if>
+	        <a href="${pageContext.request.contextPath}/cmm/qnaDelete.do?no=${rs.no}" class="btn blue">삭제</a>
 	        <a href="${pageContext.request.contextPath}/cmm/qnaList.do" class="btn blue">목록</a>
 	    </div>
 	    <!-- 컨텐츠 end -->
