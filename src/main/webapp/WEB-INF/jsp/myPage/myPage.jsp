@@ -87,30 +87,6 @@
                     <th class="txt_alcnt" scope="row">주요생산품</th>
                     <td colspan="3">${rs.product}</td>
                 </tr>
-
-                <th colspan="4" class="txt_alcnt" scope="row">담당자</th>
-                <tr>
-                    <th class="txt_alcnt" scope="row">성명</th>
-                    <td>${rs.name}</td>
-                    <th class="txt_alcnt" scope="row">전화번호</th>
-                    <td>${rs.mbphno}</td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">소속부서</th>
-                    <td>${rs.deptNm}</td>
-                    <th class="txt_alcnt" scope="row">직위</th>
-                    <td>${rs.position}</td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">이메일</th>
-                    <td colspan="3">${rs.email}</td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">사무실 전화</th>
-                    <td>${rs.memTelNo}</td>
-                    <th class="txt_alcnt" scope="row">팩스</th>
-                    <td>${rs.memFaxNo}</td>
-                </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">첨부서류</th>
                     <td colspan="3">

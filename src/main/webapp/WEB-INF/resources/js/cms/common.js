@@ -928,8 +928,6 @@ function getMediaList(){
 				});
 				
 			}
-			
-			
 		},
 		error : function(request,status,error){			
 		}

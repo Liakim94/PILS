@@ -85,6 +85,7 @@
         , faxno
         , auth_cd
         , bizno
+        , user_id
         , pswd
         , join_dt)
         values ( #{name}
@@ -94,8 +95,9 @@
                , #{email}
                , #{memTelNo}
                , #{memFaxNo}
-               , '2'
+               , 'M102'
                , #{bizNo}
+               , #{id}
                , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
                , current_date)
     </insert>
@@ -219,6 +221,7 @@
           , prmy_mat      = #{material}
           , con_q         = #{conQ}
           , product       = #{product}
+          , updt          = current_timestamp
         where bizno = #{bizNo}
     </update>
     <update id="memUpdate">
@@ -230,6 +233,7 @@
           , email_addr    = #{email}
           , telno         = #{memTelNo}
           , faxno         = #{memFaxNo}
+          , upd_dt        = current_date
         where bizno = #{bizNo}
     </update>
     <update id="updateCmpSttus">
@@ -304,7 +308,8 @@
         , bizno
         , user_id
         , pswd
-        , join_dt)
+        , join_dt
+        , manage_cd)
         values ( #{name}
                , #{mbphno}
                , #{deptNm}
@@ -312,11 +317,12 @@
                , #{email}
                , #{memTelNo}
                , #{memFaxNo}
-               , '2'
+               , 'M102'
                , #{bizNo}
                , #{id}
                , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
-               , current_date)
+               , current_date
+               , #{management_cd})
     </insert>
     <update id="updateJoin">
         update tb_pils_cmpmbr
@@ -335,17 +341,7 @@
           , prmy_mat      = #{material}
           , con_q         = #{conQ}
           , product       = #{product}
-        where bizno = #{bizNo}
-    </update>
-    <update id="updateMemJoin">
-        update tb_pils_mbr
-        set nm            = #{name}
-          , mbphno        = #{mbphno}
-          , psitn_dept_nm = #{deptNm}
-          , pstn          = #{position}
-          , email_addr    = #{email}
-          , telno         = #{memTelNo}
-          , faxno         = #{memFaxNo}
+          , updt          = current_timestamp
         where bizno = #{bizNo}
     </update>
 </mapper>

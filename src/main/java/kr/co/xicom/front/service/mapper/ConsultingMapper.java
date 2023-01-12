@@ -27,7 +27,6 @@ public interface ConsultingMapper {
     int insertJoin(CmpMemberVo vo) throws Exception;
     int insertMemberJoin(CmpMemberVo vo) throws Exception;
     //동행기업 수정
-    int updateMemJoin(CmpMemberVo vo) throws Exception;
     int updateJoin(CmpMemberVo vo) throws Exception;
     int updateCmpSttus (CmpSttusVO vo) throws Exception;
 

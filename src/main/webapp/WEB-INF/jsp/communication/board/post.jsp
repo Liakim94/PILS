@@ -18,9 +18,10 @@ var uploadPath = "<%=uploadPath%>";
 <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath }/js/cms/popup/dropzone.js"></script>
 <script src="${pageContext.request.contextPath }/js/cms/popup/post.js"></script>
+	<script src="${pageContext.request.contextPath }/js/cms/common.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script>
 var oEditors = [];
 Dropzone.autoDiscover = false;
@@ -30,6 +31,7 @@ var totalCount = 0;
 var uploadedSize = 0;
 var uploadingSize = 0;
 var uploadedCount = 0;
+
 $(function(){
 	
 	nhn.husky.EZCreator.createInIFrame({	
@@ -47,7 +49,7 @@ $(function(){
 	//var previewNode = $("#template");
 	//var previewTemplate = $(previewNode).html();
 	myDropzone = new Dropzone("#file_upload", {
-		url : pageContext+"/cms/media/upload.do",
+		url : pageContext+"/cmm/media/upload.do",
 		paramName: "file",
 		thumbnailWidth:80,
 		thumbnailHeight:80,
@@ -64,6 +66,7 @@ $(function(){
 		previewsContainer: "#previews"//, // Define the container to display the previews
 		//clickable: ".fileinput-button"
 	});
+
 	
 	myDropzone.on("addedfile", function(file) {
 	  // Hookup the start button

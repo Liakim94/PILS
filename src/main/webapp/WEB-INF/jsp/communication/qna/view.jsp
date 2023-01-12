@@ -13,8 +13,9 @@
 
 </head>
 <script>
-$(function(){                 
-	
+
+$(function(){
+
 	$("#frmWrite").validate({
 		ignore: "",   
 	    rules: {

@@ -1,13 +1,19 @@
 package kr.co.xicom.front.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kr.co.xicom.file.FileProcess;
+import kr.co.xicom.front.service.MediaService;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,10 +32,13 @@ import kr.co.xicom.util.Alerts;
 @RequestMapping("/cmm")
 @Controller
 public class BoardController extends Alerts{
-
+	public static String admSeq	= "1";
 	@Autowired
 	private BoardService boardService;
-	
+	@Autowired
+	private FileProcess fileProcess;
+	@Autowired
+	private MediaService mediaService;
 
 	/**
 	 * 게시판 목록
@@ -157,8 +166,8 @@ public class BoardController extends Alerts{
 			HttpServletResponse response
 			) throws Exception {
 		ModelAndView mav = null;
-//		mav = new ModelAndView("communication/board/board_post");
-		mav = new ModelAndView("communication/board/post");
+		mav = new ModelAndView("communication/board/board_post");
+//		mav = new ModelAndView("communication/board/post");
 
 		mav.addObject("menuNo", request.getAttribute("menuNo"));
 		mav.addObject("menuName", request.getAttribute("menuName"));
@@ -309,6 +318,81 @@ public class BoardController extends Alerts{
 		}
 		
 	}
-	
-	
+	/**
+	 * dropzone 파일업로드
+	 * @param
+	 * @return
+	 * @exception Exception 예외 전파
+	 */
+	@RequestMapping(value="/media/upload.do", method=RequestMethod.POST)
+	public String upload(ModelMap model,
+						 @ModelAttribute("AttachVO") AttachVO attachVO,
+						 HttpServletRequest request,
+						 HttpServletResponse response,
+						 HttpSession session
+	) throws Exception{
+
+		model.clear();
+		String folderPath = "media";
+		//System.out.println("넘어온값"+attachVO);
+		//System.out.println("start==============/media/upload.do====================="+attachVO.getFile().length+","+attachVO.getFile()[0].getOriginalFilename());
+		// 이상진 수정 2020-12-16
+		// FileController to FileProcess
+		//FileController fm = new FileController();
+		Map<String, String> map = new HashMap<String, String>();
+		if(attachVO.getFile() != null){
+			for(int i = 0; i < attachVO.getFile().length; i++){
+				if(!attachVO.getFile()[i].isEmpty() && attachVO.getFile()[i].getSize() > 0){
+					BufferedImage bi = null;
+//					String rootPath = "";
+//					String uploadPath = "";
+					String subType = "";
+					String subTypeMin[] = null;
+
+					// 이상진 수정 2020-12-16
+					// FileController to FileProcess
+					//rootPath = EgovWebUtil.nvl(propertiesService.getString("rootPath").toString().trim()).equals("")?request.getSession().getServletContext().getRealPath("/"):propertiesService.getString("rootPath").toString();
+					//uploadPath = EgovWebUtil.nvl(propertiesService.getString("uploadPath").toString().trim()).equals("")?"upload":propertiesService.getString("uploadPath").toString();
+					//AttachVO files = fm.upload(attachVO.getFile()[i], rootPath, uploadPath, folderPath, request);
+					AttachVO files = fileProcess.upload(attachVO.getFile()[i], folderPath);
+
+					map.put("originalFilename", files.getFileNm());
+					map.put("filename", files.getSvFileNm());
+					map.put("filesize", String.valueOf(files.getFileSz()));
+					//map.put("folderpath", files.getFolderPath());
+					map.put("filepath", files.getFilePath());
+					map.put("fileext", files.getFileExt());
+					map.put("filetype", files.getFileMime());
+
+					subType = files.getFileMime();
+
+					subTypeMin = subType.split("/");
+					if(subTypeMin[0].equals("image")) {
+						try{
+							File file = new File("/upload/" +files.getFilePath()+"/", FilenameUtils.getName("/upload/" +files.getFilePath()+"/"+files.getSvFileNm()));
+							bi = ImageIO.read(file);
+							files.setFileMeta(String.valueOf(bi.getWidth())+"x"+String.valueOf(bi.getHeight()));
+						}catch(Exception e) {
+							logger.error("FILE UPLOAD ERROR");
+						}
+					}
+
+					if(session.getAttribute("ADMSEQ") != null) admSeq = session.getAttribute("ADMSEQ").toString();
+
+					files.setRegSeq(Integer.parseInt(admSeq));
+					files.setUpdSeq(Integer.parseInt(admSeq));
+
+
+					int result = 0;
+					result = mediaService.add(files);
+					map.put("mdaseq", String.valueOf(files.getAttchSeq()));
+				}
+			}
+		}
+		//System.out.println("end===================================");
+		model.addAttribute("response", map);
+		return "jsonView";
+	}
+
+
 }

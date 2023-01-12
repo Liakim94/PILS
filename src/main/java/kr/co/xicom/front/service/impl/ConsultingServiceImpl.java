@@ -11,6 +11,7 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -124,11 +125,10 @@ public class ConsultingServiceImpl implements ConsultingService {
         TransactionStatus status = transactionManager.getTransaction(def);
 
         try{
-            int result= mapper.updateMemJoin(vo);
-            int result2=  mapper.updateJoin(vo);
-            int result3 = mapper.updateCmpSttus(stVO);
+            int result=  mapper.updateJoin(vo);
+            int result2 = mapper.updateCmpSttus(stVO);
 
-            if(result  > 0 && result2 > 0 && result3  > 0){
+            if(result  > 0 && result2 > 0){
                 return 1;
             } else{
                 return 0;

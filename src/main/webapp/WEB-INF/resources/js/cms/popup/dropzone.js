@@ -316,7 +316,7 @@
             thumbnailElement.alt = file.name;
             thumbnailElement.src = dataUrl;
           }
-          return setTimeout(((function(_this) {
+          return setTimeout(((function(_this) { Dropzone.options
             return function() {
               return file.previewElement.classList.add("dz-image-preview");
             };
