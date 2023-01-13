@@ -25,7 +25,7 @@ import java.util.Map;
 public class JoinController {
 
     @Autowired
-    private ConsultingService service;
+    private ConsultingService consultingService;
     @Autowired
     private AgreementService agreementService;
 
@@ -51,7 +51,7 @@ public class JoinController {
         cmpVO.setMem_cd("M302"); //회원구분
 
         Map<String, Object> rs = new HashMap<String, Object>();
-        rs = service.list(cmpVO);
+        rs = consultingService.list(cmpVO);
 
         int totalCnt = 0;
         totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
@@ -87,9 +87,10 @@ public class JoinController {
             cmpVO.setBizNo(bizNo);
             String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
             cmpVO.setEmail(email);
-            cmpVO.setMem_cd("M302");
+            cmpVO.setMem_cd("M302"); //동행기업회원구분코드
             stVO.setBizNo(bizNo);
-            int result = service.insertJoinApply(cmpVO, stVO);
+            cmpVO.setManagement_cd("M501"); //담당자구분코드
+            int result = consultingService.insertJoinApply(cmpVO, stVO);
             if (result > 0) {
 
                 response.sendRedirect(request.getContextPath() + "/join/joinList.do");
@@ -125,7 +126,7 @@ public class JoinController {
 
         int result = 0;
         try {
-            result = service.conChkPw(cmpVO);
+            result = consultingService.conChkPw(cmpVO);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -153,9 +154,9 @@ public class JoinController {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M302");
         try {
-            List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
+            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
 
-            CmpMemberVo rs = service.getViewByBizNo(cmpVO);
+            CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
             rs.setBizNo2(rs.getBizNo().substring(3, 5));
             rs.setBizNo3(rs.getBizNo().substring(5, 10));
