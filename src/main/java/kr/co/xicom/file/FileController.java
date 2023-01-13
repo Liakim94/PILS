@@ -1,12 +1,33 @@
 package kr.co.xicom.file;
 
-//import kr.go.smes.fileservice.FileService;
-//import kr.go.smes.fileservice.S3FileService;
+import java.io.*;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.go.smes.fileservice.FileService;
+import kr.go.smes.fileservice.S3FileService;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-		import egovframework.rte.fdl.property.EgovPropertyService;
+import egovframework.rte.fdl.property.EgovPropertyService;
+import kr.co.xicom.cmmn.web.EgovWebUtil;
+import kr.co.xicom.cmmn.model.AttachVO;
+import kr.co.xicom.util.Utils;
 
 /**
  * @deprecated
@@ -21,8 +42,8 @@ public class FileController {
 
 	// 이상진 추가 2020-11-06
 	// NAS 파일업로드 처리를 위한 S3FileService 정의
-//	@Resource(name = "nasFileService")
-//	private FileService fileService;
+	@Resource(name = "nasFileService")
+	private FileService fileService;
 
 //	/*일반파일업로드*/
 //	/**
@@ -92,7 +113,7 @@ public class FileController {
 //
 //		return vo;
 //	}
-//
+
 //	public AttachVO upload(MultipartFile files, String rootPath, String uploadPath, String folderPath, HttpServletRequest request, String flag){
 //		String tmpFileName = Utils.getUUID();
 //		if(flag.equals("N")){
@@ -210,15 +231,11 @@ public class FileController {
 //
 //		return vo;
 //	}
-//
-//
 
-//
 //	/**
 //	 * @deprecated
 //	 * FileProcess.uploadAs 메소드로 대체.
 //	 */
-//
 //	public AttachVO upload(MultipartFile files, String rootPath, String uploadPath, String folderPath, String fileNm){
 //		String tmpFileName = Utils.getUUID();
 //
@@ -333,63 +350,63 @@ public class FileController {
 //
 //		return vo;
 //	}
-//
-//	/*스마트 업로드 */
-//	/* 이상진 수정 2020-11-05 */
-//
-//	/**
-//	 * @deprecated FileProcess.upload 로 대체.
-//	 */
-//	public static AttachVO upload(InputStream is, String rootPath, String uploadPath, String folderPath, String oriname){
-//		AttachVO file = new AttachVO();
-//
-//		// uploadPath에 '\' (역슬래쉬) 문자가 따라오는 문제 해결
-//		uploadPath = uploadPath.replace("\\", "/");
-//
-//		// 저장 경로 설정
-//		String savePath = uploadPath;
-//		if (!savePath.endsWith("/")) {
-//			savePath += "/";
-//		}
-//		if (!StringUtils.isEmpty(folderPath)) {
-//			savePath += folderPath;
-//		}
-//		if (!savePath.endsWith("/")) {
-//			savePath += "/";
-//		}
-//
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-//		savePath += dateFormat.format(new Date());
-//
-//		// 저장 파일명 설정
-//		String fileName = Utils.getUUID() + "." + FilenameUtils.getExtension(oriname);
-//
-//		try {
-////			// S3FileService 싱글톤 생성
-////			S3FileService fileService = S3FileService.getInstance().init("insoftStandard", "http://192.168.0.36:9000", "admin", "tipa123123", "cobiz-dev");
-////			//S3FileService fileService = new S3FileService("insoftStandard", "http://192.168.0.36:9000", "admin", "tipa123123");
-////
-////			fileService.saveAsFile(savePath, fileName, is);
-////
-////			file.setSvFileNm(fileName);
-////			file.setFilePath(savePath);
-//
-//		}
-//		catch (Exception ex) {
-//			logger.debug(ex.getStackTrace());
-//		}
-//		finally {
-//			if (is != null) {
-//				try {
-//					is.close();
-//				} catch (Exception e) {
-//					logger.debug(e.getStackTrace());
-//				}
-//			}
-//		}
-//
-//		return file;
-//	}
+
+	/*스마트 업로드 */
+	/* 이상진 수정 2020-11-05 */
+
+	/**
+	 * @deprecated FileProcess.upload 로 대체.
+	 */
+	public static AttachVO upload(InputStream is, String rootPath, String uploadPath, String folderPath, String oriname){
+		AttachVO file = new AttachVO();
+
+		// uploadPath에 '\' (역슬래쉬) 문자가 따라오는 문제 해결
+		uploadPath = uploadPath.replace("\\", "/");
+
+		// 저장 경로 설정
+		String savePath = uploadPath;
+		if (!savePath.endsWith("/")) {
+			savePath += "/";
+		}
+		if (!StringUtils.isEmpty(folderPath)) {
+			savePath += folderPath;
+		}
+		if (!savePath.endsWith("/")) {
+			savePath += "/";
+		}
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		savePath += dateFormat.format(new Date());
+
+		// 저장 파일명 설정
+		String fileName = Utils.getUUID() + "." + FilenameUtils.getExtension(oriname);
+
+		try {
+			// S3FileService 싱글톤 생성
+			S3FileService fileService = S3FileService.getInstance().init("insoftStandard", "http://192.168.0.36:9000", "admin", "tipa123123", "cobiz-dev");
+			//S3FileService fileService = new S3FileService("insoftStandard", "http://192.168.0.36:9000", "admin", "tipa123123");
+
+			fileService.saveAsFile(savePath, fileName, is);
+
+			file.setSvFileNm(fileName);
+			file.setFilePath(savePath);
+
+		}
+		catch (Exception ex) {
+			logger.debug(ex.getStackTrace());
+		}
+		finally {
+			if (is != null) {
+				try {
+					is.close();
+				} catch (Exception e) {
+					logger.debug(e.getStackTrace());
+				}
+			}
+		}
+
+		return file;
+	}
 
 //	public AttachVO upload(CommonsMultipartFile files, String rootPath, String uploadPath, String folderPath) {
 //		String tmpFileName = Utils.getUUID();

@@ -14,7 +14,7 @@
         <result property="stat"         column="STAT"           />
     </resultMap>
 
-    <resultMap id="BoardVO" type="board" extends="default"> 
+    <resultMap id="BoardVO" type="board" extends="default">
         <result property="boardSeq"         column="BOARD_SEQ"      />
         <result property="bbsId"            column="BBS_ID"         />
         <result property="bbsNm"            column="BBS_NM"         />
@@ -39,32 +39,32 @@
         <result property="steId"            column="STE_ID"         />
         <result property="lnk"              column="LNK"            />
     </resultMap>
-    
+
     <insert id="addBoard" flushCache="true">
         INSERT INTO TB_BBS_INFO
         (
-            TTL,        
-            BRKDW,      
+            TTL,
+            BRKDW,
             PSWD,
-            REFRN,          
-            LVL,        
-            STEP,       
+            REFRN,
+            LVL,
+            STEP,
             NOTICE_AT,
-            REDNG_NMBRS,        
-            REGSTR_SN,  
-            REGIST_DATE,    
+            REDNG_NMBRS,
+            REGSTR_SN,
+            REGIST_DATE,
             UPDAT_SN,
-            UPDAT_DATE, 
+            UPDAT_DATE,
             REGSTR_NM,
-            REGIST_IP_ADDR,         
+            REGIST_IP_ADDR,
             BBS_ID,
             USER_TY,
-            STTS,       
-            NOTICE_BGN_DT,      
+            STTS,
+            NOTICE_BGN_DT,
             NOTICE_STPGE_DT,
             BEGIN_AT,
             TAG,
-            CNNC        
+            CNNC
         )
         VALUES
         (
@@ -92,24 +92,24 @@
             #{lnk}
         )
     <selectKey keyProperty="boardSeq" resultType="integer" order="AFTER">
-        SELECT MAX(BBS_SN) FROM tb_bbs_info; 
+        SELECT MAX(BBS_SN) FROM tb_bbs_info;
         <!-- SELECT LAST_INSERT_ID() -->
-    </selectKey>        
+    </selectKey>
     </insert>
-    
+
     <update id="updateRef">
         UPDATE TB_BBS_INFO SET REFRN = #{boardSeq} WHERE BBS_SN = #{boardSeq}
     </update>
-    
+
     <update id="updateLevel">
         UPDATE TB_BBS_INFO SET LVL = #{lvl} + 1 WHERE BBS_SN = #{boardSeq}
     </update>
-    
+
     <!-- <update id="updateLevel">
         UPDATE TB_BBS_INFO SET STEP = STEP + 1 WHERE REFRN =
     </update> -->
-        
-        
+
+
     <select id="listBoard" resultMap="BoardVO">
         <!-- SELECT *
         FROM ( -->
@@ -133,8 +133,8 @@
                     AND B.BBS_ID = #{bbsId}
                     AND B.STTS = #{stat}
                 <if test="searchKeyword != ''">
-                    AND (B.TTL LIKE CONCAT('%', #{searchKeyword}, '%') OR B.REGSTR_NM LIKE CONCAT('%', #{searchKeyword}, '%')) 
-                </if>               
+                    AND (B.TTL LIKE CONCAT('%', #{searchKeyword}, '%') OR B.REGSTR_NM LIKE CONCAT('%', #{searchKeyword}, '%'))
+                </if>
               ) T WHERE 1 = 1
            <!-- ) S WHERE 1 = 1 -->
            ORDER BY T.reg_de DESC
@@ -143,7 +143,7 @@
            LIMIT #{pageUnit} OFFSET #{firstIndex}
          </if>
     </select>
-    
+
     <select id="boardCount" resultType="int">
         SELECT COUNT(1)
         FROM TB_BBS_INFO B
@@ -152,53 +152,53 @@
             AND B.BBS_ID = #{bbsId}
         <if test="searchKeyword != ''">
         AND (B.TTL LIKE CONCAT('%', #{searchKeyword}, '%') OR B.REGSTR_NM LIKE CONCAT('%', #{searchKeyword}, '%'))
-        </if>   
+        </if>
     </select>
 
     <select id="getBoard" resultMap="BoardVO">
         SELECT
-            BBS_SN          AS board_seq    
-            , TTL           AS title        
-            , BRKDW         AS cont     
-            , PSWD          AS pwd          
-            , REFRN         AS ref          
-            , LVL           AS lvl          
-            , STEP          AS step     
-            , NOTICE_AT     AS noti_at      
-            , REDNG_NMBRS   AS read_cnt 
+            BBS_SN          AS board_seq
+            , TTL           AS title
+            , BRKDW         AS cont
+            , PSWD          AS pwd
+            , REFRN         AS ref
+            , LVL           AS lvl
+            , STEP          AS step
+            , NOTICE_AT     AS noti_at
+            , REDNG_NMBRS   AS read_cnt
             , REGSTR_SN     AS reg_seq
-            , REGIST_DATE       AS reg_de       
-            , UPDAT_DATE        AS upd_de       
-            , REGSTR_NM         AS reg_nm       
-            , REGIST_IP_ADDR    AS reg_ip       
-            , BBS_ID            AS bbs_id       
-            , USER_TY           AS usr_typ      
-            , STTS              AS stat     
-            , NOTICE_BGN_DT     AS noti_str_dt  
-            , NOTICE_STPGE_DT   AS noti_end_dt  
-            , BEGIN_AT          AS opn_at       
-            , TAG               AS tag          
-            , CNNC              AS lnk          
+            , REGIST_DATE       AS reg_de
+            , UPDAT_DATE        AS upd_de
+            , REGSTR_NM         AS reg_nm
+            , REGIST_IP_ADDR    AS reg_ip
+            , BBS_ID            AS bbs_id
+            , USER_TY           AS usr_typ
+            , STTS              AS stat
+            , NOTICE_BGN_DT     AS noti_str_dt
+            , NOTICE_STPGE_DT   AS noti_end_dt
+            , BEGIN_AT          AS opn_at
+            , TAG               AS tag
+            , CNNC              AS lnk
         FROM TB_BBS_INFO B
-        WHERE 1 = 1
-        AND BBS_SN = #{boardSeq}
-        AND BBS_ID = #{bbsId}
-        <if test='stat.equals("1")'>
-        AND STTS = '1'
-        </if>
-    
+        WHERE
+            BBS_SN = #{boardSeq}
+            AND BBS_ID = #{bbsId}
+            <if test='stat.equals("1")'>
+                AND STTS = '1'
+            </if>
+
     </select>
-    
+
     <update id="updateBoard">
         UPDATE TB_BBS_INFO SET
-            TTL             = #{title},     
+            TTL             = #{title},
             BRKDW           = #{cont},
             PSWD                = #{pwd},
-            REFRN               = #{ref},           
+            REFRN               = #{ref},
             LVL             = #{lvl},
-            STEP            = #{step},      
+            STEP            = #{step},
             NOTICE_AT           = COALESCE(#{notiAt}, 'N'),
-            UPDAT_SN            = #{updSeq},    
+            UPDAT_SN            = #{updSeq},
             UPDAT_DATE          = NOW(),
             UPDAT_NM            = #{updNm},
             UPDAT_IP_ADDR           = #{updIp},
@@ -210,13 +210,13 @@
             BEGIN_AT            = COALESCE(#{opnAt}, 'N'),
             TAG             = #{tag},
             CNNC                = #{lnk}
-        WHERE 
-            BBS_SN  = #{boardSeq}   
-        
+        WHERE
+            BBS_SN  = #{boardSeq}
+
     </update>
 
     <update id="updateStat">
-        UPDATE TB_BBS_INFO SET 
+        UPDATE TB_BBS_INFO SET
             STTS = #{stat}
         WHERE 1=1
             AND BBS_SN = #{boardSeq}

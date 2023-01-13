@@ -9,7 +9,7 @@
     <script src="${pageContext.request.contextPath }/js/front/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/front/jquery-ui-1.12.1.js"></script>
     <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
-    <script src="${pageContext.request.contextPath }/js/front/ui.js?dummy=20200315131039279"></script>
+    <%--<script src="${pageContext.request.contextPath }/js/front/ui.js?dummy=20200315131039279"></script>--%>
     <script src="${pageContext.request.contextPath }/js/front/additional-methods.js"></script>
-    <script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.js"></script>
+    <%--<script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.js"></script>--%>
     <script src="${pageContext.request.contextPath }/js/front/common.js"></script>

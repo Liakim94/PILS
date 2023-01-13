@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.xicom.front.service.mapper.AttachMapper">
+
+    <!-- WildRain 추가 2023-01-13 -->
+    <!-- tb_atch INSERT -->
+    <insert id="create" parameterType="kr.co.xicom.front.model.AttachVO">
+        <selectKey keyProperty="attchSeq" resultType="int" order="BEFORE">
+            select nextval('tb_atch_atch_sn_seq') as attchSeq
+        </selectKey>
+        INSERT INTO cobiz.tb_atch (
+            atch_sn,
+            bbs_sn,
+            bbs_id,
+            file_size,
+            file_path,
+            saved_file_nm,
+            file_nm,
+            regist_date,
+            regstr_sn,
+            updat_sn,
+            user_ty,
+            regstr_nm,
+            updat_nm
+        )
+        VALUES(
+            #{attchSeq},
+            #{boardSeq},
+            #{bbsId},
+            #{fileSz},
+            #{filePath},
+            #{svFileNm},
+            #{fileNm},
+            now(),
+            #{regSeq},
+            #{updSeq},
+            #{usrTyp},
+            #{regNm},
+            #{updNm}
+        )
+    </insert>
+
+    <select id="list" parameterType="kr.co.xicom.front.model.AttachVO" resultType="kr.co.xicom.front.model.AttachVO">
+        select
+            atch_sn         as attachSeq,
+            file_size       as fileSz,
+            file_path       as filePath,
+            file_nm         as fileNm,
+            saved_file_nm   as svFileNm,
+            bbs_sn          as boardSeq,
+            bbs_id          as bbsId
+        from
+            tb_atch
+        where
+            bbs_sn = #{boardSeq}
+            and bbs_id = #{bbsId}
+    </select>
+
+    <delete id="delete" parameterType="kr.co.xicom.front.model.AttachVO">
+        delete from tb_atch
+        where
+            bbs_sn = #{boardSeq}
+            and bbs_id = #{bbsId}
+    </delete>
+
+</mapper>

@@ -1,5 +1,6 @@
 package kr.co.xicom.front.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -23,4 +24,9 @@ public interface BoardService {
 	int updateStat(BoardVO boardVO) throws Exception;
 
     String getMenu(int bbsId) throws Exception;
+
+	// WildRain 추가 2023-01-13
+	/** 게시글 첨부파일 리스트 추출 */
+	List<AttachVO> getAttachList(BoardVO boardVO) throws Exception;
+
 }
