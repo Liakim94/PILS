@@ -51,206 +51,191 @@ function getCookie( cookieName ){
 
 </script>
 
-<%--<style>--%>
-
-<%--    .list-company .ico-list {--%>
-<%--        border-radius:12px;--%>
-<%--        border-color:#4876ee;--%>
-<%--    }--%>
-
-<%--    .list-company .ico-list:hover {--%>
-<%--        box-shadow: 5px 5px 0 0 rgba(72, 118, 238, 0.1);--%>
-<%--        border-color:#4876ee;--%>
-<%--    }--%>
-<%--    .list-company .ico-list:hover .corp-name {--%>
-<%--        color:#4876ee;--%>
-<%--    }--%>
-
-<%--</style>--%>
 </head>
 
-       <!-- main-wrap -->
-        <div class="main-wrap">
-            <!-- link_box -->
-            <div class="link_box">
-                <div class="bg-gray visual-section">
-                    <div class="container" style="width:50%">
-                    </div>
+<%--       <!-- main-wrap -->--%>
+<%--        <div class="main-wrap">--%>
+<%--            <!-- link_box -->--%>
+<%--            <div class="link_box">--%>
+<%--                <div class="bg-gray visual-section">--%>
+<%--                    <div class="container" style="width:50%">--%>
+<%--                    </div>--%>
 
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="corporation">
+<%--                <div class="tab-content">--%>
+<%--                    <div role="tabpanel" class="tab-pane active" id="corporation">--%>
 
-          <!-- // logo list -->
-                <div class="list-company">
+<%--          <!-- // logo list -->--%>
+<%--                <div class="list-company">--%>
 
-                    <div class="col-lg-9" >
-                        <img src="${pageContext.request.contextPath}/images/main/main.png" class="company-logo" >
-                    </div>
+<%--                    <div class="col-lg-9" >--%>
+<%--                        <img src="${pageContext.request.contextPath}/images/main/main.png" class="company-logo" >--%>
+<%--                    </div>--%>
 
-                    <div class="row">
-                        <div class="col-md-12">
+<%--                    <div class="row">--%>
+<%--                        <div class="col-md-12">--%>
 
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                        <img src="${pageContext.request.contextPath}/images/main/partner/ci01.png" class="company-logo" alt="(주) 한샘">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주) 한샘</span>
-                                </div>
-                            </div>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <a h--%>
+<%--                                        <img src="${pageContext.request.contextPath}/images/main/partner/ci01.png" class="company-logo" alt="(주) 한샘">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주) 한샘</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                        <img src="${pageContext.request.contextPath}/images/main/partner/ci02.png" class="company-logo" alt="(주)농협유통">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)농협유통</span>
-                                </div>
-                            </div>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                        <img src="${pageContext.request.contextPath}/images/main/partner/ci02.png" class="company-logo" alt="(주)농협유통">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)농협유통</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                        <img src="${pageContext.request.contextPath}/images/main/partner/ci03.png" class="company-logo" alt="(주)대한항공">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)대한항공</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci04.png" class="company-logo" alt="(주)두산">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)두산</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci05.png" class="company-logo" alt="(주)신세계디에프">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)신세계디에프</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci06.png" class="company-logo" alt="(주)한화">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)한화</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci07.png" class="company-logo" alt="(주)농심">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)농심</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci08.png" class="company-logo" alt="(주)LG화학">
-                                </div>
-                                <div class="corp-name">
-                                    <span>㈜LG화학</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci09.png" class="company-logo" alt="(주)KCC">
-                                </div>
-                                <div class="corp-name">
-                                    <span>㈜KCC</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci01.png" class="company-logo" alt="(주) 한샘">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주) 한샘</span>
-                                </div>
-                            </div>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                        <img src="${pageContext.request.contextPath}/images/main/partner/ci03.png" class="company-logo" alt="(주)대한항공">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)대한항공</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci04.png" class="company-logo" alt="(주)두산">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)두산</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci05.png" class="company-logo" alt="(주)신세계디에프">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)신세계디에프</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci06.png" class="company-logo" alt="(주)한화">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)한화</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci07.png" class="company-logo" alt="(주)농심">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)농심</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci08.png" class="company-logo" alt="(주)LG화학">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>㈜LG화학</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci09.png" class="company-logo" alt="(주)KCC">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>㈜KCC</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci01.png" class="company-logo" alt="(주) 한샘">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주) 한샘</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci02.png" class="company-logo" alt="(주)농협유통">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)농협유통</span>
-                                </div>
-                            </div>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci02.png" class="company-logo" alt="(주)농협유통">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)농협유통</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci03.png" class="company-logo" alt="(주)대한항공">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)대한항공</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci04.png" class="company-logo" alt="(주)두산">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)두산</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci05.png" class="company-logo" alt="(주)신세계디에프">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)신세계디에프</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci06.png" class="company-logo" alt="(주)한화">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)한화</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci04.png" class="company-logo" alt="(주)두산">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)두산</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci05.png" class="company-logo" alt="(주)신세계디에프">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)신세계디에프</span>
-                                </div>
-                            </div>
-                            <div class="ico-list">
-                                <div class="container-logo">
-                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci06.png" class="company-logo" alt="(주)한화">
-                                </div>
-                                <div class="corp-name">
-                                    <span>(주)한화</span>
-                                </div>
-                            </div>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci03.png" class="company-logo" alt="(주)대한항공">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)대한항공</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci04.png" class="company-logo" alt="(주)두산">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)두산</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci05.png" class="company-logo" alt="(주)신세계디에프">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)신세계디에프</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci06.png" class="company-logo" alt="(주)한화">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)한화</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci04.png" class="company-logo" alt="(주)두산">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)두산</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci05.png" class="company-logo" alt="(주)신세계디에프">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)신세계디에프</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="ico-list">--%>
+<%--                                <div class="container-logo">--%>
+<%--                                    <img src="${pageContext.request.contextPath}/images/main/partner/ci06.png" class="company-logo" alt="(주)한화">--%>
+<%--                                </div>--%>
+<%--                                <div class="corp-name">--%>
+<%--                                    <span>(주)한화</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                        </div>
-                    </div>
-                </div>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
-                    </div>
-
-
-                 </div>
-            <!-- // link_box -->
+<%--                    </div>--%>
 
 
-                </div>
-        </div>
-        <!-- // main-wrap -->
-        </div>
+<%--                 </div>--%>
+<%--            <!-- // link_box -->--%>
+
+
+<%--                </div>--%>
+<%--        </div>--%>
+<%--        <!-- // main-wrap -->--%>
+<%--        </div>--%>

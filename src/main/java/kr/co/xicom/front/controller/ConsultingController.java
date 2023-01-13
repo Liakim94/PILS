@@ -274,7 +274,7 @@ public class ConsultingController extends Alerts {
         cmpVO.setBizNo(bizNo);
         int result = service.conCheck(cmpVO);
         if (result > 0) {
-            response.sendRedirect(request.getContextPath() + "/cmm/conView.do");
+            response.sendRedirect(request.getContextPath() + "/cmm/conView.do?bizNo="+cmpVO.getBizNo());
         }
         PrintWriter writer = response.getWriter();
 

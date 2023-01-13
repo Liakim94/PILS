@@ -11,8 +11,7 @@
 	<title>페이지 없음</title>
 	<%@include file="/WEB-INF/jsp/common/front/css_inc.jsp" %>
 	<%@include file="/WEB-INF/jsp/common/front/javascript_inc.jsp" %>
-	<%@include file="/WEB-INF/jsp/common/cms/message_inc.jsp" %>
-		
+
 </head>
 <section class="">	
 	<div class="d-flex align-items-lg-center min-height-lg-100vh justify-content-center">
