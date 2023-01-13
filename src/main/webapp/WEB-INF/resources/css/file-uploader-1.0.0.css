@@ -1,0 +1,332 @@
+/*
+    WildRain 추가 2021-12-21
+    파일 업로더. ie11 버전 이상에서 동작함.
+
+
+    ※ 마크업 구조
+    <div class="file-uploader">
+        <ul class="file-uploader-head">
+            <li><input type="checkbox" /></li>
+            <li>파일 이름</li>
+            <li>파일 크기</li>
+        </ul>
+        <div class="file-uploader-list">
+            <ul class="file-uploader-list-item">
+                <li><input type="checkbox" id="file-index-1" value="1" /></li>
+                <li><label for="file-index-1">file.jpg</label></li>';
+                <li>10 KB</li>
+            </ul>
+        </div>
+        <ul class="file-uploader-info">
+            <li>최대 <strong class="file-max-count">10</strong>개 <strong class="file-max-size">100 MB</strong> 제한</li>
+            <li><strong class="file-total-count">0</strong>개, <strong class="file-total-size">0 KB</strong> 추가됨</li>
+        </ul>
+        <div class="file-uploader-controller">
+            <button id="delete-file">선택파일제거</button>
+            <label for="fileselector">파일추가</label>
+        </div>
+        <input type="file" class="file-uploader-files" id="fileselector" multiple="multiple" accept=".jpeg"/>
+    </div>
+    <div class="file-uploader-progress-wrapper">
+        <div class="file-uploader-progress-box">
+            <strong>0%</strong>
+            <div class="file-uploader-progress-bar">
+                <div class="progress-gage"></div>
+            </div>
+            <p>파일 업로드 중입니다.</p>
+        </div>
+    </div>
+ */
+
+@charset "utf-8";
+.file-uploader,
+.file-uploader * {
+    box-sizing: border-box;
+}
+.file-uploader {
+    display: block;
+    border: 1px solid #0e457a;
+    border-radius: 4px;
+    position: relative;
+    margin: 10px 0;
+}
+.file-uploader,
+.file-uploader-head,
+.file-uploader-list,
+.file-uploader-list-item,
+.file-uploader-info,
+.file-uploader-controller {
+    width: 100%;
+}
+.file-uploader-head,
+.file-uploader-list-item,
+.file-uploader-info,
+.file-uploader-controller {
+    display: inline-flex;
+}
+.file-uploader-head,
+.file-uploader-list-item,
+.file-uploader-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+/* for under ie 10 */
+.file-uploader-head:after,
+.file-uploader-list-item:after,
+.file-uploader-info:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/* for under ie 10 */
+.file-uploader-head > li,
+.file-uploader-list-item > li,
+.file-uploader-info > li {
+    float: left;
+}
+
+.file-uploader-head,
+.file-uploader-list-item {
+    padding: 0;
+}
+.file-uploader-head > li,
+.file-uploader-list-item > li {
+    padding: 0 5px;
+}
+.file-uploader-head > li:first-child,
+.file-uploader-list-item > li:first-child {
+    width: 35px;
+    text-align: center;
+}
+.file-uploader-head > li:nth-child(2),
+.file-uploader-list-item > li:nth-child(2) {
+    width: calc(100% - 185px);
+}
+.file-uploader-head > li:last-child,
+.file-uploader-list-item > li:last-child {
+    width: 150px;
+}
+.file-uploader-head {
+    border-bottom: 1px solid #bccad7;
+}
+.file-uploader-head > li {
+    border-left: 1px solid #bccad7;
+    height: 35px;
+    line-height: 35px;
+    background-color: #eff5fc;
+}
+.file-uploader-head > li:first-child {
+    border-left: none;
+    border-top-left-radius: 4px;
+}
+.file-uploader-head > li:nth-child(2) {
+
+}
+.file-uploader-head > li:last-child {
+    text-align: center;
+    border-top-right-radius: 4px;
+}
+.file-uploader-list {
+    min-height: 150px;
+    border-bottom: 1px solid #ddd;
+}
+.file-uploader-list.no-data {
+    background: url(../images/file-uploader/drag-and-drop.png) no-repeat center center;
+    background-size: 150px;
+}
+.file-uploader-list.no-data.valid {
+    background-image: url(../images/file-uploader/drag-and-drop-valid.png);
+}
+.file-uploader-list.not-valid {
+    background: url(../images/file-uploader/forbidden.png) no-repeat center center;
+    background-size: 100px;
+}
+/*.file-uploader-list > label {
+    border: 1px solid red;
+    display: block;
+    width: 100%;
+    min-height: 150px;
+}*/
+.file-uploader-list-item {
+
+}
+.file-uploader-list-item > li {
+    height: 30px;
+    line-height: 30px;
+}
+.file-uploader-list-item > li:first-child {
+
+}
+.file-uploader-list-item > li:nth-child(2) {
+
+}
+.file-uploader-list-item > li:last-child {
+    text-align: right;
+    padding-right: 10px;
+}
+.file-uploader-list-item > li > label {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.file-uploader-info {
+    border-bottom: 1px solid #ddd;
+    list-style: none;
+    padding: 0;
+}
+.file-uploader-info > li {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+}
+.file-uploader-info > li:first-child,
+.file-uploader-info > li:last-child {
+    width: 50%;
+}
+.file-uploader-info > li:first-child {
+
+}
+.file-uploader-info > li:last-child {
+    text-align: right;
+}
+.file-uploader-info > li > strong {
+    color: #0e457a;
+}
+.file-uploader-controller {
+    padding: 10px;
+    justify-content: space-between;
+}
+.file-uploader-controller > button,
+.file-uploader-controller > label {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0 10px;
+    border-radius: 2px;
+    outline: none;
+    vertical-align: middle;
+}
+.file-uploader-controller > button:first-child {
+    background-color: white;
+    border: 1px solid #888;
+}
+.file-uploader-controller > button:last-child,
+.file-uploader-controller > label:last-child {
+    background-color: #0e457a;
+    border: 1px solid #0e457a;
+    color: white;
+}
+.file-uploader-files {
+    display: block;
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 0;
+    height: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* progress */
+.file-uploader-progress-wrapper {
+    /*border: 1px solid red;*/
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 10000;
+}
+.file-uploader-progress-wrapper:before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.2;
+}
+.file-uploader-progress-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 100px;
+    margin: -50px -200px;
+    border: 1px solid #eee;
+    border-radius: 7px;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    padding: 10px 40px;
+    box-sizing: border-box;
+}
+.file-uploader-progress-box > strong,
+.file-uploader-progress-box > div,
+.file-uploader-progress-box > p {
+    /*border: 1px solid red;*/
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    color: #888;
+}
+.file-uploader-progress-box > strong {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+}
+.file-uploader-progress-box > p {
+    font-size: 12px;
+    margin: 10px 0 0 0;
+}
+.file-uploader-progress-bar {
+    height: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-gage {
+    height: 8px;
+    background-color: #0e457a;
+    border-radius: 4px;
+    width: 0;
+    /*transition-property: width;
+    transition-duration: 4s;*/
+}
+.progress-message {
+    /*border: 1px solid red;*/
+}
+.animated-gradient {
+    background: repeating-linear-gradient(to right, #2998ff 0%, #0e457a 50%, #2998ff 100%);
+    width: 100%;
+    background-size: 200% auto;
+    background-position: 0 100%;
+    animation: gradient 2s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+@keyframes gradient {
+    0%   { background-position: 0 0; }
+    100% { background-position: -200% 0; }
+}
+
+.file-uploader .no-support {
+    display: block;
+    min-height: 150px;
+    line-height: 150px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.3em;
+    color: red;
+}

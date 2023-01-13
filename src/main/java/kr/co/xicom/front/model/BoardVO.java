@@ -12,17 +12,17 @@ package kr.co.xicom.front.model;
  *  Copyright (C) by XICOM All right reserved.
  */
 public class BoardVO extends DefaultVO{
-	
+
 	/** 옵션
-	 
+
 	[TB_BOARD - STAT]		0:사용안함 1:사용 4:완전삭제 8:임시저장삭제 9:임시저장
-	
+
 	[TB_BOARD - USR_TYP]	MEM:회원  GST : 게스트  EMP:사원
 
 	 */
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private int 	boardSeq 				=  0;  // 게시물번호
 	private int 	bbsId					=  0;  // 게시판아이디
 	private String 	steId					=  ""; // 사이트아이디
@@ -34,27 +34,38 @@ public class BoardVO extends DefaultVO{
 	private int 	lvl						=  0;  // 레벨
 	private int 	step					=  0;  // 스텝
 	private String  notiAt					= "";  // 공지여부
-	
+
 	private int 	readCnt					=  0;  // 조회수
 	private String  usrTyp					= "";  // 사용자유형
 	private String  notiStrDt				= "";  // 공지시작일자
 	private String  notiEndDt				= "";  // 공지종료일자
 	private String  opnAt					= "";  // 공개여부
 	private String  tag						= "";  // 태그
-	
+
 	private String  fileStd					= "";  // 첨부파일 규격
 
-	private String 	chkNo[]					= null;	// 리스트 체크박스	
-	
+	private String 	chkNo[]					= null;	// 리스트 체크박스
+
 	//	TB_BOARD_LIKE	//
 	private int 	likeSeq					=  0;	// TB_BOARD_Like 번호
 	private int 	like					=  0;	// 좋아요
 	private int 	dislike					=  0;	// 싫어요
-	
-	
+
+
 	private String  lnk						= "";	//게시판 링크
-	
-	
+
+	// WildRain 추가 2023-01-13
+	/**
+	 * FileUploader.js에 의해 업로드된 파일 리스트 (JSON 문자열)
+	 */
+	private String jsonFileList;
+
+	/**
+	 * FileUploader.js에 의해 삭제된 파일 리스트 (JSON 문자열)
+	 */
+	private String jsonDeletedFileList;
+
+
 	public String getSteId() {
 		return steId;
 	}
@@ -200,7 +211,21 @@ public class BoardVO extends DefaultVO{
 	public void setLnk(String lnk) {
 		this.lnk = lnk;
 	}
-	
-	
-	
+
+	public String getJsonFileList() {
+		return this.jsonFileList;
+	}
+
+	public void setJsonFileList(String jsonFileList) {
+		this.jsonFileList = jsonFileList;
+	}
+
+	public String getJsonDeletedFileList() {
+		return this.jsonDeletedFileList;
+	}
+
+	public void setJsonDeletedFileList(String jsonDeletedFileList) {
+		this.jsonDeletedFileList = jsonDeletedFileList;
+	}
+
 }

@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css" />
+<%--<link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css" />--%>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/front/style.css" />
 <%--<link rel="stylesheet" href="${pageContext.request.contextPath }/css/new.css" />--%>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/page.css" />

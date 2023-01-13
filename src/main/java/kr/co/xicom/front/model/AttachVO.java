@@ -1,33 +1,49 @@
 package kr.co.xicom.front.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import java.io.File;
 
 public class AttachVO extends DefaultVO {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8374307720915348410L;
 
+	@Expose
 	private int 	attchSeq 					=  0;	// 첨부파일 일련번호
+	@Expose
 	private int 	bbsId						=  0;	// 게시판 아이디(일련번호)
+	@Expose
 	private int 	boardSeq					=  0;	// 게시물 일련번호
+	@Expose
 	private String 	fileExt						= "";	// 첨부파일 확장자
+	@SerializedName("type")
 	private String	fileMime					= "";	// 첨부파일 유형
+	@SerializedName("name")
 	private String	fileNm						= "";	// 첨부파일 명
+	@SerializedName("size")
 	private float 	fileSz						=  0;	// 첨부파일 용량
+	@SerializedName("savedPath")
 	private String 	filePath					= "";	// 첨부파일 저장위치
+	@SerializedName("savedFileName")
 	private String 	svFileNm					= "";	// 첨부파일 저장파일 명
+	@Expose
 	private String 	fileStd						= "";	// 첨부파일 규격
+	@Expose
 	private String	fileMeta					= "";	// 첨부파일 메타
+	@Expose
 	private String 	thumCreStat					= "";	// 썸네일 생성상태
+	@Expose
 	private String 	trcStat						= "";	// 트랜스코딩 상태
+	@Expose
 	private String 	usrTyp						= "";	// 사용자 유형
+	@Expose
 	private String 	useAt						= "";	// 사용여부
-	
-	
-	private CommonsMultipartFile[] file 	= null;	
-	
+
+	/*
+	private CommonsMultipartFile[] file 	= null;
 	private String[] arrFilename 			= null;
 	private String[] arrOriginalFilename 	= null;
 	private String[] arrFileext 			= null;
@@ -35,25 +51,26 @@ public class AttachVO extends DefaultVO {
 	private String[] arrFilepath 			= null;
 	private String[] arrFiletype 			= null;
 	private String[] arrFilestd 			= null;
-	
 	private int[] deletefile				= null;
-	
 	private int appSeq						= 0;
-	/*--contest_attatch--*/
 	private int contSeq						= 0;
-	/*--request_attatch--*/
 	private int reqSeq						= 0;
-	/*--report_attatch--*/
 	private int repSeq						= 0;
-	/*--portfolio--*/
 	private int pfSeq						= 0;
 	private String 	pfNm					= "";
-	
-	/*--category--*/
 	private String ctgr						= "";
-	
-	
-	public String getPfNm() {
+	*/
+
+	// WildRain 추가 2023-01-13
+	// 전체 파일 저장 경로 추출
+	public String getSavedFilePath() {
+		if (!StringUtils.endsWith(this.filePath, File.separator)) {
+			this.filePath = this.filePath + File.separator;
+		}
+		return this.filePath + this.svFileNm;
+	}
+
+	/*public String getPfNm() {
 		return pfNm;
 	}
 	public void setPfNm(String pfNm) {
@@ -94,7 +111,7 @@ public class AttachVO extends DefaultVO {
 	}
 	public void setContSeq(int contSeq) {
 		this.contSeq = contSeq;
-	}
+	}*/
 	public int getAttchSeq() {
 		return attchSeq;
 	}
@@ -179,7 +196,7 @@ public class AttachVO extends DefaultVO {
 	public void setUseAt(String useAt) {
 		this.useAt = useAt;
 	}
-	public CommonsMultipartFile[] getFile() {
+	/*public CommonsMultipartFile[] getFile() {
 		CommonsMultipartFile[] arrFiles = null;
 		if(file != null){
 			arrFiles = new CommonsMultipartFile[file.length];
@@ -205,7 +222,7 @@ public class AttachVO extends DefaultVO {
 		for(int i = 0; i < arrFilename.length; i++)
 			this.arrFilename[i] = arrFilename[i];
 	}
-	
+
 	public String[] getArrOriginalFilename() {
 		String[] originalFilenameList = null;
 		if(arrOriginalFilename != null){
@@ -219,7 +236,7 @@ public class AttachVO extends DefaultVO {
 		for(int i = 0; i < arrOriginalFilename.length; i++)
 			this.arrOriginalFilename[i] = arrOriginalFilename[i];
 	}
-	
+
 	public String[] getArrFileext() {
 		String[] fileextList = null;
 		if(arrFileext != null){
@@ -233,7 +250,7 @@ public class AttachVO extends DefaultVO {
 		for(int i = 0; i < arrFileext.length; i++)
 			this.arrFileext[i] = arrFileext[i];
 	}
-	
+
 	public float[] getArrFilesize() {
 		float[] filesizeList = null;
 		if(arrFilesize != null){
@@ -260,7 +277,7 @@ public class AttachVO extends DefaultVO {
 		for(int i = 0; i < arrFilepath.length; i++)
 			this.arrFilepath[i] = arrFilepath[i];
 	}
-	
+
 	public String[] getArrFiletype() {
 		String[] filetypeList = null;
 		if(arrFiletype != null){
@@ -287,7 +304,7 @@ public class AttachVO extends DefaultVO {
 		for(int i = 0; i < arrFilestd.length; i++)
 			this.arrFilestd[i] = arrFilestd[i];
 	}
-	
+
 	public int[] getDeletefile() {
 		int[] deletefiles = null;
 		if(deletefile != null){
@@ -300,13 +317,13 @@ public class AttachVO extends DefaultVO {
 		this.deletefile = new int[deletefile.length];
 		for(int i = 0; i < deletefile.length; i++)
 			this.deletefile[i] = deletefile[i];
-	}
+	}*/
 	public String getFileMeta() {
 		return fileMeta;
 	}
 	public void setFileMeta(String fileMeta) {
 		this.fileMeta = fileMeta;
 	}
-	
+
 
 }

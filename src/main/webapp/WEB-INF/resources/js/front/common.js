@@ -13,19 +13,19 @@ $(document).ready(function(){
     });
     $('.lnb').parent().parent().addClass('lnb-line');
     $('.header-site-wrap').addClass('h-'+$('.site_list ul li').length);
-    
+
     //left 메뉴의 아코디언 적용.
-    $('.lnb:not(.progress) ul li a').on('click',function(){        
+    $('.lnb:not(.progress) ul li a').on('click',function(){
         if($(this).parent().find('ul').length > 0){
             if($(this).parent().hasClass('_selected')){
                 $(this).parent().removeClass('_selected');
             } else{
-                $(this).parent().addClass('_selected').siblings('li').removeClass('_selected');            
+                $(this).parent().addClass('_selected').siblings('li').removeClass('_selected');
             }
             return false;
         } else {
             return true;
-        }        
+        }
     })
 
     //탭 메뉴 동작
@@ -47,27 +47,27 @@ $(document).ready(function(){
     //라디오 탭 메뉴 동작
     if( $(".radio_tabs").length ){
         $("input[type=radio]").on("change",function(){
-           
+
             if($(this).parent().index() === 0) {
                $(".inputText1").text('사전조정신청서')
             } else {
                 $(".inputText1").text('조정신청서')
             }
-        }); 
+        });
     }
-    
+
     // 설문-답변기준안내 토글
     $(".tip_answer").on("click",function(){
         $(this).next().toggle()
-        $(this).toggleClass('opened') 
+        $(this).toggleClass('opened')
 
         if($(this).hasClass('opened')){
             $(this).text( $(this).text().replace('열기', '닫기'))
         } else {
             $(this).text( $(this).text().replace('닫기', '열기'))
         }
-        
-        if($(this).hasClass('type2')){ 
+
+        if($(this).hasClass('type2')){
             if($(this).hasClass('opened')){
                 $(this).text( $(this).text().replace('보기', '닫기'))
             } else {
@@ -78,19 +78,19 @@ $(document).ready(function(){
     });
 
     // 성과관리 진행 표시 사이드바
-    $('.progress ul li a').on('click', function(){        
+    $('.progress ul li a').on('click', function(){
         if($(this).parent().find('ul').length > 0){
             if($(this).parent().hasClass('on')){
                 $(this).parent().removeClass('on');
             } else{
-                $(this).parent().addClass('on');      
+                $(this).parent().addClass('on');
             }
             return false;
         } else {
             return true;
-        }        
+        }
     })
-    
+
     // qna
     if( $(".qna_items").length ){
         $(".qna_btn").on("click",function(){
@@ -208,7 +208,7 @@ $(document).ready(function(){
             $("body").prepend("<div class='menu_dim'></div>");
             set_dim();
         }
-        else { 
+        else {
             $(".menu_dim").remove();
             $("body").removeAttr("style");
             $(this).parent().removeClass("__showmenu");
@@ -238,7 +238,7 @@ $(document).ready(function(){
             $(".layer_pop_wrap").removeClass("__show");
         });
     }
-    
+
     // 공통 헤더 검색
     if( $(".search-menu").length ){
         $(".search-menu").on('click',function(){
@@ -291,7 +291,7 @@ $(document).ready(function(){
             }
         });
     }
-    
+
 
 });
 
@@ -393,14 +393,14 @@ common = {
             $(this).addClass("on");
             $('.latst-slide').slick('slickPlay');
         });
-        $(".latst-slide").slick({
-            accessibility : true,
-            autoplay: true,
-            vertical: true,
-            autoplaySpeed: 3000,
-            pauseOnHover : false,
-            slidesToShow: 1
-        });
+        // $(".latst-slide").slick({
+        //     accessibility : true,
+        //     autoplay: true,
+        //     vertical: true,
+        //     autoplaySpeed: 3000,
+        //     pauseOnHover : false,
+        //     slidesToShow: 1
+        // });
         $("body").on("click", ".chk-all input", function(){
             var ck = $(this).prop("checked");
             if(ck){
@@ -432,7 +432,7 @@ common = {
             $(window).scrollTop(0);
             return false;
         })
-        
+
         $("body").on("click",".site-cont .popup-tab > ul > li > a",function(){
             var cp = $(this).attr("class");
             $(".site-cont .popup-tab > ul > li").removeClass();
@@ -446,7 +446,7 @@ common = {
             }
             return false;
         })
-        
+
         $(window).scroll(function(){
             //$(".header-site-wrap").hide();
         });

@@ -8,40 +8,40 @@ function fn_submit(stat)
 	{
 		if(confirm("저장 하시겠습니까?"))
 		{
-			frm.action.value= 'list';
+			// frm.action.value= 'list';
 			frm.stat.value = stat;
 			oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
 
 			$("#frmPost").submit();
 		}
-	} 
+	}
 	else if(stat == '9' || stat == '8')
 	{
 		var msg = '';
 		if(stat == '8') msg = '복원 하시겠습니까?';
 		if(stat == '9') msg = '임시저장 하시겠습니까?';
-		
+
 		if(confirm(msg)){
 			frm.stat.value = '9';
-			$("#frmPost").submit(); 
+			$("#frmPost").submit();
 		}
-	} 
+	}
 	else
 	{
 		if(confirm("삭제 하시겠습니까?"))
 		{
 			frm.action.value= 'trash';
 			frm.stat.value = stat;
-			$("#frmPost").submit(); 
+			$("#frmPost").submit();
 		}
 	}
 }
 
 
 
-$(function(){ 
-	
-	
+$(function(){
+
+
 	//date-range
 	var opts = {
 		format: 'yyyy-mm-dd',
@@ -73,8 +73,8 @@ $(function(){
 	$('#datepicker').on('clearDate', function() {
 		$('#datepicker2').datepicker('clearDates');
 	});
-	
-	
+
+
 /*	// switcherry true or false
 	$(".switch").on("change", function()
 	{
@@ -89,7 +89,7 @@ $(function(){
 			$("#datepicker2").prop("disabled", false);
 		}
 	});*/
-	
+
 	//board validate
 	 $("#frmPost").validate({
 	        rules: {
@@ -102,36 +102,36 @@ $(function(){
 	        messages: {
 	        	bbsId:{required:"게시판을 선택하세요."},
 	        	title:{required:"제목을 입력하세요."}
-	 
-	        },        
+
+	        },
 	        submitHandler: function (frm) {
-	        	
+
 	        	oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
-	        	
+
 	        	var ir1 = $("#cont").val();
 	            if( ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>')  {
 	                 alert("내용을 입력하세요.");
 	                 oEditors.getById["cont"].exec("FOCUS"); //포커싱
 	                 return;
 	            }
-	        	
+
 	        	/*파일업로드*/
-	        	if (totalCount > uploadedCount) {
-	        		myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
-	    			myDropzone.processQueue();
-	    			console.log("uploading...");
-	    			//upload = false;
-	    	    } 
-	    	    else {
-	    	    	console.log("regist");
-	    	    	$(".actionSave").addClass("disabled");
-	    	    	$(".actionTemp").addClass("disabled");
-	    	    	
-	    	    	frm.submit();
-	    	    }	 
-	    		
+	        	// if (totalCount > uploadedCount) {
+	        	// 	myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+	    		// 	myDropzone.processQueue();
+	    		// 	console.log("uploading...");
+	    		// 	//upload = false;
+	    	    // }
+	    	    // else {
+	    	    // 	console.log("regist");
+	    	    // 	$(".actionSave").addClass("disabled");
+	    	    // 	$(".actionTemp").addClass("disabled");
+	    	    //
+	    	    // 	frm.submit();
+	    	    // }
+
 	        },
-	        success: function (e) { 
+	        success: function (e) {
 	        },
 	        showErrors:function(errorMap, errorList){
 				if(!$.isEmptyObject(errorList)){
@@ -141,9 +141,9 @@ $(function(){
 	            	});
 			       	//this.defaultShowErrors();
 				}
-			}		
+			}
 		});
-	
+
 });
 
 
@@ -151,7 +151,7 @@ function deleteFile(num){
 	if(confirm("파일을 삭제하시겠습니까? 삭제 시 복구는 불가 합니다.")){
 	$("#delete_files").append('<input type="hidden" name="deletefile" value="'+num+'"/>');
 	$("#addedFile_"+num).remove();
-	myDropzone.options.maxFiles += 1; 
+	myDropzone.options.maxFiles += 1;
 	//console.log("after="+myDropzone.options.maxFiles);
 	}
 }
@@ -171,11 +171,11 @@ function handleDrop(e){
 	e.preventDefault();
 	file = e.dataTransfer.files;
 	//files = file;
-	
+
 	var output = [];
-	
+
 	for(var i = 0,f;f=file[i];i++ ){
-		
+
 		files.push(file[i]);
 		var html = '';
 		html += '<tr id="f_'+ftCnt+'">';
@@ -192,20 +192,20 @@ function handleDrop(e){
 		//ftSize += f.size;
 		setFileInfo();
 	}
-	
-	
+
+
 }
 
 function handleSelectFile(e){
 	e.stopPropagation();
 	e.preventDefault();
-	file = e.target.files;	
-	
-	
+	file = e.target.files;
+
+
 	var output = [];
 	var html = '';
 	for(var i = 0, f; f=file[i]; i++){
-				
+
 		files.push(file[i]);
 		var html = '<tr id="f_'+ftCnt+'">';
 		html += '<td><input type="checkbox" name="chkFile" value="f_'+ftCnt+'"></td>';
@@ -216,27 +216,27 @@ function handleSelectFile(e){
 		html += '<td>전송대기</td>';
 		html += '</tr>'
 		output.push(html);
-		$("#fileList table > tbody").append(html);		
+		$("#fileList table > tbody").append(html);
 		ftCnt += 1;
 		//ftSize += f.size;
 		setFileInfo();
 	}
-	
+
 }
 
 function setFileInfo(){
 	ftSize = 0;
 	for(var i = 0, f; f = files[i];i++ ){
-		ftSize += f.size; 
+		ftSize += f.size;
 	}
-	
+
 	if(files.length < 1){
 		$("#fileList").css("display","none");
 	}else{
-	
-		$("#sendFileCnt").text("0/"+files.length); 
+
+		$("#sendFileCnt").text("0/"+files.length);
 		$("#sendFileSize").text("0 byte(s)/"+getBytes(ftSize));
-		
+
 		$("#fileList").css("display","block");
 	}
 }
@@ -246,7 +246,7 @@ function setFileInfo(){
 window.onload=function(){
 	var drop_zone = document.getElementById("dropZone");
 	drop_zone.addEventListener('dragover', handleDragOver, false);
-	drop_zone.addEventListener('drop', handleDrop, false); 
+	drop_zone.addEventListener('drop', handleDrop, false);
 	document.getElementById('files').addEventListener('change', handleSelectFile, false);
 }*/
 

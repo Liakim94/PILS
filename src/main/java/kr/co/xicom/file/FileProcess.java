@@ -1,10 +1,10 @@
 package kr.co.xicom.file;
 
 
-import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.exception.businessException;
+import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.util.Utils;
-//import kr.go.smes.fileservice.FileService;
+import kr.go.smes.fileservice.FileService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +13,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -38,8 +40,8 @@ public class FileProcess {
 
     // 이상진 추가 2020-11-06
     // NAS 파일업로드 처리를 위한 S3FileService 정의
-//    @Resource(name = "nasFileService")
-//    private FileService fileService;
+    @Resource(name = "nasFileService")
+    private FileService fileService;
 
     // 이상진 추가 2020-12-16
     // UploadPath를 메소드에 파라미터로 받지 않고
@@ -81,7 +83,7 @@ public class FileProcess {
         try {
 
             // 파일 저장
-//            fileService.saveAsFile(savePath, savedFileName, files);
+            fileService.saveAsFile(savePath, savedFileName, files);
 
             vo = new AttachVO();
             vo.setFileNm(fileName);
@@ -118,7 +120,7 @@ public class FileProcess {
         try {
 
             // 파일 저장
-//            fileService.saveAsFile(savePath, savedFileName, inputStream);
+            fileService.saveAsFile(savePath, savedFileName, inputStream);
 
             vo.setSvFileNm(savedFileName);
             vo.setFilePath(savePath);
@@ -176,7 +178,7 @@ public class FileProcess {
 
         try {
             // 파일 저장
-//            fileService.saveAsFile(savePath, savedFileName, file);
+            fileService.saveAsFile(savePath, savedFileName, file);
         }
         catch (Exception ex) {
             logger.error("UPLOAD ERROR");
@@ -209,19 +211,19 @@ public class FileProcess {
                 uploadPath += "/";
             }
 
-//            // NAS 파일 저장 경로 설정.
-//            String folderPath = uploadPath + filePath;
-//
-////            byte[] content = fileService.getBytes(folderPath, savedFileName);
-//
-//            String encodedFilename = encodeFileName(Utils.getBrowser(request), fileName);
-//
-//            response.setContentType("application/octet-stream;charset=UTF-8");
-//            response.setHeader("Content-Disposition", "attachment; filename=\""+encodedFilename+"\"");
-//            response.setHeader("Content-Transper-Encoding", "binary");
-//            response.setContentLength(content.length);
-//            response.getOutputStream().write(content, 0, content.length);
-//            response.getOutputStream().close();
+            // NAS 파일 저장 경로 설정.
+            String folderPath = uploadPath + filePath;
+
+            byte[] content = fileService.getBytes(folderPath, savedFileName);
+
+            String encodedFilename = encodeFileName(Utils.getBrowser(request), fileName);
+
+            response.setContentType("application/octet-stream;charset=UTF-8");
+            response.setHeader("Content-Disposition", "attachment; filename=\""+encodedFilename+"\"");
+            response.setHeader("Content-Transper-Encoding", "binary");
+            response.setContentLength(content.length);
+            response.getOutputStream().write(content, 0, content.length);
+            response.getOutputStream().close();
 
         }
         catch(Exception ex) {
@@ -240,17 +242,17 @@ public class FileProcess {
 
         try {
 
-//            byte[] content = fileService.getBytes(filePath);
-//
-//            String fileName = FilenameUtils.getName(filePath);
-//
-//            String encodedFileName = encodeFileName(Utils.getBrowser(request), fileName);
-//
-//            response.setContentType("application/x-msdownload");
-//            response.setHeader("Content-Disposition", "attachment;filename=\"" + fileName + "\";");
-//            response.setContentLength(content.length);
-//            response.getOutputStream().write(content, 0, content.length);
-//            response.getOutputStream().close();
+            byte[] content = fileService.getBytes(filePath);
+
+            String fileName = FilenameUtils.getName(filePath);
+
+            String encodedFileName = encodeFileName(Utils.getBrowser(request), fileName);
+
+            response.setContentType("application/x-msdownload");
+            response.setHeader("Content-Disposition", "attachment;filename=\"" + fileName + "\";");
+            response.setContentLength(content.length);
+            response.getOutputStream().write(content, 0, content.length);
+            response.getOutputStream().close();
 
         }
         catch (Exception ex) {
@@ -338,55 +340,55 @@ public class FileProcess {
     public void showPopupImage(HttpServletRequest request, HttpServletResponse response, String filePath, String originalFileName) throws Exception {
         // NAS에서 파일 추출
         //byte[] content = fileService.getBytes(filePath);
-        
-//        byte[] content = fileService.getBytes(filePath, originalFileName);
-        
-        System.out.println("=========================");
-//        if (content != null && content.length > 0) {
-//            // 파일 이미지는 저장시 확장자를 저장하지 않아, 원본 이미지명을 이용하여 파일 확장자를 확인한다.
-//            String contentType = "application/x-msdownload";
-//            String fileExt = FilenameUtils.getExtension(originalFileName);
-//
-//            if ("asf".equals(fileExt)) { contentType = "video/x-ms-asf"; }
-//            else if ("asp".equals(fileExt)) { contentType = "text/asp"; }
-//            else if ("avi".equals(fileExt)) { contentType = "video/x-msvideo"; }
-//            else if ("bmp".equals(fileExt)) { contentType = "image/bmp"; }
-//            else if ("css".equals(fileExt)) { contentType = "text/css"; }
-//            else if ("doc".equals(fileExt)) { contentType = "application/msword"; }
-//            else if ("exe".equals(fileExt)) { contentType = "application/octet-stream"; }
-//            else if ("gif".equals(fileExt)) { contentType = "image/gif"; }
-//            else if ("htm".equals(fileExt)) { contentType = "text/html"; }
-//            else if ("html".equals(fileExt)) { contentType = "text/html"; }
-//            else if ("ico".equals(fileExt)) { contentType = "image/x-icon"; }
-//            else if ("java".equals(fileExt)) { contentType = "text/plain"; }
-//            else if ("jpeg".equals(fileExt)) { contentType = "image/jpeg"; }
-//            else if ("jpg".equals(fileExt)) { contentType = "image/jpeg"; }
-//            else if ("js".equals(fileExt)) { contentType = "application/x-javascript"; }
-//            else if ("mp3".equals(fileExt)) { contentType = "audio/mpeg3"; }
-//            else if ("mpeg".equals(fileExt)) { contentType = "video/mpeg"; }
-//            else if ("mpg".equals(fileExt)) { contentType = "audio/mpeg"; }
-//            else if ("png".equals(fileExt)) { contentType = "image/png"; }
-//            else if ("ppt".equals(fileExt)) { contentType = "application/vnd.ms-powerpoint"; }
-//            else if ("swf".equals(fileExt)) { contentType = "application/x-shockwave-flash"; }
-//            else if ("txt".equals(fileExt)) { contentType = "application/octet-stream"; }
-//            else if ("xls".equals(fileExt)) { contentType = "application/ms-excel"; }
-//            else if ("xml".equals(fileExt)) { contentType = "application/xml"; }
-//            else if ("zip".equals(fileExt)) { contentType = "application/zip"; }
-//            else { contentType = "application/x-msdownload"; }
-//
-//            String browser = getBrowser(request);
-//            String encodeFileName = getDisposition(originalFileName, browser);
-//
-//            response.setContentType(contentType);
-//            response.setHeader("Content-Disposition", "attachment;filename=\"" + encodeFileName + "\";");
-//            response.setContentLength(content.length);
-//            response.getOutputStream().write(content, 0, content.length);
-//            response.getOutputStream().close();
-//
 
-//        }
+        byte[] content = fileService.getBytes(filePath, originalFileName);
+
+        System.out.println("=========================");
+        if (content != null && content.length > 0) {
+            // 파일 이미지는 저장시 확장자를 저장하지 않아, 원본 이미지명을 이용하여 파일 확장자를 확인한다.
+            String contentType = "application/x-msdownload";
+            String fileExt = FilenameUtils.getExtension(originalFileName);
+
+            if ("asf".equals(fileExt)) { contentType = "video/x-ms-asf"; }
+            else if ("asp".equals(fileExt)) { contentType = "text/asp"; }
+            else if ("avi".equals(fileExt)) { contentType = "video/x-msvideo"; }
+            else if ("bmp".equals(fileExt)) { contentType = "image/bmp"; }
+            else if ("css".equals(fileExt)) { contentType = "text/css"; }
+            else if ("doc".equals(fileExt)) { contentType = "application/msword"; }
+            else if ("exe".equals(fileExt)) { contentType = "application/octet-stream"; }
+            else if ("gif".equals(fileExt)) { contentType = "image/gif"; }
+            else if ("htm".equals(fileExt)) { contentType = "text/html"; }
+            else if ("html".equals(fileExt)) { contentType = "text/html"; }
+            else if ("ico".equals(fileExt)) { contentType = "image/x-icon"; }
+            else if ("java".equals(fileExt)) { contentType = "text/plain"; }
+            else if ("jpeg".equals(fileExt)) { contentType = "image/jpeg"; }
+            else if ("jpg".equals(fileExt)) { contentType = "image/jpeg"; }
+            else if ("js".equals(fileExt)) { contentType = "application/x-javascript"; }
+            else if ("mp3".equals(fileExt)) { contentType = "audio/mpeg3"; }
+            else if ("mpeg".equals(fileExt)) { contentType = "video/mpeg"; }
+            else if ("mpg".equals(fileExt)) { contentType = "audio/mpeg"; }
+            else if ("png".equals(fileExt)) { contentType = "image/png"; }
+            else if ("ppt".equals(fileExt)) { contentType = "application/vnd.ms-powerpoint"; }
+            else if ("swf".equals(fileExt)) { contentType = "application/x-shockwave-flash"; }
+            else if ("txt".equals(fileExt)) { contentType = "application/octet-stream"; }
+            else if ("xls".equals(fileExt)) { contentType = "application/ms-excel"; }
+            else if ("xml".equals(fileExt)) { contentType = "application/xml"; }
+            else if ("zip".equals(fileExt)) { contentType = "application/zip"; }
+            else { contentType = "application/x-msdownload"; }
+
+            String browser = getBrowser(request);
+            String encodeFileName = getDisposition(originalFileName, browser);
+
+            response.setContentType(contentType);
+            response.setHeader("Content-Disposition", "attachment;filename=\"" + encodeFileName + "\";");
+            response.setContentLength(content.length);
+            response.getOutputStream().write(content, 0, content.length);
+            response.getOutputStream().close();
+
+
+        }
     }
-    
+
     public static String getBrowser(HttpServletRequest request) {
         String header = request.getHeader("User-Agent");
         if (header.indexOf("MSIE") > -1) {
@@ -400,25 +402,25 @@ public class FileProcess {
         }
         return "Firefox";
     }
-    
+
     public static String getDisposition(String filename, String browser)throws Exception {
-        String encodedFilename = null;        
+        String encodedFilename = null;
         String fName = filename;
         if (browser.equals("MSIE")) {
             fName = fName.replaceAll("\r", "").replaceAll("\n", "");
-            
+
             fName =  java.net.URLDecoder.decode(fName, "8859_1");
             fName =  java.net.URLEncoder.encode(fName, "UTF-8");
-            
-            encodedFilename = fName.replaceAll("\\+", " "); 
-            
-            
+
+            encodedFilename = fName.replaceAll("\\+", " ");
+
+
         } else if (browser.equals("Firefox")) {
             encodedFilename =
-         "\"" + new String(fName.getBytes("UTF-8"), "8859_1") + "\"";
+                    "\"" + new String(fName.getBytes("UTF-8"), "8859_1") + "\"";
         } else if (browser.equals("Opera")) {
             encodedFilename =
-         "\"" + new String(fName.getBytes("UTF-8"), "8859_1") + "\"";
+                    "\"" + new String(fName.getBytes("UTF-8"), "8859_1") + "\"";
         } else if (browser.equals("Chrome")) {
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i < fName.length(); i++) {
@@ -432,27 +434,27 @@ public class FileProcess {
             encodedFilename = sb.toString();
         } else if (browser.equals("IE11")) {
             fName = fName.replaceAll("\r", "").replaceAll("\n", "");
-            
+
             fName =  java.net.URLEncoder.encode(fName, "utf-8");
-            
-            encodedFilename = fName.replaceAll("\\+", " "); 
+
+            encodedFilename = fName.replaceAll("\\+", " ");
         }else {
             //throw new RuntimeException("Not supported browser");
             //else가 들어와도 ie 처럼 처리
             fName = fName.replaceAll("\r", "").replaceAll("\n", "");
-            
+
             fName =  java.net.URLDecoder.decode(fName, "8859_1");
             fName =  java.net.URLEncoder.encode(fName, "UTF-8");
-            
-            encodedFilename = fName.replaceAll("\\+", " "); 
+
+            encodedFilename = fName.replaceAll("\\+", " ");
         }
         return encodedFilename;
     }
 
-   public void downloadFile(HttpServletResponse response, Map<String,String> params) throws UnsupportedEncodingException {
-       String filePath = params.get("imgUrlAddr");
-       String systemFilenm = params.get("imgFileNm");
-       //String userFilenm = vo.getUserFilenm();
+    public void downloadFile(HttpServletResponse response, Map<String,String> params) throws UnsupportedEncodingException {
+        String filePath = params.get("imgUrlAddr");
+        String systemFilenm = params.get("imgFileNm");
+        //String userFilenm = vo.getUserFilenm();
     }
 
 }

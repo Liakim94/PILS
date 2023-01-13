@@ -54,7 +54,7 @@
             </list>
         </property>
     </bean>
-    
+
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
     <!-- 쿠키를 이용한 Locale 이용시 <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/> -->
     <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
@@ -81,11 +81,11 @@
 	<bean id="jsonView" name="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 		<property name="contentType" value="application/json;charset=UTF-8"/>
 	</bean>
-	
+
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
-	
+
 <!--	<bean id="excelView" name="excelView" class="kr.co.xicom.util.ExcelView"/> -->
-	
+
     <!-- For Pagination Tag -->
     <bean id="imageRenderer" class="kr.co.xicom.cmmn.web.EgovImgPaginationRenderer"/>
 
@@ -97,6 +97,5 @@
         </property>
     </bean>
 	<!-- /For Pagination Tag -->
-
 
 </beans>

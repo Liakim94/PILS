@@ -20,10 +20,10 @@ function fn_submit(stat){
 	}
 
 	if(stat == '1'){
-		if(confirm("등록하시겠습니까?")){
+		// if(confirm("등록하시겠습니까?")){
 			frm.stat.value = stat;
 			$("#frmPost").submit();
-		}
+		// }
 	} else{
 		if(confirm("임시저장 하시겠습니까?")){
 			frm.stat.value = stat;

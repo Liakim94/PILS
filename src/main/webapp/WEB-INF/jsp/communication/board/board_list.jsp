@@ -68,18 +68,23 @@ function linkPage(num){
 					</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="list" items="${list }" varStatus="status">
-						<tr>
-							<td>${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
-							<td class="al"><a href="javascript:showView('${list.boardSeq}')" >${list.title }</a></td>
-							<td>${list.regNm }</td>
-							<td>${fn:substring(list.regDe,0,10) }</td>
-							<td>${list.readCnt }</td>
-						</tr>
-					</c:forEach>
-					<c:if test="${empty list }">
-						<tr><td colspan="5" class="text-center">조회된 데이터가 없습니다.</td></tr>
-					</c:if>
+						<c:forEach var="post" items="${list }" varStatus="status">
+							<tr>
+								<td>${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
+								<td class="al">
+									<%--<a href="javascript:showView('${list.boardSeq}')" >${list.title }</a>--%>
+									<a href="<c:url value="/cmm/boardView.do?boardSeq=${post.boardSeq}&bbsId=${post.bbsId}"/>">
+										<c:out value="${post.title}"/>
+									</a>
+								</td>
+								<td><c:out value="${post.regNm}"/></td>
+								<td>${fn:substring(post.regDe,0,10)}</td>
+								<td><c:out value="${post.readCnt}"/></td>
+							</tr>
+						</c:forEach>
+						<c:if test="${empty list }">
+							<tr><td colspan="5" class="text-center">조회된 데이터가 없습니다.</td></tr>
+						</c:if>
 					</tbody>
 				</table>
 			</div>
