@@ -6,47 +6,17 @@
 <%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 		prefix="form"%>
 
 <head>
     <title></title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
 
 </head>
 <script>
-    // submit
-    function fn_submit() {
-
-        var frm = document.getElementById('frmWrite');
-
-        if (frm.name.value == "") {
-            alert("작성자를 입력하세요.");
-            return false;
-        }
-        if (frm.id.value == "") {
-            alert("공개여부를 선택하세요.");
-            return false;
-        }
-        if (frm.passwd.value == "" && document.getElementById('ChkBox2').checked) {
-            alert("비밀번호를 입력하세요.");
-            return false;
-        }
-        if (frm.title.value == "") {
-            alert("제목을 입력하세요.");
-            return false;
-        }
-
-        oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
-
-        var ir1 = $("#cont");
-        var ir2 = $("#cont").val();
-        if (ir1 == "" || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>') {
-            alert("내용을 입력하세요.");
-            return false;
-        }
-
-        $("#frmWrite").submit();
-    }
 
     //주소찾기
     function execPostCode() {
@@ -80,13 +50,66 @@
             $email2.val($ele.val());
         }
     }
+    $(function(){
+
+        var fileUploader = new smes.FileUploader('.file-uploader').init({
+            maxFileSize : 1024 * 1024 * 100,    // 100 MB 제한
+            maxFileCount : 20,
+            targetFolderPath : 'test2',
+            //accept : '.png, .jpg',
+            targetUrl: '<c:url value="/files/upload.do"/>',
+            <%--
+                파일업로드 Ajax 처리시 csrf token 지정.
+                참조 : https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=jskimmail&logNo=221616372513&redirect=Dlog&widgetTypeCall=true&directAccess=false
+                참조 : https://higugu.tistory.com/entry/Spring-Security-Ajax-%ED%98%B8%EC%B6%9C-%EC%8B%9C-403-Forbidden-%EC%97%90%EB%9F%AC
+            --%>
+            //csrfHeader: $('meta[name="_csrf_header"]').attr('content'),
+            //csrfToken: $('meta[name="_csrf"]').attr('content'),
+            fileList: $('#jsonFileList').val(),
+            deletedFileList: $('#jsonDeletedFileList').val()
+        });
+
+        $('#apply').on('click', function() {
+
+            fileUploader.upload({
+                done: function (result, deleted, uploaded) {
+                    // 업로드 완료 후 전송된 파일 리스트 정보를
+                    // 특정 hidden 파라미터로 설정하고 form을 전송한다.
+                    if (result) {
+                        console.dir(result);
+                        $('#jsonFileList').val(JSON.stringify(result));
+                    }
+                    else {
+                        $('#jsonFileList').val('');
+                    }
+                    if (deleted) {
+                        console.dir(deleted);
+                        $('#jsonDeletedFiles').val(JSON.stringify(deleted));
+                    }
+                    else {
+                        $('#jsonDeletedFiles').val('');
+                    }
+                    $('#frmPost').submit();
+                },
+                fail: function (error) {
+                    console.dir(error);
+                    alert(error.message);
+                }
+            });
+            // return false;
+        });
+    });
 </script>
 
 <page:applyDecorator name="menu2"/>
 <div class="article">
     <div class="content">
         <!-- 컨텐츠 start -->
-        <form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/join/joinApply.do">
+<%--        <form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/join/joinApply.do">--%>
+<form:form modelAttribute="frmPost">
+    <form:hidden path="jsonFileList"/>
+    <form:hidden path="jsonDeletedFileList"/>
+
             <div class="article-header">
                 <h3>동행기업 신청</h3>
                 <div class="side-wrap">
@@ -254,8 +277,10 @@
                 </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">첨부서류</th>
-                    <td>
-                        파일찾기
+                    <td colspan="3">
+                        <div class="file-uploader-wrapper">
+                            <div class="file-uploader"></div>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -280,10 +305,12 @@
                 </tbody>
             </table>
             <div class="btn-wrap type04">
-                <button type="submit" class="btn blue">등록</button>
+                <button id="apply" class="btn blue">등록</button>
                 <a href="${pageContext.request.contextPath}/join/joinList.do" class="btn blue">취소</a>
             </div>
-        </form>
+<%--        </form>--%>
+    </form:form>
+
         <!-- 컨텐츠 end -->
     </div>
 </div>

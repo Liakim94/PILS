@@ -110,7 +110,19 @@
     <div class="mobile-gnb-container">
         <div class="mobile-gnb-wrap">
             <div class="head">
-                <a class="login font14 point2-text" href="">로그인</a>
+                <c:if test="${sessionId eq null }">
+                    <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/login.do">로그인</a>
+                </c:if>
+                <c:if test="${sessionId ne null }">
+                    <div>
+                        <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/myPage.do"
+                        >마이페이지</a>
+                    </div>
+                    <div>
+                        <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/logout.do"
+                        >로그아웃</a>
+                    </div>
+                </c:if>
             </div>
             <nav>
                 <div class="menu">

@@ -44,5 +44,14 @@ public class CmpMemberVo extends DefaultVO {
     private String delete_yn = ""; //삭제여부
     private String auth_cd = ""; //권한코드
     private String management_cd = ""; //담당자구분코드
+    /**
+     * FileUploader.js에 의해 업로드된 파일 리스트 (JSON 문자열)
+     */
+    private String jsonFileList;
+
+    /**
+     * FileUploader.js에 의해 삭제된 파일 리스트 (JSON 문자열)
+     */
+    private String jsonDeletedFileList;
 
 }

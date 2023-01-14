@@ -106,8 +106,6 @@ public class BoardController extends Alerts{
 			writeAlert("존재하지 않는 게시물입니다.", request, response);
 		}
 
-		//HttpSession session = request.getSession();
-
 		// 첨부파일 리스트
 		// WildRain 수정 2023-01-13
 		// 해당 게시글에 첨부된 파일들 이므로 boardService에 getAttachList() 메소드를 구현 이용한다.
@@ -138,7 +136,6 @@ public class BoardController extends Alerts{
 
 		ModelAndView mav = null;
 		mav = new ModelAndView("communication/board/board_post");
-//		mav = new ModelAndView("communication/board/post");
 
 		mav.addObject("menuNo", request.getAttribute("menuNo"));
 		mav.addObject("menuName", request.getAttribute("menuName"));
@@ -154,8 +151,6 @@ public class BoardController extends Alerts{
 	@RequestMapping(value = "/boardPost.do", method={RequestMethod.POST})
 	public String doBoardPost(@ModelAttribute("frmPost") BoardVO boardVO,
 							  HttpSession session) throws Exception {
-
-		//HttpSession session = request.getSession();
 
 		int result = boardService.add(boardVO, null);
 

@@ -42,6 +42,12 @@
 
     });
 
+    window.onload = function() {
+        document.getElementById('btnLogin').onclick = function() {
+            document.getElementById('frmLogin').submit();
+            return false;
+        };
+    };
 </script>
 
 <!-- container -->
@@ -66,7 +72,7 @@
                     <input type="text" name="id" id="id" class="mb20" placeholder="아이디를 입력하세요." required />
                     <input type="password" name="passwd" id="passwd" placeholder="비밀번호를 입력하세요." required />
                 </div>
-                <div class="submit-wrap" tabindex="0">
+                <div class="submit-wrap" tabindex="0" id="btnLogin">
                     <img class="mb10" src="${pageContext.request.contextPath}/images/common/Login.png" alt="로그인">
                     <h4 class="text-white">로그인</h4>
                 </div>

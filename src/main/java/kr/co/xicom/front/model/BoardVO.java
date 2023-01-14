@@ -1,25 +1,7 @@
 package kr.co.xicom.front.model;
 
-/**
- * @Class Name : BoardVO.java
- * @Description : BoardVO Class
- * @Modification Information
- * @
- * @  수정일	  수정자		      수정내용
- * @ ---------	---------	-------------------------------
- * @ 2018.04.11   백상진              최초생성
- *
- *  Copyright (C) by XICOM All right reserved.
- */
 public class BoardVO extends DefaultVO{
 
-	/** 옵션
-
-	[TB_BOARD - STAT]		0:사용안함 1:사용 4:완전삭제 8:임시저장삭제 9:임시저장
-
-	[TB_BOARD - USR_TYP]	MEM:회원  GST : 게스트  EMP:사원
-
-	 */
 
 	private static final long serialVersionUID = 1L;
 
