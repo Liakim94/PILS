@@ -5,7 +5,7 @@ function fn_submit(stat){
 	var frm = document.getElementById('frmPost');
 
 	if( frm.title.value == "" )  {
-		alert("제목 입력하세요.");
+		alert("제목을 입력하세요.");
 		$(this).getById["title"].exec("FOCUS"); //포커싱
 		return false;
 	}

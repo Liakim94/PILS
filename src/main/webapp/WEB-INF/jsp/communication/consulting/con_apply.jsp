@@ -10,44 +10,10 @@
 <head>
     <title></title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 
 </head>
 <script>
-    // submit
-    function fn_submit() {
-
-        var frm = document.getElementById('frmWrite');
-
-        if (frm.name.value == "") {
-            alert("작성자를 입력하세요.");
-            return false;
-        }
-        if (frm.id.value == "") {
-            alert("공개여부를 선택하세요.");
-            return false;
-        }
-        if (frm.passwd.value == "" && document.getElementById('ChkBox2').checked) {
-            alert("비밀번호를 입력하세요.");
-            return false;
-        }
-        if (frm.title.value == "") {
-            alert("제목을 입력하세요.");
-            return false;
-        }
-
-        oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
-
-        var ir1 = $("#cont");
-        var ir2 = $("#cont").val();
-        if (ir1 == "" || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>') {
-            alert("내용을 입력하세요.");
-            return false;
-        }
-
-        $("#frmWrite").submit();
-    }
-
     //주소찾기
     function execPostCode() {
         daum.postcode.load(function () {
@@ -80,6 +46,77 @@
             $email2.val($ele.val());
         }
     }
+    $(function () {
+        $("#frmWrite").validate({
+            ignore: "",
+            rules: {
+                cmpNm: {required: true},
+                bizNo1: {required: true},
+                bizNo2: {required: true},
+                bizNo3: {required: true},
+                ceo: {required: true},
+                fdate: {required: true},
+                address: {required: true},
+                telNo: {required: true},
+                faxNo: {required: true},
+                bizType: {required: true},
+                capital: {required: true},
+                product: {required: true},
+                name: {required: true},
+                mbphno: {required: true},
+                deptNm: {required: true},
+                position: {required: true},
+                email1: {required: true},
+                email2: {required: true},
+                memTelNo: {required: true},
+                memFaxNo: {required: true},
+                conQ: {required: true},
+                passwd: {required: true},
+                passwdChk: {required: true, equalTo: "#passwd"},
+            },
+            onkeyup: false,
+            onclick: false,
+            onfocusout: false,
+            messages: {
+                cmpNm: {required: "기업명을 입력하세요."},
+                bizNo1: {required: "사업자번호를 확인하세요."},
+                bizNo2: {required: "사업자번호를 확인하세요."},
+                bizNo3: {required: "사업자번호를 확인하세요."},
+                ceo: {required: "대표자명을 입력하세요."},
+                fdate: {required: "설립일자를 입력하세요."},
+                address: {required: "본사 주소를 입력하세요."},
+                telNo: {required: "기업 전화번호를 입력하세요."},
+                faxNo: {required: "기업 팩스를 입력하세요."},
+                bizType: {required: "업종을 입력하세요."},
+                capital: {required: "자본금을 입력하세요."},
+                product: {required: "주요생산품을 입력하세요."},
+                name: {required: "담당자 성명을 입력하세요."},
+                mbphno: {required: "담당자 전화번호를 입력하세요."},
+                deptNm: {required: "담당자 소속부서를 입력하세요."},
+                position: {required: "담당자 직위를 입력하세요."},
+                email1: {required: "이메일을 입력하세요."},
+                email2: {required: "이메일을 입력하세요."},
+                memTelNo: {required: "사무실전화를 입력하세요."},
+                memFaxNo: {required: "담당자 팩스를 입력하세요."},
+                conQ: {required: "컨설팅시 주요 질의사항를 입력하세요."},
+                passwd: {required: "비밀번호를 입력하세요."},
+                passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
+
+            },
+            submitHandler: function (frm) {
+                $("#frmWrite").submit();
+
+            },
+            showErrors: function (errorMap, errorList) {
+                if (!$.isEmptyObject(errorList)) {
+                    $.each(errorList, function () {
+                        alert(this.message);
+                        return false;
+                    });
+                }
+            }
+        });
+    });
 </script>
 
 <page:applyDecorator name="menu"/>
@@ -98,11 +135,11 @@
                 </div>
                 <tbody>
                 <tr>
-                    <th class="txt_alcnt" scope="row">기업명</th>
+                    <th class="txt_alcnt" scope="row">기업명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text wdh100" id="cmpNm" name="cmpNm"/>
                     </td>
-                    <th class="txt_alcnt" scope="row">사업자번호</th>
+                    <th class="txt_alcnt" scope="row">사업자번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo1" name="bizNo1"/>
                         -
@@ -112,18 +149,18 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="txt_alcnt" scope="row">대표자명</th>
+                    <th class="txt_alcnt" scope="row">대표자명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text wdh100" id="ceo" name="ceo"/>
                     </td>
-                    <th class="txt_alcnt" scope="row">설립일자</th>
+                    <th class="txt_alcnt" scope="row">설립일자<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="date" class="uni_input_text wdh100" id="fdate" name="fdate"/>
                     </td>
                 </tr>
 
                 <tr>
-                    <th class="txt_alcnt" scope="row">본사 주소</th>
+                    <th class="txt_alcnt" scope="row">본사 주소<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td colspan="3">
                         <input type="text" class="uni_input_text " name="address" id="address" onclick="execPostCode()"
                                readonly/>
@@ -135,21 +172,21 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="txt_alcnt" scope="row">전화번호</th>
+                    <th class="txt_alcnt" scope="row">전화번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="number" class="uni_input_text wdh100" id="telNo" name="telNo"/>
                     </td>
-                    <th class="txt_alcnt" scope="row">팩스</th>
+                    <th class="txt_alcnt" scope="row">팩스<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="number" class="uni_input_text wdh100" id="faxNo" name="faxNo"/>
                     </td>
                 </tr>
                 <tr>
-                    <th class="txt_alcnt" scope="row">업종</th>
+                    <th class="txt_alcnt" scope="row">업종<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text wdh100" id="bizType" name="bizType"/>
                     </td>
-                    <th class="txt_alcnt" scope="row">자본금</th>
+                    <th class="txt_alcnt" scope="row">자본금<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text" id="capital" name="capital" style="padding:0"/>백만원
                     </td>
@@ -162,7 +199,7 @@
                     <th class="txt_alcnt" scope="row">2020년</th>
                     <th class="txt_alcnt" scope="row">2021년</th>
                 <tr>
-                    <th class="txt_alcnt" scope="row">매출액(백만원)</th>
+                    <th class="txt_alcnt" scope="row">매출액(백만원)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text" id=ix_data1" name="ix_data1"/>
                     </td>
@@ -174,7 +211,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="txt_alcnt" scope="row">영업이익(백만원)</th>
+                    <th class="txt_alcnt" scope="row">영업이익(백만원)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text" id="ix_data4" name="ix_data4"/>
                     </td>
@@ -186,7 +223,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="txt_alcnt" scope="row">종업원수(명)</th>
+                    <th class="txt_alcnt" scope="row">종업원수(명)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text" id="ix_data7" name="ix_data7"/>
                     </td>
@@ -198,34 +235,34 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="txt_alcnt" scope="row">주요생산품</th>
+                    <th class="txt_alcnt" scope="row">주요생산품<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td colspan="3">
                         <input type="text" id="product" class="uni_input_text wdh100" name="product"/>
                     </td>
                 </tr>
                 <th colspan="4" class="txt_alcnt" scope="row">담당자</th>
                 <tr>
-                    <th class="txt_alcnt" scope="row">성명</th>
+                    <th class="txt_alcnt" scope="row">성명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text wdh100 " name="name" id="name"/>
                     </td>
-                    <th class="txt_alcnt" scope="row">전화번호</th>
+                    <th class="txt_alcnt" scope="row">전화번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="number" class="uni_input_text wdh100" id="mbphno" name="mbphno" value=""/>
                     </td>
                 </tr>
                 <tr>
-                    <th class="txt_alcnt" scope="row">소속부서</th>
+                    <th class="txt_alcnt" scope="row">소속부서<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text wdh100" id="deptNm" name="deptNm" value=""/>
                     </td>
-                    <th class="txt_alcnt" scope="row">직위</th>
+                    <th class="txt_alcnt" scope="row">직위<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text wdh100" id="position" name="position" value=""/>
                     </td>
                 </tr>
                 <tr>
-                    <th class="txt_alcnt" scope="row">이메일</th>
+                    <th class="txt_alcnt" scope="row">이메일<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td colspan="3">
                         <input type="text" class="uni_input_text " name="email1" id="email1"/>
                         @
@@ -240,17 +277,17 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="txt_alcnt" scope="row">사무실 전화</th>
+                    <th class="txt_alcnt" scope="row">사무실 전화<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="number" class="uni_input_text wdh100" id="memTelNo" name="memTelNo" value=""/>
                     </td>
-                    <th class="txt_alcnt" scope="row">팩스</th>
+                    <th class="txt_alcnt" scope="row">팩스<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="number" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo" value=""/>
                     </td>
                 </tr>
                 <tr>
-                    <th colspan="4" class="txt_alcnt" scope="row">컨설팅시 주요 질의사항</th>
+                    <th colspan="4" class="txt_alcnt" scope="row">컨설팅시 주요 질의사항<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                 </tr>
                 <tr>
                     <td colspan="4">
@@ -287,11 +324,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="txt_alcnt" scope="row">비밀번호</th>
+                    <th class="txt_alcnt" scope="row">비밀번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text wdh100" name="passwd" value=""/>
                     </td>
-                    <th class="txt_alcnt" scope="row">비밀번호 재입력</th>
+                    <th class="txt_alcnt" scope="row">비밀번호 재입력<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
                         <input type="text" class="uni_input_text wdh100" id="passwdChk" name="passwdChk" value=""/>
                     </td>
@@ -299,7 +336,7 @@
                 </tbody>
             </table>
             <div class="btn-wrap type04">
-                <button type="submit" class="btn blue">저장</button>
+                <button type="button" class="btn blue" >저장</button>
                 <a href="${pageContext.request.contextPath}/cmm/consulting.do" class="btn blue">취소</a>
             </div>
         </form>

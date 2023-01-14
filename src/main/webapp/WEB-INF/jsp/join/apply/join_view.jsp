@@ -115,16 +115,17 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">첨부서류</th>
                     <td colspan="3">
-                        파일찾기
+                        <c:forEach var="attach" items="${attachList}">
+                                <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                    <c:out value="${attach.fileNm}"/>
+                                </a>
+                        </c:forEach>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <div class="btn-wrap type04">
-            <%--	    	<c:if test="${sessionScope.ID eq rs.id and empty rs.reply}">      --%>
-<%--            <a href='${pageContext.request.contextPath}/join/joinEdit.do?bizNo=${rs.bizNo}' class="btn blue">수정하기</a>--%>
-            <%--	        </c:if>	        --%>
             <a href="${pageContext.request.contextPath}/join/joinList.do" class="btn blue">목록</a>
         </div>
         <!-- 컨텐츠 end -->

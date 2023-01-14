@@ -13,8 +13,7 @@
 	<title><decorator:title default="" /></title>
 	<link rel="shortcut icon" type="image/x-icon" href="https://www.smes.go.kr/humanframe/theme/portal/assets/image/etc/favicon.png">
 	<%@include file="/WEB-INF/jsp/common/front/css_inc.jsp" %>                   
-	<%@include file="/WEB-INF/jsp/common/cms/message_inc.jsp" %>
-	<decorator:head />  
+	<decorator:head />
     <style>
         .smes_wrapper {
             display: table;

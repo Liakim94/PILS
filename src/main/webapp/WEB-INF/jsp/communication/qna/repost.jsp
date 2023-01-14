@@ -26,11 +26,9 @@
 	// submit
 	function fn_submit(){
 
-		var frm = document.getElementById('frmWrite');
-
 		oEditors.getById["txta"].exec("UPDATE_CONTENTS_FIELD", []);
 
-		var ir1 = $("#txta");
+		var ir1 = $("#txta").val();
 
 		if( ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>')  {
 			alert("답변을 작성하세요.");
@@ -82,7 +80,7 @@
 		    </table>
 		</div>
 		<div class="btn-wrap type04">
-			<button type="submit" class="btn blue" onclick="fn_submit()">저장</button>
+			<button type="button" class="btn blue" onclick="fn_submit()">저장</button>
 		    <a href="${pageContext.request.contextPath}/cmm/qnaList.do" class="btn blue">취소</a>
 		</div>
 		</form>

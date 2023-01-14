@@ -1,5 +1,9 @@
 package kr.co.xicom.front.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter@Setter
 public class CmpAttachVO {
     private String attchSeq ="";
     private String fileNm ="";

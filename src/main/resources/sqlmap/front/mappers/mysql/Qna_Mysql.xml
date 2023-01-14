@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.xicom.front.service.mapper.QnaMapper">
+
+    <resultMap type="bbsQna"                                id="bbsQna">
+        <result property="no"                               column="no"/>
+        <result property="headnum"                          column="headnum"/>
+        <result property="arrangenum"                       column="arrangenum"/>
+        <result property="depth"                            column="depth"/>
+        <result property="id"                               column="id"/>
+        <result property="name"                             column="name"/>
+        <result property="passwd"                           column="passwd"/>
+        <result property="title"                            column="title"/>   
+        <result property="body"                             column="body"/>
+        <result property="ip"                               column="ip"/>
+        <result property="rdate"                            column="rdate"/>
+        <result property="reply"                            column="reply"/>
+    </resultMap>
+    
+    <select id="list" resultMap="bbsQna">
+        select no           AS no           
+                , hedofc_no AS headnum          
+                , sort_no   AS arrangenum       
+                , dp        AS depth            
+                , id        AS id           
+                , nm        AS name         
+                , pswd      AS passwd
+        <![CDATA[
+                , case when dp=1 then '&nbsp;&nbsp;->'||ttl
+                       else ttl end as title
+ 	    ]]>
+                , TO_CHAR(TO_TIMESTAMP(regist_date), 'YYYY-MM-DD') rdate
+                , rspns as reply
+        from tb_banner_qust_answr
+        where 1 = 1
+        order by hedofc_no desc, dp asc
+        <if test="pageIndex > 0">
+        LIMIT #{pageUnit} OFFSET #{firstIndex}  
+        </if>
+    </select>
+    
+    <select id="listCnt" resultType="int">
+        select count(1)cnt
+        from tb_banner_qust_answr
+        where 1 = 1 
+        <if test="!id.equals('')">
+            and id = #{id}
+        </if>
+    </select>
+    
+    <update id="insertBbsQna">
+       <selectKey resultType="int" keyProperty="headnum" order="BEFORE">
+           SELECT min(hedofc_no)+(-1) FROM tb_banner_qust_answr
+       </selectKey>
+        INSERT INTO tb_banner_qust_answr
+        (   hedofc_no
+           , sort_no
+           , dp
+           , id
+           , nm
+           , pswd
+           , ttl
+           , bdtxt
+           , ip_addr
+           , regist_date
+        )
+        values 
+        (  #{headnum}::INT4
+           , 0
+           , 0
+           , #{id}
+           , #{name}
+           , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+           , #{title}
+           , #{body}
+           , #{ip}
+           , extract(epoch from now() at time zone 'utc')
+        )
+        
+    </update>
+    
+    <select id="chkPasswd" resultType="int">
+        select
+        case when inPass = pswd then 1
+        else 0 end as rslt
+        from
+        (select
+        encode(encrypt(convert_to(#{passwd},'utf8'),'ENC_KEY','aes'),'hex') as inPass
+        , pswd
+        from
+        tb_banner_qust_answr where no = #{no}
+        ) a;
+
+        <!-- and passwd = OLD_PASSWORD(#{passwd}) -->
+    </select>
+    
+    <select id="getBbsQnabyId" resultMap="bbsQna">
+        select no           AS no
+                , hedofc_no AS headnum
+                , sort_no   AS arrangenum
+                , dp        AS depth
+                , id        AS id
+                , nm        AS name
+                , pswd      AS passwd
+                , ttl       AS title
+                , bdtxt     AS body
+                , rspns     AS reply
+        from tb_banner_qust_answr
+        where 1 = 1
+        and no = #{no}::INT4
+    </select>
+    
+    <update id="repostBbsQna">
+        insert into tb_banner_qust_answr
+            (
+             hedofc_no
+            , dp
+            , id
+            , nm
+            , pswd
+            , ttl
+            , bdtxt
+            , regist_date
+        )
+        values (
+           #{headnum}
+           , 0
+           , #{id}
+            , #{name}
+            , #{passwd}
+            , #{title}
+            , #{body}
+            , extract(epoch from now() at time zone 'utc')
+        )
+
+    </update>
+    <delete id="qnaDelete">
+        delete from tb_banner_qust_answr where no=  #{no}
+    </delete>
+</mapper>

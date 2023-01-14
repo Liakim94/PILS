@@ -1,10 +1,9 @@
 package kr.co.xicom.front.controller;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
-import kr.co.xicom.front.model.AgreementVO;
-import kr.co.xicom.front.model.CmpMemberVo;
-import kr.co.xicom.front.model.CmpSttusVO;
+import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.AgreementService;
+import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.front.service.ConsultingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +27,8 @@ public class JoinController {
     private ConsultingService consultingService;
     @Autowired
     private AgreementService agreementService;
+    @Autowired
+    private BoardService boardService;
 
     //동행기업 신청 리스트
     @GetMapping(value = "/joinList.do")
@@ -67,17 +68,18 @@ public class JoinController {
 
     //동행기업 신청 화면
     @GetMapping(value = "/joinApply.do")
-    public ModelAndView apply(HttpSession session,
+    public ModelAndView apply(@ModelAttribute("frmPost") CmpMemberVo cmpVO,
                               HttpServletRequest request,
                               HttpServletResponse response) throws Exception {
 
         ModelAndView mav = new ModelAndView("join/apply/join_apply");
+        mav.addObject("frmPost", cmpVO);
         return mav;
     }
 
     @RequestMapping(value = "/joinApply.do", method = {RequestMethod.POST})
     public void doApply(ModelMap model,
-                        @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+                        @ModelAttribute("frmPost") CmpMemberVo cmpVO,
                         @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
                         HttpServletRequest request,
                         HttpServletResponse response) throws Exception {
@@ -90,7 +92,7 @@ public class JoinController {
             cmpVO.setMem_cd("M302"); //동행기업회원구분코드
             stVO.setBizNo(bizNo);
             cmpVO.setManagement_cd("M501"); //담당자구분코드
-            int result = consultingService.insertJoinApply(cmpVO, stVO);
+            int result = consultingService.insertJoinApply(cmpVO, stVO,null);
             if (result > 0) {
 
                 response.sendRedirect(request.getContextPath() + "/join/joinList.do");
@@ -144,10 +146,8 @@ public class JoinController {
     public ModelAndView view(ModelMap model,
                              @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                              @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
-                             @RequestParam(value = "bizNo") String bizNo,
-                             HttpSession session,
-                             HttpServletRequest request,
-                             HttpServletResponse response) throws Exception {
+                             @ModelAttribute("boardVO") BoardVO boardVO,
+                             @RequestParam(value = "bizNo") String bizNo) throws Exception {
 
         ModelAndView mav = new ModelAndView("join/apply/join_view");
 
@@ -155,6 +155,7 @@ public class JoinController {
         cmpVO.setMem_cd("M302");
         try {
             List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+            List<AttachVO> attachList = boardService.getAttachList(boardVO);
 
             CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
@@ -166,6 +167,7 @@ public class JoinController {
 
             mav.addObject("rs", rs);
             mav.addObject("st", sttus);
+            mav.addObject("attachList", attachList);
 
         } catch (Exception e) {
             System.out.println(e.toString());

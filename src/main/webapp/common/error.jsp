@@ -11,7 +11,7 @@
 	<title>오류</title>
 	<%@include file="/WEB-INF/jsp/common/front/css_inc.jsp" %>
 	<%@include file="/WEB-INF/jsp/common/front/javascript_inc.jsp" %>
-	<%@include file="/WEB-INF/jsp/common/cms/message_inc.jsp" %>
+<%--	<%@include file="/WEB-INF/jsp/common/cms/message_inc.jsp" %>--%>
 </head>
 
 <body>

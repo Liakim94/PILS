@@ -42,6 +42,17 @@ public class AttachVO extends DefaultVO {
 	@Expose
 	private String 	useAt						= "";	// 사용여부
 
+
+	//do 추가 23-01-15
+	/**
+	 * 동행기업 신청 첨부파일을 위해 필요한 columns
+	 */
+	@Expose
+	private String 	bizNo						= "";	// 사업자번호
+	@Expose
+	private String 	attchCode						= "";	// 첨부파일 구분코드
+
+
 	/*
 	private CommonsMultipartFile[] file 	= null;
 	private String[] arrFilename 			= null;
@@ -195,6 +206,21 @@ public class AttachVO extends DefaultVO {
 	}
 	public void setUseAt(String useAt) {
 		this.useAt = useAt;
+	}
+	public String getBizNo() {
+		return bizNo;
+	}
+
+	public void setBizNo(String bizNo) {
+		this.bizNo = bizNo;
+	}
+
+	public String getAttchCode() {
+		return attchCode;
+	}
+
+	public void setAttchCode(String attchCode) {
+		this.attchCode = attchCode;
 	}
 	/*public CommonsMultipartFile[] getFile() {
 		CommonsMultipartFile[] arrFiles = null;

@@ -149,40 +149,6 @@
             } catch (e) {
                 alert(e);
             }
-            <%--new Promise( (succ, fail)=>{--%>
-
-            <%--    $.ajax({--%>
-            <%--        url: "${pageContext.request.contextPath}/cmm/conChkPw.do",--%>
-            <%--        type: "POST",--%>
-            <%--        data: "bizNo=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),--%>
-            <%--        success: function(result) {--%>
-            <%--            succ(result);--%>
-            <%--            console.log(result); // 성공하면--%>
-            <%--        },--%>
-            <%--        fail: function(result) {--%>
-            <%--            fail(error);--%>
-            <%--            alert("비밀번호를 확인해주세요."); // 실패하면--%>
-            <%--        }--%>
-            <%--    });--%>
-
-            <%--}).then((arg) =>{    // 두번째 ajax를 실행한다.--%>
-
-            <%--    $.ajax({--%>
-            <%--        url: "${pageContext.request.contextPath}/cmm/conView.do",--%>
-            <%--        type: 'post',--%>
-            <%--        data: "bizNo=" + $("#hiddenNo").val(),--%>
-            <%--        success: function(result2) {--%>
-            <%--            succ(result2);--%>
-            <%--            console.log(result2); // 성공하면--%>
-            <%--        },--%>
-            <%--        fail: function(result2) {--%>
-            <%--            fail(error);--%>
-            <%--            console.log(result.responseText); // 실패하면--%>
-            <%--        }--%>
-
-            <%--    });--%>
-
-            <%--});--%>
         })
     });
 function modalData(num){

@@ -105,19 +105,6 @@
                         </div>
                     </div>
                 </form:form>
-                <%--
-                <div class="form-group file-upload" required="required" >
-                    <label class="cols-sm-2 control-label" >File Upload</label><br>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></span>
-                            <div class="form-control" data-message="">
-                                <input required="required" type="file" name="document[file]" id="document_file">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                --%>
                 <%-- WildRain 추가 2023-01-12 --%>
                 <div class="file-uploader-wrapper">
                     <div class="file-uploader"></div>

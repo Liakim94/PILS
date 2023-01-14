@@ -25,13 +25,13 @@
 
 	$(function(){
 		$(document).on('change', 'input[name="id"]', function(){
-		// $("input:radio[name='radio']").change(function(){
 
 			if($("input[name=id]:checked").val() == "0"){
 				$("input:text[name=passwd]").attr("disabled",false);
 
 			}else if($("input[name=id]:checked").val() == "1"){
 				$("input:text[name=passwd]").attr("disabled",true);
+
 			}
 		});
 	});
@@ -60,8 +60,7 @@
 
 		oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
 
-		var ir1 = $("#cont");
-		var ir2 = $("#cont").val();
+		var ir1 = $("#cont").val();
 		if( ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>')  {
 			alert("내용을 입력하세요.");
 			return false;
