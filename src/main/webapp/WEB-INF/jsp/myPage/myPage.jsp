@@ -7,6 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
+<%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
     <title></title>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
@@ -90,7 +91,10 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">첨부서류</th>
                     <td colspan="3">
-                        파일찾기
+                        <c:forEach var="attach" items="${attachList}">
+                                <c:out value="${attach.fileNm}"/>
+                            </a>
+                        </c:forEach>
                     </td>
                 </tr>
                 </tbody>

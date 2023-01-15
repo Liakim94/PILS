@@ -1,5 +1,6 @@
 package kr.co.xicom.front.controller;
 
+import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
 import kr.co.xicom.front.service.ConsultingService;
@@ -98,6 +99,7 @@ public class MainController {
         cmpVO.setMem_cd("M302");
         try {
             List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+            List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
 
             CmpMemberVo rs = mainService.getMemInfo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
@@ -109,6 +111,7 @@ public class MainController {
 
             mav.addObject("rs", rs);
             mav.addObject("st", sttus);
+            mav.addObject("attachList", attachList);
 
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -131,6 +134,7 @@ public class MainController {
         cmpVO.setMem_cd("M302");
         try {
             List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+            List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
             CmpMemberVo rs = mainService.getMemInfo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
             rs.setBizNo2(rs.getBizNo().substring(3, 5));
@@ -141,6 +145,7 @@ public class MainController {
 
             mav.addObject("rs", rs);
             mav.addObject("st", sttus);
+            mav.addObject("attachList", attachList);
 
         } catch (Exception e) {
             System.out.println(e.toString());

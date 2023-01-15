@@ -201,37 +201,37 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">매출액(백만원)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
-                        <input type="text" class="uni_input_text" id=ix_data1" name="ix_data1"/>
+                        <input type="number" class="uni_input_text" id=ix_data1" name="ix_data1"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data2" name="ix_data2"/>
+                        <input type="number" class="uni_input_text" id="ix_data2" name="ix_data2"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data3" name="ix_data3"/>
+                        <input type="number" class="uni_input_text" id="ix_data3" name="ix_data3"/>
                     </td>
                 </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">영업이익(백만원)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data4" name="ix_data4"/>
+                        <input type="number" class="uni_input_text" id="ix_data4" name="ix_data4"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data5" name="ix_data5"/>
+                        <input type="number" class="uni_input_text" id="ix_data5" name="ix_data5"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data6" name="ix_data6"/>
+                        <input type="number" class="uni_input_text" id="ix_data6" name="ix_data6"/>
                     </td>
                 </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">종업원수(명)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data7" name="ix_data7"/>
+                        <input type="number" class="uni_input_text" id="ix_data7" name="ix_data7"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data8" name="ix_data8"/>
+                        <input type="number" class="uni_input_text" id="ix_data8" name="ix_data8"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data9" name="ix_data9"/>
+                        <input type="number" class="uni_input_text" id="ix_data9" name="ix_data9"/>
                     </td>
                 </tr>
                 <tr>

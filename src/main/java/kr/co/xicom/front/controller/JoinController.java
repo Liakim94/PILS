@@ -68,7 +68,7 @@ public class JoinController {
 
     //동행기업 신청 화면
     @GetMapping(value = "/joinApply.do")
-    public ModelAndView apply(@ModelAttribute("frmPost") CmpMemberVo cmpVO,
+    public ModelAndView apply(@ModelAttribute("frmApply") CmpMemberVo cmpVO,
                               HttpServletRequest request,
                               HttpServletResponse response) throws Exception {
 
@@ -78,8 +78,7 @@ public class JoinController {
     }
 
     @RequestMapping(value = "/joinApply.do", method = {RequestMethod.POST})
-    public void doApply(ModelMap model,
-                        @ModelAttribute("frmPost") CmpMemberVo cmpVO,
+    public void doApply(@ModelAttribute("frmApply") CmpMemberVo cmpVO,
                         @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
                         HttpServletRequest request,
                         HttpServletResponse response) throws Exception {
@@ -146,7 +145,6 @@ public class JoinController {
     public ModelAndView view(ModelMap model,
                              @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                              @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
-                             @ModelAttribute("boardVO") BoardVO boardVO,
                              @RequestParam(value = "bizNo") String bizNo) throws Exception {
 
         ModelAndView mav = new ModelAndView("join/apply/join_view");
@@ -155,7 +153,7 @@ public class JoinController {
         cmpVO.setMem_cd("M302");
         try {
             List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
-            List<AttachVO> attachList = boardService.getAttachList(boardVO);
+            List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
 
             CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));

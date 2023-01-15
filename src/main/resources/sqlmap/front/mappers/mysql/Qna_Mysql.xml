@@ -26,14 +26,14 @@
                 , nm        AS name         
                 , pswd      AS passwd
         <![CDATA[
-                , case when dp=1 then '&nbsp;&nbsp;->'||ttl
+                , case when dp=1 then ttl
                        else ttl end as title
  	    ]]>
                 , TO_CHAR(TO_TIMESTAMP(regist_date), 'YYYY-MM-DD') rdate
                 , rspns as reply
         from tb_banner_qust_answr
         where 1 = 1
-        order by hedofc_no desc, dp asc
+        order by hedofc_no asc, dp asc
         <if test="pageIndex > 0">
         LIMIT #{pageUnit} OFFSET #{firstIndex}  
         </if>
@@ -50,7 +50,7 @@
     
     <update id="insertBbsQna">
        <selectKey resultType="int" keyProperty="headnum" order="BEFORE">
-           SELECT min(hedofc_no)+(-1) FROM tb_banner_qust_answr
+           SELECT coalesce(min(hedofc_no),0)+(-1) FROM tb_banner_qust_answr
        </selectKey>
         INSERT INTO tb_banner_qust_answr
         (   hedofc_no
@@ -124,7 +124,7 @@
         )
         values (
            #{headnum}
-           , 0
+           , 1
            , #{id}
             , #{name}
             , #{passwd}

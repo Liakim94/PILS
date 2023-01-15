@@ -50,6 +50,7 @@
             $email2.val($ele.val());
         }
     }
+
     $(function(){
 
         var fileUploader = new smes.FileUploader('.file-uploader').init({
@@ -89,7 +90,7 @@
                     else {
                         $('#jsonDeletedFiles').val('');
                     }
-                    $('#frmPost').submit();
+                    $('#frmApply').submit();
                 },
                 fail: function (error) {
                     console.dir(error);
@@ -106,7 +107,7 @@
     <div class="content">
         <!-- 컨텐츠 start -->
 <%--        <form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/join/joinApply.do">--%>
-<form:form modelAttribute="frmPost">
+<form:form modelAttribute="frmApply" action="joinApply.do">
     <form:hidden path="jsonFileList"/>
     <form:hidden path="jsonDeletedFileList"/>
 
@@ -190,37 +191,37 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">매출액(백만원)</th>
                     <td>
-                        <input type="text" class="uni_input_text" id=ix_data1" name="ix_data1"/>
+                        <input type="number" class="uni_input_text" id=ix_data1" name="ix_data1"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data2" name="ix_data2"/>
+                        <input type="number" class="uni_input_text" id="ix_data2" name="ix_data2"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data3" name="ix_data3"/>
+                        <input type="number" class="uni_input_text" id="ix_data3" name="ix_data3"/>
                     </td>
                 </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">영업이익(백만원)</th>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data4" name="ix_data4" />
+                        <input type="number" class="uni_input_text" id="ix_data4" name="ix_data4" />
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data5" name="ix_data5"/>
+                        <input type="number" class="uni_input_text" id="ix_data5" name="ix_data5"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data6" name="ix_data6"/>
+                        <input type="number" class="uni_input_text" id="ix_data6" name="ix_data6"/>
                     </td>
                 </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">종업원수(명)</th>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data7" name="ix_data7"/>
+                        <input type="number" class="uni_input_text" id="ix_data7" name="ix_data7"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data8" name="ix_data8"/>
+                        <input type="number" class="uni_input_text" id="ix_data8" name="ix_data8"/>
                     </td>
                     <td>
-                        <input type="text" class="uni_input_text" id="ix_data9" name="ix_data9"/>
+                        <input type="number" class="uni_input_text" id="ix_data9" name="ix_data9"/>
                     </td>
                 </tr>
                 <tr>

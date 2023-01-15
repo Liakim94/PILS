@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" 	%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" 		prefix="page" 		%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 				prefix="c" 			%>
-<%@ taglib uri="http://egovframework.gov/ctl/ui" 				prefix="ui" 		%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" 		prefix="fn" 		%>
-<%@ taglib uri="http://www.springframework.org/tags" 			prefix="spring" 	%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
     <title></title>
@@ -14,14 +14,14 @@
 
 </head>
 <script>
-    function linkPage(num){
+    function linkPage(num) {
         var form = document.frmSearch;
         form.pageIndex.value = num;
         form.submit();
     }
 
 </script>
-<page:applyDecorator name="menu" />
+<page:applyDecorator name="menu"/>
 <div class="article">
     <div class="content">
         <!-- 컨텐츠 start -->
@@ -36,55 +36,66 @@
             <div class="btn-wrap type02 low_margin">
                 <a href="${pageContext.request.contextPath}/cmm/qnaPost.do" class="btn blue">문의하기</a>
             </div>
-        <div class="tbl-wrap separate1">
-            <table class="tbl-list01">
-                <colgroup>
-                    <col width="15%" />
-                    <col width="55%" />
-                    <col width="15%" />
-                    <col width="15%" />
-                </colgroup>
-                <thead>
-                <th class="txt_alcnt" scope="col">번호</th>
-                <th class="txt_alcnt" scope="col">제목</th>
-                <th class="txt_alcnt" scope="col">작성자</th>
-                <th class="txt_alcnt" scope="col">작성일</th>
-                </thead>
-                <tbody>
-                <c:forEach var="list" items="${list }" varStatus="status" >
-                    <input type="hidden" name="no" id="no" value="${list.no}">
-                    <tr>
-                        <td class="txt_alcnt">${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
-                        <td class="al">
-                            <a href="checkPw" data-toggle="modal" data-target="#checkPw" onclick="modalData(${list.no})" >
-                            <c:if test="${not empty list.reply }">
-                            <strong>[답변완료] </strong>
-                            </c:if>${list.title }
-                        </a>
-                        </td>
-                        <td class="txt_alcnt"> ${list.name }</td>
-                        <td class="txt_alcnt">${list.rdate }</td>
-                    </tr>
-                </c:forEach>
-                <c:if test="${empty list }">
-                    <tr><td colspan="4" class="text-center">조회된 데이터가 없습니다.</td></tr>
-                </c:if>
-                </tbody>
-            </table>
-        </div>
+            <div class="tbl-wrap separate1">
+                <table class="tbl-list01">
+                    <colgroup>
+                        <col width="15%"/>
+                        <col width="55%"/>
+                        <col width="15%"/>
+                        <col width="15%"/>
+                    </colgroup>
+                    <thead>
+                    <th class="txt_alcnt" scope="col">번호</th>
+                    <th class="txt_alcnt" scope="col">제목</th>
+                    <th class="txt_alcnt" scope="col">작성자</th>
+                    <th class="txt_alcnt" scope="col">작성일</th>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="list" items="${list }" varStatus="status">
+                        <input type="hidden" name="no" id="no" value="${list.no}">
+                        <tr>
+                            <td class="txt_alcnt">${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
+                            <td class="al">
+
+                                <c:choose>
+                                    <c:when test="${list.id eq '1'}">
+                                            <strong>[공개] </strong>
+                                        <a href="${pageContext.request.contextPath}/cmm/qnaView.do?no=${list.no}">
+                                                ${list.title }</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <strong>[비공개] </strong>
+                                    <a href="checkPw" data-toggle="modal" data-target="#checkPw"
+                                       onclick="modalData(${list.no})">
+                                            ${list.title }</a>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td class="txt_alcnt"> ${list.name }</td>
+                            <td class="txt_alcnt">${list.rdate }</td>
+                        </tr>
+                    </c:forEach>
+                    <c:if test="${empty list }">
+                        <tr>
+                            <td colspan="4" class="text-center">조회된 데이터가 없습니다.</td>
+                        </tr>
+                    </c:if>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- paging -->
             <div class="board_bottom_wrap">
                 <div class="paging_wrap">
                     <ul class="paging">
-                        <ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage" />
+                        <ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage"/>
                     </ul>
                 </div>
             </div>
             <!-- // paging -->
 
 
-        <!-- 컨텐츠 end -->
+            <!-- 컨텐츠 end -->
         </form>
     </div>
 </div>
@@ -97,9 +108,9 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="modalFrm" >
+                <form id="modalFrm">
                     <label text="비밀번호"> </label>
-                    <input type="hidden"value="" id="hiddenNo">
+                    <input type="hidden" value="" id="hiddenNo">
                     <input id="passwd" type="password" name="passwd" class="form-control">
                     <div class="d-flex justify-content-center">
                         <input id="btnPw" type="submit" class="btn bg-gradient-dark mt-3" onclick="">확인</input>
@@ -120,7 +131,7 @@
                     data: "no=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),
                     success: function (data) {
                         if (data == "1") {
-                            location.href = "${pageContext.request.contextPath}/cmm/qnaView.do?no="+ $("#hiddenNo").val()
+                            location.href = "${pageContext.request.contextPath}/cmm/qnaView.do?no=" + $("#hiddenNo").val()
                         } else {
                             alert("비밀번호를 확인해주세요.")
                         }
@@ -134,10 +145,11 @@
             }
         })
     });
-function modalData(num){
-    $('#checkPw').on('show.bs.modal', function (event) {
-        $("#hiddenNo").val( num );
-    })
-};
+
+    function modalData(num) {
+        $('#checkPw').on('show.bs.modal', function (event) {
+            $("#hiddenNo").val(num);
+        })
+    };
 
 </script>

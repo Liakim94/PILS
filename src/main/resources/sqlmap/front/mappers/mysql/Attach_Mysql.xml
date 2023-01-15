@@ -39,6 +39,41 @@
             #{updNm}
         )
     </insert>
+    <insert id="joinCreate" parameterType="kr.co.xicom.front.model.AttachVO">
+        <selectKey keyProperty="attchSeq" resultType="int" order="BEFORE">
+            select nextval('tb_atch_atch_sn_seq') as attchSeq
+        </selectKey>
+        INSERT INTO cobiz.tb_atch (
+        atch_sn,
+        bizno,
+        bbs_id,
+        file_size,
+        file_path,
+        saved_file_nm,
+        file_nm,
+        regist_date,
+        regstr_sn,
+        updat_sn,
+        regstr_nm,
+        updat_nm,
+        atch_cd
+        )
+        VALUES(
+        #{attchSeq},
+        #{bizNo},
+        #{bbsId},
+        #{fileSz},
+        #{filePath},
+        #{svFileNm},
+        #{fileNm},
+        now(),
+        #{regSeq},
+        #{updSeq},
+        #{regNm},
+        #{updNm},
+        #{attchCode}
+        )
+    </insert>
 
     <select id="list" parameterType="kr.co.xicom.front.model.AttachVO" resultType="kr.co.xicom.front.model.AttachVO">
         select
@@ -54,6 +89,22 @@
         where
             bbs_sn = #{boardSeq}
             and bbs_id = #{bbsId}
+    </select>
+    <select id="joinList" parameterType="kr.co.xicom.front.model.AttachVO" resultType="kr.co.xicom.front.model.AttachVO">
+        select
+            atch_sn         as attachSeq,
+            file_size       as fileSz,
+            file_path       as filePath,
+            file_nm         as fileNm,
+            saved_file_nm   as svFileNm,
+            bbs_sn          as boardSeq,
+            bbs_id          as bbsId
+        from
+            tb_atch
+        where
+            bizno = #{bizNo}
+          and bbs_id = #{bbsId}
+          and atch_cd =#{attchCode}
     </select>
 
     <delete id="delete" parameterType="kr.co.xicom.front.model.AttachVO">
