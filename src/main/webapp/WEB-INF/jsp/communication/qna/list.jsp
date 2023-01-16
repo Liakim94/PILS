@@ -47,7 +47,7 @@
             <input type="hidden" name="pageIndex" id="pageIndex" value="1">
 
             <div class="tbl-wrap for_board">
-                <span  href="${pageContext.request.contextPath}/cmm/qnaPost.do" class="write-question">질의 등록</span>
+                <a href="${pageContext.request.contextPath}/cmm/qnaPost.do" class="write-question">질의 등록</a>
                 <table class="tbl-list01">
                     <caption>자주 묻는 질문: 번호, 응답여부, 제목, 작성자, 작성일, 조회수</caption>
                     <colgroup>

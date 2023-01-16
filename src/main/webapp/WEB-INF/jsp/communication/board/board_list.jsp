@@ -59,8 +59,8 @@
 
                             <div class="tbl-wrap for_board">
                                 <c:if test="${sessionId eq 'admin' }">
-                    <span href="${pageContext.request.contextPath}/cmm/boardPost.do?bbsId=${bbsId}" class="write-question"
-                          style="width: 135px">게시물 등록</span>
+                    <a href="${pageContext.request.contextPath}/cmm/boardPost.do?bbsId=${bbsId}" class="write-question"
+                          style="width: 135px">게시물 등록</a>
                                 </c:if>
                                 <table class="tbl-list01">
                                     <caption>공지사항 : 번호, 제목, 작성자, 작성일, 조회수</caption>
