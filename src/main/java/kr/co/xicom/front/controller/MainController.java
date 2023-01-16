@@ -1,8 +1,11 @@
 package kr.co.xicom.front.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
+import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,7 @@ public class MainController {
     MainService mainService;
     @Autowired
     private ConsultingService consultingService;
+
 
     @GetMapping(value = "/index.do")
     public ModelAndView main(ModelMap model,
@@ -98,6 +102,7 @@ public class MainController {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M302");
         try {
+            stVO.setBizNo(bizNo);
             List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
             List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
 
@@ -121,32 +126,33 @@ public class MainController {
 
     //수정 화면
     @GetMapping(value = "/joinEdit.do")
-    public ModelAndView joinEdit(
-            ModelMap model,
-            @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
-            @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
-            HttpServletRequest request,
-            HttpSession session
-    ) throws Exception {
+    public ModelAndView joinEdit(@ModelAttribute("frmEdit") CmpMemberVo cmpVO,
+                                @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
+                                HttpServletRequest request,
+                                HttpSession session) throws Exception {
         ModelAndView mav = new ModelAndView("myPage/myPage_edit");
-
-        cmpVO.setBizNo((String) session.getAttribute("sessionBizNo"));
+        String bizNo= (String) session.getAttribute("sessionBizNo");
+        cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M302");
         try {
+            cmpVO = mainService.getMemInfo(cmpVO);
+            cmpVO.setBizNo1(cmpVO.getBizNo().substring(0, 3));
+            cmpVO.setBizNo2(cmpVO.getBizNo().substring(3, 5));
+            cmpVO.setBizNo3(cmpVO.getBizNo().substring(5, 10));
+
+            stVO.setBizNo(bizNo);
             List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
-            List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
-            CmpMemberVo rs = mainService.getMemInfo(cmpVO);
-            rs.setBizNo1(rs.getBizNo().substring(0, 3));
-            rs.setBizNo2(rs.getBizNo().substring(3, 5));
-            rs.setBizNo3(rs.getBizNo().substring(5, 10));
-            if (rs == null) {
-                System.out.println("비정상적인 접근입니다.");
+//            cmpVO.setCmpSttusVOList(sttus);
+
+            List<AttachVO> attachList = this.consultingService.getAttachList(cmpVO);
+            if (attachList != null && attachList.size() > 0) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                String jsonFileList = gson.toJson(attachList);
+                cmpVO.setJsonFileList(jsonFileList);
             }
 
-            mav.addObject("rs", rs);
+            mav.addObject("frmEdit", cmpVO);
             mav.addObject("st", sttus);
-            mav.addObject("attachList", attachList);
-
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -168,7 +174,7 @@ public class MainController {
             cmpVO.setBizNo(bizNo);
             stVO.setBizNo(bizNo);
 
-            int result = consultingService.updateJoin(cmpVO, stVO);
+            int result = consultingService.updateJoin(cmpVO, stVO,null);
 
             if (result > 0) {
                 return "redirect:myPage.do";

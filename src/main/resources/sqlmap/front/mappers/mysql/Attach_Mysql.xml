@@ -39,7 +39,7 @@
             #{updNm}
         )
     </insert>
-    <insert id="joinCreate" parameterType="kr.co.xicom.front.model.AttachVO">
+    <insert id="joinAttCreate" parameterType="kr.co.xicom.front.model.AttachVO">
         <selectKey keyProperty="attchSeq" resultType="int" order="BEFORE">
             select nextval('tb_atch_atch_sn_seq') as attchSeq
         </selectKey>
@@ -90,7 +90,7 @@
             bbs_sn = #{boardSeq}
             and bbs_id = #{bbsId}
     </select>
-    <select id="joinList" parameterType="kr.co.xicom.front.model.AttachVO" resultType="kr.co.xicom.front.model.AttachVO">
+    <select id="joinAttList" parameterType="kr.co.xicom.front.model.AttachVO" resultType="kr.co.xicom.front.model.AttachVO">
         select
             atch_sn         as attachSeq,
             file_size       as fileSz,
@@ -112,6 +112,14 @@
         where
             bbs_sn = #{boardSeq}
             and bbs_id = #{bbsId}
+    </delete>
+
+    <delete id="joinAttDelete" parameterType="kr.co.xicom.front.model.AttachVO">
+        delete from tb_atch
+        where
+            bizno = #{bizNo}
+          and bbs_id = #{bbsId}
+          and atch_cd =#{attchCode}
     </delete>
 
 </mapper>

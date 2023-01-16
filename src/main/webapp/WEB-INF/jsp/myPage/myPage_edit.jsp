@@ -9,6 +9,10 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
+    <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
+    <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
+
 </head>
 <script>
     // submit
@@ -58,9 +62,52 @@
             $email2.val($ele.val());
         }
     }
+
+    $(function () {
+               // 파일업로더 처리
+        var fileUploader = new smes.FileUploader('.file-uploader').init({
+            maxFileSize: 1024 * 1024 * 100,    // 100 MB 제한
+            maxFileCount: 20,
+            targetFolderPath: 'test2',
+            //accept : '.png, .jpg',
+            targetUrl: '<c:url value="/files/upload.do"/>',
+            fileList: $('#jsonFileList').val(),
+            deletedFileList: $('#jsonDeletedFileList').val()
+        });
+
+        // 저장 버튼 처리
+        $('#submit').on('click', function () {
+            fileUploader.upload({
+                done: function (result, deleted, uploaded) {
+                    // 업로드 완료 후 전송된 파일 리스트 정보를
+                    // 특정 hidden 파라미터로 설정하고 form을 전송한다.
+                    if (result) {
+                        console.dir(result);
+                        $('#jsonFileList').val(JSON.stringify(result));
+                    } else {
+                        $('#jsonFileList').val('');
+                    }
+                    if (deleted) {
+                        console.dir(deleted);
+                        $('#jsonDeletedFiles').val(JSON.stringify(deleted));
+                    } else {
+                        $('#jsonDeletedFiles').val('');
+                    }
+                    oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
+                    $('#frmEdit').submit();
+                    //fn_submit('1');
+                },
+                fail: function (error) {
+                    console.dir(error);
+                    alert(error.message);
+                }
+            });
+            // return false;
+        });
+    });
 </script>
 <page:applyDecorator name="menu_myPage"/>
-<form:form commandName="rs" name="frmEdit" id="frmEdit" method="POST" action="joinEdit.do">
+<form:form modelAttribute="frmEdit"  action="joinEdit.do">
 
     <div class="article">
         <div class="content">
@@ -77,63 +124,56 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">기업명</th>
                     <td>
-                        <input type="text" class="uni_input_text wdh100" id="cmpNm" name="cmpNm" value="${rs.cmpNm}"/>
+                        <form:input path="cmpNm"/>
                     </td>
                     <th class="txt_alcnt" scope="row">사업자번호</th>
                     <td>
-                        <input type="number" class="uni_input_text wdh100" id="bizNo1" name="bizNo1"
-                               style="width:60px;" value="${rs.bizNo1}"/>
+                        <form:input path="bizNo1"/>
                         -
-                        <input type="number" class="uni_input_text wdh100" id="bizNo2" name="bizNo2"
-                               style="width:50px;" value="${rs.bizNo2}"/>
+                        <form:input path="bizNo2"/>
                         -
-                        <input type="number" class="uni_input_text wdh100" id="bizNo3" name="bizNo3"
-                               style="width:60px;"  value="${rs.bizNo3}"/>
+                        <form:input path="bizNo3"/>
                     </td>
                 </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">대표자명</th>
                     <td>
-                        <input type="text" class="uni_input_text wdh100" id="ceo" name="ceo" value="${rs.ceo}"/>
+                        <form:input path="ceo"/>
                     </td>
                     <th class="txt_alcnt" scope="row">설립일자</th>
                     <td>
-                        <input type="date" class="uni_input_text wdh100" id="fdate" name="fdate" value="${rs.fdate}"/>
+                        <form:input path="fdate"/>
                     </td>
                 </tr>
 
                 <tr>
                     <th class="txt_alcnt" scope="row">본사 주소</th>
                     <td colspan="3">
-                        <input type="text" class="uni_input_text " name="address" id="address"
-                               value="${rs.address}" onclick="execPostCode()" readonly/>
+                        <form:input path="address" onclick="execPostCode()" readonly="true"/>
                         <button type="button" class="btn"
                                 onclick="execPostCode()">주소찾기
                         </button>
-                        <input type="text" class="uni_input_text " name="address_dtl" id="address_dtl"
-                               value="${rs.address_dtl}"/>
+                        <form:input path="address_dtl"/>
                     </td>
                 </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">전화번호</th>
                     <td>
-                        <input type="number" class="uni_input_text wdh100" id="telNo" name="telNo" value="${rs.telNo}"/>
+                        <form:input path="telNo"/>
                     </td>
                     <th class="txt_alcnt" scope="row">팩스</th>
                     <td>
-                        <input type="number" class="uni_input_text wdh100" id="faxNo" name="faxNo" value="${rs.faxNo}"/>
+                        <form:input path="faxNo"/>
                     </td>
                 </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">업종</th>
                     <td>
-                        <input type="text" class="uni_input_text wdh100" id="bizType" name="bizType"
-                               value="${rs.bizType}"/>
+                        <form:input path="bizType"/>
                     </td>
                     <th class="txt_alcnt" scope="row">자본금</th>
                     <td>
-                        <input type="text" class="uni_input_text" id="capital" name="capital" style="padding:0"
-                               value="${rs.capital}"/>백만원
+                        <form:input path="capital"/>백만원
                     </td>
                 </tr>
                 <tr>
@@ -165,25 +205,21 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">주요생산품</th>
                     <td colspan="3">
-                        <input type="text" id="product" class="uni_input_text" name="product" value="${rs.product}"/>
+                        <form:input path="product"/>
                     </td>
                 </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">첨부서류</th>
                     <td colspan="3">
-                        <c:forEach var="attach" items="${attachList}">
-                            <li>
-                                <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
-                                    <c:out value="${attach.fileNm}"/>
-                                </a>
-                            </li>
-                        </c:forEach>
+                        <div class="file-uploader-wrapper">
+                            <div class="file-uploader"></div>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
             <div class="btn-wrap type04">
-                <button type="submit" class="btn blue">저장</button>
+                <button type="submit" id="submit" class="btn blue">저장</button>
                 <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">취소</a>
             </div>
         </div>

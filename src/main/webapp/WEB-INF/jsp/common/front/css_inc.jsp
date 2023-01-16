@@ -7,11 +7,11 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 
-<%--&lt;%&ndash;<link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css" />&ndash;%&gt;--%>
-<%--<link rel="stylesheet" href="${pageContext.request.contextPath }/css/front/style.css" />--%>
-<%--&lt;%&ndash;<link rel="stylesheet" href="${pageContext.request.contextPath }/css/new.css" />&ndash;%&gt;--%>
-<%--<link rel="stylesheet" href="${pageContext.request.contextPath }/css/page.css" />--%>
-<%--<link rel="stylesheet" href="${pageContext.request.contextPath }/css/front/default.css" />--%>
+<%--<link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css" />--%>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/front/style.css" />
+<%--<link rel="stylesheet" href="${pageContext.request.contextPath }/css/new.css" />--%>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/page.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/front/default.css" />
 <%--퍼블리셔 추가--%>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/front/reset.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/front/common.css" />

@@ -39,5 +39,6 @@ public interface AttachMapper {
      * 동행기업 신청 - 첨부서류 리스트 추출
      */
     List<AttachVO> joinList(AttachVO attachVO) throws Exception;
+    void joinAttDelete(AttachVO attachVO) throws Exception;
 
 }

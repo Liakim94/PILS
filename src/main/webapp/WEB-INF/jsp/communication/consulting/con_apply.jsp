@@ -336,7 +336,7 @@
                 </tbody>
             </table>
             <div class="btn-wrap type04">
-                <button type="button" class="btn blue" >저장</button>
+                <button type="submit" class="btn blue" >저장</button>
                 <a href="${pageContext.request.contextPath}/cmm/consulting.do" class="btn blue">취소</a>
             </div>
         </form>

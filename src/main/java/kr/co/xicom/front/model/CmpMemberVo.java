@@ -3,6 +3,8 @@ package kr.co.xicom.front.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class CmpMemberVo extends DefaultVO {
@@ -54,4 +56,8 @@ public class CmpMemberVo extends DefaultVO {
      */
     private String jsonDeletedFileList;
 
+    public void setJsonFileList(String jsonFileList) {
+        this.jsonFileList = jsonFileList;
+    }
+    public List<CmpSttusVO> cmpSttusVOList;
 }

@@ -1,11 +1,16 @@
 package kr.co.xicom.front.service.impl;
 
+import kr.co.xicom.front.model.AttachVO;
+import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.service.MainService;
+import kr.co.xicom.front.service.mapper.AttachMapper;
 import kr.co.xicom.front.service.mapper.MainMapper;
+import kr.go.smes.fileservice.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +18,14 @@ import java.util.Map;
 public class MainServiceImpl implements MainService {
     @Autowired
     private MainMapper mapper;
+
+    /** 첨부파일 Mapper */
+    @Resource
+    private AttachMapper attachMapper;
+
+    /** 파일서비스 */
+    @Resource
+    private FileService nasFileService;
 
     @Override
     public int memberLogin(CmpMemberVo memberVo) throws Exception {
@@ -60,6 +73,5 @@ public class MainServiceImpl implements MainService {
     public int changePw(CmpMemberVo vo) throws Exception{
         return mapper.changePw(vo);
     }
-
 
 }

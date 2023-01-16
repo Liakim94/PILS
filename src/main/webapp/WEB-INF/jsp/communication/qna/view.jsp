@@ -45,12 +45,13 @@
                         ${fn:replace(rs.body, crcf, "<br>") }
                     </div>
                     <div class="write-bottom">
+                        <a href="${pageContext.request.contextPath}/cmm/qnaList.do" class="go-lst"  style=" float:right; margin:10px;">목록</a>
+                        <a href="${pageContext.request.contextPath}/cmm/qnaDelete.do?no=${rs.no}" class="go-lst" style="width: 90px;  float:right; margin:10px;">삭제</a>
                         <c:if test="${sessionId eq 'admin' }">
                             <a href='${pageContext.request.contextPath}/cmm/qnaRepost.do?no=${rs.no}' class="go-lst"
-                               style="width: 115px">답변달기</a>
+                               style="width: 120px;  float:right; margin:10px;">답변달기</a>
                         </c:if>
-                        <a href="${pageContext.request.contextPath}/cmm/qnaDelete.do?no=${rs.no}" class="go-lst">삭제</a>
-                        <a href="${pageContext.request.contextPath}/cmm/qnaList.do" class="go-lst">목록</a>
+
                     </div>
                 </div>
             </div>

@@ -79,7 +79,7 @@
                                    class="go-lst" title="수정" style="width: 140px;  float:right; margin:10px;">
                                     게시물 수정
                                 </a>
-                                <button onclick="javascript:deleteBbs()" class="go-lst" title="등록"
+                                <button onclick="javascript:deleteBbs()" class="go-lst"
                                         style="width: 150px;  float:right; margin:10px;">게시물 삭제
                                 </button>
                             </c:if>

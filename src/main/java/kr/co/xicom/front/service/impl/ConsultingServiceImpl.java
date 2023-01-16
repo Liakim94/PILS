@@ -19,6 +19,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.annotation.Resource;
@@ -119,15 +121,17 @@ public class ConsultingServiceImpl implements ConsultingService {
 
     //동행기업 신청
     @Override
+    @Transactional(rollbackFor=Exception.class)
     public int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
-        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
-        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
-
-        TransactionStatus status = transactionManager.getTransaction(def);
+//        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+//        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+//
+//        TransactionStatus status = transactionManager.getTransaction(def);
 
         try{
-            int result= mapper.insertJoin(vo);
-            int result2=  mapper.insertMemberJoin(vo);
+            int result1= mapper.insertJoin(vo);
+//            int result2=  mapper.insertMemberJoin(vo);
+            int result2 =0;
             int result3= mapper.insertCmpSttus(stVO);
 
             String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
@@ -151,19 +155,20 @@ public class ConsultingServiceImpl implements ConsultingService {
                     }
                 }
             }
-//            if(result > 0){
-            if(result  > 0 && result2 > 0 && result3 > 0){
+
+            if(result1  > 0 && result2 > 0 && result3 > 0){
                 return 1;
             }
         }catch (Exception e){
-            transactionManager.rollback(status);
+//            transactionManager.rollback(status);
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
         return 0;
     }
 
     //동행기업 수정
     @Override
-    public int updateJoin(CmpMemberVo vo, CmpSttusVO stVO) throws Exception{
+    public int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception{
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
 
@@ -173,11 +178,46 @@ public class ConsultingServiceImpl implements ConsultingService {
             int result=  mapper.updateJoin(vo);
             int result2 = mapper.updateCmpSttus(stVO);
 
-            if(result  > 0 && result2 > 0){
-                return 1;
-            } else{
-                return 0;
+            AttachVO attach = new AttachVO();
+            attach.setBizNo(vo.getBizNo());
+            attach.setBbsId(1);
+            attach.setAttchCode("M602");
+            this.attachMapper.delete(attach);
+
+            String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
+            if (StringUtils.isNotBlank(jsonFileList)) {
+                // 업로드 결과 JSON 문자열을 파싱한다.
+                Gson gson = new Gson();
+                List<AttachVO> attachList = gson.fromJson(jsonFileList, new TypeToken<List<AttachVO>>() {
+                }.getType());
+                if (attachList != null) {
+                    for (int i = 0; i < attachList.size(); i++) {
+                        attach = attachList.get(i);
+                        attach.setBizNo(vo.getBizNo());
+                        attach.setBbsId(1);
+                        attach.setAttchCode("M602"); //첨부서류 구분코드
+                        attach.setRegSeq(vo.getRegSeq());
+                        attach.setUpdSeq(vo.getUpdSeq());
+                        attach.setRegNm(vo.getRegNm());
+                        attach.setUpdNm(vo.getUpdNm());
+                        FilenameUtils.getExtension(attach.getFileNm());
+
+                        attachMapper.joinCreate(attach);
+                    }
+                }
             }
+            String jsonDeleteFileList = HtmlTagUtils.restore(vo.getJsonDeletedFileList());
+            if (StringUtils.isNotBlank(jsonDeleteFileList)) {
+                Gson gson = new Gson();
+                List<AttachVO> deleteFileList = gson.fromJson(jsonDeleteFileList, new TypeToken<List<AttachVO>>(){}.getType());
+                if (deleteFileList != null && deleteFileList.size() > 0) {
+                    for (AttachVO delFile : deleteFileList) {
+                        this.nasFileService.deleteFile(delFile.getFilePath(), delFile.getFileNm());
+                    }
+                }
+            }
+            transactionManager.commit(status);
+
         }catch (Exception e){
             transactionManager.rollback(status);
             System.out.println(e.toString());
