@@ -1,21 +1,24 @@
 <%@ page trimDirectiveWhitespaces="true" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" 				prefix="c" 			%>
-<%@ taglib uri="http://egovframework.gov/ctl/ui" 				prefix="ui" 		%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" 		prefix="fn" 		%>
-<%@ taglib uri="http://www.springframework.org/tags/form" 		prefix="form"		%>
-<%@ taglib uri="http://www.springframework.org/tags" 			prefix="spring" 	%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" 		prefix="page" 		%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
+<head>
+    <title>공지사항</title>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
-<script src="${pageContext.request.contextPath }/js/cms/board/post.js"></script>
-<script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
-<script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
+    <script src="${pageContext.request.contextPath }/js/cms/board/post.js"></script>
+    <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
+</head>
 <script>
 
     var oEditors = [];
 
-    $(function(){
+    $(function () {
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: oEditors,
             elPlaceHolder: "cont",
@@ -24,9 +27,9 @@
         });
 
         var fileUploader = new smes.FileUploader('.file-uploader').init({
-            maxFileSize : 1024 * 1024 * 100,    // 100 MB 제한
-            maxFileCount : 20,
-            targetFolderPath : 'test2',
+            maxFileSize: 1024 * 1024 * 100,    // 100 MB 제한
+            maxFileCount: 20,
+            targetFolderPath: 'test2',
             //accept : '.png, .jpg',
             targetUrl: '<c:url value="/files/upload.do"/>',
             <%--
@@ -40,7 +43,7 @@
             deletedFileList: $('#jsonDeletedFileList').val()
         });
 
-        $('#submit').on('click', function() {
+        $('#submit').on('click', function () {
 
             fileUploader.upload({
                 done: function (result, deleted, uploaded) {
@@ -49,15 +52,13 @@
                     if (result) {
                         console.dir(result);
                         $('#jsonFileList').val(JSON.stringify(result));
-                    }
-                    else {
+                    } else {
                         $('#jsonFileList').val('');
                     }
                     if (deleted) {
                         console.dir(deleted);
                         $('#jsonDeletedFiles').val(JSON.stringify(deleted));
-                    }
-                    else {
+                    } else {
                         $('#jsonDeletedFiles').val('');
                     }
                     //$('#frmPost').submit();
@@ -74,57 +75,68 @@
 
 </script>
 
-<page:applyDecorator name="menu" />
+<div id="content">
+    <div id="board">
+        <page:applyDecorator name="menu"/>
 
-<section class="content">
-    <div class="article">
-        <!-- row start -->
-        <div class="col-md-8">
-            <div class="box box-primary">
-                <%--@elvariable id="frmPost" type="kr.co.xicom.front.model.BoardVO"--%>
-                <form:form modelAttribute="frmPost">
-<%--                <form:form commandName="vo"  id="frmPost" name="frmPost"  method="POST" action="boardPost.do">--%>
-<%--                    <input type="hidden" value ="${bbsId}" name="bbsId" id="bbsId" >--%>
-                    <form:hidden path="bbsId"/>
-                    <form:hidden path="stat" value=""/>
-                    <form:hidden path="jsonFileList"/>
-                    <form:hidden path="jsonDeletedFileList"/>
-                    <div class="article-header"><h3>게시물 등록</h3>
-                        <div class="side-wrap">
-                        </div>
-                    </div>
-                    <div class="tbl-wrap for_board">
-                        <div class="form-group">
-                            <label class="control-label" >제목</label>
-                            <form:input class="form-control" path="title" placeholder="제목을 입력하세요" maxlength="85"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" >내용</label>
-<%--                            <textarea class="form-control" id="cont" name="cont" ></textarea>--%>
-                            <form:textarea path="cont" cssClass="form-control"/>
-                        </div>
-                    </div>
-                </form:form>
-                <%-- WildRain 추가 2023-01-12 --%>
-                <div class="file-uploader-wrapper">
-                    <div class="file-uploader"></div>
+        <div class="article">
+            <br>
+            <ul class="loc-list">
+                <li>
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
+                    <a href="${pageContext.request.contextPath}">홈</a></li>
+                <li>
+                    소통마당
+                </li>
+                <li>
+                    공지사항
+                </li>
+            </ul>
+            <div class="article-header">
+                <h1 class="fw700">공지사항</h1>
+                <div class="side-wrap">
                 </div>
-                <div class="col-md-4">
-                    <div class="box box-danger">
-                        <div class="box-footer">
-                            <div class="btn-wrap type02 low_margin">
-                                <%--
-                                <button type="button"  onclick="fn_submit('1')" class="btn blue">게시</button>
-                                --%>
-                                <button id="submit" class="btn blue">게시</button>
-                                <a href="<c:url value="/cmm/boardList.do?bbsId=${bbsId}"/>" class="btn blue" title="취소">취소</a>
+            </div>
+            <div class="content">
+                <!-- 컨텐츠 start -->
+                <div class="write-container">
+                    <form:form modelAttribute="frmPost">
+                        <form:hidden path="bbsId"/>
+                        <form:hidden path="stat" value=""/>
+                        <form:hidden path="jsonFileList"/>
+                        <form:hidden path="jsonDeletedFileList"/>
+                        <div class="write-wrap">
+                            <div class="line-wrap">
+                                <div class="label">
+                                    공지 제목
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input type="text" path="title" placeholder="제목을 입력하세요" maxlength="85"/>
+                                </div>
+                            </div>
+                            <div class="line-wrap">
+                                <div class="label">
+                                    내용
+                                </div>
+                                <div class="input-wrap">
+                                    <form:textarea path="cont" cssClass="form-control"/>
+                                </div>
+                            </div>
+                    </form:form>
+                            <%-- WildRain 추가 2023-01-12 --%>
+                            <div class="file-uploader-wrapper">
+                                <div class="file-uploader"></div>
                             </div>
                         </div>
+                    <div class="write-bottom">
+                        <input type="submit" class="submit" value="게시"/>
+                        <a href="<c:url value="/cmm/boardList.do?bbsId=${bbsId}"/>" title="취소">취소</a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- row end -->
     </div>
-</section>
+</div>
+<!-- row end -->
+
 

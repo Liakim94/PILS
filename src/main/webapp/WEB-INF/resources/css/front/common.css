@@ -724,7 +724,7 @@
     margin-bottom: 0;
 }
 
-    /* Top Button */
+/* Top Button */
 .go-top{
     background: linear-gradient(92.61deg, #DA0021 -6.8%, #E64500 101.17%);
     position: fixed;
@@ -748,7 +748,7 @@
     font-size: 12px;
 
 }
-    /* Footer */
+/* Footer */
 .footer-container{
     background-color: #606060;
     padding: 45px 40px 50px;
@@ -1346,6 +1346,130 @@
     color: #767676;
     font-size: 16px;
 }
+#board .write-container{
+    width: 100%;
+}
+#board .write-container .write-wrap{
+    background: #FFFFFF;
+    border-width: 2px 0px;
+    border-style: solid;
+    border-color: #505050;
+    width: 100%;
+}
+#board .write-container .line-wrap{
+    display: flex;
+    border-bottom: 1px solid #505050;
+}
+#board .write-container .line-wrap:nth-last-child(1){
+    border-bottom: none;
+}
+#board .write-container .line-wrap .label{
+    width: 20%;
+    font-size: 16px;
+    line-height: 24px;
+    background: rgba(145, 145, 145, 0.1);
+    text-align: center;
+    padding: 18px 10px;
+    box-sizing: border-box;
+    font-weight: 500;
+}
+#board .write-container .line-wrap .input-wrap{
+    width: 80%;
+}
+#board .write-container .line-wrap .input-wrap input{
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 20px 16px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#board .write-container .line-wrap .input-wrap textarea{
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 20px 16px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 300px;
+    resize: none;
+}
+#board .write-container .line-wrap .input-wrap .file-label{
+    border: 1px solid #E60024;
+    border-radius: 5px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    color: #E60024;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 12px;
+    position: relative;
+    top: 18px;
+    cursor: pointer;
+}
+#board .write-container .line-wrap .input-wrap .file-label img{
+    width: 20px;
+    position: relative;
+    top: 3px;
+}
+#board .write-container .line-wrap .input-wrap input[type=file]{
+    display: none;
+}
+#board .write-container .line-wrap .input-wrap .upload-list{
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    top: 18px;
+}
+#board .write-container .line-wrap .input-wrap .upload-list .file{
+    display: inline-block;
+    color: #505050;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-right: 15px;
+}
+#board .write-container .line-wrap .input-wrap .upload-list .file .file-del{
+    width: 16px;
+    margin-left: 3px;
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+}
+#board .write-container .write-bottom{
+    margin-top: 40px;
+    text-align: right;
+}
+#board .write-container .write-bottom .submit{
+    background: #E60024;
+    border-radius: 50px;
+    padding: 12px 50px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    margin-right: 20px;
+}
+#board .write-container .write-bottom .submit:hover{
+    background-color: #BE001E;
+}
+#board .write-container .write-bottom .submit:focus{
+    background-color: #BE001E;
+}
+#board .write-container .write-bottom a{
+    border-radius: 50px;
+    padding: 10px 50px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 16px;
+    background: #DDDDDD;
+    position: relative;
+    top: 1px;
+}
 .modal-box{
     background: #FFFFFF;
     box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.25);
@@ -1710,6 +1834,17 @@
         font-size: 30px;
         margin-bottom: 40px;
         margin-top: 30px;
+    }
+    #board .write-container .line-wrap .input-wrap .file-label{
+        display: block;
+        width: 130px;
+        margin: 15px 12px;
+        top: 0;
+    }
+    #board .write-container .line-wrap .input-wrap .upload-list{
+        display: block;
+        top: 0;
+        margin-bottom: 15px;
     }
 
     /*  약정서 작성  */

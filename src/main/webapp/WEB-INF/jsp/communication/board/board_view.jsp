@@ -46,45 +46,47 @@
                 <input type="hidden" id="bbsId" name="bbsId" value="${bbsId}"/>
                 <input type="hidden" value="${rs.boardSeq}" name="boardSeq" id="boardSeq">
 
-                    <div class="content">
-                        <!-- 컨텐츠 start -->
-                        <div class="board-view-wrap01">
-                            <p class="subj">${rs.title }</p>
-                            <div class="info">
-                                <ul>
-                                    <li>작성자 : 관리자</li>
-                                    <li>작성일 : ${fn:substring(rs.regDe,0,10)}</li>
-                                </ul>
-                            </div>
-                            <div class="file-wrap">
-                                <p class="label">첨부파일</p>
-                                <ul>
-                                    <c:forEach var="attach" items="${attachList}">
-                                        <li>
-                                            <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
-                                                <c:out value="${attach.fileNm}"/>
-                                            </a>
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </div>
-                            <div class="cont">
-                                ${fx:resetXSSMinimum(rs.cont)}
-                            </div>
-
-                                <c:if test="${sessionId eq 'admin' }">
-                                    <a href="<c:url value="/cmm/boardEdit.do?boardSeq=${rs.boardSeq}&bbsId=${rs.bbsId}"/>"
-                                       class="go-lst" title="수정" style="width: 140px">
-                                        게시물 수정
-                                    </a>
-                                    <button onclick="javascript:deleteBbs()" class="go-lst" title="등록" style="width: 150px">게시물 삭제
-                                    </button>
-                                </c:if>
-                                <a href="<c:url value="/cmm/boardList.do?bbsId=${bbsId}"/>" class="go-lst"
-                                   title="목록">목록</a>
+                <div class="content">
+                    <!-- 컨텐츠 start -->
+                    <div class="board-view-wrap01">
+                        <p class="subj">${rs.title }</p>
+                        <div class="info">
+                            <ul>
+                                <li>작성자 : 관리자</li>
+                                <li>작성일 : ${fn:substring(rs.regDe,0,10)}</li>
+                            </ul>
+                        </div>
+                        <div class="file-wrap">
+                            <p class="label">첨부파일</p>
+                            <ul>
+                                <c:forEach var="attach" items="${attachList}">
+                                    <li>
+                                        <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                            <c:out value="${attach.fileNm}"/>
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                        <div class="cont">
+                            ${fx:resetXSSMinimum(rs.cont)}
+                        </div>
+                        <div>
+                            <a href="<c:url value="/cmm/boardList.do?bbsId=${bbsId}"/>" class="go-lst" style=" float:right; margin:10px;"
+                               title="목록">목록</a>
+                            <c:if test="${sessionId eq 'admin' }">
+                                <a href="<c:url value="/cmm/boardEdit.do?boardSeq=${rs.boardSeq}&bbsId=${rs.bbsId}"/>"
+                                   class="go-lst" title="수정" style="width: 140px;  float:right; margin:10px;">
+                                    게시물 수정
+                                </a>
+                                <button onclick="javascript:deleteBbs()" class="go-lst" title="등록"
+                                        style="width: 150px;  float:right; margin:10px;">게시물 삭제
+                                </button>
+                            </c:if>
 
                         </div>
                     </div>
+                </div>
             </form>
         </div>
     </div>
