@@ -1,6 +1,7 @@
 package kr.co.xicom.front.service;
 
 import kr.co.xicom.front.model.AttachVO;
+import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
 import org.springframework.stereotype.Service;
@@ -26,4 +27,7 @@ public interface ConsultingService {
 
     //기업현황
     List<CmpSttusVO>  getCmpSttus(CmpSttusVO vo) throws Exception;
+
+    // 동행기업 첨부서류 리스트 추출
+    List<AttachVO> getAttachList(CmpMemberVo vo) throws Exception;
 }

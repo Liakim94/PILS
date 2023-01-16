@@ -30,4 +30,14 @@ public interface AttachMapper {
      */
     void delete(AttachVO attachVO) throws Exception;
 
+
+    /**
+     * 동행기업 신청 -첨부서류 insert
+     */
+    void joinCreate(AttachVO attachVO) throws Exception;
+    /**
+     * 동행기업 신청 - 첨부서류 리스트 추출
+     */
+    List<AttachVO> joinList(AttachVO attachVO) throws Exception;
+
 }

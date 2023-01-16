@@ -3,6 +3,7 @@ package kr.co.xicom.front.service.impl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import kr.co.xicom.front.model.AttachVO;
+import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
 import kr.co.xicom.front.service.ConsultingService;
@@ -139,16 +140,18 @@ public class ConsultingServiceImpl implements ConsultingService {
                         AttachVO attach = attachList.get(i);
                         attach.setBizNo(vo.getBizNo());
                         attach.setBbsId(1);
+                        attach.setAttchCode("M602"); //첨부서류 구분코드
                         attach.setRegSeq(vo.getRegSeq());
                         attach.setUpdSeq(vo.getUpdSeq());
                         attach.setRegNm(vo.getRegNm());
                         attach.setUpdNm(vo.getUpdNm());
                         FilenameUtils.getExtension(attach.getFileNm());
 
-                        attachMapper.create(attach);
+                        attachMapper.joinCreate(attach);
                     }
                 }
             }
+//            if(result > 0){
             if(result  > 0 && result2 > 0 && result3 > 0){
                 return 1;
             }
@@ -188,8 +191,20 @@ public class ConsultingServiceImpl implements ConsultingService {
 
         Map<String,Object> map = new HashMap<String,Object>();
         List<CmpSttusVO> list = mapper.getCmpSttus(vo);
-//        map.put("rsList",list);
         return list;
+    }
+
+    // 동행기업 첨부서류 리스트 추출
+    @Override
+    public List<AttachVO> getAttachList(CmpMemberVo vo) throws Exception {
+
+        AttachVO attachVO = new AttachVO();
+        attachVO.setBizNo(vo.getBizNo());
+        attachVO.setBbsId(1);
+        attachVO.setAttchCode("M602");
+
+        return attachMapper.joinList(attachVO);
+
     }
 
 }

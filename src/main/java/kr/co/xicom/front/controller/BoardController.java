@@ -113,6 +113,9 @@ public class BoardController extends Alerts{
 
 		// 조회수 증가
 		boardService.read(boardVO);
+		//게시판 이름
+		int bbsNo = Integer.parseInt(request.getParameter("bbsId"));
+		String menu = boardService.getMenu(bbsNo);
 
 		mav.addObject("rs", rs);
 		mav.addObject("action", request.getParameter("action"));
@@ -120,6 +123,7 @@ public class BoardController extends Alerts{
 		mav.addObject("menuName", request.getAttribute("menuName"));
 		mav.addObject("bbsId", request.getParameter("bbsId"));
 		mav.addObject("rwx", request.getAttribute("rwx"));
+		mav.addObject("bbsNm", menu);
 		// WildRain 추가 2023-01-13
 		// 첨부파일 리스트 추가.
 		mav.addObject("attachList", attachList);

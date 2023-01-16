@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
-
+<%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
 </head>
 <script>
@@ -171,7 +171,13 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">첨부서류</th>
                     <td colspan="3">
-                        파일찾기
+                        <c:forEach var="attach" items="${attachList}">
+                            <li>
+                                <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                    <c:out value="${attach.fileNm}"/>
+                                </a>
+                            </li>
+                        </c:forEach>
                     </td>
                 </tr>
                 </tbody>

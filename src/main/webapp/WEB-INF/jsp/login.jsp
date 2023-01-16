@@ -56,7 +56,7 @@
         <div class="breadcromb mb40">
             <h4>
                 <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
-                <a href="/">홈</a>
+                <a href="${pageContext.request.contextPath}">홈</a>
                 <img class="right-icon" src="${pageContext.request.contextPath}/images/common/right-icon.png" alt="목차 아이콘"/>
                 로그인
             </h4>
