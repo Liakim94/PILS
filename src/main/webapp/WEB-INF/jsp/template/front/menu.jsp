@@ -11,10 +11,14 @@
 String uploadPath = "";
 uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString().trim()).equals("")?"upload":EgovProperties.getProperty("UploadPath").toString();
 %>
+<script>
+    $("li").click(function(){
+        $("li").addClass("on");
+    });
+</script>
 
-
-<aside class="main-sidebar">
-    <div class ="lnb">
+<aside class="sidebar">
+    <div class="lnb">
         <h2>소통마당</h2>
         <ul>
             <li><a href ="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=11">공지사항</a></li>

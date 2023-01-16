@@ -8,9 +8,7 @@
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
     <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 </head>
 <script>
@@ -21,34 +19,50 @@
     }
 
 </script>
-<page:applyDecorator name="menu"/>
-<div class="article">
-    <div class="content">
+
+<div id="content">
+    <div id="board">
+        <page:applyDecorator name="menu"/>
+        <div class="article">
+            <br>
+            <ul class="loc-list">
+                <li>
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
+                    <a href="${pageContext.request.contextPath}">홈</a></li>
+                <li>
+                    소통마당
+                </li>
+                <li>
+                    질의응답 게시판
+                </li>
+            </ul>
+            <div class="article-header">
+                <h1 class="fw700"> 질의응답 게시판</h1>
+                <div class="side-wrap">
+                </div>
+            </div>
+            <div class="content">
         <!-- 컨텐츠 start -->
         <form action="" name="frmSearch" method="get">
             <input type="hidden" name="pageIndex" id="pageIndex" value="1">
 
-            <div class="article-header">
-                <h3>질의응답</h3>
-                <div class="side-wrap">
-                </div>
-            </div>
-            <div class="btn-wrap type02 low_margin">
-                <a href="${pageContext.request.contextPath}/cmm/qnaPost.do" class="btn blue">문의하기</a>
-            </div>
-            <div class="tbl-wrap separate1">
+            <div class="tbl-wrap for_board">
+                <span  href="${pageContext.request.contextPath}/cmm/qnaPost.do" class="write-question">질의 등록</span>
                 <table class="tbl-list01">
+                    <caption>자주 묻는 질문: 번호, 응답여부, 제목, 작성자, 작성일, 조회수</caption>
                     <colgroup>
-                        <col width="15%"/>
-                        <col width="55%"/>
-                        <col width="15%"/>
-                        <col width="15%"/>
+                        <col width="10%">
+                        <col width="65%">
+                        <col width="15%">
+                        <col width="10%">
                     </colgroup>
                     <thead>
-                    <th class="txt_alcnt" scope="col">번호</th>
-                    <th class="txt_alcnt" scope="col">제목</th>
-                    <th class="txt_alcnt" scope="col">작성자</th>
-                    <th class="txt_alcnt" scope="col">작성일</th>
+                    <tr>
+                        <th scope="col">번호</th>
+                        <th scope="col">제목</th>
+                        <th scope="col">작성자</th>
+                        <th scope="col">작성일</th>
+                    </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="list" items="${list }" varStatus="status">
@@ -56,7 +70,6 @@
                         <tr>
                             <td class="txt_alcnt">${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
                             <td class="al">
-
                                 <c:choose>
                                     <c:when test="${list.id eq '1'}">
                                             <strong>[공개] </strong>

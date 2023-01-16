@@ -13,7 +13,7 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
 %>
 
 
-<aside class="main-sidebar">
+<aside class="sidebar">
     <div class ="lnb">
         <h2>납품대금연동제 동참하기</h2>
         <ul>
