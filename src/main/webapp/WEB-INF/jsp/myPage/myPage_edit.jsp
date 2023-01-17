@@ -108,6 +108,8 @@
 </script>
 <page:applyDecorator name="menu_myPage"/>
 <form:form modelAttribute="frmEdit"  action="joinEdit.do">
+    <form:hidden path="jsonFileList"/>
+    <form:hidden path="jsonDeletedFileList"/>
 
     <div class="article">
         <div class="content">

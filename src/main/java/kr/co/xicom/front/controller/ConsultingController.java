@@ -85,10 +85,12 @@ public class ConsultingController extends Alerts {
             cmpVO.setMem_cd("M301");
             stVO.setBizNo(bizNo);
             cmpVO.setId(session.getId());
+            cmpVO.setManagement_cd("M501");
             int result = service.insertConsulting(cmpVO, stVO);
             if (result > 0) {
 
-                response.sendRedirect(request.getContextPath() + "/cmm/conView.do");
+                response.sendRedirect(request.getContextPath() + "/cmm/conView.do?bizNo="+cmpVO.getBizNo());
+
 
             } else {
                 PrintWriter writer = response.getWriter();
