@@ -32,8 +32,7 @@ import java.util.Map;
 public class ConsultingServiceImpl implements ConsultingService {
     @Autowired
     private ConsultingMapper mapper;
-    @Autowired
-    private BoardMapper boardMapper;
+
     /** 첨부파일 Mapper */
     @Resource
     private AttachMapper attachMapper;
@@ -165,30 +164,29 @@ public class ConsultingServiceImpl implements ConsultingService {
 
     //동행기업 수정
     @Override
-    public int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception{
+    public int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
 
         TransactionStatus status = transactionManager.getTransaction(def);
 
-        try{
-            int result1=  mapper.updateJoin(vo);
+        try {
+            int result1 = mapper.updateJoin(vo);
             int result2 = mapper.updateCmpSttus(stVO);
 
             AttachVO attach = new AttachVO();
             attach.setBizNo(vo.getBizNo());
             attach.setBbsId(1);
             attach.setAttchCode("M602");
-            this.attachMapper.delete(attach);
+            this.attachMapper.joinAttDelete(attach);
 
             String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
             if (StringUtils.isNotBlank(jsonFileList)) {
                 // 업로드 결과 JSON 문자열을 파싱한다.
                 Gson gson = new Gson();
-                List<AttachVO> attachList = gson.fromJson(jsonFileList, new TypeToken<List<AttachVO>>() {
-                }.getType());
+                List<AttachVO> attachList = gson.fromJson(jsonFileList, new TypeToken<List<AttachVO>>(){}.getType());
                 if (attachList != null) {
-                    for (int i = 0; i < attachList.size(); i++) {
+                    for (int i=0; i<attachList.size(); i++) {
                         attach = attachList.get(i);
                         attach.setBizNo(vo.getBizNo());
                         attach.setBbsId(1);
@@ -198,15 +196,17 @@ public class ConsultingServiceImpl implements ConsultingService {
                         attach.setRegNm(vo.getRegNm());
                         attach.setUpdNm(vo.getUpdNm());
                         FilenameUtils.getExtension(attach.getFileNm());
-
+                        attach.setFileStd(vo.getFileStd());
                         attachMapper.joinAttCreate(attach);
                     }
                 }
             }
+            //첨부파일 삭제
             String jsonDeleteFileList = HtmlTagUtils.restore(vo.getJsonDeletedFileList());
             if (StringUtils.isNotBlank(jsonDeleteFileList)) {
                 Gson gson = new Gson();
-                List<AttachVO> deleteFileList = gson.fromJson(jsonDeleteFileList, new TypeToken<List<AttachVO>>(){}.getType());
+                List<AttachVO> deleteFileList = gson.fromJson(jsonDeleteFileList, new TypeToken<List<AttachVO>>() {
+                }.getType());
                 if (deleteFileList != null && deleteFileList.size() > 0) {
                     for (AttachVO delFile : deleteFileList) {
                         this.nasFileService.deleteFile(delFile.getFilePath(), delFile.getFileNm());
@@ -214,8 +214,8 @@ public class ConsultingServiceImpl implements ConsultingService {
                 }
             }
             transactionManager.commit(status);
-
-        }catch (Exception e){
+            return 1;
+        } catch (Exception e) {
             transactionManager.rollback(status);
             System.out.println(e.toString());
         }

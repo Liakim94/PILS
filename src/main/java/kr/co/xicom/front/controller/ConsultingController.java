@@ -263,13 +263,13 @@ public class ConsultingController extends Alerts {
         return "";
     }
 
-    @GetMapping("/conCheck")
+    @GetMapping(value="/conCheck.do")
     public ModelAndView conCheck() {
         ModelAndView mav = new ModelAndView("communication/consulting/con_check");
         return mav;
     }
 
-    @PostMapping("/conCheck")
+    @PostMapping(value="/conCheck.do")
     public void doConCheck(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                             ,HttpServletResponse response, HttpServletRequest request) throws Exception {
         String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();

@@ -8,7 +8,7 @@
 
 <%--&lt;%&ndash;<script src="${pageContext.request.contextPath }/js/front/jquery.min.js"></script>&ndash;%&gt;--%>
 <%--&lt;%&ndash;<script src="${pageContext.request.contextPath }/js/front/jquery-ui-1.12.1.js"></script>&ndash;%&gt;--%>
-<%--<script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>--%>
+<script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
 <%--&lt;%&ndash;<script src="${pageContext.request.contextPath }/js/front/ui.js?dummy=20200315131039279"></script>&ndash;%&gt;--%>
 <%--<script src="${pageContext.request.contextPath }/js/front/additional-methods.js"></script>--%>
 <%--&lt;%&ndash;<script src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.js"></script>&ndash;%&gt;--%>

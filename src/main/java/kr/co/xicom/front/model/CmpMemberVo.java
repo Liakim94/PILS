@@ -56,8 +56,5 @@ public class CmpMemberVo extends DefaultVO {
      */
     private String jsonDeletedFileList;
 
-    public void setJsonFileList(String jsonFileList) {
-        this.jsonFileList = jsonFileList;
-    }
-    public List<CmpSttusVO> cmpSttusVOList;
+    private String  fileStd					= "";  // 첨부파일 규격
 }

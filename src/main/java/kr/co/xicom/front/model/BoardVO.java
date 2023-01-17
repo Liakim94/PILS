@@ -28,12 +28,6 @@ public class BoardVO extends DefaultVO{
 
 	private String 	chkNo[]					= null;	// 리스트 체크박스
 
-	//	TB_BOARD_LIKE	//
-	private int 	likeSeq					=  0;	// TB_BOARD_Like 번호
-	private int 	like					=  0;	// 좋아요
-	private int 	dislike					=  0;	// 싫어요
-
-
 	private String  lnk						= "";	//게시판 링크
 
 	// WildRain 추가 2023-01-13
@@ -59,24 +53,6 @@ public class BoardVO extends DefaultVO{
 	}
 	public void setTag(String tag) {
 		this.tag = tag;
-	}
-	public int getLikeSeq() {
-		return likeSeq;
-	}
-	public void setLikeSeq(int likeSeq) {
-		this.likeSeq = likeSeq;
-	}
-	public int getLike() {
-		return like;
-	}
-	public void setLike(int like) {
-		this.like = like;
-	}
-	public int getDislike() {
-		return dislike;
-	}
-	public void setDislike(int dislike) {
-		this.dislike = dislike;
 	}
 	public String getFileStd() {
 		return fileStd;

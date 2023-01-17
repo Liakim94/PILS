@@ -13,92 +13,128 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 </head>
-
-<page:applyDecorator name="menu2"/>
-<div class="article">
-    <div class="content">
-        <!-- 컨텐츠 start -->
-        <form name="frmWrite" id="frmWrite" method="post" action="">
+<div id="content">
+    <div id="board">
+        <page:applyDecorator name="menu2"/>
+        <div class="article">
+            <br>
+            <ul class="loc-list">
+                <li>
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
+                    <a href="/">홈</a></li>
+                <li>
+                    납품대금연동제 동참하기
+                </li>
+                <li>
+                    약정서 작성
+                </li>
+            </ul>
             <div class="article-header">
-                <h3>약정서 작성</h3>
+                <h1 class="fw700">약정서 작성</h1>
                 <div class="side-wrap">
                 </div>
             </div>
-            <table class="tbl-list02">
-                <tbody>
-                <tr>
-                    <th class="txt_alcnt" scope="row">1. 물품등의 명칭</th>
-                    <td colspan="3">
-                        ${rs.name}
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">2. 주요 원재료</th>
-                    <td colspan="3">
-                        ${rs.prmy_mat}
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">3. 원재료 가격 기준지표</th>
-                    <td colspan="3">
-                       ${rs.prmy_mat_std}
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="4" class="txt_alcnt" scope="row">
-                        4. 원재료 기준가격의 변동률 산정을 위한 기준시점 및 비교시점
-                    </th>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">기준시점</th>
-                    <td>
-                      ${rs.std_point}
-                    </td>
-                    <th class="txt_alcnt" scope="row">비교시점</th>
-                    <td>
-                       ${rs.change_point}
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">5. 조정요건</th>
-                    <td colspan="3">
-                      ${rs.rqrm_ust}
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">6. 조정 주기</th>
-                    <td colspan="3">
-                      ${rs.rqrm_cycl}
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">7. 조정일</th>
-                    <td colspan="3">
-                       ${rs.rqrm_date}
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">8. 조정대금 반영시점</th>
-                    <td colspan="3">
-                        ${rs.reflect_point}
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">9. 납품대금 연동 산식</th>
-                    <td colspan="3">
-                       ${rs.formula}
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">10. 기타사항</th>
-                    <td colspan="3">
-                       ${rs.etc}
-                    </td>
-                </tr>
-
-                </tbody>
-            </table>
-        </form>
-        <!-- 컨텐츠 end -->
+            <div id="agreement" class="content">
+                <!-- 컨텐츠 start -->
+                <div class="write-container">
+                    <div class="line-wrap">
+                        <div class="label">
+                            1. 물품등의 명칭
+                        </div>
+                        <div class="value-wrap">
+                            ${rs.name}
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">
+                            2. 주요 원재료
+                        </div>
+                        <div class="value-wrap">
+                            ${rs.prmy_mat}
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">
+                            3. 원재료 가격 기준지표
+                        </div>
+                        <div class="value-wrap">
+                            ${rs.prmy_mat_std}
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label-full">
+                            4. 원재료 기준 가격의 변동률 산정을 위한 기준시점 및 비교시점
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="line-wrap">
+                            <div class="label bg-none">기준시점</div>
+                            <div class="value-wrap br">
+                                ${rs.std_point}
+                            </div>
+                            <div class="label bg-none">
+                                비교시점
+                            </div>
+                            <div class="value-wrap">
+                                ${rs.change_point}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">
+                            5. 조정 요건
+                        </div>
+                        <div class="value-wrap">
+                            ${rs.rqrm_ust}
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">
+                            6. 조정 주기
+                        </div>
+                        <div class="value-wrap">
+                            ${rs.rqrm_cycl}
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">
+                            7. 조정일
+                        </div>
+                        <div class="value-wrap">
+                            ${rs.rqrm_date}
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">
+                            8. 조정대금 반영시점
+                        </div>
+                        <div class="value-wrap">
+                            ${rs.reflect_point}
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">
+                            9. 납품대금 연동 산식
+                        </div>
+                        <div class="value-wrap">
+                            ${rs.formula}
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">
+                            10. 기타사항
+                        </div>
+                        <div class="value-wrap">
+                            ${rs.etc}
+                        </div>
+                    </div>
+                </div>
+                <div class="write-bottom">
+                    <a class="back" href="javascript:window.history.back();">이전으로</a>
+                    <a class="print" href="javascript:window.print();"><img src="${pageContext.request.contextPath}/images/common/Print.png">프린트 하기</a>
+                </div>
+                <!-- 컨텐츠 end -->
+            </div>
+        </div>
     </div>
 </div>

@@ -11,9 +11,10 @@
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
-    <%--<script src="${pageContext.request.contextPath }/js/cms/board/edit.js"></script>--%>
     <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
     <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
+
     <script>
         var oEditors = [];
         $(function () {
@@ -66,6 +67,41 @@
                 // return false;
             });
         });
+        $(function () {
+        $("#frmPost").validate({
+            rules: {
+                title:{required:true}
+            },
+            onkeyup:false,
+            onclick:false,
+            onfocusout:false,
+            messages: {
+                title:{required:"제목을 입력하세요."}
+            },
+            submitHandler: function (frm) {
+
+                oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
+
+                var ir1 = $("#cont").val();
+                if( ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>')  {
+                    alert("내용을 입력하세요.");
+                    oEditors.getById["cont"].exec("FOCUS"); //포커싱
+                    return;
+                }
+                frm.submit();
+            },
+            success: function (e) {
+            },
+            showErrors:function(errorMap, errorList){
+                if(!$.isEmptyObject(errorList)){
+                    $.each(errorList, function() {
+                        alert(this.message);
+                        return false;
+                    });
+                }
+            }
+        });
+        });
     </script>
 </head>
 <div id="content">
@@ -93,7 +129,7 @@
             <div class="content">
                 <!-- 컨텐츠 start -->
                 <div class="write-container">
-                    <form:form modelAttribute="frmPost">
+                    <form:form modelAttribute="frmPost" id="frmPost">
                     <input type="hidden" name="action"/>
                     <form:hidden path="bbsId"/>
                     <form:hidden path="boardSeq"/>

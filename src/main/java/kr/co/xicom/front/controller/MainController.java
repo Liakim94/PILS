@@ -128,8 +128,8 @@ public class MainController {
     @GetMapping(value = "/joinEdit.do")
     public ModelAndView joinEdit(@ModelAttribute("frmEdit") CmpMemberVo cmpVO,
                                 @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
-                                HttpServletRequest request,
                                 HttpSession session) throws Exception {
+
         ModelAndView mav = new ModelAndView("myPage/myPage_edit");
         String bizNo= (String) session.getAttribute("sessionBizNo");
         cmpVO.setBizNo(bizNo);
@@ -159,14 +159,10 @@ public class MainController {
     }
 
     //수정 처리
-    @RequestMapping(value = "/joinEdit.do", method = {RequestMethod.POST})
+    @PostMapping(value = "/joinEdit.do")
     public String doJoinEdit(
-            ModelMap model,
-            @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
-            @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
-            HttpServletRequest request,
-            HttpServletResponse response,
-            HttpSession session) throws Exception {
+            @ModelAttribute("frmEdit") CmpMemberVo cmpVO,
+            @ModelAttribute("CmpSttusVO") CmpSttusVO stVO) throws Exception {
 
         try {
             String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
