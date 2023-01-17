@@ -9,6 +9,9 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 
 <head>
+    <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
+    <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
 </head>
 <script>
     // submit
@@ -58,10 +61,53 @@
             $email2.val($ele.val());
         }
     }
+    $(function(){
+      // 파일업로더 처리
+        var fileUploader = new smes.FileUploader('.file-uploader').init({
+            maxFileSize : 1024 * 1024 * 100,    // 100 MB 제한
+            maxFileCount : 20,
+            targetFolderPath : 'test2',
+            //accept : '.png, .jpg',
+            targetUrl: '<c:url value="/files/upload.do"/>',
+            fileList: $('#jsonFileList').val(),
+            deletedFileList: $('#jsonDeletedFileList').val()
+        });
+
+        // 저장 버튼 처리
+        $('#submit').on('click', function() {
+            fileUploader.upload({
+                done: function (result, deleted, uploaded) {
+                    // 업로드 완료 후 전송된 파일 리스트 정보를
+                    // 특정 hidden 파라미터로 설정하고 form을 전송한다.
+                    if (result) {
+                        console.dir(result);
+                        $('#jsonFileList').val(JSON.stringify(result));
+                    }
+                    else {
+                        $('#jsonFileList').val('');
+                    }
+                    if (deleted) {
+                        console.dir(deleted);
+                        $('#jsonDeletedFiles').val(JSON.stringify(deleted));
+                    }
+                    else {
+                        $('#jsonDeletedFiles').val('');
+                    }
+                    $('#frmEdit').submit();
+                },
+                fail: function (error) {
+                    console.dir(error);
+                    alert(error.message);
+                }
+            });
+            // return false;
+        });
+    });
 </script>
 <page:applyDecorator name="menu2"/>
-<form:form commandName="rs" name="frmEdit" id="frmEdit" method="POST" action="joinEdit.do">
-
+<form:form name="frmEdit" id="frmEdit" method="POST" action="joinEdit.do">
+    <form:hidden path="jsonFileList"/>
+    <form:hidden path="jsonDeletedFileList"/>
     <div class="article">
         <div class="content">
 
@@ -222,13 +268,15 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">첨부서류</th>
                     <td colspan="3">
-                        파일찾기
+                        <div class="file-uploader-wrapper">
+                            <div class="file-uploader"></div>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
             <div class="btn-wrap type04">
-                <button type="submit" class="btn blue">저장</button>
+                <button type="submit" id="submit" class="btn blue">저장</button>
                 <a href="${pageContext.request.contextPath}/join/joinList.do" class="btn blue">취소</a>
             </div>
         </div>

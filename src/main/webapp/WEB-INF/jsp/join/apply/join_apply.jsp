@@ -59,13 +59,6 @@
             targetFolderPath : 'test2',
             //accept : '.png, .jpg',
             targetUrl: '<c:url value="/files/upload.do"/>',
-            <%--
-                파일업로드 Ajax 처리시 csrf token 지정.
-                참조 : https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=jskimmail&logNo=221616372513&redirect=Dlog&widgetTypeCall=true&directAccess=false
-                참조 : https://higugu.tistory.com/entry/Spring-Security-Ajax-%ED%98%B8%EC%B6%9C-%EC%8B%9C-403-Forbidden-%EC%97%90%EB%9F%AC
-            --%>
-            //csrfHeader: $('meta[name="_csrf_header"]').attr('content'),
-            //csrfToken: $('meta[name="_csrf"]').attr('content'),
             fileList: $('#jsonFileList').val(),
             deletedFileList: $('#jsonDeletedFileList').val()
         });

@@ -1,5 +1,7 @@
 package kr.co.xicom.front.service;
 
+import kr.co.xicom.front.model.AttachVO;
+import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import org.springframework.stereotype.Service;
 
@@ -21,4 +23,5 @@ public interface MainService {
     int updateMem(CmpMemberVo vo) throws Exception;
 
     int changePw(CmpMemberVo vo) throws Exception;
+
 }

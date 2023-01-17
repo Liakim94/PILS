@@ -89,11 +89,11 @@
                     소통마당
                 </li>
                 <li>
-                    공지사항
+                    ${bbsNm}
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">공지사항</h1>
+                <h1 class="fw700">${bbsNm}</h1>
                 <div class="side-wrap">
                 </div>
             </div>
@@ -129,7 +129,7 @@
                             </div>
                         </div>
                     <div class="write-bottom">
-                        <input type="submit" class="submit" value="게시"/>
+                        <input id="submit" class="submit" value="게시" style="width: 135px"/>
                         <a href="<c:url value="/cmm/boardList.do?bbsId=${bbsId}"/>" title="취소">취소</a>
                     </div>
                 </div>

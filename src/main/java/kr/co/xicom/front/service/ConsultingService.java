@@ -23,7 +23,7 @@ public interface ConsultingService {
     int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception;
 
     //동행기업 수정
-    int updateJoin(CmpMemberVo vo, CmpSttusVO stVO) throws Exception;
+    int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception;
 
     //기업현황
     List<CmpSttusVO>  getCmpSttus(CmpSttusVO vo) throws Exception;

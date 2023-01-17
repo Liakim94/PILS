@@ -234,6 +234,5 @@ public class BoardServiceImpl implements BoardService {
 		attachVO.setBbsId(boardVO.getBbsId());
 
 		return attachMapper.list(attachVO);
-
 	}
 }
