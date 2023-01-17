@@ -105,15 +105,15 @@
     }
     window.addEventListener("keydown", function(e) {
         if (e.which === 88 && e.shiftKey && e.ctrlKey) {
-            if (timer) {
-                clearTimeout(timer);
-            }
+            // if (timer) {
+            //     clearTimeout(timer);
+            // }
             <%-- web.xml에 정의한 cookieName과 동일한 값의 쿠키명을 입력! --%>
             document.cookie = "GUIDEOK=1";
             document.location = '<%= redirectUrl %>';
         }
     });
-    countdown();
+    // countdown();
 </script>
 <% } %>
 </body>

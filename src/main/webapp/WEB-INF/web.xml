@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp"
-         xmlns:web="http://java.sun.com/xml/ns/javaee"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd
-http://java.sun.com/xml/ns/javaee/jsp "
+         xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
+
     <display-name>PILS</display-name>
 
     <!-- WildRain 추가 2020-11-04 -->
@@ -72,7 +70,7 @@ http://java.sun.com/xml/ns/javaee/jsp "
         </init-param>
         <init-param>
             <param-name>openDateTime</param-name>
-            <param-value>2099-12-31T09:00:00</param-value>
+            <param-value>2020-12-31T09:00:00</param-value>
         </init-param>
     </filter>
     <filter-mapping>
