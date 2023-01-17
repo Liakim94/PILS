@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<h1>test guide</h1>
-<%--
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-    String systemTitle = "협업정보시스템";
-    String targetUrl = "https://www.smes.go.kr/cobiz";
-    String redirectUrl = request.getContextPath() + "/index.do";
+    // 사이트명 설정.
+    // ex) String systemTitle = "중소기업 수위탁거래 종합포털";
+    String systemTitle = "중소벤처기업부 남품대금연동제 홈페이지";
+
+    // 운영 사이트 설정.
+    // ex) String targetUrl = "https://www.smes.go.kr/poll";
+    String targetUrl = "https://www.smes.go.kr/pis";
+
+    // 테스트 사이트 메인 페이지 설정.
+    // ex) String redirectUrl = request.getContextPath() + "/main/main.do";
+    String redirectUrl = request.getContextPath() + "/";
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -22,7 +28,7 @@
     <style>
         .smes_wrapper .v-box .logo-element .inner {
             height: 95px;
-            background: url(https://www.smes.go.kr/humanframe/theme/portal/assets/image/etc/logo_smes.png) no-repeat center center;
+            background: url(https://www.mss.go.kr/images/np/bg_logo.png) no-repeat center center;
         }
         .smes_wrapper .v-box .logo-element strong {
             color: red;
@@ -35,7 +41,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.js"></script>
     <script>
         Mousetrap.bind('ctrl+shift+x', function (e) {
-            document.cookie = "TESTGUIDEOK=1";
+            <%-- web.xml에 정의한 cookieName과 동일한 값의 쿠키명을 입력! --%>
+            document.cookie = "GUIDEOK=1";
             document.location = '<%= redirectUrl %>';
         });
     </script>
@@ -55,4 +62,3 @@
 </div>
 </body>
 </html>
---%>

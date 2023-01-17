@@ -53,6 +53,33 @@ http://java.sun.com/xml/ns/javaee/jsp "
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!-- WildRain 추가 2023-01-17 -->
+    <!-- 오픈 준비중/테스트 사이트 안내 필터 처리 -->
+    <filter>
+        <filter-name>OpenTestGuideFilter</filter-name>
+        <filter-class>kr.go.smes.commons.filter.OpenTestGuideFilter</filter-class>
+        <init-param>
+            <param-name>openGuidePage</param-name>
+            <param-value>/openGuide.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>testGuidePage</param-name>
+            <param-value>/testGuide.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cookieName</param-name>
+            <param-value>GUIDEOK</param-value>
+        </init-param>
+        <init-param>
+            <param-name>openDateTime</param-name>
+            <param-value>2099-12-31T09:00:00</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>OpenTestGuideFilter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:spring/context-*.xml</param-value>

@@ -88,16 +88,11 @@
 
     <bean class="freemarker.template.utility.XmlEscape" id="fmXmlEscape"></bean>
 
-
-    <bean id="nasFileService" class="kr.go.smes.fileservice.LocalFileService">
-        <!--<constructor-arg name="regionName" type="java.lang.String" value="${FileService.RegionName}"/>-->
-        <!--
-    <constructor-arg name="endPoint" type="java.lang.String" value="${FileService.EndPoint}"/>
-    <constructor-arg name="accessKey" type="java.lang.String" value="${FileService.AccessKey}"/>
-    <constructor-arg name="secretKey" type="java.lang.String" value="${FileService.SecretKey}"/>
-    <constructor-arg name="bucketName" type="java.lang.String" value="${FileService.RootPath}"/>
-    -->
-        <constructor-arg name="rootPath" type="java.lang.String" value="/Library/Tomcat/bin/PILS"/>
+    <bean id="nasFileService" class="kr.go.smes.fileservice.MinioFileService">
+        <constructor-arg name="endPoint" type="java.lang.String" value="${FileService.EndPoint}" />
+        <constructor-arg name="accessKey" type="java.lang.String" value="${FileService.AccessKey}" />
+        <constructor-arg name="secretKey" type="java.lang.String" value="${FileService.SecretKey}" />
+        <constructor-arg name="bucketName" type="java.lang.String" value="${FileService.BucketName}" />
     </bean>
 
 

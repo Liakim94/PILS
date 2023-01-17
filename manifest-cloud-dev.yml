@@ -1,16 +1,16 @@
 applications:
-- name: cobiz-dev                         # 앱 이름
+- name: pis-dev                           # 앱 이름
   memory: 1024M                           # 앱 메모리 크기
-  instances: 2                            # 앱 인스턴스 수
-# host: cobiz-dev                        # 앱과 바인드될 호스트
+  instances: 1                            # 앱 인스턴스 수
+# host: pis-dev                           # 앱과 바인드될 호스트
   routes:
-  - route: www.smes.go.kr/cobiz-dev
-  - route: cobiz-dev.paas.smes-tipa.go.kr/cobiz-dev
-  path: ./target/ncobiz-1.0.0.war         # war 파일 경로
+  - route: www.smes.go.kr/pis-dev
+  - route: pis-dev.paas.smes-tipa.go.kr/pis-dev
+  path: ./target/pils-1.0.0.war            # war 파일 경로
   buildpacks:
 # - java_buildpack_offline
   - pinpoint_buildpack_offline
   env:
-    JBP_CONFIG_TOMCAT: '[tomcat: {context_path: "/cobiz-dev"}]'
-    JAVA_OPTS : -Dspring.profiles.active=cloud-dev -Xbootclasspath/p:/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz-dev/WEB-INF/wt5_dev/lib/wsthk.jar:/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz-dev/WEB-INF/wt5_dev/lib/wsthk_i.jar:/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz-dev/WEB-INF/wt5_dev/lib/wstdb_i.jar:/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz-dev/WEB-INF/wt5_dev/lib/wstu.jar -DWJCONTEXTENV=/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz-dev/WEB-INF/wt5_dev/config/cobiz/walconf/_db/weeds_jf.properties -DW_WALENV=/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz-dev/WEB-INF/wt5_dev/config/cobiz -Dclh.prop=/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz-dev/WEB-INF/wt5_dev/config/cobiz/walconf/clh/clh.properties -javaagent:/home/vcap/app/.java-buildpack/tomcat/webapps/cobiz-dev/WEB-INF/wt5_dev/lib/wsthkt.jar -Dlog4j2.formatMsgNoLookups=true
+    JBP_CONFIG_TOMCAT: '[tomcat: {context_path: "/pis-dev"}]'
+    JAVA_OPTS : -Dspring.profiles.active=cloud-dev
     TZ: Asia/Seoul

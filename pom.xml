@@ -56,6 +56,11 @@
             <scope>system</scope>
             <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/fileservice-0.3.0-SNAPSHOT.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>8.0.3</version>
+        </dependency>
 
         <!-- 표준프레임워크 실행환경 -->
         <dependency>
@@ -384,6 +389,15 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.2</version>
+        </dependency>
+        <!-- WildRain 추가 2023-01-17 -->
+        <!-- 오픈 준비중/테스트 사이트 안내 처리 -->
+        <dependency>
+            <groupId>kr.go.smes</groupId>
+            <artifactId>smes-commons-filter</artifactId>
+            <version>0.1-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/smes-commons-filter-0.1-SNAPSHOT.jar</systemPath>
         </dependency>
     </dependencies>
 
