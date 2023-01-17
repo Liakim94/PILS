@@ -78,19 +78,14 @@
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu"/>
-
         <div class="article">
-            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
-                    <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>
-                    소통마당
+                    <a href="${pageContext.request.contextPath}">홈</a>
                 </li>
-                <li>
-                    ${bbsNm}
-                </li>
+                <li>소통마당</li>
+                <li>${bbsNm}</li>
             </ul>
             <div class="article-header">
                 <h1 class="fw700">${bbsNm}</h1>
@@ -122,15 +117,15 @@
                                     <form:textarea path="cont" cssClass="form-control"/>
                                 </div>
                             </div>
+                        </div>
                     </form:form>
                             <%-- WildRain 추가 2023-01-12 --%>
-                            <div class="file-uploader-wrapper">
-                                <div class="file-uploader"></div>
-                            </div>
-                        </div>
+                    <div class="file-uploader-wrapper">
+                        <div class="file-uploader"></div>
+                    </div>
                     <div class="write-bottom">
                         <input id="submit" class="submit" value="게시" style="width: 135px"/>
-                        <a href="<c:url value="/cmm/boardList.do?bbsId=${bbsId}"/>" title="취소">취소</a>
+                        <a href="<c:url value="/front/board/${bbsId}/list.do"/>" title="취소">취소</a>
                     </div>
                 </div>
             </div>

@@ -94,34 +94,35 @@
                 <!-- 컨텐츠 start -->
                 <div class="write-container">
                     <form:form modelAttribute="frmPost">
-                    <input type="hidden" name="action"/>
-                    <form:hidden path="bbsId"/>
-                    <form:hidden path="boardSeq"/>
-                    <form:hidden path="stat"/>
-                    <form:hidden path="jsonFileList"/>
-                    <form:hidden path="jsonDeletedFileList"/>
+                        <input type="hidden" name="action"/>
+                        <form:hidden path="bbsId"/>
+                        <form:hidden path="boardSeq"/>
+                        <form:hidden path="stat"/>
+                        <form:hidden path="jsonFileList"/>
+                        <form:hidden path="jsonDeletedFileList"/>
                         <%--<form:hidden path="boardSeq" value="${rs.boardSeq }"/>--%>
                         <%--<form:hidden path="fileStd" value="${option.thumStd }"/>--%>
-                    <div class="write-wrap">
-                        <div class="line-wrap">
-                            <div class="label">
-                                공지 제목
+                        <div class="write-wrap">
+                            <div class="line-wrap">
+                                <div class="label">
+                                    공지 제목
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="title" maxlength="85"/>
+                                </div>
                             </div>
-                            <div class="input-wrap">
-                                <form:input path="title" maxlength="85"/>
+                            <div class="line-wrap">
+                                <div class="label">
+                                    내용
+                                </div>
+                                <div class="input-wrap">
+                                    <textarea class="form-control" id="cont"
+                                              name="cont">${fx:resetXSSMinimum(frmPost.cont) }</textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label">
-                                내용
-                            </div>
-                            <div class="input-wrap">
-                                <textarea class="form-control" id="cont"
-                                          name="cont">${fx:resetXSSMinimum(frmPost.cont) }</textarea>
-                            </div>
-                        </div>
-                        </form:form>
-                    </div><!-- /.box-body -->
+
+                        </div><!-- /.box-body -->
+                    </form:form>
                     <%-- WildRain 추가 2023-01-12 --%>
                     <div class="file-uploader-wrapper">
                         <div class="file-uploader"></div>
@@ -129,7 +130,7 @@
                     <div class="write-bottom">
                         <button id="submit" class="submit">저장</button>
                         <%--<a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=${bbsId}" class="btn blue" title="취소">취소</a>--%>
-                        <a href="<c:url value="/cmm/boardView.do?boardSeq=${frmPost.boardSeq}&bbsId=${frmPost.bbsId}"/>">
+                        <a href="<c:url value="/front/board/${frmPost.bbsId}/view.do?boardSeq=${frmPost.boardSeq}"/>">
                             취소
                         </a>
                     </div>

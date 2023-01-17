@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <form name="frmDelete" id="frmDelete" method="POST" action="boardDelete.do">
+            <form name="frmDelete" id="frmDelete" method="POST" action="<c:url value="/front/board/${bbsId}/delete.do"/>">
                 <input type="hidden" id="stat" name="stat" value="0"/>
                 <input type="hidden" id="bbsId" name="bbsId" value="${bbsId}"/>
                 <input type="hidden" value="${rs.boardSeq}" name="boardSeq" id="boardSeq">
@@ -72,18 +72,13 @@
                             ${fx:resetXSSMinimum(rs.cont)}
                         </div>
                         <div>
-                            <a href="<c:url value="/cmm/boardList.do?bbsId=${bbsId}"/>" class="go-lst" style=" float:right; margin:10px;"
-                               title="목록">목록</a>
+                            <a href="<c:url value="/front/board/${rs.bbsId}/list.do"/>" class="go-lst" style=" float:right; margin:10px;" title="목록">목록</a>
                             <c:if test="${sessionId eq 'admin' }">
-                                <a href="<c:url value="/cmm/boardEdit.do?boardSeq=${rs.boardSeq}&bbsId=${rs.bbsId}"/>"
-                                   class="go-lst" title="수정" style="width: 140px;  float:right; margin:10px;">
+                                <a href="<c:url value="/front/board/${rs.bbsId}/edit.do?boardSeq=${rs.boardSeq}"/>" class="go-lst" title="수정" style="width: 140px;  float:right; margin:10px;">
                                     게시물 수정
                                 </a>
-                                <button onclick="javascript:deleteBbs()" class="go-lst"
-                                        style="width: 150px;  float:right; margin:10px;">게시물 삭제
-                                </button>
+                                <button onclick="javascript:deleteBbs();return false;" class="go-lst" style="width: 150px;  float:right; margin:10px;">게시물 삭제</button>
                             </c:if>
-
                         </div>
                     </div>
                 </div>

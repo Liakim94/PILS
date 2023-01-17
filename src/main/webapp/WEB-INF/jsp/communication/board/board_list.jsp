@@ -46,11 +46,11 @@
                 </div>
                 <div class="content">
                     <!-- 컨텐츠 start -->
-                    <form name="viewfrm" action="${pageContext.request.contextPath}/cmm/boardView.do" method="get"
+                    <!--form name="viewfrm" action="${pageContext.request.contextPath}/cmm/boardView.do" method="get"
                           id="viewfrm">
                         <input type="hidden" id="no" name="no" value="">
                         <input type="hidden" name="bbsId" id="bbsId" value="${bbsId}">
-                    </form>
+                    </form-->
 
                     <form action="" name="frmSearch" method="get">
                         <input type="hidden" name="pageIndex" id="pageIndex" value="1">
@@ -59,8 +59,9 @@
 
                             <div class="tbl-wrap for_board">
                                 <c:if test="${sessionId eq 'admin' }">
-                    <a href="${pageContext.request.contextPath}/cmm/boardPost.do?bbsId=${bbsId}" class="write-question"
-                          style="width: 135px">게시물 등록</a>
+                                    <a href="<c:url value="/front/board/${bbsId}/post.do"/>" class="write-question" style="width: 135px">
+                                        게시물 등록
+                                    </a>
                                 </c:if>
                                 <table class="tbl-list01">
                                     <caption>공지사항 : 번호, 제목, 작성자, 작성일, 조회수</caption>
@@ -84,7 +85,7 @@
                                             <td>${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
                                             <td class="al">
                                                     <%--<a href="javascript:showView('${list.boardSeq}')" >${list.title }</a>--%>
-                                                <a href="<c:url value="/cmm/boardView.do?boardSeq=${post.boardSeq}&bbsId=${post.bbsId}"/>">
+                                                <a href="<c:url value="/front/board/${post.bbsId}/view.do?boardSeq=${post.boardSeq}"/>">
                                                     <c:out value="${post.title}"/>
                                                 </a>
                                             </td>
@@ -105,8 +106,7 @@
                             <div class="board_bottom_wrap">
                                 <div class="paging_wrap">
                                     <ul class="paging">
-                                        <ui:pagination paginationInfo="${paginationInfo}" type="image"
-                                                       jsFunction="linkPage"/>
+                                        <ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage"/>
                                     </ul>
                                 </div>
                             </div>

@@ -75,10 +75,10 @@
                 </div>
             </div>
             <div class="wrapper">
-                <a class="font18" href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=11">소통마당</a>
+                <a class="font18" href="<c:url value="/front/board/11/list.do"/>">소통마당</a>
                 <div class="submenu">
-                    <a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=11">공지사항</a>
-                    <a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=7">자주 묻는질문</a>
+                    <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
+                    <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
                     <a href="${pageContext.request.contextPath}/cmm/qnaList.do">질의응답 게시판</a>
                     <a href="${pageContext.request.contextPath}/cmm/conApply.do">컨설팅 신청</a>
                     <a href="${pageContext.request.contextPath}/cmm/conCheck.do">컨설팅 신청 확인</a>
@@ -158,10 +158,10 @@
                         <span></span>
                     </div>
                     <div class="submenu">
-                        <a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=11">공지사항</a>
-                        <a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=7">자주 묻는질문</a>
+                        <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
+                        <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
                         <a href="${pageContext.request.contextPath}/cmm/qnaList.do">질의응답 게시판</a>
-                        <a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=9">자료실</a>
+                        <a href="<c:url value="/front/board/9/list.do"/>">자료실</a>
                         <a href="${pageContext.request.contextPath}/cmm/conApply.do">컨설팅 신청</a>
                         <a href="${pageContext.request.contextPath}/cmm/conCheck.do">컨설팅 신청 확인</a>
                     </div>

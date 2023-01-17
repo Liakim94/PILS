@@ -5,15 +5,21 @@
 <%@ taglib uri="http://egovframework.gov/ctl/ui" 				prefix="ui" 		%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" 		prefix="fn" 		%>
 <%@ taglib uri="http://www.springframework.org/tags" 			prefix="spring" 	%>
+<c:set var="URI" value="${requestScope['javax.servlet.forward.request_uri']}" />
 <html lang="ko" class="ko">
 <head>
+    <%--
+        WildRain 추가 2023-01-17
+        https://www.smes.go.kr/pis-dev 사이트 검색엔진 색인 방지
+    --%>
     <c:if test="${fn:endsWith(pageContext.request.contextPath, '-dev') or fn:endsWith(pageContext.request.contextPath, '-test')}">
         <meta name="robots" content="noindex">
     </c:if>
-<%--    <%@include file="/WEB-INF/jsp/common/cms/meta_inc.jsp" %>--%>
-    <%@include file="/WEB-INF/jsp/common/front/javascript_inc.jsp" %>
+    <%--@include file="/WEB-INF/jsp/common/cms/meta_inc.jsp" --%>
     <title><decorator:title default="사용자화면" /></title>
     <%@include file="/WEB-INF/jsp/common/front/css_inc.jsp" %>
+    <%@include file="/WEB-INF/jsp/common/front/javascript_inc.jsp" %>
+
     <decorator:head />
 
 </head>
