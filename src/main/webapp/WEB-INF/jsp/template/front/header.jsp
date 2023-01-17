@@ -69,7 +69,7 @@
                 <a class="font18" href="${pageContext.request.contextPath}/join/joinList.do">납품대금 연동제 동참하기</a>
                 <div class="submenu">
                     <a href="#">연동 절차</a>
-                    <a href="${pageContext.request.contextPath}/join/agree.do">약정서 작성</a>
+                    <a href="${pageContext.request.contextPath}/join/agreeMain.do">약정서 작성</a>
                     <a href="${pageContext.request.contextPath}/join/joinList.do">동행기업 신청</a>
                     <a href="#">기업들이 준비할 일</a>
                 </div>
@@ -146,7 +146,7 @@
                     </div>
                     <div class="submenu">
                         <a href="#">연동 절차</a>
-                        <a href="${pageContext.request.contextPath}/join/agree.do">약정서 작성</a>
+                        <a href="${pageContext.request.contextPath}/join/agreeMain.do">약정서 작성</a>
                         <a href="${pageContext.request.contextPath}/join/joinList.do">동행기업 신청</a>
                         <a href="#">기업들이 준비할 일</a>
                     </div>
@@ -161,7 +161,6 @@
                         <a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=11">공지사항</a>
                         <a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=7">자주 묻는질문</a>
                         <a href="${pageContext.request.contextPath}/cmm/qnaList.do">질의응답 게시판</a>
-                        <a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=9">자료실</a>
                         <a href="${pageContext.request.contextPath}/cmm/conApply.do">컨설팅 신청</a>
                         <a href="${pageContext.request.contextPath}/cmm/conCheck.do">컨설팅 신청 확인</a>
                     </div>
