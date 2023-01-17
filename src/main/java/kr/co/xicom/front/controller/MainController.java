@@ -101,20 +101,20 @@ public class MainController {
 
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M302");
+        stVO.setBizNo(bizNo);
         try {
-            stVO.setBizNo(bizNo);
-            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+            cmpVO = mainService.getMemInfo(cmpVO);
             List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
+            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
 
-            CmpMemberVo rs = mainService.getMemInfo(cmpVO);
-            rs.setBizNo1(rs.getBizNo().substring(0, 3));
-            rs.setBizNo2(rs.getBizNo().substring(3, 5));
-            rs.setBizNo3(rs.getBizNo().substring(5, 10));
-            if (rs == null && sttus == null) {
+            cmpVO.setBizNo1(cmpVO.getBizNo().substring(0, 3));
+            cmpVO.setBizNo2(cmpVO.getBizNo().substring(3, 5));
+            cmpVO.setBizNo3(cmpVO.getBizNo().substring(5, 10));
+            if (cmpVO == null && sttus == null) {
                 System.out.println("비정상적인 접근입니다.");
             }
 
-            mav.addObject("rs", rs);
+            mav.addObject("rs", cmpVO);
             mav.addObject("st", sttus);
             mav.addObject("attachList", attachList);
 
@@ -142,7 +142,6 @@ public class MainController {
 
             stVO.setBizNo(bizNo);
             List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
-//            cmpVO.setCmpSttusVOList(sttus);
 
             List<AttachVO> attachList = this.consultingService.getAttachList(cmpVO);
             if (attachList != null && attachList.size() > 0) {

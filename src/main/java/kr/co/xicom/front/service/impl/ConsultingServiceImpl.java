@@ -123,15 +123,15 @@ public class ConsultingServiceImpl implements ConsultingService {
     @Override
     @Transactional(rollbackFor=Exception.class)
     public int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
-//        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
-//        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
-//
-//        TransactionStatus status = transactionManager.getTransaction(def);
+        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+
+        TransactionStatus status = transactionManager.getTransaction(def);
 
         try{
             int result1= mapper.insertJoin(vo);
-//            int result2=  mapper.insertMemberJoin(vo);
-            int result2 =0;
+            int result2=  mapper.insertMemberJoin(vo);
+//            int result2 =0;
             int result3= mapper.insertCmpSttus(stVO);
 
             String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
@@ -151,7 +151,7 @@ public class ConsultingServiceImpl implements ConsultingService {
                         attach.setUpdNm(vo.getUpdNm());
                         FilenameUtils.getExtension(attach.getFileNm());
 
-                        attachMapper.joinCreate(attach);
+                        attachMapper.joinAttCreate(attach);
                     }
                 }
             }
@@ -160,8 +160,7 @@ public class ConsultingServiceImpl implements ConsultingService {
                 return 1;
             }
         }catch (Exception e){
-//            transactionManager.rollback(status);
-            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            transactionManager.rollback(status);
         }
         return 0;
     }
@@ -175,7 +174,7 @@ public class ConsultingServiceImpl implements ConsultingService {
         TransactionStatus status = transactionManager.getTransaction(def);
 
         try{
-            int result=  mapper.updateJoin(vo);
+            int result1=  mapper.updateJoin(vo);
             int result2 = mapper.updateCmpSttus(stVO);
 
             AttachVO attach = new AttachVO();
@@ -202,7 +201,7 @@ public class ConsultingServiceImpl implements ConsultingService {
                         attach.setUpdNm(vo.getUpdNm());
                         FilenameUtils.getExtension(attach.getFileNm());
 
-                        attachMapper.joinCreate(attach);
+                        attachMapper.joinAttCreate(attach);
                     }
                 }
             }
@@ -229,7 +228,6 @@ public class ConsultingServiceImpl implements ConsultingService {
     @Override
     public List<CmpSttusVO>  getCmpSttus(CmpSttusVO vo) throws Exception{
 
-        Map<String,Object> map = new HashMap<String,Object>();
         List<CmpSttusVO> list = mapper.getCmpSttus(vo);
         return list;
     }
@@ -243,7 +241,7 @@ public class ConsultingServiceImpl implements ConsultingService {
         attachVO.setBbsId(1);
         attachVO.setAttchCode("M602");
 
-        return attachMapper.joinList(attachVO);
+        return attachMapper.joinAttList(attachVO);
 
     }
 
