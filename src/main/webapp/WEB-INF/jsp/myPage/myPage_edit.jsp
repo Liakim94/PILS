@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
     <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/temp.css"/>">
 </head>
 <script>
       $(function () {
@@ -56,22 +56,30 @@
         });
     });
 </script>
-<page:applyDecorator name="menu_myPage"/>
-<form:form modelAttribute="frmEdit" id="frmEdit"  action="joinEdit.do">
-    <form:hidden path="jsonFileList"/>
-    <form:hidden path="jsonDeletedFileList"/>
-
-    <div class="article">
-        <div class="content">
-
-            <col width="17%"/>
-            <col width="*"/>
+<div id="content">
+    <div id="board">
+        <page:applyDecorator name="menu_myPage"/>
+        <div class="article">
+            <br>
+            <ul class="loc-list">
+                <li>
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
+                    <a href="${pageContext.request.contextPath}">홈</a></li>
+                <li>마이페이지</li>
+                <li>동행기업 수정</li>
+            </ul>
             <div class="article-header">
-                <h3>동행기업 수정</h3>
+                <h1 class="fw700">동행기업 수정</h1>
                 <div class="side-wrap">
                 </div>
             </div>
-            <table class="tbl-list02">
+            <div class="content">
+                <div class="write-container">
+                    <form:form modelAttribute="frmEdit" id="frmEdit"  action="joinEdit.do">
+                        <form:hidden path="jsonFileList"/>
+                        <form:hidden path="jsonDeletedFileList"/>
+
+                        <table class="table-form">
                 <tbody>
                 <tr>
                     <th class="txt_alcnt" scope="row">기업명</th>
@@ -171,10 +179,14 @@
 
                 </tbody>
             </table>
-            <div class="btn-wrap type04">
-                <button id="submit" class="btn blue">저장</button>
-                <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">취소</a>
+                        <div class="write-bottom">
+                            <button id="submit" class="btn blue">저장</button>
+                            <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">취소</a>
+                        </div>
+                    </form:form>
+                </div>
             </div>
         </div>
     </div>
-</form:form>
+</div>
+
