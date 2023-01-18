@@ -29,7 +29,7 @@
     <mvc:annotation-driven />
     <tx:annotation-driven/>
 
-
+    <!--
     <mvc:resources location="/WEB-INF/resources/common/" mapping="/common/**"/>
     <mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**"/>
 	<mvc:resources location="/WEB-INF/resources/images/" mapping="/images/**"/>
@@ -41,7 +41,7 @@
 	<mvc:resources location="/connApi/" mapping="/connApi/**"/>
 	<mvc:resources location="/loginPopup/" mapping="/loginPopup/**"/>
 	<mvc:resources location="/WEB-INF/resources/upload/" mapping="/upload/**"/>
-
+    -->
 
 <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
 <!--        <property name="webBindingInitializer">-->

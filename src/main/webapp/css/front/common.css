@@ -574,7 +574,7 @@
     margin-right: 50px;
     text-align: left;
     position: relative;
-    /*height: 90px;*/
+    height: 90px;
     line-height: 90px;
 }
 .gnb-container .gnb-wrap .nav-wrap .wrapper:nth-last-child(1){
