@@ -60,7 +60,8 @@
                 <div class="submenu">
                     <a href="">도입배경</a>
                     <a href="">개념</a>
-                    <a href="">적용대상</a>
+                    <a href="">걸어온 발자취</a>
+                    <a href="">참여 기업 현황</a>
                     <a href="">관련 법령</a>
                     <a href="">주요 통계</a>
                 </div>
@@ -68,17 +69,17 @@
             <div class="wrapper">
                 <a class="font18" href="${pageContext.request.contextPath}/join/joinList.do">납품대금 연동제 동참하기</a>
                 <div class="submenu">
-                    <a href="#">연동 절차</a>
-                    <a href="${pageContext.request.contextPath}/join/agreeMain.do">약정서 작성</a>
-                    <a href="${pageContext.request.contextPath}/join/joinList.do">동행기업 신청</a>
-                    <a href="#">기업들이 준비할 일</a>
+                    <a href="#">납품대금 연동 절차  알아보기</a>
+                    <a href="${pageContext.request.contextPath}/join/agreeMain.do">약정서 작성하기</a>
+                    <a href="${pageContext.request.contextPath}/join/joinList.do">동행기업 신청하기</a>
                 </div>
             </div>
             <div class="wrapper">
                 <a class="font18" href="<c:url value="/front/board/11/list.do"/>">소통마당</a>
                 <div class="submenu">
                     <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
-                    <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
+                    <a href="#">기업들이 준비할 일</a>
+                    <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
                     <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
                     <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>
                     <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>
@@ -133,7 +134,8 @@
                     <div class="submenu">
                         <a href="">도입배경</a>
                         <a href="">개념</a>
-                        <a href="">적용대상</a>
+                        <a href="">걸어온 발자취</a>
+                        <a href="">참여 기업 현황</a>
                         <a href="">관련 법령</a>
                         <a href="">주요 통계</a>
                     </div>
@@ -145,10 +147,9 @@
                         <span></span>
                     </div>
                     <div class="submenu">
-                        <a href="#">연동 절차</a>
-                        <a href="${pageContext.request.contextPath}/join/agreeMain.do">약정서 작성</a>
-                        <a href="${pageContext.request.contextPath}/join/joinList.do">동행기업 신청</a>
-                        <a href="#">기업들이 준비할 일</a>
+                        <a href="#">납품대금 연동 절차 알아보기</a>
+                        <a href="${pageContext.request.contextPath}/join/agreeMain.do">약정서 작성하기</a>
+                        <a href="${pageContext.request.contextPath}/join/joinList.do">동행기업 신청하기</a>
                     </div>
                 </div>
                 <div class="menu">
@@ -159,6 +160,7 @@
                     </div>
                     <div class="submenu">
                         <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
+                        <a href="#">기업들이 준비할 일</a>
                         <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
                         <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
                         <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>

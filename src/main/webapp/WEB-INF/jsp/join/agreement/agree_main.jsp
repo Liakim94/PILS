@@ -40,7 +40,7 @@
                     안내 문구가 들어갈 영역입니다.
                 </p>
                 <div class="info-link">
-                    <a href=""><img src="${pageContext.request.contextPath}/images/common/download-icon.png" alt="약정서 다운로드">약정서 다운로드</a>
+                    <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp"><img src="${pageContext.request.contextPath}/images/common/download-icon.png" alt="약정서 다운로드">약정서 다운로드</a>
                     <a href="${pageContext.request.contextPath}/join/agree.do"><img src="${pageContext.request.contextPath}/images/common/document-icon.png" alt="약정서 체험하기">약정서 체험하기</a>
                 </div>
                 <!-- 컨텐츠 end -->
@@ -64,4 +64,3 @@
         $(".modal-box").css("display","none");
     }
 </script>
-

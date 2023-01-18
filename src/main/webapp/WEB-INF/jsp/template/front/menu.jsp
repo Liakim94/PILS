@@ -20,6 +20,9 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
             <li class="<c:if test="${URI.contains('/front/board/11')}">on</c:if>">
                 <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
             </li>
+            <li class="<c:if test="${URI.contains('/front/board/11')}">on</c:if>">
+                <a href="#">기업들이 준비할 일</a>
+            </li>
             <li class="<c:if test="${URI.contains('/front/board/7')}">on</c:if>">
                 <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
             </li>

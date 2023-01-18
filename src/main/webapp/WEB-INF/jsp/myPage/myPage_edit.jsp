@@ -15,8 +15,8 @@
 
 </head>
 <script>
-      $(function () {
-               // 파일업로더 처리
+    $(function () {
+        // 파일업로더 처리
         var fileUploader = new smes.FileUploader('.file-uploader').init({
             maxFileSize: 1024 * 1024 * 100,    // 100 MB 제한
             maxFileCount: 20,
@@ -57,21 +57,21 @@
     });
 </script>
 <page:applyDecorator name="menu_myPage"/>
-<form:form modelAttribute="frmEdit" id="frmEdit"  action="joinEdit.do">
-    <form:hidden path="jsonFileList"/>
-    <form:hidden path="jsonDeletedFileList"/>
+<div class="article">
+    <div class="content">
 
-    <div class="article">
-        <div class="content">
-
-            <col width="17%"/>
-            <col width="*"/>
-            <div class="article-header">
-                <h3>동행기업 수정</h3>
-                <div class="side-wrap">
-                </div>
+        <col width="17%"/>
+        <col width="*"/>
+        <div class="article-header">
+            <h3>동행기업 수정</h3>
+            <div class="side-wrap">
             </div>
-            <table class="tbl-list02">
+        </div>
+        <table class="tbl-list02">
+            <form:form modelAttribute="frmEdit" id="frmEdit" action="joinEdit.do">
+                <form:hidden path="jsonFileList"/>
+                <form:hidden path="jsonDeletedFileList"/>
+
                 <tbody>
                 <tr>
                     <th class="txt_alcnt" scope="row">기업명</th>
@@ -142,14 +142,15 @@
                     <th class="txt_alcnt" scope="row">2021년</th>
                 </tr>
                 <c:forEach var="st" items="${st}" varStatus="status">
-                    <c:if test="${status.index mod 3 eq 0}" >
+                    <c:if test="${status.index mod 3 eq 0}">
                         <tr>
                         <th class="txt_alcnt" scope="row">${st.index_dv_nm} </th>
                     </c:if>
                     <td align="center">
-                        <input type="number" class="uni_input_text wdh100" id="ix_data${status.index+1}" name="ix_data${status.index+1}" value="${st.index_data}"/>
+                        <input type="number" class="uni_input_text wdh100" id="ix_data${status.index+1}"
+                               name="ix_data${status.index+1}" value="${st.index_data}"/>
                     </td>
-                    <c:if test="${status.index mod 3 eq 2}" >
+                    <c:if test="${status.index mod 3 eq 2}">
                         </tr>
                     </c:if>
                 </c:forEach>
@@ -168,13 +169,13 @@
                         </div>
                     </td>
                 </tr>
-
                 </tbody>
-            </table>
-            <div class="btn-wrap type04">
-                <button id="submit" class="btn blue">저장</button>
-                <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">취소</a>
-            </div>
+            </form:form>
+        </table>
+        <div class="btn-wrap type04">
+            <button id="submit" class="btn blue">저장</button>
+            <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">취소</a>
         </div>
     </div>
-</form:form>
+</div>
+

@@ -17,10 +17,9 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
     <div class ="lnb">
         <h2>납품대금연동제 동참하기</h2>
         <ul>
-            <li><a href ="#" >연동 절차</a></li>
-            <li><a href ="${pageContext.request.contextPath}/join/agreeMain.do" >약정서 작성</a></li>
-            <li><a href ="${pageContext.request.contextPath}/join/joinList.do" >동행기업 신청</a></li>
-            <li><a href ="#" >기업들이 준비할 일</a></li>
+            <li><a href ="#">납품대금 연동 절차 알아보기</a></li>
+            <li><a href ="${pageContext.request.contextPath}/join/agreeMain.do" >약정서 작성하기</a></li>
+            <li><a href ="${pageContext.request.contextPath}/join/joinList.do" >동행기업 신청하기</a></li>
         </ul>
     </div>
 </aside>

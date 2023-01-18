@@ -8,7 +8,7 @@
             <list>
                 <value>classpath:egovProps/globals.properties</value>
                 <value>classpath:egovProps/globals-#{systemProperties['spring.profiles.active']}.properties</value>
-            </list>  
+            </list>
         </property> 
     </bean>
     
