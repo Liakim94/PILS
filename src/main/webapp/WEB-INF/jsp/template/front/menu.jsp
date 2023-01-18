@@ -27,10 +27,10 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
                 <a href="<c:url value="/cmm/qnaList.do"/>">질의응답 게시판</a>
             </li>
             <li class="<c:if test="${URI.contains('/cmm/conAply.do')}">on</c:if>">
-                <a href="<c:url value="/cmm/conApply.do"/>">컨설팅 신청</a>
+                <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>
             </li>
             <li class="<c:if test="${URI.contains('/cmm/conCheck.do')}">on</c:if>">
-                <a href="<c:url value="/cmm/conCheck.do"/>">컨설팅 신청 확인</a>
+                <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>
             </li>
         </ul>
     </div>

@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="btn-wrap type02 low_margin">
-                <a href="${pageContext.request.contextPath}/cmm/conApply.do" class="btn blue">신청하기</a>
+                <a href="<c:url value="/front/consulting/apply.do"/>" class="btn blue">신청하기</a>
             </div>
         <div class="tbl-wrap separate1">
             <table class="tbl-list01">
@@ -57,16 +57,16 @@
                         <td class="al">
                             <c:choose>
                                 <c:when test="${sessionId ne null && sessionId eq 'admin'}">
-                                    <a href="${pageContext.request.contextPath}/cmm/conView.do?bizNo=${list.bizNo}">
+                                    <a href="<c:url value="/front/consulting/view.do?bizNo=${list.bizNo}"/>">
                                         ${list.cmpNm }
+                                    </a>
                                 </c:when>
                                 <c:otherwise>
                                     <a href="checkPw" data-toggle="modal" data-target="#checkPw" onclick="modalData('${list.bizNo}')" >
                                         ${list.cmpNm }
+                                    </a>
                                 </c:otherwise>
                             </c:choose>
-
-                        </a>
                         </td>
                         <td class="txt_alcnt"> ${list.name }</td>
                         <td class="txt_alcnt">${list.appdate }</td>
@@ -126,7 +126,7 @@
                     data: "bizNo=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),
                     success: function (data) {
                         if (data == "1") {
-                            location.href = "${pageContext.request.contextPath}/cmm/conView.do?bizNo="+ $("#hiddenNo").val()
+                            location.href = "${pageContext.request.contextPath}/front/consulting/view.do?bizNo="+ $("#hiddenNo").val()
                             <%--var form = document.createElement('form'); // 폼객체 생성--%>
                             <%--var objs;--%>
                             <%--objs = document.createElement('input'); // 값이 들어있는 녀석의 형식--%>

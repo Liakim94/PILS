@@ -19,14 +19,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("/cmm")
+@RequestMapping("/front")
 @Controller
 public class ConsultingController extends Alerts {
     @Autowired
-    private ConsultingService service;
+    private ConsultingService consultingService;
 
     //컨설팅 신청 리스트
-    @GetMapping(value = "/consulting.do")
+    @GetMapping(value = "/consulting/list.do")
     public ModelAndView list(ModelMap model,
                              @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                              HttpSession session,
@@ -47,7 +47,7 @@ public class ConsultingController extends Alerts {
         cmpVO.setMem_cd("M301"); //회원구분
 
         Map<String, Object> rs = new HashMap<String, Object>();
-        rs = service.list(cmpVO);
+        rs = consultingService.list(cmpVO);
 
         int totalCnt = 0;
         totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
@@ -61,7 +61,7 @@ public class ConsultingController extends Alerts {
     }
 
     //컨설팅 신청 화면
-    @GetMapping(value = "/conApply.do")
+    @GetMapping(value = "/consulting/apply.do")
     public ModelAndView apply(HttpSession session,
                               HttpServletRequest request,
                               HttpServletResponse response) throws Exception {
@@ -70,7 +70,7 @@ public class ConsultingController extends Alerts {
         return mav;
     }
 
-    @RequestMapping(value = "/conApply.do", method = {RequestMethod.POST})
+    @RequestMapping(value = "/consulting/apply.do", method = {RequestMethod.POST})
     public void doApply(ModelMap model,
                         @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                         @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
@@ -86,10 +86,10 @@ public class ConsultingController extends Alerts {
             stVO.setBizNo(bizNo);
             cmpVO.setId(session.getId());
             cmpVO.setManagement_cd("M501");
-            int result = service.insertConsulting(cmpVO, stVO);
+            int result = consultingService.insertConsulting(cmpVO, stVO);
             if (result > 0) {
 
-                response.sendRedirect(request.getContextPath() + "/cmm/conView.do?bizNo="+cmpVO.getBizNo());
+                response.sendRedirect(request.getContextPath() + "/front/consulting/view.do?bizNo="+cmpVO.getBizNo());
 
 
             } else {
@@ -123,7 +123,7 @@ public class ConsultingController extends Alerts {
 
         int result = 0;
         try {
-            result = service.conChkPw(cmpVO);
+            result = consultingService.conChkPw(cmpVO);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -137,7 +137,7 @@ public class ConsultingController extends Alerts {
     }
 
     //신청 상세 화면
-    @GetMapping(value = "/conView.do")
+    @GetMapping(value = "/consulting/view.do")
     public ModelAndView conView(ModelMap model,
                                 @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                                 @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
@@ -150,9 +150,9 @@ public class ConsultingController extends Alerts {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M301");
         try {
-            List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
+            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
 
-            CmpMemberVo rs = service.getViewByBizNo(cmpVO);
+            CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
             rs.setBizNo2(rs.getBizNo().substring(3, 5));
             rs.setBizNo3(rs.getBizNo().substring(5, 10));
@@ -165,10 +165,9 @@ public class ConsultingController extends Alerts {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-        return mav;
-    }
+        return mav;    }
 
-    @RequestMapping(value = "/conView.do", method = {RequestMethod.POST})
+    @RequestMapping(value = "/consulting/view.do", method = {RequestMethod.POST})
     public String conView(ModelMap model,
                           @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                           @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
@@ -177,9 +176,9 @@ public class ConsultingController extends Alerts {
 
         cmpVO.setMem_cd("M301");
         try {
-            List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
+            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
 
-            CmpMemberVo rs = service.getViewByBizNo(cmpVO);
+            CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
             rs.setBizNo2(rs.getBizNo().substring(3, 5));
             rs.setBizNo3(rs.getBizNo().substring(5, 10));
@@ -197,7 +196,7 @@ public class ConsultingController extends Alerts {
 
 
     //수정 화면
-    @RequestMapping(value = "/conEdit.do", method = {RequestMethod.GET})
+    @RequestMapping(value = "/consulting/edit.do", method = {RequestMethod.GET})
     public ModelAndView conEdit(
             ModelMap model,
             @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
@@ -211,8 +210,8 @@ public class ConsultingController extends Alerts {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M301");
         try {
-            List<CmpSttusVO> sttus = service.getCmpSttus(stVO);
-            CmpMemberVo rs = service.getViewByBizNo(cmpVO);
+            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+            CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
             rs.setBizNo2(rs.getBizNo().substring(3, 5));
             rs.setBizNo3(rs.getBizNo().substring(5, 10));
@@ -233,7 +232,7 @@ public class ConsultingController extends Alerts {
     }
 
     //수정 처리
-    @RequestMapping(value = "/conEdit.do", method = {RequestMethod.POST})
+    @RequestMapping(value = "/consulting/edit.do", method = {RequestMethod.POST})
     public String doConEdit(
             ModelMap model,
             @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
@@ -249,7 +248,7 @@ public class ConsultingController extends Alerts {
             cmpVO.setEmail(email);
             stVO.setBizNo(bizNo);
 
-            int result = service.update(cmpVO, stVO);
+            int result = consultingService.update(cmpVO, stVO);
 
             if (result > 0) {
                 return "redirect:conView.do?bizNo=" + cmpVO.getBizNo();
@@ -263,20 +262,20 @@ public class ConsultingController extends Alerts {
         return "";
     }
 
-    @GetMapping(value="/conCheck.do")
+    @GetMapping(value="/consulting/confirm.do")
     public ModelAndView conCheck() {
         ModelAndView mav = new ModelAndView("communication/consulting/con_check");
         return mav;
     }
 
-    @PostMapping(value="/conCheck.do")
+    @PostMapping(value="/consulting/confirm.do")
     public void doConCheck(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                             ,HttpServletResponse response, HttpServletRequest request) throws Exception {
         String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
         cmpVO.setBizNo(bizNo);
-        int result = service.conCheck(cmpVO);
+        int result = consultingService.conCheck(cmpVO);
         if (result > 0) {
-            response.sendRedirect(request.getContextPath() + "/cmm/conView.do?bizNo="+cmpVO.getBizNo());
+            response.sendRedirect(request.getContextPath() + "/front/consulting/view.do?bizNo="+cmpVO.getBizNo());
         }
         PrintWriter writer = response.getWriter();
 

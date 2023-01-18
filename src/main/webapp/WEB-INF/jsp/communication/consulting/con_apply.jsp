@@ -118,229 +118,232 @@
         });
     });
 </script>
-
-<page:applyDecorator name="menu"/>
-<div class="article">
-    <div class="content">
-        <!-- 컨텐츠 start -->
-        <form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/cmm/conApply.do">
-
-            <table class="tbl-list02">
-                <col width="17%"/>
-                <col width="*"/>
-                <div class="article-header">
-                    <h3>컨설팅 신청</h3>
-                    <div class="side-wrap">
-                    </div>
+<div id="content">
+    <div id="board">
+        <page:applyDecorator name="menu"/>
+        <div class="article">
+            <br/>
+            <ul class="loc-list">
+                <li>
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
+                    <a href="${pageContext.request.contextPath}">홈</a></li>
+                <li>소통마당</li>
+                <li>컨설팅 신청</li>
+            </ul>
+            <div class="article-header">
+                <h1 class="fw700">컨설팅 신청</h1>
+                <div class="side-wrap">
                 </div>
-                <tbody>
-                <tr>
-                    <th class="txt_alcnt" scope="row">기업명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="cmpNm" name="cmpNm"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">사업자번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo1" name="bizNo1"/>
-                        -
-                        <input type="number" class="uni_input_text wdh100" style="width:50px;" id="bizNo2" name="bizNo2"/>
-                        -
-                        <input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo3" name="bizNo3"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">대표자명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="ceo" name="ceo"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">설립일자<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="date" class="uni_input_text wdh100" id="fdate" name="fdate"/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th class="txt_alcnt" scope="row">본사 주소<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td colspan="3">
-                        <input type="text" class="uni_input_text " name="address" id="address" onclick="execPostCode()"
-                               readonly/>
-                        <button type="button" class="btn"
-                                onclick="execPostCode()">주소찾기
-                        </button>
-                        <input type="text" class="uni_input_text " name="address_dtl" id="address_dtl"
-                               placeholder="상세주소"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">전화번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" id="telNo" name="telNo"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">팩스<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" id="faxNo" name="faxNo"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">업종<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="bizType" name="bizType"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">자본금<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="number" class="uni_input_text" id="capital" name="capital" style="padding:0"/>백만원
-                    </td>
-                </tr>
-
-                <th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>
-                <tr>
-                    <th class="txt_alcnt" scope="row">지표</th>
-                    <th class="txt_alcnt" scope="row">2019년</th>
-                    <th class="txt_alcnt" scope="row">2020년</th>
-                    <th class="txt_alcnt" scope="row">2021년</th>
-                <tr>
-                    <th class="txt_alcnt" scope="row">매출액(백만원)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="number" class="uni_input_text" id=ix_data1" name="ix_data1"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data2" name="ix_data2"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data3" name="ix_data3"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">영업이익(백만원)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data4" name="ix_data4"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data5" name="ix_data5"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data6" name="ix_data6"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">종업원수(명)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data7" name="ix_data7"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data8" name="ix_data8"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data9" name="ix_data9"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">주요생산품<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td colspan="3">
-                        <input type="text" id="product" class="uni_input_text wdh100" name="product"/>
-                    </td>
-                </tr>
-                <th colspan="4" class="txt_alcnt" scope="row">담당자</th>
-                <tr>
-                    <th class="txt_alcnt" scope="row">성명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100 " name="name" id="name"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">전화번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" id="mbphno" name="mbphno" value=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">소속부서<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="deptNm" name="deptNm" value=""/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">직위<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="position" name="position" value=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">이메일<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td colspan="3">
-                        <input type="text" class="uni_input_text " name="email1" id="email1"/>
-                        @
-                        <input type="text" class="uni_input_text " name="email2" id="email2" value=""/>
-                        <select id="email3" class="uni_input_text " style="border-radius: 5px;"
-                                onclick="selectEmail(this)">
-                            <option value="1">직접입력</option>
-                            <option value="naver.com">naver.com</option>
-                            <option value="daum.net">daum.net</option>
-                            <option value="gmail.com">gmail.com</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">사무실 전화<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" id="memTelNo" name="memTelNo" value=""/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">팩스<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo" value=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="4" class="txt_alcnt" scope="row">컨설팅시 주요 질의사항<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <input type="text" class="uni_input_text wdh100" id="conQ" name="conQ" value=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="4" class="txt_alcnt" scope="row">연동제 적용 대상이 되는 주요 수위탁거래 정보</th>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">수위탁 거래 유형</th>
-                    <td colspan="3">
-                        <select id="deal_type" name="deal_type" class="uni_input_text">
-                            <option value="">선택</option>
-                            <option value="제조">제조</option>
-                            <option value="공사">공사</option>
-                            <option value="가공">가공</option>
-                            <option value="수리">수리</option>
-                            <option value="용역">용역</option>
-                            <option value="기술개발">기술개발</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">연간 거래 규모</th>
-                    <td colspan="3">
-                        <input type="text" class="uni_input_text wdh100" name="deal_scale" id="deal_scale"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">주요 원재료</th>
-                    <td colspan="3">
-                        <input type="text" class="uni_input_text wdh100" name="material" id="material"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">비밀번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" name="passwd" value=""/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">비밀번호 재입력<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="passwdChk" name="passwdChk" value=""/>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="btn-wrap type04">
-                <button type="submit" class="btn blue" >저장</button>
-                <a href="${pageContext.request.contextPath}/cmm/consulting.do" class="btn blue">취소</a>
             </div>
-        </form>
-        <!-- 컨텐츠 end -->
+            <div class="content">
+                <!-- 컨텐츠 start -->
+                <form name="frmWrite" id="frmWrite" method="post" action="<c:url value="/front/consulting/apply.do"/>">
+                    <table class="tbl-list02">
+                        <tbody>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">기업명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="text" class="uni_input_text wdh100" id="cmpNm" name="cmpNm"/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">사업자번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo1" name="bizNo1"/>
+                                -
+                                <input type="number" class="uni_input_text wdh100" style="width:50px;" id="bizNo2" name="bizNo2"/>
+                                -
+                                <input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo3" name="bizNo3"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">대표자명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="text" class="uni_input_text wdh100" id="ceo" name="ceo"/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">설립일자<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="date" class="uni_input_text wdh100" id="fdate" name="fdate"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">본사 주소<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td colspan="3">
+                                <input type="text" class="uni_input_text " name="address" id="address" onclick="execPostCode()" readonly/>
+                                <button type="button" class="btn" onclick="execPostCode()">주소찾기
+                                </button>
+                                <input type="text" class="uni_input_text " name="address_dtl" id="address_dtl" placeholder="상세주소"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">전화번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="number" class="uni_input_text wdh100" id="telNo" name="telNo"/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">팩스<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="number" class="uni_input_text wdh100" id="faxNo" name="faxNo"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">업종<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="text" class="uni_input_text wdh100" id="bizType" name="bizType"/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">자본금<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="number" class="uni_input_text" id="capital" name="capital" style="padding:0"/>백만원
+                            </td>
+                        </tr>
+                        <th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">지표</th>
+                            <th class="txt_alcnt" scope="row">2019년</th>
+                            <th class="txt_alcnt" scope="row">2020년</th>
+                            <th class="txt_alcnt" scope="row">2021년</th>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">매출액(백만원)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="number" class="uni_input_text" id=ix_data1" name="ix_data1"/>
+                            </td>
+                            <td>
+                                <input type="number" class="uni_input_text" id="ix_data2" name="ix_data2"/>
+                            </td>
+                            <td>
+                                <input type="number" class="uni_input_text" id="ix_data3" name="ix_data3"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">영업이익(백만원)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="number" class="uni_input_text" id="ix_data4" name="ix_data4"/>
+                            </td>
+                            <td>
+                                <input type="number" class="uni_input_text" id="ix_data5" name="ix_data5"/>
+                            </td>
+                            <td>
+                                <input type="number" class="uni_input_text" id="ix_data6" name="ix_data6"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">종업원수(명)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="number" class="uni_input_text" id="ix_data7" name="ix_data7"/>
+                            </td>
+                            <td>
+                                <input type="number" class="uni_input_text" id="ix_data8" name="ix_data8"/>
+                            </td>
+                            <td>
+                                <input type="number" class="uni_input_text" id="ix_data9" name="ix_data9"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">주요생산품<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td colspan="3">
+                                <input type="text" id="product" class="uni_input_text wdh100" name="product"/>
+                            </td>
+                        </tr>
+                        <th colspan="4" class="txt_alcnt" scope="row">담당자</th>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">성명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="text" class="uni_input_text wdh100 " name="name" id="name"/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">전화번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="number" class="uni_input_text wdh100" id="mbphno" name="mbphno" value=""/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">소속부서<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="text" class="uni_input_text wdh100" id="deptNm" name="deptNm" value=""/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">직위<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="text" class="uni_input_text wdh100" id="position" name="position" value=""/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">이메일<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td colspan="3">
+                                <input type="text" class="uni_input_text " name="email1" id="email1"/>
+                                @
+                                <input type="text" class="uni_input_text " name="email2" id="email2" value=""/>
+                                <select id="email3" class="uni_input_text " style="border-radius: 5px;"
+                                        onclick="selectEmail(this)">
+                                    <option value="1">직접입력</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="daum.net">daum.net</option>
+                                    <option value="gmail.com">gmail.com</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">사무실 전화<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="number" class="uni_input_text wdh100" id="memTelNo" name="memTelNo" value=""/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">팩스<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="number" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo" value=""/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="4" class="txt_alcnt" scope="row">컨설팅시 주요 질의사항<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <input type="text" class="uni_input_text wdh100" id="conQ" name="conQ" value=""/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="4" class="txt_alcnt" scope="row">연동제 적용 대상이 되는 주요 수위탁거래 정보</th>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">수위탁 거래 유형</th>
+                            <td colspan="3">
+                                <select id="deal_type" name="deal_type" class="uni_input_text">
+                                    <option value="">선택</option>
+                                    <option value="제조">제조</option>
+                                    <option value="공사">공사</option>
+                                    <option value="가공">가공</option>
+                                    <option value="수리">수리</option>
+                                    <option value="용역">용역</option>
+                                    <option value="기술개발">기술개발</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">연간 거래 규모</th>
+                            <td colspan="3">
+                                <input type="text" class="uni_input_text wdh100" name="deal_scale" id="deal_scale"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">주요 원재료</th>
+                            <td colspan="3">
+                                <input type="text" class="uni_input_text wdh100" name="material" id="material"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">비밀번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="text" class="uni_input_text wdh100" name="passwd" value=""/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">비밀번호 재입력<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
+                            <td>
+                                <input type="text" class="uni_input_text wdh100" id="passwdChk" name="passwdChk" value=""/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="btn-wrap type04">
+                        <button type="submit" class="btn blue" >저장</button>
+                        <a href="<c:url value="/front/consulting/list.do"/>" class="btn blue">취소</a>
+                    </div>
+                </form>
+                <!-- 컨텐츠 end -->
+            </div>
+        </div>
     </div>
 </div>
-	

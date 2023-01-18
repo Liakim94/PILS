@@ -298,7 +298,7 @@
 			</table>
 	<div class="btn-wrap type04">
 		<button type="submit" class="btn blue" >저장</button>
-		<a href="${pageContext.request.contextPath}/cmm/conView.do?bizNo=${rs.bizNo}" class="btn blue">취소</a>
+		<a href="<c:url value="/front/consulting/view.do?bizNo=${rs.bizNo}"/>" class="btn blue">취소</a>
 	</div>
 		</div>
 	</div>

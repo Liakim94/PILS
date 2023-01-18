@@ -23,7 +23,7 @@ import java.util.Map;
 public class QnaController extends Alerts {
 
     @Autowired
-    private QnaService service;
+    private QnaService qnaService;
 
     /**
      * 1:1문의 목록
@@ -48,7 +48,7 @@ public class QnaController extends Alerts {
         VO.setPageUnit(paginationInfo.getRecordCountPerPage());
 
         Map<String, Object> rs = new HashMap<String, Object>();
-        rs = service.list(VO);
+        rs = qnaService.list(VO);
 
         int totalCnt = 0;
         totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
@@ -87,7 +87,7 @@ public class QnaController extends Alerts {
                        HttpServletResponse response) throws Exception {
 
         try {
-            int result = service.insertBbsQna(qnaVO);
+            int result = qnaService.insertBbsQna(qnaVO);
 
             if (result > 0) {
 
@@ -127,7 +127,7 @@ public class QnaController extends Alerts {
 
         int result = 0;
         try {
-            result = service.chkPasswd(qnaVO);
+            result = qnaService.chkPasswd(qnaVO);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -154,7 +154,7 @@ public class QnaController extends Alerts {
         ModelAndView mav = new ModelAndView("communication/qna/view");
 
         qnaVO.setNo(no);
-        QnaVO rs = service.getBbsQnabyId(qnaVO);
+        QnaVO rs = qnaService.getBbsQnabyId(qnaVO);
 
         if (rs == null) {
             writeAlert("비정상적인 접근입니다.", request, response);
@@ -170,7 +170,7 @@ public class QnaController extends Alerts {
     public void qnaDelete(@RequestParam(value = "no") int no
                          , HttpServletRequest request
                          , HttpServletResponse response) throws Exception {
-        int result = service.qnaDelete(no);
+        int result = qnaService.qnaDelete(no);
         if (result > 0) {
             response.sendRedirect(request.getContextPath() + "/cmm/qnaList.do");
         }
@@ -194,7 +194,7 @@ public class QnaController extends Alerts {
         ModelAndView mav = new ModelAndView("communication/qna/repost");
 
         qnaVO.setNo(no);
-        QnaVO rs = service.getBbsQnabyId(qnaVO);
+        QnaVO rs = qnaService.getBbsQnabyId(qnaVO);
 
         mav.addObject("rs", rs);
         mav.addObject("vo", qnaVO);
@@ -216,7 +216,7 @@ public class QnaController extends Alerts {
                          HttpServletResponse response) throws Exception {
 
         try {
-            int result = service.repostBbsQna(qnaVO);
+            int result = qnaService.repostBbsQna(qnaVO);
 
             if (result > 0) {
 

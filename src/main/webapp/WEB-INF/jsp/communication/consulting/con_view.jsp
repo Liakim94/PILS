@@ -14,7 +14,7 @@
 </head>
 
 <page:applyDecorator name="menu" />
-<div class="article">	
+<div class="article">
 	<div class="content">
 		<div class="article-header">
 			<h3>컨설팅 신청</h3>
@@ -129,11 +129,11 @@
 				</tbody>
 	        </table>
 	    </div>
-	    <div class="btn-wrap type04"> 
+	    <div class="btn-wrap type04">
 <%--	    	<c:if test="${sessionScope.ID eq rs.id and empty rs.reply}">      --%>
-	        <a href='${pageContext.request.contextPath}/cmm/conEdit.do?bizNo=${rs.bizNo}' class="btn blue">수정하기</a>
+	        <a href="<c:url value="/front/consulting/edit.do?bizNo=${rs.bizNo}"/>" class="btn blue">수정하기</a>
 <%--	        </c:if>	        --%>
-	        <a href="${pageContext.request.contextPath}/cmm/consulting.do" class="btn blue">목록</a>
+	        <a href="<c:url value="/front/consulting/list.do"/>" class="btn blue">목록</a>
 	    </div>
 	    <!-- 컨텐츠 end -->
 	</div>
