@@ -116,7 +116,21 @@ public class ConsultingServiceImpl implements ConsultingService {
     public int conCheck(CmpMemberVo vo) throws Exception {
         return mapper.conCheck(vo);
     }
-
+    @Override
+    public int checkBizno(String bizNo) throws Exception{
+        if(mapper.checkBizno(bizNo)==null){
+            return 0;
+        }
+        return 1;
+    }
+    @Override
+    public int checkId(String id) throws Exception{
+        if(mapper.checkId(id)==null){
+            return 0;
+        }else {
+            return 1;
+        }
+    }
     //동행기업 신청
     @Override
     public int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
@@ -161,6 +175,7 @@ public class ConsultingServiceImpl implements ConsultingService {
         }
         return 0;
     }
+
 
     //동행기업 수정
     @Override

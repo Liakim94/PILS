@@ -28,6 +28,9 @@ public interface ConsultingMapper {
     //동행기업 신청
     int insertJoin(CmpMemberVo vo) throws Exception;
     int insertMemberJoin(CmpMemberVo vo) throws Exception;
+    String checkId(String id) throws Exception;
+    String checkBizno(String bizNo) throws Exception;
+
     //동행기업 수정
     int updateJoin(CmpMemberVo vo) throws Exception;
     int updateCmpSttus (CmpSttusVO vo) throws Exception;

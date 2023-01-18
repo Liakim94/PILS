@@ -148,8 +148,8 @@
                     </div>
                     <div class="submenu">
                         <a href="#">납품대금 연동 절차 알아보기</a>
-                        <a href="${pageContext.request.contextPath}/join/agreeMain.do">약정서 작성하기</a>
-                        <a href="${pageContext.request.contextPath}/join/joinList.do">동행기업 신청하기</a>
+                        <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
+                        <a href="<c:url value="/join/joinList.do"/>">동행기업 신청하기</a>
                     </div>
                 </div>
                 <div class="menu">

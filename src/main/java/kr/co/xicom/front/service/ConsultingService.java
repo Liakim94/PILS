@@ -19,9 +19,14 @@ public interface ConsultingService {
     int update(CmpMemberVo vo,CmpSttusVO stVO) throws Exception;
     int conCheck(CmpMemberVo vo) throws Exception;
 
+
+
     //동행기업 신청
     int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception;
 
+    int checkBizno(String bizNo) throws Exception;
+
+    int checkId(String id) throws Exception;
     //동행기업 수정
     int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception;
 

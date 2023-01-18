@@ -6,15 +6,15 @@
 <%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" 		prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <head>
     <title></title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
     <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
+    <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
 
 </head>
 <script>
@@ -52,19 +52,21 @@
         }
     }
 
-    $(function(){
+    $(function () {
 
         var fileUploader = new smes.FileUploader('.file-uploader').init({
-            maxFileSize : 1024 * 1024 * 100,    // 100 MB 제한
-            maxFileCount : 20,
-            targetFolderPath : 'test2',
+            maxFileSize: 1024 * 1024 * 100,    // 100 MB 제한
+            maxFileCount: 20,
+            targetFolderPath: 'test2',
             //accept : '.png, .jpg',
             targetUrl: '<c:url value="/files/upload.do"/>',
             fileList: $('#jsonFileList').val(),
             deletedFileList: $('#jsonDeletedFileList').val()
         });
 
-        $('#apply').on('click', function() {
+        $('#apply').on('click', function () {
+            var bizNo = $("#bizNo1").val()+$("#bizNo2").val()+$("#bizNo3").val() ;
+            $('input[name=bizNo]').attr('value',bizNo);
 
             fileUploader.upload({
                 done: function (result, deleted, uploaded) {
@@ -73,15 +75,13 @@
                     if (result) {
                         console.dir(result);
                         $('#jsonFileList').val(JSON.stringify(result));
-                    }
-                    else {
+                    } else {
                         $('#jsonFileList').val('');
                     }
                     if (deleted) {
                         console.dir(deleted);
                         $('#jsonDeletedFiles').val(JSON.stringify(deleted));
-                    }
-                    else {
+                    } else {
                         $('#jsonDeletedFiles').val('');
                     }
                     $('#frmApply').submit();
@@ -94,23 +94,89 @@
             // return false;
         });
     });
+
+
+    $(function () {
+        $("#frmApply").validate({
+            ignore: "",
+            rules: {
+                bizNo1: {required: true},
+                bizNo2: {required: true},
+                bizNo3: {required: true},
+                bizNo : {remote: {
+                        type: "post"
+                        , url: "${pageContext.request.contextPath}/join/checkBizno.do"
+                        , data: {
+                            username: function () {
+                                return $("#bizNo").val();
+                            }
+                        }
+                    }},
+                id: {
+                    required: true, remote: {
+                        type: "post"
+                        , url: "${pageContext.request.contextPath}/join/checkId.do"
+                        , data: {
+                            username: function () {
+                                return $("#id").val();
+                            }
+                        }
+                    }
+                },
+                passwd: {required: true},
+                passwdChk: {required: true, equalTo: "#passwd"},
+            },
+            onkeyup: false,
+            onclick: false,
+            onfocusout: false,
+            messages: {
+                id: {
+                    required: "아이디를 입력하세요",
+                    remote: "이미 존재하는 아이디입니다."
+                },
+                bizNo: { remote: "이미 존재하는 사업자번호입니다."},
+                passwd: {required: "비밀번호를 입력하세요."},
+                passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
+
+            },
+            submitHandler: function (frm) {
+                $("#frmApply").submit();
+
+            },
+            showErrors: function (errorMap, errorList) {
+                if (!$.isEmptyObject(errorList)) {
+                    $.each(errorList, function () {
+                        alert(this.message);
+                        return false;
+                    });
+                }
+            }
+        });
+    });
+
+    //     $('input[name=bizNo1],input[name=bizNo2],input[name=bizNo3]').map(function () {
+    //         bizNo += $(this).val();
+    //     })
+    //
+    // });
 </script>
 
 <page:applyDecorator name="menu2"/>
 <div class="article">
     <div class="content">
         <!-- 컨텐츠 start -->
-<%--        <form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/join/joinApply.do">--%>
-<form:form modelAttribute="frmApply"  id="frmApply" action="joinApply.do">
-    <form:hidden path="jsonFileList"/>
-    <form:hidden path="jsonDeletedFileList"/>
+        <%--        <form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/join/joinApply.do">--%>
 
             <div class="article-header">
                 <h3>동행기업 신청</h3>
                 <div class="side-wrap">
                 </div>
             </div>
+        <form:form modelAttribute="frmApply" id="frmApply" action="joinApply.do">
+        <form:hidden path="jsonFileList"/>
+        <form:hidden path="jsonDeletedFileList"/>
             <table class="tbl-list02">
+
                 <tbody>
                 <tr>
                     <th class="txt_alcnt" scope="row">기업명</th>
@@ -118,6 +184,7 @@
                         <input type="text" class="uni_input_text wdh100" id="cmpNm" name="cmpNm"/>
                     </td>
                     <th class="txt_alcnt" scope="row">사업자번호</th>
+<input type="hidden" name=bizNo value="">
                     <td>
                         <input type="number" class="uni_input_text" style="width:60px;" id="bizNo1" name="bizNo1"/>
                         -
@@ -138,12 +205,12 @@
                 </tr>
 
                 <tr>
-                    <th class="txt_alcnt" scope="row">본사 주소</th>
+                    <th class="txt_alcnt" scope="row">본사 주소<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span>
+                    </th>
                     <td colspan="3">
                         <input type="text" class="uni_input_text " name="address" id="address" onclick="execPostCode()"
                                readonly/>
-                        <button type="button" class="btn"
-                                onclick="execPostCode()">주소찾기
+                        <button type="button" class="btn" onclick="execPostCode()">주소찾기
                         </button>
                         <input type="text" class="uni_input_text " name="address_dtl" id="address_dtl"
                                placeholder="상세주소"/>
@@ -197,7 +264,7 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">영업이익(백만원)</th>
                     <td>
-                        <input type="number" class="uni_input_text" id="ix_data4" name="ix_data4" />
+                        <input type="number" class="uni_input_text" id="ix_data4" name="ix_data4"/>
                     </td>
                     <td>
                         <input type="number" class="uni_input_text" id="ix_data5" name="ix_data5"/>
@@ -232,17 +299,17 @@
                     </td>
                     <th class="txt_alcnt" scope="row">전화번호</th>
                     <td>
-                        <input type="number" class="uni_input_text wdh100" id="mbphno" name="mbphno" value=""/>
+                        <input type="number" class="uni_input_text wdh100" id="mbphno" name="mbphno"/>
                     </td>
                 </tr>
                 <tr>
                     <th class="txt_alcnt" scope="row">소속부서</th>
                     <td>
-                        <input type="text" class="uni_input_text wdh100" id="deptNm" name="deptNm" value=""/>
+                        <input type="text" class="uni_input_text wdh100" id="deptNm" name="deptNm"/>
                     </td>
                     <th class="txt_alcnt" scope="row">직위</th>
                     <td>
-                        <input type="text" class="uni_input_text wdh100" id="position" name="position" value=""/>
+                        <input type="text" class="uni_input_text wdh100" id="position" name="position"/>
                     </td>
                 </tr>
                 <tr>
@@ -250,9 +317,8 @@
                     <td colspan="3">
                         <input type="text" class="uni_input_text " name="email1" id="email1"/>
                         @
-                        <input type="text" class="uni_input_text " name="email2" id="email2" value=""/>
-                        <select id="email3" class="uni_input_text " style="border-radius: 5px;"
-                                onclick="selectEmail(this)">
+                        <input type="text" class="uni_input_text " name="email2" id="email2"/>
+                        <select id="email3" class="uni_input_text " style="border-radius: 5px;" onclick="selectEmail(this)">
                             <option value="1">직접입력</option>
                             <option value="naver.com">naver.com</option>
                             <option value="daum.net">daum.net</option>
@@ -263,11 +329,11 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">사무실 전화</th>
                     <td>
-                        <input type="number" class="uni_input_text wdh100" id="memTelNo" name="memTelNo" value=""/>
+                        <input type="number" class="uni_input_text wdh100" id="memTelNo" name="memTelNo"/>
                     </td>
                     <th class="txt_alcnt" scope="row">팩스</th>
                     <td>
-                        <input type="number" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo" value=""/>
+                        <input type="number" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo"/>
                     </td>
                 </tr>
                 <tr>
@@ -290,21 +356,21 @@
                 <tr>
                     <th class="txt_alcnt" scope="row">비밀번호</th>
                     <td>
-                        <input type="text" class="uni_input_text wdh100" name="passwd" value=""/>
+                        <input type="text" class="uni_input_text wdh100" name="passwd" id="passwd"/>
                     </td>
                     <th class="txt_alcnt" scope="row">비밀번호 재입력</th>
                     <td>
-                        <input type="text" class="uni_input_text wdh100" id="passwdChk" name="passwdChk" value=""/>
+                        <input type="text" class="uni_input_text wdh100" id="passwdChk" name="passwdChk"/>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <div class="btn-wrap type04">
-                <button id="apply" class="btn blue">등록</button>
-                <a href="${pageContext.request.contextPath}/join/joinList.do" class="btn blue">취소</a>
-            </div>
-<%--        </form>--%>
-    </form:form>
+        </form:form>
+        <div class="btn-wrap type04">
+            <input id="apply" type="submit" class="btn blue" value="등록">
+            <a href="${pageContext.request.contextPath}/join/joinList.do" class="btn blue">취소</a>
+        </div>
+        <%--        </form>--%>
 
         <!-- 컨텐츠 end -->
     </div>

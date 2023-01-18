@@ -76,6 +76,25 @@ public class JoinController {
         mav.addObject("frmPost", cmpVO);
         return mav;
     }
+    @PostMapping(value ="/checkId.do")
+    public void checkId(@RequestParam("id")String id,HttpServletResponse response)throws Exception{
+        PrintWriter out = response.getWriter();
+        if(consultingService.checkId(id) >0){
+            out.print(false);
+        }else {
+            out.print(true);
+        }
+    }
+    @PostMapping(value ="/checkBizno.do")
+    public void checkBizno(@RequestParam("bizNo")String bizNo,HttpServletResponse response)throws Exception{
+        PrintWriter out = response.getWriter();
+        if(consultingService.checkBizno(bizNo) >0){
+            out.print(false);
+        } else {
+            out.print(true);
+        }
+    }
+
 
     @RequestMapping(value = "/joinApply.do", method = {RequestMethod.POST})
     public void doApply(@ModelAttribute("frmApply") CmpMemberVo cmpVO,
