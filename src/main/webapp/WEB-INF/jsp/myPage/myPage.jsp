@@ -92,7 +92,7 @@
                     <th class="txt_alcnt" scope="row">첨부서류</th>
                     <td colspan="3">
                         <c:forEach var="attach" items="${attachList}">
-                                <c:out value="${attach.fileNm}"/>
+                               <li> <c:out value="${attach.fileNm}"/></li><br/>
                             </a>
                         </c:forEach>
                     </td>

@@ -87,7 +87,8 @@
         , bizno
         , user_id
         , pswd
-        , join_dt)
+        , join_dt
+        , manage_cd)
         values ( #{name}
                , #{mbphno}
                , #{deptNm}
@@ -99,7 +100,8 @@
                , #{bizNo}
                , #{id}
                , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
-               , current_date)
+               , current_date
+               , #{management_cd})
     </insert>
     <insert id="insertCmpSttus">
         INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data,rgstdt)

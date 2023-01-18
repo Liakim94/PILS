@@ -10,7 +10,7 @@
 <head>
     <title></title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+    <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
 
 </head>
 <script>
@@ -188,7 +188,7 @@
                     </td>
                     <th class="txt_alcnt" scope="row">자본금<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
                     <td>
-                        <input type="text" class="uni_input_text" id="capital" name="capital" style="padding:0"/>백만원
+                        <input type="number" class="uni_input_text" id="capital" name="capital" style="padding:0"/>백만원
                     </td>
                 </tr>
 

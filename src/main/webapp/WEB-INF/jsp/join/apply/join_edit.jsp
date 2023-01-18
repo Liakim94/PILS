@@ -178,7 +178,7 @@
                     </td>
                     <th class="txt_alcnt" scope="row">자본금</th>
                     <td>
-                        <input type="text" class="uni_input_text" id="capital" name="capital" style="padding:0"
+                        <input type="number" class="uni_input_text" id="capital" name="capital" style="padding:0"
                                value="${rs.capital}"/>백만원
                     </td>
                 </tr>

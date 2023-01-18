@@ -14,6 +14,7 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
+    <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
 
 </head>
 <script>
@@ -100,7 +101,7 @@
     <div class="content">
         <!-- 컨텐츠 start -->
 <%--        <form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/join/joinApply.do">--%>
-<form:form modelAttribute="frmApply" action="joinApply.do">
+<form:form modelAttribute="frmApply"  id="frmApply" action="joinApply.do">
     <form:hidden path="jsonFileList"/>
     <form:hidden path="jsonDeletedFileList"/>
 
@@ -165,7 +166,7 @@
                     </td>
                     <th class="txt_alcnt" scope="row">자본금</th>
                     <td>
-                        <input type="text" class="uni_input_text" id="capital" name="capital" style="padding:0"/>백만원
+                        <input type="number" class="uni_input_text" id="capital" name="capital" style="padding:0"/>백만원
                     </td>
                 </tr>
                 <tr>

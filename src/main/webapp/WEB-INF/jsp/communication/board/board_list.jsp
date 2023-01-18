@@ -52,10 +52,10 @@
                         <input type="hidden" name="bbsId" id="bbsId" value="${bbsId}">
                     </form-->
 
-                    <form action="" name="frmSearch" method="get">
-                        <input type="hidden" name="pageIndex" id="pageIndex" value="1">
-                        <input type="hidden" name="bbsId" id="bbsId" value="${bbsId}">
-                        <div class="content">
+                <form action="" name="frmSearch" method="get">
+                    <input type="hidden" name="pageIndex" id="pageIndex" value="1">
+                    <input type="hidden" name="bbsId" id="bbsId" value="${bbsId}">
+                    <div class="content">
 
                             <div class="tbl-wrap for_board">
                                 <c:if test="${sessionId eq 'admin' }">
@@ -113,9 +113,9 @@
                             <!-- // paging -->
                             <!-- 컨텐츠 end -->
 
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

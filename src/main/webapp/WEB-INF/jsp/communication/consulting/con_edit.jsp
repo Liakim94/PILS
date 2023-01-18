@@ -9,41 +9,28 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" 		prefix="page" 		%>
 
 <head>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
 </head>
 <script>
-	// submit
-	function fn_submit(){
+	function execPostCode() {
+		daum.postcode.load(function () {
+			new daum.Postcode({
+				oncomplete: function (data) {
+					var addr = '';
 
-		var frm = document.getElementById('frmWrite');
-
-		if( frm.name.value == "" )  {
-			alert("작성자를 입력하세요.");
-			return false;
-		}
-		if( frm.id.value == "" )  {
-			alert("공개여부를 선택하세요.");
-			return false;
-		}
-		if( frm.passwd.value == "" && document.getElementById('ChkBox2').checked )  {
-			alert("비밀번호를 입력하세요.");
-			return false;
-		}
-		if( frm.title.value == "" )  {
-			alert("제목을 입력하세요.");
-			return false;
-		}
-
-		oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
-
-		var ir1 = $("#cont");
-		var ir2 = $("#cont").val();
-		if( ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>')  {
-			alert("내용을 입력하세요.");
-			return false;
-		}
-
-		$("#frmEdit").submit();
+					if (data.userSelectedType === 'R') {
+						addr = data.roadAddress;
+					} else {
+						addr = data.jibunAddress;
+					}
+					document.getElementById("address").value = '(' + data.zonecode + ') ' + addr;
+					document.getElementById("address_dtl").focus();
+				}
+			}).open();
+		});
 	}
+
 	function selectEmail(ele){
 		var $ele = $(ele);
 		var $email2 = $('input[name=email2]');
@@ -57,6 +44,77 @@
 			$email2.val($ele.val());
 		}
 	}
+	$(function () {
+		$("#frmEdit").validate({
+			ignore: "",
+			rules: {
+				cmpNm: {required: true},
+				bizNo1: {required: true},
+				bizNo2: {required: true},
+				bizNo3: {required: true},
+				ceo: {required: true},
+				fdate: {required: true},
+				address: {required: true},
+				telNo: {required: true},
+				faxNo: {required: true},
+				bizType: {required: true},
+				capital: {required: true},
+				product: {required: true},
+				name: {required: true},
+				mbphno: {required: true},
+				deptNm: {required: true},
+				position: {required: true},
+				email1: {required: true},
+				email2: {required: true},
+				memTelNo: {required: true},
+				memFaxNo: {required: true},
+				conQ: {required: true},
+				passwd: {required: true},
+				passwdChk: {required: true, equalTo: "#passwd"},
+			},
+			onkeyup: false,
+			onclick: false,
+			onfocusout: false,
+			messages: {
+				cmpNm: {required: "기업명을 입력하세요."},
+				bizNo1: {required: "사업자번호를 확인하세요."},
+				bizNo2: {required: "사업자번호를 확인하세요."},
+				bizNo3: {required: "사업자번호를 확인하세요."},
+				ceo: {required: "대표자명을 입력하세요."},
+				fdate: {required: "설립일자를 입력하세요."},
+				address: {required: "본사 주소를 입력하세요."},
+				telNo: {required: "기업 전화번호를 입력하세요."},
+				faxNo: {required: "기업 팩스를 입력하세요."},
+				bizType: {required: "업종을 입력하세요."},
+				capital: {required: "자본금을 입력하세요."},
+				product: {required: "주요생산품을 입력하세요."},
+				name: {required: "담당자 성명을 입력하세요."},
+				mbphno: {required: "담당자 전화번호를 입력하세요."},
+				deptNm: {required: "담당자 소속부서를 입력하세요."},
+				position: {required: "담당자 직위를 입력하세요."},
+				email1: {required: "이메일을 입력하세요."},
+				email2: {required: "이메일을 입력하세요."},
+				memTelNo: {required: "사무실전화를 입력하세요."},
+				memFaxNo: {required: "담당자 팩스를 입력하세요."},
+				conQ: {required: "컨설팅시 주요 질의사항를 입력하세요."},
+				passwd: {required: "비밀번호를 입력하세요."},
+				passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
+
+			},
+			submitHandler: function (frm) {
+				$("#frmEdit").submit();
+
+			},
+			showErrors: function (errorMap, errorList) {
+				if (!$.isEmptyObject(errorList)) {
+					$.each(errorList, function () {
+						alert(this.message);
+						return false;
+					});
+				}
+			}
+		});
+	});
 </script>
 <page:applyDecorator name="menu" />
 <form:form commandName="rs" name="frmEdit" id="frmEdit" method="POST" action="conEdit.do">
@@ -125,7 +183,7 @@
 					</td>
 					<th class="txt_alcnt" scope="row">자본금</th>
 					<td>
-						<input type="text" class="uni_input_text" id="capital" name="capital" style="padding:0" value="${rs.capital}"/>백만원
+						<input type="number" class="uni_input_text" id="capital" name="capital" style="padding:0" value="${rs.capital}"/>백만원
 					</td>
 				</tr>
 				<th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>

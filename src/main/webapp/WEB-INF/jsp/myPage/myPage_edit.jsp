@@ -15,55 +15,7 @@
 
 </head>
 <script>
-    // submit
-    function fn_submit() {
-
-        var frm = document.getElementById('frmWrite');
-
-        if (frm.name.value == "") {
-            alert("작성자를 입력하세요.");
-            return false;
-        }
-        if (frm.id.value == "") {
-            alert("공개여부를 선택하세요.");
-            return false;
-        }
-        if (frm.passwd.value == "" && document.getElementById('ChkBox2').checked) {
-            alert("비밀번호를 입력하세요.");
-            return false;
-        }
-        if (frm.title.value == "") {
-            alert("제목을 입력하세요.");
-            return false;
-        }
-
-        oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
-
-        var ir1 = $("#cont");
-        var ir2 = $("#cont").val();
-        if (ir1 == "" || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>') {
-            alert("내용을 입력하세요.");
-            return false;
-        }
-
-        $("#frmEdit").submit();
-    }
-
-    function selectEmail(ele) {
-        var $ele = $(ele);
-        var $email2 = $('input[name=email2]');
-
-        // '1'인 경우 직접입력
-        if ($ele.val() == "1") {
-            $email2.attr('readonly', false);
-            $email2.val('');
-        } else {
-            $email2.attr('readonly', true);
-            $email2.val($ele.val());
-        }
-    }
-
-    $(function () {
+      $(function () {
                // 파일업로더 처리
         var fileUploader = new smes.FileUploader('.file-uploader').init({
             maxFileSize: 1024 * 1024 * 100,    // 100 MB 제한
@@ -95,19 +47,19 @@
                     }
                     oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
                     $('#frmEdit').submit();
-                    //fn_submit('1');
                 },
                 fail: function (error) {
                     console.dir(error);
                     alert(error.message);
                 }
             });
-            // return false;
         });
     });
 </script>
 <page:applyDecorator name="menu_myPage"/>
-<form:form modelAttribute="frmEdit"  action="joinEdit.do">
+<form:form modelAttribute="frmEdit" id="frmEdit"  action="joinEdit.do">
+    <form:hidden path="jsonFileList"/>
+    <form:hidden path="jsonDeletedFileList"/>
 
     <div class="article">
         <div class="content">
@@ -220,7 +172,7 @@
                 </tbody>
             </table>
             <div class="btn-wrap type04">
-                <button type="submit" id="submit" class="btn blue">저장</button>
+                <button id="submit" class="btn blue">저장</button>
                 <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">취소</a>
             </div>
         </div>

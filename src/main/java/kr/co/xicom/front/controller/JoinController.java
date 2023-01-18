@@ -173,7 +173,16 @@ public class JoinController {
         return mav;
     }
 
-    //약정서 작성
+    //약정서 작성 첫 화면
+    @GetMapping(value = "/agreeMain.do")
+    public ModelAndView agreeMain(HttpSession session,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) throws Exception {
+
+        ModelAndView mav = new ModelAndView("join/agreement/agree_main");
+        return mav;
+    }
+    //약정서 작성하기
     @GetMapping(value = "/agree.do")
     public ModelAndView agree(HttpSession session,
                               HttpServletRequest request,
