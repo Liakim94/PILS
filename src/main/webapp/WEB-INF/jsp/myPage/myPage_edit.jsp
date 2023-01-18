@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
     <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/temp.css"/>">
 </head>
 <script>
     $(function () {
@@ -56,126 +56,135 @@
         });
     });
 </script>
-<page:applyDecorator name="menu_myPage"/>
-<div class="article">
-    <div class="content">
-
-        <col width="17%"/>
-        <col width="*"/>
-        <div class="article-header">
-            <h3>동행기업 수정</h3>
-            <div class="side-wrap">
+<div id="content">
+    <div id="board">
+        <page:applyDecorator name="menu_myPage"/>
+        <div class="article">
+            <br>
+            <ul class="loc-list">
+                <li>
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
+                    <a href="${pageContext.request.contextPath}">홈</a></li>
+                <li>마이페이지</li>
+                <li>동행기업 수정</li>
+            </ul>
+            <div class="article-header">
+                <h1 class="fw700">동행기업 수정</h1>
+                <div class="side-wrap">
+                </div>
             </div>
-        </div>
-        <table class="tbl-list02">
-            <form:form modelAttribute="frmEdit" id="frmEdit" action="joinEdit.do">
-                <form:hidden path="jsonFileList"/>
-                <form:hidden path="jsonDeletedFileList"/>
-
-                <tbody>
-                <tr>
-                    <th class="txt_alcnt" scope="row">기업명</th>
-                    <td>
-                        <form:input path="cmpNm"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">사업자번호</th>
-                    <td>
-                        <form:input path="bizNo1"/>
-                        -
-                        <form:input path="bizNo2"/>
-                        -
-                        <form:input path="bizNo3"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">대표자명</th>
-                    <td>
-                        <form:input path="ceo"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">설립일자</th>
-                    <td>
-                        <form:input path="fdate"/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th class="txt_alcnt" scope="row">본사 주소</th>
-                    <td colspan="3">
-                        <form:input path="address" onclick="execPostCode()" readonly="true"/>
-                        <button type="button" class="btn"
-                                onclick="execPostCode()">주소찾기
-                        </button>
-                        <form:input path="address_dtl"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">전화번호</th>
-                    <td>
-                        <form:input path="telNo"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">팩스</th>
-                    <td>
-                        <form:input path="faxNo"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">업종</th>
-                    <td>
-                        <form:input path="bizType"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">자본금</th>
-                    <td>
-                        <form:input path="capital"/>백만원
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">기업 로고</th>
-                    <td colspan="3">
-                        파일찾기
-                    </td>
-                </tr>
-                <th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>
-                <tr>
-                    <th class="txt_alcnt" scope="row">지표</th>
-                    <th class="txt_alcnt" scope="row">2019년</th>
-                    <th class="txt_alcnt" scope="row">2020년</th>
-                    <th class="txt_alcnt" scope="row">2021년</th>
-                </tr>
-                <c:forEach var="st" items="${st}" varStatus="status">
-                    <c:if test="${status.index mod 3 eq 0}">
+            <div class="content">
+                <div class="write-container">
+                    <table class="table-form">
+                        <form:form modelAttribute="frmEdit" id="frmEdit" action="joinEdit.do">
+                            <form:hidden path="jsonFileList"/>
+                            <form:hidden path="jsonDeletedFileList"/>
+                        <tbody>
                         <tr>
-                        <th class="txt_alcnt" scope="row">${st.index_dv_nm} </th>
-                    </c:if>
-                    <td align="center">
-                        <input type="number" class="uni_input_text wdh100" id="ix_data${status.index+1}"
-                               name="ix_data${status.index+1}" value="${st.index_data}"/>
-                    </td>
-                    <c:if test="${status.index mod 3 eq 2}">
+                            <th class="txt_alcnt" scope="row">기업명</th>
+                            <td>
+                                <form:input path="cmpNm"/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">사업자번호</th>
+                            <td>
+                                <form:input path="bizNo1"/>
+                                -
+                                <form:input path="bizNo2"/>
+                                -
+                                <form:input path="bizNo3"/>
+                            </td>
                         </tr>
-                    </c:if>
-                </c:forEach>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">대표자명</th>
+                            <td>
+                                <form:input path="ceo"/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">설립일자</th>
+                            <td>
+                                <form:input path="fdate"/>
+                            </td>
+                        </tr>
 
-                <tr>
-                    <th class="txt_alcnt" scope="row">주요생산품</th>
-                    <td colspan="3">
-                        <form:input path="product"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">첨부서류</th>
-                    <td colspan="3">
-                        <div class="file-uploader-wrapper">
-                            <div class="file-uploader"></div>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </form:form>
-        </table>
-        <div class="btn-wrap type04">
-            <button id="submit" class="btn blue">저장</button>
-            <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">취소</a>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">본사 주소</th>
+                            <td colspan="3">
+                                <form:input path="address" onclick="execPostCode()" readonly="true"/>
+                                <button type="button" class="btn"
+                                        onclick="execPostCode()">주소찾기
+                                </button>
+                                <form:input path="address_dtl"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">전화번호</th>
+                            <td>
+                                <form:input path="telNo"/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">팩스</th>
+                            <td>
+                                <form:input path="faxNo"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">업종</th>
+                            <td>
+                                <form:input path="bizType"/>
+                            </td>
+                            <th class="txt_alcnt" scope="row">자본금</th>
+                            <td>
+                                <form:input path="capital"/>백만원
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">기업 로고</th>
+                            <td colspan="3">
+                                파일찾기
+                            </td>
+                        </tr>
+                        <th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">지표</th>
+                            <th class="txt_alcnt" scope="row">2019년</th>
+                            <th class="txt_alcnt" scope="row">2020년</th>
+                            <th class="txt_alcnt" scope="row">2021년</th>
+                        </tr>
+                        <c:forEach var="st" items="${st}" varStatus="status">
+                            <c:if test="${status.index mod 3 eq 0}">
+                                <tr>
+                                <th class="txt_alcnt" scope="row">${st.index_dv_nm} </th>
+                            </c:if>
+                            <td align="center">
+                                <input type="number" class="uni_input_text wdh100" id="ix_data${status.index+1}"
+                                       name="ix_data${status.index+1}" value="${st.index_data}"/>
+                            </td>
+                            <c:if test="${status.index mod 3 eq 2}">
+                                </tr>
+                            </c:if>
+                        </c:forEach>
+
+                        <tr>
+                            <th class="txt_alcnt" scope="row">주요생산품</th>
+                            <td colspan="3">
+                                <form:input path="product"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_alcnt" scope="row">첨부서류</th>
+                            <td colspan="3">
+                                <div class="file-uploader-wrapper">
+                                    <div class="file-uploader"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                        </form:form>
+                    </table>
+                    <div class="btn-wrap type04">
+                        <button id="submit" class="btn blue">저장</button>
+                        <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">취소</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-

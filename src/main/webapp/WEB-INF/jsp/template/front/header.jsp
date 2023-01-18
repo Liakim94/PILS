@@ -54,24 +54,25 @@
             <img class="slogan" src="${pageContext.request.contextPath}/images/common/slogan.png"
                  alt="다시 도약하는 대한민국 함께 잘사는 국민의 나라"/>
         </div>
+<%-- 23.01.18 DO 메뉴 구성 변경 --%>
         <nav class="nav-wrap">
             <div class="wrapper">
                 <a class="font18" href="">납품대금 연동제란?</a>
                 <div class="submenu">
-                    <a href="">도입배경</a>
-                    <a href="">개념</a>
-                    <a href="">걸어온 발자취</a>
+                    <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
+                    <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
+                    <a href="<c:url value="/front/guide/appliesto.do"/>">걸어온 발자취</a>
                     <a href="">참여 기업 현황</a>
-                    <a href="">관련 법령</a>
-                    <a href="">주요 통계</a>
+                    <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
+                    <a href="<c:url value="/front/guide/statistics.do"/>">주요 통계</a>
                 </div>
             </div>
             <div class="wrapper">
                 <a class="font18" href="${pageContext.request.contextPath}/join/joinList.do">납품대금 연동제 동참하기</a>
                 <div class="submenu">
                     <a href="#">납품대금 연동 절차  알아보기</a>
-                    <a href="${pageContext.request.contextPath}/join/agreeMain.do">약정서 작성하기</a>
-                    <a href="${pageContext.request.contextPath}/join/joinList.do">동행기업 신청하기</a>
+                    <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
+                    <a href="<c:url value="/join/joinList.do"/>">동행기업 신청하기</a>
                 </div>
             </div>
             <div class="wrapper">

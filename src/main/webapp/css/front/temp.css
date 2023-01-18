@@ -1,0 +1,24 @@
+.content .table-form {
+    border-top: 2px solid #505050;
+    border-bottom: 2px solid #505050;
+    font-family: 'Noto Sans KR', Sans-serif;
+}
+.content .table-form tr {
+
+
+}
+.content .table-form tbody tr th,
+.content .table-form tbody tr td {
+    border-bottom: 1px solid #505050!important;
+    border-top: 0!important;
+    border-left: 0;
+    border-right: 0;
+}
+.content .table-form tr th {
+    background: rgba(145, 145, 145, 0.1);
+    font-weight: 500;
+}
+.content .table-form tr td {
+
+
+}

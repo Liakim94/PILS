@@ -12,6 +12,8 @@
         <pattern>/exclude/*</pattern>
     </excludes>
 
+    <decorator name="guide_menu" page="/WEB-INF/jsp/guide/guide_menu.jsp"/>
+
     <decorator name="header" page="/header.do"/>
     <decorator name="footer" page="/footer.do"/>
     <decorator name="menu" page="/menu.do"/>
