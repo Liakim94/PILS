@@ -58,11 +58,11 @@
             <div class="wrapper">
                 <a class="font18" href="">납품대금 연동제란?</a>
                 <div class="submenu">
-                    <a href="">도입배경</a>
-                    <a href="">개념</a>
-                    <a href="">적용대상</a>
-                    <a href="">관련 법령</a>
-                    <a href="">주요 통계</a>
+                    <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
+                    <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
+                    <a href="<c:url value="/front/guide/appliesto.do"/>">적용대상</a>
+                    <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
+                    <a href="<c:url value="/front/guide/statistics.do"/>">주요 통계</a>
                 </div>
             </div>
             <div class="wrapper">
