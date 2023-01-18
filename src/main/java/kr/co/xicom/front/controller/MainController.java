@@ -302,4 +302,10 @@ public class MainController {
         writer.println("</script>");
         writer.flush();
     }
+    @GetMapping(value = "/cmpDetail.do")
+    public ModelAndView cmpDetail(HttpSession session) throws Exception{
+        ModelAndView mav = new ModelAndView("/cmp_detail");
+        return mav;
+    }
+
 }

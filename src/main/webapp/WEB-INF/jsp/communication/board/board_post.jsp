@@ -111,6 +111,15 @@
                             </div>
                             <div class="line-wrap">
                                 <div class="label">
+                                    상단 고정 여부
+                                </div>
+                                <div class="input-wrap">
+                                        <%--                                    <form:input type="radio" path="notiAt" value="Y">고정</form:input>--%>
+                                    <input type="checkbox" name="notiAt" id="notiAt" value="Y">고정</input>
+                                </div>
+                            </div>
+                            <div class="line-wrap">
+                                <div class="label">
                                     내용
                                 </div>
                                 <div class="input-wrap">
@@ -119,10 +128,18 @@
                             </div>
                         </div>
                     </form:form>
-                            <%-- WildRain 추가 2023-01-12 --%>
-                    <div class="file-uploader-wrapper">
-                        <div class="file-uploader"></div>
+                    <%-- WildRain 추가 2023-01-12 --%>
+                    <div class="line-wrap">
+                        <div class="label">
+                           첨부파일
+                        </div>
+                        <div class="input-wrap">
+                            <div class="file-uploader-wrapper">
+                            <div class="file-uploader"></div>
+                        </div>
+                        </div>
                     </div>
+
                     <div class="write-bottom">
                         <input id="submit" class="submit" value="게시" style="width: 135px"/>
                         <a href="<c:url value="/front/board/${bbsId}/list.do"/>" title="취소">취소</a>

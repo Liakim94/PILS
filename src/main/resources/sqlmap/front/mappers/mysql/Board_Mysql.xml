@@ -74,7 +74,7 @@
             #{ref},
             #{lvl},
             #{step},
-            COALESCE(#{notiAt}, 'N'),
+            #{notiAt},
             0,
             #{regSeq},
             NOW(),
@@ -128,6 +128,7 @@
                     , B.REDNG_NMBRS         AS read_cnt
                     , B.CNNC                AS lnk
                     , B.STTS               AS stat
+                    , B.notice_at      as notiAt
                 FROM TB_BBS_INFO B
                 WHERE 1 = 1
                     AND B.BBS_ID = #{bbsId}
@@ -137,7 +138,9 @@
                 </if>
               ) T WHERE 1 = 1
            <!-- ) S WHERE 1 = 1 -->
-           ORDER BY T.reg_de DESC
+           ORDER BY
+                    case when T.notiAt ='Y' then 1
+                    end, T.reg_de desc
          <if test="pageIndex > 0">
            <!-- AND RNUM BETWEEN ((#{pageIndex} - 1) * #{pageUnit} ) + 1 AND ((#{pageIndex} - 1) * #{pageUnit} + #{pageUnit})  -->
            LIMIT #{pageUnit} OFFSET #{firstIndex}

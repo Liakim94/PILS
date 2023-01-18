@@ -39,14 +39,14 @@
                     ${bbsNm}
                 </li>
             </ul>
-                <div class="article-header">
-                    <h1 class="fw700">${bbsNm}</h1>
-                    <div class="side-wrap">
-                    </div>
+            <div class="article-header">
+                <h1 class="fw700">${bbsNm}</h1>
+                <div class="side-wrap">
                 </div>
-                <div class="content">
-                    <!-- 컨텐츠 start -->
-                    <!--form name="viewfrm" action="${pageContext.request.contextPath}/cmm/boardView.do" method="get"
+            </div>
+            <div class="content">
+                <!-- 컨텐츠 start -->
+                <!--form name="viewfrm" action="${pageContext.request.contextPath}/cmm/boardView.do" method="get"
                           id="viewfrm">
                         <input type="hidden" id="no" name="no" value="">
                         <input type="hidden" name="bbsId" id="bbsId" value="${bbsId}">
@@ -57,61 +57,76 @@
                     <input type="hidden" name="bbsId" id="bbsId" value="${bbsId}">
                     <div class="content">
 
-                            <div class="tbl-wrap for_board">
-                                <c:if test="${sessionId eq 'admin' }">
-                                    <a href="<c:url value="/front/board/${bbsId}/post.do"/>" class="write-question" style="width: 135px">
-                                        게시물 등록
-                                    </a>
-                                </c:if>
-                                <table class="tbl-list01">
-                                    <caption>공지사항 : 번호, 제목, 작성자, 작성일, 조회수</caption>
-									<colgroup>
-                                        <col width="10%">
-                                        <col width="65%">
-                                        <col width="15%">
-                                        <col width="10%">
-									</colgroup>
-                                    <thead>
+                        <div class="tbl-wrap for_board">
+                            <c:if test="${sessionId eq 'admin' }">
+                                <a href="<c:url value="/front/board/${bbsId}/post.do"/>" class="write-question"
+                                   style="width: 135px">
+                                    게시물 등록
+                                </a>
+                            </c:if>
+                            <table class="tbl-list01">
+                                <caption>공지사항 : 번호, 제목, 작성자, 작성일, 조회수</caption>
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="65%">
+                                    <col width="15%">
+                                    <col width="10%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">작성일</th>
+                                    <th scope="col">조회수</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="post" items="${list }" varStatus="status">
                                     <tr>
-                                        <th scope="col">번호</th>
-                                        <th scope="col">제목</th>
-                                        <th scope="col">작성일</th>
-                                        <th scope="col">조회수</th>
+                                        <c:choose>
+                                            <c:when test="${post.notiAt eq 'Y'}">
+                                                <td>
+                                                    <img class="home-icon"
+                                                         src="${pageContext.request.contextPath}/images/common/pin.png"
+                                                         style="width:20px; hight:20px;">
+                                                </td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td>
+                                                        ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }
+                                                </td>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <td class="al">
+                                                <%--<a href="javascript:showView('${list.boardSeq}')" >${list.title }</a>--%>
+                                            <a href="<c:url value="/front/board/${post.bbsId}/view.do?boardSeq=${post.boardSeq}"/>">
+                                                <c:out value="${post.title}"/>
+                                            </a>
+                                        </td>
+                                        <td>${fn:substring(post.regDe,0,10)}</td>
+                                        <td><c:out value="${post.readCnt}"/></td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach var="post" items="${list }" varStatus="status">
-                                        <tr>
-                                            <td>${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
-                                            <td class="al">
-                                                    <%--<a href="javascript:showView('${list.boardSeq}')" >${list.title }</a>--%>
-                                                <a href="<c:url value="/front/board/${post.bbsId}/view.do?boardSeq=${post.boardSeq}"/>">
-                                                    <c:out value="${post.title}"/>
-                                                </a>
-                                            </td>
-                                            <td>${fn:substring(post.regDe,0,10)}</td>
-                                            <td><c:out value="${post.readCnt}"/></td>
-                                        </tr>
-                                    </c:forEach>
-                                    <c:if test="${empty list }">
-                                        <tr>
-                                            <td colspan="5" class="text-center">조회된 데이터가 없습니다.</td>
-                                        </tr>
-                                    </c:if>
-                                    </tbody>
-                                </table>
-                            </div>
+                                </c:forEach>
+                                <c:if test="${empty list }">
+                                    <tr>
+                                        <td colspan="5" class="text-center">조회된 데이터가 없습니다.</td>
+                                    </tr>
+                                </c:if>
+                                </tbody>
+                            </table>
+                        </div>
 
-                            <!-- paging -->
-                            <div class="board_bottom_wrap">
-                                <div class="paging_wrap">
-                                    <ul class="paging">
-                                        <ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage"/>
-                                    </ul>
-                                </div>
+                        <!-- paging -->
+                        <div class="board_bottom_wrap">
+                            <div class="paging_wrap">
+                                <ul class="paging">
+                                    <ui:pagination paginationInfo="${paginationInfo}" type="image"
+                                                   jsFunction="linkPage"/>
+                                </ul>
                             </div>
-                            <!-- // paging -->
-                            <!-- 컨텐츠 end -->
+                        </div>
+                        <!-- // paging -->
+                        <!-- 컨텐츠 end -->
 
                     </div>
                 </form>
