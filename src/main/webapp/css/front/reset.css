@@ -52,7 +52,7 @@ time, mark, audio, video {
     font-family: 'Noto Sans KR', sans-serif;
     color: #333;
     letter-spacing: -0.05em;
-    line-height: 1.4em;
+    /*line-height: 1.4em;*/
     word-break: keep-all;
 }
 h1{
