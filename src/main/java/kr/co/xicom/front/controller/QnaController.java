@@ -4,6 +4,8 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.QnaVO;
 import kr.co.xicom.front.service.QnaService;
 import kr.co.xicom.util.Alerts;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,9 +20,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@RequestMapping("/cmm")
+@RequestMapping("/front")
 @Controller
 public class QnaController extends Alerts {
+
+    /** Logger */
+    private static final Logger LOGGER = LoggerFactory.getLogger(QnaController.class);
 
     @Autowired
     private QnaService qnaService;
@@ -28,7 +33,7 @@ public class QnaController extends Alerts {
     /**
      * 1:1문의 목록
      */
-    @GetMapping(value = "/qnaList.do")
+    @GetMapping(value = "/qna/list.do")
     public ModelAndView list(ModelMap model,
                              @ModelAttribute("QnaVO") QnaVO VO,
                              HttpSession session,
@@ -67,7 +72,7 @@ public class QnaController extends Alerts {
     /**
      * 1:1문의 등록 화면
      */
-    @GetMapping(value = "/qnaPost.do")
+    @GetMapping(value = "/qna/post.do")
     public ModelAndView post(ModelMap model,
                              HttpServletRequest request,
                              HttpServletResponse response) throws Exception {
@@ -80,7 +85,7 @@ public class QnaController extends Alerts {
     /**
      * 1:1문의 등록
      */
-    @RequestMapping(value = "/qnaPost.do", method = {RequestMethod.POST})
+    @RequestMapping(value = "/qna/post.do", method = {RequestMethod.POST})
     public void doPost(ModelMap model,
                        @ModelAttribute("QnaVO") QnaVO qnaVO,
                        HttpServletRequest request,
@@ -92,7 +97,7 @@ public class QnaController extends Alerts {
             if (result > 0) {
 
                 request.setAttribute("hid", "");
-                response.sendRedirect(request.getContextPath() + "/cmm/qnaList.do");
+                response.sendRedirect(request.getContextPath() + "/front/qna/list.do");
 
             } else {
                 PrintWriter writer = response.getWriter();
@@ -105,8 +110,9 @@ public class QnaController extends Alerts {
                 writer.println("</script>");
                 writer.flush();
             }
-        } catch (Exception e) {
-            System.out.println(e.toString());
+        }
+        catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
         }
     }
 
@@ -143,7 +149,7 @@ public class QnaController extends Alerts {
     /**
      * 1:1문의 상세 화면
      */
-    @GetMapping(value = "/qnaView.do")
+    @GetMapping(value = "/qna/view.do")
     public ModelAndView view(ModelMap model,
                              @ModelAttribute("QnaVO") QnaVO qnaVO,
                              @RequestParam(value = "no") int no,
@@ -166,13 +172,13 @@ public class QnaController extends Alerts {
         return mav;
     }
 
-    @GetMapping(value = "/qnaDelete.do")
+    @GetMapping(value = "/qna/delete.do")
     public void qnaDelete(@RequestParam(value = "no") int no
                          , HttpServletRequest request
                          , HttpServletResponse response) throws Exception {
         int result = qnaService.qnaDelete(no);
         if (result > 0) {
-            response.sendRedirect(request.getContextPath() + "/cmm/qnaList.do");
+            response.sendRedirect(request.getContextPath() + "/front/qna/list.do");
         }
     }
 
@@ -183,7 +189,7 @@ public class QnaController extends Alerts {
      * @return
      * @throws BusinessLogicException
      */
-    @GetMapping(value = "/qnaRepost.do")
+    @GetMapping(value = "/qna/repost.do")
     public ModelAndView repost(ModelMap model,
                                @ModelAttribute("QnaVO") QnaVO qnaVO,
                                @RequestParam(value = "no") int no,
@@ -209,7 +215,7 @@ public class QnaController extends Alerts {
      * @return
      * @throws BusinessLogicException
      */
-    @RequestMapping(value = "/qnaRepost.do", method = {RequestMethod.POST})
+    @RequestMapping(value = "/qna/repost.do", method = {RequestMethod.POST})
     public void doRepost(ModelMap model,
                          @ModelAttribute("QnaVO") QnaVO qnaVO,
                          HttpServletRequest request,
@@ -221,7 +227,7 @@ public class QnaController extends Alerts {
             if (result > 0) {
 
                 request.setAttribute("hid", "");
-                response.sendRedirect(request.getContextPath() + "/cmm/qnaList.do");
+                response.sendRedirect(request.getContextPath() + "/front/qna/list.do");
 
             } else {
                 PrintWriter writer = response.getWriter();

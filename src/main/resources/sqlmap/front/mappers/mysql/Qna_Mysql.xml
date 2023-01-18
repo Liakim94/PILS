@@ -10,20 +10,20 @@
         <result property="id"                               column="id"/>
         <result property="name"                             column="name"/>
         <result property="passwd"                           column="passwd"/>
-        <result property="title"                            column="title"/>   
+        <result property="title"                            column="title"/>
         <result property="body"                             column="body"/>
         <result property="ip"                               column="ip"/>
         <result property="rdate"                            column="rdate"/>
         <result property="reply"                            column="reply"/>
     </resultMap>
-    
+
     <select id="list" resultMap="bbsQna">
-        select no           AS no           
-                , hedofc_no AS headnum          
-                , sort_no   AS arrangenum       
-                , dp        AS depth            
-                , id        AS id           
-                , nm        AS name         
+        select no           AS no
+                , hedofc_no AS headnum
+                , sort_no   AS arrangenum
+                , dp        AS depth
+                , id        AS id
+                , nm        AS name
                 , pswd      AS passwd
         <![CDATA[
                 , case when dp=1 then ttl
@@ -35,22 +35,22 @@
         where 1 = 1
         order by hedofc_no asc, dp asc
         <if test="pageIndex > 0">
-        LIMIT #{pageUnit} OFFSET #{firstIndex}  
+        LIMIT #{pageUnit} OFFSET #{firstIndex}
         </if>
     </select>
-    
+
     <select id="listCnt" resultType="int">
         select count(1)cnt
         from tb_banner_qust_answr
-        where 1 = 1 
+        where 1 = 1
         <if test="!id.equals('')">
             and id = #{id}
         </if>
     </select>
-    
+
     <update id="insertBbsQna">
        <selectKey resultType="int" keyProperty="headnum" order="BEFORE">
-           SELECT coalesce(min(hedofc_no),0)+(-1) FROM tb_banner_qust_answr
+           select nextval('tb_banner_qust_answr_seq') as headnum
        </selectKey>
         INSERT INTO tb_banner_qust_answr
         (   hedofc_no
@@ -64,7 +64,7 @@
            , ip_addr
            , regist_date
         )
-        values 
+        values
         (  #{headnum}::INT4
            , 0
            , 0
@@ -76,9 +76,9 @@
            , #{ip}
            , extract(epoch from now() at time zone 'utc')
         )
-        
+
     </update>
-    
+
     <select id="chkPasswd" resultType="int">
         select
         case when inPass = pswd then 1
@@ -93,7 +93,7 @@
 
         <!-- and passwd = OLD_PASSWORD(#{passwd}) -->
     </select>
-    
+
     <select id="getBbsQnabyId" resultMap="bbsQna">
         select no           AS no
                 , hedofc_no AS headnum
@@ -109,7 +109,7 @@
         where 1 = 1
         and no = #{no}::INT4
     </select>
-    
+
     <update id="repostBbsQna">
         insert into tb_banner_qust_answr
             (

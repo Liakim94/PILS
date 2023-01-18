@@ -47,7 +47,7 @@
             <input type="hidden" name="pageIndex" id="pageIndex" value="1">
 
             <div class="tbl-wrap for_board">
-                <a href="${pageContext.request.contextPath}/cmm/qnaPost.do" class="write-question">질의 등록</a>
+                <a href="<c:url value="/front/qna/post.do"/>" class="write-question">질의 등록</a>
                 <table class="tbl-list01">
                     <caption>자주 묻는 질문: 번호, 응답여부, 제목, 작성자, 작성일, 조회수</caption>
                     <colgroup>
@@ -73,7 +73,7 @@
                                 <c:choose>
                                     <c:when test="${list.id eq '1'}">
                                             <strong>[공개] </strong>
-                                        <a href="${pageContext.request.contextPath}/cmm/qnaView.do?no=${list.no}">
+                                        <a href="<c:url value="/front/qna/view.do?no=${list.no}"/>">
                                                 ${list.title }</a>
                                     </c:when>
                                     <c:otherwise>
@@ -144,7 +144,7 @@
                     data: "no=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),
                     success: function (data) {
                         if (data == "1") {
-                            location.href = "${pageContext.request.contextPath}/cmm/qnaView.do?no=" + $("#hiddenNo").val()
+                            location.href = "${pageContext.request.contextPath}/front/qna./view.do?no=" + $("#hiddenNo").val()
                         } else {
                             alert("비밀번호를 확인해주세요.")
                         }

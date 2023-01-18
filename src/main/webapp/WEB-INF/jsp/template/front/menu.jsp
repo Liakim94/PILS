@@ -23,13 +23,13 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
             <li class="<c:if test="${URI.contains('/front/board/7')}">on</c:if>">
                 <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
             </li>
-            <li class="<c:if test="${URI.contains('/cmm/qnaList.do')}">on</c:if>">
-                <a href="<c:url value="/cmm/qnaList.do"/>">질의응답 게시판</a>
+            <li class="<c:if test="${URI.contains('/front/qna')}">on</c:if>">
+                <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
             </li>
-            <li class="<c:if test="${URI.contains('/cmm/conAply.do')}">on</c:if>">
+            <li class="<c:if test="${URI.contains('/front/consulting/apply')}">on</c:if>">
                 <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>
             </li>
-            <li class="<c:if test="${URI.contains('/cmm/conCheck.do')}">on</c:if>">
+            <li class="<c:if test="${URI.contains('/front/consulting/confirm')}">on</c:if>">
                 <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>
             </li>
         </ul>

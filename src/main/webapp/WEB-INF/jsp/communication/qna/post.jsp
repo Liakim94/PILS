@@ -96,7 +96,7 @@
                 <!-- 컨텐츠 start -->
                 <div class="write-container">
                     <form name="frmWrite" id="frmWrite" method="post"
-                          action="${pageContext.request.contextPath}/cmm/qnaPost.do">
+                          action="<c:url value="/front/qna/post.do"/>">
 
                         <div class="write-wrap">
                             <div class="line-wrap">
@@ -145,7 +145,7 @@
                         </div>
                         <div class="write-bottom">
                             <input type="button" class="submit" onclick="fn_submit()" value="저장"/>
-                            <a href="${pageContext.request.contextPath}/cmm/qnaList.do">취소</a>
+                            <a href="<c:url value="/front/qna/list.do"/>">취소</a>
                         </div>
                     </form>
                     <!-- 컨텐츠 end -->
@@ -155,4 +155,3 @@
     </div>
 </div>
 
-	

@@ -79,7 +79,7 @@
                 <div class="submenu">
                     <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
                     <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
-                    <a href="${pageContext.request.contextPath}/cmm/qnaList.do">질의응답 게시판</a>
+                    <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
                     <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>
                     <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>
                 </div>
@@ -160,7 +160,7 @@
                     <div class="submenu">
                         <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
                         <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
-                        <a href="${pageContext.request.contextPath}/cmm/qnaList.do">질의응답 게시판</a>
+                        <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
                         <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>
                         <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>
                     </div>
