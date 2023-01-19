@@ -149,6 +149,14 @@
                             </div>
                             <div class="line-wrap">
                                 <div class="label">
+                                    상단 고정 여부
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="checkbox" name="notiAt" id="notiAt" value="Y">고정</input>
+                                </div>
+                            </div>
+                            <div class="line-wrap">
+                                <div class="label">
                                     내용
                                 </div>
                                 <div class="input-wrap">

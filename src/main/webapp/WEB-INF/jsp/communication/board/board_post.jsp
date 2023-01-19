@@ -114,7 +114,6 @@
                                     상단 고정 여부
                                 </div>
                                 <div class="input-wrap">
-                                        <%--                                    <form:input type="radio" path="notiAt" value="Y">고정</form:input>--%>
                                     <input type="checkbox" name="notiAt" id="notiAt" value="Y">고정</input>
                                 </div>
                             </div>

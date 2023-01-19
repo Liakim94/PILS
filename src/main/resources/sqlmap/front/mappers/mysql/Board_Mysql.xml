@@ -200,7 +200,7 @@
             REFRN               = #{ref},
             LVL             = #{lvl},
             STEP            = #{step},
-            NOTICE_AT           = COALESCE(#{notiAt}, 'N'),
+            NOTICE_AT           = #{notiAt},
             UPDAT_SN            = #{updSeq},
             UPDAT_DATE          = NOW(),
             UPDAT_NM            = #{updNm},
