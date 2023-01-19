@@ -14,11 +14,11 @@
                     납품대금연동제란?
                 </li>
                 <li>
-                    적용 대상
+                    걸어온 발자취
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">적용 대상</h1>
+                <h1 class="fw700">걸어온 발자취</h1>
             </div>
             <div id="about" class="content">
                 <!-- 컨텐츠 start -->

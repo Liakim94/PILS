@@ -8,25 +8,25 @@ import java.util.List;
 @Getter
 @Setter
 public class CmpMemberVo extends DefaultVO {
-    private String bizNo = "";
+    private String bizNo = "";   //사업자번호
     private String bizNo1 = "";
     private String bizNo2 = "";
     private String bizNo3 = "";
     private String mem_cd = "";  //기업회원구분
-    private String cmpNm = "";
-    private String fdate = "";
-    private String ceo = "";
+    private String cmpNm = "";  //기업명
+    private String fdate = "";  //설립일자
+    private String ceo = "";    //대표자명
     private String address = "";
     private String address_dtl = "";
     private String telNo = "";
     private String faxNo = "";
     private String bizType = "";
     private int capital = 0;
-    private String product = "";
+    private String product = "";  //주요생산품
     private String conQ = "";
     private String deal_type = "";
     private String deal_scale = "";
-    private String material = "";
+    private String material = "";   //주요 원재료
     private String appdate = "";  //신청일자
     private String update = ""; //동행기업 수정일자
     private String id = "";
@@ -46,6 +46,9 @@ public class CmpMemberVo extends DefaultVO {
     private String delete_yn = ""; //삭제여부
     private String auth_cd = ""; //권한코드
     private String management_cd = ""; //담당자구분코드
+    private int joinCmp =0; //참여기업
+    private String mainProduct =""; //주요 적용 제품
+
     /**
      * FileUploader.js에 의해 업로드된 파일 리스트 (JSON 문자열)
      */

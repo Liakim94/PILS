@@ -111,7 +111,7 @@
         <div class="article">
             <br>
             <ul class="loc-list">
-                <li>
+                < li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
@@ -145,6 +145,14 @@
                                 </div>
                                 <div class="input-wrap">
                                     <form:input path="title" maxlength="85"/>
+                                </div>
+                            </div>
+                            <div class="line-wrap">
+                                <div class="label">
+                                    상단 고정 여부
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="checkbox" name="notiAt" id="notiAt" value="Y">고정</input>
                                 </div>
                             </div>
                             <div class="line-wrap">

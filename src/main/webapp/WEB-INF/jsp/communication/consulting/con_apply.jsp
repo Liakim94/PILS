@@ -46,6 +46,7 @@
             $email2.val($ele.val());
         }
     }
+
     $(function () {
         $("#frmWrite").validate({
             ignore: "",
@@ -122,7 +123,6 @@
     <div id="board">
         <page:applyDecorator name="menu"/>
         <div class="article">
-            <br/>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -135,216 +135,317 @@
                 <div class="side-wrap">
                 </div>
             </div>
-            <div class="content">
+            <div id="company-write" class="content">
                 <!-- 컨텐츠 start -->
-                <div class="write-container">
-                    <form name="frmWrite" id="frmWrite" method="post" action="<c:url value="/front/consulting/apply.do"/>">
-                        <table class="table-form">
-                            <tbody>
-                            <tr>
-                                <th scope="row">기업명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100" id="cmpNm" name="cmpNm"/>
-                                </td>
-                                <th scope="row">사업자번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo1" name="bizNo1"/>
-                                    -
-                                    <input type="number" class="uni_input_text wdh100" style="width:50px;" id="bizNo2" name="bizNo2"/>
-                                    -
-                                    <input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo3" name="bizNo3"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">대표자명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100" id="ceo" name="ceo"/>
-                                </td>
-                                <th scope="row">설립일자<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="date" class="uni_input_text wdh100" id="fdate" name="fdate"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">본사 주소<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td colspan="3">
-                                    <input type="text" class="uni_input_text " name="address" id="address" onclick="execPostCode()" readonly/>
-                                    <button type="button" class="btn" onclick="execPostCode()">주소찾기
-                                    </button>
-                                    <input type="text" class="uni_input_text " name="address_dtl" id="address_dtl" placeholder="상세주소"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">전화번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="number" class="uni_input_text wdh100" id="telNo" name="telNo"/>
-                                </td>
-                                <th scope="row">팩스<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="number" class="uni_input_text wdh100" id="faxNo" name="faxNo"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">업종<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100" id="bizType" name="bizType"/>
-                                </td>
-                                <th scope="row">자본금<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="number" class="uni_input_text" id="capital" name="capital" style="padding:0"/>백만원
-                                </td>
-                            </tr>
-                            <th colspan="4" scope="row">기업현황 (최근 3년)</th>
-                            <tr>
-                                <th scope="row">지표</th>
-                                <th scope="row">2019년</th>
-                                <th scope="row">2020년</th>
-                                <th scope="row">2021년</th>
-                            </tr>
-                            <tr>
-                                <th scope="row">매출액(백만원)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="number" class="uni_input_text" id=ix_data1" name="ix_data1"/>
-                                </td>
-                                <td>
-                                    <input type="number" class="uni_input_text" id="ix_data2" name="ix_data2"/>
-                                </td>
-                                <td>
-                                    <input type="number" class="uni_input_text" id="ix_data3" name="ix_data3"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">영업이익(백만원)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="number" class="uni_input_text" id="ix_data4" name="ix_data4"/>
-                                </td>
-                                <td>
-                                    <input type="number" class="uni_input_text" id="ix_data5" name="ix_data5"/>
-                                </td>
-                                <td>
-                                    <input type="number" class="uni_input_text" id="ix_data6" name="ix_data6"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">종업원수(명)<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="number" class="uni_input_text" id="ix_data7" name="ix_data7"/>
-                                </td>
-                                <td>
-                                    <input type="number" class="uni_input_text" id="ix_data8" name="ix_data8"/>
-                                </td>
-                                <td>
-                                    <input type="number" class="uni_input_text" id="ix_data9" name="ix_data9"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">주요생산품<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td colspan="3">
-                                    <input type="text" id="product" class="uni_input_text wdh100" name="product"/>
-                                </td>
-                            </tr>
-                            <th colspan="4" scope="row">담당자</th>
-                            <tr>
-                                <th scope="row">성명<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100 " name="name" id="name"/>
-                                </td>
-                                <th scope="row">전화번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="number" class="uni_input_text wdh100" id="mbphno" name="mbphno" value=""/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">소속부서<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100" id="deptNm" name="deptNm" value=""/>
-                                </td>
-                                <th scope="row">직위<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100" id="position" name="position" value=""/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">이메일<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td colspan="3">
-                                    <input type="text" class="uni_input_text " name="email1" id="email1"/>
-                                    @
-                                    <input type="text" class="uni_input_text " name="email2" id="email2" value=""/>
-                                    <select id="email3" class="uni_input_text " style="border-radius: 5px;"
-                                            onclick="selectEmail(this)">
-                                        <option value="1">직접입력</option>
-                                        <option value="naver.com">naver.com</option>
-                                        <option value="daum.net">daum.net</option>
-                                        <option value="gmail.com">gmail.com</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">사무실 전화<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="number" class="uni_input_text wdh100" id="memTelNo" name="memTelNo" value=""/>
-                                </td>
-                                <th scope="row">팩스<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="number" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo" value=""/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th colspan="4" scope="row">컨설팅시 주요 질의사항<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    <input type="text" class="uni_input_text wdh100" id="conQ" name="conQ" value=""/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th colspan="4" scope="row">연동제 적용 대상이 되는 주요 수위탁거래 정보</th>
-                            </tr>
-                            <tr>
-                                <th scope="row">수위탁 거래 유형</th>
-                                <td colspan="3">
-                                    <select id="deal_type" name="deal_type" class="uni_input_text">
-                                        <option value="">선택</option>
-                                        <option value="제조">제조</option>
-                                        <option value="공사">공사</option>
-                                        <option value="가공">가공</option>
-                                        <option value="수리">수리</option>
-                                        <option value="용역">용역</option>
-                                        <option value="기술개발">기술개발</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">연간 거래 규모</th>
-                                <td colspan="3">
-                                    <input type="text" class="uni_input_text wdh100" name="deal_scale" id="deal_scale"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">주요 원재료</th>
-                                <td colspan="3">
-                                    <input type="text" class="uni_input_text wdh100" name="material" id="material"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">비밀번호<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100" name="passwd" value=""/>
-                                </td>
-                                <th scope="row">비밀번호 재입력<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span></th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100" id="passwdChk" name="passwdChk" value=""/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div class="write-bottom">
-                            <button type="submit" class="btn blue" >저장</button>
-                            <a href="<c:url value="/front/consulting/list.do"/>" class="btn blue">취소</a>
+                <form name="frmWrite" id="frmWrite" method="post" action="<c:url value="/front/consulting/apply.do"/>">
+
+                    <h2 class="title">기업 정보</h2>
+                    <div class="write-container">
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    기업명<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" name="" placeholder="기업명을 입력해주세요." required>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    사업자 번호
+                                </div>
+                                <div class="input-wrap">
+                                    <input class="multi" type="number" name="bizNo1" id="bizNo1">
+                                    <span>-</span>
+                                    <input class="multi" type="number" name="bizNo2" id="bizNo2">
+                                    <span>-</span>
+                                    <input class="multi" type="number" name="bizNo3" id="bizNo3">
+                                </div>
+                            </div>
                         </div>
-                    </form>
-                </div>
-                <!-- 컨텐츠 end -->
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    대표자명<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="ceo" name="ceo" placeholder="대표자명을 입력해주세요." required/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    설립일자<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="date" id="fdate" name="fdate" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                본사 주소<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" name="address" id="address" onclick="execPostCode()" readonly/>
+                                <button type="button" class="btn" onclick="execPostCode()">주소찾기</button>
+                                <input type="text" name="address_dtl" id="address_dtl"  placeholder="상세주소"/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    전화번호<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="number" id="telNo" name="telNo" required/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    팩스<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="number" id="faxNo" name="faxNo" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    업종<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="bizType" name="bizType" required/>
+                                    </td>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    자본금<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="number" id="capital" name="capital" style="width:100px;"
+                                           placeholder="자본금을 입력해주세요." required/>백만원
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="write-container bt-none">
+                        <div class="line-wrap">
+                            <div class="label-full">
+                                기업현황 (최근 3년)
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                지표
+                            </div>
+                            <div class="tri">
+                                <div class="colored">2019년</div>
+                                <div class="colored">2020년</div>
+                                <div class="colored">2021년</div>
+                            </div>
+                        </div>
+
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                매출액(백만원)
+                            </div>
+                            <div class="tri">
+                                <div class="border">
+                                    <input type="number" id=ix_data1" name="ix_data1"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id=ix_data2" name="ix_data2"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id=ix_data3" name="ix_data3"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                영업이익(백만원)
+                            </div>
+                            <div class="tri">
+                                <div class="border">
+                                    <input type="number" id="ix_data4" name="ix_data4"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id="ix_data5" name="ix_data5"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id="ix_data6" name="ix_data6"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                종업원수(명)<span class="required">*</span>
+                            </div>
+                            <div class="tri">
+                                <div class="border">
+                                    <input type="number" id="ix_data7" name="ix_data7"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id="ix_data8" name="ix_data8"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id="ix_data9" name="ix_data9"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label" style="width: 155px">
+                                주요생산품<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" id="product" name="product" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="title mt40">담당자</h2>
+                    <div class="write-container">
+                        <div class="line-wrap">
+                            <div class="label">
+                                성명<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" name="name" id="name" placeholder="성명을 입력해주세요." required/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    소속 부서<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="deptNm" name="deptNm" placeholder="소속부서를 입력해주세요." required/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    직위<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="position" name="position" placeholder="직위를 입력해주세요."
+                                           required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                전화번호<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="number" id="mbphno" name="mbphno" required/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                이메일<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap ">
+                                <input type="text" class="multi" name="email1" id="email1" required/>
+                                <span>@</span>
+                                <input type="text" style="width: 130px" name="email2" id="email2" required/>
+                                <select id="email3" style="width: 130px"
+                                        onclick="selectEmail(this)">
+                                    <option value="1">직접입력</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="daum.net">daum.net</option>
+                                    <option value="gmail.com">gmail.com</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                사무실 전화
+                            </div>
+                            <div class="input-wrap">
+                                <input type="number" id="memTelNo" name="memTelNo"/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">팩스</div>
+                            <div class="input-wrap">
+                                <input type="number" id="memFaxNo" name="memFaxNo"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="write-container bt-none">
+                        <div class="line-wrap">
+                            <div class="label-full">
+                                컨설팅 시 주요 질의사항
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="input-wrap input-full">
+                                <textarea id="conQ" name="conQ"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="title mt40">연동제 적용 대상이 되는 주요 수위탁거래 정보</h2>
+                    <div class="write-container">
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                수위탁 거래 유형
+                            </div>
+                            <div class="input-wrap">
+                                <select id="deal_type" name="deal_type">
+                                    <option value="">선택</option>
+                                    <option value="제조">제조</option>
+                                    <option value="공사">공사</option>
+                                    <option value="가공">가공</option>
+                                    <option value="수리">수리</option>
+                                    <option value="용역">용역</option>
+                                    <option value="기술개발">기술개발</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                연간 거래 규모
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" name="deal_scale" id="deal_scale"/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                주요 원재료
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" name="material" id="material"/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label label-long">
+                                    비밀번호<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap long-input">
+                                    <input type="password" name="passwd" placeholder="비밀번호를 입력해주세요." required>
+                                    <h5 class="sub">※ 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다.</h5>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label label-long">
+                                    비밀번호 재입력<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap long-input">
+                                    <input type="password" id="passwdChk" name="passwdChk" placeholder="비밀번호를 재입력해주세요."
+                                           required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="write-bottom">
+                        <input type="submit" class="submit" value="등록">
+                        <a href="<c:url value="/front/consulting/list.do"/>">취소</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

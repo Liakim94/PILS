@@ -23,10 +23,10 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>마이페이지</li>
-                <li>마이페이지</li>
+                <li>동행기업 신청 정보</li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">마이페이지</h1>
+                <h1 class="fw700">동행기업 신청 정보</h1>
                 <div class="side-wrap">
                 </div>
             </div>
@@ -88,6 +88,18 @@
                     <tr>
                         <th scope="row">주요생산품</th>
                         <td colspan="3">${rs.product}</td>
+                    </tr>
+                    <tr>
+                        <th  scope="row">주요 적용 제품</th>
+                        <td>${rs.mainProduct}</td>
+                        <th scope="row">참여기업 수</th>
+                        <td>${rs.joinCmp}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">주요 원재료</th>
+                        <td  colspan="3">
+                           ${rs.material}
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">첨부서류</th>

@@ -89,7 +89,18 @@
                     <th class="txt_alcnt" scope="row">주요생산품</th>
                     <td colspan="3">${rs.product}</td>
                 </tr>
-
+                <tr>
+                    <th class="txt_alcnt" scope="row">주요 적용 제품</th>
+                    <td>${rs.mainProduct}</td>
+                    <th class="txt_alcnt" scope="row">참여기업 수</th>
+                    <td>${rs.joinCmp}</td>
+                </tr>
+                <tr>
+                    <th class="txt_alcnt" scope="row">주요 원재료</th>
+                    <td  colspan="3">
+                        ${rs.material}
+                    </td>
+                </tr>
                 <th colspan="4" class="txt_alcnt" scope="row">담당자</th>
                 <tr>
                     <th class="txt_alcnt" scope="row">성명</th>

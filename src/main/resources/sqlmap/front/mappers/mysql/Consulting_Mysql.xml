@@ -25,8 +25,11 @@
         <result property="position" column="position"/>
         <result property="mbphno" column="mbphno"/>
         <result property="email" column="email"/>
-        <result property="memTelNo" column="memTelNo"/>
         <result property="memFaxNo" column="memFaxNo"/>
+        <result property="join_dt" column="join_dt"/>
+        <result property="management_cd" column="management_cd"/>
+        <result property="joinCmp" column="joinCmp"/>
+        <result property="mainProduct" column="mainProduct"/>
     </resultMap>
     <resultMap id="CmpSttusVO" type="kr.co.xicom.front.model.CmpSttusVO">
         <result property="bizNo" column="bizNo"/>
@@ -55,7 +58,9 @@
         , prmy_mat
         , con_q
         , appdt
-        ,product)
+        , product
+        , joincmp
+        , main_product)
         values ( #{cmpNm}
                , #{bizNo}
                , #{mem_cd}
@@ -72,7 +77,9 @@
                , #{material}
                , #{conQ}
                , current_timestamp
-               ,#{product})
+               ,#{product}
+               ,#{joinCmp}
+               ,#{mainProduct})
     </insert>
     <insert id="insertMemberInfo">
         insert into tb_pils_mbr
@@ -176,6 +183,8 @@
              , A.prmy_mat      as material
              , A.con_q         as conQ
              , A.product       as product
+             , A.joincmp       as joinCmp
+             , A.main_product   as mainProduct
              , B.nm            as name
              , B.mbphno        as mbphno
              , B.psitn_dept_nm as deptNm
@@ -225,6 +234,8 @@
           , con_q         = #{conQ}
           , product       = #{product}
           , updt          = current_timestamp
+          , joincmp       =  #{joinCmp}
+          , main_product  =  #{mainProduct}
         where bizno = #{bizNo}
     </update>
     <update id="memUpdate">
@@ -293,7 +304,8 @@
         , biz_ty
         , capl
         , appdt
-        , product)
+        , product
+        , prmy_mat)
         values ( #{cmpNm}
                , #{bizNo}
                , #{mem_cd}
@@ -306,7 +318,8 @@
                , #{bizType}
                , #{capital}
                , current_timestamp
-               , #{product})
+               , #{product}
+               , #{material})
     </insert>
     <insert id="insertMemberJoin">
         insert into tb_pils_mbr
@@ -322,7 +335,9 @@
         , user_id
         , pswd
         , join_dt
-        , manage_cd)
+        , manage_cd
+        , joincmp
+        , main_product)
         values ( #{name}
                , #{mbphno}
                , #{deptNm}
@@ -335,7 +350,9 @@
                , #{id}
                , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
                , current_date
-               , #{management_cd})
+               , #{management_cd}
+               , #{joinCmp}
+               , #{mainProduct})
     </insert>
     <update id="updateJoin">
         update tb_pils_cmpmbr
@@ -355,6 +372,8 @@
           , con_q         = #{conQ}
           , product       = #{product}
           , updt          = current_timestamp
+          , joincmp       =  #{joinCmp}
+          , main_product  =  #{mainProduct}
         where bizno = #{bizNo}
     </update>
     <select id="conCheck" resultType="int">

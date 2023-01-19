@@ -17,7 +17,7 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
     <div class ="lnb">
         <h2>마이페이지</h2>
         <ul>
-            <li><a href ="${pageContext.request.contextPath}/main//myPage.do" class="menu_depth2">마이페이지</a></li>
+            <li><a href ="${pageContext.request.contextPath}/main//myPage.do" class="menu_depth2">동행기업 신청 정보</a></li>
             <li><a href ="${pageContext.request.contextPath}/main/management.do" class="menu_depth2">담당자 관리</a></li>
         </ul>
     </div>

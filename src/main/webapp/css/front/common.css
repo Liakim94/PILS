@@ -586,11 +586,8 @@
     margin-right: 50px;
     text-align: left;
     position: relative;
-    height: 90px;
+    /*height: 90px;*/
     line-height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .gnb-container .gnb-wrap .nav-wrap .wrapper:nth-last-child(1){
     margin-right: 0;
@@ -1163,6 +1160,9 @@
     font-family: 'GmarketSans', sans-serif;
     font-size: 16px;
 }
+#board .loc-list li:nth-child(1){
+    padding-left: 0;
+}
 #board .loc-list li .home-icon{
     width: 16px;
     position: relative;
@@ -1170,7 +1170,7 @@
 }
 #board .loc-list li:before{
     content: "";
-    background: url(../../images/common/right-icon.png);
+    background: url(/images/common/right-icon.png);
     background-size: cover;
     width: 15px;
     height: 15px;
@@ -1399,7 +1399,6 @@
     box-sizing: border-box;
     width: 100%;
 }
-
 #board .write-container .line-wrap .input-wrap textarea{
     border: none;
     outline: none;
@@ -1883,13 +1882,19 @@
 }
 #company-write .write-container .line-wrap .label{
     background: rgba(145, 145, 145, 0.1);
-    padding: 16px 12px;
+    padding: 16px 8px;
     box-sizing: border-box;
     font-size: 16px;
     line-height: 24px;
     color: #191919;
     text-align: center;
     width: 120px;
+}
+#company-write .write-container .line-wrap .label-long{
+    width: 150px;
+}
+#company-write .write-container .line-wrap .long-input{
+    width: calc(100% - 150px ) !important;
 }
 #company-write .write-container .line-wrap .label .required{
     color: #E60024;
@@ -1920,6 +1925,29 @@
     text-align: center;
     font-weight: 600;
 }
+#company-write .write-container .line-wrap .tri{
+    display: flex;
+    width: calc(100% - 150px);
+    align-items: center;
+}
+#company-write .write-container .line-wrap .tri div{
+    width: 33.333%;
+}
+#company-write .write-container .line-wrap .colored{
+    background: rgba(145, 145, 145, 0.1);
+    text-align: center;
+    padding: 16px 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+    color: #191919;
+}
+#company-write .write-container .line-wrap .border{
+    border-right: 1px solid #999999;
+}
+#company-write .write-container .line-wrap .border:nth-last-child(1){
+    border-right: none;
+}
 #company-write .write-container .line-wrap .value-wrap{
     width: 77%;
     padding: 16px 16px;
@@ -1934,7 +1962,10 @@
     padding: 0 10px;
     box-sizing: border-box;
 }
-#company-write .write-container .line-wrap .input-wrap input{
+#company-write .write-container .line-wrap .input-full{
+    width: 100% !important;
+}
+#company-write .write-container .line-wrap input{
     border: none;
     outline: none;
     font-size: 16px;
@@ -1943,22 +1974,76 @@
     width: 100%;
     color: #505050;
 }
-#company-write .write-container .line-wrap .input-wrap input::placeholder{
+#company-write .write-container .line-wrap input::placeholder{
     color: #999999;
 }
-#company-write .write-container .line-wrap:nth-child(1) .input-wrap input{
-    padding: 20px 10px;
+#company-write .write-container .line-wrap select{
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 16px;
+    padding: 14px 16px;
+    margin-top: 14px;
 }
-#company-write .write-container .line-wrap:nth-child(2) .input-wrap input{
-    padding: 20px 10px;
+#company-write .write-container .line-wrap .multi{
+    width: 87px !important;
+    padding: 18px 8px;
 }
 #company-write .write-container .line-wrap .br{
     border-right: 1px solid #DDDDDD;
+}
+#company-write .file-label {
+    border: 1px solid #E60024;
+    border-radius: 5px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    color: #E60024;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 12px;
+    position: relative;
+    top: 16px !important;
+    cursor: pointer;
+}
+#company-write .file-label img {
+    width: 20px;
+    position: relative;
+    top: 3px;
+}
+#company-write input[type=file] {
+    display: none;
+}
+#company-write .upload-list {
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    top: 18px;
+}
+#company-write .upload-list .file{
+    display: inline-block;
+    color: #505050;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-right: 15px;
+}
+#company-write .upload-list .file img{
+    width: 16px;
+    margin-left: 3px;
+    position: relative;
+    top: 2px;
+    cursor: pointer;
 }
 #company-write .write-bottom{
     text-align: right;
     margin-top: 40px;
     padding-bottom: 30px;
+}
+#company-write .sub{
+    position: relative;
+    bottom: 8px;
+    color: #E60024;
+    font-weight: 400;
 }
 #company-write .write-bottom .submit{
     background: #E60024;
@@ -2292,6 +2377,17 @@
         min-width: 980px !important;
     }
 
+    /* 동행기업 신청 */
+    #company-write .write-container .line-wrap{
+        flex-wrap: wrap;
+    }
+    #company-write .write-container .fx2{
+        width:100% !important;
+    }
+    #company-write .write-container .fx2:nth-child(1){
+        border-bottom: 1px solid #505050;
+    }
+
     /*  Footer  */
     .footer-container .footer-wrap{
         flex-wrap: wrap;
@@ -2364,6 +2460,9 @@
         top: 0;
         margin-bottom: 15px;
     }
+    #company-write .write-container .line-wrap .input-wrap .upload-list{
+        margin-top: 30px;
+    }
 
     /*  약정서 작성  */
     #agreement .write-container{
@@ -2377,6 +2476,11 @@
     }
     #agreement .info-link a{
         width: 80%;
+    }
+
+    /* 동행기업신청 */
+    #company-write .write-container {
+        overflow-x: scroll;
     }
 
     /* 납품대금 연동제란? */

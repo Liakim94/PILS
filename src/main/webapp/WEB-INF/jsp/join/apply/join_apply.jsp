@@ -65,8 +65,8 @@
         });
 
         $('#apply').on('click', function () {
-            var bizNo = $("#bizNo1").val()+$("#bizNo2").val()+$("#bizNo3").val() ;
-            $('input[name=bizNo]').attr('value',bizNo);
+            var bizNo = $("#bizNo1").val() + $("#bizNo2").val() + $("#bizNo3").val();
+            $('input[name=bizNo]').attr('value', bizNo);
 
             fileUploader.upload({
                 done: function (result, deleted, uploaded) {
@@ -103,7 +103,8 @@
                 bizNo1: {required: true},
                 bizNo2: {required: true},
                 bizNo3: {required: true},
-                bizNo : {remote: {
+                bizNo: {
+                    remote: {
                         type: "post"
                         , url: "${pageContext.request.contextPath}/join/checkBizno.do"
                         , data: {
@@ -111,7 +112,8 @@
                                 return $("#bizNo").val();
                             }
                         }
-                    }},
+                    }
+                },
                 id: {
                     required: true, remote: {
                         type: "post"
@@ -134,7 +136,7 @@
                     required: "아이디를 입력하세요",
                     remote: "이미 존재하는 아이디입니다."
                 },
-                bizNo: { remote: "이미 존재하는 사업자번호입니다."},
+                bizNo: {remote: "이미 존재하는 사업자번호입니다."},
                 passwd: {required: "비밀번호를 입력하세요."},
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
 
@@ -153,226 +155,345 @@
             }
         });
     });
-
-    //     $('input[name=bizNo1],input[name=bizNo2],input[name=bizNo3]').map(function () {
-    //         bizNo += $(this).val();
-    //     })
-    //
-    // });
 </script>
-
-<page:applyDecorator name="menu2"/>
-<div class="article">
-    <div class="content">
-        <!-- 컨텐츠 start -->
-        <%--        <form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/join/joinApply.do">--%>
-
+<div id="content">
+    <div id="board">
+        <page:applyDecorator name="menu2"/>
+        <div class="article">
+            <ul class="loc-list">
+                <li>
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
+                    <a href="${pageContext.request.contextPath}">홈</a></li>
+                <li>
+                    납품대금 연동제 동참하기
+                </li>
+                <li>
+                    동행기업 신청
+                </li>
+            </ul>
             <div class="article-header">
-                <h3>동행기업 신청</h3>
+                <h1 class="fw700">동행기업 신청</h1>
                 <div class="side-wrap">
                 </div>
             </div>
-        <form:form modelAttribute="frmApply" id="frmApply" action="joinApply.do">
-        <form:hidden path="jsonFileList"/>
-        <form:hidden path="jsonDeletedFileList"/>
-            <table class="tbl-list02">
-
-                <tbody>
-                <tr>
-                    <th class="txt_alcnt" scope="row">기업명</th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="cmpNm" name="cmpNm"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">사업자번호</th>
-<input type="hidden" name=bizNo value="">
-                    <td>
-                        <input type="number" class="uni_input_text" style="width:60px;" id="bizNo1" name="bizNo1"/>
-                        -
-                        <input type="number" class="uni_input_text" style="width:50px;" id="bizNo2" name="bizNo2"/>
-                        -
-                        <input type="number" class="uni_input_text" style="width:60px;" id="bizNo3" name="bizNo3"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">대표자명</th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="ceo" name="ceo"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">설립일자</th>
-                    <td>
-                        <input type="date" class="uni_input_text wdh100" id="fdate" name="fdate"/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th class="txt_alcnt" scope="row">본사 주소<span style="color: rgb(244, 54, 54);">&nbsp;&ast;</span>
-                    </th>
-                    <td colspan="3">
-                        <input type="text" class="uni_input_text " name="address" id="address" onclick="execPostCode()"
-                               readonly/>
-                        <button type="button" class="btn" onclick="execPostCode()">주소찾기
-                        </button>
-                        <input type="text" class="uni_input_text " name="address_dtl" id="address_dtl"
-                               placeholder="상세주소"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">전화번호</th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" id="telNo" name="telNo"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">팩스</th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" id="faxNo" name="faxNo"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">업종</th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="bizType" name="bizType"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">자본금</th>
-                    <td>
-                        <input type="number" class="uni_input_text" id="capital" name="capital" style="padding:0"/>백만원
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">기업 로고</th>
-                    <td colspan="3">
-                        파일찾기
-                    </td>
-                </tr>
-
-                <th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>
-                <tr>
-                    <th class="txt_alcnt" scope="row">지표</th>
-                    <th class="txt_alcnt" scope="row">2019년</th>
-                    <th class="txt_alcnt" scope="row">2020년</th>
-                    <th class="txt_alcnt" scope="row">2021년</th>
-                <tr>
-                    <th class="txt_alcnt" scope="row">매출액(백만원)</th>
-                    <td>
-                        <input type="number" class="uni_input_text" id=ix_data1" name="ix_data1"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data2" name="ix_data2"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data3" name="ix_data3"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">영업이익(백만원)</th>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data4" name="ix_data4"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data5" name="ix_data5"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data6" name="ix_data6"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">종업원수(명)</th>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data7" name="ix_data7"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data8" name="ix_data8"/>
-                    </td>
-                    <td>
-                        <input type="number" class="uni_input_text" id="ix_data9" name="ix_data9"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">주요생산품</th>
-                    <td colspan="3">
-                        <input type="text" id="product" class="uni_input_text wdh100" name="product"/>
-                    </td>
-                </tr>
-                <th colspan="4" class="txt_alcnt" scope="row">담당자</th>
-                <tr>
-                    <th class="txt_alcnt" scope="row">성명</th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" name="name" id="name"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">전화번호</th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" id="mbphno" name="mbphno"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">소속부서</th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="deptNm" name="deptNm"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">직위</th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="position" name="position"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">이메일</th>
-                    <td colspan="3">
-                        <input type="text" class="uni_input_text " name="email1" id="email1"/>
-                        @
-                        <input type="text" class="uni_input_text " name="email2" id="email2"/>
-                        <select id="email3" class="uni_input_text " style="border-radius: 5px;" onclick="selectEmail(this)">
-                            <option value="1">직접입력</option>
-                            <option value="naver.com">naver.com</option>
-                            <option value="daum.net">daum.net</option>
-                            <option value="gmail.com">gmail.com</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">사무실 전화</th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" id="memTelNo" name="memTelNo"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">팩스</th>
-                    <td>
-                        <input type="number" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">첨부서류</th>
-                    <td colspan="3">
-                        <div class="file-uploader-wrapper">
-                            <div class="file-uploader"></div>
+            <div id="company-write" class="content">
+                <form:form modelAttribute="frmApply" id="frmApply" action="joinApply.do">
+                    <form:hidden path="jsonFileList"/>
+                    <form:hidden path="jsonDeletedFileList"/>
+                    <h2 class="title">기업 정보</h2>
+                    <div class="write-container">
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    기업명<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="cmpNm" name="cmpNm" placeholder="기업명을 입력해주세요." required/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    사업자 번호
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="hidden" name=bizNo value="">
+                                    <td>
+                                        <input class="multi" type="number" id="bizNo1" name="bizNo1"/>
+                                        <span>-</span>
+                                        <input class="multi" type="number" id="bizNo2" name="bizNo2"/>
+                                        <span>-</span>
+                                        <input class="multi" type="number" id="bizNo3" name="bizNo3"/>
+                                </div>
+                            </div>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="4" class="txt_alcnt" scope="row">회원가입 정보</th>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">사용자 ID</th>
-                    <td colspan="3">
-                        <input type="text" class="uni_input_text wdh100" name="id" id="id"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="txt_alcnt" scope="row">비밀번호</th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" name="passwd" id="passwd"/>
-                    </td>
-                    <th class="txt_alcnt" scope="row">비밀번호 재입력</th>
-                    <td>
-                        <input type="text" class="uni_input_text wdh100" id="passwdChk" name="passwdChk"/>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </form:form>
-        <div class="btn-wrap type04">
-            <input id="apply" type="submit" class="btn blue" value="등록">
-            <a href="${pageContext.request.contextPath}/join/joinList.do" class="btn blue">취소</a>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    대표자명<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="ceo" name="ceo" laceholder="대표자명을 입력해주세요." required/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    설립일자<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="date" id="fdate" name="fdate" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                본사 주소<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" name="address" id="address" onclick="execPostCode()"
+                                       readonly/>
+                                <button type="button" class="btn" onclick="execPostCode()">주소찾기</button>
+                                <input type="text" name="address_dtl" id="address_dtl" placeholder="상세주소"/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    전화번호<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="number" id="telNo" name="telNo" required/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    팩스<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="number" id="faxNo" name="faxNo" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    업종<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="bizType" name="bizType" required/>
+                                    </td>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    자본금<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="number" id="capital" name="capital" style="width:220px;"
+                                           placeholder="자본금을 입력해주세요." required/>백만원
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">기업 로고
+                            </div>
+                            <div class="input-wrap">
+                                파일찾기
+                            </div>
+                        </div>
+                    </div>
+                    <div class="write-container bt-none">
+                        <div class="line-wrap">
+                            <div class="label-full">
+                                기업현황 (최근 3년)
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                지표
+                            </div>
+                            <div class="tri">
+                                <div class="colored">2019년</div>
+                                <div class="colored">2020년</div>
+                                <div class="colored">2021년</div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                매출액(백만원)
+                            </div>
+                            <div class="tri">
+                                <div class="border">
+                                    <input type="number" id=ix_data1" name="ix_data1"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id=ix_data2" name="ix_data2"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id=ix_data3" name="ix_data3"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                영업이익(백만원)
+                            </div>
+                            <div class="tri">
+                                <div class="border">
+                                    <input type="number" id="ix_data4" name="ix_data4"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id="ix_data5" name="ix_data5"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id="ix_data6" name="ix_data6"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                종업원수(명)<span class="required">*</span>
+                            </div>
+                            <div class="tri">
+                                <div class="border">
+                                    <input type="number" id="ix_data7" name="ix_data7"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id="ix_data8" name="ix_data8"/>
+                                </div>
+                                <div class="border">
+                                    <input type="number" id="ix_data9" name="ix_data9"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label" style="width: 155px">
+                                주요생산품<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" id="product" name="product" required/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label" style="width: 164px">주요 적용 제품
+                                    <span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="mainProduct" name="mainProduct" required/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">참여기업 수<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="number" id="joinCmp" name="joinCmp" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label" style="width: 155px">주요 원재료<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" name="material" id="material" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="title mt40">담당자</h2>
+                    <div class="write-container">
+                        <div class="line-wrap">
+                            <div class="label">
+                                성명<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" name="name" id="name" placeholder="성명을 입력해주세요." required/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    소속 부서<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="deptNm" name="deptNm" placeholder="소속부서를 입력해주세요." required/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    직위<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="position" name="position" placeholder="직위를 입력해주세요."
+                                           required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                전화번호<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="number" id="mbphno" name="mbphno" required/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                이메일<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap ">
+                                <input type="text" class="multi" name="email1" id="email1" required/>
+                                <span>@</span>
+                                <input type="text" style="width: 130px" name="email2" id="email2" required/>
+                                <select id="email3" style="width: 130px"
+                                        onclick="selectEmail(this)">
+                                    <option value="1">직접입력</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="daum.net">daum.net</option>
+                                    <option value="gmail.com">gmail.com</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                사무실 전화
+                            </div>
+                            <div class="input-wrap">
+                                <input type="number" id="memTelNo" name="memTelNo"/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">팩스</div>
+                            <div class="input-wrap">
+                                <input type="number" id="memFaxNo" name="memFaxNo"/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                첨부서류
+                            </div>
+                            <div class="input-wrap ">
+                                <div class="file-uploader-wrapper">
+                                    <div class="file-uploader"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="title mt40">회원가입 정보</h2>
+                    <div class="write-container">
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                사용자 ID<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap long-input">
+                                <input type="text" name="id" id="id" placeholder="ID를 입력해주세요." required/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label label-long">
+                                    비밀번호<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap long-input">
+                                    <input type="password" id="passwd" name="passwd" placeholder="비밀번호를 입력해주세요." required>
+                                    <h5 class="sub">※ 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다.</h5>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label label-long">
+                                    비밀번호 재입력<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap long-input">
+                                    <input type="password" id="passwdChk" name="passwdChk" placeholder="비밀번호를 재입력해주세요."
+                                           required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form:form>
+                <div class="write-bottom">
+                    <button id="apply" class="submit">등록</button>
+                    <a href="${pageContext.request.contextPath}/join/joinList.do">취소</a>
+                </div>
+            </div>
         </div>
-        <%--        </form>--%>
-
-        <!-- 컨텐츠 end -->
     </div>
 </div>
-	
