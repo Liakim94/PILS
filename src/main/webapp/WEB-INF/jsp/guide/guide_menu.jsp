@@ -19,7 +19,10 @@
                 <a href="<c:url value="/front/guide/concept.do"/>" class="">개념</a>
             </li>
             <li class="<c:if test="${URI.contains('/front/guide/appliesto')}">on</c:if>">
-                <a href="<c:url value="/front/guide/appliesto.do"/>" class="">적용 대상</a>
+                <a href="<c:url value="/front/guide/appliesto.do"/>" class="">걸어온 발자취</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/front/guide/cmpList')}">on</c:if>">
+                <a href="<c:url value="/front/guide/cmpList.do"/>">참여기업 현황</a>
             </li>
             <li class="<c:if test="${URI.contains('/front/guide/ordinance')}">on</c:if>">
                 <a href="<c:url value="/front/guide/ordinance.do"/>" class="">관련 볍령</a>

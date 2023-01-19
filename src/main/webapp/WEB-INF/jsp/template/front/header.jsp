@@ -57,22 +57,22 @@
 <%-- 23.01.18 DO 메뉴 구성 변경 --%>
         <nav class="nav-wrap">
             <div class="wrapper">
-                <a class="font18" href="">납품대금 연동제란?</a>
+                <a class="font18" href="<c:url value="/front/guide/background.do"/>">납품대금 연동제란?</a>
                 <div class="submenu">
                     <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
                     <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
                     <a href="<c:url value="/front/guide/appliesto.do"/>">걸어온 발자취</a>
-                    <a href="">참여 기업 현황</a>
+                    <a href="<c:url value="/front/guide/cmpList.do"/>">참여기업 현황</a>
                     <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
                     <a href="<c:url value="/front/guide/statistics.do"/>">주요 통계</a>
                 </div>
             </div>
             <div class="wrapper">
-                <a class="font18" href="${pageContext.request.contextPath}/join/joinList.do">납품대금 연동제 동참하기</a>
+                <a class="font18" href="${pageContext.request.contextPath}/join/joinApply.do">납품대금 연동제 동참하기</a>
                 <div class="submenu">
                     <a href="#">납품대금 연동 절차  알아보기</a>
                     <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
-                    <a href="<c:url value="/join/joinList.do"/>">동행기업 신청하기</a>
+                    <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청하기</a>
                 </div>
             </div>
             <div class="wrapper">
@@ -133,12 +133,12 @@
                         <span></span>
                     </div>
                     <div class="submenu">
-                        <a href="">도입배경</a>
-                        <a href="">개념</a>
-                        <a href="">걸어온 발자취</a>
-                        <a href="">참여 기업 현황</a>
-                        <a href="">관련 법령</a>
-                        <a href="">주요 통계</a>
+                        <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
+                        <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
+                        <a href="<c:url value="/front/guide/appliesto.do"/>">걸어온 발자취</a>
+                        <a href="<c:url value="/front/guide/cmpList.do"/>">참여기업 현황</a>
+                        <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
+                        <a href="<c:url value="/front/guide/statistics.do"/>">주요 통계</a>
                     </div>
                 </div>
                 <div class="menu">
@@ -150,7 +150,7 @@
                     <div class="submenu">
                         <a href="#">납품대금 연동 절차 알아보기</a>
                         <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
-                        <a href="<c:url value="/join/joinList.do"/>">동행기업 신청하기</a>
+                        <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청하기</a>
                     </div>
                 </div>
                 <div class="menu">

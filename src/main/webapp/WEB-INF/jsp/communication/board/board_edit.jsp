@@ -111,7 +111,7 @@
         <div class="article">
             <br>
             <ul class="loc-list">
-                <li>
+                < li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>

@@ -25,41 +25,43 @@
                     소통마당
                 </li>
                 <li>
-                    ${bbsNm}
+                    컨설팅 신청 확인
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">${bbsNm}</h1>
+                <h1 class="fw700">컨설팅 신청 확인</h1>
                 <div class="side-wrap">
                 </div>
             </div>
-            <div class="content">
-                <div class="write-container">
-                    <form:form name="frmChange" id="frmChange" method="POST" action="conCheck.do">
-                        <table class="table-form">
-                            <tbody>
-                            <tr>
-                                <th class="txt_alcnt" scope="row">사업자번호</th>
-                                <td>
-                                    <input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo1" name="bizNo1"/>
+            <div id="company-write" class="content">
+                <form:form name="frmChange" id="frmChange" method="POST" action="confirm.do">
+                    <div class="write-container">
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    사업자번호
+                                </div>
+                                <div class="input-wrap">
+                                    <input class="multi" type="number" id="bizNo1" name="bizNo1"/>
                                     -
-                                    <input type="number" class="uni_input_text wdh100" style="width:50px;" id="bizNo2" name="bizNo2"/>
+                                    <input class="multi" type="number" id="bizNo2" name="bizNo2"/>
                                     -
-                                    <input type="number" class="uni_input_text wdh100" style="width:60px;" id="bizNo3" name="bizNo3"/>
-                                </td>
-                                <th class="txt_alcnt" scope="row">비밀번호</th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100" name="passwd" id="passwd"/>
-                                </td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                    </form:form>
-                    <div class="write-bottom">
-                        <button type="submit" class="btn blue" >확인</button>
+                                    <input class="multi" type="number" id="bizNo3" name="bizNo3"/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label label-long">비밀번호
+                                </div>
+                                <div class="input-wrap long-input">
+                                    <input type="password" name="passwd" id="passwd"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div class="write-bottom">
+                        <button type="submit" class="submit">확인</button>
+                    </div>
+                </form:form>
             </div>
         </div>
     </div>

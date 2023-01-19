@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
-import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -301,11 +300,6 @@ public class MainController {
         writer.println("history.back();");
         writer.println("</script>");
         writer.flush();
-    }
-    @GetMapping(value = "/cmpDetail.do")
-    public ModelAndView cmpDetail(HttpSession session) throws Exception{
-        ModelAndView mav = new ModelAndView("/cmp_detail");
-        return mav;
     }
 
 }

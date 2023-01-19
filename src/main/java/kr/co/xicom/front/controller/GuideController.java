@@ -1,15 +1,27 @@
 package kr.co.xicom.front.controller;
 
+import kr.co.xicom.front.model.BoardVO;
+import kr.co.xicom.front.model.CmpMemberVo;
+import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.util.Alerts;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RequestMapping("/front")
 @Controller
 public class GuideController extends Alerts {
+    @Autowired
+    ConsultingService consultingService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GuideController.class);
 
@@ -35,7 +47,7 @@ public class GuideController extends Alerts {
     }
 
     /**
-     * 납품대금 연동제란? - 적용대상 페이지 출력
+     * 납품대금 연동제란? - 걸어온 발자취 페이지 출력
      */
     @RequestMapping("/guide/appliesto.do")
     public String appliesTo() throws Exception {
@@ -56,6 +68,37 @@ public class GuideController extends Alerts {
     @RequestMapping("/guide/statistics.do")
     public String statistics() throws Exception {
         return "guide/statistics";
+
+    }
+
+    /**
+     * 참여기업 현황
+     */
+    @RequestMapping("/guide/cmpList.do")
+    public ModelAndView cmpList(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVo) throws Exception {
+        ModelAndView mav = new ModelAndView("guide/cmpList");
+        cmpVo.setMem_cd("M302"); //회원구분
+
+        Map<String, Object> rs = new HashMap<String, Object>();
+        rs = consultingService.list(cmpVo);
+        mav.addObject("list", rs.get("resultList"));
+
+        return mav ;
+
+    }
+    /**
+     * 참여기업 현황
+     */
+    @RequestMapping("/guide/cmpDetail.do")
+    public ModelAndView cmpDetail(@RequestParam(value = "bizNo") String bizNo
+                                 ,@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVo)
+                                  throws Exception {
+        ModelAndView mav = new ModelAndView("guide/cmpDetail");
+        cmpVo.setBizNo(bizNo);
+        cmpVo.setMem_cd("M302");
+        cmpVo = consultingService.getViewByBizNo(cmpVo);
+        mav.addObject("list", cmpVo);
+        return mav;
 
     }
 }

@@ -9,12 +9,32 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
     <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/temp.css"/>">
 </head>
 <script>
+    //주소찾기
+    function execPostCode() {
+        daum.postcode.load(function () {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    var addr = '';
+
+                    if (data.userSelectedType === 'R') {
+                        addr = data.roadAddress;
+                    } else {
+                        addr = data.jibunAddress;
+                    }
+                    document.getElementById("address").value = '(' + data.zonecode + ') ' + addr;
+                    document.getElementById("address_dtl").focus();
+                }
+            }).open();
+        });
+    }
+
     $(function () {
         // 파일업로더 처리
         var fileUploader = new smes.FileUploader('.file-uploader').init({
@@ -45,7 +65,6 @@
                     } else {
                         $('#jsonDeletedFiles').val('');
                     }
-                    oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
                     $('#frmEdit').submit();
                 },
                 fail: function (error) {
@@ -60,7 +79,6 @@
     <div id="board">
         <page:applyDecorator name="menu_myPage"/>
         <div class="article">
-            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -73,116 +91,183 @@
                 <div class="side-wrap">
                 </div>
             </div>
-            <div class="content">
-                <div class="write-container">
-                    <table class="table-form">
-                        <form:form modelAttribute="frmEdit" id="frmEdit" action="joinEdit.do">
-                            <form:hidden path="jsonFileList"/>
-                            <form:hidden path="jsonDeletedFileList"/>
-                        <tbody>
-                        <tr>
-                            <th class="txt_alcnt" scope="row">기업명</th>
-                            <td>
-                                <form:input path="cmpNm"/>
-                            </td>
-                            <th class="txt_alcnt" scope="row">사업자번호</th>
-                            <td>
-                                <form:input path="bizNo1"/>
-                                -
-                                <form:input path="bizNo2"/>
-                                -
-                                <form:input path="bizNo3"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="txt_alcnt" scope="row">대표자명</th>
-                            <td>
-                                <form:input path="ceo"/>
-                            </td>
-                            <th class="txt_alcnt" scope="row">설립일자</th>
-                            <td>
-                                <form:input path="fdate"/>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th class="txt_alcnt" scope="row">본사 주소</th>
-                            <td colspan="3">
+            <div id="company-write" class="content">
+                <!-- 컨텐츠 start -->
+                <form:form modelAttribute="frmEdit" id="frmEdit" action="joinEdit.do">
+                    <form:hidden path="jsonFileList"/>
+                    <form:hidden path="jsonDeletedFileList"/>
+                    <h2 class="title">기업 정보</h2>
+                    <div class="write-container">
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    기업명<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="cmpNm"/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    사업자 번호
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="bizNo1" class="multi"/>
+                                    <span>-</span>
+                                    <form:input path="bizNo2" class="multi"/>
+                                    <span>-</span>
+                                    <form:input path="bizNo3" class="multi"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    대표자명<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="ceo"/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    설립일자<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="fdate"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                본사 주소<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
                                 <form:input path="address" onclick="execPostCode()" readonly="true"/>
                                 <button type="button" class="btn"
                                         onclick="execPostCode()">주소찾기
                                 </button>
                                 <form:input path="address_dtl"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="txt_alcnt" scope="row">전화번호</th>
-                            <td>
-                                <form:input path="telNo"/>
-                            </td>
-                            <th class="txt_alcnt" scope="row">팩스</th>
-                            <td>
-                                <form:input path="faxNo"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="txt_alcnt" scope="row">업종</th>
-                            <td>
-                                <form:input path="bizType"/>
-                            </td>
-                            <th class="txt_alcnt" scope="row">자본금</th>
-                            <td>
-                                <form:input path="capital"/>백만원
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="txt_alcnt" scope="row">기업 로고</th>
-                            <td colspan="3">
-                                파일찾기
-                            </td>
-                        </tr>
-                        <th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>
-                        <tr>
-                            <th class="txt_alcnt" scope="row">지표</th>
-                            <th class="txt_alcnt" scope="row">2019년</th>
-                            <th class="txt_alcnt" scope="row">2020년</th>
-                            <th class="txt_alcnt" scope="row">2021년</th>
-                        </tr>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    전화번호<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="telNo"/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    팩스<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="faxNo"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    업종<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="bizType"/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    자본금<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="capital" style="width:100px;"/>백만원
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="write-container bt-none">
+                        <div class="line-wrap">
+                            <div class="label-full">
+                                기업현황 (최근 3년)
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label label-long">
+                                지표
+                            </div>
+                            <div class="tri">
+                                <div class="colored">2019년</div>
+                                <div class="colored">2020년</div>
+                                <div class="colored">2021년</div>
+                            </div>
+                        </div>
                         <c:forEach var="st" items="${st}" varStatus="status">
                             <c:if test="${status.index mod 3 eq 0}">
-                                <tr>
-                                <th class="txt_alcnt" scope="row">${st.index_dv_nm} </th>
+                                <div class="line-wrap">
+                                <div class="label label-long">
+                                        ${st.index_dv_nm}
+                                </div>
+                                <div class="tri">
                             </c:if>
-                            <td align="center">
-                                <input type="number" class="uni_input_text wdh100" id="ix_data${status.index+1}"
-                                       name="ix_data${status.index+1}" value="${st.index_data}"/>
-                            </td>
+                            <div class="border">
+                            <input type="number"
+                                   id="ix_data${status.index+1}"
+                                   name="ix_data${status.index+1}" value="${st.index_data}"/>
                             <c:if test="${status.index mod 3 eq 2}">
-                                </tr>
+                                </div>
+                                </div>
                             </c:if>
+                            </div>
                         </c:forEach>
-
-                        <tr>
-                            <th class="txt_alcnt" scope="row">주요생산품</th>
-                            <td colspan="3">
+                        <div class="line-wrap">
+                            <div class="label" style="width: 155px">
+                                주요생산품<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
                                 <form:input path="product"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="txt_alcnt" scope="row">첨부서류</th>
-                            <td colspan="3">
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label" style="width: 164px">주요 적용 제품
+                                    <span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="mainProduct"/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">참여기업 수<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap">
+                                    <form:input path="joinCmp"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label" style="width: 155px">주요 원재료<span class="required">*</span>
+                            </div>
+                            <div class="input-wrap">
+                                <form:input path="material"/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label" style="width: 155px">
+                                첨부서류
+                            </div>
+                            <div class="input-wrap ">
                                 <div class="file-uploader-wrapper">
                                     <div class="file-uploader"></div>
                                 </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                        </form:form>
-                    </table>
-                    <div class="btn-wrap type04">
-                        <button id="submit" class="btn blue">저장</button>
-                        <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">취소</a>
+                            </div>
+                        </div>
                     </div>
+                </form:form>
+                <div class="write-bottom">
+                    <input id="submit" type="submit" class="submit" value="저장">
+                    <a href="${pageContext.request.contextPath}/main/myPage.do">취소</a>
                 </div>
             </div>
         </div>
