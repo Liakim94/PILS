@@ -14,39 +14,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
 </head>
 <script>
-    // submit
-    function fn_submit() {
-
-        var frm = document.getElementById('frmWrite');
-
-        if (frm.name.value == "") {
-            alert("작성자를 입력하세요.");
-            return false;
-        }
-        if (frm.id.value == "") {
-            alert("공개여부를 선택하세요.");
-            return false;
-        }
-        if (frm.passwd.value == "" && document.getElementById('ChkBox2').checked) {
-            alert("비밀번호를 입력하세요.");
-            return false;
-        }
-        if (frm.title.value == "") {
-            alert("제목을 입력하세요.");
-            return false;
-        }
-
-        oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
-
-        var ir1 = $("#cont");
-        var ir2 = $("#cont").val();
-        if (ir1 == "" || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>') {
-            alert("내용을 입력하세요.");
-            return false;
-        }
-
-        $("#frmEdit").submit();
-    }
 
     function selectEmail(ele) {
         var $ele = $(ele);
@@ -105,8 +72,9 @@
             // return false;
         });
     });
+
     $(function () {
-        $("#frmApply").validate({
+        $("#frmEdit").validate({
             ignore: "",
             rules: {
                 cmpNm: {required: true},
@@ -175,7 +143,9 @@
                 bizNo: {remote: "이미 존재하는 사업자번호입니다."},
                 passwd: {required: "비밀번호를 입력하세요."},
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
-
+            },
+            submitHandler: function (frm) {
+                $("#frmEdit").submit();
             }
         });
     });
@@ -362,7 +332,7 @@
                     </tbody>
                 </table>
                 <div class="btn-wrap type04">
-                    <button type="submit" id="submit" class="btn blue">저장</button>
+                    <button id="submit" class="btn blue">저장</button>
                     <a href="${pageContext.request.contextPath}/join/joinList.do" class="btn blue">취소</a>
                 </div>
             </div>

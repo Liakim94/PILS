@@ -16,7 +16,6 @@
     <div id="board">
         <page:applyDecorator name="menu"/>
         <div class="article">
-            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -42,11 +41,11 @@
                                     사업자번호
                                 </div>
                                 <div class="input-wrap">
-                                    <input class="multi" type="number" id="bizNo1" name="bizNo1"/>
+                                    <input class="multi" type="text" id="bizNo1" name="bizNo1"/>
                                     -
-                                    <input class="multi" type="number" id="bizNo2" name="bizNo2"/>
+                                    <input class="multi" type="text" id="bizNo2" name="bizNo2"/>
                                     -
-                                    <input class="multi" type="number" id="bizNo3" name="bizNo3"/>
+                                    <input class="multi" type="text" id="bizNo3" name="bizNo3"/>
                                 </div>
                             </div>
                             <div class="fx2">

@@ -30,92 +30,150 @@
                 <div class="side-wrap">
                 </div>
             </div>
-            <div class="content">
+            <div id="company-write" class="content">
+                <h2 class="title">기업 정보</h2>
                 <div class="write-container">
-                    <table class="table-form">
-                    <tbody>
-                    <tr>
-                        <th scope="row">기업명</th>
-                        <td>${rs.cmpNm}</td>
-                        <th scope="row">사업자번호</th>
-                        <td>${rs.bizNo1}-${rs.bizNo2}-${rs.bizNo3}    </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">대표자명</th>
-                        <td>${rs.ceo}</td>
-                        <th scope="row">설립일자</th>
-                        <td>${rs.fdate}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">본사 주소</th>
-                        <td colspan="3"> ${rs.address} &nbsp; ${rs.address_dtl}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">전화번호</th>
-                        <td>${rs.telNo}</td>
-                        <th scope="row">팩스</th>
-                        <td>${rs.faxNo}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">업종</th>
-                        <td>${rs.bizType}</td>
-                        <th scope="row">자본금</th>
-                        <td>${rs.capital}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">기업 로고</th>
-                        <td colspan="3">
-                            파일찾기
-                        </td>
-                    </tr>
-                    <th colspan="4" scope="row">기업현황 (최근 3년)</th>
-                    <tr>
-                        <th scope="row">지표</th>
-                        <th scope="row">2019년</th>
-                        <th scope="row">2020년</th>
-                        <th scope="row">2021년</th>
-                    </tr>
-                    <c:forEach var="st" items="${st}" varStatus="status">
-                        <c:if test="${status.index mod 3 eq 0}" >
-                            <tr>
-                            <th scope="row">${st.index_dv_nm} </th>
-                        </c:if>
-                            <td align="center">${st.index_data}</td>
-                        <c:if test="${status.index mod 3 eq 2}" >
-                            </tr>
-                        </c:if>
-                    </c:forEach>
-                    <tr>
-                        <th scope="row">주요생산품</th>
-                        <td colspan="3">${rs.product}</td>
-                    </tr>
-                    <tr>
-                        <th  scope="row">주요 적용 제품</th>
-                        <td>${rs.mainProduct}</td>
-                        <th scope="row">참여기업 수</th>
-                        <td>${rs.joinCmp}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">주요 원재료</th>
-                        <td  colspan="3">
-                           ${rs.material}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">첨부서류</th>
-                        <td colspan="3">
-                            <c:forEach var="attach" items="${attachList}">
-                                   <li> <c:out value="${attach.fileNm}"/></li><br/>
-                                </a>
-                            </c:forEach>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                    <div class="write-bottom">
-                        <a id ="edit" href='${pageContext.request.contextPath}/main/joinEdit.do' class="btn blue">수정하기</a>
-                        <a href="${pageContext.request.contextPath}/main/myPage.do" class="btn blue">목록</a>
+                    <div class="line-wrap">
+                        <div class="fx2">
+                            <div class="label">
+                                기업명
+                            </div>
+                            <div class="input-wrap">
+                                <input value="${rs.cmpNm}" readonly>
+                            </div>
+                        </div>
+                        <div class="fx2">
+                            <div class="label">
+                                사업자 번호
+                            </div>
+                            <div class="input-wrap">
+                                <input readonly value="${rs.bizNo1}-${rs.bizNo2}-${rs.bizNo3}">
+                            </div>
+                        </div>
                     </div>
+                    <div class="line-wrap">
+                        <div class="fx2">
+                            <div class="label">
+                                대표자명
+                            </div>
+                            <div class="input-wrap">
+                                <input readonly value="${rs.ceo}">
+                            </div>
+                        </div>
+                        <div class="fx2">
+                            <div class="label">설립일자</div>
+                            <div class="input-wrap">
+                                <input readonly value="${rs.fdate}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">본사 주소</div>
+                        <div class="input-wrap">
+                            <input readonly value="${rs.address} &nbsp; ${rs.address_dtl}">
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="fx2">
+                            <div class="label">전화번호</div>
+                            <div class="input-wrap">
+                                <input readonly value="${rs.telNo}">
+                            </div>
+                        </div>
+                        <div class="fx2">
+                            <div class="label">팩스</div>
+                            <div class="input-wrap">
+                                <input readonly value="${rs.faxNo}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="fx2">
+                            <div class="label">업종</div>
+                            <div class="input-wrap">
+                                <input readonly value="${rs.bizType}">
+                            </div>
+                        </div>
+                        <div class="fx2">
+                            <div class="label">자본금</div>
+                            <div class="input-wrap">
+                                <input readonly value="${rs.capital}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="write-container bt-none">
+                    <div class="line-wrap">
+                        <div class="label-full">
+                            기업현황 (최근 3년)
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label label-long">
+                            지표
+                        </div>
+                        <div class="tri">
+                            <div class="colored">2019년</div>
+                            <div class="colored">2020년</div>
+                            <div class="colored">2021년</div>
+                        </div>
+                    </div>
+                    <c:forEach var="st" items="${st}" varStatus="status">
+                        <c:if test="${status.index mod 3 eq 0}">
+                            <div class="line-wrap">
+                            <div class="label label-long">${st.index_dv_nm} </div>
+                            <div class="tri">
+                        </c:if>
+                        <div class="border">
+                        <input readonly value="${st.index_data}">
+                        <c:if test="${status.index mod 3 eq 2}">
+                            </div>
+                            </div>
+                        </c:if>
+                        </div>
+                    </c:forEach>
+                    <div class="line-wrap">
+                        <div class="label label-long">주요생산품</div>
+                        <div class="input-wrap">
+                            <input readonly value="${rs.product}">
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="fx2">
+                            <div class="label label-long">주요 적용 제품
+                            </div>
+                            <div class="input-wrap">
+                                <input readonly value="${rs.mainProduct}">
+                            </div>
+                        </div>
+                        <div class="fx2">
+                            <div class="label">참여기업 수</div>
+                            <div class="input-wrap">
+                                <input readonly value="${rs.joinCmp}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label label-long">주요 원재료</div>
+                        <div class="input-wrap">
+                            <input readonly value="${rs.material}">
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label label-long">첨부서류</div>
+                        <div class="input-wrap ">
+                            <div class="upload-list">
+                                <c:forEach var="attach" items="${attachList}">
+                                    <c:out value="${attach.fileNm}"/><br/>
+                                    </a>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="write-bottom">
+                    <a id="edit" href='${pageContext.request.contextPath}/main/joinEdit.do' class="submit">수정하기</a>
+                    <a href="${pageContext.request.contextPath}/main/myPage.do">목록</a>
                 </div>
             </div>
         </div>

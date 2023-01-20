@@ -75,13 +75,15 @@
                     if (result) {
                         console.dir(result);
                         $('#jsonFileList').val(JSON.stringify(result));
-                    } else {
+                    }
+                    else {
                         $('#jsonFileList').val('');
                     }
                     if (deleted) {
                         console.dir(deleted);
                         $('#jsonDeletedFiles').val(JSON.stringify(deleted));
-                    } else {
+                    }
+                    else {
                         $('#jsonDeletedFiles').val('');
                     }
                     $('#frmApply').submit();
@@ -95,15 +97,12 @@
         });
     });
 
-    $.validator.addMethod("check", function(value, element){
-        var regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-        if ( regExp.test(value) == false) {
-            return false;
-        }
-        return true;
+    $.validator.addMethod("regex", function(value, element,regexpr){
+        return regexpr.test(value);
     });
 
     $(function () {
+
         $("#frmApply").validate({
             ignore: "",
             rules: {
@@ -144,7 +143,7 @@
                         }
                     }
                 },
-                passwd: {required: true, check: true },
+                passwd: {required: true, regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/ },
                 passwdChk: {required: true, equalTo: "#passwd"},
             },
             // onkeyup: false,
@@ -181,13 +180,12 @@
                 memFaxNo: {required: "담당자 팩스를 입력하세요."},
                 conQ: {required: "컨설팅시 주요 질의사항를 입력하세요."},
                 passwd: {required: "비밀번호를 입력하세요.",
-                         regex:"비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다."},
+                    regex:"비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다."},
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
             },
-            submitHandler: function (frm) {
-                $("#frmWrite").submit();
-
-            }
+            // submitHandler: function (frm) {
+            //     $("#frmApply").submit();
+            // }
         });
     });
 
@@ -223,323 +221,323 @@
             </div>
             <div id="company-write" class="content">
                 <form:form modelAttribute="frmApply" action="joinApply.do">
-                    <form:hidden path="jsonFileList"/>
-                    <form:hidden path="jsonDeletedFileList"/>
-                    <h2 class="title">기업 정보</h2>
-                    <div class="write-container">
-                        <div class="line-wrap">
-                            <div class="fx2">
-                                <div class="label">
-                                    기업명<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="text" id="cmpNm" name="cmpNm" placeholder="기업명을 입력해주세요." required/>
-                                </div>
+                <form:hidden path="jsonFileList"/>
+                <form:hidden path="jsonDeletedFileList"/>
+                <h2 class="title">기업 정보</h2>
+                <div class="write-container">
+                    <div class="line-wrap">
+                        <div class="fx2">
+                            <div class="label">
+                                기업명<span class="required">*</span>
                             </div>
-                            <div class="fx2">
-                                <div class="label">
-                                    사업자 번호
-                                </div>
-                                <div class="input-wrap">
-                                    <td>
-                                        <input class="multi" type="text" id="bizNo1" name="bizNo1"/>
-                                        <span>-</span>
-                                        <input class="multi" type="text" id="bizNo2" name="bizNo2"/>
-                                        <span>-</span>
-                                        <input class="multi" type="text" id="bizNo3" name="bizNo3"/>
-                                        <input type="hidden" id="bizNo" name=bizNo value="">
+                            <div class="input-wrap">
+                                <input type="text" id="cmpNm" name="cmpNm" placeholder="기업명을 입력해주세요." required/>
+                            </div>
+                        </div>
+                        <div class="fx2">
+                            <div class="label">
+                                사업자 번호
+                            </div>
+                            <div class="input-wrap">
+                                <td>
+                                    <input class="multi" type="text" id="bizNo1" name="bizNo1"/>
+                                    <span>-</span>
+                                    <input class="multi" type="text" id="bizNo2" name="bizNo2"/>
+                                    <span>-</span>
+                                    <input class="multi" type="text" id="bizNo3" name="bizNo3"/>
+                                    <input type="hidden" id="bizNo" name=bizNo value="">
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="fx2">
-                                <div class="label">
-                                    대표자명<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="text" id="ceo" name="ceo" laceholder="대표자명을 입력해주세요." required/>
-                                </div>
-                            </div>
-                            <div class="fx2">
-                                <div class="label">
-                                    설립일자<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="date" id="fdate" name="fdate" required/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label">
-                                본사 주소<span class="required">*</span>
-                            </div>
-                            <div class="input-wrap address-input-wrap">
-                                <input type="text" name="address" id="address" onclick="execPostCode()"
-                                       readonly/>
-                                <button type="button" class="btn" onclick="execPostCode()">주소찾기</button>
-                                <input type="text" name="address_dtl" id="address_dtl" placeholder="상세주소"/>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="fx2">
-                                <div class="label">
-                                    전화번호<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="number" id="telNo" name="telNo" required/>
-                                </div>
-                            </div>
-                            <div class="fx2">
-                                <div class="label">
-                                    팩스<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="number" id="faxNo" name="faxNo" required/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="fx2">
-                                <div class="label">
-                                    업종<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="text" id="bizType" name="bizType" required/>
-                                    </td>
-                                </div>
-                            </div>
-                            <div class="fx2">
-                                <div class="label">
-                                    자본금<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="number" id="capital" name="capital" style="width:220px;"
-                                           placeholder="자본금을 입력해주세요." required/>백만원
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label">기업 로고
-                            </div>
-                            <div class="input-wrap">
-                                파일찾기
                             </div>
                         </div>
                     </div>
-                    <div class="write-container bt-none">
-                        <div class="line-wrap">
-                            <div class="label-full">
-                                기업현황 (최근 3년)
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label label-long">
-                                지표
-                            </div>
-                            <div class="tri">
-                                <div class="colored">2019년</div>
-                                <div class="colored">2020년</div>
-                                <div class="colored">2021년</div>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label label-long">
-                                매출액(백만원)
-                            </div>
-                            <div class="tri">
-                                <div class="border">
-                                    <input type="number" id=ix_data1" name="ix_data1"/>
-                                </div>
-                                <div class="border">
-                                    <input type="number" id=ix_data2" name="ix_data2"/>
-                                </div>
-                                <div class="border">
-                                    <input type="number" id=ix_data3" name="ix_data3"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label label-long">
-                                영업이익(백만원)
-                            </div>
-                            <div class="tri">
-                                <div class="border">
-                                    <input type="number" id="ix_data4" name="ix_data4"/>
-                                </div>
-                                <div class="border">
-                                    <input type="number" id="ix_data5" name="ix_data5"/>
-                                </div>
-                                <div class="border">
-                                    <input type="number" id="ix_data6" name="ix_data6"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label label-long">
-                                종업원수(명)<span class="required">*</span>
-                            </div>
-                            <div class="tri">
-                                <div class="border">
-                                    <input type="number" id="ix_data7" name="ix_data7"/>
-                                </div>
-                                <div class="border">
-                                    <input type="number" id="ix_data8" name="ix_data8"/>
-                                </div>
-                                <div class="border">
-                                    <input type="number" id="ix_data9" name="ix_data9"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label" style="width: 155px">
-                                주요생산품<span class="required">*</span>
+                    <div class="line-wrap">
+                        <div class="fx2">
+                            <div class="label">
+                                대표자명<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" id="product" name="product" required/>
+                                <input type="text" id="ceo" name="ceo" laceholder="대표자명을 입력해주세요." required/>
                             </div>
                         </div>
-                        <div class="line-wrap">
-                            <div class="fx2">
-                                <div class="label" style="width: 164px">주요 적용 제품
-                                    <span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="text" id="mainProduct" name="mainProduct" required/>
-                                </div>
-                            </div>
-                            <div class="fx2">
-                                <div class="label">참여기업 수<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="number" id="joinCmp" name="joinCmp" required/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label" style="width: 155px">주요 원재료<span class="required">*</span>
+                        <div class="fx2">
+                            <div class="label">
+                                설립일자<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" name="material" id="material" required/>
+                                <input type="date" id="fdate" name="fdate" required/>
                             </div>
                         </div>
                     </div>
-                    <h2 class="title mt40">담당자</h2>
-                    <div class="write-container">
-                        <div class="line-wrap">
-                            <div class="label">
-                                성명<span class="required">*</span>
-                            </div>
-                            <div class="input-wrap">
-                                <input type="text" name="name" id="name" placeholder="성명을 입력해주세요." required/>
-                            </div>
+                    <div class="line-wrap">
+                        <div class="label">
+                            본사 주소<span class="required">*</span>
                         </div>
-                        <div class="line-wrap">
-                            <div class="fx2">
-                                <div class="label">
-                                    소속 부서<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="text" id="deptNm" name="deptNm" placeholder="소속부서를 입력해주세요." required/>
-                                </div>
-                            </div>
-                            <div class="fx2">
-                                <div class="label">
-                                    직위<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="text" id="position" name="position" placeholder="직위를 입력해주세요."
-                                           required/>
-                                </div>
-                            </div>
+                        <div class="input-wrap address-input-wrap">
+                            <input type="text" name="address" id="address" onclick="execPostCode()"
+                                   readonly/>
+                            <button type="button" class="btn" onclick="execPostCode()">주소찾기</button>
+                            <input type="text" name="address_dtl" id="address_dtl" placeholder="상세주소"/>
                         </div>
-                        <div class="line-wrap">
+                    </div>
+                    <div class="line-wrap">
+                        <div class="fx2">
                             <div class="label">
                                 전화번호<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
-                                <input type="number" id="mbphno" name="mbphno" required/>
+                                <input type="text" id="telNo" name="telNo" required/>
                             </div>
                         </div>
-                        <div class="line-wrap">
+                        <div class="fx2">
                             <div class="label">
-                                이메일<span class="required">*</span>
-                            </div>
-                            <div class="input-wrap ">
-                                <input type="text" class="multi" name="email1" id="email1" required/>
-                                <span>@</span>
-                                <input type="text" style="width: 130px" name="email2" id="email2" required/>
-                                <select id="email3" style="width: 130px"
-                                        onclick="selectEmail(this)">
-                                    <option value="1">직접입력</option>
-                                    <option value="naver.com">naver.com</option>
-                                    <option value="daum.net">daum.net</option>
-                                    <option value="gmail.com">gmail.com</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label">
-                                사무실 전화
+                                팩스<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
-                                <input type="number" id="memTelNo" name="memTelNo"/>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label">팩스</div>
-                            <div class="input-wrap">
-                                <input type="number" id="memFaxNo" name="memFaxNo"/>
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label">
-                                첨부서류
-                            </div>
-                            <div class="input-wrap ">
-                                <div class="file-uploader-wrapper">
-                                    <div class="file-uploader"></div>
-                                </div>
+                                <input type="text" id="faxNo" name="faxNo" required/>
                             </div>
                         </div>
                     </div>
-                    <h2 class="title mt40">회원가입 정보</h2>
-                    <div class="write-container">
-                        <div class="line-wrap">
-                            <div class="label label-long">
-                                사용자 ID<span class="required">*</span>
+                    <div class="line-wrap">
+                        <div class="fx2">
+                            <div class="label">
+                                업종<span class="required">*</span>
                             </div>
-                            <div class="input-wrap long-input">
-                                <input type="text" name="id" id="id" placeholder="ID를 입력해주세요." required/>
+                            <div class="input-wrap">
+                                <input type="text" id="bizType" name="bizType" required/>
+                                </td>
                             </div>
                         </div>
-                        <div class="line-wrap">
-                            <div class="fx2">
-                                <div class="label label-long">
-                                    비밀번호<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap long-input">
-                                    <input type="password" id="passwd" name="passwd" placeholder="비밀번호를 입력해주세요." required>
-                                    <h5 class="sub">※ 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다.</h5>
-                                </div>
+                        <div class="fx2">
+                            <div class="label">
+                                자본금<span class="required">*</span>
                             </div>
-                            <div class="fx2">
-                                <div class="label label-long">
-                                    비밀번호 재입력<span class="required">*</span>
-                                </div>
-                                <div class="input-wrap long-input">
-                                    <input type="password" id="passwdChk" name="passwdChk" placeholder="비밀번호를 재입력해주세요."
-                                           required/>
-                                </div>
-                            </div>
+                            <div class="input-wrap" labeled-input-wrap label-right">
+                            <input type="text" id="capital" name="capital"
+                                   placeholder="자본금을 입력해주세요." required/>백만원
                         </div>
                     </div>
-                </form:form>
-                <div class="write-bottom">
-                    <button id="apply" class="submit">등록</button>
-                    <a href="${pageContext.request.contextPath}/join/joinList.do">취소</a>
                 </div>
+                    <%--                        <div class="line-wrap">--%>
+                    <%--                            <div class="label">기업 로고--%>
+                    <%--                            </div>--%>
+                    <%--                            <div class="input-wrap">--%>
+                    <%--                                파일찾기--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+            </div>
+            <div class="write-container bt-none">
+                <div class="line-wrap">
+                    <div class="label-full">
+                        기업현황 (최근 3년)
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label label-long">
+                        지표
+                    </div>
+                    <div class="tri">
+                        <div class="colored">2019년</div>
+                        <div class="colored">2020년</div>
+                        <div class="colored">2021년</div>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label label-long">
+                        매출액(백만원)
+                    </div>
+                    <div class="tri">
+                        <div class="border">
+                            <input type="text" id=ix_data1" name="ix_data1"/>
+                        </div>
+                        <div class="border">
+                            <input type="text" id=ix_data2" name="ix_data2"/>
+                        </div>
+                        <div class="border">
+                            <input type="text" id=ix_data3" name="ix_data3"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label label-long">
+                        영업이익(백만원)
+                    </div>
+                    <div class="tri">
+                        <div class="border">
+                            <input type="text" id="ix_data4" name="ix_data4"/>
+                        </div>
+                        <div class="border">
+                            <input type="text" id="ix_data5" name="ix_data5"/>
+                        </div>
+                        <div class="border">
+                            <input type="text" id="ix_data6" name="ix_data6"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label label-long">
+                        종업원수(명)
+                    </div>
+                    <div class="tri">
+                        <div class="border">
+                            <input type="text" id="ix_data7" name="ix_data7"/>
+                        </div>
+                        <div class="border">
+                            <input type="text" id="ix_data8" name="ix_data8"/>
+                        </div>
+                        <div class="border">
+                            <input type="text" id="ix_data9" name="ix_data9"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label" style="width: 155px">
+                        주요생산품<span class="required">*</span>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" id="product" name="product" required/>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="fx2">
+                        <div class="label" style="width: 164px">주요 적용 제품
+                            <span class="required">*</span>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="text" id="mainProduct" name="mainProduct" required/>
+                        </div>
+                    </div>
+                    <div class="fx2">
+                        <div class="label">참여기업 수<span class="required">*</span>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="text" id="joinCmp" name="joinCmp" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label" style="width: 155px">주요 원재료<span class="required">*</span>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" name="material" id="material" required/>
+                    </div>
+                </div>
+            </div>
+            <h2 class="title mt40">담당자</h2>
+            <div class="write-container">
+                <div class="line-wrap">
+                    <div class="label">
+                        성명<span class="required">*</span>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" name="name" id="name" placeholder="성명을 입력해주세요." required/>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="fx2">
+                        <div class="label">
+                            소속 부서<span class="required">*</span>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="text" id="deptNm" name="deptNm" placeholder="소속부서를 입력해주세요." required/>
+                        </div>
+                    </div>
+                    <div class="fx2">
+                        <div class="label">
+                            직위<span class="required">*</span>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="text" id="position" name="position" placeholder="직위를 입력해주세요."
+                                   required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label">
+                        전화번호<span class="required">*</span>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" id="mbphno" name="mbphno" required/>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label">
+                        이메일<span class="required">*</span>
+                    </div>
+                    <div class="input-wrap ">
+                        <input type="text" class="multi" name="email1" id="email1" required/>
+                        <span>@</span>
+                        <input type="text" style="width: 130px" name="email2" id="email2" required/>
+                        <select id="email3" style="width: 130px"
+                                onclick="selectEmail(this)">
+                            <option value="1">직접입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="daum.net">daum.net</option>
+                            <option value="gmail.com">gmail.com</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label">
+                        사무실 전화
+                    </div>
+                    <div class="input-wrap">
+                        <input type="text" id="memTelNo" name="memTelNo"/>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label">팩스</div>
+                    <div class="input-wrap">
+                        <input type="text" id="memFaxNo" name="memFaxNo"/>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="label">
+                        첨부서류
+                    </div>
+
+                    <div class="file-uploader-wrapper">
+                        <div class="file-uploader"></div>
+                    </div>
+
+                </div>
+            </div>
+            <h2 class="title mt40">회원가입 정보</h2>
+            <div class="write-container">
+                <div class="line-wrap">
+                    <div class="label label-long">
+                        사용자 ID<span class="required">*</span>
+                    </div>
+                    <div class="input-wrap long-input">
+                        <input type="text" name="id" id="id" placeholder="ID를 입력해주세요." required/>
+                    </div>
+                </div>
+                <div class="line-wrap">
+                    <div class="fx2">
+                        <div class="label label-long">
+                            비밀번호<span class="required">*</span>
+                        </div>
+                        <div class="input-wrap long-input">
+                            <input type="password" id="passwd" name="passwd" placeholder="비밀번호를 입력해주세요." required>
+                                <%--                                    <h5 class="sub">※ 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다.</h5>--%>
+                        </div>
+                    </div>
+                    <div class="fx2">
+                        <div class="label label-long">
+                            비밀번호 재입력<span class="required">*</span>
+                        </div>
+                        <div class="input-wrap long-input">
+                            <input type="password" id="passwdChk" name="passwdChk" placeholder="비밀번호를 재입력해주세요."
+                                   required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form:form>
+            <div class="write-bottom">
+                <button id="apply" class="submit">등록</button>
+                <a href="${pageContext.request.contextPath}">취소</a>
             </div>
         </div>
     </div>
+</div>
 </div>

@@ -113,7 +113,7 @@ public class JoinController {
             int result = consultingService.insertJoinApply(cmpVO, stVO,null);
             if (result > 0) {
 
-                response.sendRedirect(request.getContextPath() + "/join/joinApply.do");
+                response.sendRedirect(request.getContextPath() + "/join/joinView.do?bizNo=" + cmpVO.getBizNo());
 
             } else {
                 PrintWriter writer = response.getWriter();
