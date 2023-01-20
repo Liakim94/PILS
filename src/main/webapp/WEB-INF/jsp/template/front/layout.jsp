@@ -6,6 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" 		prefix="fn" 		%>
 <%@ taglib uri="http://www.springframework.org/tags" 			prefix="spring" 	%>
 <c:set var="URI" value="${requestScope['javax.servlet.forward.request_uri']}" />
+<!DOCTYPE html>
 <html lang="ko" class="ko">
 <head>
     <%--

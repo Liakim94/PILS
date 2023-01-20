@@ -185,7 +185,7 @@
                             <div class="label">
                                 본사 주소<span class="required">*</span>
                             </div>
-                            <div class="input-wrap">
+                            <div class="input-wrap address-input-wrap">
                                 <input type="text" name="address" id="address" onclick="execPostCode()" readonly/>
                                 <button type="button" class="btn" onclick="execPostCode()">주소찾기</button>
                                 <input type="text" name="address_dtl" id="address_dtl"  placeholder="상세주소"/>
@@ -223,9 +223,9 @@
                                 <div class="label">
                                     자본금<span class="required">*</span>
                                 </div>
-                                <div class="input-wrap">
-                                    <input type="number" id="capital" name="capital" style="width:100px;"
-                                           placeholder="자본금을 입력해주세요." required/>백만원
+                                <div class="input-wrap labeled-input-wrap label-right">
+                                    <input type="number" id="capital" name="capital" placeholder="자본금을 입력해주세요." required/>
+                                    <label for="capital">백만원</label>
                                 </div>
                             </div>
                         </div>
