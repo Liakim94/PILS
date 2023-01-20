@@ -1,0 +1,82 @@
+
+input[type=text],
+input[type=password],
+input[type=number],
+input[type=date],
+button,
+select,
+textarea {
+    border: 1px solid #eee!important;
+    padding: 0 10px!important;
+    font-size: 16px;
+}
+input[type=text],
+input[type=password],
+input[type=number],
+input[type=date],
+button {
+    line-height: 40px;
+    box-sizing: border-box;
+}
+input[type=number] {
+    padding-right: 0!important;
+}
+select {
+    border-radius: 0!important;
+    padding: 10px!important;
+    margin-top: 0!important;
+}
+.write-container .line-wrap .input-wrap {
+    padding: 10px!important;
+}
+/* labeled-input-wrap */
+.labeled-input-wrap {
+    display: flex;
+    align-items: center;
+}
+.label-right input {
+    margin-right: 10px!important;
+}
+.label-right label {
+
+}
+/* address-input-wrap */
+.address-input-wrap {
+
+}
+.address-input-wrap input[type=text]:first-child {
+    width: 50%!important;
+    margin-right: 10px;
+}
+.address-input-wrap button {
+    vertical-align: top;
+    padding: 10px;
+}
+.address-input-wrap input[type=text]:last-child {
+    border: 1px solid blue;
+    margin-top: 10px;
+}
+/* tri */
+#company-write .write-container .line-wrap .border {
+    padding: 10px 10px 10px 0;
+    border: none!important;
+}
+#company-write .write-container .line-wrap .border:first-child {
+    padding-left: 10px;
+}
+#company-write .sub {
+    margin-top : 5px;
+    bottom: 0!important;
+}
+/* file-uploader */
+.file-uploader-wrapper {
+    padding: 0!important;
+}
+.file-uploader-wrapper .file-uploader {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+}
+.write-container .line-wrap .file-uploader-wrapper {
+    width: calc(100% - 120px);
+}

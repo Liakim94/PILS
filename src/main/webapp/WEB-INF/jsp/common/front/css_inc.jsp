@@ -18,5 +18,5 @@
 <%--    &lt;%&ndash; 중소벤처24 공통메뉴 적용 &ndash;%&gt;--%>
 <%--    <link rel="stylesheet" href="https://www.smes.go.kr/smes-api/api/css/smes-common-menu-1.0.css" type="text/css" />--%>
 <%--    <link rel="stylesheet" href="https://www.smes.go.kr/smes-api/api/css/smes-common-login-1.0.css" type="text/css"/>--%>
-
+<link rel="stylesheet" href="<c:url value="/css/front/override.css"/>" />
 
