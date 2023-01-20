@@ -200,7 +200,7 @@
                                 전화번호<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
-                                <input type="number" id="telNo" name="telNo" value="${rs.telNo}" required/>
+                                <input type="text" id="telNo" name="telNo" value="${rs.telNo}" required/>
                             </div>
                         </div>
                         <div class="fx2">
@@ -208,7 +208,7 @@
                                 팩스<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
-                                <input type="number" id="faxNo" name="faxNo"
+                                <input type="text" id="faxNo" name="faxNo"
                                        value="${rs.faxNo}" required/>
                             </div>
                         </div>
@@ -228,7 +228,7 @@
                                 자본금<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
-                                <input type="number" id="capital" name="capital" style="width:100px;"
+                                <input type="text" id="capital" name="capital" style="width:100px;"
                                        value="${rs.capital}" required/>백만원
                             </div>
                         </div>
@@ -260,7 +260,7 @@
                             <div class="tri">
                         </c:if>
                         <div class="border">
-                        <input type="number"
+                        <input type="text"
                                id="ix_data${status.index+1}"
                                name="ix_data${status.index+1}" value="${st.index_data}"/>
                         <c:if test="${status.index mod 3 eq 2}">
@@ -316,7 +316,7 @@
                             전화번호<span class="required">*</span>
                         </div>
                         <div class="input-wrap">
-                            <input type="number" id="mbphno" name="mbphno"
+                            <input type="text" id="mbphno" name="mbphno"
                                    value="${rs.mbphno}" required/>
                         </div>
                     </div>
@@ -344,14 +344,14 @@
                             사무실 전화
                         </div>
                         <div class="input-wrap">
-                            <input type="number" id="memTelNo" name="memTelNo"
+                            <input type="text" id="memTelNo" name="memTelNo"
                                    value="${rs.memTelNo}"/>
                         </div>
                     </div>
                     <div class="line-wrap">
                         <div class="label">팩스</div>
                         <div class="input-wrap">
-                            <input type="number" id="memFaxNo" name="memFaxNo"
+                            <input type="text" id="memFaxNo" name="memFaxNo"
                                    value="${rs.memFaxNo}"/>
                         </div>
                     </div>

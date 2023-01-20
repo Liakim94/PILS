@@ -305,7 +305,9 @@
         , capl
         , appdt
         , product
-        , prmy_mat)
+        , prmy_mat
+        , joincmp
+        , main_product)
         values ( #{cmpNm}
                , #{bizNo}
                , #{mem_cd}
@@ -319,7 +321,9 @@
                , #{capital}
                , current_timestamp
                , #{product}
-               , #{material})
+               , #{material}
+               , #{joinCmp}
+               , #{mainProduct})
     </insert>
     <insert id="insertMemberJoin">
         insert into tb_pils_mbr
@@ -335,9 +339,7 @@
         , user_id
         , pswd
         , join_dt
-        , manage_cd
-        , joincmp
-        , main_product)
+        , manage_cd)
         values ( #{name}
                , #{mbphno}
                , #{deptNm}
@@ -350,9 +352,7 @@
                , #{id}
                , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
                , current_date
-               , #{management_cd}
-               , #{joinCmp}
-               , #{mainProduct})
+               , #{management_cd})
     </insert>
     <update id="updateJoin">
         update tb_pils_cmpmbr

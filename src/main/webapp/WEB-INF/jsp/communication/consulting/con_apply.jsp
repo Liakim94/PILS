@@ -63,6 +63,7 @@
                 bizType: {required: true},
                 capital: {required: true},
                 product: {required: true},
+                material: {required: true},
                 name: {required: true},
                 mbphno: {required: true},
                 deptNm: {required: true},
@@ -98,27 +99,28 @@
                 email1: {required: "이메일을 입력하세요."},
                 email2: {required: "이메일을 입력하세요."},
                 memTelNo: {required: "사무실전화를 입력하세요."},
-                memFaxNo: {required: "담당자 팩스를 입력하세요."},
+                memFaxNo: {required: "담당자 팩스를 입력하세요. "},
                 conQ: {required: "컨설팅시 주요 질의사항를 입력하세요."},
                 passwd: {required: "비밀번호를 입력하세요."},
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
-
+                material: {required: "주요원재료를 입력하세요."},
             },
             submitHandler: function (frm) {
                 $("#frmWrite").submit();
 
-            },
-            showErrors: function (errorMap, errorList) {
-                if (!$.isEmptyObject(errorList)) {
-                    $.each(errorList, function () {
-                        alert(this.message);
-                        return false;
-                    });
-                }
             }
         });
     });
 </script>
+<style type="text/css">
+    input.error, textarea.error{
+        border:1px dashed red;
+    }
+    label.error{
+        display:block;
+        color:red;
+    }
+</style>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu"/>
@@ -155,11 +157,11 @@
                                     사업자 번호
                                 </div>
                                 <div class="input-wrap">
-                                    <input class="multi" type="number" name="bizNo1" id="bizNo1">
+                                    <input class="multi" type="text" name="bizNo1" id="bizNo1">
                                     <span>-</span>
-                                    <input class="multi" type="number" name="bizNo2" id="bizNo2">
+                                    <input class="multi" type="text" name="bizNo2" id="bizNo2">
                                     <span>-</span>
-                                    <input class="multi" type="number" name="bizNo3" id="bizNo3">
+                                    <input class="multi" type="text" name="bizNo3" id="bizNo3">
                                 </div>
                             </div>
                         </div>
@@ -197,7 +199,7 @@
                                     전화번호<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="number" id="telNo" name="telNo" required/>
+                                    <input type="text" id="telNo" name="telNo" required/>
                                 </div>
                             </div>
                             <div class="fx2">
@@ -205,7 +207,7 @@
                                     팩스<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="number" id="faxNo" name="faxNo" required/>
+                                    <input type="text" id="faxNo" name="faxNo" required/>
                                 </div>
                             </div>
                         </div>
@@ -224,7 +226,7 @@
                                     자본금<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="number" id="capital" name="capital" style="width:100px;"
+                                    <input type="text" id="capital" name="capital" style="width:220px;"
                                            placeholder="자본금을 입력해주세요." required/>백만원
                                 </div>
                             </div>
@@ -253,13 +255,13 @@
                             </div>
                             <div class="tri">
                                 <div class="border">
-                                    <input type="number" id=ix_data1" name="ix_data1"/>
+                                    <input type="text" id=ix_data1" name="ix_data1"/>
                                 </div>
                                 <div class="border">
-                                    <input type="number" id=ix_data2" name="ix_data2"/>
+                                    <input type="text" id=ix_data2" name="ix_data2"/>
                                 </div>
                                 <div class="border">
-                                    <input type="number" id=ix_data3" name="ix_data3"/>
+                                    <input type="text" id=ix_data3" name="ix_data3"/>
                                 </div>
                             </div>
                         </div>
@@ -269,13 +271,13 @@
                             </div>
                             <div class="tri">
                                 <div class="border">
-                                    <input type="number" id="ix_data4" name="ix_data4"/>
+                                    <input type="text" id="ix_data4" name="ix_data4"/>
                                 </div>
                                 <div class="border">
-                                    <input type="number" id="ix_data5" name="ix_data5"/>
+                                    <input type="text" id="ix_data5" name="ix_data5"/>
                                 </div>
                                 <div class="border">
-                                    <input type="number" id="ix_data6" name="ix_data6"/>
+                                    <input type="text" id="ix_data6" name="ix_data6"/>
                                 </div>
                             </div>
                         </div>
@@ -285,13 +287,13 @@
                             </div>
                             <div class="tri">
                                 <div class="border">
-                                    <input type="number" id="ix_data7" name="ix_data7"/>
+                                    <input type="text" id="ix_data7" name="ix_data7"/>
                                 </div>
                                 <div class="border">
-                                    <input type="number" id="ix_data8" name="ix_data8"/>
+                                    <input type="text" id="ix_data8" name="ix_data8"/>
                                 </div>
                                 <div class="border">
-                                    <input type="number" id="ix_data9" name="ix_data9"/>
+                                    <input type="text" id="ix_data9" name="ix_data9"/>
                                 </div>
                             </div>
                         </div>
@@ -339,7 +341,7 @@
                                 전화번호<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
-                                <input type="number" id="mbphno" name="mbphno" required/>
+                                <input type="text" id="mbphno" name="mbphno" required/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -364,13 +366,13 @@
                                 사무실 전화
                             </div>
                             <div class="input-wrap">
-                                <input type="number" id="memTelNo" name="memTelNo"/>
+                                <input type="text" id="memTelNo" name="memTelNo"/>
                             </div>
                         </div>
                         <div class="line-wrap">
                             <div class="label">팩스</div>
                             <div class="input-wrap">
-                                <input type="number" id="memFaxNo" name="memFaxNo"/>
+                                <input type="text" id="memFaxNo" name="memFaxNo"/>
                             </div>
                         </div>
                     </div>
@@ -414,7 +416,7 @@
                         </div>
                         <div class="line-wrap">
                             <div class="label label-long">
-                                주요 원재료
+                                주요 원재료<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
                                 <input type="text" name="material" id="material"/>

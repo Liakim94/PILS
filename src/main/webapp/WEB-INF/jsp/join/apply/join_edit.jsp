@@ -76,6 +76,9 @@
 
         // 저장 버튼 처리
         $('#submit').on('click', function () {
+            var bizNo = $("#bizNo1").val() + $("#bizNo2").val() + $("#bizNo3").val();
+            $('input[name=bizNo]').attr('value', bizNo);
+
             fileUploader.upload({
                 done: function (result, deleted, uploaded) {
                     // 업로드 완료 후 전송된 파일 리스트 정보를
@@ -100,6 +103,80 @@
                 }
             });
             // return false;
+        });
+    });
+    $(function () {
+        $("#frmApply").validate({
+            ignore: "",
+            rules: {
+                cmpNm: {required: true},
+                bizNo1: {required: true},
+                bizNo2: {required: true},
+                bizNo3: {required: true},
+                bizNo: {
+                    remote: {
+                        type: "post"
+                        , url: "${pageContext.request.contextPath}/join/checkBizno.do"
+                        , data: {
+                            username: function () {
+                                return $("#bizNo").val();
+                            }
+                        }
+                    }
+                },
+                ceo: {required: true},
+                fdate: {required: true},
+                address: {required: true},
+                telNo: {required: true},
+                faxNo: {required: true},
+                bizType: {required: true},
+                capital: {required: true},
+                product: {required: true},
+                mainProduct: {required: true},
+                joinCmp: {required: true},
+                material: {required: true},
+                id: {
+                    required: true, remote: {
+                        type: "post"
+                        , url: "${pageContext.request.contextPath}/join/checkId.do"
+                        , data: {
+                            username: function () {
+                                return $("#id").val();
+                            }
+                        }
+                    }
+                },
+                passwd: {required: true},
+                passwdChk: {required: true, equalTo: "#passwd"},
+            },
+            // onkeyup: false,
+            // onclick: false,
+            // onfocusout: false,
+            messages: {
+                cmpNm: {required: "기업명을 입력하세요."},
+                bizNo1: {required: "사업자번호를 확인하세요."},
+                bizNo2: {required: "사업자번호를 확인하세요."},
+                bizNo3: {required: "사업자번호를 확인하세요."},
+                ceo: {required: "대표자명을 입력하세요."},
+                fdate: {required: "설립일자를 입력하세요."},
+                address: {required: "본사 주소를 입력하세요."},
+                telNo: {required: "기업 전화번호를 입력하세요."},
+                faxNo: {required: "기업 팩스를 입력하세요."},
+                bizType: {required: "업종을 입력하세요."},
+                capital: {required: "자본금을 입력하세요."},
+                product: {required: "주요생산품을 입력하세요."},
+                mainProduct: {required: "주요 적용 제품을 입력하세요."},
+                joinCmp: {required: "참여기업 수를 입력하세요."},
+                material: {required: "주요원재료를 입력하세요."},
+                id: {
+                    required: "아이디를 입력하세요",
+                    remote: "이미 존재하는 아이디입니다."
+                },
+                bizNo: {remote: "이미 존재하는 사업자번호입니다."},
+                passwd: {required: "비밀번호를 입력하세요."},
+                passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
+
+            }
         });
     });
 </script>
@@ -128,14 +205,16 @@
                                    value="${rs.cmpNm}"/>
                         </td>
                         <th class="txt_alcnt" scope="row">사업자번호</th>
+                        <input type="hidden" name=bizNo value="">
+
                         <td>
-                            <input type="number" class="uni_input_text wdh100" id="bizNo1" name="bizNo1"
+                            <input type="text" class="uni_input_text wdh100" id="bizNo1" name="bizNo1"
                                    style="width:60px;" value="${rs.bizNo1}"/>
                             -
-                            <input type="number" class="uni_input_text wdh100" id="bizNo2" name="bizNo2"
+                            <input type="text" class="uni_input_text wdh100" id="bizNo2" name="bizNo2"
                                    style="width:50px;" value="${rs.bizNo2}"/>
                             -
-                            <input type="number" class="uni_input_text wdh100" id="bizNo3" name="bizNo3"
+                            <input type="text" class="uni_input_text wdh100" id="bizNo3" name="bizNo3"
                                    style="width:60px;" value="${rs.bizNo3}"/>
                         </td>
                     </tr>
@@ -166,12 +245,12 @@
                     <tr>
                         <th class="txt_alcnt" scope="row">전화번호</th>
                         <td>
-                            <input type="number" class="uni_input_text wdh100" id="telNo" name="telNo"
+                            <input type="text" class="uni_input_text wdh100" id="telNo" name="telNo"
                                    value="${rs.telNo}"/>
                         </td>
                         <th class="txt_alcnt" scope="row">팩스</th>
                         <td>
-                            <input type="number" class="uni_input_text wdh100" id="faxNo" name="faxNo"
+                            <input type="text" class="uni_input_text wdh100" id="faxNo" name="faxNo"
                                    value="${rs.faxNo}"/>
                         </td>
                     </tr>
@@ -183,7 +262,7 @@
                         </td>
                         <th class="txt_alcnt" scope="row">자본금</th>
                         <td>
-                            <input type="number" class="uni_input_text" id="capital" name="capital" style="padding:0"
+                            <input type="text" class="uni_input_text" id="capital" name="capital" style="padding:0"
                                    value="${rs.capital}"/>백만원
                         </td>
                     </tr>
@@ -206,7 +285,7 @@
                             <th class="txt_alcnt" scope="row">${st.index_dv_nm} </th>
                         </c:if>
                         <td align="center">
-                            <input type="number" class="uni_input_text wdh100" id="ix_data${status.index+1}"
+                            <input type="text" class="uni_input_text wdh100" id="ix_data${status.index+1}"
                                    name="ix_data${status.index+1}" value="${st.index_data}"/>
                         </td>
                         <c:if test="${status.index mod 3 eq 2}">
@@ -229,7 +308,7 @@
                         </td>
                         <th class="txt_alcnt" scope="row">전화번호</th>
                         <td>
-                            <input type="number" class="uni_input_text wdh100" id="mbphno" name="mbphno"
+                            <input type="text" class="uni_input_text wdh100" id="mbphno" name="mbphno"
                                    value="${rs.mbphno}"/>
                         </td>
                     </tr>
@@ -263,12 +342,12 @@
                     <tr>
                         <th class="txt_alcnt" scope="row">사무실 전화</th>
                         <td>
-                            <input type="number" class="uni_input_text wdh100" id="memTelNo" name="memTelNo"
+                            <input type="text" class="uni_input_text wdh100" id="memTelNo" name="memTelNo"
                                    value="${rs.memTelNo}"/>
                         </td>
                         <th class="txt_alcnt" scope="row">팩스</th>
                         <td>
-                            <input type="number" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo"
+                            <input type="text" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo"
                                    value="${rs.memFaxNo}"/>
                         </td>
                     </tr>
