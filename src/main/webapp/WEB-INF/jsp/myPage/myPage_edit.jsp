@@ -14,6 +14,8 @@
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
     <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/temp.css"/>">
+    <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
+
 </head>
 <script>
     //주소찾기
@@ -49,6 +51,7 @@
 
         // 저장 버튼 처리
         $('#submit').on('click', function () {
+
             fileUploader.upload({
                 done: function (result, deleted, uploaded) {
                     // 업로드 완료 후 전송된 파일 리스트 정보를
@@ -74,7 +77,55 @@
             });
         });
     });
+    $(function () {
+        $("#frmEdit").validate({
+            ignore: "",
+            rules: {
+                cmpNm: {required: true},
+                ceo: {required: true},
+                fdate: {required: true},
+                address: {required: true},
+                telNo: {required: true},
+                faxNo: {required: true},
+                bizType: {required: true},
+                capital: {required: true},
+                product: {required: true},
+                mainProduct: {required: true},
+                joinCmp: {required: true},
+                material: {required: true},
+            },
+            // onkeyup: false,
+            // onclick: false,
+            // onfocusout: false,
+            messages: {
+                cmpNm: {required: "기업명을 입력하세요."},
+                ceo: {required: "대표자명을 입력하세요."},
+                fdate: {required: "설립일자를 입력하세요."},
+                address: {required: "본사 주소를 입력하세요."},
+                telNo: {required: "기업 전화번호를 입력하세요."},
+                faxNo: {required: "기업 팩스를 입력하세요."},
+                bizType: {required: "업종을 입력하세요."},
+                capital: {required: "자본금을 입력하세요."},
+                product: {required: "주요생산품을 입력하세요."},
+                mainProduct: {required: "주요 적용 제품을 입력하세요."},
+                joinCmp: {required: "참여기업 수를 입력하세요."},
+                material: {required: "주요원재료를 입력하세요."},
+            },
+            // submitHandler: function (frm) {
+            //     $("#frmEdit").submit();
+            // }
+        });
+    });
 </script>
+<style type="text/css">
+    input.error, textarea.error{
+        border:1px dashed red;
+    }
+    label.error{
+        display:block;
+        color:red;
+    }
+</style>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu_myPage"/>
@@ -117,6 +168,7 @@
                                     <form:input path="bizNo2" class="multi"/>
                                     <span>-</span>
                                     <form:input path="bizNo3" class="multi"/>
+                                    <input type="hidden" id="bizNo" name=bizNo value="">
                                 </div>
                             </div>
                         </div>
@@ -266,7 +318,7 @@
                     </div>
                 </form:form>
                 <div class="write-bottom">
-                    <input id="submit" type="submit" class="submit" value="저장">
+                    <button id="submit" class="submit" >저장</button>
                     <a href="${pageContext.request.contextPath}/main/myPage.do">취소</a>
                 </div>
             </div>

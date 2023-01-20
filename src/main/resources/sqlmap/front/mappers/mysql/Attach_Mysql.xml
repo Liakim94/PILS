@@ -8,7 +8,7 @@
         <selectKey keyProperty="attchSeq" resultType="int" order="BEFORE">
             select nextval('tb_atch_atch_sn_seq') as attchSeq
         </selectKey>
-        INSERT INTO cobiz.tb_atch (
+        INSERT INTO tb_atch (
             atch_sn,
             bbs_sn,
             bbs_id,
@@ -43,7 +43,7 @@
         <selectKey keyProperty="attchSeq" resultType="int" order="BEFORE">
             select nextval('tb_atch_atch_sn_seq') as attchSeq
         </selectKey>
-        INSERT INTO cobiz.tb_atch (
+        INSERT INTO tb_atch (
         atch_sn,
         bizno,
         bbs_id,
