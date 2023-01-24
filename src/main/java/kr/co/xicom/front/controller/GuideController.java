@@ -1,7 +1,10 @@
 package kr.co.xicom.front.controller;
 
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
+import kr.co.xicom.front.model.TraceVO;
+import kr.co.xicom.front.service.AdminService;
 import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.util.Alerts;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
@@ -10,11 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/front")
@@ -22,6 +27,8 @@ import java.util.Map;
 public class GuideController extends Alerts {
     @Autowired
     ConsultingService consultingService;
+    @Autowired
+    AdminService adminService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GuideController.class);
 
@@ -49,9 +56,33 @@ public class GuideController extends Alerts {
     /**
      * 납품대금 연동제란? - 걸어온 발자취 페이지 출력
      */
-    @RequestMapping("/guide/appliesto.do")
-    public String appliesTo() throws Exception {
-        return "guide/appliesto";
+    @RequestMapping("/guide/trace.do")
+    public ModelAndView trace(@ModelAttribute("TraceVo")TraceVO vo) throws Exception {
+        ModelAndView mav = new ModelAndView("guide/trace");
+        List<TraceVO> result = adminService.traceList(vo);
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());
+        paginationInfo.setRecordCountPerPage(15);
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+
+        mav.addObject("rs", result);
+        mav.addObject("paginationInfo", paginationInfo);
+
+        return mav;
+    }
+    @RequestMapping("/guide/trace/view.do")
+    public ModelAndView traceView(@RequestParam(value = "seq") int seq
+                                  ,@ModelAttribute("TraceVO")TraceVO vo)throws Exception{
+        ModelAndView mav = new ModelAndView("guide/trace_view");
+
+        vo = adminService.traceView(seq);
+        vo.setSeq(seq);
+        mav.addObject("rs",  vo);
+        return mav;
     }
 
     /**

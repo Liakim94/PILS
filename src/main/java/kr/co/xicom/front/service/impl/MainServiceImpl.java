@@ -4,6 +4,7 @@ import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.service.MainService;
+import kr.co.xicom.front.service.mapper.AdminMapper;
 import kr.co.xicom.front.service.mapper.AttachMapper;
 import kr.co.xicom.front.service.mapper.MainMapper;
 import kr.go.smes.fileservice.FileService;
@@ -18,6 +19,7 @@ import java.util.Map;
 public class MainServiceImpl implements MainService {
     @Autowired
     private MainMapper mapper;
+
 
     /** 첨부파일 Mapper */
     @Resource
@@ -73,5 +75,7 @@ public class MainServiceImpl implements MainService {
     public int changePw(CmpMemberVo vo) throws Exception{
         return mapper.changePw(vo);
     }
+
+
 
 }

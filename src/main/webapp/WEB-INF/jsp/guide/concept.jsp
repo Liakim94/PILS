@@ -9,7 +9,7 @@
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
-                    <a href="/">홈</a></li>
+                    <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
                     납품대금연동제란?
                 </li>

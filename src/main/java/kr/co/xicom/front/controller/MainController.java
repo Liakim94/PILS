@@ -2,6 +2,7 @@ package kr.co.xicom.front.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
@@ -17,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 메인
@@ -89,6 +92,7 @@ public class MainController {
     /**
      * 마이페이지
      */
+
     @GetMapping(value = "/myPage.do")
     public ModelAndView view(ModelMap model,
                              @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
@@ -122,6 +126,7 @@ public class MainController {
         }
         return mav;
     }
+
 
     //수정 화면
     @GetMapping(value = "/joinEdit.do")

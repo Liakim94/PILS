@@ -30,41 +30,6 @@ public class JoinController {
     @Autowired
     private BoardService boardService;
 
-    //동행기업 신청 리스트
-    @GetMapping(value = "/joinList.do")
-    public ModelAndView list(ModelMap model,
-                             @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
-                             HttpSession session,
-                             HttpServletRequest request,
-                             HttpServletResponse response) throws Exception {
-
-        ModelAndView mav = new ModelAndView("join/apply/join_list");
-
-        /*페이징 초기설정*/
-        PaginationInfo paginationInfo = new PaginationInfo();
-        paginationInfo.setCurrentPageNo(cmpVO.getPageIndex());    // 현재페이지
-        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
-        paginationInfo.setPageSize(cmpVO.getPageSize());
-
-        cmpVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-        cmpVO.setLastIndex(paginationInfo.getLastRecordIndex());
-        cmpVO.setPageUnit(paginationInfo.getRecordCountPerPage());
-        cmpVO.setMem_cd("M302"); //회원구분
-
-        Map<String, Object> rs = new HashMap<String, Object>();
-        rs = consultingService.list(cmpVO);
-
-        int totalCnt = 0;
-        totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
-        paginationInfo.setTotalRecordCount(totalCnt);
-
-        mav.addObject("totalCnt", rs.get("resultCnt"));
-        mav.addObject("list", rs.get("resultList"));
-        mav.addObject("paginationInfo", paginationInfo);
-        mav.addObject("vo", cmpVO);
-
-        return mav;
-    }
 
     //동행기업 신청 화면
     @GetMapping(value = "/joinApply.do")

@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="write-bottom">
-                        <button type="submit" class="submit">확인</button>
+                        <input type="submit" class="submit" value="확인"/>
                     </div>
                 </form:form>
             </div>

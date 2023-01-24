@@ -113,8 +113,8 @@
                                 <div class="label">
                                     상단 고정 여부
                                 </div>
-                                <div class="input-wrap">
-                                    <input type="checkbox" name="notiAt" id="notiAt" value="Y">고정</input>
+                                <div class="input-wrap labeled-input-wrap label-right">
+                                    고정 <input type="checkbox" name="notiAt" id="notiAt" value="Y" style="width:50px"/>
                                 </div>
                             </div>
                             <div class="line-wrap">
@@ -132,10 +132,8 @@
                         <div class="label">
                            첨부파일
                         </div>
-                        <div class="input-wrap">
                             <div class="file-uploader-wrapper">
                             <div class="file-uploader"></div>
-                        </div>
                         </div>
                     </div>
 

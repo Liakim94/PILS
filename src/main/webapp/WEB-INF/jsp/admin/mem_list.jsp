@@ -20,9 +20,8 @@
 </script>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu_myPage"/>
+        <page:applyDecorator name="menu_admin"/>
         <div class="article">
-            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -55,7 +54,7 @@
                             <th class="txt_alcnt" scope="col">직위</th>
                             <th class="txt_alcnt" scope="col">부서</th>
                             <th class="txt_alcnt" scope="col">전화번호</th>
-                            <th class="txt_alcnt" scope="col">정보수정</th>
+                            <th class="txt_alcnt" scope="col">담당자구분</th>
                             </thead>
                             <tbody>
                             <c:forEach var="rs" items="${rs }" varStatus="status">
@@ -65,8 +64,7 @@
                                     <td>${rs.position}</td>
                                     <td>${rs.deptNm}</td>
                                     <td>${rs.mbphno}</td>
-                                    <td><c:if test="${sessionId eq rs.id}">
-                                    <a href="${pageContext.request.contextPath}/main/memEdit.do">정보수정</a> </c:if></td>
+                                    <td>${rs.management_cd}</td>
                                 </tr>
                             </c:forEach>
                             <c:if test="${empty rs }">
@@ -76,9 +74,6 @@
                             </c:if>
                             </tbody>
                         </table>
-                        <div class="write-bottom">
-                            <a href="<c:url value="/main/memAdd.do"/>" class="submit">담당자 추가</a>
-                        </div>
                     </div>
                 </form>
                 <!-- 컨텐츠 end -->

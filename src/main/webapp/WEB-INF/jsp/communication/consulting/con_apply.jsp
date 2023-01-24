@@ -47,6 +47,10 @@
         }
     }
 
+    $.validator.addMethod("regex", function(value, element,regexpr){
+        return regexpr.test(value);
+    });
+
     $(function () {
         $("#frmWrite").validate({
             ignore: "",
@@ -73,7 +77,7 @@
                 memTelNo: {required: true},
                 memFaxNo: {required: true},
                 conQ: {required: true},
-                passwd: {required: true},
+                passwd: {required: true, regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{10,20}$/ },
                 passwdChk: {required: true, equalTo: "#passwd"},
             },
             onkeyup: false,
@@ -101,7 +105,8 @@
                 memTelNo: {required: "사무실전화를 입력하세요."},
                 memFaxNo: {required: "담당자 팩스를 입력하세요. "},
                 conQ: {required: "컨설팅시 주요 질의사항를 입력하세요."},
-                passwd: {required: "비밀번호를 입력하세요."},
+                passwd: {required: "비밀번호를 입력하세요.",
+                    regex:"비밀번호는 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다."},
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
                 material: {required: "주요원재료를 입력하세요."},
             },
@@ -149,7 +154,7 @@
                                     기업명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" name="" placeholder="기업명을 입력해주세요." required>
+                                    <input type="text" name="cmpNm" id="cmpNm" placeholder="기업명을 입력해주세요." required>
                                 </div>
                             </div>
                             <div class="fx2">
@@ -428,7 +433,7 @@
                                     비밀번호<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap long-input">
-                                    <input type="password" name="passwd" placeholder="비밀번호를 입력해주세요." required>
+                                    <input type="password" name="passwd" id="passwd" placeholder="비밀번호를 입력해주세요." required>
                                     <h5 class="sub">※ 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다.</h5>
                                 </div>
                             </div>
@@ -445,7 +450,7 @@
                     </div>
                     <div class="write-bottom">
                         <input type="submit" class="submit" value="등록">
-                        <a href="<c:url value="/front/consulting/list.do"/>">취소</a>
+                        <a href="<c:url value="/front/consulting/apply.do"/>">취소</a>
                     </div>
                 </form>
             </div>

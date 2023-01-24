@@ -77,7 +77,7 @@
                                 <a href="<c:url value="/front/board/${rs.bbsId}/edit.do?boardSeq=${rs.boardSeq}"/>" class="go-lst" title="수정" style="width: 140px;  float:right; margin:10px;">
                                     게시물 수정
                                 </a>
-                                <button onclick="javascript:deleteBbs();return false;" class="go-lst" style="width: 150px;  float:right; margin:10px;">게시물 삭제</button>
+                                <a onclick="javascript:deleteBbs();return false;" class="go-lst" style="width: 140px;  float:right; margin:10px;">게시물 삭제</a>
                             </c:if>
                         </div>
                     </div>

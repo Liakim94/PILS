@@ -50,7 +50,8 @@
 <header class="gnb-container">
     <div class="gnb-wrap">
         <div class="logo-wrap">
-            <img class="logo" src="${pageContext.request.contextPath}/images/common/logo.png" alt="중소벤처기업부"/>
+            <a href="${pageContext.request.contextPath}">
+            <img class="logo" src="${pageContext.request.contextPath}/images/common/logo.png" alt="중소벤처기업부"/></a>
             <img class="slogan" src="${pageContext.request.contextPath}/images/common/slogan.png"
                  alt="다시 도약하는 대한민국 함께 잘사는 국민의 나라"/>
         </div>
@@ -61,7 +62,7 @@
                 <div class="submenu">
                     <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
                     <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
-                    <a href="<c:url value="/front/guide/appliesto.do"/>">걸어온 발자취</a>
+                    <a href="<c:url value="/front/guide/trace.do"/>">걸어온 발자취</a>
                     <a href="<c:url value="/front/guide/cmpList.do"/>">참여기업 현황</a>
                     <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
                     <a href="<c:url value="/front/guide/statistics.do"/>">주요 통계</a>
@@ -91,7 +92,7 @@
             <c:if test="${sessionId eq null }">
                 <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/login.do">로그인</a>
             </c:if>
-            <c:if test="${sessionId ne null }">
+            <c:if test="${sessionId ne null  && sessionId ne 'admin'}">
                 <div>
                 <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/myPage.do"
                    >마이페이지</a>
@@ -101,6 +102,17 @@
                    >로그아웃</a>
                 </div>
             </c:if>
+            <c:if test="${sessionId eq 'admin' }">
+                <div>
+                    <a class="login font14 point2-text" href="${pageContext.request.contextPath}/admin/join/list.do"
+                    >관리자 페이지</a>
+                </div>
+                <div>
+                    <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/logout.do"
+                    >로그아웃</a>
+                </div>
+            </c:if>
+
             <div class="mobile-menu" onclick="mobileMenuOpen(this)">
                 <span></span>
                 <span></span>
@@ -114,10 +126,20 @@
                 <c:if test="${sessionId eq null }">
                     <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/login.do">로그인</a>
                 </c:if>
-                <c:if test="${sessionId ne null }">
+                <c:if test="${sessionId ne null && sessionId ne 'admin' }">
                     <div>
                         <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/myPage.do"
                         >마이페이지</a>
+                    </div>
+                    <div>
+                        <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/logout.do"
+                        >로그아웃</a>
+                    </div>
+                </c:if>
+                <c:if test="${sessionId eq 'admin' }">
+                    <div>
+                        <a class="login font14 point2-text" href="${pageContext.request.contextPath}/admin/join/list.do"
+                        >관리자 페이지</a>
                     </div>
                     <div>
                         <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/logout.do"
@@ -148,7 +170,7 @@
                         <span></span>
                     </div>
                     <div class="submenu">
-                        <a href="#">납품대금 연동 절차 알아보기</a>
+                        <a href="/">납품대금 연동 절차 알아보기</a>
                         <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
                         <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청하기</a>
                     </div>

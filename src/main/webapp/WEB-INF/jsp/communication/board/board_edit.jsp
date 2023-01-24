@@ -68,39 +68,39 @@
             });
         });
         $(function () {
-        $("#frmPost").validate({
-            rules: {
-                title:{required:true}
-            },
-            onkeyup:false,
-            onclick:false,
-            onfocusout:false,
-            messages: {
-                title:{required:"제목을 입력하세요."}
-            },
-            submitHandler: function (frm) {
+            $("#frmPost").validate({
+                rules: {
+                    title: {required: true}
+                },
+                onkeyup: false,
+                onclick: false,
+                onfocusout: false,
+                messages: {
+                    title: {required: "제목을 입력하세요."}
+                },
+                submitHandler: function (frm) {
 
-                oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
+                    oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
 
-                var ir1 = $("#cont").val();
-                if( ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>')  {
-                    alert("내용을 입력하세요.");
-                    oEditors.getById["cont"].exec("FOCUS"); //포커싱
-                    return;
+                    var ir1 = $("#cont").val();
+                    if (ir1 == "" || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>') {
+                        alert("내용을 입력하세요.");
+                        oEditors.getById["cont"].exec("FOCUS"); //포커싱
+                        return;
+                    }
+                    frm.submit();
+                },
+                success: function (e) {
+                },
+                showErrors: function (errorMap, errorList) {
+                    if (!$.isEmptyObject(errorList)) {
+                        $.each(errorList, function () {
+                            alert(this.message);
+                            return false;
+                        });
+                    }
                 }
-                frm.submit();
-            },
-            success: function (e) {
-            },
-            showErrors:function(errorMap, errorList){
-                if(!$.isEmptyObject(errorList)){
-                    $.each(errorList, function() {
-                        alert(this.message);
-                        return false;
-                    });
-                }
-            }
-        });
+            });
         });
     </script>
 </head>
@@ -112,8 +112,8 @@
             <br>
             <ul class="loc-list">
                 < li>
-                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
-                    <a href="${pageContext.request.contextPath}">홈</a></li>
+                <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
+                <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
                     소통마당
                 </li>
@@ -151,8 +151,8 @@
                                 <div class="label">
                                     상단 고정 여부
                                 </div>
-                                <div class="input-wrap">
-                                    <input type="checkbox" name="notiAt" id="notiAt" value="Y">고정</input>
+                                <div class="input-wrap  labeled-input-wrap label-right">
+                                    고정 <input type="checkbox" name="notiAt" id="notiAt" value="Y" style="width:50px"/>
                                 </div>
                             </div>
                             <div class="line-wrap">
@@ -165,14 +165,20 @@
                                 </div>
                             </div>
 
-                        </div><!-- /.box-body -->
+                        </div>
+                        <!-- /.box-body -->
                     </form:form>
                     <%-- WildRain 추가 2023-01-12 --%>
-                    <div class="file-uploader-wrapper">
-                        <div class="file-uploader"></div>
+                    <div class="line-wrap">
+                        <div class="label">
+                            첨부서류
+                        </div>
+                            <div class="file-uploader-wrapper">
+                                <div class="file-uploader"></div>
+                            </div>
                     </div>
                     <div class="write-bottom">
-                        <button id="submit" class="submit">저장</button>
+                        <button id="submit" class="submit"  style="width:130px">저장</button>
                         <%--<a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=${bbsId}" class="btn blue" title="취소">취소</a>--%>
                         <a href="<c:url value="/front/board/${frmPost.bbsId}/view.do?boardSeq=${frmPost.boardSeq}"/>">
                             취소

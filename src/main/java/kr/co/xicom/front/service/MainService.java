@@ -24,4 +24,5 @@ public interface MainService {
 
     int changePw(CmpMemberVo vo) throws Exception;
 
+
 }

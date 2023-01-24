@@ -143,7 +143,7 @@
                         }
                     }
                 },
-                passwd: {required: true, regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/ },
+                passwd: {required: true, regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{10,20}$/ },
                 passwdChk: {required: true, equalTo: "#passwd"},
             },
             // onkeyup: false,
@@ -180,12 +180,9 @@
                 memFaxNo: {required: "담당자 팩스를 입력하세요."},
                 conQ: {required: "컨설팅시 주요 질의사항를 입력하세요."},
                 passwd: {required: "비밀번호를 입력하세요.",
-                    regex:"비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다."},
+                    regex:"비밀번호는 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다."},
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
             },
-            // submitHandler: function (frm) {
-            //     $("#frmApply").submit();
-            // }
         });
     });
 
@@ -311,11 +308,11 @@
                             <div class="label">
                                 자본금<span class="required">*</span>
                             </div>
-                            <div class="input-wrap" labeled-input-wrap label-right">
+                            <div class="input-wrap labeled-input-wrap label-right">
                             <input type="text" id="capital" name="capital"
                                    placeholder="자본금을 입력해주세요." required/>백만원
-                        </div>
-                    </div>
+                            </div>
+                         </div>
                 </div>
                     <%--                        <div class="line-wrap">--%>
                     <%--                            <div class="label">기업 로고--%>
@@ -518,7 +515,7 @@
                         </div>
                         <div class="input-wrap long-input">
                             <input type="password" id="passwd" name="passwd" placeholder="비밀번호를 입력해주세요." required>
-                                <%--                                    <h5 class="sub">※ 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다.</h5>--%>
+                            <h5 class="sub">※ 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다.</h5>
                         </div>
                     </div>
                     <div class="fx2">
@@ -534,7 +531,7 @@
             </div>
             </form:form>
             <div class="write-bottom">
-                <button id="apply" class="submit">등록</button>
+                <button id="apply" class="submit" style="width:130px">등록</button>
                 <a href="${pageContext.request.contextPath}">취소</a>
             </div>
         </div>

@@ -39,10 +39,10 @@
                         <div class="line-wrap">
                             <div class="fx2">
                                 <div class="label">
-                                    기업명<span class="required">*</span>
+                                    기업명
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" id="cmpNm" name="cmpNm" value="${rs.cmpNm}" required/>
+                                    <input value="${rs.cmpNm}" readonly>
                                 </div>
                             </div>
                             <div class="fx2">
@@ -50,84 +50,57 @@
                                     사업자 번호
                                 </div>
                                 <div class="input-wrap">
-                                    <input class="multi" type="text" name="bizNo1" id="bizNo1" value="${rs.bizNo1}">
-                                    <span>-</span>
-                                    <input class="multi" type="text" name="bizNo2" id="bizNo2" value="${rs.bizNo2}">
-                                    <span>-</span>
-                                    <input class="multi" type="text" name="bizNo3" id="bizNo3" value="${rs.bizNo3}">
+                                    <input readonly value="${rs.bizNo1}-${rs.bizNo2}-${rs.bizNo3}">
                                 </div>
-
                             </div>
                         </div>
                         <div class="line-wrap">
                             <div class="fx2">
                                 <div class="label">
-                                    대표자명<span class="required">*</span>
+                                    대표자명
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" id="ceo" name="ceo"
-                                           value="${rs.ceo}" required/>
+                                    <input readonly value="${rs.ceo}">
                                 </div>
                             </div>
                             <div class="fx2">
-                                <div class="label">
-                                    설립일자<span class="required">*</span>
-                                </div>
+                                <div class="label">설립일자</div>
                                 <div class="input-wrap">
-                                    <input type="date" id="fdate" name="fdate"
-                                           value="${rs.fdate}" required/>
+                                    <input readonly value="${rs.fdate}">
                                 </div>
                             </div>
                         </div>
                         <div class="line-wrap">
-                            <div class="label">
-                                본사 주소<span class="required">*</span>
-                            </div>
+                            <div class="label">본사 주소</div>
                             <div class="input-wrap">
-                                <input type="text" name="address" id="address"
-                                       value="${rs.address}" onclick="execPostCode()" readonly/>
-                                <button type="button" class="btn" onclick="execPostCode()">주소찾기</button>
-                                <input type="text" name="address_dtl" id="address_dtl"
-                                       value="${rs.address_dtl}"/>
+                                <input readonly value="${rs.address} &nbsp; ${rs.address_dtl}">
                             </div>
                         </div>
                         <div class="line-wrap">
                             <div class="fx2">
-                                <div class="label">
-                                    전화번호<span class="required">*</span>
-                                </div>
+                                <div class="label">전화번호</div>
                                 <div class="input-wrap">
-                                    <input type="number" id="telNo" name="telNo" value="${rs.telNo}" required/>
+                                    <input readonly value="${rs.telNo}">
                                 </div>
                             </div>
                             <div class="fx2">
-                                <div class="label">
-                                    팩스<span class="required">*</span>
-                                </div>
+                                <div class="label">팩스</div>
                                 <div class="input-wrap">
-                                    <input type="number" id="faxNo" name="faxNo"
-                                           value="${rs.faxNo}" required/>
+                                    <input readonly value="${rs.faxNo}">
                                 </div>
                             </div>
                         </div>
                         <div class="line-wrap">
                             <div class="fx2">
-                                <div class="label">
-                                    업종<span class="required">*</span>
-                                </div>
+                                <div class="label">업종</div>
                                 <div class="input-wrap">
-                                    <input type="text" id="bizType" name="bizType"
-                                           value="${rs.bizType}" required/>
-                                    </td>
+                                    <input readonly value="${rs.bizType}">
                                 </div>
                             </div>
                             <div class="fx2">
-                                <div class="label">
-                                    자본금<span class="required">*</span>
-                                </div>
+                                <div class="label">자본금</div>
                                 <div class="input-wrap">
-                                    <input type="number" id="capital" name="capital" style="width:100px;"
-                                           value="${rs.capital}" required/>백만원
+                                    <input readonly value="${rs.capital}">
                                 </div>
                             </div>
                         </div>
@@ -158,9 +131,7 @@
                                 <div class="tri">
                             </c:if>
                             <div class="border">
-                            <input type="number"
-                                   id="ix_data${status.index+1}"
-                                   name="ix_data${status.index+1}" value="${st.index_data}"/>
+                            <input readonly value="${st.index_data}">
                             <c:if test="${status.index mod 3 eq 2}">
                                 </div>
                                 </div>
@@ -168,12 +139,9 @@
                             </div>
                         </c:forEach>
                         <div class="line-wrap">
-                            <div class="label" style="width: 155px">
-                                주요생산품<span class="required">*</span>
-                            </div>
+                            <div class="label label-long">주요생산품</div>
                             <div class="input-wrap">
-                                <input type="text" id="product" name="product"
-                                       value="${rs.product}" required/>
+                                <input readonly value="${rs.product}">
                             </div>
                         </div>
                     </div>
@@ -181,76 +149,49 @@
                     <h2 class="title mt40">담당자</h2>
                     <div class="write-container">
                         <div class="line-wrap">
-                            <div class="label">
-                                성명<span class="required">*</span>
-                            </div>
+                            <div class="label">성명</div>
                             <div class="input-wrap">
-                                <input type="text" name="name" id="name"
-                                       value="${rs.name}" required/>
+                                <input readonly value="${rs.name}">
                             </div>
                         </div>
                         <div class="line-wrap">
                             <div class="fx2">
-                                <div class="label">
-                                    소속 부서<span class="required">*</span>
-                                </div>
+                                <div class="label">소속 부서</div>
                                 <div class="input-wrap">
-                                    <input type="text" id="deptNm" name="deptNm"
-                                           value="${rs.deptNm}" required/>
+                                    <input readonly value="${rs.deptNm}">
                                 </div>
                             </div>
                             <div class="fx2">
                                 <div class="label">
-                                    직위<span class="required">*</span>
+                                    직위
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" id="position" name="position"
-                                           value="${rs.position}" required/>
+                                    <input readonly value="${rs.position}">
                                 </div>
                             </div>
                         </div>
                         <div class="line-wrap">
-                            <div class="label">
-                                전화번호<span class="required">*</span>
-                            </div>
+                            <div class="label">전화번호</div>
                             <div class="input-wrap">
-                                <input type="number" id="mbphno" name="mbphno"
-                                       value="${rs.mbphno}" required/>
+                                <input readonly value="${rs.mbphno}">
                             </div>
                         </div>
                         <div class="line-wrap">
-                            <div class="label">
-                                이메일<span class="required">*</span>
-                            </div>
+                            <div class="label">이메일</div>
                             <div class="input-wrap ">
-                                <input type="text" class="multi" name="email1" id="email1"
-                                       value="${rs.email1}" required/>
-                                <span>@</span>
-                                <input type="text" style="width: 130px" name="email2" id="email2"
-                                       value="${rs.email2}" required/>
-                                <select id="email3" style="width: 130px"
-                                        onclick="selectEmail(this)">
-                                    <option value="1">직접입력</option>
-                                    <option value="naver.com">naver.com</option>
-                                    <option value="daum.net">daum.net</option>
-                                    <option value="gmail.com">gmail.com</option>
-                                </select>
+                                <input readonly value="${rs.email}">
                             </div>
                         </div>
                         <div class="line-wrap">
-                            <div class="label">
-                                사무실 전화
-                            </div>
+                            <div class="label">사무실 전화</div>
                             <div class="input-wrap">
-                                <input type="number" id="memTelNo" name="memTelNo"
-                                       value="${rs.memTelNo}"/>
+                                <input readonly value="${rs.memTelNo}">
                             </div>
                         </div>
                         <div class="line-wrap">
                             <div class="label">팩스</div>
                             <div class="input-wrap">
-                                <input type="number" id="memFaxNo" name="memFaxNo"
-                                       value="${rs.memFaxNo}"/>
+                                <input readonly value="${rs.memFaxNo}">
                             </div>
                         </div>
                     </div>
@@ -262,7 +203,7 @@
                         </div>
                         <div class="line-wrap">
                             <div class="input-wrap input-full">
-                                <textarea id="conQ" name="conQ" value="${rs.conQ}"></textarea>
+                                <textarea readonly value="${rs.conQ}"></textarea>
                             </div>
                         </div>
                     </div>
@@ -273,15 +214,7 @@
                                 수위탁 거래 유형
                             </div>
                             <div class="input-wrap">
-                                <select id="deal_type" name="deal_type">
-                                    <option value="${rs.deal_type}">${rs.deal_type} (현재정보)</option>
-                                    <option value="제조">제조</option>
-                                    <option value="공사">공사</option>
-                                    <option value="가공">가공</option>
-                                    <option value="수리">수리</option>
-                                    <option value="용역">용역</option>
-                                    <option value="기술개발">기술개발</option>
-                                </select>
+                                <input readonly value="  ${rs.deal_type}"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -289,8 +222,7 @@
                                 연간 거래 규모
                             </div>
                             <div class="input-wrap">
-                                <input type="text" name="deal_scale" id="deal_scale"
-                                       value="${rs.deal_scale}"/>
+                                <input readonly value="${rs.deal_scale}"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -298,7 +230,7 @@
                                 주요 원재료
                             </div>
                             <div class="input-wrap">
-                                <input type="text" name="material" id="material" value="${rs.material}"/>
+                                <input readonly value="${rs.material}"/>
                             </div>
                         </div>
                     </div>

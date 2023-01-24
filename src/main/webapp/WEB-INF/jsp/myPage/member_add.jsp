@@ -89,73 +89,115 @@
                 <div class="side-wrap">
                 </div>
             </div>
-            <div class="content">
+
+            <div id="company-write" class="content">
                 <div class="write-container">
-                    <form name="frmWrite" id="frmWrite" method="post" action="${pageContext.request.contextPath}/main/memAdd.do">
-                        <table class="table-form">
-                            <tbody>
-                            <tr>
-                                <th class="txt_alcnt" scope="row">성명</th>
-                                <td><input type="text" class="uni_input_text wdh100" name="name" id="name"/></td>
-                                <th class="txt_alcnt" scope="row">전화번호</th>
-                                <td><input type="number" class="uni_input_text wdh100" id="mbphno" name="mbphno" value=""/></td>
-                            </tr>
-                            <tr>
-                                <th class="txt_alcnt" scope="row">소속부서</th>
-                                <td><input type="text" class="uni_input_text wdh100" id="deptNm" name="deptNm" value=""/>
-                                <th class="txt_alcnt" scope="row">직위</th>
-                                <td><input type="text" class="uni_input_text wdh100" id="position" name="position" value=""/></td>
-                            </tr>
-                            <tr>
-                                <th class="txt_alcnt" scope="row">이메일</th>
-                                <td colspan="3">
-                                    <input type="text" class="uni_input_text " name="email1" id="email1"/>
-                                    @
-                                    <input type="text" class="uni_input_text " name="email2" id="email2" value=""/>
-                                    <select id="email3" class="uni_input_text " style="border-radius: 5px;" onclick="selectEmail(this)">
-                                        <option value="1">직접입력</option>
-                                        <option value="naver.com">naver.com</option>
-                                        <option value="daum.net">daum.net</option>
-                                        <option value="gmail.com">gmail.com</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="txt_alcnt" scope="row">사무실 전화</th>
-                                <td><input type="number" class="uni_input_text wdh100" id="memTelNo" name="memTelNo" value=""/></td>
-                                <th class="txt_alcnt" scope="row">팩스</th>
-                                <td><input type="number" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo" value=""/></td>
-                            </tr>
-                            <tr>
-                                <th class="txt_alcnt" scope="row">첨부서류</th>
-                                <td>파일찾기</td>
-                            </tr>
-                            <tr>
-                                <th colspan="4" class="txt_alcnt" scope="row">회원가입 정보</th>
-                            </tr>
-                            <tr>
-                                <th class="txt_alcnt" scope="row">사용자 ID</th>
-                                <td colspan="3">
-                                    <input type="text" class="uni_input_text wdh100" name="id" id="id"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="txt_alcnt" scope="row">비밀번호</th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100" name="passwd" value=""/>
-                                </td>
-                                <th class="txt_alcnt" scope="row">비밀번호 재입력</th>
-                                <td>
-                                    <input type="text" class="uni_input_text wdh100" id="passwdChk" name="passwdChk" value=""/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div class="write-bottom">
-                            <button type="submit" class="btn blue">등록</button>
-                            <a href="${pageContext.request.contextPath}/main/management.do" class="btn blue">취소</a>
+                    <form name="frmWrite" id="frmWrite" method="post"
+                          action="${pageContext.request.contextPath}/main/memAdd.do">
+                        <div class="line-wrap">
+                            <div class="label">
+                                성명
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" name="name" id="name" placeholder="성명을 입력해주세요." required/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="fx2">
+                                <div class="label">
+                                    소속 부서
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="deptNm" name="deptNm" placeholder="소속부서를 입력해주세요." required/>
+                                </div>
+                            </div>
+                            <div class="fx2">
+                                <div class="label">
+                                    직위
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" id="position" name="position" placeholder="직위를 입력해주세요."
+                                           required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                전화번호
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" id="mbphno" name="mbphno" required/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                이메일
+                            </div>
+                            <div class="input-wrap ">
+                                <input type="text" class="multi" name="email1" id="email1" required/>
+                                <span>@</span>
+                                <input type="text" style="width: 130px" name="email2" id="email2" required/>
+                                <select id="email3" style="width: 130px"
+                                        onclick="selectEmail(this)">
+                                    <option value="1">직접입력</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="daum.net">daum.net</option>
+                                    <option value="gmail.com">gmail.com</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                사무실 전화
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" id="memTelNo" name="memTelNo"/>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">팩스</div>
+                            <div class="input-wrap">
+                                <input type="text" id="memFaxNo" name="memFaxNo"/>
+                            </div>
+                        </div>
+                        <h2 class="title mt40">회원가입 정보</h2>
+                        <div class="write-container">
+                            <div class="line-wrap">
+                                <div class="label label-long">
+                                    사용자 ID<span class="required">*</span>
+                                </div>
+                                <div class="input-wrap long-input">
+                                    <input type="text" name="id" id="id" placeholder="ID를 입력해주세요." required/>
+                                </div>
+                            </div>
+                            <div class="line-wrap">
+                                <div class="fx2">
+                                    <div class="label label-long">
+                                        비밀번호<span class="required">*</span>
+                                    </div>
+                                    <div class="input-wrap long-input">
+                                        <input type="password" id="passwd" name="passwd" placeholder="비밀번호를 입력해주세요."
+                                               required>
+                                        <h5 class="sub">※ 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다.</h5>
+                                    </div>
+                                </div>
+                                <div class="fx2">
+                                    <div class="label label-long">
+                                        비밀번호 재입력<span class="required">*</span>
+                                    </div>
+                                    <div class="input-wrap long-input">
+                                        <input type="password" id="passwdChk" name="passwdChk"
+                                               placeholder="비밀번호를 재입력해주세요."
+                                               required/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
+                </div>
+                <div class="write-bottom">
+                    <button type="submit" class="submit" style="width: 130px">등록</button>
+                    <a href="${pageContext.request.contextPath}/main/management.do" class="go-lst">취소</a>
                 </div>
             </div>
         </div>
