@@ -51,7 +51,7 @@
                                  , rgst_dt)
         values ( #{title}
                , #{cont}
-               , current_date)
+               , current_timestamp)
     </insert>
     <select id="traceList" resultMap="TraceVO">
         select seq     as seq
@@ -68,5 +68,9 @@
         from tb_pils_trace tpt
         where seq = #{seq}
     </select>
-
+    <select id="traceCount" resultType="int">
+        SELECT COUNT(1)
+        FROM tb_pils_trace
+        WHERE 1 = 1
+    </select>
 </mapper>

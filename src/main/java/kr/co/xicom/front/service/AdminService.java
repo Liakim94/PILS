@@ -5,6 +5,7 @@ import kr.co.xicom.front.model.TraceVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public interface AdminService {
@@ -14,7 +15,7 @@ public interface AdminService {
     //걸어온 발자취 관리
     int tracePost(TraceVO vo) throws Exception;
 
-    List<TraceVO> traceList(TraceVO vo) throws Exception;
+    Map<String, Object> traceList(TraceVO vo) throws Exception;
 
     TraceVO traceView(int seq) throws Exception;
 }

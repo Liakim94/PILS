@@ -30,7 +30,7 @@
                     <input type="hidden" value="${rs.seq}">
 
                     <p class="subj">제목 : ${rs.title}</p>
-                    <p class="subj">등록일자 : ${rs.rgst_dt}</p>
+                    <p class="subj">등록일자 : ${fn:substring(rs.rgst_dt,0,10)}</p>
                     <div class="cont">
                         ${fx:resetXSSMinimum(rs.cont)}
                     </div>

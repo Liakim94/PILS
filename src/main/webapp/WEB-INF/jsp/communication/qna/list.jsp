@@ -68,7 +68,8 @@
                     <c:forEach var="list" items="${list }" varStatus="status">
                         <input type="hidden" name="no" id="no" value="${list.no}">
                         <tr>
-                            <td class="txt_alcnt">${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
+                            <td class="txt_alcnt">
+                                    ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
                             <td class="al">
                                 <c:choose>
                                     <c:when test="${list.id eq '1'}">

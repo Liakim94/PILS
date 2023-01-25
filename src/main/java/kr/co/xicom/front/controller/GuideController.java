@@ -59,7 +59,6 @@ public class GuideController extends Alerts {
     @RequestMapping("/guide/trace.do")
     public ModelAndView trace(@ModelAttribute("TraceVo")TraceVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("guide/trace");
-        List<TraceVO> result = adminService.traceList(vo);
         PaginationInfo paginationInfo = new PaginationInfo();
         paginationInfo.setCurrentPageNo(vo.getPageIndex());
         paginationInfo.setRecordCountPerPage(15);
@@ -68,8 +67,16 @@ public class GuideController extends Alerts {
         vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
         vo.setLastIndex(paginationInfo.getLastRecordIndex());
         vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+        Map<String, Object> result = new HashMap<String, Object>();
+        result = adminService.traceList(vo);
 
-        mav.addObject("rs", result);
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", result.get("resultList"));
+        mav.addObject("totalCnt", result.get("resultCnt"));
+
         mav.addObject("paginationInfo", paginationInfo);
 
         return mav;
