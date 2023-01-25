@@ -62,7 +62,8 @@
         order by rgst_dt Desc
     </select>
     <select id="traceView" resultMap="TraceVO">
-        select title   as title
+        select seq     as seq
+             , title   as title
              , cont    as cont
              , rgst_dt as rgst_dt
         from tb_pils_trace tpt
@@ -73,4 +74,16 @@
         FROM tb_pils_trace
         WHERE 1 = 1
     </select>
+    <update id="traceUpdate">
+        update tb_pils_trace
+        set title =#{title}
+          , cont  =#{cont}
+        where seq = #{seq}
+    </update>
+
+    <delete id="traceDelete">
+        Delete
+        from tb_pils_trace
+        where seq = #{seq}
+    </delete>
 </mapper>

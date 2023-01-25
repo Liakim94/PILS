@@ -26,7 +26,7 @@
     });
     function fn_submit() {
 
-        var frm = document.getElementById('post');
+        var frm = document.getElementById('edit');
 
         if (frm.title.value == "") {
             alert("제목을 입력하세요.");
@@ -41,7 +41,7 @@
             return false;
         }
 
-        $("#post").submit();
+        $("#edit").submit();
     }
 </script>
 <div id="content">
@@ -64,14 +64,15 @@
                 <!-- 컨텐츠 start -->
                 <div class="write-container">
                     <div class="write-container">
-                        <form:form modelAttribute="post" action="post.do" method="post" id="post">
+                        <form:form modelAttribute="edit" action="edit.do" method="post" id="edit">
                             <div class="write-wrap">
                                 <div class="line-wrap">
+                                    <form:input path="seq" type="hidden"/>
                                     <div class="label">
                                         제목
                                     </div>
                                     <div class="input-wrap">
-                                        <form:input type="text" path="title" placeholder="제목을 입력하세요" maxlength="85"/>
+                                        <form:input type="text" path="title" maxlength="85"/>
                                     </div>
                                 </div>
 

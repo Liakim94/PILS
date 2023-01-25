@@ -52,10 +52,7 @@
     <decorator name="footer" page="/footer.do"/>
     <decorator name="menu_admin" page="/menu_admin.do"/>
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
-        <pattern>/admin/join/list.do</pattern>
-        <pattern>/admin/consulting/list.do</pattern>
-        <pattern>/admin/management/list.do</pattern>
-        <pattern>/admin/trace/post.do</pattern>
+        <pattern>/admin/*</pattern>
     </decorator>
 
 </decorators>
