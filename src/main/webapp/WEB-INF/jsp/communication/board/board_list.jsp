@@ -92,8 +92,8 @@
                                                 </td>
                                             </c:when>
                                             <c:otherwise>
-                                                <td>
-                                                        ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }
+                                                <td class="txt_alcnt">
+                                                ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }
                                                 </td>
                                             </c:otherwise>
                                         </c:choose>

@@ -119,16 +119,15 @@ public class adminController {
     }
     //걸어온 발자취 게시판 관리
     @GetMapping("/trace/post.do")
-    public ModelAndView tracePost(@ModelAttribute("post")TraceVO vo
-            , HttpSession session) throws Exception {
+    public ModelAndView tracePost(@ModelAttribute("post")TraceVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("admin/trace_post");
         return mav;
     }
+
     @PostMapping("/trace/post.do")
     public String doTracePost(@ModelAttribute("post")TraceVO vo)throws Exception {
         int result =adminService.tracePost(vo);
         if (result > 0) {
-            vo.getSeq();
             return "redirect:/front/guide/trace/view.do?seq="+vo.getSeq();
         }
         else {

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <div id="content">
     <div id="board">
@@ -38,13 +39,14 @@
                         <tbody>
                         <c:forEach var="rs" items="${rs }" varStatus="status">
                             <tr>
-                                <td class="txt_alcnt"> ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }
+                                <td class="txt_alcnt">
+                                        ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }
                                 </td>
                                 <td class="al">
                                     <a href="<c:url value="/front/guide/trace/view.do?seq=${rs.seq}"/>">
-                                    ${rs.title}</a>
-                                    </td>
-                                <td>${rs.rgst_dt}</td>
+                                            ${rs.title}</a>
+                                </td>
+                                <td>${fn:substring(rs.rgst_dt,0,10)}</td>
                             </tr>
                         </c:forEach>
                         <c:if test="${empty rs }">

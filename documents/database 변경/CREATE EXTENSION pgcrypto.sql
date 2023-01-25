@@ -20,7 +20,7 @@ CREATE TABLE pis.tb_pils_trace (
                                    seq bigserial NOT NULL,
                                    title varchar(255) NULL,
                                    cont text NULL,
-                                   rgst_dt date NULL,
+                                   rgst_dt timestamp NULL,
                                    CONSTRAINT tb_pils_trace_pk PRIMARY KEY (seq)
 );
 COMMENT ON COLUMN pis.tb_pils_trace.title IS '제목';
