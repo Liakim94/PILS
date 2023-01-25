@@ -26,7 +26,7 @@
                        style="width: 135px">
                         게시물 등록
                     </a>
-                    <table class="table-form">
+                    <table class="tbl-list01">
 
                         <colgroup>
                             <col width="10%"/>

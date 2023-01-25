@@ -25,7 +25,7 @@
             <div class="content">
                 <!-- 컨텐츠 start -->
                 <div class="write-container">
-                    <table class="table-form">
+                    <table class="tbl-list01">
                         <colgroup>
                             <col width="10%"/>
                             <col width="60%"/>
