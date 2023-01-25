@@ -121,8 +121,8 @@
                                 <div class="label">
                                     내용
                                 </div>
-                                <div class="input-wrap">
-                                    <form:textarea path="cont" cssClass="form-control"/>
+                                <div class="editor-input-wrap">
+                                    <form:textarea path="cont" cssClass="form-control" cssStyle="display:none;min-height: 400px;height: 400px;"/>
                                 </div>
                             </div>
                         </div>
@@ -130,9 +130,9 @@
                     <%-- WildRain 추가 2023-01-12 --%>
                     <div class="line-wrap">
                         <div class="label">
-                           첨부파일
+                            첨부파일
                         </div>
-                            <div class="file-uploader-wrapper">
+                        <div class="file-uploader-wrapper">
                             <div class="file-uploader"></div>
                         </div>
                     </div>

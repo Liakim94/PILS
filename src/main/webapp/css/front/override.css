@@ -40,6 +40,10 @@ select {
 .label-right label {
 
 }
+/* input-wrap */
+.input-wrap {
+    box-sizing: border-box;
+}
 /* address-input-wrap */
 .address-input-wrap {
 
@@ -69,9 +73,9 @@ select {
     bottom: 0!important;
 }
 /* file-uploader */
-.file-uploader-wrapper {
+/*.file-uploader-wrapper {
     padding: 0!important;
-}
+}*/
 .file-uploader-wrapper .file-uploader {
     margin: 0;
     border: 0;
@@ -79,4 +83,17 @@ select {
 }
 .write-container .line-wrap .file-uploader-wrapper {
     width: calc(100% - 120px);
+    padding: 0!important;
+    width: 80%;
+}
+/* editor-input-wrap */
+.editor-input-wrap {
+    width: 80%;
+    padding: 0!important;
+    min-height: 400px;
+}
+/* 걸오온 발자취 */
+.board-view-wrap01 .cont {
+    height: auto!important;
+
 }

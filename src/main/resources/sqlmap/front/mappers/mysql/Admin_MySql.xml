@@ -54,12 +54,31 @@
                , current_timestamp)
     </insert>
     <select id="traceList" resultMap="TraceVO">
-        select seq     as seq
-             , title   as title
-             , cont    as cont
-             , rgst_dt as rgst_dt
-        from tb_pils_trace tpt
-        order by rgst_dt Desc
+        <!-- WildRain 수정 2023-01-25 -->
+        with src as (
+            select
+                seq     as seq,
+                title   as title,
+                cont    as cont,
+                rgst_dt as rgst_dt,
+                <![CDATA[
+                replace(replace(replace(replace(replace(cont, '&lt;', '<'), '&gt;', '>'), '&quot;', '"'), '&amp;', '&'), '&nbsp;', ' ') as tcont
+                ]]>
+            from
+                tb_pils_trace tpt
+            order by
+                rgst_dt Desc
+        )
+        select
+            seq,
+            title,
+            cont,
+            rgst_dt,
+            <![CDATA[
+            (regexp_matches(tcont, '<img[^>]*\ssrc=[\"'']?([^>\"'']+)[\"'']?[^>]*>'))[1] img_path
+            ]]>
+        from
+            src
     </select>
     <select id="traceView" resultMap="TraceVO">
         select seq     as seq

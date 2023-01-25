@@ -111,9 +111,10 @@
         <div class="article">
             <br>
             <ul class="loc-list">
-                < li>
-                <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
-                <a href="${pageContext.request.contextPath}">홈</a></li>
+                <li>
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
+                    <a href="${pageContext.request.contextPath}">홈</a>
+                </li>
                 <li>
                     소통마당
                 </li>
@@ -159,8 +160,8 @@
                                 <div class="label">
                                     내용
                                 </div>
-                                <div class="input-wrap">
-                                    <textarea class="form-control" id="cont"
+                                <div class="editor-input-wrap">
+                                    <textarea class="form-control" id="cont" style="display:none;min-height:400px;height:400px;"
                                               name="cont">${fx:resetXSSMinimum(frmPost.cont) }</textarea>
                                 </div>
                             </div>
@@ -173,9 +174,9 @@
                         <div class="label">
                             첨부서류
                         </div>
-                            <div class="file-uploader-wrapper">
-                                <div class="file-uploader"></div>
-                            </div>
+                        <div class="file-uploader-wrapper">
+                            <div class="file-uploader"></div>
+                        </div>
                     </div>
                     <div class="write-bottom">
                         <button id="submit" class="submit"  style="width:130px">저장</button>

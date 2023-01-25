@@ -3,6 +3,28 @@
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<style>
+    .thumbnail-box {
+        display: flex;
+        align-items: center;
+    }
+    .thumbnail-box .image-wrapper {
+        width:50px;
+        height:50px;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid #eee;
+        margin-right: 15px;
+        box-sizing: border-box;
+    }
+    .thumbnail-box .image-wrapper img {
+        width:48px;
+    }
+    .content table td.al {
+        text-align: left;
+    }
+
+</style>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="guide_menu"/>
@@ -43,8 +65,13 @@
                                         ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }
                                 </td>
                                 <td class="al">
-                                    <a href="<c:url value="/front/guide/trace/view.do?seq=${rs.seq}"/>">
-                                            ${rs.title}</a>
+                                    <div class="thumbnail-box">
+                                        <span class="image-wrapper">
+                                            <img src="<c:out value="${rs.imgPath}"/>" alt="<c:out value="${rs.title}"/>"/>
+                                        </span>
+                                        <a href="<c:url value="/front/guide/trace/view.do?seq=${rs.seq}"/>">
+                                                ${rs.title}</a>
+                                    </div>
                                 </td>
                                 <td>${fn:substring(rs.rgst_dt,0,10)}</td>
                             </tr>
