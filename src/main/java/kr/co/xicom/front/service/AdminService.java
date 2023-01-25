@@ -18,4 +18,8 @@ public interface AdminService {
     Map<String, Object> traceList(TraceVO vo) throws Exception;
 
     TraceVO traceView(int seq) throws Exception;
+
+    int traceUpdate(TraceVO vo)  throws Exception;
+
+    int traceDelete(int seq) throws Exception;
 }

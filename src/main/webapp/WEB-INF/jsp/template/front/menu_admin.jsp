@@ -19,7 +19,7 @@
         <ul>
             <li><a href ="${pageContext.request.contextPath}/admin/join/list.do">동행기업 신청 현황</a></li>
             <li><a href ="${pageContext.request.contextPath}/admin/consulting/list.do">컨설팅 신청 현황</a></li>
-            <li><a href ="${pageContext.request.contextPath}/admin/trace/post.do">걸어온 발자취 관리</a></li>
+            <li><a href ="${pageContext.request.contextPath}/admin/trace/list.do">걸어온 발자취 관리</a></li>
             <li><a href ="${pageContext.request.contextPath}/admin/">기업들이 준비할 일 관리</a></li>
             <li><a href ="${pageContext.request.contextPath}/admin/management/list.do">담당자 관리</a></li>
         </ul>

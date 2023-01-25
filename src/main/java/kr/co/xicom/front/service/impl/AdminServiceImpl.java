@@ -41,5 +41,13 @@ public class AdminServiceImpl implements AdminService {
     public TraceVO traceView(int seq) throws Exception{
         return adminMapper.traceView(seq);
     }
+    @Override
+    public int traceUpdate(TraceVO vo)  throws Exception{
+        return adminMapper.traceUpdate(vo);
+    }
+    @Override
+    public int traceDelete(int seq) throws Exception{
+        return adminMapper.traceDelete(seq);
+    }
 
 }

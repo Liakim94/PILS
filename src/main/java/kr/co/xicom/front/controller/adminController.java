@@ -9,10 +9,7 @@ import kr.co.xicom.front.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -65,6 +62,7 @@ public class adminController {
 
         return mav;
     }
+
     //컨설팅 신청 현황
     @GetMapping(value = "/consulting/list.do")
     public ModelAndView conList(ModelMap model,
@@ -99,10 +97,11 @@ public class adminController {
         mav.addObject("vo", cmpVO);
         return mav;
     }
+
     //담당자 현황
     @GetMapping("/management/list.do")
     public ModelAndView memManage(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
-            ,HttpSession session) throws Exception {
+            , HttpSession session) throws Exception {
         ModelAndView mav = new ModelAndView("admin/mem_list");
         cmpVO.setBizNo((String) session.getAttribute("sessionBizNo"));
         try {
@@ -117,21 +116,89 @@ public class adminController {
         }
         return mav;
     }
+
     //걸어온 발자취 게시판 관리
+    @RequestMapping("/trace/list.do")
+    public ModelAndView trace(@ModelAttribute("TraceVo") TraceVO vo) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/trace_list");
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());
+        paginationInfo.setRecordCountPerPage(15);
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+        Map<String, Object> result = new HashMap<String, Object>();
+        result = adminService.traceList(vo);
+
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", result.get("resultList"));
+        mav.addObject("totalCnt", result.get("resultCnt"));
+
+        mav.addObject("paginationInfo", paginationInfo);
+
+        return mav;
+    }
+
     @GetMapping("/trace/post.do")
-    public ModelAndView tracePost(@ModelAttribute("post")TraceVO vo) throws Exception {
+    public ModelAndView tracePost(@ModelAttribute("post") TraceVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("admin/trace_post");
         return mav;
     }
 
     @PostMapping("/trace/post.do")
-    public String doTracePost(@ModelAttribute("post")TraceVO vo)throws Exception {
-        int result =adminService.tracePost(vo);
+    public String doTracePost(@ModelAttribute("post") TraceVO vo) throws Exception {
+        int result = adminService.tracePost(vo);
+
         if (result > 0) {
-            return "redirect:/front/guide/trace/view.do?seq="+vo.getSeq();
-        }
-        else {
+            return "redirect:/admin/trace/list.do";
+        } else {
             return "forward:/common/error.jsp";
         }
+    }
+
+    @RequestMapping("/trace/view.do")
+    public ModelAndView traceView(@RequestParam(value = "seq") int seq
+            , @ModelAttribute("TraceVO") TraceVO vo) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/trace_view");
+        vo.setSeq(seq);
+        vo = adminService.traceView(seq);
+
+        mav.addObject("rs", vo);
+        return mav;
+    }
+
+    @RequestMapping("/trace/edit.do")
+    public ModelAndView traceEdit(@RequestParam(value = "seq") int seq
+            , @ModelAttribute("edit") TraceVO vo) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/trace_edit");
+        vo = adminService.traceView(seq);
+        mav.addObject("edit", vo);
+
+        return mav;
+    }
+    @PostMapping("/trace/edit.do")
+    public String doTraceEdit(@ModelAttribute("edit") TraceVO vo) throws Exception {
+        int result = adminService.traceUpdate(vo);
+        if (result > 0) {
+            return "redirect:/admin/trace/view.do?seq=" + vo.getSeq();
+        }
+        return "forward:/common/error.jsp";
+    }
+
+
+    @RequestMapping("/trace/delete.do")
+    public String traceDelete(@RequestParam(value = "seq") int seq
+            , @ModelAttribute("TraceVO") TraceVO vo) throws Exception {
+        vo.setSeq(seq);
+        int result = adminService.traceDelete(seq);
+        if (result > 0) {
+            return "redirect:/admin/trace/list.do";
+        }
+        return "forward:/common/error.jsp";
     }
 }

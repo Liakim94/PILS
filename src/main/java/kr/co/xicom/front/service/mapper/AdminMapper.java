@@ -14,5 +14,6 @@ public interface AdminMapper {
     List<TraceVO> traceList(TraceVO vo) throws Exception;
     TraceVO traceView(int seq) throws Exception;
     int traceCount(TraceVO vo) throws Exception;
-
+    int traceDelete(int seq) throws Exception;
+    int traceUpdate(TraceVO vo) throws Exception;
 }

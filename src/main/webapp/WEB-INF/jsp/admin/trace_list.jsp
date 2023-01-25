@@ -5,27 +5,29 @@
 
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="guide_menu"/>
+        <page:applyDecorator name="menu_admin"/>
         <div class="article">
-            <br>
             <ul class="loc-list">
                 <li>
-                    <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>
-                    납품대금연동제란?
-                </li>
-                <li>
-                    걸어온 발자취
-                </li>
+                <li>관리자</li>
+                <li>걸어온 발자취 관리</li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">걸어온 발자취</h1>
+                <h1 class="fw700">걸어온 발자취 관리</h1>
+                <div class="side-wrap">
+                </div>
             </div>
             <div class="content">
                 <!-- 컨텐츠 start -->
-                <div class="write-container">
+                <div class="tbl-wrap for_board">
+                    <a href="<c:url value="/admin/trace/post.do"/>" class="write-question"
+                       style="width: 135px">
+                        게시물 등록
+                    </a>
                     <table class="tbl-list01">
+
                         <colgroup>
                             <col width="10%"/>
                             <col width="60%"/>
@@ -43,7 +45,7 @@
                                         ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }
                                 </td>
                                 <td class="al">
-                                    <a href="<c:url value="/front/guide/trace/view.do?seq=${rs.seq}"/>">
+                                    <a href="<c:url value="/admin/trace/view.do?seq=${rs.seq}"/>">
                                             ${rs.title}</a>
                                 </td>
                                 <td>${fn:substring(rs.rgst_dt,0,10)}</td>
