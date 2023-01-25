@@ -6,6 +6,7 @@
         <result property="title" column="title"/>
         <result property="cont" column="cont"/>
         <result property="rgst_dt" column="rgst_dt"/>
+        <result property="imgPath" column="img_path"/>
     </resultMap>
     <resultMap id="CmpMemberVo" type="kr.co.xicom.front.model.CmpMemberVo">
         <result property="bizNo" column="bizNo"/>

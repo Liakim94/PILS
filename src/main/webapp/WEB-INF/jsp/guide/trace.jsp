@@ -67,7 +67,7 @@
                                 <td class="al">
                                     <div class="thumbnail-box">
                                         <span class="image-wrapper">
-                                            <img src="<c:out value="${rs.imgPath}"/>" alt="<c:out value="${rs.title}"/>"/>
+                                            <img src="<c:out value="${rs.imgPath}"/>" alt="<c:out value="${rs.title}"/>" onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
                                         </span>
                                         <a href="<c:url value="/front/guide/trace/view.do?seq=${rs.seq}"/>">
                                                 ${rs.title}</a>
