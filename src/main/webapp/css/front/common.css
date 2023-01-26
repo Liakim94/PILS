@@ -736,7 +736,7 @@
     margin-bottom: 0;
 }
 
-/* Top Button */
+    /* Top Button */
 .go-top{
     background: linear-gradient(92.61deg, #DA0021 -6.8%, #E64500 101.17%);
     position: fixed;
@@ -760,7 +760,7 @@
     font-size: 12px;
 
 }
-/* Footer */
+    /* Footer */
 .footer-container{
     background-color: #606060;
     padding: 45px 40px 50px;
@@ -858,12 +858,82 @@
 #main .title strong{
     font-family: 'GmarketSans', sans-serif;
 }
+#main-banner{
+    position: relative;
+}
+#main .main-slide-container{
+    height: 400px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+#main .main-slide-container .swiper-slide{
+    background-position: top center;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+#main .main-slide-container .swiper-slide .text-wrap{
+    text-align: left;
+    width: 90%;
+    max-width: 1278px;
+    margin: 0 auto;
+}
+#main .main-slide-container .swiper-slide .slide-text p{
+    font-size:54px;
+    line-height:60px;
+    font-weight:400;
+    letter-spacing:-0.75px;
+    color:#fff;
+    font-family: 'GmarketSans', sans-serif;
+    text-align: left;
+    transition: all 1.5s;
+    transform: translateY(-15px);
+    opacity: 0.2;
+}
+#main .main-slide-container .swiper-slide-active .slide-text p{
+    transform: translateY(0px);
+    opacity: 1;
+}
+#main .main-slide-container .swiper-slide .slide-text strong{
+    color:#fff !important;
+    font-family: 'GmarketSans', sans-serif;
+}
+#main .main-slide-container .swiper-slide .more-btn{
+    display:block;
+    font-size: 24px;
+    color: #fff;
+    transition: all 1.5s;
+    transform: translateY(15px);
+    text-align: left;
+    margin-top: 40px;
+}
+#main .main-slide-container .swiper-slide-active .more-btn{
+    transform: translateY(0px);
+    opacity: 1;
+}
+#main .main-slide-container .swiper-slide .more-btn i{
+    background: #E60024;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    line-height: 27px;
+    color: #ffff;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    bottom: 4px;
+    margin-left: 10px;
+}
 #main .main-navi{
     position: absolute;
     bottom: -25px;
     width: 100px;
     display: flex;
     right: 8%;
+    z-index: 1;
 }
 #main .main-navi .navi{
     width: 50px;
@@ -998,7 +1068,7 @@
     line-height: 21px;
 }
 
-/* 참여기업 상세페이지 */
+    /* 참여기업 상세페이지 */
 #company-detail{
     width: 95%;
     max-width: 920px;
@@ -2354,7 +2424,7 @@
     margin-bottom: 40px;
 }
 #about .example-box h4{
-    width: 50px;
+   width: 50px;
     font-weight: 600;
     padding: 10px 0;
 }
@@ -2704,7 +2774,10 @@
     #company-write .write-container .fx2:nth-child(1){
         border-bottom: 1px solid #505050;
     }
-
+    #main .main-slide-container .swiper-slide .slide-text p{
+        font-size: 40px;
+        line-height: 50px;
+    }
     /*  Footer  */
     .footer-container .footer-wrap{
         flex-wrap: wrap;
@@ -2733,12 +2806,29 @@
     }
 
     /* 메인 */
+    #main .main-slide-container{
+        border-bottom-right-radius: 50px;
+    }
+    #main .main-slide-container .swiper-slide .slide-text p{
+        font-size: 20px;
+        line-height: 30px;
+    }
     #main .company-list-container{
         height: auto;
         overflow: hidden;
     }
     #main .company-list-container .list-item {
         width: 22%;
+    }
+    #main .main-slide-container .swiper-slide-active .more-btn{
+        font-size: 15px;
+    }
+    #main .main-slide-container .swiper-slide-active .more-btn i{
+        width: 25px;
+        height: 25px;
+        line-height: 23px;
+        font-size: 13px;
+        bottom:3px;
     }
 
 
