@@ -66,6 +66,15 @@
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/deoTuJCLNFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
+                    <div class="slide-item">
+                        <h3>자료제목이 들어가는 영역</h3>
+                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>">
+                    </div>
+                    <div class="slide-item">
+                        <h3>자료제목이 들어가는 영역</h3>
+                        <img class="thumbnail" src="img/common/video-temp.png">
+                    </div>
+
                 </div>
             </div>
         </section>
