@@ -42,96 +42,94 @@
                 </div>
             </div>
             <div class="content">
-        <!-- 컨텐츠 start -->
-        <form action="" name="frmSearch" method="get">
-            <input type="hidden" name="pageIndex" id="pageIndex" value="1">
+                <!-- 컨텐츠 start -->
+                <form action="" name="frmSearch" method="get">
+                    <input type="hidden" name="pageIndex" id="pageIndex" value="1">
 
-            <div class="tbl-wrap for_board">
-                <a href="<c:url value="/front/qna/post.do"/>" class="write-question">질의 등록</a>
-                <table class="tbl-list01">
-                    <caption>자주 묻는 질문: 번호, 응답여부, 제목, 작성자, 작성일, 조회수</caption>
-                    <colgroup>
-                        <col width="10%">
-                        <col width="65%">
-                        <col width="15%">
-                        <col width="10%">
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th scope="col">번호</th>
-                        <th scope="col">제목</th>
-                        <th scope="col">작성자</th>
-                        <th scope="col">작성일</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="list" items="${list }" varStatus="status">
-                        <input type="hidden" name="no" id="no" value="${list.no}">
-                        <tr>
-                            <td class="txt_alcnt">
-                                    ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
-                            <td class="al">
-                                <c:choose>
-                                    <c:when test="${list.id eq '1'}">
-                                            <strong>[공개] </strong>
-                                        <a href="<c:url value="/front/qna/view.do?no=${list.no}"/>">
-                                                ${list.title }</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <strong>[비공개] </strong>
-                                    <a href="checkPw" data-toggle="modal" data-target="#checkPw"
-                                       onclick="modalData(${list.no})">
-                                            ${list.title }</a>
-                                    </c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td class="txt_alcnt"> ${list.name }</td>
-                            <td class="txt_alcnt">${list.rdate }</td>
-                        </tr>
-                    </c:forEach>
-                    <c:if test="${empty list }">
-                        <tr>
-                            <td colspan="4" class="text-center">조회된 데이터가 없습니다.</td>
-                        </tr>
-                    </c:if>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- paging -->
-            <div class="board_bottom_wrap">
-                <div class="paging_wrap">
-                    <ul class="paging">
-                        <ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage"/>
-                    </ul>
-                </div>
-            </div>
-            <!-- // paging -->
-
-
-            <!-- 컨텐츠 end -->
-        </form>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="checkPw" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">비밀번호 확인</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="modalFrm">
-                    <label text="비밀번호"> </label>
-                    <input type="hidden" value="" id="hiddenNo">
-                    <input id="passwd" type="password" name="passwd" class="form-control">
-                    <div class="d-flex justify-content-center">
-                        <input id="btnPw" type="submit" class="btn bg-gradient-dark mt-3" onclick="">확인</input>
+                    <div class="tbl-wrap for_board">
+                        <a href="<c:url value="/front/qna/post.do"/>" class="write-question">질의 등록</a>
+                        <table class="tbl-list01">
+                            <caption>자주 묻는 질문: 번호, 응답여부, 제목, 작성자, 작성일, 조회수</caption>
+                            <colgroup>
+                                <col width="10%">
+                                <col width="65%">
+                                <col width="15%">
+                                <col width="10%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">작성일</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="list" items="${list }" varStatus="status">
+                                <input type="hidden" name="no" id="no" value="${list.no}">
+                                <tr>
+                                    <td class="txt_alcnt">
+                                            ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
+                                    <td class="al">
+                                        <c:choose>
+                                            <c:when test="${list.id eq '1'}">
+                                                <strong>[공개] </strong>
+                                                <a href="<c:url value="/front/qna/view.do?no=${list.no}"/>">
+                                                        ${list.title }</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <strong>[비공개] </strong>
+                                                <a href="javascript:modalOpen(${list.no})" id="checkPw"
+                                                  >${list.title }</a>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                    <td class="txt_alcnt"> ${list.name }</td>
+                                    <td class="txt_alcnt">${list.rdate }</td>
+                                </tr>
+                            </c:forEach>
+                            <c:if test="${empty list }">
+                                <tr>
+                                    <td colspan="4" class="text-center">조회된 데이터가 없습니다.</td>
+                                </tr>
+                            </c:if>
+                            </tbody>
+                        </table>
                     </div>
+
+                    <!-- paging -->
+                    <div class="board_bottom_wrap">
+                        <div class="paging_wrap">
+                            <ul class="paging">
+                                <ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="linkPage"/>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- // paging -->
+
+
+                    <!-- 컨텐츠 end -->
                 </form>
             </div>
         </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal-background"></div>
+<div class="modal-box">
+    <div class="modal-close inline-focus" onclick="modalClose()">
+        <span></span>
+        <span></span>
+    </div>
+    <h3>비밀번호 확인</h3>
+    <div class="modal-body">
+        <form id="modalFrm">
+            <div class="input-wrap">
+            <input type="hidden" value="" id="hiddenNo">
+            <input id="passwd" type="password" name="passwd" placeholder="비밀번호를 입력해주세요." required>
+                <input id="btnPw" type="button" class="submit" value="확인"/>
+            </div>
+        </form>
     </div>
 </div>
 <script>
@@ -141,11 +139,11 @@
             try {
                 $.ajax({
                     type: "post",
-                    url: "${pageContext.request.contextPath}/cmm/chkPasswd.do",
+                    url: "${pageContext.request.contextPath}/front/chkPasswd.do",
                     data: "no=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),
                     success: function (data) {
                         if (data == "1") {
-                            location.href = "${pageContext.request.contextPath}/front/qna./view.do?no=" + $("#hiddenNo").val()
+                            location.href = "${pageContext.request.contextPath}/front/qna/view.do?no=" + $("#hiddenNo").val()
                         } else {
                             alert("비밀번호를 확인해주세요.")
                         }
@@ -160,10 +158,20 @@
         })
     });
 
-    function modalData(num) {
-        $('#checkPw').on('show.bs.modal', function (event) {
-            $("#hiddenNo").val(num);
-        })
-    };
 
+    function modalOpen(num) {
+        $("#hiddenNo").val(num);
+        $(".modal-box").css({
+            "top": (($(window).height() - $(".modal-box").outerHeight()) / 2 + $(window).scrollTop()) + "px",
+            "left": (($(window).width() - $(".modal-box").outerWidth()) / 2 + $(window).scrollLeft()) + "px"
+        });
+        $(".modal-background").css("display", "block");
+        $(".modal-box").css("display", "block");
+
+    }
+
+    function modalClose() {
+        $(".modal-background").css("display", "none");
+        $(".modal-box").css("display", "none");
+    }
 </script>

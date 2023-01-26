@@ -107,7 +107,6 @@
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu"/>
-        <%--@elvariable id="frmPost" type="kr.co.xicom.front.model.BoardVO"--%>
         <div class="article">
             <br>
             <ul class="loc-list">

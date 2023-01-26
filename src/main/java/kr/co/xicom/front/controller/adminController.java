@@ -1,9 +1,14 @@
 package kr.co.xicom.front.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import kr.co.xicom.front.model.AttachVO;
+import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.TraceVO;
 import kr.co.xicom.front.service.AdminService;
+import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +31,8 @@ public class adminController {
     ConsultingService consultingService;
     @Autowired
     AdminService adminService;
+    @Autowired
+    BoardService boardService;
 
     //동행기업 신청 현황
     @GetMapping(value = "/join/list.do")
@@ -119,8 +126,9 @@ public class adminController {
 
     //걸어온 발자취 게시판 관리
     @RequestMapping("/trace/list.do")
-    public ModelAndView trace(@ModelAttribute("TraceVo") TraceVO vo) throws Exception {
+    public ModelAndView traceList(@ModelAttribute("TraceVo") TraceVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("admin/trace_list");
+
         PaginationInfo paginationInfo = new PaginationInfo();
         paginationInfo.setCurrentPageNo(vo.getPageIndex());
         paginationInfo.setRecordCountPerPage(15);
@@ -129,6 +137,7 @@ public class adminController {
         vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
         vo.setLastIndex(paginationInfo.getLastRecordIndex());
         vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+
         Map<String, Object> result = new HashMap<String, Object>();
         result = adminService.traceList(vo);
 
@@ -196,6 +205,138 @@ public class adminController {
             , @ModelAttribute("TraceVO") TraceVO vo) throws Exception {
         vo.setSeq(seq);
         int result = adminService.traceDelete(seq);
+        if (result > 0) {
+            return "redirect:/admin/trace/list.do";
+        }
+        return "forward:/common/error.jsp";
+    }
+    //기업들이 준비할 일
+    @RequestMapping(value = "/ready/{bbsId}/list.do", method = {RequestMethod.GET})
+    public ModelAndView readyList(@PathVariable("bbsId") Integer bbsId,
+                                  @ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/ready_list");
+
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(boardVO.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(boardVO.getPageSize());
+
+        boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
+        boardVO.setPageUnit(paginationInfo.getRecordCountPerPage());
+
+        boardVO.setBbsId(bbsId);
+        boardVO.setStat("1");
+
+        /*데이터 가져오기*/
+        Map<String, Object> result = new HashMap<String, Object>();
+        result = boardService.list(boardVO);
+        // 게시판 이름 가져오는 메소드
+        String menu = boardService.getMenu(bbsId);
+
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
+
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", result.get("resultList"));
+        mav.addObject("totalCnt", result.get("resultCnt"));
+
+        mav.addObject("paginationInfo", paginationInfo);
+        mav.addObject("bbsId", bbsId);
+        mav.addObject("bbsNm", menu);
+
+
+        return mav;
+    }
+
+    @GetMapping(value = "/ready/{bbsId}/view.do")
+    public ModelAndView readyView(@PathVariable("bbsId") Integer bbsId,
+                                  @ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/ready_view");
+
+        boardVO.setBbsId(bbsId);
+
+        boardVO.setStat("1");
+        BoardVO rs = boardService.getView(boardVO);
+
+        // 게시판 이름
+        String menu = boardService.getMenu(bbsId);
+
+        mav.addObject("rs", rs);
+        mav.addObject("bbsId", bbsId);
+        mav.addObject("bbsNm", menu);
+
+        return mav;
+    }
+    @GetMapping(value = "/ready/{bbsId}/post.do")
+    public ModelAndView readyPost(@PathVariable("bbsId") Integer bbsId,
+                                  @ModelAttribute("post") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = null;
+        mav = new ModelAndView("admin/ready_post");
+
+        String menu = boardService.getMenu(bbsId);
+
+        mav.addObject("bbsId", bbsId);
+        mav.addObject("post", boardVO);
+        mav.addObject("bbsNm", menu);
+        return mav;
+    }
+    @GetMapping(value = "/ready/{bbsId}/edit.do")
+    public ModelAndView readyEdit(@PathVariable("bbsId") Integer bbsId,
+                                  @ModelAttribute("post") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/ready_edit");
+
+        boardVO.setBbsId(bbsId);
+        BoardVO rs = boardService.getView(boardVO);
+        //게시판 이름
+        String menu = boardService.getMenu(bbsId);
+
+        mav.addObject("post", rs);
+        mav.addObject("bbsNm", menu);
+        return mav;
+    }
+
+    @PostMapping(value = "/ready/{bbsId}/edit.do")
+    public String doReadyEdit(@PathVariable("bbsId") Integer bbsId,
+                              @ModelAttribute("post") BoardVO boardVO) throws Exception {
+
+        boardVO.setBbsId(bbsId);
+        int result = adminService.updatePost(boardVO);
+
+        if (result > 0) {
+            return "redirect:/front/board/" + bbsId + "/view.do?boardSeq=" + boardVO.getBoardSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @PostMapping(value = "/ready/{bbsId}/post.do")
+    public String doReadyPost(@PathVariable("bbsId") Integer bbsId,
+                              @ModelAttribute("post") BoardVO boardVO) throws Exception {
+
+        boardVO.setBbsId(bbsId);
+        boardVO.setStat("1");
+        int result = adminService.readyPost(boardVO);
+
+        if (result > 0) {
+            return "redirect:/admin/ready/" + bbsId + "/view.do?boardSeq=" + boardVO.getBoardSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+
+    }
+    @PostMapping("/ready/{bbsId}/delete.do")
+    public String readyDelete(@PathVariable("bbsId") Integer bbsId,
+                              @ModelAttribute("post") BoardVO boardVO) throws Exception {
+        boardVO.setBbsId(bbsId);
+        int result = boardService.updateStat(boardVO);
         if (result > 0) {
             return "redirect:/admin/trace/list.do";
         }

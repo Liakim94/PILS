@@ -1,9 +1,12 @@
 package kr.co.xicom.front.service.impl;
 
+import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.TraceVO;
 import kr.co.xicom.front.service.AdminService;
 import kr.co.xicom.front.service.mapper.AdminMapper;
+import kr.co.xicom.front.service.mapper.BoardMapper;
+import org.apache.commons.collections.functors.ExceptionPredicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,8 @@ import java.util.Map;
 public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
+    @Autowired
+    private BoardMapper boardMapper;
 
     //담당자 관리
     @Override
@@ -48,6 +53,14 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int traceDelete(int seq) throws Exception{
         return adminMapper.traceDelete(seq);
+    }
+    @Override
+    public int readyPost(BoardVO vo) throws Exception{
+        return boardMapper.addBoard(vo);
+    }
+    @Override
+    public int updatePost(BoardVO vo) throws Exception{
+        return boardMapper.updateBoard(vo);
     }
 
 }

@@ -1,5 +1,6 @@
 package kr.co.xicom.front.service;
 
+import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.TraceVO;
 import org.springframework.stereotype.Service;
@@ -22,4 +23,8 @@ public interface AdminService {
     int traceUpdate(TraceVO vo)  throws Exception;
 
     int traceDelete(int seq) throws Exception;
+
+    int readyPost(BoardVO vo) throws Exception;
+
+    int updatePost(BoardVO vo) throws Exception;
 }
