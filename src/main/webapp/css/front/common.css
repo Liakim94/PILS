@@ -736,7 +736,7 @@
     margin-bottom: 0;
 }
 
-    /* Top Button */
+/* Top Button */
 .go-top{
     background: linear-gradient(92.61deg, #DA0021 -6.8%, #E64500 101.17%);
     position: fixed;
@@ -760,7 +760,7 @@
     font-size: 12px;
 
 }
-    /* Footer */
+/* Footer */
 .footer-container{
     background-color: #606060;
     padding: 45px 40px 50px;
@@ -844,6 +844,160 @@
     z-index: 10;
     display: none;
 }
+/* 메인페이지 */
+
+#main section{
+    text-align: center;
+}
+#main .title{
+    font-size: 36px;
+    color:#191919;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+#main .title strong{
+    font-family: 'GmarketSans', sans-serif;
+}
+#main .main-navi{
+    position: absolute;
+    bottom: -25px;
+    width: 100px;
+    display: flex;
+    right: 8%;
+}
+#main .main-navi .navi{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+#main .main-navi .navi i{
+    font-size: 30px;
+}
+#main .main-navi .main-prev{
+    background: #ffffff;
+}
+#main .main-navi .main-next {
+    background: #E60024;
+}
+#main .main-navi .main-next i{
+    color: #fff;
+}
+#main .info-slide-container{
+    width: 100%;
+    position: relative;
+}
+#main .info-slide-container .info-slide-navi{
+    position: absolute;
+    width: 438px;
+    top: 5px;
+    left: calc(50% - 219px);
+}
+#main .info-slide-container .info-slide-navi .info-prev{
+    float: left;
+    width: 36px;
+    height: 36px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 50px;
+    line-height: 34px;
+    cursor: pointer;
+}
+#main .info-slide-container .info-slide-navi .info-prev i{
+    color: #999999;
+}
+#main .info-slide-container .info-slide-navi .info-prev:hover i{
+    color: #E60024;
+}
+#main .info-slide-container .info-slide-navi .info-next{
+    float: right;
+    width: 36px;
+    height: 36px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 50px;
+    line-height: 34px;
+    cursor: pointer;
+}
+#main .info-slide-container .info-slide-navi .info-next i{
+    color: #999999;
+}
+#main .info-slide-container .info-slide-navi .info-next:hover i{
+    color: #E60024;
+}
+#main .info-slide-container .info-slide-wrap{
+    width: 100%;
+    margin-top: 40px;
+}
+#main .info-slide-container .info-slide-wrap .slick-list{
+    padding: 50px 0 !important;
+}
+#main .info-slide-container .info-slide-wrap .slide-item{
+    background: #F3F3F3;
+    box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 35px 40px;
+    box-sizing: border-box;
+    margin: 0 17px;
+    opacity: 0.5;
+    position: relative;
+    transition:all 0.3s;
+}
+#main .info-slide-container .info-slide-wrap .slick-current{
+    opacity: 1;
+    bottom: 50px;
+    filter:Alpha(opacity=100);
+    transition:all 0.3s;
+}
+#main .info-slide-container .info-slide-wrap h3{
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+#main .info-slide-container .info-slide-wrap .thumbnail{
+    width: 400px;
+}
+#main .company-list-container{
+    max-width: 1270px;
+    margin: 40px auto 0;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#main .company-list-container .list-item{
+    width: 15%;
+}
+#main .company-list-container .list-item .list-wrapper{
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 10px 15px 16px;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+}
+#main .company-list-container .list-item a:hover .list-wrapper{
+    border: 1px solid #D9D9D9;
+    box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 14px;
+}
+#main .company-list-container .list-item .list-wrapper .img-wrap{
+    height: 75px;
+    display: flex;
+    align-items: center;
+}
+#main .company-list-container .list-item .list-wrapper img{
+    width: 100%;
+}
+#main .company-list-container .list-item .list-wrapper .company-name{
+    color: #505050;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+}
+
 /* 참여기업 상세페이지 */
 #company-detail{
     width: 95%;
@@ -2200,7 +2354,7 @@
     margin-bottom: 40px;
 }
 #about .example-box h4{
-   width: 50px;
+    width: 50px;
     font-weight: 600;
     padding: 10px 0;
 }
@@ -2500,6 +2654,17 @@
         width:60%;
     }
 }
+@media (max-width: 1100px) {
+    #main .company-list-container{
+        height: 413px;
+        overflow: hidden;
+    }
+    #main .company-list-container .list-item {
+        width: 18%;
+    }
+
+}
+
 @media (max-width: 1024px) {
     /*  Header  */
     .gnb-container .gnb-wrap .logo-wrap .slogan{
@@ -2566,6 +2731,16 @@
     .gnb-container .gnb-wrap .logo-wrap .logo {
         max-width: 150px;
     }
+
+    /* 메인 */
+    #main .company-list-container{
+        height: auto;
+        overflow: hidden;
+    }
+    #main .company-list-container .list-item {
+        width: 22%;
+    }
+
 
     /*  참여기업 상세페이지 */
     #company-detail{
@@ -2730,7 +2905,26 @@
         padding: 35px 30px 40px;
     }
 }
+@media (max-width: 768px) {
+
+    /* 메인 */
+    #main .company-list-container{
+        height: 413px;
+        overflow: hidden;
+    }
+    #main .company-list-container .list-item {
+        width: 30%;
+    }
+}
 @media (max-width: 480px) {
+    /* 메인 */
+    #main .company-list-container{
+        height: auto;
+        overflow: hidden;
+    }
+    #main .company-list-container .list-item {
+        width: 47%;
+    }
     /*  참여기업 상세페이지 */
     #company-detail section .table .label{
         padding: 8px 7px;
