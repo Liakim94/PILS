@@ -80,7 +80,7 @@
                 <a class="font18" href="<c:url value="/front/board/11/list.do"/>">소통마당</a>
                 <div class="submenu">
                     <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
-                    <a href="#">기업들이 준비할 일</a>
+                    <a href="<c:url value="/front/board/6/list.do"/>">기업들이 준비할 일</a>
                     <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
                     <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
                     <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>
@@ -157,7 +157,7 @@
                     <div class="submenu">
                         <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
                         <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
-                        <a href="<c:url value="/front/guide/appliesto.do"/>">걸어온 발자취</a>
+                        <a href="<c:url value="/front/guide/trace.do"/>">걸어온 발자취</a>
                         <a href="<c:url value="/front/guide/cmpList.do"/>">참여기업 현황</a>
                         <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
                         <a href="<c:url value="/front/guide/statistics.do"/>">주요 통계</a>
@@ -183,7 +183,7 @@
                     </div>
                     <div class="submenu">
                         <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
-                        <a href="#">기업들이 준비할 일</a>
+                        <a href="<c:url value="/front/board/6/list.do"/>">기업들이 준비할 일</a>
                         <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
                         <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
                         <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>
