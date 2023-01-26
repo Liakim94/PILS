@@ -9,37 +9,32 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+
 </head>
 
 <div id="content">
     <div id="main">
-        <section id="mainVisual">
-            <div class="main-visual-con">
-                <div class="main-visual-item active-item">
-                    <div class="main-txt-slider-wrap">
-                        <div class="main-txt-slider">
-                            <!-- Slide 1 -->
-                            <div class="main-visual-txt-con">
-                                <div class="main-visual-txt-inner">
-                                    <h3 class="main-visual-txt1">
-                                        <p>현재 <strong>388개</strong> 기업이</p>
-                                        <p><strong>납품대금 연동제</strong>에 동참하고 있습니다.</p>
-                                    </h3>
-                                    <a href="" class="main-visual-more-btn " tabindex="-1"><span>참여자 현황 바로가기<i
-                                            class="fas fa-chevron-right"></i></span></a>
-                                </div>
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="main-visual-txt-con">
-                                <div class="main-visual-txt-inner">
-                                    <h3 class="main-visual-txt1">
-                                        <p>현재 <strong>388개</strong> 기업이</p>
-                                        <p><strong>납품대금 연동제</strong>에 동참하고 있습니다.</p>
-                                    </h3>
-                                    <a href="" class="main-visual-more-btn " tabindex="-1"><span>참여자 현황 바로가기<i
-                                            class="fas fa-chevron-right"></i></span></a>
-                                </div>
-                            </div>
+        <section id="main-banner">
+            <div class="main-slide-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background: url(<c:url value='/images/main/main-banner.png'/>)">
+                        <div class="text-wrap">
+                            <h1 class="slide-text">
+                                <p>현재 <strong>338개</strong> 기업이</p>
+                                <p>납품대금 연동제에 동참하고 있습니다.</p>
+                            </h1>
+                            <a href="<c:url value="/front/guide/cmpList.do"/>" class="more-btn">참여기업 현황 바로가기<i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="background: url(<c:url value='/images/main/main-banner2.png'/>)">
+                        <div class="text-wrap">
+                            <h1 class="slide-text">
+                                <p>중소기업의 14년 숙원, </p>
+                                <p>납품대금 연동제가 시작됩니다.</p>
+                            </h1>
+                            <a href="<c:url value="/front/guide/concept.do"/>" class="more-btn">납품대금 연동제 소개 바로가기<i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -62,29 +57,17 @@
                 </div>
                 <div class="info-slide-wrap">
                     <div class="slide-item">
-                        <h3>자료제목이 들어가는 영역</h3>
-                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>">
+                        <div class="video-wrap">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/srd5e4iU16k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
                     </div>
                     <div class="slide-item">
-                        <h3>자료제목이 들어가는 영역</h3>
-                        <img class="thumbnail" src="/images/common/video-temp.png">
-                    </div>
-                    <div class="slide-item">
-                        <h3>자료제목이 들어가는 영역</h3>
-                        <img class="thumbnail" src="/images/common/video-temp.png">
-                    </div>
-                    <div class="slide-item">
-                        <h3>자료제목이 들어가는 영역</h3>
-                        <img class="thumbnail" src="/images/common/video-temp.png">
-                    </div>
-                    <div class="slide-item">
-                        <h3>자료제목이 들어가는 영역</h3>
-                        <img class="thumbnail" src="/images/common/video-temp.png">
+                        <div class="video-wrap">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/deoTuJCLNFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
-
             </div>
-
         </section>
         <section>
             <h1 class="title"><strong>참여기업</strong> 현황</h1>
@@ -278,24 +261,32 @@
 
 </div>
 <script>
-    $(function ($) {
+    $(function($){
 
-        /* *********************** 메인 비주얼 ************************ */
-        $("#mainVisual").each(function () {
-            $(this).find(".main-visual-item").addClass("active-item");
+        var mainSlide = new Swiper(".main-slide-container", {
+            slidesPerView: 1,
+            effect : 'fade',
+            loop: true,
+            speed: 1000,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation : { // 네비게이션 설정
+                nextEl : '.main-next', // 다음 버튼 클래스명
+                prevEl : '.main-prev', // 이번 버튼 클래스명
+            }
         });
-
-        /* *********************** 메인 뉴스 및 공지 ************************ */
 
         $('.info-slide-wrap').slick({
             centerMode: true,
             slidesToShow: 3,
-            speed: 800,
+            speed:800,
             autoplay: true,
-            infinite: true,
+            infinite:true,
             prevArrow: $('.info-prev'),
             nextArrow: $('.info-next'),
-            variableWidth: true,
+            variableWidth:true,
             responsive: [
                 {
                     breakpoint: 768,
@@ -316,29 +307,6 @@
                     }
                 }
             ]
-        });
-
-        $(".main-txt-slider").on('init', function (event, slick) {
-            $(".main-visual-txt-con").eq(0).addClass("active-item");
-        });
-
-        $(".main-txt-slider").on('afterChange', function (event, slick, currentSlide) {
-            $(".main-visual-txt-con").removeClass("active-item");
-            $(this).find(".main-visual-txt-con").eq(currentSlide).addClass("active-item")
-        });
-
-        $(".main-txt-slider").slick({
-            dots: false,
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            responsive: true,
-            autoplay: true,
-            speed: 800,
-            autoplaySpeed: 3000,
-            fade: true,
-            prevArrow: $('.main-prev'),
-            nextArrow: $('.main-next')
         });
     });
 </script>
