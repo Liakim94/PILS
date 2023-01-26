@@ -16,3 +16,4 @@
 <%--퍼블리셔 추가--%>
 <script src="${pageContext.request.contextPath }/js/front/jquery-1.12.4.min.js"></script>
 <script src="${pageContext.request.contextPath }/js/common/common.js"></script>
+<script src="${pageContext.request.contextPath }/js/common/slick.js"></script>

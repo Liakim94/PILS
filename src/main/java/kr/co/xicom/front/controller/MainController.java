@@ -36,12 +36,14 @@ public class MainController {
 
 
     @GetMapping(value = "/index.do")
-    public ModelAndView main(ModelMap model,
-                             HttpServletRequest request,
-                             HttpServletResponse response)
+    public ModelAndView main(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVo)
             throws Exception {
-
         ModelAndView mav = new ModelAndView("main");
+
+        cmpVo.setMem_cd("M302"); //회원구분
+        Map<String, Object> rs = new HashMap<String, Object>();
+        rs = consultingService.list(cmpVo);
+        mav.addObject("list", rs.get("resultList"));
         return mav;
     }
 
