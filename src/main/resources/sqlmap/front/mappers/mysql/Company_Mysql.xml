@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.xicom.front.service.mapper.CompanyMapper">
+
+    <!-- WildRain 추가 2023-01-26 -->
+
+    <select id="list" parameterType="kr.co.xicom.front.model.CmpMemberVo" resultType="kr.co.xicom.front.model.CmpMemberVo">
+        select
+            A.bizno                         as bizNo
+           ,A.cmp_mbr_cd                    as mem_cd
+           ,A.cmp_nm                        as cmpNm
+           ,to_char(A.appdt, 'YYYY-MM-DD')  as appdate
+           ,B.nm                            as name
+           ,B.user_id                       as id
+           ,B.pswd                          as passwd
+        from
+            tb_pils_cmpmbr A
+            join tb_pils_mbr B
+                on A.bizno = B.bizno
+        where
+            cmp_mbr_cd= #{mem_cd}
+            and b.manage_cd ='M501'
+        order by
+            appdt desc
+        <if test="pageIndex > 0">
+            LIMIT #{pageUnit} OFFSET #{firstIndex}
+        </if>
+    </select>
+
+    <select id="details" parameterType="kr.co.xicom.front.model.CmpMemberVo" resultType="kr.co.xicom.front.model.CmpMemberVo">
+        select A.cmp_nm        as cmpNm
+             , A.bizno         as bizNo
+             , A.cmp_mbr_cd    as mem_cd
+             , A.ceo           as ceo
+             , A.fdate         as fdate
+             , A.addr          as address
+             , A.addr_dtl      as address_dtl
+             , A.telno         as telNo
+             , A.faxno         as faxno
+             , A.biz_ty        as bizType
+             , A.capl          as capital
+             , A.deal_ty       as deal_type
+             , A.yr_deal_scale as deal_scale
+             , A.prmy_mat      as material
+             , A.con_q         as conQ
+             , A.product       as product
+             , A.joincmp       as joinCmp
+             , A.main_product   as mainProduct
+             , B.nm            as name
+             , B.mbphno        as mbphno
+             , B.psitn_dept_nm as deptNm
+             , B.pstn as position
+            ,B.email_addr as email
+            ,B.telno as memTelNo
+            ,B.faxno as memFaxNo
+            ,B.auth_cd as auth_cd
+        from tb_pils_cmpmbr A join tb_pils_mbr B
+        on A.bizno =B.bizno
+        where 1=1
+          and cmp_mbr_cd= #{mem_cd}
+          and A.bizno = #{bizNo}
+          and b.manage_cd ='M501'
+        order by appdt desc
+    </select>
+
+</mapper>

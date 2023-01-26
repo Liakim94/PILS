@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.xicom.front.service.mapper.CompanyAttachMapper">
+
+    <!-- WildRain 추가 2023-01-26 -->
+
+    <insert id="create" parameterType="kr.co.xicom.front.model.CompanyAttachVO">
+        <selectKey keyProperty="attchSeq" resultType="int" order="BEFORE">
+            select nextval('tb_pils_cmp_atch_seq') as attchSeq
+        </selectKey>
+        INSERT INTO tb_pils_cmp_atch (
+            cmp_atch_seq,
+            file_name,
+            file_size,
+            file_type,
+            saved_path,
+            saved_file_name,
+            atch_type,
+            biz_no,
+            video_url,
+            regist_date
+        )
+        VALUES(
+            #{attchSeq},
+            #{fileName},
+            #{fileSize},
+            #{fileType},
+            #{savedPath},
+            #{savedFileName},
+            #{atchType},
+            #{bizNo},
+            #{videoUrl},
+            now()
+        )
+    </insert>
+
+    <select id="list" parameterType="kr.co.xicom.front.model.CompanyAttachVO" resultType="kr.co.xicom.front.model.CompanyAttachVO">
+        select
+            cmp_atch_seq    AS cmpAtchSeq,
+            file_name       AS fileName,
+            file_size       AS fileSize,
+            file_type       AS fileType,
+            saved_path      AS savedPath,
+            saved_file_name AS savedFileName,
+            atch_type       AS atchType,
+            biz_no          AS bizNo,
+            video_url       AS videoUrl,
+            regist_date     AS registDate
+        from
+            tb_pils_cmp_atch
+        where
+            biz_no = #{bizNo}
+            and atch_type = #{atchType}
+    </select>
+
+    <delete id="delete" parameterType="kr.co.xicom.front.model.CompanyAttachVO">
+        delete from tb_pils_cmp_atch
+        where
+            biz_no = #{bizNo}
+            and atch_type = #{atchType}
+    </delete>
+
+</mapper>

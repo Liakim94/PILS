@@ -16,7 +16,7 @@ $( document ).ready(function() {
             $('#backToTop').fadeOut('slow');
         }
         var scrT = $(window).scrollTop();
-        console.log(scrT); //스크롤 값 확인용
+        //console.log(scrT); //스크롤 값 확인용
         if(scrT == $(document).height() - $(window).height() - 30){
             $('#backToTop').fadeOut('slow');
         } else {
