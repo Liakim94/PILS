@@ -12,10 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -138,5 +135,22 @@ public class GuideController extends Alerts {
         mav.addObject("list", cmpVo);
         return mav;
 
+    }
+
+    /**
+     * 참여기업 현황 정보 수정 페이지
+     */
+    @GetMapping("/guide/company/edit.do")
+    public ModelAndView cmpEdit(@RequestParam String bizNo,
+                                @ModelAttribute(" cmpMember") CmpMemberVo cmpMemberVo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("guide/cmpEdit");
+
+        cmpMemberVo.setBizNo(bizNo);
+        cmpMemberVo.setMem_cd("M302");
+        cmpMemberVo = consultingService.getViewByBizNo(cmpMemberVo);
+        mav.addObject("cmpMember", cmpMemberVo);
+
+        return mav;
     }
 }

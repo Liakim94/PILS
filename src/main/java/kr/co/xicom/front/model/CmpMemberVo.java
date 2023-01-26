@@ -60,4 +60,19 @@ public class CmpMemberVo extends DefaultVO {
     private String jsonDeletedFileList;
 
     private String  fileStd					= "";  // 첨부파일 규격
+
+    /**
+     * 메인 동영상 URL
+     */
+    private String mainMovieUrl;
+
+    /**
+     * 로고 이미지 경로
+     */
+    private String logoImgPath;
+
+    /**
+     * 기업홍도 동영상 URL
+     */
+    private String subMovieUrl;
 }

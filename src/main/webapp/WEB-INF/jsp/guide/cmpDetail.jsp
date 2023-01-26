@@ -113,6 +113,7 @@
                 </div>
             </div>
         </section>
+        <a href="<c:url value="/front/guide/company/edit.do?bizNo=${list.bizNo}"/>">수정하기</a>
 <%--        </c:forEach>--%>
     </div>
 </div>
