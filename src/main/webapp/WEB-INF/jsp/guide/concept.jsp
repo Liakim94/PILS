@@ -11,7 +11,7 @@
                     <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    납품대금연동제란?
+                    납품대금 연동제란?
                 </li>
                 <li>
                     개념

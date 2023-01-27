@@ -28,7 +28,7 @@
                             <a href="<c:url value="/front/guide/cmpList.do"/>" class="more-btn">참여기업 현황 바로가기<i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
-                    <div class="swiper-slide" style="background: url(<c:url value='/images/main/main-banner2.png'/>)">
+                    <div class="swiper-slide" style="background: url(<c:url value='/images/main/banner-bg03.png'/>)">
                         <div class="text-wrap">
                             <h1 class="slide-text">
                                 <p>중소기업의 14년 숙원, </p>
@@ -50,7 +50,7 @@
         </section>
         <section>
             <div class="info-slide-container">
-                <h1 class="title">쉽게 보는 납품대금 연동제</h1>
+                <h1 class="title">쉽게 보는 <strong>납품대금 연동제</strong> </h1>
                 <div class="info-slide-navi">
                     <span class="info-prev"><i class="fas fa-chevron-left"></i></span>
                     <span class="info-next"><i class="fas fa-chevron-right"></i></span>
@@ -58,21 +58,21 @@
                 <div class="info-slide-wrap">
                     <div class="slide-item">
                         <div class="video-wrap">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/srd5e4iU16k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe  onclick="modalOpen()" width="560" height="315" src="https://www.youtube.com/embed/srd5e4iU16k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="slide-item">
                         <div class="video-wrap">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/deoTuJCLNFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe onclick="modalOpen()" width="560" height="315" src="https://www.youtube.com/embed/deoTuJCLNFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="slide-item">
                         <h3>자료제목이 들어가는 영역</h3>
-                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>">
+                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>"  onclick="modalOpen()">
                     </div>
                     <div class="slide-item">
                         <h3>자료제목이 들어가는 영역</h3>
-                        <img class="thumbnail" src="img/common/video-temp.png">
+                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>"  onclick="modalOpen()">
                     </div>
 
                 </div>
@@ -267,9 +267,40 @@
             </div>
         </section>
     </div>
-
+</div>
+<div class="modal-background"></div>
+<div class="main-modal-box">
+    <div class="modal-close inline-focus" onclick="modalClose()">
+        <span></span>
+        <span></span>
+    </div>
+    <div class="contents-wrap">
+        <!--   CardNews Slide     -->
+        <h1 class="title">제목이 들어갈 자리입니다.</h1>
+        <span class="modal-prev"><i class="fas fa-chevron-left"></i></span>
+        <span class="modal-next"><i class="fas fa-chevron-right"></i></span>
+        <div class="modal-slide-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/intro/intro-banner1.png">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
+    function modalOpen(){
+        $(".main-modal-box").css({
+            "top": (($(window).height()-$(".main-modal-box").outerHeight())/2+$(window).scrollTop())+"px",
+            "left": (($(window).width()-$(".main-modal-box").outerWidth())/2+$(window).scrollLeft())+"px"
+        });
+        $(".modal-background").css("display","block");
+        $(".main-modal-box").css("display","block");
+    }
+    function modalClose(){
+        $(".modal-background").css("display","none");
+        $(".main-modal-box").css("display","none");
+    }
     $(function($){
 
         var mainSlide = new Swiper(".main-slide-container", {
