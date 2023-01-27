@@ -78,7 +78,7 @@
                                             </c:when>
                                             <c:otherwise>
                                                 <a href="javascript:modalOpen(${list.no})" id="checkPw"
-                                                  >${list.title }</a>
+                                                  >[비공개]</a>
                                             </c:otherwise>
                                         </c:choose>
                                     </td>
