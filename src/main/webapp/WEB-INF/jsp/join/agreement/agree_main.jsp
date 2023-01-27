@@ -40,8 +40,19 @@
                     안내 문구가 들어갈 영역입니다.
                 </p>
                 <div class="info-link">
-                    <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp"><img src="${pageContext.request.contextPath}/images/common/download-icon.png" alt="약정서 다운로드">약정서 다운로드</a>
-                    <a href="${pageContext.request.contextPath}/join/agree.do"><img src="${pageContext.request.contextPath}/images/common/document-icon.png" alt="약정서 체험하기">약정서 체험하기</a>
+                    <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp"><img
+                            src="${pageContext.request.contextPath}/images/common/download-icon.png" alt="약정서 다운로드">약정서
+                        다운로드</a>
+                     <c:if test="${rs eq id}">
+                         <a href="${pageContext.request.contextPath}/join/agreeView.do">
+                             <img src="${pageContext.request.contextPath}/images/common/document-icon.png" alt="약정서 체험하기">내
+                             약정서 확인하기</a>
+                    </c:if>
+                    <c:if test="${rs eq '0'}">
+                    <a href="${pageContext.request.contextPath}/join/agree.do"><img
+                            src="${pageContext.request.contextPath}/images/common/document-icon.png" alt="약정서 체험하기">약정서
+                        체험하기</a>
+                    </c:if>
                 </div>
                 <!-- 컨텐츠 end -->
             </div>
@@ -50,17 +61,18 @@
 </div>
 
 <script>
-    function modalOpen(){
+    function modalOpen() {
         $(".modal-box").css({
-            "top": (($(window).height()-$(".modal-box").outerHeight())/2+$(window).scrollTop())+"px",
-            "left": (($(window).width()-$(".modal-box").outerWidth())/2+$(window).scrollLeft())+"px"
+            "top": (($(window).height() - $(".modal-box").outerHeight()) / 2 + $(window).scrollTop()) + "px",
+            "left": (($(window).width() - $(".modal-box").outerWidth()) / 2 + $(window).scrollLeft()) + "px"
         });
-        $(".modal-background").css("display","block");
-        $(".modal-box").css("display","block");
+        $(".modal-background").css("display", "block");
+        $(".modal-box").css("display", "block");
         // TODO 이곳에서 상세페이지 이동 기능을 처리하시면 됩니다.
     }
-    function modalClose(){
-        $(".modal-background").css("display","none");
-        $(".modal-box").css("display","none");
+
+    function modalClose() {
+        $(".modal-background").css("display", "none");
+        $(".modal-box").css("display", "none");
     }
 </script>

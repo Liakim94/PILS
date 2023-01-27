@@ -130,8 +130,8 @@
                     </div>
                 </div>
                 <div class="write-bottom">
-                    <a class="back" href="javascript:window.history.back();">이전으로</a>
-                    <a class="print" href="javascript:window.print();"><img src="${pageContext.request.contextPath}/images/common/Print.png">프린트 하기</a>
+                    <a class="back" href="<c:url value="/join/agreeDelete.do?id=${rs.id}"/>">새로 작성하기</a>
+<%--                    <a class="print" href="javascript:window.print();"><img src="${pageContext.request.contextPath}/images/common/Print.png">프린트 하기</a>--%>
                 </div>
                 <!-- 컨텐츠 end -->
             </div>

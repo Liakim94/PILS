@@ -107,9 +107,9 @@
             ignore: "",
             rules: {
                 cmpNm: {required: true},
-                bizNo1: {required: true},
-                bizNo2: {required: true},
-                bizNo3: {required: true},
+                bizNo1: {required: true, digits : true},
+                bizNo2: {required: true, digits : true},
+                bizNo3: {required: true, digits : true},
                 bizNo: {
                     remote: {
                         type: "post"
@@ -119,7 +119,8 @@
                                 return $("#bizNo").val();
                             }
                         }
-                    }
+                    },
+                    digits : true
                 },
                 ceo: {required: true},
                 fdate: {required: true},
@@ -127,10 +128,10 @@
                 telNo: {required: true},
                 faxNo: {required: true},
                 bizType: {required: true},
-                capital: {required: true},
+                capital: {required: true, digits : true},
                 product: {required: true},
                 mainProduct: {required: true},
-                joinCmp: {required: true},
+                joinCmp: {required: true, digits : true},
                 material: {required: true},
                 id: {
                     required: true, remote: {
@@ -143,7 +144,7 @@
                         }
                     }
                 },
-                passwd: {required: true, regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{10,20}$/ },
+                passwd: {required: true, regex: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,10}$/ },
                 passwdChk: {required: true, equalTo: "#passwd"},
             },
             // onkeyup: false,
@@ -151,20 +152,20 @@
             // onfocusout: false,
             messages: {
                 cmpNm: {required: "기업명을 입력하세요."},
-                bizNo1: {required: "사업자번호를 확인하세요."},
-                bizNo2: {required: "사업자번호를 확인하세요."},
-                bizNo3: {required: "사업자번호를 확인하세요."},
-                bizNo: {remote: "이미 존재하는 사업자번호입니다."},
+                bizNo1: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
+                bizNo2: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
+                bizNo3: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
+                bizNo: {remote: "이미 존재하는 사업자번호입니다.",  digits : "숫자만 입력하세요"},
                 ceo: {required: "대표자명을 입력하세요."},
                 fdate: {required: "설립일자를 입력하세요."},
                 address: {required: "본사 주소를 입력하세요."},
                 telNo: {required: "기업 전화번호를 입력하세요."},
                 faxNo: {required: "기업 팩스를 입력하세요."},
                 bizType: {required: "업종을 입력하세요."},
-                capital: {required: "자본금을 입력하세요."},
+                capital: {required: "자본금을 입력하세요.",  digits : "숫자만 입력하세요"},
                 product: {required: "주요생산품을 입력하세요."},
                 mainProduct: {required: "주요 적용 제품을 입력하세요."},
-                joinCmp: {required: "참여기업 수를 입력하세요."},
+                joinCmp: {required: "참여기업 수를 입력하세요.",  digits : "숫자만 입력하세요"},
                 material: {required: "주요원재료를 입력하세요."},
                 id: {
                     required: "아이디를 입력하세요",
@@ -180,7 +181,7 @@
                 memFaxNo: {required: "담당자 팩스를 입력하세요."},
                 conQ: {required: "컨설팅시 주요 질의사항를 입력하세요."},
                 passwd: {required: "비밀번호를 입력하세요.",
-                    regex:"비밀번호는 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다."},
+                    regex:"비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."},
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
             },
         });
@@ -515,7 +516,7 @@
                         </div>
                         <div class="input-wrap long-input">
                             <input type="password" id="passwd" name="passwd" placeholder="비밀번호를 입력해주세요." required>
-                            <h5 class="sub">※ 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다.</h5>
+                            <h5 class="sub">※ 비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다.</h5>
                         </div>
                     </div>
                     <div class="fx2">

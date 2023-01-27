@@ -25,7 +25,7 @@
                 <a href="<c:url value="/front/guide/cmpList.do"/>">참여기업 현황</a>
             </li>
             <li class="<c:if test="${URI.contains('/front/guide/ordinance')}">on</c:if>">
-                <a href="<c:url value="/front/guide/ordinance.do"/>" class="">관련 볍령</a>
+                <a href="<c:url value="/front/guide/ordinance.do"/>" class="">관련 법령</a>
             </li>
             <li class="<c:if test="${URI.contains('/front/guide/statistics')}">on</c:if>">
                 <a href="<c:url value="/front/guide/statistics.do"/>" class="">주요 통계</a>

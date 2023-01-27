@@ -78,9 +78,9 @@
             ignore: "",
             rules: {
                 cmpNm: {required: true},
-                bizNo1: {required: true},
-                bizNo2: {required: true},
-                bizNo3: {required: true},
+                bizNo1: {required: true, digits : true},
+                bizNo2: {required: true, digits : true},
+                bizNo3: {required: true, digits : true},
                 bizNo: {
                     remote: {
                         type: "post"
@@ -90,7 +90,8 @@
                                 return $("#bizNo").val();
                             }
                         }
-                    }
+                    },
+                    digits : true
                 },
                 ceo: {required: true},
                 fdate: {required: true},
@@ -98,52 +99,33 @@
                 telNo: {required: true},
                 faxNo: {required: true},
                 bizType: {required: true},
-                capital: {required: true},
+                capital: {required: true, digits : true},
                 product: {required: true},
                 mainProduct: {required: true},
-                joinCmp: {required: true},
-                material: {required: true},
-                id: {
-                    required: true, remote: {
-                        type: "post"
-                        , url: "${pageContext.request.contextPath}/join/checkId.do"
-                        , data: {
-                            username: function () {
-                                return $("#id").val();
-                            }
-                        }
-                    }
-                },
-                passwd: {required: true},
-                passwdChk: {required: true, equalTo: "#passwd"},
+                joinCmp: {required: true, digits : true},
+                material: {required: true}
             },
             // onkeyup: false,
             // onclick: false,
             // onfocusout: false,
             messages: {
                 cmpNm: {required: "기업명을 입력하세요."},
-                bizNo1: {required: "사업자번호를 확인하세요."},
-                bizNo2: {required: "사업자번호를 확인하세요."},
-                bizNo3: {required: "사업자번호를 확인하세요."},
+                bizNo1: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
+                bizNo2: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
+                bizNo3: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
+                bizNo: {remote: "이미 존재하는 사업자번호입니다.",  digits : "숫자만 입력하세요"},
                 ceo: {required: "대표자명을 입력하세요."},
                 fdate: {required: "설립일자를 입력하세요."},
                 address: {required: "본사 주소를 입력하세요."},
                 telNo: {required: "기업 전화번호를 입력하세요."},
                 faxNo: {required: "기업 팩스를 입력하세요."},
                 bizType: {required: "업종을 입력하세요."},
-                capital: {required: "자본금을 입력하세요."},
+                capital: {required: "자본금을 입력하세요.",  digits : "숫자만 입력하세요"},
                 product: {required: "주요생산품을 입력하세요."},
                 mainProduct: {required: "주요 적용 제품을 입력하세요."},
-                joinCmp: {required: "참여기업 수를 입력하세요."},
-                material: {required: "주요원재료를 입력하세요."},
-                id: {
-                    required: "아이디를 입력하세요",
-                    remote: "이미 존재하는 아이디입니다."
-                },
-                bizNo: {remote: "이미 존재하는 사업자번호입니다."},
-                passwd: {required: "비밀번호를 입력하세요."},
-                passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
-            },
+                joinCmp: {required: "참여기업 수를 입력하세요.",  digits : "숫자만 입력하세요"},
+                material: {required: "주요원재료를 입력하세요."}
+               },
             submitHandler: function (frm) {
                 $("#frmEdit").submit();
             }

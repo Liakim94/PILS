@@ -7,4 +7,6 @@ import kr.co.xicom.front.model.AgreementVO;
 public interface AgreementMapper {
     int apply(AgreementVO vo) throws Exception;
     AgreementVO agreeView(String id) throws Exception;
+    String agreeChk(String id) throws Exception;
+    int agreeDelete(String id) throws Exception;
 }

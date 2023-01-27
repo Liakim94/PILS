@@ -161,9 +161,13 @@ public class JoinController {
     @GetMapping(value = "/agreeMain.do")
     public ModelAndView agreeMain(HttpSession session,
                                   HttpServletRequest request,
-                                  HttpServletResponse response) throws Exception {
+                                  HttpServletResponse response
+                                 ,@ModelAttribute("AgreementVO") AgreementVO vo) throws Exception {
 
         ModelAndView mav = new ModelAndView("join/agreement/agree_main");
+        String result = agreementService.agreeChk(session.getId());
+        mav.addObject("rs",result);
+        mav.addObject("id",session.getId());
         return mav;
     }
     //약정서 작성하기
@@ -226,5 +230,13 @@ public class JoinController {
             System.out.println(e.toString());
         }
         return mav;
+    }
+    @GetMapping("/agreeDelete.do")
+    public String agreeDelete(@RequestParam("id")String id)throws Exception{
+        int result = agreementService.agreeDelete(id);
+        if(result>0){
+            return "redirect:/join/agree.do";
+        }
+        return  "forward:/common/error.jsp";
     }
 }

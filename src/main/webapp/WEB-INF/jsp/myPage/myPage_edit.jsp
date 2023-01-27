@@ -88,10 +88,10 @@
                 telNo: {required: true},
                 faxNo: {required: true},
                 bizType: {required: true},
-                capital: {required: true},
+                capital: {required: true, digits : true},
                 product: {required: true},
                 mainProduct: {required: true},
-                joinCmp: {required: true},
+                joinCmp: {required: true, digits : true},
                 material: {required: true},
             },
             // onkeyup: false,
@@ -105,10 +105,10 @@
                 telNo: {required: "기업 전화번호를 입력하세요."},
                 faxNo: {required: "기업 팩스를 입력하세요."},
                 bizType: {required: "업종을 입력하세요."},
-                capital: {required: "자본금을 입력하세요."},
+                capital: {required: "자본금을 입력하세요.",  digits : "숫자만 입력하세요"},
                 product: {required: "주요생산품을 입력하세요."},
                 mainProduct: {required: "주요 적용 제품을 입력하세요."},
-                joinCmp: {required: "참여기업 수를 입력하세요."},
+                joinCmp: {required: "참여기업 수를 입력하세요.",  digits : "숫자만 입력하세요"},
                 material: {required: "주요원재료를 입력하세요."},
             },
             // submitHandler: function (frm) {
@@ -155,7 +155,7 @@
                                     기업명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap">
-                                    <form:input path="cmpNm"/>
+                                    <form:input path="cmpNm" readonly="true"/>
                                 </div>
                             </div>
                             <div class="fx2">
@@ -318,7 +318,7 @@
                     </div>
                 </form:form>
                 <div class="write-bottom">
-                    <button id="submit" class="submit" >저장</button>
+                    <button id="submit" class="submit" style="width:135px" >저장</button>
                     <a href="${pageContext.request.contextPath}/main/myPage.do">취소</a>
                 </div>
             </div>
