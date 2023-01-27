@@ -235,8 +235,8 @@ public class FileUploadController {
 
     /**
      * FileController를 이용한 Download Link를 생성한다.
-     * @param savedFilePath 실제 저장 경로
-     * @param fileName 오리지널 파일명
+     * @param savedFilePath 실제 저장 경로, 저장된 파일명 포함
+     * @param originalFileName 오리지널 파일명
      * @return savedFilePath와 fileName을 '||' 구분자로 연결한 문자열을 Base64로 encode하여 반환한다.
      *         ('/files/download.do?file=' 경로를 포함한다.)
      * @throws Exception
@@ -249,8 +249,8 @@ public class FileUploadController {
      *  2. c:url 테그를 이용하여 링크를 만든다.
      *      ex) <a href="<c:url value="${FileController.makeDownloadLink(filePath, fileName)}"/>">다운로드</a>
      */
-    public static String makeDownloadLink(String savedFilePath, String fileName) throws Exception {
-        String encodedFileName = URLEncoder.encode(fileName, "UTF-8");
+    public static String makeDownloadLink(String savedFilePath, String originalFileName) throws Exception {
+        String encodedFileName = URLEncoder.encode(originalFileName, "UTF-8");
         String fileInfo = savedFilePath + "||" + encodedFileName;
         // Base64 encode 참조 : https://recordsoflife.tistory.com/331
         String encodedFileInfo = new String(Base64.encodeBase64(fileInfo.getBytes(StandardCharsets.UTF_8)));
@@ -262,5 +262,10 @@ public class FileUploadController {
                          .replaceAll("\\%29", ")")
                          .replaceAll("\\%7E", "~");
         return String.format("/files/download.do?file=%s", encodedFileInfo);
+    }
+
+    public static String makeDownloadLink(String savedFilePath) throws Exception {
+        String fileName = FilenameUtils.getName(savedFilePath);
+        return makeDownloadLink(savedFilePath, fileName);
     }
 }

@@ -10,6 +10,7 @@
         <pattern>/editor/*</pattern>
         <pattern>/common/*</pattern>
         <pattern>/exclude/*</pattern>
+        <pattern>/main/intro.do</pattern>
     </excludes>
 
     <decorator name="guide_menu" page="/WEB-INF/jsp/guide/guide_menu.jsp"/>
@@ -54,5 +55,7 @@
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
         <pattern>/admin/*</pattern>
     </decorator>
+
+
 
 </decorators>

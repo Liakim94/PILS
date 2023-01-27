@@ -50,7 +50,7 @@
 <header class="gnb-container">
     <div class="gnb-wrap">
         <div class="logo-wrap">
-            <a href="${pageContext.request.contextPath}">
+            <a href="<c:url value="/main/index.do"/>">
             <img class="logo" src="${pageContext.request.contextPath}/images/common/logo.png" alt="중소벤처기업부"/></a>
             <img class="slogan" src="${pageContext.request.contextPath}/images/common/slogan.png"
                  alt="다시 도약하는 대한민국 함께 잘사는 국민의 나라"/>

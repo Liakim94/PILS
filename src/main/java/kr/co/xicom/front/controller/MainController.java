@@ -309,4 +309,14 @@ public class MainController {
         writer.flush();
     }
 
+    /**
+     * 인트로 페이지 출력
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/intro.do")
+    public String intro() throws Exception {
+        return "intro";
+    }
+
 }

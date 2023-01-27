@@ -23,11 +23,11 @@ public interface CompanyMapper {
 
     /**
      * 참여기업 상체 수출
-     * @param bizNo 사업자번호
+     * @param cmpMemberVo bizNo 사업자번호 필수.
      * @return
      * @throws Exception
      */
-    CmpMemberVo details(int bizNo) throws Exception;
+    CmpMemberVo details(CmpMemberVo cmpMemberVo) throws Exception;
 
     /**
      * 참여기업 정보 수정

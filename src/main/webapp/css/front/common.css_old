@@ -483,6 +483,12 @@
 .point6-text {
     color: #777777;
 }
+.text-red{
+    color: #BE001E;
+}
+.text-red2{
+    color: #E60024;
+}
 .text-white{
     color: #ffffff;
 }
@@ -529,12 +535,18 @@
     font-weight: 500;
 }
 .fw700 {
-    font-weight: 700;
+    font-weight: 700 !important;
 }
 
 .inline-focus:focus{
     outline: 1px solid #E60024;
     border-radius: 5px;
+}
+.bt-none{
+    border-top: none !important;
+}
+.bb-none{
+    border-bottom: none !important;
 }
 
 /* GNB Header */
@@ -832,7 +844,231 @@
     z-index: 10;
     display: none;
 }
-/* 참여기업 상세페이지 */
+/* 메인페이지 */
+
+#main section{
+    text-align: center;
+}
+#main .title{
+    font-size: 36px;
+    color:#191919;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+#main .title strong{
+    font-family: 'GmarketSans', sans-serif;
+}
+#main-banner{
+    position: relative;
+}
+#main .main-slide-container{
+    height: 400px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+#main .main-slide-container .swiper-slide{
+    background-position: top center;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+#main .main-slide-container .swiper-slide .text-wrap{
+    text-align: left;
+    width: 90%;
+    max-width: 1278px;
+    margin: 0 auto;
+}
+#main .main-slide-container .swiper-slide .slide-text p{
+    font-size:54px;
+    line-height:60px;
+    font-weight:400;
+    letter-spacing:-0.75px;
+    color:#fff;
+    font-family: 'GmarketSans', sans-serif;
+    text-align: left;
+    transition: all 1.5s;
+    transform: translateY(-15px);
+    opacity: 0.2;
+}
+#main .main-slide-container .swiper-slide-active .slide-text p{
+    transform: translateY(0px);
+    opacity: 1;
+}
+#main .main-slide-container .swiper-slide .slide-text strong{
+    color:#fff !important;
+    font-family: 'GmarketSans', sans-serif;
+}
+#main .main-slide-container .swiper-slide .more-btn{
+    display:block;
+    font-size: 24px;
+    color: #fff;
+    transition: all 1.5s;
+    transform: translateY(15px);
+    text-align: left;
+    margin-top: 40px;
+}
+#main .main-slide-container .swiper-slide-active .more-btn{
+    transform: translateY(0px);
+    opacity: 1;
+}
+#main .main-slide-container .swiper-slide .more-btn i{
+    background: #E60024;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    line-height: 27px;
+    color: #ffff;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    bottom: 4px;
+    margin-left: 10px;
+}
+#main .main-navi{
+    position: absolute;
+    bottom: -25px;
+    width: 100px;
+    display: flex;
+    right: 8%;
+    z-index: 1;
+}
+#main .main-navi .navi{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+#main .main-navi .navi i{
+    font-size: 30px;
+}
+#main .main-navi .main-prev{
+    background: #ffffff;
+}
+#main .main-navi .main-next {
+    background: #E60024;
+}
+#main .main-navi .main-next i{
+    color: #fff;
+}
+#main .info-slide-container{
+    width: 100%;
+    position: relative;
+}
+#main .info-slide-container .info-slide-navi{
+    position: absolute;
+    width: 438px;
+    top: 5px;
+    left: calc(50% - 219px);
+}
+#main .info-slide-container .info-slide-navi .info-prev{
+    float: left;
+    width: 36px;
+    height: 36px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 50px;
+    line-height: 34px;
+    cursor: pointer;
+}
+#main .info-slide-container .info-slide-navi .info-prev i{
+    color: #999999;
+}
+#main .info-slide-container .info-slide-navi .info-prev:hover i{
+    color: #E60024;
+}
+#main .info-slide-container .info-slide-navi .info-next{
+    float: right;
+    width: 36px;
+    height: 36px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 50px;
+    line-height: 34px;
+    cursor: pointer;
+}
+#main .info-slide-container .info-slide-navi .info-next i{
+    color: #999999;
+}
+#main .info-slide-container .info-slide-navi .info-next:hover i{
+    color: #E60024;
+}
+#main .info-slide-container .info-slide-wrap{
+    width: 100%;
+    margin-top: 40px;
+}
+#main .info-slide-container .info-slide-wrap .slick-list{
+    padding: 50px 0 !important;
+}
+#main .info-slide-container .info-slide-wrap .slide-item{
+    background: #F3F3F3;
+    box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 35px 40px;
+    box-sizing: border-box;
+    margin: 0 17px;
+    opacity: 0.5;
+    position: relative;
+    transition:all 0.3s;
+}
+#main .info-slide-container .info-slide-wrap .slick-current{
+    opacity: 1;
+    bottom: 50px;
+    filter:Alpha(opacity=100);
+    transition:all 0.3s;
+}
+#main .info-slide-container .info-slide-wrap h3{
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+#main .info-slide-container .info-slide-wrap .thumbnail{
+    width: 400px;
+}
+#main .company-list-container{
+    max-width: 1270px;
+    margin: 40px auto 0;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#main .company-list-container .list-item{
+    width: 15%;
+}
+#main .company-list-container .list-item .list-wrapper{
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 10px 15px 16px;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+}
+#main .company-list-container .list-item a:hover .list-wrapper{
+    border: 1px solid #D9D9D9;
+    box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 14px;
+}
+#main .company-list-container .list-item .list-wrapper .img-wrap{
+    height: 75px;
+    display: flex;
+    align-items: center;
+}
+#main .company-list-container .list-item .list-wrapper img{
+    width: 100%;
+}
+#main .company-list-container .list-item .list-wrapper .company-name{
+    color: #505050;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+    /* 참여기업 상세페이지 */
 #company-detail{
     width: 95%;
     max-width: 920px;
@@ -1148,6 +1384,9 @@
     font-family: 'GmarketSans', sans-serif;
     font-size: 16px;
 }
+#board .loc-list li:nth-child(1){
+    padding-left: 0;
+}
 #board .loc-list li .home-icon{
     width: 16px;
     position: relative;
@@ -1384,7 +1623,6 @@
     box-sizing: border-box;
     width: 100%;
 }
-
 #board .write-container .line-wrap .input-wrap textarea{
     border: none;
     outline: none;
@@ -1792,6 +2030,668 @@
 #agreement .info-box .table table tr .title:nth-last-child(1){
     border-right: none;
 }
+
+/* 동행기업 신청 */
+
+#company-write .info-text{
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #505050;
+    margin-bottom: 40px;
+}
+#company-write .info-link{
+    display: flex;
+    justify-content: center;
+    max-width: 445px;
+    margin: 0 auto;
+    gap: 20px;
+}
+#company-write .info-link a{
+    border: 1px solid #E60024;
+    border-radius: 50px;
+    padding: 7px 20px;
+    width: calc(50% - 20px);
+    font-size: 16px;
+    box-sizing: border-box;
+    line-height: 32px;
+    text-align: center;
+}
+#company-write .info-link img{
+    width: 24px;
+    margin-right: 5px;
+    position: relative;
+    top: 6px;
+}
+#company-write .info-link a:nth-child(1){
+    color: #E60024;
+}
+#company-write .info-link a:nth-child(2){
+    background-color: #E60024;
+    color: #ffffff;
+}
+#company-write .write-container{
+    width: 100%;
+    border-top: 2px solid #505050;
+    border-bottom: 2px solid #505050;
+}
+#company-write .title{
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+#company-write .title:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 4px;
+    height: 25px;
+    background-color: #E60024;
+}
+#company-write .write-container .line-wrap{
+    display: flex;
+    border-bottom: 1px solid #505050;
+    width: 100%;
+    min-width: 600px;
+}
+#company-write .write-container .fx2{
+    width: 50% !important;
+    display: flex;
+}
+#company-write .write-container .line-wrap:nth-last-child(1){
+    border-bottom: none;
+}
+#company-write .write-container .line-wrap .label{
+    background: rgba(145, 145, 145, 0.1);
+    padding: 16px 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+    color: #191919;
+    text-align: center;
+    width: 120px;
+}
+#company-write .write-container .line-wrap .label-long{
+    width: 150px;
+}
+#company-write .write-container .line-wrap .long-input{
+    width: calc(100% - 150px ) !important;
+}
+#company-write .write-container .line-wrap .label .required{
+    color: #E60024;
+    margin-left: 2px;
+}
+#company-write .write-container .line-wrap .label .info{
+    width: 24px;
+    position: relative;
+    top: 6px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+#company-write .write-container .line-wrap .label-full .info{
+    width: 24px;
+    position: relative;
+    top: 6px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+#company-write .write-container .line-wrap .label-full{
+    width: 100%;
+    background: rgba(145, 145, 145, 0.1);
+    padding: 16px 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+    color: #191919;
+    text-align: center;
+    font-weight: 600;
+}
+#company-write .write-container .line-wrap .tri{
+    display: flex;
+    width: calc(100% - 150px);
+    align-items: center;
+}
+#company-write .write-container .line-wrap .tri div{
+    width: 33.333%;
+}
+#company-write .write-container .line-wrap .colored{
+    background: rgba(145, 145, 145, 0.1);
+    text-align: center;
+    padding: 16px 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+    color: #191919;
+}
+#company-write .write-container .line-wrap .border{
+    border-right: 1px solid #999999;
+}
+#company-write .write-container .line-wrap .border:nth-last-child(1){
+    border-right: none;
+}
+#company-write .write-container .line-wrap .value-wrap{
+    width: 77%;
+    padding: 16px 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+    color: #191919;
+    text-align: left;
+}
+#company-write .write-container .line-wrap .input-wrap{
+    width: calc(100% - 120px);
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+#company-write .write-container .line-wrap .input-full{
+    width: 100% !important;
+}
+#company-write .write-container .line-wrap input{
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 18px 16px;
+    box-sizing: border-box;
+    width: 100%;
+    color: #505050;
+}
+#company-write .write-container .line-wrap input::placeholder{
+    color: #999999;
+}
+#company-write .write-container .line-wrap select{
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 16px;
+    padding: 14px 16px;
+    margin-top: 14px;
+}
+#company-write .write-container .line-wrap .multi{
+    width: 87px !important;
+    padding: 18px 8px;
+}
+#company-write .write-container .line-wrap .br{
+    border-right: 1px solid #DDDDDD;
+}
+#company-write .file-label {
+    border: 1px solid #E60024;
+    border-radius: 5px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    color: #E60024;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 12px;
+    position: relative;
+    top: 16px !important;
+    cursor: pointer;
+}
+#company-write .file-label img {
+    width: 20px;
+    position: relative;
+    top: 3px;
+}
+#company-write input[type=file] {
+    display: none;
+}
+#company-write .upload-list {
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    top: 18px;
+}
+#company-write .upload-list .file{
+    display: inline-block;
+    color: #505050;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-right: 15px;
+}
+#company-write .upload-list .file img{
+    width: 16px;
+    margin-left: 3px;
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+}
+#company-write .write-bottom{
+    text-align: right;
+    margin-top: 40px;
+    padding-bottom: 30px;
+}
+#company-write .sub{
+    position: relative;
+    bottom: 8px;
+    color: #E60024;
+    font-weight: 400;
+}
+#company-write .write-bottom .submit{
+    background: #E60024;
+    border-radius: 50px;
+    padding: 12px 50px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    margin-right: 20px;
+}
+#company-write .write-bottom .back{
+    border: 1px solid #E60024 !important;
+    border-radius: 50px;
+    padding: 12px 50px;
+    box-sizing: border-box;
+    color: #E60024;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    margin-right: 20px;
+    background: #fff;
+}
+#company-write .write-bottom .print{
+    background: #E60024;
+    border-radius: 50px;
+    padding: 12px 50px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+#company-write .write-bottom .print img {
+    width: 24px;
+    margin-right: 5px;
+    position: relative;
+    top: 7px;
+}
+#company-write .write-bottom .submit:hover{
+    background-color: #BE001E;
+}
+#company-write .write-bottom .submit:focus{
+    background-color: #BE001E;
+}
+#company-write .write-bottom .print:hover{
+    background-color: #BE001E;
+}
+#company-write .write-bottom .print:focus{
+    background-color: #BE001E;
+}
+#company-write .write-bottom a{
+    border-radius: 50px;
+    padding: 10px 50px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 16px;
+    background: #DDDDDD;
+    position: relative;
+    top: 1px;
+}
+#company-write .info-full-box .info-box{
+    margin: 20px;
+}
+#company-write .info-box{
+    padding: 15px 20px;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: none;
+}
+#company-write .info-box h3{
+    color: #505050;
+    margin-bottom: 20px;
+}
+#company-write .info-box .text{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #505050;
+    margin-bottom: 10px;
+}
+#company-write .info-box .example{
+    color: #E60024;
+}
+#company-write .info-box ul{
+    padding-left: 20px;
+}
+#company-write .info-box ul li{
+    list-style: disc;
+    color: #505050;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+#company-write .info-box .table{}
+#company-write .info-box .table table{
+    border: 1px solid #FFC7C7;
+    margin-top: 10px;
+}
+#company-write .info-box .table table tr{
+    border-bottom: 1px solid #D2D2D2;
+}
+#company-write .info-box .table table tr:nth-child(1){
+    border-bottom: none;
+}
+#company-write .info-box .table table tr:nth-last-child(1){
+    border-bottom: none;
+}
+#company-write .info-box .table table td{
+    padding: 10px;
+    min-height: unset;
+    height: auto;
+    border-bottom: none;
+    font-size: 16px;
+    line-height: 26px;
+}
+#company-write .info-box .table table .title{
+    background: #FFEFEF;
+    border-right: 1px solid #FFC7C7;
+}
+#company-write .info-box .table table tr .title:nth-last-child(1){
+    border-right: none;
+}
+
+
+/* 납품대금 연동제란? */
+#about .title{
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+#about .title:after{
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 4px;
+    height: 25px;
+    background-color: #E60024;
+}
+#about h4{
+    font-weight: 400;
+    line-height: 26px;
+}
+#about .example-box{
+    display: flex;
+    margin-bottom: 40px;
+}
+#about .example-box h4{
+   width: 50px;
+    font-weight: 600;
+    padding: 10px 0;
+}
+#about .example-box .text-wrap{
+    width: calc(100% - 50px);
+    background: #F4F4F4;
+    border-radius: 10px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+}
+#about .text-box{
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+#about .target-img{
+    max-width: 683px;
+    display: block;
+    margin: 0 auto 40px;
+    width: 100%;
+}
+#about .sub{
+    color: #767676;
+    font-weight: 400;
+    line-height: 26px;
+}
+#about .compare-box{
+    background: #F4F4F4;
+    border-radius: 10px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+#about .compare-box .table-wrap{
+    display: flex;
+    margin-top: 10px;
+}
+#about .compare-box .pc{
+    display: flex;
+}
+#about .compare-box .mobile{
+    display: none;
+}
+#about .compare-box .table-wrap table{
+    width: 100%;
+    border: 1px solid #999999;
+}
+#about .compare-box .table-wrap table th{
+    background-color: #e7e7e7;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #191919;
+    border: none !important;
+}
+#about .compare-box .table-wrap table td{
+    font-size: 16px;
+    line-height: 24px;
+    color: #505050;
+    background: #fff;
+    text-align: left;
+}
+#about .flex-wrap{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+#about .flex-wrap .flex-item{
+    width: 50%;
+}
+#about .accordion-container{
+    width: 100%;
+}
+#about .accordion-container .item-wrap{
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+#about .accordion-container .item-wrap:focus{
+    border: 1px solid #E60024;
+}
+#about .accordion-container .item-wrap h3{
+    display: inline-block;
+}
+#about .accordion-container .item-wrap img{
+    float: right;
+    position: relative;
+    bottom: 5px;
+    transform: rotate(0deg);
+}
+#about .accordion-container .open img{
+    transform: rotate(180deg);
+}
+#about .accordion-container .item-wrap .detail-info{
+    margin-top: 41px;
+    position: relative;
+    display: none;
+}
+#about .accordion-container .item-wrap .detail-info:after{
+    position: absolute;
+    content: "";
+    width: calc(100% + 40px);
+    top:-20px;
+    left: -20px;
+    height: 1px;
+    background-color: #dddddd;
+}
+
+#about .welcome{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+}
+#about .welcome .text-wrap{
+    width: calc(100% - 280px);
+}
+#about .welcome h3{
+    font-size: 20px;
+    font-weight: 400;
+}
+#about .welcome .img-wrap{
+    width: 220px;
+}
+#about .welcome .img-wrap img{
+    width: 100%;
+}
+#about .welcome .pc{
+    display: block;
+}
+#about .welcome .mobile{
+    display: none;
+}
+
+.timeline {
+    position: relative;
+    padding-bottom: 30px;
+}
+.timeline:before{
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #BE001E;
+    top: 0;
+    left: 34px;
+}
+.timeline .timeline-group{
+    margin-top: 62px;
+    position: relative;
+}
+
+.timeline .timeline-group .timeline-year{
+    position: absolute;
+    top: -25px;
+    left: 0;
+    z-index: 1;
+    background: #FFF5F5;
+    width: 68px;
+    padding: 5px 0;
+    text-align: center;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-size: 14px;
+    color: #191919;
+    font-weight: 700;
+}
+.timeline .timeline-group .timeline-box{
+    display: flex;
+    margin-bottom: 30px;
+    align-items: center;
+}
+.timeline .timeline-group .timeline-box .timeline-date{
+    width: 68px;
+    background: #FFEAEA;
+    border-radius: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    height: 55px;
+}
+
+.timeline .timeline-group .timeline-box .timeline-date span{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+}
+.timeline .timeline-group .timeline-box .timeline-post{
+    width: calc(100% - 88px);
+    background: #FFFFFF;
+    border: 1px solid #BE001E;
+    box-shadow: 5px 5px 0px #FFEFEF;
+    border-radius: 10px;
+    margin-left: 20px;
+    position: relative;
+}
+.timeline .timeline-group .timeline-box .timeline-post:before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    left: -20px;
+    top: calc(50% - 1px);
+    background-color: #BE001E;
+}
+.timeline .timeline-group .timeline-box .timeline-post .timeline-content{
+    padding: 15px;
+    box-sizing: border-box;
+}
+.timeline .timeline-group .timeline-box .timeline-post .timeline-content .img-content{
+    display: flex;
+    gap: 20px;
+}
+.timeline .timeline-group .timeline-box .timeline-post .timeline-content .img-content .img-wrap{
+    width: 190px;
+}
+.timeline .timeline-group .timeline-box .timeline-post .timeline-content .img-content .img-wrap img{
+    width: 100%;
+}
+.timeline .timeline-group .timeline-box .timeline-post .timeline-content .text-wrap{
+    width: calc(100% - 210px);
+}
+.timeline-img{
+    width: 100%;
+}
+.s-table{
+    border: 1px solid #FFC7C7;
+}
+.s-table tr{
+}
+.s-table td{
+    padding: 10px 5px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    color: #191919;
+}
+.s-table .thead{
+    font-weight: 700;
+    background: #FFEFEF;
+    border-bottom: 1px solid #FFC7C7;
+}
+.s-table .tbody{
+    border-right: 1px solid #FFC7C7;
+    background: #FFF5F5;
+    border-bottom: none !important;
+}
+.s-table .tbody:nth-last-child(1){
+    border-right: none;
+}
+.s-table .val{
+    border-right: 1px solid #FFC7C7;
+    border-bottom: none !important;
+}
+.s-table .val:nth-last-child(1){
+    border-right: none;
+}
+
 /*  Responsive  */
 @media (max-width: 1300px) {
     /*  Header  */
@@ -1811,7 +2711,7 @@
         display: none;
     }
     #board .article{
-        width: 97%;
+        width: 93%;
         padding-left: 0;
         margin: 0 auto;
     }
@@ -1824,6 +2724,17 @@
         width:60%;
     }
 }
+@media (max-width: 1100px) {
+    #main .company-list-container{
+        height: 413px;
+        overflow: hidden;
+    }
+    #main .company-list-container .list-item {
+        width: 18%;
+    }
+
+}
+
 @media (max-width: 1024px) {
     /*  Header  */
     .gnb-container .gnb-wrap .logo-wrap .slogan{
@@ -1853,6 +2764,20 @@
         min-width: 980px !important;
     }
 
+    /* 동행기업 신청 */
+    #company-write .write-container .line-wrap{
+        flex-wrap: wrap;
+    }
+    #company-write .write-container .fx2{
+        width:100% !important;
+    }
+    #company-write .write-container .fx2:nth-child(1){
+        border-bottom: 1px solid #505050;
+    }
+    #main .main-slide-container .swiper-slide .slide-text p{
+        font-size: 40px;
+        line-height: 50px;
+    }
     /*  Footer  */
     .footer-container .footer-wrap{
         flex-wrap: wrap;
@@ -1879,6 +2804,33 @@
     .gnb-container .gnb-wrap .logo-wrap .logo {
         max-width: 150px;
     }
+
+    /* 메인 */
+    #main .main-slide-container{
+        border-bottom-right-radius: 50px;
+    }
+    #main .main-slide-container .swiper-slide .slide-text p{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    #main .company-list-container{
+        height: auto;
+        overflow: hidden;
+    }
+    #main .company-list-container .list-item {
+        width: 22%;
+    }
+    #main .main-slide-container .swiper-slide-active .more-btn{
+        font-size: 15px;
+    }
+    #main .main-slide-container .swiper-slide-active .more-btn i{
+        width: 25px;
+        height: 25px;
+        line-height: 23px;
+        font-size: 13px;
+        bottom:3px;
+    }
+
 
     /*  참여기업 상세페이지 */
     #company-detail{
@@ -1925,6 +2877,9 @@
         top: 0;
         margin-bottom: 15px;
     }
+    #company-write .write-container .line-wrap .input-wrap .upload-list{
+        margin-top: 30px;
+    }
 
     /*  약정서 작성  */
     #agreement .write-container{
@@ -1940,14 +2895,126 @@
         width: 80%;
     }
 
+    /* 동행기업신청 */
+    #company-write .write-container {
+        overflow-x: scroll;
+    }
 
+    /* 납품대금 연동제란? */
+    #about .title{
+        margin-bottom: 20px;
+    }
+    #about .example-box{
+        flex-wrap: wrap;
+    }
+    #about .example-box h4{
+        width: 100%;
+    }
+    #about .example-box .text-wrap{
+        width: 100%;
+    }
+    #about .compare-box .pc{
+        display: none;
+    }
+    #about .compare-box .mobile{
+        display: block;
+    }
+    #about .flex-wrap{
+        flex-wrap: wrap;
+    }
+    #about .flex-wrap .flex-item{
+        width: 100%;
+    }
+    #about .welcome{
+        flex-wrap: wrap;
+        gap: 0;
+        flex-direction: column-reverse;
+    }
+    #about .welcome .text-wrap{
+        width: 100%;
+    }
+    #about .welcome .img-wrap{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    #about .welcome .img-wrap img{
+        width: 90%;
+        max-width: 220px;
+    }
+    #about .welcome .pc{
+        display: none;
+    }
+    #about .welcome .mobile{
+        display: block;
+    }
+    .timeline{
+        overflow: hidden;
+    }
+    .timeline .timeline-group .timeline-box{
+        flex-wrap: wrap;
+    }
+
+    .timeline .timeline-group .timeline-box .timeline-post{
+        margin-top: 20px;
+        margin-left: 55px;
+        width: calc(100% - 58px);
+    }
+    .timeline-img {
+        width: 128%;
+        position: relative;
+        left: -14%;
+    }
+    .timeline .timeline-group .timeline-box .timeline-post .timeline-content .img-content{
+        flex-wrap: wrap;
+    }
+    .timeline .timeline-group .timeline-box .timeline-post .timeline-content .img-content .img-wrap{
+        width: 100%;
+    }
+    .s-table-wrap {
+        overflow-x: scroll;
+    }
+    #about #table1{
+        min-width: 430px;
+    }
+    #about #table2{
+        min-width: 500px;
+    }
+    #about #table3{
+        min-width: 680px;
+    }
+    #about #table4{
+        min-width: 680px;
+    }
+    #about #table5{
+        min-width: 550px;
+    }
 
     /* Footer */
     .footer-container{
         padding: 35px 30px 40px;
     }
 }
+@media (max-width: 768px) {
+
+    /* 메인 */
+    #main .company-list-container{
+        height: 413px;
+        overflow: hidden;
+    }
+    #main .company-list-container .list-item {
+        width: 30%;
+    }
+}
 @media (max-width: 480px) {
+    /* 메인 */
+    #main .company-list-container{
+        height: auto;
+        overflow: hidden;
+    }
+    #main .company-list-container .list-item {
+        width: 47%;
+    }
     /*  참여기업 상세페이지 */
     #company-detail section .table .label{
         padding: 8px 7px;
@@ -1985,7 +3052,11 @@
         position: relative;
         bottom: 10px;
     }
-
+    .timeline-img {
+        width: 152%;
+        position: relative;
+        left: -26%;
+    }
     /* Footer */
     .footer-container .footer-wrap .area .logo{
         margin-bottom: 10px;

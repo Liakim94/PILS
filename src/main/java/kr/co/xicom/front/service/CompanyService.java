@@ -19,7 +19,7 @@ public interface CompanyService {
      * @return
      * @throws Exception
      */
-    CmpMemberVo details(int bizNo) throws Exception;
+    CmpMemberVo details(String bizNo) throws Exception;
 
     /**
      * 참여회사 리스트 추출.

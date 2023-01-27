@@ -30,7 +30,7 @@
                     <div class="company-list-container">
                         <c:forEach var="list" items="${list }" varStatus="status">
                             <div class="list-item">
-                                <a href="<c:url value="/front/guide/cmpDetail.do?bizNo=${list.bizNo}"/>">
+                                <a href="<c:url value="/front/guide/company/details.do?bizNo=${list.bizNo}"/>">
                                     <div class="list-wrapper">
                                         <div class="img-wrap">
                                             <img src="<c:url value="/images/main/hanssem-logo.png"/>">
