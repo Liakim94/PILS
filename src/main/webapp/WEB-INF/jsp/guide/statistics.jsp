@@ -1,6 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="guide_menu"/>
@@ -81,6 +85,8 @@
                         <br>
                         그 밖에도 <strong>목재, 농산물, 헬륨, 종이</strong> 등 <strong>다양한 원재료</strong>를 대상으로 약정이 체결됐다.
                     </h4>
+        <div id="chart_div" style="width: 900px; height: 500px;  margin:35px"></div>
+
                     <div class="s-table-wrap">
                         <table class="s-table" id="table2">
                             <tr>
@@ -329,4 +335,37 @@
         }
     }
 </script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['treemap']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)', 'contents'],
+            ['1.주요 원재료의 종류', null, 0, 10, 0],
+            ['철강', '1.주요 원재료의 종류', 49.9, 2, '예시: ①철스크랩, ②압연강재(후판, 박판, 봉강, 선재 등), ③도금강재, ④강관, ⑤선철 등'],
+            ['비철금속', '1.주요 원재료의 종류', 31.1, 3, '비철금속 예시'],
+            ['석유화학', '1.주요 원재료의 종류', 10.9, 5, '석유화학 예시'],
+            ['기타', '1.주요 원재료의 종류', 10.9, 4, '기타 예시'],
 
+        ])
+
+
+        tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
+
+        tree.draw(data, {
+            minColor: '#db8d8d',
+            midColor: '#ddd',
+            maxColor: '#79c979',
+            headerHeight: 15,
+            fontColor: 'black',
+            showScale: false,
+            generateTooltip: showStaticTooltip
+        });
+        function showStaticTooltip(row, size, value) {
+            return '<div style="background:#d9cfbe; padding:10px; border-style:solid">' +
+                '<span style="font-family:Courier"><b>' + data.getValue(row, 0) +
+                '</b></span><br>' +
+                data.getValue(row, 4)+ '<br>';
+        }
+    }
+</script>

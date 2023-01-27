@@ -72,13 +72,11 @@
                                             ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
                                     <td class="al">
                                         <c:choose>
-                                            <c:when test="${list.id eq '1'}">
-                                                <strong>[공개] </strong>
+                                            <c:when test="${sessionId eq 'admin'}">
                                                 <a href="<c:url value="/front/qna/view.do?no=${list.no}"/>">
                                                         ${list.title }</a>
                                             </c:when>
                                             <c:otherwise>
-                                                <strong>[비공개] </strong>
                                                 <a href="javascript:modalOpen(${list.no})" id="checkPw"
                                                   >${list.title }</a>
                                             </c:otherwise>

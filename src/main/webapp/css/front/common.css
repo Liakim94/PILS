@@ -961,9 +961,9 @@
 }
 #main .info-slide-container .info-slide-navi{
     position: absolute;
-    width: 438px;
-    top: 5px;
-    left: calc(50% - 219px);
+    width: 500px;
+    top: -10px;
+    left: calc(48% - 219px);
 }
 #main .info-slide-container .info-slide-navi .info-prev{
     float: left;

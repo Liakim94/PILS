@@ -75,7 +75,6 @@
     <div id="board">
         <page:applyDecorator name="menu"/>
         <div class="article">
-            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -105,15 +104,6 @@
                                 </div>
                                 <div class="input-wrap">
                                     <input type="text" id="name" name="name" placeholder="작성자 입력"/>
-                                </div>
-                            </div>
-                            <div class="line-wrap">
-                                <div class="label">
-                                    공개여부
-                                </div>
-                                <div class="input-wrap">
-                                    공개<input type="radio" name="id" id="ChkBox1" value="1">
-                                    비공개<input type="radio" name="id" id="ChkBox2" value="0">
                                 </div>
                             </div>
                             <div class="line-wrap">
