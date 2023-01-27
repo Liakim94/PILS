@@ -63,7 +63,7 @@
                     <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
                     <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
                     <a href="<c:url value="/front/guide/trace.do"/>">걸어온 발자취</a>
-                    <a href="<c:url value="/front/guide/cmpList.do"/>">참여기업 현황</a>
+                    <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
                     <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
                     <a href="<c:url value="/front/guide/statistics.do"/>">주요 통계</a>
                 </div>
@@ -158,7 +158,7 @@
                         <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
                         <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
                         <a href="<c:url value="/front/guide/trace.do"/>">걸어온 발자취</a>
-                        <a href="<c:url value="/front/guide/cmpList.do"/>">참여기업 현황</a>
+                        <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
                         <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
                         <a href="<c:url value="/front/guide/statistics.do"/>">주요 통계</a>
                     </div>

@@ -21,8 +21,8 @@
             <li class="<c:if test="${URI.contains('/front/guide/trace')}">on</c:if>">
                 <a href="<c:url value="/front/guide/trace.do"/>" class="">걸어온 발자취</a>
             </li>
-            <li class="<c:if test="${URI.contains('/front/guide/cmpList')}">on</c:if>">
-                <a href="<c:url value="/front/guide/cmpList.do"/>">참여기업 현황</a>
+            <li class="<c:if test="${URI.contains('/front/guide/company')}">on</c:if>">
+                <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
             </li>
             <li class="<c:if test="${URI.contains('/front/guide/ordinance')}">on</c:if>">
                 <a href="<c:url value="/front/guide/ordinance.do"/>" class="">관련 법령</a>

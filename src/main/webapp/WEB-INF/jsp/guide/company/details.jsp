@@ -7,7 +7,14 @@
 <%@ taglib uri="fx"                                             prefix="fx"         %>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page"      prefix="page" %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
-
+<style>
+    #company-detail section .img-flex {
+        flex-wrap: wrap;
+    }
+    #company-detail section .promotion-wrap {
+        flex-wrap: wrap;
+    }
+</style>
 <div id="content" class="bg-top">
     <div id="company-detail" class="pr40 pl40">
         <div class="logo-wrap">
@@ -93,7 +100,10 @@
             <h1 class="title">기업정보</h1>
             <div class="company-info-wrap">
                 <div class="logo-wrap">
-                    <img class="logo" src="<c:url value="/images/company/logo-temp.png"/>" alt="(주)한샘 로고">
+                    <img class="logo"
+                         src="<c:url value="${FileUploadController.makeDownloadLink(company.logoImgPath)}"/>"
+                         alt="<c:out value="${company.logoFileName}"/>"
+                         onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
                 </div>
                 <div class="table">
                     <div class="label">
@@ -130,7 +140,7 @@
                 </div>
             </div>
         </section>
-        <div style="text-align: center;">
+        <div class="button-group">
             <a href="<c:url value="/front/guide/company/edit.do?bizNo=${company.bizNo}"/>" class="button">수정하기</a>
         </div>
 <%--        </c:forEach>--%>

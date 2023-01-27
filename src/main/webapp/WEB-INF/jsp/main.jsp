@@ -25,7 +25,7 @@
                                 <p>현재 <strong>338개</strong> 기업이</p>
                                 <p>납품대금 연동제에 동참하고 있습니다.</p>
                             </h1>
-                            <a href="<c:url value="/front/guide/cmpList.do"/>" class="more-btn">참여기업 현황 바로가기<i class="fas fa-chevron-right"></i></a>
+                            <a href="<c:url value="/front/guide/company/list.do"/>" class="more-btn">참여기업 현황 바로가기<i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
                     <div class="swiper-slide" style="background: url(<c:url value='/images/main/banner-bg03.png'/>)">

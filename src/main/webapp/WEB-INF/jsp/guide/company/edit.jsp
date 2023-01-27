@@ -219,7 +219,10 @@
 
         /* 저장 버튼 처리 */
         $('#submit-button').on('click', function() {
-            alert('submit');
+
+            if (!confirm("현재 상태로 저장하시겠습니까?")) {
+                return false;
+            }
 
             // 로고 이미지 업로드
             let logoFiles = $('#logoImgFile')[0].files;
@@ -429,51 +432,64 @@
     };
 </script>
 <style>
-    .company-info-edit-wrap,
-    .image-selector {
+    .input-box {
         border: 1px solid #eee;
         display: flex;
         align-items: center;
         padding: 10px;
         margin: 0 0 30px 0;
     }
-    .company-info-edit-wrap,
-    .company-info-edit-wrap *,
-    .image-selector,
-    .image-selector * {
+    .input-box,
+    .input-box * {
         box-sizing: border-box;
     }
-    .company-info-edit-wrap::after {
+    .input-box::after {
         content: "";
         display: block;
         clear: both;
     }
-    .company-info-edit-wrap label,
-    .image-selector label {
+    .input-box label {
         width: 15%;
         display: inline-block;
         text-align: center;
     }
-    .company-info-edit-wrap input[type=text] {
+    .input-box input[type=text] {
         width: 70%;
-
+        margin: 0 10px;
     }
-    .company-info-edit-wrap .apply-button,
-    .image-selector .apply-button {
+    .input-box .button {
         width: 15%;
-
+        line-height: 40px;
+        height: 42px;
+        padding: 0;
+    }
+    .file-selector,
+    .image-selector {
+        position: relative;
+        overflow: hidden;
+    }
+    .file-selector input[type=file],
+    .image-selector input[type=file] {
+        position: absolute;
+        top: -100px;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+    }
+    .image-selector {
+        display: flex;
     }
     .company-name::before {
         content: "";
         display: block;
         clear: both;
-
     }
     .product-img-list,
     .promotion-img-list {
         display: flex;
         flex-wrap: wrap;
         /*justify-content: space-between*/
+        margin-bottom: 20px;
     }
     .product-img-list .image-wrapper,
     .promotion-img-list .image-wrapper {
@@ -513,6 +529,7 @@
         color: white;
         font-size: 0.7em;
     }
+
 </style>
 
 <div id="content" class="bg-top">
@@ -526,11 +543,11 @@
                      onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
             </div>
             <form:hidden path="jsonLogoImage"/>
-            <div id="logo-image-selector" class="company-info-edit-wrap file-selector">
+            <div id="logo-image-selector" class="input-box file-selector">
                 <label>로고변경</label>
-                <form:input path="logoImgPath"/>
+                <form:input path="logoImgPath" readonly="true" placeholder="로고 이미지를 선택하세요."/>
                 <input type="file" name="logoImgFile" id="logoImgFile"/>
-                <label for="logoImgFile" class="apply-button">선택...</label>
+                <label for="logoImgFile" class="button">선택...</label>
             </div>
             <h1 class="company-name tc mb30">${company.cmpNm}</h1>
             <div class="video-container">
@@ -541,10 +558,10 @@
                             allowfullscreen></iframe>
                 </div>
             </div>
-            <div id="main-video-info" class="company-info-edit-wrap">
+            <div id="main-video-info" class="input-box">
                 <label>동영상 경로</label>
                 <form:input path="mainMovieUrl"/>
-                <button class="apply-button">적용</button>
+                <button class="button">적용</button>
             </div>
             <section>
                 <h1 class="title">주요 생산품</h1>
@@ -566,10 +583,10 @@
                         </div>
                     </c:forEach>
                 </div>
-                <div id="product-image-selector" class="image-selector">
+                <div id="product-image-selector" class="input-box image-selector">
                     <label>이미지 추가</label>
                     <input type="file" name="prodImgFiles" id="prodImgFiles" accept="image/gif,image/jpeg,image/png" multiple="multiple"/>
-                    <label for="prodImgFiles" class="button apply-button">선택...</label>
+                    <label for="prodImgFiles" class="button">선택...</label>
                 </div>
             </section>
             <section>
@@ -610,15 +627,15 @@
                        </div>
                    </c:forEach>
                 </div>
-                <div id="sub-video-info" class="company-info-edit-wrap">
+                <div id="sub-video-info" class="input-box">
                     <label>동영상 경로</label>
                     <form:input path="subMovieUrl"/>
-                    <button class="apply-button">적용</button>
+                    <button class="button">적용</button>
                 </div>
-                <div id="promotion-image-selector" class="image-selector">
+                <div id="promotion-image-selector" class="input-box image-selector">
                     <label>이미지 추가</label>
                     <input type="file" name="prmtImgFiles" id="prmtImgFiles" accept="image/gif,image/jpeg,image/png" multiple="multiple"/>
-                    <label for="prmtImgFiles" class="button apply-button">선택...</label>
+                    <label for="prmtImgFiles" class="button">선택...</label>
                 </div>
             </section>
             <section>
@@ -665,7 +682,9 @@
                 </div>
             </section>
         </form:form>
-        <button id="submit-button" class="button">저장</button>
+        <div class="button-group">
+            <button id="submit-button" class="button button-color-red">저장</button>
+        </div>
 <%--        </c:forEach>--%>
     </div>
 </div>
