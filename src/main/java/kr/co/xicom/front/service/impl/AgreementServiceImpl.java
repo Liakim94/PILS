@@ -28,4 +28,14 @@ public class AgreementServiceImpl implements AgreementService {
     public AgreementVO agreeView(String id) throws Exception{
         return mapper.agreeView(id);
     }
+
+    @Override
+    public String agreeChk(String id) throws Exception{
+        return mapper.agreeChk(id);
+    }
+
+    @Override
+    public int agreeDelete(String id) throws Exception{
+        return mapper.agreeDelete(id);
+    }
 }

@@ -11,6 +11,7 @@
     <title></title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/temp.css"/>">
 </head>
 <script>
@@ -71,7 +72,50 @@
             $email2.val($ele.val());
         }
     }
+    $.validator.addMethod("regex", function(value, element,regexpr){
+        return regexpr.test(value);
+    });
+
+    $(function () {
+
+        $("#frmWrite").validate({
+            ignore: "",
+            rules: {
+                id: {
+                    required: true, remote: {
+                        type: "post"
+                        , url: "${pageContext.request.contextPath}/join/checkId.do"
+                        , data: {
+                            username: function () {
+                                return $("#id").val();
+                            }
+                        }
+                    }
+                },
+                passwd: {required: true, regex: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,10}$/ },
+                passwdChk: {required: true, equalTo: "#passwd"},
+            },
+            messages: {
+                id: {
+                    required: "아이디를 입력하세요",
+                    remote: "이미 존재하는 아이디입니다."
+                },
+                passwd: {required: "비밀번호를 입력하세요.",
+                    regex:"비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."},
+                passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
+            }
+        });
+    });
 </script>
+<style type="text/css">
+    input.error, textarea.error{
+        border:1px dashed red;
+    }
+    label.error{
+        display:block;
+        color:red;
+    }
+</style>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu_myPage"/>
@@ -178,7 +222,7 @@
                                     <div class="input-wrap long-input">
                                         <input type="password" id="passwd" name="passwd" placeholder="비밀번호를 입력해주세요."
                                                required>
-                                        <h5 class="sub">※ 10~20자의 영문대소문자, 숫자, 특수문자 중 최소 2가지 이상의 조합을 사용해야 합니다.</h5>
+                                        <h5 class="sub">※ 비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다.</h5>
                                     </div>
                                 </div>
                                 <div class="fx2">

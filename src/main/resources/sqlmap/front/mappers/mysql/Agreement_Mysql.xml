@@ -61,4 +61,13 @@
     from tb_pils_cmp_agre
     where id = #{id}
 </select>
+    <select id="agreeChk" resultType="String">
+        select coalesce(max(id), '0') as id
+        from  tb_pils_cmp_agre
+        where id = #{id}
+    </select>
+    <delete id="agreeDelete">
+        delete from tb_pils_cmp_agre where id = #{id}
+    </delete>
+
 </mapper>
