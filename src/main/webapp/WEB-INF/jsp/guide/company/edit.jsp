@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
 <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
-<title>Title</title>
+
 <script>
     $(document).ready(function() {
         <%--var fileUploader = new smes.FileUploader('.file-uploader').init({--%>

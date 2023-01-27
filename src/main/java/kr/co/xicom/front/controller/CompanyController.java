@@ -2,6 +2,7 @@ package kr.co.xicom.front.controller;
 
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.service.CompanyService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -71,13 +73,27 @@ public class CompanyController {
      */
     @GetMapping("/front/guide/company/edit.do")
     public ModelAndView edit(@RequestParam String bizNo,
-                             @ModelAttribute("company") CmpMemberVo cmpMemberVo) throws Exception {
+                             @ModelAttribute("company") CmpMemberVo cmpMemberVo,
+                             HttpSession session) throws Exception {
 
         ModelAndView mav = new ModelAndView("guide/company/edit");
 
-        mav.addObject("company", this.companyService.details(bizNo));
+        // 권한 확인
+        String sessionId = (String)session.getAttribute("sessionId");
+        String sessionBizNo = (String)session.getAttribute("sessionBizNo");
+
+        // 로그인 상태이며 운영자 이거나 해당 사업자인 경우에만 처리
+        if (!StringUtils.isBlank(sessionId) && ("admin".equals(sessionId) || bizNo.equals(sessionBizNo))) {
+            // 사업자번호에 해당하는 정보 추출
+            mav.addObject("company", this.companyService.details(bizNo));
+        }
+        else {
+            // 권한이 없는 경우 다시 details 화면으로 이동 처리
+            mav.setViewName("redirect:/front/guide/company/details.do?bizNo=" + bizNo);
+        }
 
         return mav;
+
     }
 
     /**
@@ -90,10 +106,18 @@ public class CompanyController {
      */
     @PostMapping("/front/guide/company/edit.do")
     public String edit(@RequestParam String bizNo,
-                             @ModelAttribute("company") CmpMemberVo cmpMemberVo,
-                             BindingResult errors) throws Exception {
+                       @ModelAttribute("company") CmpMemberVo cmpMemberVo,
+                       BindingResult errors,
+                       HttpSession session) throws Exception {
 
-        this.companyService.update(cmpMemberVo);
+        // 권한 확인
+        String sessionId = (String)session.getAttribute("sessionId");
+        String sessionBizNo = (String)session.getAttribute("sessionBizNo");
+
+        // 로그인 상태이며 운영자 이거나 해당 사업자인 경우에만 처리
+        if (!StringUtils.isBlank(sessionId) && ("admin".equals(sessionId) || bizNo.equals(sessionBizNo))) {
+            this.companyService.update(cmpMemberVo);
+        }
 
         return "redirect:/front/guide/company/details.do?bizNo=" + bizNo;
 
