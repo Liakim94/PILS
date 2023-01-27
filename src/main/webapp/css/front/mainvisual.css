@@ -230,10 +230,6 @@
 @media all and ( max-width: 480px ){
     /* 메인 비주얼 :: 텍스트 */
     .main-visual-item .main-visual-txt-con{top:105px;}
-    #main .info-slide-container .info-slide-navi{
-        width: 90%;
-        left: 5%;
-    }
     #main .info-slide-container .info-slide-wrap .slide-item .thumbnail{
         width: 300px;
     }
