@@ -6,13 +6,14 @@
 
     <select id="list" parameterType="kr.co.xicom.front.model.CmpMemberVo" resultType="kr.co.xicom.front.model.CmpMemberVo">
         select
-            A.bizno                         as bizNo
-           ,A.cmp_mbr_cd                    as mem_cd
-           ,A.cmp_nm                        as cmpNm
-           ,to_char(A.appdt, 'YYYY-MM-DD')  as appdate
-           ,B.nm                            as name
-           ,B.user_id                       as id
-           ,B.pswd                          as passwd
+            A.bizno                         as bizNo,
+            A.cmp_mbr_cd                    as mem_cd,
+            A.cmp_nm                        as cmpNm,
+            to_char(A.appdt, 'YYYY-MM-DD')  as appdate,
+            B.nm                            as "name",
+            B.user_id                       as "id",
+            B.pswd                          as passwd,
+            a.logo_img_path                 as logoImgPath
         from
             tb_pils_cmpmbr A
             join tb_pils_mbr B

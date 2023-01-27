@@ -759,16 +759,16 @@
     -webkit-animation-fill-mode:both
 }
 #intro .intro1{
-    background: url("../img/intro/intro-banner1.png");
+    background: url("../../images/intro/intro-banner1.png");
 }
 #intro .intro2{
-    background: url("../img/intro/intro2.png");
+    background: url("../../images/intro/intro2.png");
 }
 #intro .intro3{
-    background: url("../img/intro/intro3.png");
+    background: url("../../images/intro/intro3.png");
 }
 #intro .intro4{
-    background: url("../img/intro/intro4.png");
+    background: url("../../images/intro/intro4.png");
 }
 #intro .close-btn{
     width: 60px;

@@ -141,7 +141,8 @@
             </div>
         </section>
         <div class="button-group">
-            <a href="<c:url value="/front/guide/company/edit.do?bizNo=${company.bizNo}"/>" class="button">수정하기</a>
+            <a href="<c:url value="/front/guide/company/list.do"/>" class="button">목록</a>
+            <a href="<c:url value="/front/guide/company/edit.do?bizNo=${company.bizNo}"/>" class="button button-color-red">수정하기</a>
         </div>
 <%--        </c:forEach>--%>
     </div>

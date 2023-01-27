@@ -1,6 +1,6 @@
 applications:
 - name: pis-dev                           # 앱 이름
-  memory: 1024M                           # 앱 메모리 크기
+  memory: 2G                              # 앱 메모리 크기
   instances: 1                            # 앱 인스턴스 수
 # host: pis-dev                           # 앱과 바인드될 호스트
   routes:
