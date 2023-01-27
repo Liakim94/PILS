@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="kr.co.xicom.common.FileUploadController" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -82,14 +83,16 @@
             <h1 class="title"><strong>참여기업</strong> 현황</h1>
             <h3 class="fw400">현재 납품대금연동제는 <span>43개 기업</span>이 참여하고 있습니다.</h3>
             <div class="company-list-container">
-                <c:forEach var="list" items="${list }" varStatus="status">
+                <c:forEach var="company" items="${list}" varStatus="status">
                 <div class="list-item">
-                    <a href="<c:url value="/front/guide/cmpDetail.do?bizNo=${list.bizNo}"/>">
+                    <a href="<c:url value="/front/guide/company/details.do?bizNo=${company.bizNo}"/>">
                         <div class="list-wrapper">
                             <div class="img-wrap">
-                                <img src="<c:url value="/images/main/hanssem-logo.png"/>">
+                                <img src="<c:url value="${FileUploadController.makeDownloadLink(company.logoImgPath)}"/>"
+                                     alt="<c:out value="${company.cmpNm}"/>"
+                                     onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
                             </div>
-                            <p class="company-name">${list.cmpNm}</p>
+                            <p class="company-name">${company.cmpNm}</p>
                         </div>
                     </a>
                 </div>

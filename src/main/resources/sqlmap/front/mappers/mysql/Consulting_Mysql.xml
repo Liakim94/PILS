@@ -30,6 +30,7 @@
         <result property="management_cd" column="management_cd"/>
         <result property="joinCmp" column="joinCmp"/>
         <result property="mainProduct" column="mainProduct"/>
+        <result property="logoImgPath" column="logoImgPath"/>
     </resultMap>
     <resultMap id="CmpSttusVO" type="kr.co.xicom.front.model.CmpSttusVO">
         <result property="bizNo" column="bizNo"/>
@@ -137,7 +138,7 @@
         ,B.nm as name
         ,B.user_id as id
         ,B.pswd as passwd
-
+        , a.logo_img_path as logoImgPath
         from tb_pils_cmpmbr A join tb_pils_mbr B
         on A.bizno =B.bizno
         where cmp_mbr_cd= #{mem_cd} and b.manage_cd ='M501'
