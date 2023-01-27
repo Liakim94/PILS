@@ -736,6 +736,89 @@
     margin-bottom: 0;
 }
 
+/* INTRO */
+#intro{
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+#intro .intro-bg{
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    width: 100vw;
+    height: 100vh;
+    transform: scale(1.2, 1.2);
+}
+#intro .swiper-slide-active .intro-bg{
+    animation: zoom-in 3s ease;
+    -webkit-animation-fill-mode:both
+}
+#intro .intro1{
+    background: url("../../images/intro/intro-banner1.png");
+}
+#intro .intro2{
+    background: url("../../images/intro/intro2.png");
+}
+#intro .intro3{
+    background: url("../../images/intro/intro3.png");
+}
+#intro .intro4{
+    background: url("../../images/intro/intro4.png");
+}
+#intro .close-btn{
+    width: 60px;
+    height: 60px;
+    background: #222222;
+    padding: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+#intro .close-btn span{
+    display: block;
+    border-top: 2px solid #fff;
+    width: 100%;
+    position: relative;
+}
+#intro .close-btn span:nth-child(1){
+    transform: rotate(45deg);
+    top: 17px;
+}
+#intro .close-btn span:nth-child(2){
+    transform: rotate(-45deg);
+    top: 15px;
+}
+#intro .go-main{
+    position: relative;
+    bottom: 140px;
+    left: calc(50% - 100px);
+    width: 200px;
+    padding: 13px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 42px;
+    color: #fff;
+    display: block;
+    text-align: center;
+    z-index: 2;
+}
+@keyframes zoom-in {
+    0% {
+        transform: scale(1.2, 1.2);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
     /* Top Button */
 .go-top{
     background: linear-gradient(92.61deg, #DA0021 -6.8%, #E64500 101.17%);
@@ -3062,3 +3145,4 @@
         margin-bottom: 10px;
     }
 }
+

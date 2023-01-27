@@ -1,13 +1,16 @@
 package kr.co.xicom.front.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CmpMemberVo extends DefaultVO {
+
     private String bizNo = "";   //사업자번호
     private String bizNo1 = "";
     private String bizNo2 = "";
@@ -67,12 +70,50 @@ public class CmpMemberVo extends DefaultVO {
     private String mainMovieUrl;
 
     /**
-     * 로고 이미지 경로
+     * 로고 이미지 저장 경로
      */
     private String logoImgPath;
 
     /**
-     * 기업홍도 동영상 URL
+     * 로그 이미지 오리지널 파일명
+     */
+    private String logoFileName;
+
+    /**
+     * 기업홍보 동영상 URL
      */
     private String subMovieUrl;
+
+    /**
+     * 로그 이미지 파일정보 (JSON 문자열)
+     */
+    private String jsonLogoImage;
+
+    /**
+     * 주요생산품 이미지 파일정보 리스트 (JSON 문자열)
+     */
+    private String jsonProdImageList;
+
+    /**
+     * 주요생산품 삭제된 이미지 파일정보 리스트 (JSON 문자열)
+     */
+    private String jsonDeletedProdImageList;
+
+    /**
+     * 홍보 이미지 파일정보 리스트 (JSON 문자열)
+     */
+    private String jsonPrmtImageList;
+
+    /**
+     * 삭제된 홍보 이미지 파일정보 리스트 (JSON 문자열)
+     */
+    private String jsonDeletedPrmtImageList;
+
+    /** 주요생산품 이미지 리스트 */
+    private List<CompanyAttachVO> prodImageList;
+
+    /** 홍보 이미지 리스트 */
+    private List<CompanyAttachVO> prmtImageList;
+
+
 }

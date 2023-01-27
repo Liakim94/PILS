@@ -140,7 +140,7 @@ public class GuideController extends Alerts {
     /**
      * 참여기업 현황 정보 수정 페이지
      */
-    @GetMapping("/guide/company/edit.do")
+    @GetMapping("/guide/cmpEdit.do")
     public ModelAndView cmpEdit(@RequestParam String bizNo,
                                 @ModelAttribute(" cmpMember") CmpMemberVo cmpMemberVo) throws Exception {
 

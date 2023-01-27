@@ -5,8 +5,8 @@
     <!-- WildRain 추가 2023-01-26 -->
 
     <insert id="create" parameterType="kr.co.xicom.front.model.CompanyAttachVO">
-        <selectKey keyProperty="attchSeq" resultType="int" order="BEFORE">
-            select nextval('tb_pils_cmp_atch_seq') as attchSeq
+        <selectKey keyProperty="cmpAtchSeq" resultType="int" order="BEFORE">
+            select nextval('tb_pils_cmp_atch_seq') as cmpAtchSeq
         </selectKey>
         INSERT INTO tb_pils_cmp_atch (
             cmp_atch_seq,
@@ -21,7 +21,7 @@
             regist_date
         )
         VALUES(
-            #{attchSeq},
+            #{cmpAtchSeq},
             #{fileName},
             #{fileSize},
             #{fileType},
