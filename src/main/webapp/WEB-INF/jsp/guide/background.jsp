@@ -11,7 +11,7 @@
                     <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    납품대금연동제란?
+                    납품대금 연동제란?
                 </li>
                 <li>
                     도입배경
@@ -63,31 +63,6 @@
                                 <div class="timeline-post">
                                     <div class="timeline-content">
                                         납품대금 연동제 도입을 내용으로 하는 하도급법 발의
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-group">
-                            <span class="timeline-year">2009</span>
-                            <div class="timeline-box">
-                                <div class="timeline-date">
-                                    <span class="timeline-month">APR</span>
-                                    <span class="timeline-day">04/01</span>
-                                </div>
-                                <div class="timeline-post">
-                                    <div class="timeline-content">
-                                        납품대금 연동제 법제화 촉구
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timeline-box">
-                                <div class="timeline-date">
-                                    <span class="timeline-month">OCT</span>
-                                    <span class="timeline-day">10/01</span>
-                                </div>
-                                <div class="timeline-post">
-                                    <div class="timeline-content">
-                                        내용이 들어갈 영역입니다.
                                     </div>
                                 </div>
                             </div>

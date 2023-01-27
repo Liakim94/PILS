@@ -33,7 +33,7 @@
                 , rspns as reply
         from tb_banner_qust_answr
         where 1 = 1
-        order by hedofc_no asc, dp asc
+        order by hedofc_no desc, dp asc
         <if test="pageIndex > 0">
         LIMIT #{pageUnit} OFFSET #{firstIndex}
         </if>
@@ -68,7 +68,7 @@
         (  #{headnum}::INT4
            , 0
            , 0
-           , #{id}
+           , '0'
            , #{name}
            , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
            , #{title}

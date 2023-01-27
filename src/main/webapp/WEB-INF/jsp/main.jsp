@@ -50,7 +50,7 @@
         </section>
         <section>
             <div class="info-slide-container">
-                <h1 class="title"><strong>소개</strong> 자료</h1>
+                <h1 class="title">쉽게 보는 납품대금 연동제</h1>
                 <div class="info-slide-navi">
                     <span class="info-prev"><i class="fas fa-chevron-left"></i></span>
                     <span class="info-next"><i class="fas fa-chevron-right"></i></span>

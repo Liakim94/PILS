@@ -21,7 +21,7 @@
         </c:if>
     </c:if>
     <%--@include file="/WEB-INF/jsp/common/cms/meta_inc.jsp" --%>
-    <title><decorator:title default="납품대금연동제 홈페이지" /></title>
+    <title><decorator:title default="납품대금 연동제" /></title>
     <%@include file="/WEB-INF/jsp/common/front/css_inc.jsp" %>
     <%@include file="/WEB-INF/jsp/common/front/javascript_inc.jsp" %>
 
