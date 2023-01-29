@@ -1,8 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>중소벤처기업부 | 주요통계</title>
+    <script src="${pageContext.request.contextPath }/js/chart/anychart-core.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/chart/anychart-treemap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/chart/anychart-cartesian.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/chart/anychart-pie.min.js"></script>
 
 </head>
 <div id="content">
@@ -85,7 +90,7 @@
                         <br>
                         그 밖에도 <strong>목재, 농산물, 헬륨, 종이</strong> 등 <strong>다양한 원재료</strong>를 대상으로 약정이 체결됐다.
                     </h4>
-        <div id="chart_div" style="width: 900px; height: 500px;  margin:35px"></div>
+                    <div id="treemap" style="height:280px"></div>
 
                     <div class="s-table-wrap">
                         <table class="s-table" id="table2">
@@ -138,6 +143,7 @@
                         <strong>특정 원재료 판매처의 공시 가격</strong>을 활용하는 사례도 <strong>14.6%</strong>를 차지했다.<br>
                         연동제를 <strong>오랜 기간 운영해온 기업</strong> 중에는 여러 원재료 판매처 가격의 평균값을 지표로 활용하는 경우도 있었다.
                     </h4>
+                    <div id="barChart"  style="height:250px"></div>
                     <div class="s-table-wrap">
                         <table class="s-table" id="table3">
                             <tr>
@@ -193,6 +199,7 @@
                         <br>
                         또한, 99.7%의 사례에서는 원재료 가격의 <strong>상승, 하락 모두를 연동</strong>되도록 정하고 있었다.
                     </h4>
+                    <div id="pieChart"  style="height:300px"></div>
                     <div class="s-table-wrap">
                         <table class="s-table" id="table4">
                             <tr>
@@ -263,6 +270,8 @@
                         <br>
                         1년으로 길게 잡은 경우도 있었으며, 수시로 정한 경우는 원재료 가격 변동시, 유상사급(위탁기업이 수탁기업에 원재료를 판매) 거래시, 납품시 마다 조정하는 경우이다.
                     </h4>
+                    <div id="bar_chart"  style="height:300px"></div>
+
                     <div class="s-table-wrap">
                         <table class="s-table" id="table5">
                             <tr>
@@ -324,48 +333,111 @@
 </div>
 
 <script>
-    function detailOpen(d){
-        if(!$(d).hasClass("open")){
-            $(d).find(".detail-info").slideDown();
-            $(d).addClass("open");
-        }
-        else{
-            $(d).find(".detail-info").slideUp();
-            $(d).removeClass("open");
-        }
-    }
-</script>
-<script type="text/javascript">
-    google.charts.load('current', {'packages':['treemap']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)', 'contents'],
-            ['1.주요 원재료의 종류', null, 0, 10, 0],
-            ['철강', '1.주요 원재료의 종류', 49.9, 2, '예시: ①철스크랩, ②압연강재(후판, 박판, 봉강, 선재 등), ③도금강재, ④강관, ⑤선철 등'],
-            ['비철금속', '1.주요 원재료의 종류', 31.1, 3, '비철금속 예시'],
-            ['석유화학', '1.주요 원재료의 종류', 10.9, 5, '석유화학 예시'],
-            ['기타', '1.주요 원재료의 종류', 10.9, 4, '기타 예시'],
+    anychart.onDocumentReady(function () {
 
-        ])
+        // create data
+        var data = [
+            {name:   "1.주요 원재료의 종류", children: [
+                    {name: "철강",        value: 49.9, capital: "예시: ①철스크랩, ②압연강재(후판, 박판, 봉강, 선재 등), ③도금강재, ④강관, ⑤선철 등" },
+                    {name: "비철금속",         value: 31.1, capital: "예시: ①동, ②알루미늄, ③아연, ④납, ⑤주석, ⑥은, ⑦니켈 등"    },
+                    {name: "석유화학",        value: 10.9, capital: "예시: ①합성수지(PP, PA, ABS, GPPS 등), ②합성고무(NBR, CR, EPDM, FKM 등), ③에틸렌, ④나프타 등"   },
+                    {name: "기타",         value: 8.1, capital: "예시: ①목재, ②농산물, ③헬륨, ④종이 등"   }
+                ]}
+        ];
 
+        // create a chart and set the data
+        var chart = anychart.treeMap(data, "as-tree");
 
-        tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
+        // enable HTML for labels
+        chart.labels().useHtml(true);
 
-        tree.draw(data, {
-            minColor: '#db8d8d',
-            midColor: '#ddd',
-            maxColor: '#79c979',
-            headerHeight: 15,
-            fontColor: 'black',
-            showScale: false,
-            generateTooltip: showStaticTooltip
-        });
-        function showStaticTooltip(row, size, value) {
-            return '<div style="background:#d9cfbe; padding:10px; border-style:solid">' +
-                '<span style="font-family:Courier"><b>' + data.getValue(row, 0) +
-                '</b></span><br>' +
-                data.getValue(row, 4)+ '<br>';
-        }
-    }
+        // configure labels
+        chart.labels().format(
+            "<span style='font-weight:bold'>{%name}</span><br>{%value}%"
+        );
+
+        // configure tooltips
+        chart.tooltip().format(
+            "{%capital}"
+        );
+
+        // set the container id
+        chart.container("treemap");
+        chart.draw();
+    });
+    anychart.onDocumentReady(function () {
+
+        // create data
+        var data = anychart.data.set([
+            {name: "공신력 있는 기관이 고시하는 지표",        value: 439, capital: "예시: 원재료 가격 기준지표로 원자재 거래소(런던금속거래소 등), 중소기업협동조합(한국주물공업협동조합, 한국전선공업협동조합 등), 전문가격조사기관(한국물가정보, 한국물가협회 등), 전문지(철강금속신문, 스틸데일리 등) 등 공신력 있는 기관이 고시하는 지표" },
+            {name: "특정 원재료 판매처의 공시 가격",         value: 98, capital: "예시: ① A사가 공시하는 자사 제품의 판매 가격, ②A사가 공시하는 자사 제품의 판매 가격과 B사가 공시하는 자사 제품의 판매 가격의 평균 등 "    },
+            {name: "원재료 판매처가 수탁기업에 판매한 가격",        value: 95, capital: "예시: 수탁기업과 철강 원재료 판매기업 간 원재료 거래 계약서에 명시된 가격 등"   },
+            {name: "위탁기업이 수탁기업에 판매한 가격(유상사급)",         value: 37, capital: "예시: 유상사급 등 "   }
+
+        ]);
+
+        // create a chart
+        var chart = anychart.bar();
+
+        // set data
+        chart.data(data);
+
+        // configure tooltips
+        chart.tooltip().format("{%capital}");
+
+        // set the container id
+        chart.container("barChart");
+        chart.draw();
+    });
+    anychart.onDocumentReady(function () {
+
+        // create data
+        var data = [
+            {x: "0%", value: 325},
+            {x: "±0% 초과 ±3% 이하", value: 104},
+            {x: "±5%", value: 193},
+            {x: "±10%", value: 42},
+            {x: "±10% 초과", value: 3},
+            {x: "±3%", value: 2}
+        ];
+
+        // create a chart and set the data
+        var chart = anychart.pie(data);
+
+        // set the container id
+        chart.container("pieChart");
+        chart.draw();
+    });
+    anychart.onDocumentReady(function () {
+
+        // create a data set
+        var data = anychart.data.set([
+            ["수시", 28],
+            ["1개월", 28],
+            ["2개월", 9],
+            ["분기", 265],
+            ["반기", 161],
+            ["1년", 7]
+        ]);
+
+        // map the data
+        var seriesData_1 = data.mapAs({x: 0, value: 1});
+        var seriesData_2 = data.mapAs({x: 0, value: 2});
+
+        // create a chart
+        var chart = anychart.column();
+
+        // enable the value stacking mode
+        chart.yScale().stackMode("value");
+
+        // create area series, set the data
+        var series1 = chart.column(seriesData_1);
+        var series2 = chart.column(seriesData_2);
+
+        // configure tooltips
+        chart.tooltip().format("{%value}개");
+        // set the container id
+        chart.container("bar_chart");
+        chart.draw();
+    });
 </script>

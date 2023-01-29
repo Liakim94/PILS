@@ -106,51 +106,51 @@ public class GuideController extends Alerts {
 
     }
 
-    /**
-     * 참여기업 현황
-     */
-    @RequestMapping("/guide/cmpList.do")
-    public ModelAndView cmpList(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVo) throws Exception {
-        ModelAndView mav = new ModelAndView("guide/cmpList");
-        cmpVo.setMem_cd("M302"); //회원구분
-
-        Map<String, Object> rs = new HashMap<String, Object>();
-        rs = consultingService.list(cmpVo);
-        mav.addObject("list", rs.get("resultList"));
-
-        return mav ;
-
-    }
-    /**
-     * 참여기업 현황
-     */
-    @RequestMapping("/guide/cmpDetail.do")
-    public ModelAndView cmpDetail(@RequestParam(value = "bizNo") String bizNo
-                                 ,@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVo)
-                                  throws Exception {
-        ModelAndView mav = new ModelAndView("guide/cmpDetail");
-        cmpVo.setBizNo(bizNo);
-        cmpVo.setMem_cd("M302");
-        cmpVo = consultingService.getViewByBizNo(cmpVo);
-        mav.addObject("list", cmpVo);
-        return mav;
-
-    }
-
-    /**
-     * 참여기업 현황 정보 수정 페이지
-     */
-    @GetMapping("/guide/cmpEdit.do")
-    public ModelAndView cmpEdit(@RequestParam String bizNo,
-                                @ModelAttribute(" cmpMember") CmpMemberVo cmpMemberVo) throws Exception {
-
-        ModelAndView mav = new ModelAndView("guide/cmpEdit");
-
-        cmpMemberVo.setBizNo(bizNo);
-        cmpMemberVo.setMem_cd("M302");
-        cmpMemberVo = consultingService.getViewByBizNo(cmpMemberVo);
-        mav.addObject("cmpMember", cmpMemberVo);
-
-        return mav;
-    }
+//    /**
+//     * 참여기업 현황
+//     */
+//    @RequestMapping("/guide/cmpList.do")
+//    public ModelAndView cmpList(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVo) throws Exception {
+//        ModelAndView mav = new ModelAndView("guide/company/details");
+//        cmpVo.setMem_cd("M302"); //회원구분
+//
+//        Map<String, Object> rs = new HashMap<String, Object>();
+//        rs = consultingService.list(cmpVo);
+//        mav.addObject("list", rs.get("resultList"));
+//
+//        return mav ;
+//
+//    }
+//    /**
+//     * 참여기업 현황
+//     */
+//    @RequestMapping("/guide/cmpDetail.do")
+//    public ModelAndView cmpDetail(@RequestParam(value = "bizNo") String bizNo
+//                                 ,@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVo)
+//                                  throws Exception {
+//        ModelAndView mav = new ModelAndView("guide/cmpDetail");
+//        cmpVo.setBizNo(bizNo);
+//        cmpVo.setMem_cd("M302");
+//        cmpVo = consultingService.getViewByBizNo(cmpVo);
+//        mav.addObject("list", cmpVo);
+//        return mav;
+//
+//    }
+//
+//    /**
+//     * 참여기업 현황 정보 수정 페이지
+//     */
+//    @GetMapping("/guide/cmpEdit.do")
+//    public ModelAndView cmpEdit(@RequestParam String bizNo,
+//                                @ModelAttribute(" cmpMember") CmpMemberVo cmpMemberVo) throws Exception {
+//
+//        ModelAndView mav = new ModelAndView("guide/cmpEdit");
+//
+//        cmpMemberVo.setBizNo(bizNo);
+//        cmpMemberVo.setMem_cd("M302");
+//        cmpMemberVo = consultingService.getViewByBizNo(cmpMemberVo);
+//        mav.addObject("cmpMember", cmpMemberVo);
+//
+//        return mav;
+//    }
 }
