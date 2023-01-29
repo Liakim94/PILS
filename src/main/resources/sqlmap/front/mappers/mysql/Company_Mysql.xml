@@ -22,10 +22,8 @@
             cmp_mbr_cd= #{mem_cd}
             and b.manage_cd ='M501'
         order by
-            appdt desc
-        <if test="pageIndex > 0">
-            LIMIT #{pageUnit} OFFSET #{firstIndex}
-        </if>
+            joincmp desc
+
     </select>
 
     <select id="details" parameterType="kr.co.xicom.front.model.CmpMemberVo" resultType="kr.co.xicom.front.model.CmpMemberVo">

@@ -142,10 +142,7 @@
         from tb_pils_cmpmbr A join tb_pils_mbr B
         on A.bizno =B.bizno
         where cmp_mbr_cd= #{mem_cd} and b.manage_cd ='M501'
-        order by appdt desc
-        <if test="pageIndex > 0">
-            LIMIT #{pageUnit} OFFSET #{firstIndex}
-        </if>
+        order by joincmp desc
     </select>
     <select id="listCount" resultType="int">
         SELECT COUNT(1)

@@ -43,6 +43,7 @@ public class MainController {
         cmpVo.setMem_cd("M302"); //회원구분
         Map<String, Object> rs = new HashMap<String, Object>();
         rs = consultingService.list(cmpVo);
+
         mav.addObject("list", rs.get("resultList"));
         return mav;
     }
