@@ -118,3 +118,10 @@ select {
     height: auto!important;
 
 }
+/* 메인화면 오버로드 */
+#main .info-slide-container .info-slide-wrap .thumbnail {
+    height: 225px;
+}
+#main .company-list-container .list-item .list-wrapper .img-wrap {
+    overflow: hidden;
+}

@@ -15,7 +15,7 @@
 <%--퍼블리셔 추가--%>
 <link rel="stylesheet" href="<c:url value="/css/front/reset.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/front/common.css"/>" />
-<link rel="stylesheet" href="<c:url value="/css/front/slick.css_old"/>" />
+<link rel="stylesheet" href="<c:url value="/css/front/slick.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/front/mainvisual.css"/>" />
 <%--    &lt;%&ndash; 중소벤처24 공통메뉴 적용 &ndash;%&gt;--%>
 <%--    <link rel="stylesheet" href="https://www.smes.go.kr/smes-api/api/css/smes-common-menu-1.0.css" type="text/css" />--%>

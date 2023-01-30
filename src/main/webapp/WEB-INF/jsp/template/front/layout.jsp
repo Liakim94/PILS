@@ -14,7 +14,7 @@
         https://www.smes.go.kr/pis-dev 사이트 검색엔진 색인 방지
     --%>
     <c:set var="showTestGuide" value="false"/>
-    <c:if test="${fn:endsWith(pageContext.request.contextPath, '-dev') or fn:endsWith(pageContext.request.contextPath, 'pis')}">
+    <c:if test="${fn:endsWith(pageContext.request.contextPath, '-dev') or fn:endsWith(pageContext.request.contextPath, '-test')}">
         <meta name="robots" content="noindex">
         <c:if test="${cookie.TESTHIDE.value ne 'true'}">
             <c:set var="showTestGuide" value="true"/>

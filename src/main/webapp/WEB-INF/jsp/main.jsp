@@ -58,24 +58,21 @@
                 </div>
                 <div class="info-slide-wrap">
                     <div class="slide-item">
-                        <div class="video-wrap">
-                            <iframe  onclick="modalOpen()" width="560" height="315" src="https://www.youtube.com/embed/srd5e4iU16k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
+                        <h3>납품대금연동제 시책설명회6</h3>
+                        <img class="thumbnail" onclick="modalOpen('modal-box-1')" src="<c:url value="/images/common/youtube-temp1.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
                     <div class="slide-item">
-                        <div class="video-wrap">
-                            <iframe onclick="modalOpen()" width="560" height="315" src="https://www.youtube.com/embed/deoTuJCLNFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
+                        <h3>납품단가 연동에 관한 기업 설명회</h3>
+                        <img class="thumbnail" onclick="modalOpen('modal-box-2')" src="<c:url value="/images/common/youtube-temp2.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
                     <div class="slide-item">
-                        <h3>자료제목이 들어가는 영역</h3>
-                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>"  onclick="modalOpen()">
+                        <h3>납품대금연동제 알아보기</h3>
+                        <img class="thumbnail" src="<c:url value="/images/card/001.jpg"/>"  onclick="modalOpen('modal-box-3')"/>
                     </div>
                     <div class="slide-item">
-                        <h3>자료제목이 들어가는 영역</h3>
-                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>"  onclick="modalOpen()">
+                        <h3>납품대금연동제 알아보기</h3>
+                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>"  onclick="modalOpen('modal-box-3')"/>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -101,39 +98,92 @@
         </section>
     </div>
 </div>
-<div class="modal-background"></div>
-<div class="main-modal-box">
+<div class="modal-background" onclick="modalClose()"></div>
+<div id="modal-box-1" class="main-modal-box">
+    <div class="modal-close inline-focus" onclick="modalClose()">
+        <span></span>
+        <span></span>
+    </div>
+    <div class="contents-wrap">
+        <h1 class="title">납품대금연동제 시책 설명회</h1>
+        <div class="video-wrap">
+            <iframe width="840" height="472" src="https://www.youtube.com/embed/srd5e4iU16k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+<div id="modal-box-2" class="main-modal-box">
+    <div class="modal-close inline-focus" onclick="modalClose()">
+        <span></span>
+        <span></span>
+    </div>
+    <div class="contents-wrap">
+        <h1 class="title">가슴 벅찬 첫걸음, 납품대금 연동제 시범 운영 본격 게시.</h1>
+        <div class="video-wrap">
+            <iframe width="840" height="472" src="https://www.youtube.com/embed/deoTuJCLNFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+<div id="modal-box-3" class="main-modal-box">
     <div class="modal-close inline-focus" onclick="modalClose()">
         <span></span>
         <span></span>
     </div>
     <div class="contents-wrap">
         <!--   CardNews Slide     -->
-        <h1 class="title">제목이 들어갈 자리입니다.</h1>
-        <span class="modal-prev"><i class="fas fa-chevron-left"></i></span>
-        <span class="modal-next"><i class="fas fa-chevron-right"></i></span>
-        <div class="modal-slide-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="img/intro/intro-banner1.png">
+        <h1 class="title">납품대금연동제 알아보기</h1>
+        <!--   카드뉴시 일시     -->
+        <div class="card-news">
+            <span class="modal-prev"><i class="fas fa-chevron-left"></i></span>
+            <span class="modal-next"><i class="fas fa-chevron-right"></i></span>
+            <div class="modal-slide-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card/001.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card/002.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card/003.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card/004.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card/005.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card/006.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card/007.jpg"/>"/>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <script>
-    function modalOpen(){
+
+    function modalOpen(current){
+
+        $(".main-modal-box").css("display","none");
+
+
         $(".main-modal-box").css({
             "top": (($(window).height()-$(".main-modal-box").outerHeight())/2+$(window).scrollTop())+"px",
             "left": (($(window).width()-$(".main-modal-box").outerWidth())/2+$(window).scrollLeft())+"px"
         });
         $(".modal-background").css("display","block");
-        $(".main-modal-box").css("display","block");
+        //$(".main-modal-box").css("display","block");
+        $('#' + current).css('display', 'block');
     }
     function modalClose(){
         $(".modal-background").css("display","none");
         $(".main-modal-box").css("display","none");
     }
+
     $(function($){
 
         var mainSlide = new Swiper(".main-slide-container", {
@@ -148,8 +198,24 @@
             navigation : { // 네비게이션 설정
                 nextEl : '.main-next', // 다음 버튼 클래스명
                 prevEl : '.main-prev', // 이번 버튼 클래스명
-            }
+            },
         });
+        var modalSlide = new Swiper(".modal-slide-container", {
+            slidesPerView: 1,
+            loop: true,
+            speed: 1000,
+            observer: true,
+            observeParents: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation : { // 네비게이션 설정
+                nextEl : '.modal-next', // 다음 버튼 클래스명
+                prevEl : '.modal-prev', // 이번 버튼 클래스명
+            },
+        });
+
 
         $('.info-slide-wrap').slick({
             centerMode: true,

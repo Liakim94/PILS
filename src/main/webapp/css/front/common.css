@@ -758,6 +758,25 @@
     animation: zoom-in 3s ease;
     -webkit-animation-fill-mode:both
 }
+#intro .text-wrap{
+    position: absolute;
+    z-index: 20;
+    top: 20%;
+    left: 10%;
+    transform: scale(1.2, 1.2);
+}
+#intro .text-wrap p, #intro .text-wrap strong{
+    font-size: 60px;
+    color: #fff;
+    font-family: 'GmarketSans', sans-serif;
+}
+#intro .text-wrap p{
+    font-weight: 400;
+}
+#intro .swiper-slide-active .text-wrap p, #intro .swiper-slide-active .text-wrap  strong{
+    animation: zoom-in 3s ease;
+    -webkit-animation-fill-mode:both
+}
 #intro .intro1{
     background: url("../../images/intro/intro-banner1.png");
 }
@@ -2969,6 +2988,10 @@
         width: 90%;
     }
 
+    #intro .text-wrap p, #intro .text-wrap strong{
+        font-size: 40px;
+    }
+
 
     /*  Footer  */
     .footer-container .footer-wrap{
@@ -2996,6 +3019,11 @@
     .gnb-container .gnb-wrap .logo-wrap .logo {
         max-width: 150px;
     }
+
+    #intro .text-wrap p, #intro .text-wrap strong{
+        font-size: 28px;
+    }
+
 
     /* 메인 */
     #main .main-slide-container{
