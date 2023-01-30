@@ -46,6 +46,7 @@
             A.product       as product,
             A.joincmp       as joinCmp,
             A.main_product  as mainProduct,
+            A.appdt         as appdate,
             B.nm            as "name",
             B.mbphno        as mbphno,
             B.psitn_dept_nm as deptNm,

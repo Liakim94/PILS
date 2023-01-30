@@ -8,7 +8,9 @@ import java.util.List;
 
 @Mapper("AdminMapper")
 public interface AdminMapper {
-    //담당자 관리
+
+    List<CmpMemberVo>joinList(CmpMemberVo vo)  throws Exception;
+    int listCount(CmpMemberVo vo) throws Exception;
     List<CmpMemberVo> memManageList(CmpMemberVo vo)  throws Exception;
     int tracePost(TraceVO vo) throws Exception;
     List<TraceVO> traceList(TraceVO vo) throws Exception;
