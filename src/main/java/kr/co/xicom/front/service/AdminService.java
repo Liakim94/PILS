@@ -10,6 +10,9 @@ import java.util.Map;
 
 @Service
 public interface AdminService {
+    //동행기업 list
+    Map<String, Object> joinList(CmpMemberVo vo)  throws Exception;
+
     //관리자페이지
     List<CmpMemberVo> memManageList(CmpMemberVo vo) throws Exception;
 

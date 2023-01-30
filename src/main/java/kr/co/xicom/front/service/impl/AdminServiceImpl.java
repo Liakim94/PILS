@@ -21,6 +21,17 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private BoardMapper boardMapper;
 
+    //동행기업 list
+    @Override
+    public Map<String, Object> joinList(CmpMemberVo vo)  throws Exception{
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<CmpMemberVo>  list = adminMapper.joinList(vo);
+        int cnt = adminMapper.listCount(vo);
+        map.put("resultList",list);
+        map.put("resultCnt", cnt);
+        return map;
+    }
+
     //담당자 관리
     @Override
     public List<CmpMemberVo> memManageList(CmpMemberVo vo) throws Exception{

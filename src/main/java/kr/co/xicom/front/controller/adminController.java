@@ -56,7 +56,7 @@ public class adminController {
         cmpVO.setMem_cd("M302"); //회원구분
 
         Map<String, Object> rs = new HashMap<String, Object>();
-        rs = consultingService.list(cmpVO);
+        rs = adminService.joinList(cmpVO);
 
         int totalCnt = 0;
         totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));

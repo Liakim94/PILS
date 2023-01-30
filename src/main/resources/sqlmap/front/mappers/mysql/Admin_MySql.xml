@@ -34,6 +34,33 @@
         <result property="memTelNo" column="memTelNo"/>
         <result property="memFaxNo" column="memFaxNo"/>
     </resultMap>
+    <select id="joinList" resultMap="CmpMemberVo">
+        select
+            A.bizno as bizNo
+             ,A.cmp_mbr_cd as mem_cd
+             ,A.cmp_nm as cmpNm
+             ,to_char(A.appdt, 'YYYY-MM-DD') as appdate
+             ,B.nm as name
+             ,B.user_id as id
+             ,B.pswd as passwd
+             , a.logo_img_path as logoImgPath
+        from tb_pils_cmpmbr A join tb_pils_mbr B
+                                   on A.bizno =B.bizno
+        where cmp_mbr_cd= #{mem_cd} and b.manage_cd ='M501'
+        order by joincmp desc
+        <if test="pageIndex > 0">
+            LIMIT #{pageUnit} OFFSET #{firstIndex}
+        </if>
+    </select>
+    <select id="listCount" resultType="int">
+        SELECT COUNT(1)
+        FROM tb_pils_cmpmbr A
+                 join tb_pils_mbr B
+                      ON A.bizno = B.bizno
+        WHERE 1 = 1
+          and cmp_mbr_cd = #{mem_cd}
+
+    </select>
     <select id="memManageList" resultMap="CmpMemberVo">
         select user_id       as id
              , nm            as name
