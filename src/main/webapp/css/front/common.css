@@ -1914,6 +1914,9 @@
 .main-modal-box .modal-slide-container img{
     width: 100%;
 }
+.main-modal-box .video-wrap video{
+    width: 100%;
+}
 .modal-box{
     background: #FFFFFF;
     box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.25);
@@ -2603,7 +2606,157 @@
 #company-write .info-box .table table tr .title:nth-last-child(1){
     border-right: none;
 }
+/* 개념 */
+#about .content section b {
+    font-weight: 700;
+    color: #be001e;
+}
+#about .tip{
+    font-weight: 400;
+    color: #767676;
+}
+/* 아코디언 컨테이너 */
+#about .detail-info ul {
+    padding-left: 20px;
+}
+#about .detail-info li {
+    color: #505050 !important;
+    list-style: disc;
+}
+#about .detail-info .list-none {
+    padding-left: 0;
+}
+#about .detail-info .list-none li {
+    list-style: none;
+}
+#about .detail-info .info-box {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px 15px;
+    gap: 10px;
+    max-width: 930px;
+    background: #f4f4f4;
+    border-radius: 10px;
+}
 
+#about .accordion-container .open .company-box .company1,
+#about .accordion-container .open .company-box .company1-m,
+#about .accordion-container .open .company-box .company2,
+#about .accordion-container .open .company-box .company2-m,
+#about .accordion-container .open .company-box .arrow {
+    transform: none;
+    float: none;
+    display: flex;
+    width: 90%;
+}
+
+/* 위탁기업이란? 기업 이미지 */
+#about .company-box-pc {
+    display: flex;
+    justify-content: center;
+}
+#about .company-box-modile {
+    display: none;
+}
+#about .company-box > div {
+    display: inline-block;
+}
+#about .company-box-modile > div {
+    display: block;
+}
+#about .company-box img {
+    margin: 0 auto;
+    display: flex;
+}
+#about .company-box .company1 {
+    max-width: 180px;
+}
+#about .company-box .company1-m {
+    max-width: 113px;
+}
+#about .company-box .company2 {
+    max-width: 200px;
+}
+#about .company-box .company2-m {
+    max-width: 116px;
+}
+#about .company-box .arrow {
+    max-width: 208px;
+}
+#about .company-box-text1 {
+    margin-left: -35%;
+}
+#about .company-box-text2 {
+    margin-right: -40%;
+}
+/* 위탁기업이란? 테이블 */
+#about .company-table {
+    margin: 0 auto;
+    max-width: 892px;
+    border-collapse: collapse;
+    border: 1px solid #999999;
+}
+#about .company-table .t-head {
+    color: #191919 !important;
+    font-weight: 500 !important;
+}
+#about .content .company-table td {
+    font-weight: 400 !important;
+    color: #505050;
+    height: auto;
+    min-height: 44px;
+}
+#about .company-table tr:nth-child(1) {
+    background-color: #e7e7e7;
+}
+#about .company-table tr:nth-child(2) {
+    color: #505050;
+}
+#about .company-table tr td:nth-child(1) {
+    width: 25%;
+    max-width: 200px;
+}
+#about .company-table tr td:nth-child(2) {
+    text-align: left;
+}
+/* 위탁기업이란? 모바일 */
+#about .company-text {
+    display: inline;
+    margin: 0 auto;
+}
+#about .company-text span {
+    display: inline-block;
+    vertical-align: middle;
+}
+#about .br-modile {
+    display: block;
+}
+
+#about .text-box h4 {
+    color: #505050;
+}
+#about .text-box h4 strong {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* 2023년 상생협력법 개정에 따라 달라지게 되는 사항은? */
+#about .title-amend {
+    font-family: "Gmarket Sans";
+    font-style: normal;
+    font-size: 24px;
+    line-height: 24px;
+    color: #191919 !important;
+    font-weight: 400 !important;
+}
+#about .title-amend strong {
+    font-weight: 500;
+}
+
+#about .text-mobile {
+    font-size: 18px;
+}
 
 /* 납품대금 연동제란? */
 #about .title{
@@ -2726,10 +2879,11 @@
     float: right;
     position: relative;
     bottom: 5px;
-    transform: rotate(0deg);
+    transform: rotate(180deg);
 }
 #about .accordion-container .open img{
-    transform: rotate(180deg);
+    transform: rotate(0deg);
+
 }
 #about .accordion-container .item-wrap .detail-info{
     margin-top: 41px;
@@ -3226,6 +3380,16 @@
     #about #table5{
         min-width: 550px;
     }
+    .company-box-pc {
+        display: none;
+    }
+    .company-box-modile {
+        display: block;
+        margin: 0 auto;
+    }
+    .br-modile {
+        display: none;
+    }
 
     /* Footer */
     .footer-container{
@@ -3313,6 +3477,11 @@
     .main-modal-box .contents-wrap .modal-next{
         right: 0;
     }
+
+    .text-mobile {
+        font-size: 16px;
+    }
+
     /* Footer */
     .footer-container .footer-wrap .area .logo{
         margin-bottom: 10px;
