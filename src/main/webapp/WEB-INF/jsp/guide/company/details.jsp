@@ -14,6 +14,14 @@
     #company-detail section .promotion-wrap {
         flex-wrap: wrap;
     }
+    .no-video {
+        border: 1px solid #eee;
+        text-align: center;
+        min-height: 470px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 <div id="content" class="bg-top">
     <div id="company-detail" class="pr40 pl40">
@@ -26,10 +34,25 @@
         <h1 class="company-name tc mb30">${company.cmpNm}</h1>
         <div class="video-container">
             <div class="video-wrap">
-                <iframe width="560" height="315" src="<c:out value="${company.mainMovieUrl}"/>"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe>
+                <%--
+                <c:set var="mainMovieUrl" value="${company.mainMovieUrl}"/>
+                <c:if test="${mainMovieUrl eq null or mainMovieUrl eq ''}">
+                    <c:url var="mainMovieUrl" value="/images/no-image.jpg"/>
+                </c:if>
+                --%>
+                <c:choose>
+                    <c:when test="${company.mainMovieUrl eq null or company.mainMovieUrl eq ''}">
+                        <div class="no-video">
+                            등록된 동영상이 없습니다.
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <iframe width="560" height="315" src="<c:out value="${company.mainMovieUrl}"/>"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
         <section>
@@ -77,15 +100,17 @@
         <section>
             <h1 class="title">기업홍보</h1>
             <div class="promotion-wrap">
-                <div class="item">
-                    <div class="video-wrap">
-                        <iframe width="560" height="315"
-                                src="<c:out value="${company.subMovieUrl}"/>"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
+                <c:if test="${company.subMovieUrl ne null and company.subMovieUrl ne ''}">
+                    <div class="item">
+                        <div class="video-wrap">
+                            <iframe width="560" height="315"
+                                    src="<c:out value="${company.subMovieUrl}"/>"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                        </div>
                     </div>
-                </div>
+                </c:if>
                 <c:forEach var="prmt" items="${company.prmtImageList}">
                     <div class="item">
                         <img class="logo"

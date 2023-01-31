@@ -125,3 +125,11 @@ select {
 #main .company-list-container .list-item .list-wrapper .img-wrap {
     overflow: hidden;
 }
+/* 참여업체 상세 오버로드 */
+/*
+#company-detail .video-container .video-wrap,
+#company-detail section .promotion-wrap .item .video-wrap{
+    border: 1px solid #eee;
+
+}
+*/

@@ -529,8 +529,15 @@
         font-size: 0.7em;
     }
 
+    .video-wrap,
+    .no-video {
+        border: 1px solid #eee;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
-
 <div id="content" class="bg-top">
     <div id="company-detail" class="pr40 pl40">
         <form:form modelAttribute="company">
