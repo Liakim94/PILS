@@ -45,6 +45,8 @@ public class MainController {
         rs = consultingService.list(cmpVo);
 
         mav.addObject("list", rs.get("resultList"));
+        mav.addObject("cnt", rs.get("resultCnt"));
+        mav.addObject("joinCmpCnt", rs.get("joinCmpCnt"));
         return mav;
     }
 

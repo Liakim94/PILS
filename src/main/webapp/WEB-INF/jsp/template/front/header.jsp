@@ -83,8 +83,10 @@
                     <a href="<c:url value="/front/board/6/list.do"/>">기업들이 준비할 일</a>
                     <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
                     <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
+                    <c:if test="${sessionId eq 'admin' }">
                     <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>
-                    <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>
+                    <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a
+                    </c:if>
                 </div>
             </div>
         </nav>

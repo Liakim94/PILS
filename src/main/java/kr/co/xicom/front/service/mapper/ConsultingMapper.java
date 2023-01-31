@@ -15,6 +15,7 @@ public interface ConsultingMapper {
     List<CmpMemberVo> list(CmpMemberVo vo) throws Exception;
 
     int listCount(CmpMemberVo vo) throws Exception;
+    int joinCmp(CmpMemberVo vo) throws Exception;
 
     int conChkPw(CmpMemberVo vo) throws Exception;
 
@@ -37,5 +38,6 @@ public interface ConsultingMapper {
 
     //기업현황
     List<CmpSttusVO> getCmpSttus(CmpSttusVO vo) throws Exception;
+    List<CmpSttusVO> sttusIsEmpty(CmpSttusVO vo) throws Exception;
     int insertCmpSttus(CmpSttusVO vo) throws Exception;
 }

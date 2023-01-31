@@ -58,11 +58,11 @@
                 </div>
                 <div class="info-slide-wrap">
                     <div class="slide-item">
-                        <h3>납품대금연동제 시책설명회6</h3>
+                        <h3>납품대금 연동제 설명 영상</h3>
                         <img class="thumbnail" onclick="modalOpen('modal-box-1')" src="<c:url value="/images/common/youtube-temp1.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
                     <div class="slide-item">
-                        <h3>납품단가 연동에 관한 기업 설명회</h3>
+                        <h3>납품대금 연동제 추진경과</h3>
                         <img class="thumbnail" onclick="modalOpen('modal-box-2')" src="<c:url value="/images/common/youtube-temp2.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
                     <div class="slide-item">
@@ -78,7 +78,7 @@
         </section>
         <section>
             <h1 class="title"><strong>참여기업</strong> 현황</h1>
-            <h3 class="fw400">현재 납품대금연동제는 <span>43개 기업</span>이 참여하고 있습니다.</h3>
+            <h3 class="fw400">현재 ${cnt}개 위탁기업, ${joinCmpCnt}개 수탁기업이 납품대금 연동제에 동참하고 있습니다.</h3>
             <div class="company-list-container">
                 <c:forEach var="company" items="${list}" varStatus="status">
                 <div class="list-item">
@@ -117,7 +117,7 @@
         <span></span>
     </div>
     <div class="contents-wrap">
-        <h1 class="title">가슴 벅찬 첫걸음, 납품대금 연동제 시범 운영 본격 게시.</h1>
+        <h1 class="title">가슴 벅찬 첫걸음, 납품대금 연동제 시범운영 본격 개시</h1>
         <div class="video-wrap">
             <iframe width="840" height="472" src="https://www.youtube.com/embed/deoTuJCLNFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>

@@ -163,7 +163,7 @@
                 faxNo: {required: "기업 팩스를 입력하세요."},
                 bizType: {required: "업종을 입력하세요."},
                 capital: {required: "자본금을 입력하세요.",  digits : "숫자만 입력하세요"},
-                product: {required: "주요생산품을 입력하세요."},
+                product: {required: "주요 제품을 입력하세요."},
                 mainProduct: {required: "주요 적용 제품을 입력하세요."},
                 joinCmp: {required: "참여기업 수를 입력하세요.",  digits : "숫자만 입력하세요"},
                 material: {required: "주요원재료를 입력하세요."},
@@ -315,13 +315,6 @@
                             </div>
                          </div>
                 </div>
-                    <%--                        <div class="line-wrap">--%>
-                    <%--                            <div class="label">기업 로고--%>
-                    <%--                            </div>--%>
-                    <%--                            <div class="input-wrap">--%>
-                    <%--                                파일찾기--%>
-                    <%--                            </div>--%>
-                    <%--                        </div>--%>
             </div>
             <div class="write-container bt-none">
                 <div class="line-wrap">
@@ -389,7 +382,7 @@
                 </div>
                 <div class="line-wrap">
                     <div class="label" style="width: 155px">
-                        주요생산품<span class="required">*</span>
+                        주요 제품<span class="required">*</span>
                     </div>
                     <div class="input-wrap">
                         <input type="text" id="product" name="product" required/>

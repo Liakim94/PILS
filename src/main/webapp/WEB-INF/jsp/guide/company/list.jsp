@@ -35,9 +35,9 @@
                 <!-- 컨텐츠 start -->
                 <div class="tab">
                     <ul class="tabnav">
-                        <li><a href="#tab01">1. 업종</a></li>
-                        <li><a href="#tab02">2. 지역</a></li>
-                        <li><a href="#tab03">3. 기업 규모</a></li>
+                        <li><a href="#tab01">1. 업종별 통계</a></li>
+                        <li><a href="#tab02">2. 지역별 통계</a></li>
+                        <li><a href="#tab03">3. 기업 규모별 통계</a></li>
                     </ul>
                     <div class="tabcontent">
                         <div id="tab01" style="height:100%;" ><div id="chart" style="height:100%;"></div></div>
@@ -163,8 +163,7 @@
         var data = anychart.data.set([
             ["대기업", 31],
             ["중견기업", 9],
-            ["중기업",5],
-            ["소기업",2]
+            ["중소기업",7]
         ]);
 
         // map the data
@@ -198,7 +197,7 @@
     ul,li {list-style:none;}
 
     /*tab css*/
-    .tab{margin:0 auto;  width:600px; height:290px;padding: 15px; }
+    .tab{margin:0 auto;  width:955px; height:400px;padding: 15px; }
     .tabnav{font-size:0; width:600px;}
     .tabnav li{display: inline-block;  height:30px; text-align:center; border-right:1px solid #ddd;  border:1px solid #ddd;}
     .tabnav li a:before{content:""; position:absolute; left:0; top:0px; width:100%; height:3px; }
@@ -207,5 +206,5 @@
     .tabnav li a{ position:relative; display:block; background: #f8f8f8; color: #000; padding:0 20px; line-height:32px; text-decoration:none; font-size:14px;}
     .tabnav li a:hover,
     .tabnav li a.active{background:#fff; color:#7ea21e; }
-    .tabcontent{height:297px; border:1px solid #ddd; }
+    .tabcontent{height:330px; border:1px solid #ddd; }
 </style>

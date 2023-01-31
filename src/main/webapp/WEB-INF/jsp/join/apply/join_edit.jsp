@@ -121,7 +121,7 @@
                 faxNo: {required: "기업 팩스를 입력하세요."},
                 bizType: {required: "업종을 입력하세요."},
                 capital: {required: "자본금을 입력하세요.",  digits : "숫자만 입력하세요"},
-                product: {required: "주요생산품을 입력하세요."},
+                product: {required: "주요 제품을 입력하세요."},
                 mainProduct: {required: "주요 적용 제품을 입력하세요."},
                 joinCmp: {required: "참여기업 수를 입력하세요.",  digits : "숫자만 입력하세요"},
                 material: {required: "주요원재료를 입력하세요."}
@@ -246,7 +246,7 @@
                     </c:forEach>
 
                     <tr>
-                        <th class="txt_alcnt" scope="row">주요생산품</th>
+                        <th class="txt_alcnt" scope="row">주요 제품</th>
                         <td colspan="3">
                             <input type="text" id="product" class="uni_input_text" name="product"
                                    value="${rs.product}"/>

@@ -6,58 +6,14 @@
 <%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <head>
     <title></title>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/temp.css"/>">
 </head>
 <script>
-    // submit
-    function fn_submit() {
-
-        var frm = document.getElementById('frmWrite');
-
-        if (frm.name.value == "") {
-            alert("작성자를 입력하세요.");
-            return false;
-        }
-        if (frm.id.value == "") {
-            alert("공개여부를 선택하세요.");
-            return false;
-        }
-        if (frm.passwd.value == "" && document.getElementById('ChkBox2').checked) {
-            alert("비밀번호를 입력하세요.");
-            return false;
-        }
-        if (frm.title.value == "") {
-            alert("제목을 입력하세요.");
-            return false;
-        }
-
-        $("#frmWrite").submit();
-    }
-
-    //주소찾기
-    function execPostCode() {
-        daum.postcode.load(function () {
-            new daum.Postcode({
-                oncomplete: function (data) {
-                    var addr = '';
-
-                    if (data.userSelectedType === 'R') {
-                        addr = data.roadAddress;
-                    } else {
-                        addr = data.jibunAddress;
-                    }
-                    document.getElementById("address").value = '(' + data.zonecode + ') ' + addr;
-                    document.getElementById("address_dtl").focus();
-                }
-            }).open();
-        });
-    }
 
     function selectEmail(ele) {
         var $ele = $(ele);
@@ -72,15 +28,16 @@
             $email2.val($ele.val());
         }
     }
-    $.validator.addMethod("regex", function(value, element,regexpr){
+
+    $.validator.addMethod("regex", function (value, element, regexpr) {
         return regexpr.test(value);
     });
 
     $(function () {
-
         $("#frmWrite").validate({
             ignore: "",
             rules: {
+                name: {required: true},
                 id: {
                     required: true, remote: {
                         type: "post"
@@ -92,28 +49,36 @@
                         }
                     }
                 },
-                passwd: {required: true, regex: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,10}$/ },
+                passwd: {required: true, regex: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,10}$/},
                 passwdChk: {required: true, equalTo: "#passwd"},
             },
             messages: {
+                name: {
+                    required: "이름을 입력하세요"},
                 id: {
                     required: "아이디를 입력하세요",
                     remote: "이미 존재하는 아이디입니다."
                 },
-                passwd: {required: "비밀번호를 입력하세요.",
-                    regex:"비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."},
+                passwd: {
+                    required: "비밀번호를 입력하세요.",
+                    regex: "비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."
+                },
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
-            }
+            },
+            submitHandler: function (frm) {
+                $("#frmWrite").submit();
+            },
         });
     });
 </script>
 <style type="text/css">
-    input.error, textarea.error{
-        border:1px dashed red;
+    input.error, textarea.error {
+        border: 1px dashed red;
     }
-    label.error{
-        display:block;
-        color:red;
+
+    label.error {
+        display: block;
+        color: red;
     }
 </style>
 <div id="content">
@@ -135,15 +100,15 @@
             </div>
 
             <div id="company-write" class="content">
-                <div class="write-container">
-                    <form name="frmWrite" id="frmWrite" method="post"
-                          action="${pageContext.request.contextPath}/main/memAdd.do">
+                <form:form name="frmWrite" id="frmWrite" method="post" action="memAdd.do">
+
+                    <div class="write-container">
                         <div class="line-wrap">
                             <div class="label">
-                                성명
+                                성명<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" name="name" id="name" placeholder="성명을 입력해주세요." required/>
+                                <input type="text" name="name" id="name" placeholder="성명을 입력해주세요."/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -152,7 +117,7 @@
                                     소속 부서
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" id="deptNm" name="deptNm" placeholder="소속부서를 입력해주세요." required/>
+                                    <input type="text" id="deptNm" name="deptNm" placeholder="소속부서를 입력해주세요." />
                                 </div>
                             </div>
                             <div class="fx2">
@@ -161,7 +126,7 @@
                                 </div>
                                 <div class="input-wrap">
                                     <input type="text" id="position" name="position" placeholder="직위를 입력해주세요."
-                                           required/>
+                                           />
                                 </div>
                             </div>
                         </div>
@@ -170,7 +135,7 @@
                                 전화번호
                             </div>
                             <div class="input-wrap">
-                                <input type="text" id="mbphno" name="mbphno" required/>
+                                <input type="text" id="mbphno" name="mbphno" />
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -178,9 +143,9 @@
                                 이메일
                             </div>
                             <div class="input-wrap ">
-                                <input type="text" class="multi" name="email1" id="email1" required/>
+                                <input type="text" class="multi" name="email1" id="email1" />
                                 <span>@</span>
-                                <input type="text" style="width: 130px" name="email2" id="email2" required/>
+                                <input type="text" style="width: 130px" name="email2" id="email2" />
                                 <select id="email3" style="width: 130px"
                                         onclick="selectEmail(this)">
                                     <option value="1">직접입력</option>
@@ -237,12 +202,13 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="write-bottom">
-                    <button type="submit" class="submit" style="width: 130px">등록</button>
-                    <a href="${pageContext.request.contextPath}/main/management.do" class="go-lst">취소</a>
-                </div>
+                    </div>
+                    <div class="write-bottom">
+                        <button type="submit" class="submit" style="width: 130px">등록</button>
+                        <a href="${pageContext.request.contextPath}/main/management.do" class="go-lst">취소</a>
+                    </div>
+                </form:form>
+
             </div>
         </div>
     </div>
