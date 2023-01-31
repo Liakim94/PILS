@@ -82,7 +82,7 @@
                     </div>
                 </section>
                 <section>
-                    <h2 class="title mt40">주요 원재료 개수</h2>
+                    <h2 class="title mt40">주요 원재료 종류</h2>
                     <h4 class="mb40">
                         연동의 대상이 되는 <strong>주요 원재료</strong>는 구체적으로 철스크랩, 압연강재(후판, 박판, 봉강, 선재 등), 도금강재, 강관, 선철 등의 <strong>철강류가 49.9%</strong>로 가장 많았다.<br>
                         <br>
@@ -90,7 +90,7 @@
                         <br>
                         그 밖에도 <strong>목재, 농산물, 헬륨, 종이</strong> 등 <strong>다양한 원재료</strong>를 대상으로 약정이 체결됐다.
                     </h4>
-                    <div id="treemap" style="height:280px"></div>
+                    <div id="treemap" style="height:300px; width: 970px"></div>
 
                     <div class="s-table-wrap">
                         <table class="s-table" id="table2">
@@ -199,7 +199,7 @@
                         <br>
                         또한, 99.7%의 사례에서는 원재료 가격의 <strong>상승, 하락 모두를 연동</strong>되도록 정하고 있었다.
                     </h4>
-                    <div id="pieChart"  style="height:300px"></div>
+                    <div id="pieChart"  style="height:400px"></div>
                     <div class="s-table-wrap">
                         <table class="s-table" id="table4">
                             <tr>
@@ -325,6 +325,7 @@
                             </tr>
                         </table>
                     </div>
+                    자료: 중소벤처기업부 ｢납품대금 연동제 시범운영｣, '22.11.4'
                 </section>
                 <!-- 컨텐츠 end -->
             </div>
@@ -369,8 +370,8 @@
 
         // create data
         var data = anychart.data.set([
-            {name: "공신력 있는 기관이 고시하는 지표",        value: 439, capital: "예시: 원재료 가격 기준지표로 원자재 거래소(런던금속거래소 등), 중소기업협동조합(한국주물공업협동조합, 한국전선공업협동조합 등), 전문가격조사기관(한국물가정보, 한국물가협회 등), 전문지(철강금속신문, 스틸데일리 등) 등 공신력 있는 기관이 고시하는 지표" },
-            {name: "특정 원재료 판매처의 공시 가격",         value: 98, capital: "예시: ① A사가 공시하는 자사 제품의 판매 가격, ②A사가 공시하는 자사 제품의 판매 가격과 B사가 공시하는 자사 제품의 판매 가격의 평균 등 "    },
+            {name: "공신력 있는 기관이 고시하는 지표",        value: 439, capital: "예시: ①원재료 가격 기준지표로 원자재 거래소, ②중소기업협동조합, ③전문가격조사기관, ④전문지 등 공신력 있는 기관이 고시하는 지표" },
+            {name: "특정 원재료 판매처의 공시 가격",         value: 98, capital: "예시: ①A사가 공시하는 자사 제품의 판매 가격, ②A사가 공시하는 자사 제품의 판매 가격과 B사가 공시하는 자사 제품의 판매 가격의 평균 등 "    },
             {name: "원재료 판매처가 수탁기업에 판매한 가격",        value: 95, capital: "예시: 수탁기업과 철강 원재료 판매기업 간 원재료 거래 계약서에 명시된 가격 등"   },
             {name: "위탁기업이 수탁기업에 판매한 가격(유상사급)",         value: 37, capital: "예시: 유상사급 등 "   }
 

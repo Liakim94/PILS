@@ -138,7 +138,7 @@
                         </div>
                     </c:forEach>
                     <div class="line-wrap">
-                        <div class="label label-long">주요생산품</div>
+                        <div class="label label-long">주요 제품</div>
                         <div class="input-wrap">
                             <input readonly value="${rs.product}">
                         </div>

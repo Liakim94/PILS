@@ -66,7 +66,7 @@
                                     <td>${rs.deptNm}</td>
                                     <td>${rs.mbphno}</td>
                                     <td><c:if test="${sessionId eq rs.id}">
-                                    <a href="${pageContext.request.contextPath}/main/memEdit.do">정보수정</a> </c:if></td>
+                                    <a href="${pageContext.request.contextPath}/main/memEdit.do" style="color: rgb(0, 72, 255);">정보수정</a> </c:if></td>
                                 </tr>
                             </c:forEach>
                             <c:if test="${empty rs }">

@@ -78,9 +78,9 @@
                , #{material}
                , #{conQ}
                , current_timestamp
-               ,#{product}
-               ,#{joinCmp}
-               ,#{mainProduct})
+               , #{product}
+               , #{joinCmp}
+               , #{mainProduct})
     </insert>
     <insert id="insertMemberInfo">
         insert into tb_pils_mbr
@@ -112,36 +112,37 @@
                , #{management_cd})
     </insert>
     <insert id="insertCmpSttus">
-        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data,rgstdt)
-        VALUES (#{bizNo}, 2019, 'M201', #{ix_data1},current_timestamp ),
-               (#{bizNo}, 2019, 'M202', #{ix_data2},current_timestamp ),
-               (#{bizNo}, 2019, 'M203', #{ix_data3},current_timestamp );
+        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        VALUES (#{bizNo}, 2019, 'M201', #{ix_data1}, current_timestamp),
+               (#{bizNo}, 2019, 'M202', #{ix_data2}, current_timestamp),
+               (#{bizNo}, 2019, 'M203', #{ix_data3}, current_timestamp);
 
 
-        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data,rgstdt)
-        VALUES (#{bizNo}, 2020, 'M201', #{ix_data4},current_timestamp ),
-               (#{bizNo}, 2020, 'M202', #{ix_data5},current_timestamp ),
-               (#{bizNo}, 2020, 'M203', #{ix_data6},current_timestamp );
+        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        VALUES (#{bizNo}, 2020, 'M201', #{ix_data4}, current_timestamp),
+               (#{bizNo}, 2020, 'M202', #{ix_data5}, current_timestamp),
+               (#{bizNo}, 2020, 'M203', #{ix_data6}, current_timestamp);
 
-        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data,rgstdt)
-        VALUES (#{bizNo}, 2021, 'M201', #{ix_data7},current_timestamp ),
-               (#{bizNo}, 2021, 'M202', #{ix_data8},current_timestamp ),
-               (#{bizNo}, 2021, 'M203', #{ix_data9},current_timestamp );
+        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        VALUES (#{bizNo}, 2021, 'M201', #{ix_data7}, current_timestamp),
+               (#{bizNo}, 2021, 'M202', #{ix_data8}, current_timestamp),
+               (#{bizNo}, 2021, 'M203', #{ix_data9}, current_timestamp);
 
     </insert>
     <select id="list" resultMap="CmpMemberVo">
-        select
-        A.bizno as bizNo
-        ,A.cmp_mbr_cd as mem_cd
-        ,A.cmp_nm as cmpNm
-        ,to_char(A.appdt, 'YYYY-MM-DD') as appdate
-        ,B.nm as name
-        ,B.user_id as id
-        ,B.pswd as passwd
-        , a.logo_img_path as logoImgPath
-        from tb_pils_cmpmbr A join tb_pils_mbr B
-        on A.bizno =B.bizno
-        where cmp_mbr_cd= #{mem_cd} and b.manage_cd ='M501'
+        select A.bizno                        as bizNo
+             , A.cmp_mbr_cd                   as mem_cd
+             , A.cmp_nm                       as cmpNm
+             , to_char(A.appdt, 'YYYY-MM-DD') as appdate
+             , B.nm                           as name
+             , B.user_id                      as id
+             , B.pswd                         as passwd
+             , a.logo_img_path                as logoImgPath
+        from tb_pils_cmpmbr A
+                 join tb_pils_mbr B
+                      on A.bizno = B.bizno
+        where cmp_mbr_cd = #{mem_cd}
+          and b.manage_cd = 'M501'
         order by joincmp desc
     </select>
     <select id="listCount" resultType="int">
@@ -153,6 +154,11 @@
           and cmp_mbr_cd = #{mem_cd}
 
     </select>
+    <select id="joinCmp" resultType="int">
+        SELECT sum(joincmp)
+        FROM tb_pils_cmpmbr
+        WHERE cmp_mbr_cd = #{mem_cd}
+    </select>
     <select id="conChkPw" resultType="int">
         select case
                    when inPass = pswd then 1
@@ -160,7 +166,8 @@
         from (select encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex') as inPass
                    , pswd
               from tb_pils_mbr
-              where bizno = #{bizNo} and manage_cd='M501'
+              where bizno = #{bizNo}
+                and manage_cd = 'M501'
              ) a;
 
     </select>
@@ -182,7 +189,7 @@
              , A.con_q         as conQ
              , A.product       as product
              , A.joincmp       as joinCmp
-             , A.main_product   as mainProduct
+             , A.main_product  as mainProduct
              , B.nm            as name
              , B.mbphno        as mbphno
              , B.psitn_dept_nm as deptNm
@@ -201,19 +208,32 @@
     </select>
 
     <select id="getCmpSttus" resultMap="CmpSttusVO">
-        select
-            base_yy as base_year
-             , ix_dvsn as index_dv
-             , ix_data as index_data
+        select base_yy  as base_year
+             , ix_dvsn  as index_dv
+             , ix_data  as index_data
              , bb.cd_nm as index_dv_nm
-        from
-            tb_pils_cmp_sttus AA,
-            ( select cd, cd_nm from tb_cd_data where cd_grp = 'M200') BB
-        where aa. bizno = #{bizNo}
+        from tb_pils_cmp_sttus AA,
+             (select cd, cd_nm from tb_cd_data where cd_grp = 'M200') BB
+        where aa.bizno = #{bizNo}
           and aa.ix_dvsn = bb.cd
         order by ix_dvsn, base_yy
     </select>
-
+    <select id="sttusIsEmpty" resultMap="CmpSttusVO">
+        select
+            aa.base_yy as base_year
+             , bb.cd_nm as index_dv_nm
+             , 0 as index_data
+        from
+            (
+                select cast(to_char(current_date, 'yyyy') as integer)-2 as base_yy
+                union
+                select cast(to_char(current_date, 'yyyy') as integer)-3 as base_yy
+                union
+                select cast(to_char(current_date, 'yyyy') as integer)-4 as base_yy
+            ) AA
+           ,( select cd, cd_nm from tb_cd_data where cd_grp = 'M200') BB
+        order by bb.cd ,  aa.base_yy desc
+    </select>
     <update id="update">
         update tb_pils_cmpmbr
         set cmp_nm        = #{cmpNm}
@@ -232,8 +252,8 @@
           , con_q         = #{conQ}
           , product       = #{product}
           , updt          = current_timestamp
-          , joincmp       =  #{joinCmp}
-          , main_product  =  #{mainProduct}
+          , joincmp       = #{joinCmp}
+          , main_product  = #{mainProduct}
         where bizno = #{bizNo}
     </update>
     <update id="memUpdate">
@@ -249,43 +269,74 @@
         where bizno = #{bizNo}
     </update>
     <update id="updateCmpSttus">
-        update tb_pils_cmp_sttus set ix_data = #{ix_data1}
-        where bizno = #{bizNo} and base_yy= 2019 and ix_dvsn = 'M201';
+        update tb_pils_cmp_sttus
+        set ix_data = #{ix_data1}
+        where bizno = #{bizNo}
+          and base_yy = 2019
+          and ix_dvsn = 'M201';
 
-        update tb_pils_cmp_sttus set ix_data = #{ix_data2}
-        where bizno = #{bizNo} and base_yy= 2019 and ix_dvsn = 'M202';
+        update tb_pils_cmp_sttus
+        set ix_data = #{ix_data2}
+        where bizno = #{bizNo}
+          and base_yy = 2019
+          and ix_dvsn = 'M202';
 
-        update tb_pils_cmp_sttus set ix_data = #{ix_data3}
-        where bizno = #{bizNo} and base_yy= 2019 and ix_dvsn = 'M203';
+        update tb_pils_cmp_sttus
+        set ix_data = #{ix_data3}
+        where bizno = #{bizNo}
+          and base_yy = 2019
+          and ix_dvsn = 'M203';
 
-        update tb_pils_cmp_sttus set ix_data = #{ix_data4}
-        where bizno = #{bizNo} and base_yy= 2020 and ix_dvsn = 'M201';
+        update tb_pils_cmp_sttus
+        set ix_data = #{ix_data4}
+        where bizno = #{bizNo}
+          and base_yy = 2020
+          and ix_dvsn = 'M201';
 
-        update tb_pils_cmp_sttus set ix_data = #{ix_data5}
-        where bizno = #{bizNo} and base_yy= 2020 and ix_dvsn = 'M202';
+        update tb_pils_cmp_sttus
+        set ix_data = #{ix_data5}
+        where bizno = #{bizNo}
+          and base_yy = 2020
+          and ix_dvsn = 'M202';
 
-        update tb_pils_cmp_sttus set ix_data = #{ix_data6}
-        where bizno = #{bizNo} and base_yy= 2020 and ix_dvsn = 'M203';
+        update tb_pils_cmp_sttus
+        set ix_data = #{ix_data6}
+        where bizno = #{bizNo}
+          and base_yy = 2020
+          and ix_dvsn = 'M203';
 
-        update tb_pils_cmp_sttus set ix_data = #{ix_data7}
-        where bizno = #{bizNo} and base_yy= 2021 and ix_dvsn = 'M201';
+        update tb_pils_cmp_sttus
+        set ix_data = #{ix_data7}
+        where bizno = #{bizNo}
+          and base_yy = 2021
+          and ix_dvsn = 'M201';
 
-        update tb_pils_cmp_sttus set ix_data = #{ix_data8}
-        where bizno = #{bizNo} and base_yy= 2021 and ix_dvsn = 'M202';
+        update tb_pils_cmp_sttus
+        set ix_data = #{ix_data8}
+        where bizno = #{bizNo}
+          and base_yy = 2021
+          and ix_dvsn = 'M202';
 
-        update tb_pils_cmp_sttus set ix_data = #{ix_data9}
-        where bizno = #{bizNo} and base_yy= 2021 and ix_dvsn = 'M203';
+        update tb_pils_cmp_sttus
+        set ix_data = #{ix_data9}
+        where bizno = #{bizNo}
+          and base_yy = 2021
+          and ix_dvsn = 'M203';
 
 
     </update>
     <select id="checkId" resultType="String">
 
-        select user_id from tb_pils_mbr where user_id = #{id}
+        select user_id
+        from tb_pils_mbr
+        where user_id = #{id}
 
     </select>
     <select id="checkBizno" resultType="String">
 
-        select bizno from tb_pils_mbr where bizno = #{bizNo}
+        select bizno
+        from tb_pils_mbr
+        where bizno = #{bizNo}
 
     </select>
     <insert id="insertJoin">
@@ -370,8 +421,8 @@
           , con_q         = #{conQ}
           , product       = #{product}
           , updt          = current_timestamp
-          , joincmp       =  #{joinCmp}
-          , main_product  =  #{mainProduct}
+          , joincmp       = #{joinCmp}
+          , main_product  = #{mainProduct}
         where bizno = #{bizNo}
     </update>
     <select id="conCheck" resultType="int">

@@ -12,39 +12,6 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/temp.css"/>">
 </head>
 <script>
-    // submit
-    function fn_submit() {
-
-        var frm = document.getElementById('frmWrite');
-
-        if (frm.name.value == "") {
-            alert("작성자를 입력하세요.");
-            return false;
-        }
-        if (frm.id.value == "") {
-            alert("공개여부를 선택하세요.");
-            return false;
-        }
-        if (frm.passwd.value == "" && document.getElementById('ChkBox2').checked) {
-            alert("비밀번호를 입력하세요.");
-            return false;
-        }
-        if (frm.title.value == "") {
-            alert("제목을 입력하세요.");
-            return false;
-        }
-
-        oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
-
-        var ir1 = $("#cont");
-        var ir2 = $("#cont").val();
-        if (ir1 == "" || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>') {
-            alert("내용을 입력하세요.");
-            return false;
-        }
-
-        $("#frmEdit").submit();
-    }
 
     function selectEmail(ele) {
         var $ele = $(ele);
@@ -64,66 +31,82 @@
     <div id="board">
         <page:applyDecorator name="menu_myPage"/>
         <form:form name="frmEdit" id="frmEdit" method="POST" action="memEdit.do">
-            <div class="article">
-                <br>
-                <ul class="loc-list">
-                    <li>
-                        <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
-                        <a href="${pageContext.request.contextPath}">홈</a></li>
-                    <li>마이페이지</li>
-                    <li>담당자 정보 수정</li>
-                </ul>
-                <div class="article-header">
-                    <h1 class="fw700">담당자 정보 수정</h1>
-                    <div class="side-wrap">
-                    </div>
+        <div class="article">
+            <br>
+            <ul class="loc-list">
+                <li>
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png"
+                         alt="홈">
+                    <a href="${pageContext.request.contextPath}">홈</a></li>
+                <li>마이페이지</li>
+                <li>담당자 정보 수정</li>
+            </ul>
+            <div class="article-header">
+                <h1 class="fw700">담당자 정보 수정</h1>
+                <div class="side-wrap">
                 </div>
-                <div class="content">
-                    <div class="write-container">
-                        <table class="table-form">
-                            <tbody>
-                                <tr>
-                                    <th class="txt_alcnt" scope="row">성명</th>
-                                    <td><input type="text" class="uni_input_text wdh100" name="name" id="name" value="${rs.name}"/></td>
-                                    <th class="txt_alcnt" scope="row">전화번호</th>
-                                    <td><input type="number" class="uni_input_text wdh100" id="mbphno" name="mbphno"value="${rs.mbphno}"/></td>
-                                </tr>
-                                <tr>
-                                    <th class="txt_alcnt" scope="row">소속부서</th>
-                                    <td><input type="text" class="uni_input_text wdh100" id="deptNm" name="deptNm" value="${rs.deptNm}"/></td>
-                                    <th class="txt_alcnt" scope="row">직위</th>
-                                    <td><input type="text" class="uni_input_text wdh100" id="position" name="position"value="${rs.position}"/></td>
-                                </tr>
-                                <tr>
-                                    <th class="txt_alcnt" scope="row">이메일</th>
-                                    <td colspan="3">
-                                        <input type="text" class="uni_input_text " name="email1" id="email1" value="${rs.email1}"/>
-                                        @
-                                        <input type="text" class="uni_input_text " name="email2" id="email2" value="${rs.email2}"/>
-                                        <select id="email3" class="uni_input_text " style="border-radius: 5px;" onclick="selectEmail(this)">
-                                            <option value="1">직접입력</option>
-                                            <option value="naver.com">naver.com</option>
-                                            <option value="daum.net">daum.net</option>
-                                            <option value="gmail.com">gmail.com</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="txt_alcnt" scope="row">사무실 전화</th>
-                                    <td><input type="number" class="uni_input_text wdh100" id="memTelNo" name="memTelNo" value="${rs.memTelNo}"/></td>
-                                    <th class="txt_alcnt" scope="row">팩스</th>
-                                    <td><input type="number" class="uni_input_text wdh100" id="memFaxNo" name="memFaxNo" value="${rs.memFaxNo}"/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="write-bottom">
-                            <button type="submit" class="btn blue">저장</button>
-                            <a href="${pageContext.request.contextPath}/main/changePw.do" class="btn blue">비밀번호 변경</a>
-                            <a href="${pageContext.request.contextPath}/main/management.do" class="btn blue">취소</a>
+            </div>
+            <div id="company-write" class="content">
+                <div class="write-container">
+                    <div class="line-wrap">
+                        <div class="label">성명</div>
+                        <div class="input-wrap">
+                            <input type="text" name="name" id="name" value="${rs.name}"/>
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">전화번호</div>
+                        <div class="input-wrap">
+                            <input type="text" id="mbphno" name="mbphno"
+                                   value="${rs.mbphno}"/></div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="fx2">
+                            <div class="label">소속부서</div>
+                            <div class="input-wrap">
+                                <input type="text" id="deptNm" name="deptNm" value="${rs.deptNm}"/></div>
+                        </div>
+                        <div class="fx2">
+                            <div class="label">직위</div>
+                            <div class="input-wrap"><input type="text" id="position" name="position"
+                                                           value="${rs.position}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">이메일</div>
+                        <div class="input-wrap ">
+                            <input type="text" class="multi" name="email1" id="email1" value="${rs.email1}"/>
+                            <span>@</span>
+                            <input type="text" style="width: 130px" name="email2" id="email2" value="${rs.email2}"/>
+                            <select id="email3" style="width: 130px" onclick="selectEmail(this)">
+                                <option value="1">직접입력</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="daum.net">daum.net</option>
+                                <option value="gmail.com">gmail.com</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">사무실 전화</div>
+                        <div class="input-wrap">
+                            <input type="text" id="memTelNo" name="memTelNo" value="${rs.memTelNo}"/>
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">팩스</div>
+                        <div class="input-wrap">
+                            <input type="text" id="memFaxNo" name="memFaxNo" value="${rs.memFaxNo}"/></td>
                         </div>
                     </div>
                 </div>
+                <div class="write-bottom">
+                    <button type="submit" class="submit">저장</button>
+                    <a href="${pageContext.request.contextPath}/main/changePw.do" class="submit">비밀번호 변경</a>
+                    <a href="${pageContext.request.contextPath}/main/management.do" class="go-lst">취소</a>
+                </div>
             </div>
-        </form:form>
+            </form:form>
+        </div>
     </div>
 </div>

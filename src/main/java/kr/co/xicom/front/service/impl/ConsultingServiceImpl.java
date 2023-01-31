@@ -68,13 +68,15 @@ public class ConsultingServiceImpl implements ConsultingService {
 
         List<CmpMemberVo> list = null;
         int cnt = 0;
+        int joinCmp =0;
 
         try{
             list = mapper.list(vo);
             cnt = mapper.listCount(vo);
-
+            joinCmp = mapper.joinCmp(vo);
             map.put("resultList",list);
             map.put("resultCnt", cnt);
+            map.put("joinCmpCnt",joinCmp);
         } catch (Exception e){
             System.out.println(e.toString());
         }
@@ -242,7 +244,12 @@ public class ConsultingServiceImpl implements ConsultingService {
     public List<CmpSttusVO>  getCmpSttus(CmpSttusVO vo) throws Exception{
 
         List<CmpSttusVO> list = mapper.getCmpSttus(vo);
-        return list;
+        if(list.isEmpty()){
+            List<CmpSttusVO> isEmpty=  mapper.sttusIsEmpty(vo);
+            return isEmpty;
+        }else {
+            return list;
+        }
     }
 
     // 동행기업 첨부서류 리스트 추출

@@ -2978,7 +2978,7 @@
 .timeline .timeline-group .timeline-box .timeline-date span{
     font-weight: 400;
     font-size: 14px;
-    line-height: 19px;
+    line-height: 47px;
 }
 .timeline .timeline-group .timeline-box .timeline-post{
     width: calc(100% - 88px);
@@ -3007,7 +3007,7 @@
     gap: 20px;
 }
 .timeline .timeline-group .timeline-box .timeline-post .timeline-content .img-content .img-wrap{
-    width: 190px;
+    width: 300px;
 }
 .timeline .timeline-group .timeline-box .timeline-post .timeline-content .img-content .img-wrap img{
     width: 100%;
