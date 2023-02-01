@@ -40,7 +40,10 @@ public class BoardVO extends DefaultVO{
 	 * FileUploader.js에 의해 삭제된 파일 리스트 (JSON 문자열)
 	 */
 	private String jsonDeletedFileList;
-
+	/**
+	 * 대표 이미지 경로
+	 */
+	private String imgPath;
 
 	public String getSteId() {
 		return steId;
@@ -186,4 +189,11 @@ public class BoardVO extends DefaultVO{
 		this.jsonDeletedFileList = jsonDeletedFileList;
 	}
 
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
 }

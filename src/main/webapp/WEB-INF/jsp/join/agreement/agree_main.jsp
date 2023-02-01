@@ -50,8 +50,8 @@
                     </c:if>
                     <c:if test="${rs eq '0'}">
                     <a href="${pageContext.request.contextPath}/join/agree.do"><img
-                            src="${pageContext.request.contextPath}/images/common/document-icon.png" alt="약정서 체험하기">약정서
-                        체험하기</a>
+                            src="${pageContext.request.contextPath}/images/common/document-icon.png" alt="약정서 체험하기">
+                        약정서 작성 체험</a>
                     </c:if>
                 </div>
                 <!-- 컨텐츠 end -->

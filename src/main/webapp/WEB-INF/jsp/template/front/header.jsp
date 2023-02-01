@@ -80,7 +80,7 @@
                 <a class="font18" href="<c:url value="/front/board/11/list.do"/>">소통마당</a>
                 <div class="submenu">
                     <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
-                    <a href="<c:url value="/front/board/6/list.do"/>">기업들이 준비할 일</a>
+                    <a href="<c:url value="/front/board/ready/list.do"/>">기업들이 준비할 일</a>
                     <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
                     <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
                     <c:if test="${sessionId eq 'admin' }">

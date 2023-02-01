@@ -29,5 +29,6 @@ public interface BoardMapper {
 	int updateStat(BoardVO vo) throws Exception;
 
 	String getMenu(int bbsId) throws Exception;
+	List<BoardVO> readyList(BoardVO vo) throws Exception;
 
 }

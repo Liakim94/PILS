@@ -2,6 +2,7 @@ package kr.co.xicom.front.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.BoardVO;
@@ -11,6 +12,9 @@ import kr.co.xicom.front.service.AdminService;
 import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.MainService;
+import kr.co.xicom.util.HtmlTagUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -161,10 +165,10 @@ public class adminController {
 
     @PostMapping("/trace/post.do")
     public String doTracePost(@ModelAttribute("post") TraceVO vo) throws Exception {
-        int result = adminService.tracePost(vo);
+        int result = adminService.tracePost(vo,null);
 
         if (result > 0) {
-            return "redirect:/admin/trace/list.do";
+            return "redirect:/admin/trace/view.do?seq="+vo.getSeq();
         } else {
             return "forward:/common/error.jsp";
         }
@@ -176,8 +180,11 @@ public class adminController {
         ModelAndView mav = new ModelAndView("admin/trace_view");
         vo.setSeq(seq);
         vo = adminService.traceView(seq);
+        List<AttachVO> attachList = adminService.getAttachList(vo);
 
         mav.addObject("rs", vo);
+        mav.addObject("attachList", attachList);
+
         return mav;
     }
 
@@ -204,7 +211,7 @@ public class adminController {
     public String traceDelete(@RequestParam(value = "seq") int seq
             , @ModelAttribute("TraceVO") TraceVO vo) throws Exception {
         vo.setSeq(seq);
-        int result = adminService.traceDelete(seq);
+        int result = adminService.traceDelete(seq,vo);
         if (result > 0) {
             return "redirect:/admin/trace/list.do";
         }
@@ -332,10 +339,9 @@ public class adminController {
         }
 
     }
-    @PostMapping("/ready/{bbsId}/delete.do")
-    public String readyDelete(@PathVariable("bbsId") Integer bbsId,
-                              @ModelAttribute("post") BoardVO boardVO) throws Exception {
-        boardVO.setBbsId(bbsId);
+    @PostMapping("/ready/6/delete.do")
+    public String readyDelete( @ModelAttribute("post") BoardVO boardVO) throws Exception {
+        boardVO.setBbsId(6);
         int result = boardService.updateStat(boardVO);
         if (result > 0) {
             return "redirect:/admin/trace/list.do";

@@ -24,27 +24,43 @@
             <div class="article-header">
                 <h1 class="fw700">걸어온 발자취</h1>
             </div>
-            <div id="company-write" class="content">
-                <!-- 컨텐츠 start -->
-                <div class="board-view-wrap01">
-                    <input type="hidden" value="${rs.seq}">
-
-                    <p class="subj">제목 : ${rs.title}</p>
-                    <p class="subj">등록일자 : ${fn:substring(rs.rgst_dt,0,10)}</p>
-                    <div class="cont">
-                        ${fx:resetXSSMinimum(rs.cont)}
+            <div class="content">
+                <div class="write-container">
+                    <!-- 컨텐츠 start -->
+                    <div class="board-view-wrap01">
+                        <input type="hidden" value="${rs.seq}">
+                        <div class="board-view-wrap01">
+                            <p class="subj"> ${rs.title}</p>
+                            <div class="info">
+                                <ul>
+                                    <li>작성자 : 관리자</li>
+                                    <li>작성일 : ${fn:substring(rs.rgst_dt,0,10)}</li>
+                                </ul>
+                            </div>
+                            <div class="file-wrap">
+                                <p class="label">첨부파일</p>
+                                <ul>
+                                    <c:forEach var="attach" items="${attachList}">
+                                        <li>
+                                            <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                                <c:out value="${attach.fileNm}"/>
+                                            </a>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                            <div class="cont">
+                                ${fx:resetXSSMinimum(rs.cont)}
+                            </div>
+                        </div>
                     </div>
-
-                </div>
-                <!-- 컨텐츠 end -->
-                <div class="write-bottom">
-                    <a href="<c:url value="/admin/trace/edit.do?seq=${rs.seq}"/>" class="submit">수정</a>
-                    <a href="<c:url value="/admin/trace/delete.do?seq=${rs.seq}"/>">삭제</a>
+                    <div class="write-bottom">
+                        <a href="<c:url value="/admin/trace/edit.do?seq=${rs.seq}"/>" class="submit">수정</a>
+                        <a href="<c:url value="/admin/trace/delete.do?seq=${rs.seq}"/>">삭제</a>
+                    </div>
+                    <!-- 컨텐츠 end -->
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
-

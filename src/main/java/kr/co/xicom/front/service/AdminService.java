@@ -1,5 +1,6 @@
 package kr.co.xicom.front.service;
 
+import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.TraceVO;
@@ -17,7 +18,7 @@ public interface AdminService {
     List<CmpMemberVo> memManageList(CmpMemberVo vo) throws Exception;
 
     //걸어온 발자취 관리
-    int tracePost(TraceVO vo) throws Exception;
+    int tracePost(TraceVO vo, AttachVO attachVO) throws Exception;
 
     Map<String, Object> traceList(TraceVO vo) throws Exception;
 
@@ -25,9 +26,11 @@ public interface AdminService {
 
     int traceUpdate(TraceVO vo)  throws Exception;
 
-    int traceDelete(int seq) throws Exception;
+    int traceDelete(int seq, TraceVO vo) throws Exception;
 
     int readyPost(BoardVO vo) throws Exception;
 
     int updatePost(BoardVO vo) throws Exception;
+
+    List<AttachVO> getAttachList(TraceVO vo) throws Exception;
 }

@@ -14,4 +14,12 @@ public class TraceVO extends DefaultVO {
      * 대표 이미지 경로
      */
     private String imgPath;
+    /**
+     * FileUploader.js에 의해 업로드된 파일 리스트 (JSON 문자열)
+     */
+    private String jsonFileList;
+    /**
+     * FileUploader.js에 의해 삭제된 파일 리스트 (JSON 문자열)
+     */
+    private String jsonDeletedFileList;
 }
