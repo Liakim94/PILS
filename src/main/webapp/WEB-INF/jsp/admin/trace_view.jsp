@@ -25,42 +25,64 @@
                 <h1 class="fw700">걸어온 발자취</h1>
             </div>
             <div class="content">
-                <div class="write-container">
+                <div id="company-write" class="content">
                     <!-- 컨텐츠 start -->
                     <div class="board-view-wrap01">
                         <input type="hidden" value="${rs.seq}">
-                        <div class="board-view-wrap01">
-                            <p class="subj"> ${rs.title}</p>
-                            <div class="info">
-                                <ul>
-                                    <li>작성자 : 관리자</li>
-                                    <li>작성일 : ${fn:substring(rs.rgst_dt,0,10)}</li>
-                                </ul>
+                        <p class="subj"> ${rs.title}</p>
+                        <div class="info">
+                            <ul>
+                                <li>작성자 : 관리자</li>
+                                <li>작성일 : ${fn:substring(rs.rgst_dt,0,10)}</li>
+                            </ul>
+                        </div>
+                        <div class="file-wrap">
+                            <p class="label">첨부파일</p>
+                            <ul>
+                                <c:forEach var="attach" items="${attachList}">
+                                <li>
+                                    <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                        <c:out value="${attach.fileNm}"/>
+                                    </a>
+                                </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                        <div class="gallery-container">
+                            <div class="active-img-wrap">
+                                <!--    이미지 예시입니다.     -->
+                                <img src="<c:url value="/images/card/001.jpg"/>">
+                                <div class="cont">
+                                        ${fx:resetXSSMinimum(rs.cont)}
+                                </div>
                             </div>
-                            <div class="file-wrap">
-                                <p class="label">첨부파일</p>
-                                <ul>
-                                    <c:forEach var="attach" items="${attachList}">
-                                        <li>
-                                            <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
-                                                <c:out value="${attach.fileNm}"/>
-                                            </a>
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </div>
-                            <div class="cont">
-                                ${fx:resetXSSMinimum(rs.cont)}
+                            <div class="gallery-list">
+                                <img src="<c:url value="/images/card/001.jpg"/>">
+                                <img src="<c:url value="/images/card/002.jpg"/>">
+                                <img src="<c:url value="/images/card/003.jpg"/>">
+                                <img src="<c:url value="/images/card/004.jpg"/>">
+                                <img src="<c:url value="/images/card/005.jpg"/>">
+                                <img src="<c:url value="/images/card/006.jpg"/>">
+                                <img src="<c:url value="/images/card/007.jpg"/>">
+
                             </div>
                         </div>
                     </div>
+                    <!-- 컨텐츠 end -->
                     <div class="write-bottom">
                         <a href="<c:url value="/admin/trace/edit.do?seq=${rs.seq}"/>" class="submit">수정</a>
                         <a href="<c:url value="/admin/trace/delete.do?seq=${rs.seq}"/>">삭제</a>
                     </div>
-                    <!-- 컨텐츠 end -->
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(".gallery-list img").click(function (){
+        var src = $(this).attr("src");
+        $(".gallery-list img").removeClass("active");
+        $(this).addClass("active");
+        $(".active-img-wrap img").css('opacity','0').stop().attr('src', src).animate({opacity:1},500);
+    });
+</script>

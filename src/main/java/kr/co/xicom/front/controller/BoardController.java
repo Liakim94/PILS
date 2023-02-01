@@ -81,44 +81,6 @@ public class BoardController extends Alerts {
 
         return mav;
     }
-    @RequestMapping(value = "/board/ready/list.do", method = {RequestMethod.GET})
-    public ModelAndView readyList( @ModelAttribute("BoardVO") BoardVO boardVO,
-                                  HttpServletRequest request) throws Exception {
-
-        ModelAndView mav = new ModelAndView("communication/ready/gboard-list");
-        int bbsId = 6;
-        /*페이징 초기설정*/
-        PaginationInfo paginationInfo = new PaginationInfo();
-        paginationInfo.setCurrentPageNo(boardVO.getPageIndex());    // 현재페이지
-        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
-        paginationInfo.setPageSize(boardVO.getPageSize());
-
-        boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-        boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
-        boardVO.setPageUnit(paginationInfo.getRecordCountPerPage());
-        boardVO.setBbsId(bbsId);
-        boardVO.setStat("1");
-
-        /*데이터 가져오기*/
-        Map<String, Object> rs = new HashMap<String, Object>();
-        rs = boardService.readyList(boardVO);
-        // 게시판 이름 가져오는 메소드
-        String menu = boardService.getMenu(bbsId);
-
-        int totalCnt = 0;
-        totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
-
-        paginationInfo.setTotalRecordCount(totalCnt);
-
-        mav.addObject("totalCnt", rs.get("resultCnt"));
-        mav.addObject("list", rs.get("resultList"));
-        mav.addObject("paginationInfo", paginationInfo);
-        mav.addObject("vo", boardVO);
-        mav.addObject("bbsId", bbsId);
-        mav.addObject("bbsNm", menu);
-
-        return mav;
-    }
 
     /**
      * 게시판 상세 조회
@@ -165,7 +127,6 @@ public class BoardController extends Alerts {
         mav.addObject("menuNo", request.getAttribute("menuNo"));
         mav.addObject("menuName", request.getAttribute("menuName"));
         mav.addObject("bbsId", bbsId);
-        mav.addObject("rwx", request.getAttribute("rwx"));
         mav.addObject("bbsNm", menu);
         // WildRain 추가 2023-01-13
         // 첨부파일 리스트 추가.
@@ -310,4 +271,65 @@ public class BoardController extends Alerts {
         }
     }
 
+    /**
+     * 기업들이 준비할 일(bbsId=6)
+     */
+    @RequestMapping(value = "/board/ready/list.do", method = {RequestMethod.GET})
+    public ModelAndView readyList( @ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = new ModelAndView("communication/ready/gboard-list");
+        int bbsId = 6;
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(boardVO.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(boardVO.getPageSize());
+
+        boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
+        boardVO.setPageUnit(paginationInfo.getRecordCountPerPage());
+        boardVO.setBbsId(bbsId);
+        boardVO.setStat("1");
+
+        Map<String, Object> rs = new HashMap<String, Object>();
+        rs = boardService.list(boardVO);
+        // 게시판 이름 가져오는 메소드
+        String menu = boardService.getMenu(bbsId);
+
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("totalCnt", rs.get("resultCnt"));
+        mav.addObject("list", rs.get("resultList"));
+        mav.addObject("paginationInfo", paginationInfo);
+        mav.addObject("bbsNm", menu);
+
+        return mav;
+    }
+    @GetMapping(value = "/board/ready/view.do")
+    public ModelAndView readyView(@ModelAttribute("BoardVO") BoardVO boardVO,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response,
+                                  HttpSession session) throws Exception {
+
+        ModelAndView mav = new ModelAndView("communication/ready/gboard-detail");
+        int bbsId=6;
+        boardVO.setBbsId(bbsId);
+        boardVO.setStat("1");
+        BoardVO rs = boardService.getView(boardVO);
+
+        if (rs == null) {
+            writeAlert("존재하지 않는 게시물입니다.", request, response);
+        }
+        List<AttachVO> attachList = boardService.getAttachList(boardVO);
+
+        String menu = boardService.getMenu(bbsId);
+
+        mav.addObject("rs", rs);
+        mav.addObject("bbsNm", menu);
+        mav.addObject("attachList", attachList);
+
+        return mav;
+    }
 }
