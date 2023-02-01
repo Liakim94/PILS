@@ -1,6 +1,7 @@
 package kr.co.xicom.front.controller;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import kr.co.xicom.front.model.AttachVO;
 import kr.co.xicom.front.model.BoardVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.TraceVO;
@@ -84,8 +85,12 @@ public class GuideController extends Alerts {
         ModelAndView mav = new ModelAndView("guide/trace_view");
 
         vo = adminService.traceView(seq);
+        List<AttachVO> attachList = adminService.getAttachList(vo);
+
         vo.setSeq(seq);
         mav.addObject("rs",  vo);
+        mav.addObject("attachList", attachList);
+
         return mav;
     }
 

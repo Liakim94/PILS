@@ -2,24 +2,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
+<head>
+    <title>중소벤처기업부 | 걸어온 발자취</title>
+</head>
 <style>
     .thumbnail-box {
         display: flex;
         align-items: center;
     }
+
     .thumbnail-box .image-wrapper {
-        width:50px;
-        height:50px;
+        width: 50px;
+        height: 50px;
         display: inline-flex;
         align-items: center;
         border: 1px solid #eee;
         margin-right: 15px;
         box-sizing: border-box;
     }
+
     .thumbnail-box .image-wrapper img {
-        width:48px;
+        width: 48px;
     }
+
     .content table td.al {
         text-align: left;
     }
@@ -43,50 +49,42 @@
             </ul>
             <div class="article-header">
                 <h1 class="fw700">걸어온 발자취</h1>
+                <div class="side-wrap"></div>
             </div>
             <div class="content">
                 <!-- 컨텐츠 start -->
-                <div class="write-container">
-                    <table class="tbl-list01">
-                        <colgroup>
-                            <col width="10%"/>
-                            <col width="60%"/>
-                            <col width="30%"/>
-                        </colgroup>
-                        <thead>
-                        <th class="txt_alcnt" scope="col">번호</th>
-                        <th class="txt_alcnt" scope="col">제목</th>
-                        <th class="txt_alcnt" scope="col">등록일자</th>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="rs" items="${rs }" varStatus="status">
-                            <tr>
-                                <td class="txt_alcnt">
-                                        ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }
-                                </td>
-                                <td class="al">
-                                    <div class="thumbnail-box">
-                                        <span class="image-wrapper">
-                                            <img src="<c:out value="${rs.imgPath}"/>" alt="<c:out value="${rs.title}"/>" onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
-                                        </span>
-                                        <a href="<c:url value="/front/guide/trace/view.do?seq=${rs.seq}"/>">
-                                                ${rs.title}</a>
-                                    </div>
-                                </td>
-                                <td>${fn:substring(rs.rgst_dt,0,10)}</td>
-                            </tr>
-                        </c:forEach>
-                        <c:if test="${empty rs }">
-                            <tr>
-                                <td colspan="3" class="text-center">조회된 데이터가 없습니다.</td>
-                            </tr>
-                        </c:if>
-                        </tbody>
-                    </table>
+                <div id="gboard-list">
+                    <c:forEach var="rs" items="${rs }" varStatus="status">
+                        <div class="lst">
+                            <a href="<c:url value="/front/guide/trace/view.do?seq=${rs.seq}"/>">
+                                <div class="thumbnail" style="background:url('<c:out value="${rs.imgPath}"/>')
+                                        , url('<c:url value="/images/no-image.jpg"/>')"></div>
+                                    <%--<img src="<c:out value="${rs.imgPath}"/>" alt="<c:out value="${rs.title}"/>"--%>
+                                    <%--                                     onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>--%>
+                                <div class="lst-info">
+                                    <h3 class="title"> ${rs.title}</h3>
+                                    <p class="regdate">${fn:substring(rs.rgst_dt,0,10)}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </c:forEach>
+                    <c:if test="${empty rs }">
+                        <div>조회된 데이터가 없습니다.</div>
+                    </c:if>
                 </div>
-                <!-- 컨텐츠 end -->
+                    <!-- paging -->
+                    <div class="board_bottom_wrap">
+                        <div class="paging_wrap">
+                            <ul class="paging">
+                                <ui:pagination paginationInfo="${paginationInfo}" type="image"
+                                               jsFunction="linkPage"/>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- // paging -->
+                    <!-- 컨텐츠 end -->
+
             </div>
         </div>
     </div>
 </div>
-

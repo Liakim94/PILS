@@ -155,7 +155,7 @@
                                     기업명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap">
-                                    <form:input path="cmpNm" readonly="true"/>
+                                    <form:input path="cmpNm"/>
                                 </div>
                             </div>
                             <div class="fx2">
@@ -163,11 +163,11 @@
                                     사업자 번호
                                 </div>
                                 <div class="input-wrap">
-                                    <form:input path="bizNo1" class="multi"/>
+                                    <form:input path="bizNo1" class="multi" readonly="true"/>
                                     <span>-</span>
-                                    <form:input path="bizNo2" class="multi"/>
+                                    <form:input path="bizNo2" class="multi"  readonly="true"/>
                                     <span>-</span>
-                                    <form:input path="bizNo3" class="multi"/>
+                                    <form:input path="bizNo3" class="multi"  readonly="true"/>
                                     <input type="hidden" id="bizNo" name=bizNo value="">
                                 </div>
                             </div>

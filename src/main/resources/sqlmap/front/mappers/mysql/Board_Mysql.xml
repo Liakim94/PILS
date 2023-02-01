@@ -3,106 +3,110 @@
 <mapper namespace="kr.co.xicom.front.service.mapper.BoardMapper">
 
     <resultMap type="default" id="default">
-        <result property="regSeq"       column="REG_SEQ"        />
-        <result property="regNm"        column="REG_NM"         />
-        <result property="regDe"        column="REG_DE"         />
-        <result property="regIp"        column="REG_IP"         />
-        <result property="updSeq"       column="UPD_SEQ"        />
-        <result property="updNm"        column="UPD_NM"         />
-        <result property="updDe"        column="UPD_DE"         />
-        <result property="updIp"        column="UPD_IP"         />
-        <result property="stat"         column="STAT"           />
+        <result property="regSeq" column="REG_SEQ"/>
+        <result property="regNm" column="REG_NM"/>
+        <result property="regDe" column="REG_DE"/>
+        <result property="regIp" column="REG_IP"/>
+        <result property="updSeq" column="UPD_SEQ"/>
+        <result property="updNm" column="UPD_NM"/>
+        <result property="updDe" column="UPD_DE"/>
+        <result property="updIp" column="UPD_IP"/>
+        <result property="stat" column="STAT"/>
     </resultMap>
 
     <resultMap id="BoardVO" type="board" extends="default">
-        <result property="boardSeq"         column="BOARD_SEQ"      />
-        <result property="bbsId"            column="BBS_ID"         />
-        <result property="bbsNm"            column="BBS_NM"         />
-        <result property="title"            column="TITLE"          />
-        <result property="cont"             column="CONT"           />
-        <result property="pwd"              column="PWD"            />
-        <result property="ref"              column="REF"            />
-        <result property="lvl"              column="LVL"            />
-        <result property="step"             column="STEP"           />
-        <result property="notiAt"           column="NOTI_AT"        />
-        <result property="readCnt"          column="READ_CNT"       />
-        <result property="usrTyp"           column="USR_TYP"        />
-        <result property="stat"             column="STAT"           />
-        <result property="statNm"           column="STAT_NM"        />
-        <result property="notiStrDt"        column="NOTI_STR_DT"    />
-        <result property="notiEndDt"        column="NOTI_END_DT"    />
-        <result property="opnAt"            column="OPN_AT"         />
-        <result property="tag"              column="TAG"            />
-        <result property="likeSeq"          column="LIKE_SEQ"       />
-        <result property="like"             column="LKE"            />
-        <result property="dislike"          column="DISLKE"         />
-        <result property="steId"            column="STE_ID"         />
-        <result property="lnk"              column="LNK"            />
+        <result property="boardSeq" column="BOARD_SEQ"/>
+        <result property="bbsId" column="BBS_ID"/>
+        <result property="bbsNm" column="BBS_NM"/>
+        <result property="title" column="TITLE"/>
+        <result property="cont" column="CONT"/>
+        <result property="pwd" column="PWD"/>
+        <result property="ref" column="REF"/>
+        <result property="lvl" column="LVL"/>
+        <result property="step" column="STEP"/>
+        <result property="notiAt" column="NOTI_AT"/>
+        <result property="readCnt" column="READ_CNT"/>
+        <result property="usrTyp" column="USR_TYP"/>
+        <result property="stat" column="STAT"/>
+        <result property="statNm" column="STAT_NM"/>
+        <result property="notiStrDt" column="NOTI_STR_DT"/>
+        <result property="notiEndDt" column="NOTI_END_DT"/>
+        <result property="opnAt" column="OPN_AT"/>
+        <result property="tag" column="TAG"/>
+        <result property="likeSeq" column="LIKE_SEQ"/>
+        <result property="like" column="LKE"/>
+        <result property="dislike" column="DISLKE"/>
+        <result property="steId" column="STE_ID"/>
+        <result property="lnk" column="LNK"/>
     </resultMap>
 
     <insert id="addBoard" flushCache="true">
         INSERT INTO TB_BBS_INFO
         (
-            TTL,
-            BRKDW,
-            PSWD,
-            REFRN,
-            LVL,
-            STEP,
-            NOTICE_AT,
-            REDNG_NMBRS,
-            REGSTR_SN,
-            REGIST_DATE,
-            UPDAT_SN,
-            UPDAT_DATE,
-            REGSTR_NM,
-            REGIST_IP_ADDR,
-            BBS_ID,
-            USER_TY,
-            STTS,
-            NOTICE_BGN_DT,
-            NOTICE_STPGE_DT,
-            BEGIN_AT,
-            TAG,
-            CNNC
+        TTL,
+        BRKDW,
+        PSWD,
+        REFRN,
+        LVL,
+        STEP,
+        NOTICE_AT,
+        REDNG_NMBRS,
+        REGSTR_SN,
+        REGIST_DATE,
+        UPDAT_SN,
+        UPDAT_DATE,
+        REGSTR_NM,
+        REGIST_IP_ADDR,
+        BBS_ID,
+        USER_TY,
+        STTS,
+        NOTICE_BGN_DT,
+        NOTICE_STPGE_DT,
+        BEGIN_AT,
+        TAG,
+        CNNC
         )
         VALUES
         (
-            #{title},
-            #{cont},
-            #{pwd},
-            #{ref},
-            #{lvl},
-            #{step},
-            #{notiAt},
-            0,
-            #{regSeq},
-            NOW(),
-            #{updSeq},
-            NOW(),
-            #{regNm},
-            #{regIp},
-            #{bbsId},
-            #{usrTyp},
-            #{stat},
-            #{notiStrDt},
-            #{notiEndDt},
-            COALESCE(#{opnAt}, 'N'),
-            #{tag},
-            #{lnk}
+        #{title},
+        #{cont},
+        #{pwd},
+        #{ref},
+        #{lvl},
+        #{step},
+        #{notiAt},
+        0,
+        #{regSeq},
+        NOW(),
+        #{updSeq},
+        NOW(),
+        #{regNm},
+        #{regIp},
+        #{bbsId},
+        #{usrTyp},
+        #{stat},
+        #{notiStrDt},
+        #{notiEndDt},
+        COALESCE(#{opnAt}, 'N'),
+        #{tag},
+        #{lnk}
         )
-    <selectKey keyProperty="boardSeq" resultType="integer" order="AFTER">
-        SELECT MAX(BBS_SN) FROM tb_bbs_info;
-        <!-- SELECT LAST_INSERT_ID() -->
-    </selectKey>
+        <selectKey keyProperty="boardSeq" resultType="integer" order="AFTER">
+            SELECT MAX(BBS_SN) FROM tb_bbs_info;
+            <!-- SELECT LAST_INSERT_ID() -->
+        </selectKey>
     </insert>
 
     <update id="updateRef">
-        UPDATE TB_BBS_INFO SET REFRN = #{boardSeq} WHERE BBS_SN = #{boardSeq}
+        UPDATE TB_BBS_INFO
+        SET REFRN = #{boardSeq}
+        WHERE BBS_SN = #{boardSeq}
     </update>
 
     <update id="updateLevel">
-        UPDATE TB_BBS_INFO SET LVL = #{lvl} + 1 WHERE BBS_SN = #{boardSeq}
+        UPDATE TB_BBS_INFO
+        SET LVL = #{lvl} + 1
+        WHERE BBS_SN = #{boardSeq}
     </update>
 
     <!-- <update id="updateLevel">
@@ -113,126 +117,159 @@
     <select id="listBoard" resultMap="BoardVO">
         <!-- SELECT *
         FROM ( -->
-            SELECT T.*<!-- ,  ROW_NUMBER() OVER(ORDER BY REG_DE DESC) AS RNUM -->
-            FROM (
-                SELECT
-                    B.BBS_SN    AS board_seq
-                    , B.BBS_ID  AS bbs_id
-                    , B.STTS AS stat
-                    , ( SELECT CD_NM FROM tb_cd_data WHERE cd_grp = '90000' AND CD = B.STTS) as STAT_NM   /*fn_getcodename*/
-                    , B.TTL         AS title
-                    , B.REGSTR_NM   AS reg_nm
-                    , B.REGIST_DATE AS reg_de
-                    , TO_CHAR(B.REGIST_DATE, 'YYYY.MM.DD') AS upd_de
-                    , B.BEGIN_AT            AS opn_at
-                    , B.REDNG_NMBRS         AS read_cnt
-                    , B.CNNC                AS lnk
-                    , B.STTS               AS stat
-                    , B.notice_at      as notiAt
-                FROM TB_BBS_INFO B
-                WHERE 1 = 1
-                    AND B.BBS_ID = #{bbsId}
-                    AND B.STTS = #{stat}
-                <if test="searchKeyword != ''">
-                    AND (B.TTL LIKE CONCAT('%', #{searchKeyword}, '%') OR B.REGSTR_NM LIKE CONCAT('%', #{searchKeyword}, '%'))
-                </if>
-              ) T WHERE 1 = 1
-           <!-- ) S WHERE 1 = 1 -->
-           ORDER BY
-                    case when T.notiAt ='Y' then 1
-                    end, T.reg_de desc
-         <if test="pageIndex > 0">
-           <!-- AND RNUM BETWEEN ((#{pageIndex} - 1) * #{pageUnit} ) + 1 AND ((#{pageIndex} - 1) * #{pageUnit} + #{pageUnit})  -->
-           LIMIT #{pageUnit} OFFSET #{firstIndex}
-         </if>
+        SELECT T.*<!-- ,  ROW_NUMBER() OVER(ORDER BY REG_DE DESC) AS RNUM -->
+        FROM (
+        SELECT
+        B.BBS_SN AS board_seq
+        , B.BBS_ID AS bbs_id
+        , B.STTS AS stat
+        , ( SELECT CD_NM FROM tb_cd_data WHERE cd_grp = '90000' AND CD = B.STTS) as STAT_NM /*fn_getcodename*/
+        , B.TTL AS title
+        , B.REGSTR_NM AS reg_nm
+        , B.REGIST_DATE AS reg_de
+        , TO_CHAR(B.REGIST_DATE, 'YYYY.MM.DD') AS upd_de
+        , B.BEGIN_AT AS opn_at
+        , B.REDNG_NMBRS AS read_cnt
+        , B.CNNC AS lnk
+        , B.notice_at as notiAt
+        FROM TB_BBS_INFO B
+        WHERE 1 = 1
+        AND B.BBS_ID = #{bbsId}
+        AND B.STTS = #{stat}
+        <if test="searchKeyword != ''">
+            AND (B.TTL LIKE CONCAT('%', #{searchKeyword}, '%') OR B.REGSTR_NM LIKE CONCAT('%', #{searchKeyword}, '%'))
+        </if>
+        ) T WHERE 1 = 1
+        <!-- ) S WHERE 1 = 1 -->
+        ORDER BY
+        case when T.notiAt ='Y' then 1
+        end, T.reg_de desc
+        <if test="pageIndex > 0">
+            <!-- AND RNUM BETWEEN ((#{pageIndex} - 1) * #{pageUnit} ) + 1 AND ((#{pageIndex} - 1) * #{pageUnit} + #{pageUnit})  -->
+            LIMIT #{pageUnit} OFFSET #{firstIndex}
+        </if>
     </select>
 
     <select id="boardCount" resultType="int">
         SELECT COUNT(1)
         FROM TB_BBS_INFO B
         WHERE 1 = 1
-            AND B.STTS = #{stat}
-            AND B.BBS_ID = #{bbsId}
+        AND B.STTS = #{stat}
+        AND B.BBS_ID = #{bbsId}
         <if test="searchKeyword != ''">
-        AND (B.TTL LIKE CONCAT('%', #{searchKeyword}, '%') OR B.REGSTR_NM LIKE CONCAT('%', #{searchKeyword}, '%'))
+            AND (B.TTL LIKE CONCAT('%', #{searchKeyword}, '%') OR B.REGSTR_NM LIKE CONCAT('%', #{searchKeyword}, '%'))
         </if>
     </select>
 
     <select id="getBoard" resultMap="BoardVO">
         SELECT
-            BBS_SN          AS board_seq
-            , TTL           AS title
-            , BRKDW         AS cont
-            , PSWD          AS pwd
-            , REFRN         AS ref
-            , LVL           AS lvl
-            , STEP          AS step
-            , NOTICE_AT     AS noti_at
-            , REDNG_NMBRS   AS read_cnt
-            , REGSTR_SN     AS reg_seq
-            , REGIST_DATE       AS reg_de
-            , UPDAT_DATE        AS upd_de
-            , REGSTR_NM         AS reg_nm
-            , REGIST_IP_ADDR    AS reg_ip
-            , BBS_ID            AS bbs_id
-            , USER_TY           AS usr_typ
-            , STTS              AS stat
-            , NOTICE_BGN_DT     AS noti_str_dt
-            , NOTICE_STPGE_DT   AS noti_end_dt
-            , BEGIN_AT          AS opn_at
-            , TAG               AS tag
-            , CNNC              AS lnk
+        BBS_SN AS board_seq
+        , TTL AS title
+        , BRKDW AS cont
+        , PSWD AS pwd
+        , REFRN AS ref
+        , LVL AS lvl
+        , STEP AS step
+        , NOTICE_AT AS noti_at
+        , REDNG_NMBRS AS read_cnt
+        , REGSTR_SN AS reg_seq
+        , REGIST_DATE AS reg_de
+        , UPDAT_DATE AS upd_de
+        , REGSTR_NM AS reg_nm
+        , REGIST_IP_ADDR AS reg_ip
+        , BBS_ID AS bbs_id
+        , USER_TY AS usr_typ
+        , STTS AS stat
+        , NOTICE_BGN_DT AS noti_str_dt
+        , NOTICE_STPGE_DT AS noti_end_dt
+        , BEGIN_AT AS opn_at
+        , TAG AS tag
+        , CNNC AS lnk
         FROM TB_BBS_INFO B
         WHERE
-            BBS_SN = #{boardSeq}
-            AND BBS_ID = #{bbsId}
-            <if test='stat.equals("1")'>
-                AND STTS = '1'
-            </if>
+        BBS_SN = #{boardSeq}
+        AND BBS_ID = #{bbsId}
+        <if test='stat.equals("1")'>
+            AND STTS = '1'
+        </if>
 
     </select>
 
     <update id="updateBoard">
-        UPDATE TB_BBS_INFO SET
-            TTL             = #{title},
+        UPDATE TB_BBS_INFO
+        SET TTL             = #{title},
             BRKDW           = #{cont},
-            PSWD                = #{pwd},
-            REFRN               = #{ref},
+            PSWD            = #{pwd},
+            REFRN           = #{ref},
             LVL             = #{lvl},
             STEP            = #{step},
-            NOTICE_AT           = #{notiAt},
-            UPDAT_SN            = #{updSeq},
-            UPDAT_DATE          = NOW(),
-            UPDAT_NM            = #{updNm},
-            UPDAT_IP_ADDR           = #{updIp},
+            NOTICE_AT       = #{notiAt},
+            UPDAT_SN        = #{updSeq},
+            UPDAT_DATE      = NOW(),
+            UPDAT_NM        = #{updNm},
+            UPDAT_IP_ADDR   = #{updIp},
             BBS_ID          = #{bbsId},
             USER_TY         = #{usrTyp},
             STTS            = #{stat},
-            NOTICE_BGN_DT       = #{notiStrDt},
-            NOTICE_STPGE_DT     = #{notiEndDt},
-            BEGIN_AT            = COALESCE(#{opnAt}, 'N'),
+            NOTICE_BGN_DT   = #{notiStrDt},
+            NOTICE_STPGE_DT = #{notiEndDt},
+            BEGIN_AT        = COALESCE(#{opnAt}, 'N'),
             TAG             = #{tag},
-            CNNC                = #{lnk}
-        WHERE
-            BBS_SN  = #{boardSeq}
+            CNNC            = #{lnk}
+        WHERE BBS_SN = #{boardSeq}
 
     </update>
 
     <update id="updateStat">
-        UPDATE TB_BBS_INFO SET
-            STTS = #{stat}
-        WHERE 1=1
-            AND BBS_SN = #{boardSeq}
+        UPDATE TB_BBS_INFO
+        SET STTS = #{stat}
+        WHERE 1 = 1
+          AND BBS_SN = #{boardSeq}
     </update>
 
     <update id="readBoard">
-        UPDATE TB_BBS_INFO SET
-        REDNG_NMBRS = REDNG_NMBRS + 1
+        UPDATE TB_BBS_INFO
+        SET REDNG_NMBRS = REDNG_NMBRS + 1
         WHERE BBS_SN = #{boardSeq}
     </update>
 
     <select id="getMenu" resultType="String">
-        select bbs_nm from tb_bbs_data where bbs_id =#{bbsId};
+        select bbs_nm
+        from tb_bbs_data
+        where bbs_id = #{bbsId};
     </select>
-
+    <select id="readyList" resultMap="BoardVO">
+        with src as (
+        select
+        BBS_SN AS board_seq,
+        BBS_ID AS bbs_id,
+        STTS AS stat,
+        REGIST_DATE AS reg_de,
+        TTL AS title,
+        BRKDW AS cont,
+        <![CDATA[
+                replace(replace(replace(replace(replace(BRKDW, '&lt;', '<'), '&gt;', '>'), '&quot;', '"'), '&amp;', '&'), '&nbsp;', ' ') as tcont
+                ]]>
+        from
+        TB_BBS_INFO
+        WHERE BBS_ID = #{bbsId}
+        <if test='stat.equals("1")'>
+            AND STTS = '1'
+        </if>
+        order by
+        reg_de Desc
+        )
+        select
+        board_seq,
+        bbs_id,
+        stat,
+        reg_de,
+        title,
+        cont,
+        <![CDATA[
+            (regexp_matches(tcont, '<img[^>]*\ssrc=[\"'']?([^>\"'']+)[\"'']?[^>]*>'))[1] img_path
+            ]]>
+        from
+        src
+    </select>
 </mapper>

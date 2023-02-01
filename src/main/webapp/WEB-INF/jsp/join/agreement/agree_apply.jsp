@@ -151,8 +151,8 @@
                                                 <tr>
                                                     <td>2. 주요 원재료</td>
                                                     <td>니켈</td>
-                                                    <td>니켈</td>
-                                                    <td>니켈</td>
+                                                    <td>동</td>
+                                                    <td>시멘트</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -246,7 +246,7 @@
                         <div class="line-wrap">
                             <div class="line-wrap">
                                 <div class="label bg-none">
-                                    기존시점
+                                    기준시점
                                 </div>
                                 <div class="input-wrap br">
                                     <input type="text" id="std_point" name="std_point" required/>

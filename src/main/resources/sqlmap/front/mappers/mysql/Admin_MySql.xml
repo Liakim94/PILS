@@ -80,33 +80,20 @@
         values ( #{title}
                , #{cont}
                , current_timestamp)
+        <selectKey keyProperty="seq" resultType="integer" order="AFTER">
+            SELECT MAX(seq) FROM tb_pils_trace;
+        </selectKey>
     </insert>
     <select id="traceList" resultMap="TraceVO">
-        <!-- WildRain 수정 2023-01-25 -->
-        with src as (
-            select
-                seq     as seq,
-                title   as title,
-                cont    as cont,
-                rgst_dt as rgst_dt,
-                <![CDATA[
-                replace(replace(replace(replace(replace(cont, '&lt;', '<'), '&gt;', '>'), '&quot;', '"'), '&amp;', '&'), '&nbsp;', ' ') as tcont
-                ]]>
-            from
-                tb_pils_trace tpt
-            order by
-                rgst_dt Desc
-        )
         select
-            seq,
-            title,
-            cont,
-            rgst_dt,
-            <![CDATA[
-            (regexp_matches(tcont, '<img[^>]*\ssrc=[\"'']?([^>\"'']+)[\"'']?[^>]*>'))[1] img_path
-            ]]>
+        seq     as seq,
+        title   as title,
+        cont    as cont,
+        rgst_dt as rgst_dt
         from
-            src
+        tb_pils_trace tpt
+        order by
+        rgst_dt Desc
     </select>
     <select id="traceView" resultMap="TraceVO">
         select seq     as seq
