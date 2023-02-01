@@ -4,11 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
-<head>
-    <title>중소벤처기업부 | 기업들이 준비할 일</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-</head>
+
 <div id="content">
     <div id="board">
         <page:applyDecorator name="guide_menu"/>
@@ -19,7 +15,7 @@
                     <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    납품대금 연동제란?
+                    납품대금연동제란?
                 </li>
                 <li>
                     걸어온 발자취
@@ -27,14 +23,12 @@
             </ul>
             <div class="article-header">
                 <h1 class="fw700">걸어온 발자취</h1>
-                <div class="side-wrap">
-                </div>
             </div>
             <div class="content">
-                <!-- 컨텐츠 start -->
-                <div class="board-view-wrap01">
-                    <input type="hidden" value="${rs.seq}">
+                <div id="company-write" class="content">
+                    <!-- 컨텐츠 start -->
                     <div class="board-view-wrap01">
+                        <input type="hidden" value="${rs.seq}">
                         <p class="subj"> ${rs.title}</p>
                         <div class="info">
                             <ul>
@@ -54,15 +48,41 @@
                                 </c:forEach>
                             </ul>
                         </div>
-                    <div class="cont">
-                        ${fx:resetXSSMinimum(rs.cont)}
+                        <div class="gallery-container">
+                            <div class="active-img-wrap">
+                                <!--    이미지 예시입니다.     -->
+                                <img src="<c:url value="/images/card/001.jpg"/>">
+                                <div class="cont">
+                                    ${fx:resetXSSMinimum(rs.cont)}
+                                </div>
+                            </div>
+                            <div class="gallery-list">
+                                <img src="<c:url value="/images/card/001.jpg"/>">
+                                <img src="<c:url value="/images/card/002.jpg"/>">
+                                <img src="<c:url value="/images/card/003.jpg"/>">
+                                <img src="<c:url value="/images/card/004.jpg"/>">
+                                <img src="<c:url value="/images/card/005.jpg"/>">
+                                <img src="<c:url value="/images/card/006.jpg"/>">
+                                <img src="<c:url value="/images/card/007.jpg"/>">
+
+                            </div>
+                        </div>
                     </div>
-                        <a class="go-lst" href="<c:url value="/front/guide/trace.do"/>">목록</a>
+                    <!-- 컨텐츠 end -->
+                    <div class="write-bottom">
+                        <a href="<c:url value="/admin/trace/edit.do?seq=${rs.seq}"/>" class="submit">수정</a>
+                        <a href="<c:url value="/admin/trace/delete.do?seq=${rs.seq}"/>">삭제</a>
                     </div>
                 </div>
-                <!-- 컨텐츠 end -->
             </div>
         </div>
     </div>
 </div>
-
+<script>
+    $(".gallery-list img").click(function (){
+        var src = $(this).attr("src");
+        $(".gallery-list img").removeClass("active");
+        $(this).addClass("active");
+        $(".active-img-wrap img").css('opacity','0').stop().attr('src', src).animate({opacity:1},500);
+    });
+</script>

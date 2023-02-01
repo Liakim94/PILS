@@ -236,17 +236,4 @@ public class BoardServiceImpl implements BoardService {
 		return attachMapper.list(attachVO);
 	}
 
-	//Do 추가 2023-02-01
-	//걸어온 발자취 list
-	@Override
-	public Map<String, Object> readyList(BoardVO vo) throws Exception {
-		Map<String, Object> map = new HashMap<String, Object>();
-
-		List<BoardVO> list = boardMapper.readyList(vo);
-		int cnt =  boardMapper.boardCount(vo);
-			map.put("resultList", list);
-			map.put("resultCnt", cnt);
-		return map;
-
-	}
 }

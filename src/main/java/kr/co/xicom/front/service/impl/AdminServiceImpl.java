@@ -165,17 +165,7 @@ public class AdminServiceImpl implements AdminService {
         attach.setBoardSeq(vo.getSeq());
         attach.setBbsId(5);
         this.attachMapper.delete(attach);
-        // 실제 첨부파일 삭제 처리
-        String jsonDeleteFileList = HtmlTagUtils.restore(vo.getJsonDeletedFileList());
-        if (StringUtils.isNotBlank(jsonDeleteFileList)) {
-            Gson gson = new Gson();
-            List<AttachVO> deleteFileList = gson.fromJson(jsonDeleteFileList, new TypeToken<List<AttachVO>>(){}.getType());
-            if (deleteFileList != null && deleteFileList.size() > 0) {
-                for (AttachVO delFile : deleteFileList) {
-                    this.nasFileService.deleteFile(delFile.getFilePath(), delFile.getFileNm());
-                }
-            }
-        }
+
         return result;
     }
     @Override

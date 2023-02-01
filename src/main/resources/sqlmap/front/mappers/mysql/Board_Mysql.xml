@@ -238,38 +238,5 @@
         from tb_bbs_data
         where bbs_id = #{bbsId};
     </select>
-    <select id="readyList" resultMap="BoardVO">
-        with src as (
-        select
-        BBS_SN AS board_seq,
-        BBS_ID AS bbs_id,
-        STTS AS stat,
-        REGIST_DATE AS reg_de,
-        TTL AS title,
-        BRKDW AS cont,
-        <![CDATA[
-                replace(replace(replace(replace(replace(BRKDW, '&lt;', '<'), '&gt;', '>'), '&quot;', '"'), '&amp;', '&'), '&nbsp;', ' ') as tcont
-                ]]>
-        from
-        TB_BBS_INFO
-        WHERE BBS_ID = #{bbsId}
-        <if test='stat.equals("1")'>
-            AND STTS = '1'
-        </if>
-        order by
-        reg_de Desc
-        )
-        select
-        board_seq,
-        bbs_id,
-        stat,
-        reg_de,
-        title,
-        cont,
-        <![CDATA[
-            (regexp_matches(tcont, '<img[^>]*\ssrc=[\"'']?([^>\"'']+)[\"'']?[^>]*>'))[1] img_path
-            ]]>
-        from
-        src
-    </select>
+
 </mapper>

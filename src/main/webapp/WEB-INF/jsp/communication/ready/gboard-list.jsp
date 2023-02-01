@@ -8,20 +8,7 @@
 <head>
     <title>중소벤처기업부 | 기업들이 준비할 일</title>
 </head>
-<script>
-    function showView(seq) {
-        var vf = document.viewfrm;
-        vf.no.value = seq;
-        vf.submit();
-    }
 
-    function linkPage(num) {
-        var frm = document.frmSearch;
-        frm.pageIndex.value = num;
-        frm.submit();
-
-    }
-</script>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu"/>
@@ -51,7 +38,7 @@
                 <div id="gboard-list">
                 <c:forEach var="post" items="${list}" varStatus="status">
                     <div class="lst">
-                        <a href="<c:url value="/front/board/${post.bbsId}/view.do?boardSeq=${post.boardSeq}"/>">
+                        <a href="<c:url value="/front/board/ready/view.do?boardSeq=${post.boardSeq}"/>">
                             <!-- 썸네일은 background 로 설정합니다. -->
                             <div class="thumbnail" style="background:url('<c:out value="${post.imgPath}"/>')
                                  , url('<c:url value="/images/no-image.jpg"/>')"></div>
