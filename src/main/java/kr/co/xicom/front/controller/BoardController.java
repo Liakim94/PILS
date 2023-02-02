@@ -295,6 +295,7 @@ public class BoardController extends Alerts {
         rs = boardService.list(boardVO);
         // 게시판 이름 가져오는 메소드
         String menu = boardService.getMenu(bbsId);
+        List<AttachVO> attachList = boardService.getAttachList(boardVO);
 
         int totalCnt = 0;
         totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
@@ -304,6 +305,7 @@ public class BoardController extends Alerts {
         mav.addObject("list", rs.get("resultList"));
         mav.addObject("paginationInfo", paginationInfo);
         mav.addObject("bbsNm", menu);
+        mav.addObject("attachList", attachList);
 
         return mav;
     }
@@ -322,9 +324,8 @@ public class BoardController extends Alerts {
         if (rs == null) {
             writeAlert("존재하지 않는 게시물입니다.", request, response);
         }
-        List<AttachVO> attachList = boardService.getAttachList(boardVO);
-
         String menu = boardService.getMenu(bbsId);
+        List<AttachVO> attachList = boardService.getAttachList(boardVO);
 
         mav.addObject("rs", rs);
         mav.addObject("bbsNm", menu);

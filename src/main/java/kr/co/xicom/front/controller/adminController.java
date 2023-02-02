@@ -334,7 +334,7 @@ public class adminController {
         boardVO.setBbsId(6);
         int result = boardService.updateStat(boardVO);
         if (result > 0) {
-            return "redirect:/admin/trace/list.do";
+            return "redirect:/admin/ready/list.do";
         }
         return "forward:/common/error.jsp";
     }

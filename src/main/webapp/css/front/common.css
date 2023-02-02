@@ -1511,7 +1511,8 @@
 }
 #board .loc-list li:before{
     content: "";
-    background: url(../../images/common/right-icon.png);    background-size: cover;
+    background: url(../../images/common/right-icon.png);
+    background-size: cover;
     width: 15px;
     height: 15px;
     position: absolute;
@@ -1712,7 +1713,7 @@
 .board-view-wrap01 .file-wrap{width:100%;height:50px;padding:0;border-bottom:1px solid #ddd;overflow:hidden;}
 .board-view-wrap01 .file-wrap .label{font-size: 16px; float:left;width:90px;height:50px;line-height:50px;text-align:center;overflow:hidden;}
 .board-view-wrap01 .file-wrap ul{float:left;width:calc( 100% - 90px );height:auto;overflow:hidden;}
-.board-view-wrap01 .file-wrap ul li{border: none; margin-top:9px;float:left;height:30px;line-height:30px;padding:0 20px;margin-right:7px;}
+.board-view-wrap01 .file-wrap ul li{border: none; margin-top:9px;float:left;height:30px;line-height:30px;padding:0 10px;margin-right:7px;}
 .board-view-wrap01 .file-wrap ul li a{font-size:14px;color:#333;
     display: table-cell;
     min-height: 30px;
@@ -2112,19 +2113,35 @@
 #agreement .info-link{
     display: flex;
     justify-content: center;
-    max-width: 445px;
-    margin: 0 auto;
+    max-width: 650px;
+    margin: 0 auto 40px;
     gap: 20px;
+
+}
+#agreement .info-link .item{
+    width: calc(33% - 20px);
+    text-align: center;
+}
+#agreement .info-link p{
+    color: #E60024;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 10px;
 }
 #agreement .info-link a{
     border: 1px solid #E60024;
     border-radius: 50px;
-    padding: 7px 20px;
-    width: calc(50% - 20px);
+    padding: 7px 10px;
+    display: inline-block;
     font-size: 16px;
     box-sizing: border-box;
     line-height: 32px;
     text-align: center;
+    max-width: 200px;
+    width: 100%;
+    color: #ffffff;
+    background-color: #E60024;
 }
 #agreement .info-link img{
     width: 24px;
@@ -2132,14 +2149,70 @@
     position: relative;
     top: 6px;
 }
-#agreement .info-link a:nth-child(1){
-    line-height : 65px;
-    background-color: #E60024;
-    color: #ffffff;
+#agreement .tip{
+    font-weight: 400;
+    color: #767676;
 }
-#agreement .info-link a:nth-child(2){
-    color: #E60024;
+#agreement .info-link .item:nth-last-child(1) a{
+    color:#E60024;
+    background-color: #FFFFFF;
 }
+#agreement .accordion-container{
+    width: 100%;
+}
+#agreement .accordion-container .item-wrap{
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+#agreement .accordion-container .item-wrap:focus{
+    border: 1px solid #E60024;
+}
+#agreement .accordion-container .item-wrap h3{
+    display: inline-block;
+    width: 80%;
+}
+#agreement .accordion-container .item-wrap img{
+    float: right;
+    position: relative;
+    bottom: 5px;
+    transform: rotate(180deg);
+}
+#agreement .accordion-container .open img{
+    transform: rotate(0deg);
+
+}
+#agreement .accordion-container .item-wrap .detail-info{
+    margin-top: 41px;
+    position: relative;
+    display: none;
+}
+#agreement .accordion-container .item-wrap .detail-info:after{
+    position: absolute;
+    content: "";
+    width: calc(100% + 40px);
+    top:-20px;
+    left: -20px;
+    height: 1px;
+    background-color: #dddddd;
+}
+#agreement .accordion-container .info-box{
+    padding: 0 !important;
+    border: none !important;
+}
+#agreement .accordion-container .item-wrap .detail-info .math{
+    margin: 0 10px;
+    float: unset;
+    transform: unset;
+    position: relative;
+    top: 10px;
+    width: 150px;
+}
+
 #agreement .write-container{
     width: 100%;
     border-top: 2px solid #505050;
@@ -2150,7 +2223,6 @@
     border-bottom: 1px solid #505050;
     width: 100%;
     min-width: 600px;
-
 }
 #agreement .write-container .line-wrap:nth-last-child(1){
     border-bottom: none;
@@ -2258,6 +2330,7 @@
     font-weight: 700;
     font-size: 16px;
     border: none;
+    cursor: pointer;
     outline: none;
 }
 #agreement .write-bottom .print img {
@@ -2386,11 +2459,12 @@
     position: relative;
     top: 6px;
 }
-#company-write .info-link a:nth-child(1){
+#agreement .info-link a:nth-child(1){
+    line-height : 65px;
+    background-color: #E60024;
     color: #E60024;
 }
-#company-write .info-link a:nth-child(2){
-    background-color: #E60024;
+#agreement .info-link a:nth-child(2){
     color: #ffffff;
 }
 #company-write .write-container{
@@ -2833,6 +2907,84 @@
 #about .company-table tr td:nth-child(2) {
     text-align: left;
 }
+
+/* 연동 절차 알아보기 */
+#about .pc-process-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+}
+#about .pc-process-wrap .process{
+    width: calc(25% - 60px);
+}
+#about .pc-process-wrap .next{
+    width: 23px;
+    margin: 0 20px;
+}
+#about .mobile-process-wrap{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 45px;
+}
+
+#about .mobile-process-wrap .img-wrap{
+    max-width: 250px;
+    width: calc(50% - 40px);
+    position: relative;;
+}
+#about .mobile-process-wrap .img-wrap:nth-child(1):before{
+    content: "";
+    position: absolute;
+    background: url("../../images/common/next.png");
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 28px;
+    top: calc(50% - 14px);
+    right: -35px;
+}
+#about .mobile-process-wrap .img-wrap:nth-child(2):before{
+    content: "";
+    position: absolute;
+    background: url("../../images/common/next.png");
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 28px;
+    bottom: -35px;
+    left: calc(50% - 12.5px);
+    transform: rotate(90deg);
+}
+#about .mobile-process-wrap .img-wrap:nth-child(4):before{
+    content: "";
+    position: absolute;
+    background: url("../../images/common/next.png");
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 28px;
+    top: calc(50% - 14px);
+    left: -35px;
+    transform: rotate(180deg);
+}
+#about .mobile-process-wrap .process{
+    width: 100%;
+}
+#about .disc{
+    padding-left: 30px;
+}
+#about .disc li{
+    list-style: disc;
+    color: #505050;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+}
+
 /* 위탁기업이란? 모바일 */
 #about .company-text {
     display: inline;
@@ -2877,6 +3029,9 @@
     padding-left: 14px;
     margin-bottom: 40px;
     font-weight: 500;
+}
+#about .title strong{
+    font-family: 'GmarketSans', sans-serif;
 }
 #about .title:after{
     content: "";
@@ -3406,6 +3561,9 @@
     }
 
     /*  약정서 작성  */
+
+
+
     #agreement .write-container{
         overflow-x: scroll;
     }
@@ -3415,14 +3573,26 @@
     #agreement .info-link{
         flex-wrap: wrap;
     }
-    #agreement .info-link a{
+    #agreement .info-link .item{
         width: 80%;
+    }
+    #agreement .info-link .item a{
+        max-width: unset;
     }
 
     /* 동행기업신청 */
     #company-write .write-container {
         overflow-x: scroll;
     }
+
+    /* 연동 절차 알아보기 */
+    #about .pc-process-wrap{
+        display: none;
+    }
+    #about .mobile-process-wrap{
+        display: flex;
+    }
+
 
     /* 납품대금 연동제란? */
     #about .title{

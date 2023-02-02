@@ -5,8 +5,10 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
+<%@ page import="kr.co.xicom.common.FileUploadController" %>
+
 <head>
-    <title>중소벤처기업부 | 기업들이 준비할 일</title>
+    <title>중소벤처기업부 | 카드뉴스</title>
 </head>
 
 <div id="content">
@@ -40,7 +42,7 @@
                     <div class="lst">
                         <a href="<c:url value="/front/board/ready/view.do?boardSeq=${post.boardSeq}"/>">
                             <!-- 썸네일은 background 로 설정합니다. -->
-                            <div class="thumbnail" style="background:url('<c:out value="${post.imgPath}"/>')
+                            <div class="thumbnail" style="background:url('<c:out value="${FileUploadController.makeDownloadLink(attachList[0].savedFilePath, attachList[0].fileNm)}"/>')
                                  , url('<c:url value="/images/no-image.jpg"/>')"></div>
                             <div class="lst-info">
                                 <h3 class="title"><c:out value="${post.title}"/></h3>

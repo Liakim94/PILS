@@ -245,4 +245,10 @@ public class JoinController {
         ModelAndView mav = new ModelAndView("join/agreement/agree_temp");
         return mav;
     }
+    //남품대금 연동절차 알아보기
+    @GetMapping(value = "/process.do")
+    public ModelAndView process() throws Exception {
+        ModelAndView mav = new ModelAndView("join/process");
+        return mav;
+    }
 }

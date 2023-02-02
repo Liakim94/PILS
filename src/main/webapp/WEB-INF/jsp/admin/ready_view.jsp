@@ -60,41 +60,25 @@
                                     </c:forEach>
                                 </ul>
                             </div>
-                                <div class="card-news">
-                                    <span class="card-prev"><i class="fas fa-chevron-left"></i></span>
-                                    <span class="card-next"><i class="fas fa-chevron-right"></i></span>
-                                    <div class="card-slide-container">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <img src="<c:url value="/images/card/001.jpg"/>">
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <img src="<c:url value="/images/card/002.jpg"/>">
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <img src="<c:url value="/images/card/003.jpg"/>">
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <img src="<c:url value="/images/card/004.jpg"/>">
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <img src="<c:url value="/images/card/005.jpg"/>">
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <img src="<c:url value="/images/card/006.jpg"/>">
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <img src="<c:url value="/images/card/007.jpg"/>">
-                                            </div>
+                            <div class="card-news">
+                                <span class="card-prev"><i class="fas fa-chevron-left"></i></span>
+                                <span class="card-next"><i class="fas fa-chevron-right"></i></span>
+                                <div class="card-slide-container">
+                                    <div class="swiper-wrapper">
+                                        <c:forEach var="attach" items="${attachList}">
+                                        <div class="swiper-slide">
+                                                <img src="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
                                         </div>
+                                        </c:forEach>
                                     </div>
                                 </div>
-                                <div class="write-bottom">
-                                    <a href="<c:url value="/admin/ready/edit.do?boardSeq=${rs.boardSeq}"/>"
-                                       class="submit" title="수정">수정
-                                    </a>
-                                    <a onclick="javascript:deleteBbs();return false;">삭제</a>
-                                </div>
+                            </div>
+                            <div class="write-bottom">
+                                <a href="<c:url value="/admin/ready/edit.do?boardSeq=${rs.boardSeq}"/>"
+                                   class="submit" title="수정">수정
+                                </a>
+                                <a onclick="javascript:deleteBbs();return false;">삭제</a>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -110,15 +94,16 @@
             return false;
         }
     }
+
     var cardSlide = new Swiper(".card-slide-container", {
         slidesPerView: 1,
         loop: true,
         speed: 1000,
         observer: true,
         observeParents: true,
-        navigation : { // 네비게이션 설정
-            nextEl : '.card-next', // 다음 버튼 클래스명
-            prevEl : '.card-prev', // 이번 버튼 클래스명
+        navigation: { // 네비게이션 설정
+            nextEl: '.card-next', // 다음 버튼 클래스명
+            prevEl: '.card-prev', // 이번 버튼 클래스명
         },
     });
 </script>

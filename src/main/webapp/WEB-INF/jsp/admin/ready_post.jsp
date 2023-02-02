@@ -20,12 +20,7 @@
     var oEditors = [];
 
     $(function () {
-        nhn.husky.EZCreator.createInIFrame({
-            oAppRef: oEditors,
-            elPlaceHolder: "cont",
-            sSkinURI: "${pageContext.request.contextPath }/editor/naver/SmartEditor2Skin.html",
-            fCreator: "createSEditor2"
-        });
+
         var fileUploader = new smes.FileUploader('.file-uploader').init({
             maxFileSize: 1024 * 1024 * 100,    // 100 MB 제한
             maxFileCount: 20,
@@ -69,13 +64,6 @@
             return false;
         }
 
-        oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
-
-        var ir1 = $("#cont").val();
-        if (ir1 == "" || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>') {
-            alert("내용을 입력하세요.");
-            return false;
-        }
         $("#post").submit();
     }
 
@@ -117,14 +105,7 @@
                                     <form:input type="text" path="title" placeholder="제목을 입력하세요" maxlength="85"/>
                                 </div>
                             </div>
-                            <div class="line-wrap">
-                                <div class="label">
-                                    내용
-                                </div>
-                                <div class="input-wrap">
-                                    <form:textarea path="cont" cssClass="form-control"/>
-                                </div>
-                            </div>
+
                             <div class="line-wrap">
                                 <div class="label">
                                     첨부파일
@@ -133,6 +114,7 @@
                                     <div class="file-uploader"></div>
                                 </div>
                             </div>
+
                         </div>
                     </form:form>
                     <div class="write-bottom">
