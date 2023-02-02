@@ -69,10 +69,10 @@
                 </div>
             </div>
             <div class="wrapper">
-                <a class="font18" href="${pageContext.request.contextPath}/join/joinApply.do">납품대금 연동제 동참하기</a>
+                <a class="font18" href="${pageContext.request.contextPath}/join/process/info.do">납품대금 연동제 동참하기</a>
                 <div class="submenu">
-                    <a href="<c:url value="/join/process.do"/>">납품대금 연동 절차 알아보기</a>
-                    <a href="<c:url value="/join/agree/temp.do"/>">실제 사례 보기</a>
+                    <a href="<c:url value="/join/process/info.do"/>">납품대금 연동 절차 알아보기</a>
+                    <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                     <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
                     <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청하기</a>
                 </div>
@@ -176,8 +176,8 @@
                         <span></span>
                     </div>
                     <div class="submenu">
-                        <a href="<c:url value="/join/process.do"/>">납품대금 연동 절차 알아보기</a>
-                        <a href="<c:url value="/join/agree/temp.do"/>">실제 사례 보기</a>
+                        <a href="<c:url value="/join/process/info.do"/>">납품대금 연동 절차 알아보기</a>
+                        <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                         <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
                         <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청하기</a>
                     </div>

@@ -42,14 +42,18 @@
                     <div class="lst">
                         <a href="<c:url value="/front/board/ready/view.do?boardSeq=${post.boardSeq}"/>">
                             <!-- 썸네일은 background 로 설정합니다. -->
-                            <div class="thumbnail" style="background:url('<c:out value="${FileUploadController.makeDownloadLink(attachList[0].savedFilePath, attachList[0].fileNm)}"/>')
-                                 , url('<c:url value="/images/no-image.jpg"/>')"></div>
+<%--                            <div class="thumbnail" style="background:url('<c:out value="${FileUploadController.makeDownloadLink(post.savedFilePath, post.file_nm)}"/>')--%>
+<%--                                 , url('<c:url value="/images/no-image.jpg"/>')"></div>--%>
+                            <img src="<c:url value="${FileUploadController.makeDownloadLink(post.savedFilePath, post.file_nm)}"/>"
+                                 onerror="this.src='<c:url value="/images/no-image.jpg"/>'"
+                            style="height:180px;width: 290px">
                             <div class="lst-info">
                                 <h3 class="title"><c:out value="${post.title}"/></h3>
                                 <p class="regdate">${fn:substring(post.regDe,0,10)}</p>
                             </div>
                         </a>
                     </div>
+
                 </c:forEach>
                     <c:if test="${empty list }">
                     <div class="lst" class="text-center">

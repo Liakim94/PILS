@@ -3,6 +3,9 @@
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
+<%@ page import="kr.co.xicom.common.FileUploadController" %>
+<%@ taglib uri="fx" prefix="fx" %>
+<%pageContext.setAttribute("crcf", "\r\n"); %>
 <head>
     <title>중소벤처기업부 | 걸어온 발자취</title>
 </head>
@@ -57,10 +60,11 @@
                     <c:forEach var="rs" items="${rs }" varStatus="status">
                         <div class="lst">
                             <a href="<c:url value="/front/guide/trace/view.do?seq=${rs.seq}"/>">
-                                <div class="thumbnail" style="background:url('<c:out value="${rs.imgPath}"/>')
-                                        , url('<c:url value="/images/no-image.jpg"/>')"></div>
-                                    <%--<img src="<c:out value="${rs.imgPath}"/>" alt="<c:out value="${rs.title}"/>"--%>
-                                    <%--                                     onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>--%>
+<%--                                <div class="thumbnail" style="background:url('<c:out value="${FileUploadController.makeDownloadLink(rs.savedFilePath,rs.file_nm)}"/>')--%>
+<%--                                        , url('<c:url value="/images/no-image.jpg"/>')"></div>--%>
+                                <img src="<c:url value="${FileUploadController.makeDownloadLink(rs.savedFilePath, rs.file_nm)}"/>"
+                                     onerror="this.src='<c:url value="/images/no-image.jpg"/>'"
+                                     style="height:180px;width: 290px">
                                 <div class="lst-info">
                                     <h3 class="title"> ${rs.title}</h3>
                                     <p class="regdate">${fn:substring(rs.rgst_dt,0,10)}</p>
