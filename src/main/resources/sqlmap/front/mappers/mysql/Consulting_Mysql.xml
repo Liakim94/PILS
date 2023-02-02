@@ -269,60 +269,50 @@
         where bizno = #{bizNo}
     </update>
     <update id="updateCmpSttus">
-        update tb_pils_cmp_sttus
-        set ix_data = #{ix_data1}
-        where bizno = #{bizNo}
-          and base_yy = 2019
-          and ix_dvsn = 'M201';
+        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        values (#{bizNo}, 2019, 'M201', #{ix_data1}, current_timestamp)
+        on conflict(bizno, base_yy, ix_dvsn) do
+        update set ix_data = #{ix_data1}, bizno = #{bizNo},base_yy = 2019,ix_dvsn = 'M201';
 
-        update tb_pils_cmp_sttus
-        set ix_data = #{ix_data2}
-        where bizno = #{bizNo}
-          and base_yy = 2019
-          and ix_dvsn = 'M202';
+        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        values (#{bizNo}, 2019, 'M202', #{ix_data2}, current_timestamp)
+            on conflict(bizno, base_yy, ix_dvsn) do
+        update set ix_data = #{ix_data2}, bizno = #{bizNo},base_yy = 2019,ix_dvsn = 'M202';
 
-        update tb_pils_cmp_sttus
-        set ix_data = #{ix_data3}
-        where bizno = #{bizNo}
-          and base_yy = 2019
-          and ix_dvsn = 'M203';
+        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        values (#{bizNo}, 2019, 'M203', #{ix_data3}, current_timestamp)
+            on conflict(bizno, base_yy, ix_dvsn) do
+        update set ix_data = #{ix_data3}, bizno = #{bizNo},base_yy = 2019,ix_dvsn = 'M203';
 
-        update tb_pils_cmp_sttus
-        set ix_data = #{ix_data4}
-        where bizno = #{bizNo}
-          and base_yy = 2020
-          and ix_dvsn = 'M201';
+        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        values (#{bizNo}, 2020, 'M201', #{ix_data4}, current_timestamp)
+            on conflict(bizno, base_yy, ix_dvsn) do
+        update set ix_data = #{ix_data4}, bizno = #{bizNo},base_yy = 2020,ix_dvsn = 'M201';
 
-        update tb_pils_cmp_sttus
-        set ix_data = #{ix_data5}
-        where bizno = #{bizNo}
-          and base_yy = 2020
-          and ix_dvsn = 'M202';
+        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        values (#{bizNo}, 2020, 'M202', #{ix_data5}, current_timestamp)
+            on conflict(bizno, base_yy, ix_dvsn) do
+        update set ix_data = #{ix_data5}, bizno = #{bizNo},base_yy = 2020,ix_dvsn = 'M202';
 
-        update tb_pils_cmp_sttus
-        set ix_data = #{ix_data6}
-        where bizno = #{bizNo}
-          and base_yy = 2020
-          and ix_dvsn = 'M203';
+        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        values (#{bizNo}, 2020, 'M203', #{ix_data6}, current_timestamp)
+            on conflict(bizno, base_yy, ix_dvsn) do
+        update set ix_data = #{ix_data6}, bizno = #{bizNo},base_yy = 2020,ix_dvsn = 'M203';
 
-        update tb_pils_cmp_sttus
-        set ix_data = #{ix_data7}
-        where bizno = #{bizNo}
-          and base_yy = 2021
-          and ix_dvsn = 'M201';
+        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        values (#{bizNo}, 2021, 'M201', #{ix_data7}, current_timestamp)
+            on conflict(bizno, base_yy, ix_dvsn) do
+        update set ix_data = #{ix_data7}, bizno = #{bizNo},base_yy = 2021,ix_dvsn = 'M201';
 
-        update tb_pils_cmp_sttus
-        set ix_data = #{ix_data8}
-        where bizno = #{bizNo}
-          and base_yy = 2021
-          and ix_dvsn = 'M202';
+        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        values (#{bizNo}, 2021, 'M202', #{ix_data8}, current_timestamp)
+            on conflict(bizno, base_yy, ix_dvsn) do
+        update set ix_data = #{ix_data8}, bizno = #{bizNo},base_yy = 2021,ix_dvsn = 'M202';
 
-        update tb_pils_cmp_sttus
-        set ix_data = #{ix_data9}
-        where bizno = #{bizNo}
-          and base_yy = 2021
-          and ix_dvsn = 'M203';
-
+        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
+        values (#{bizNo}, 2021, 'M203', #{ix_data9}, current_timestamp)
+            on conflict(bizno, base_yy, ix_dvsn) do
+        update set ix_data = #{ix_data9}, bizno = #{bizNo},base_yy = 2021,ix_dvsn = 'M203';
 
     </update>
     <select id="checkId" resultType="String">

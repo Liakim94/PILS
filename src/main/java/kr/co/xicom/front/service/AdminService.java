@@ -28,7 +28,7 @@ public interface AdminService {
 
     int traceDelete(int seq, TraceVO vo) throws Exception;
 
-    int readyPost(BoardVO vo) throws Exception;
+    int readyPost(BoardVO vo, AttachVO attachVO) throws Exception;
 
     int updatePost(BoardVO vo) throws Exception;
 

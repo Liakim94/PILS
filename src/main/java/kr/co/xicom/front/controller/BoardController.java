@@ -272,7 +272,7 @@ public class BoardController extends Alerts {
     }
 
     /**
-     * 기업들이 준비할 일(bbsId=6)
+     * 카드뉴스(bbsId=6)
      */
     @RequestMapping(value = "/board/ready/list.do", method = {RequestMethod.GET})
     public ModelAndView readyList( @ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {

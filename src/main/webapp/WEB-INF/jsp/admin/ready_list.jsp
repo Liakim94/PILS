@@ -3,7 +3,9 @@
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
-
+<head>
+    <title>관리자 | 카드뉴스</title>
+</head>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu_admin"/>
@@ -17,16 +19,16 @@
                     관리자
                 </li>
                 <li>
-                    ${bbsNm}
+                    ${bbsNm} 관리
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">${bbsNm}</h1>
+                <h1 class="fw700">${bbsNm} 관리</h1>
             </div>
             <div class="content">
                 <!-- 컨텐츠 start -->
                 <div class="tbl-wrap for_board">
-                    <a href="<c:url value="/admin/ready/${bbsId}/post.do"/>" class="write-question"
+                    <a href="<c:url value="/admin/ready/post.do"/>" class="write-question"
                        style="width: 135px">
                         게시물 등록
                     </a>
@@ -50,7 +52,7 @@
                                 <td class="al">
                                     <input type="hidden" name="bbsId" id="bbsId" value="${rs.bbsId}">
 
-                                    <a href="<c:url value="/admin/ready/${bbsId}/view.do?boardSeq=${rs.boardSeq}"/>">
+                                    <a href="<c:url value="/admin/ready/view.do?boardSeq=${rs.boardSeq}"/>">
                                             ${rs.title}</a>
                                 </td>
                                 <td>${fn:substring(rs.regDe,0,10)}</td>

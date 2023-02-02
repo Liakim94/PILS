@@ -31,56 +31,6 @@
             </div>
             <div id="about" class="content">
                 <!-- 컨텐츠 start -->
-                <h4 class="mb40">위탁기업 44개사, 수탁기업 317개사가 <span class="text-red">334건의 연동약정 체결</span>로 납품대금 연동제가 사실상 가동 중인 것으로 확인</h4>
-                <section>
-                    <h2 class="title">주요 원재료 개수</h2>
-                    <div class="flex-wrap">
-                        <div class="flex-item">
-                            <h4>
-                                한 건의 약정서에 연동 대상이 되는 <strong>주요 원재료를 1개</strong>로 정한 경우는 <strong>181건(54.2%)</strong>이였으며, <strong>2개는 82건(24.6%), 3개 이상은 71건(21.3%)</strong>이였다.<br>
-                                <br>
-                                결과적으로 <strong>334건의 약정서</strong>에서 연동의 대상이 되는 원재료는 <strong>총 669개</strong>로 나타났다.
-                            </h4>
-                        </div>
-                        <div class="flex-item">
-                            <div id="table1" class="s-table-wrap ">
-                                <table class="s-table">
-                                    <tr>
-                                        <td class="thead" colspan="4">주요 원재료의 개수 (단위: 건)</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tbody">
-                                            1개
-                                        </td>
-                                        <td class="tbody">
-                                            2개
-                                        </td>
-                                        <td class="tbody">
-                                            3개
-                                        </td>
-                                        <td class="tbody">
-                                            합계
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="val">
-                                            181 (54.2%)
-                                        </td>
-                                        <td class="val">
-                                            82 (24.6%)
-                                        </td>
-                                        <td class="val">
-                                            71 (21.3%)
-                                        </td>
-                                        <td class="val">
-                                            334 (100%)
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
                 <section>
                     <h2 class="title mt40">주요 원재료 종류</h2>
                     <h4 class="mb40">
