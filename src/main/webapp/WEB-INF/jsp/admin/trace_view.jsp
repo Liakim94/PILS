@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
+<%@ page import="kr.co.xicom.common.FileUploadController" %>
+
 
 <div id="content">
     <div id="board">
@@ -40,31 +42,26 @@
                             <p class="label">첨부파일</p>
                             <ul>
                                 <c:forEach var="attach" items="${attachList}">
-                                <li>
-                                    <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
-                                        <c:out value="${attach.fileNm}"/>
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                            <c:out value="${attach.fileNm}"/>
+                                        </a>
+                                    </li>
                                 </c:forEach>
                             </ul>
                         </div>
                         <div class="gallery-container">
                             <div class="active-img-wrap">
                                 <!--    이미지 예시입니다.     -->
-                                <img src="<c:url value="/images/card/001.jpg"/>">
+                                    <img src="<c:url value="${FileUploadController.makeDownloadLink(attachList[0].savedFilePath, attachList[0].fileNm)}"/>">
                                 <div class="cont">
-                                        ${fx:resetXSSMinimum(rs.cont)}
+                                    ${fx:resetXSSMinimum(rs.cont)}
                                 </div>
                             </div>
                             <div class="gallery-list">
-                                <img src="<c:url value="/images/card/001.jpg"/>">
-                                <img src="<c:url value="/images/card/002.jpg"/>">
-                                <img src="<c:url value="/images/card/003.jpg"/>">
-                                <img src="<c:url value="/images/card/004.jpg"/>">
-                                <img src="<c:url value="/images/card/005.jpg"/>">
-                                <img src="<c:url value="/images/card/006.jpg"/>">
-                                <img src="<c:url value="/images/card/007.jpg"/>">
-
+                                <c:forEach var="attach" items="${attachList}">
+                                    <img src="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
@@ -79,10 +76,10 @@
     </div>
 </div>
 <script>
-    $(".gallery-list img").click(function (){
+    $(".gallery-list img").click(function () {
         var src = $(this).attr("src");
         $(".gallery-list img").removeClass("active");
         $(this).addClass("active");
-        $(".active-img-wrap img").css('opacity','0').stop().attr('src', src).animate({opacity:1},500);
+        $(".active-img-wrap img").css('opacity', '0').stop().attr('src', src).animate({opacity: 1}, 500);
     });
 </script>

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import kr.co.xicom.front.model.TraceVO;
 import kr.co.xicom.front.service.mapper.AttachMapper;
 import kr.co.xicom.util.HtmlTagUtils;
 import kr.go.smes.fileservice.FileService;
@@ -235,5 +236,16 @@ public class BoardServiceImpl implements BoardService {
 
 		return attachMapper.list(attachVO);
 	}
+	//카드뉴스
+	@Override
+	public Map<String, Object> readyList(BoardVO boardVO) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
 
+		int cnt = boardMapper.boardCount(boardVO);
+		List<BoardVO> list = boardMapper.readyList(boardVO);
+
+		map.put("resultList", list);
+		map.put("resultCnt", cnt);
+		return map;
+	}
 }

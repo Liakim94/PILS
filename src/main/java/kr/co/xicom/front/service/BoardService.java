@@ -29,4 +29,6 @@ public interface BoardService {
 	/** 게시글 첨부파일 리스트 추출 */
 	List<AttachVO> getAttachList(BoardVO boardVO) throws Exception;
 
+    //카드뉴스
+    Map<String, Object> readyList(BoardVO boardVO) throws Exception;
 }

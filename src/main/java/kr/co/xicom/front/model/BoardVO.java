@@ -1,5 +1,9 @@
 package kr.co.xicom.front.model;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.File;
+
 public class BoardVO extends DefaultVO{
 
 
@@ -45,6 +49,40 @@ public class BoardVO extends DefaultVO{
 	 */
 	private String imgPath;
 
+
+	//카드뉴스 썸네일
+	private String file_path;
+	private String saved_file_nm;
+	private String file_nm;
+
+	public String getSavedFilePath() {
+		if (!StringUtils.endsWith(this.file_path, File.separator)) {
+			this.file_path = this.file_path + File.separator;
+		}
+		return this.file_path + this.saved_file_nm;
+	}
+
+	public String getFile_path() {
+		return file_path;
+	}
+
+	public void setFile_path(String file_path) {
+		this.file_path = file_path;
+	}
+	public String getSaved_file_nm() {
+		return saved_file_nm;
+	}
+
+	public void setSaved_file_nm(String saved_file_nm) {
+		this.saved_file_nm = saved_file_nm;
+	}
+	public String getFile_nm() {
+		return file_nm;
+	}
+
+	public void setFile_nm(String file_nm) {
+		this.file_nm = file_nm;
+	}
 	public String getSteId() {
 		return steId;
 	}

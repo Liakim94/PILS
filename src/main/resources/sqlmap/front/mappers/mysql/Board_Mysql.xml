@@ -238,5 +238,37 @@
         from tb_bbs_data
         where bbs_id = #{bbsId};
     </select>
-
+    <select id="readyList" resultMap="BoardVO">
+        with src as (
+            select
+                bbs_sn     as board_seq,
+                stts as stat,
+                ttl   as title,
+                regist_date as reg_de,
+                bbs_id  as bbs_id,
+                (	select
+                         min(atch_sn)
+                     from
+                         tb_atch ta
+                     where
+                         bbs_id = '6'
+                       and bbs_sn = A.bbs_sn) as atch_sn
+            from
+                tb_bbs_info A
+        )
+        select
+            s.*,
+            a.file_path,
+            a.saved_file_nm,
+            a.file_nm
+        from
+            src s
+                left join tb_atch a
+                          on s.atch_sn = a.atch_sn
+        where s.stat ='1'
+          and s.bbs_id =6
+        order by
+            reg_de desc
+        ;
+    </select>
 </mapper>

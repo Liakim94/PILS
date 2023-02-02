@@ -68,6 +68,7 @@ public class GuideController extends Alerts {
         Map<String, Object> result = new HashMap<String, Object>();
         result = adminService.traceList(vo);
 
+
         int totalCnt = 0;
         totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
         paginationInfo.setTotalRecordCount(totalCnt);

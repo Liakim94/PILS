@@ -264,7 +264,7 @@
                                 <div class="tri">
                             </c:if>
                             <div class="border">
-                            <input type="number"
+                            <input type="text"
                                    id="ix_data${status.index+1}"
                                    name="ix_data${status.index+1}" value="${st.index_data}"/>
                             <c:if test="${status.index mod 3 eq 2}">

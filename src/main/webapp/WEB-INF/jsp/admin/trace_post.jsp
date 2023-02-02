@@ -9,7 +9,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
-    <title>관리자|걸어온 발자취 관리</title>
+    <title>관리자 | 걸어온 발자취 관리</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
     <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
@@ -79,7 +79,6 @@
             oEditors.getById["cont"].exec("FOCUS"); //포커싱
             return false;
         }
-
         $('#post').submit();
     }
 </script>

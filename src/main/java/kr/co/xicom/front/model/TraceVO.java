@@ -2,6 +2,9 @@ package kr.co.xicom.front.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.File;
 
 @Getter
 @Setter
@@ -22,4 +25,15 @@ public class TraceVO extends DefaultVO {
      * FileUploader.js에 의해 삭제된 파일 리스트 (JSON 문자열)
      */
     private String jsonDeletedFileList;
+
+    private String file_path;
+    private String saved_file_nm;
+    private String file_nm;
+
+    public String getSavedFilePath() {
+        if (!StringUtils.endsWith(this.file_path, File.separator)) {
+            this.file_path = this.file_path + File.separator;
+        }
+        return this.file_path + this.saved_file_nm;
+    }
 }

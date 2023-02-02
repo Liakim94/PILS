@@ -8,7 +8,7 @@
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 
 <head>
-    <title>중소벤처기업부 | 기업들이 준비할 일</title>
+    <title>중소벤처기업부 | 카드뉴스</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>

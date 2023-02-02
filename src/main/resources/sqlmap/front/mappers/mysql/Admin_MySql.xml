@@ -85,15 +85,33 @@
         </selectKey>
     </insert>
     <select id="traceList" resultMap="TraceVO">
+        with src as (
+            select
+                seq     as seq,
+                title   as title,
+                cont    as cont,
+                rgst_dt as rgst_dt,
+                (	select
+                         min(atch_sn)
+                     from
+                         tb_atch ta
+                     where
+                         bbs_id = '5'
+                       and bbs_sn = tpt.seq) as atch_sn
+            from
+                tb_pils_trace tpt
+        )
         select
-        seq     as seq,
-        title   as title,
-        cont    as cont,
-        rgst_dt as rgst_dt
+            s.*,
+            a.file_path,
+            a.saved_file_nm,
+            a.file_nm
         from
-        tb_pils_trace tpt
+            src s
+                left join tb_atch a
+                          on s.atch_sn = a.atch_sn
         order by
-        rgst_dt Desc
+            rgst_dt desc
     </select>
     <select id="traceView" resultMap="TraceVO">
         select seq     as seq

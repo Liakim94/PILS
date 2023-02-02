@@ -69,10 +69,10 @@
                 </div>
             </div>
             <div class="wrapper">
-                <a class="font18" href="${pageContext.request.contextPath}/join/joinApply.do">납품대금 연동제 동참하기</a>
+                <a class="font18" href="${pageContext.request.contextPath}/join/process/info.do">납품대금 연동제 동참하기</a>
                 <div class="submenu">
-                    <a href="#">납품대금 연동 절차 알아보기</a>
-                    <a href="<c:url value="/join/agree/temp.do"/>">실제 사례 보기</a>
+                    <a href="<c:url value="/join/process/info.do"/>">납품대금 연동 절차 알아보기</a>
+                    <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                     <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
                     <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청하기</a>
                 </div>
@@ -176,8 +176,8 @@
                         <span></span>
                     </div>
                     <div class="submenu">
-                        <a href="/">납품대금 연동 절차 알아보기</a>
-                        <a href="<c:url value="/join/agree/temp.do"/>">실제 사례 보기</a>
+                        <a href="<c:url value="/join/process/info.do"/>">납품대금 연동 절차 알아보기</a>
+                        <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                         <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
                         <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청하기</a>
                     </div>
@@ -190,11 +190,14 @@
                     </div>
                     <div class="submenu">
                         <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
-                        <a href="<c:url value="/front/board/6/list.do"/>">카드뉴스</a>
+                        <a href="<c:url value="/front/board/ready/list.do"/>">카드뉴스</a>
                         <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
                         <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
-                        <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>
-                        <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>
+                        <a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>
+                        <a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>
+                        <a href="<c:url value="/front/report/temp.do"/>">신고센터</a>
+<%--                        <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
+<%--                        <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>--%>
                     </div>
                 </div>
             </nav>

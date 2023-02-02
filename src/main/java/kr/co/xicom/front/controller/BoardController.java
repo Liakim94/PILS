@@ -272,7 +272,7 @@ public class BoardController extends Alerts {
     }
 
     /**
-     * 기업들이 준비할 일(bbsId=6)
+     * 카드뉴스(bbsId=6)
      */
     @RequestMapping(value = "/board/ready/list.do", method = {RequestMethod.GET})
     public ModelAndView readyList( @ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
@@ -292,7 +292,7 @@ public class BoardController extends Alerts {
         boardVO.setStat("1");
 
         Map<String, Object> rs = new HashMap<String, Object>();
-        rs = boardService.list(boardVO);
+        rs = boardService.readyList(boardVO);
         // 게시판 이름 가져오는 메소드
         String menu = boardService.getMenu(bbsId);
 
@@ -322,9 +322,8 @@ public class BoardController extends Alerts {
         if (rs == null) {
             writeAlert("존재하지 않는 게시물입니다.", request, response);
         }
-        List<AttachVO> attachList = boardService.getAttachList(boardVO);
-
         String menu = boardService.getMenu(bbsId);
+        List<AttachVO> attachList = boardService.getAttachList(boardVO);
 
         mav.addObject("rs", rs);
         mav.addObject("bbsNm", menu);
