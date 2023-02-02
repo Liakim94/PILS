@@ -25,11 +25,11 @@
                     납품대금연동제 동참하기
                 </li>
                 <li>
-                    약정서 작성
+                    약정서 작성하기
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">약정서 작성</h1>
+                <h1 class="fw700">약정서 작성하기</h1>
                 <div class="side-wrap">
                 </div>
             </div>
@@ -40,9 +40,6 @@
                     안내 문구가 들어갈 영역입니다.
                 </p>
                 <div class="info-link">
-                    <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp"><img
-                            src="${pageContext.request.contextPath}/images/common/download-icon.png" alt="약정서 다운로드">약정서
-                        다운로드</a>
                      <c:if test="${rs eq id}">
                          <a href="${pageContext.request.contextPath}/join/agreeView.do">
                              <img src="${pageContext.request.contextPath}/images/common/document-icon.png" alt="약정서 체험하기">내
@@ -53,6 +50,9 @@
                             src="${pageContext.request.contextPath}/images/common/document-icon.png" alt="약정서 체험하기">
                         약정서 작성 체험</a>
                     </c:if>
+                    <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp"><img
+                            src="${pageContext.request.contextPath}/images/common/download-icon.png" alt="약정서 다운로드">
+                        납품대금 연동 특별약정서 양식 다운로드</a>
                 </div>
                 <!-- 컨텐츠 end -->
             </div>

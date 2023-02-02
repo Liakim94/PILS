@@ -332,4 +332,21 @@ public class BoardController extends Alerts {
 
         return mav;
     }
+    /**
+     * 원재료 정보 준비중 화면
+     */
+    @GetMapping(value = "/material/temp.do")
+    public ModelAndView matTemp() throws Exception {
+        ModelAndView mav = new ModelAndView("communication/material");
+        return mav;
+    }
+
+    /**
+     * 신고센터 준비중 화면
+     */
+    @GetMapping(value = "/report/temp.do")
+    public ModelAndView reportTemp() throws Exception {
+        ModelAndView mav = new ModelAndView("communication/report");
+        return mav;
+    }
 }

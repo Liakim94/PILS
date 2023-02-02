@@ -209,11 +209,11 @@
                     납품대금 연동제 동참하기
                 </li>
                 <li>
-                    동행기업 신청
+                    동행기업 신청하기
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">동행기업 신청</h1>
+                <h1 class="fw700">동행기업 신청하기</h1>
                 <div class="side-wrap">
                 </div>
             </div>
