@@ -76,8 +76,7 @@ public class adminController {
 
     //컨설팅 신청 현황
     @GetMapping(value = "/consulting/list.do")
-    public ModelAndView conList(ModelMap model,
-                                @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+    public ModelAndView conList(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                                 HttpSession session,
                                 HttpServletRequest request,
                                 HttpServletResponse response) throws Exception {
@@ -96,7 +95,7 @@ public class adminController {
         cmpVO.setMem_cd("M301"); //회원구분
 
         Map<String, Object> rs = new HashMap<String, Object>();
-        rs = consultingService.list(cmpVO);
+        rs = adminService.conList(cmpVO);
 
         int totalCnt = 0;
         totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
@@ -105,7 +104,6 @@ public class adminController {
         mav.addObject("totalCnt", rs.get("resultCnt"));
         mav.addObject("list", rs.get("resultList"));
         mav.addObject("paginationInfo", paginationInfo);
-        mav.addObject("vo", cmpVO);
         return mav;
     }
 
@@ -193,7 +191,13 @@ public class adminController {
         ModelAndView mav = new ModelAndView("admin/trace_edit");
         vo = adminService.traceView(seq);
         mav.addObject("edit", vo);
-
+        List<AttachVO> attachList = this.adminService.getAttachList(vo);
+        if (attachList != null && attachList.size() > 0) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String jsonFileList = gson.toJson(attachList);
+            vo.setJsonFileList(jsonFileList);
+        }
+        mav.addObject("edit", vo);
         return mav;
     }
     @PostMapping("/trace/edit.do")
@@ -301,7 +305,7 @@ public class adminController {
     }
 
     @GetMapping(value = "/ready/edit.do")
-    public ModelAndView readyEdit(@ModelAttribute("post") BoardVO boardVO) throws Exception {
+    public ModelAndView readyEdit(@ModelAttribute("edit") BoardVO boardVO) throws Exception {
 
         ModelAndView mav = new ModelAndView("admin/ready_edit");
         int bbsId=6;
@@ -309,8 +313,14 @@ public class adminController {
         BoardVO rs = boardService.getView(boardVO);
         //게시판 이름
         String menu = boardService.getMenu(bbsId);
-
-        mav.addObject("post", rs);
+        // 첨부파일 리스트
+        List<AttachVO> attachList = this.boardService.getAttachList(boardVO);
+        if (attachList != null && attachList.size() > 0) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String jsonFileList = gson.toJson(attachList);
+            rs.setJsonFileList(jsonFileList);
+        }
+        mav.addObject("edit", rs);
         mav.addObject("bbsNm", menu);
         return mav;
     }
@@ -322,7 +332,7 @@ public class adminController {
         int result = adminService.updatePost(boardVO);
 
         if (result > 0) {
-            return "redirect:/front/board/view.do?boardSeq=" + boardVO.getBoardSeq();
+            return "redirect:/admin/ready/view.do?boardSeq=" + boardVO.getBoardSeq();
         }
         else {
             return "forward:/common/error.jsp";

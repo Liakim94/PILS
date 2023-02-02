@@ -64,27 +64,11 @@
                         <span class="card-next"><i class="fas fa-chevron-right"></i></span>
                         <div class="card-slide-container">
                             <div class="swiper-wrapper">
+                                 <c:forEach var="attach" items="${attachList}">
                                 <div class="swiper-slide">
-                                    <img src="<c:url value="/images/card/001.jpg"/>">
+                                    <img src="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
                                 </div>
-                                <div class="swiper-slide">
-                                    <img src="<c:url value="/images/card/002.jpg"/>">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="<c:url value="/images/card/003.jpg"/>">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="<c:url value="/images/card/004.jpg"/>">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="<c:url value="/images/card/005.jpg"/>">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="<c:url value="/images/card/006.jpg"/>">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="<c:url value="/images/card/007.jpg"/>">
-                                </div>
+                            </c:forEach>
                             </div>
                         </div>
                     </div>
