@@ -10,6 +10,7 @@ import kr.co.xicom.front.service.AdminService;
 import kr.co.xicom.front.service.mapper.AdminMapper;
 import kr.co.xicom.front.service.mapper.AttachMapper;
 import kr.co.xicom.front.service.mapper.BoardMapper;
+import kr.co.xicom.front.service.mapper.ConsultingMapper;
 import kr.co.xicom.util.HtmlTagUtils;
 import kr.go.smes.fileservice.FileService;
 import org.apache.commons.collections.functors.ExceptionPredicate;
@@ -38,6 +39,8 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AttachMapper attachMapper;
     @Autowired
+    ConsultingMapper consultingMapper;
+    @Autowired
     private DataSourceTransactionManager transactionManager;
     /**
      * Logger
@@ -57,6 +60,22 @@ public class AdminServiceImpl implements AdminService {
         int cnt = adminMapper.listCount(vo);
         map.put("resultList", list);
         map.put("resultCnt", cnt);
+        return map;
+    }
+    //컨설팅 list
+    @Override
+    public  Map<String, Object> conList(CmpMemberVo vo) throws Exception {
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<CmpMemberVo> list = null;
+        int cnt = 0;
+        try{
+            list = consultingMapper.list(vo);
+            cnt = consultingMapper.listCount(vo);
+            map.put("resultList",list);
+            map.put("resultCnt", cnt);
+        } catch (Exception e){
+            System.out.println(e.toString());
+        }
         return map;
     }
 

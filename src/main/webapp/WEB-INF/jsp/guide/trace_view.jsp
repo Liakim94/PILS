@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
-
+<%@ page import="kr.co.xicom.common.FileUploadController" %>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="guide_menu"/>
@@ -15,7 +15,7 @@
                     <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    납품대금연동제란?
+                    납품대금 연동제란?
                 </li>
                 <li>
                     걸어온 발자취
@@ -34,6 +34,18 @@
                             <ul>
                                 <li>작성자 : 관리자</li>
                                 <li>작성일 : ${fn:substring(rs.rgst_dt,0,10)}</li>
+                            </ul>
+                        </div>
+                        <div class="file-wrap">
+                            <p class="label">첨부파일</p>
+                            <ul>
+                                <c:forEach var="attach" items="${attachList}">
+                                    <li>
+                                        <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                            <c:out value="${attach.fileNm}"/>
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </div>
                         <c:choose>
@@ -65,12 +77,10 @@
                                 </div>
                             </c:otherwise>
                         </c:choose>
+                        <a class="go-lst" href="<c:url value="/front/guide/trace.do"/>">목록</a>
+
                     </div>
                     <!-- 컨텐츠 end -->
-                    <%--<div class="write-bottom">
-                        <a href="<c:url value="/admin/trace/edit.do?seq=${rs.seq}"/>" class="submit">수정</a>
-                        <a href="<c:url value="/admin/trace/delete.do?seq=${rs.seq}"/>">삭제</a>
-                    </div>--%>
                 </div>
             </div>
         </div>

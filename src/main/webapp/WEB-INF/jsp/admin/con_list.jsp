@@ -8,17 +8,8 @@
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
     <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 </head>
-<script>
-    function linkPage(num) {
-        var form = document.frmSearch;
-        form.pageIndex.value = num;
-        form.submit();
-    }
 
-</script>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu_admin"/>

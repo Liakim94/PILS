@@ -17,14 +17,14 @@
                     <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    납품대금연동제란?
+                    납품대금 연동제란?
                 </li>
                 <li>
-                    걸어온 발자취
+                    걸어온 발자취 관리
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">걸어온 발자취</h1>
+                <h1 class="fw700">걸어온 발자취 관리</h1>
             </div>
             <div class="content">
                 <div id="company-write" class="content">

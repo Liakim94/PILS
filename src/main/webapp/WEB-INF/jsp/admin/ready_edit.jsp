@@ -9,8 +9,10 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 
 <head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
     <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
-
+    <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
+    <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
     <script>
         var oEditors = [];
 
@@ -21,11 +23,45 @@
                 sSkinURI: "${pageContext.request.contextPath }/editor/naver/SmartEditor2Skin.html",
                 fCreator: "createSEditor2"
             });
+            var fileUploader = new smes.FileUploader('.file-uploader').init({
+                maxFileSize: 1024 * 1024 * 100,    // 100 MB 제한
+                maxFileCount: 20,
+                targetFolderPath: 'test2',
+                targetUrl: '<c:url value="/files/upload.do"/>',
+                fileList: $('#jsonFileList').val(),
+                deletedFileList: $('#jsonDeletedFileList').val()
+            });
+            $('#submit').on('click', function () {
+
+                fileUploader.upload({
+                    done: function (result, deleted, uploaded) {
+                        // 업로드 완료 후 전송된 파일 리스트 정보를
+                        // 특정 hidden 파라미터로 설정하고 form을 전송한다.
+                        if (result) {
+                            console.dir(result);
+                            $('#jsonFileList').val(JSON.stringify(result));
+                        } else {
+                            $('#jsonFileList').val('');
+                        }
+                        if (deleted) {
+                            console.dir(deleted);
+                            $('#jsonDeletedFiles').val(JSON.stringify(deleted));
+                        } else {
+                            $('#jsonDeletedFiles').val('');
+                        }
+                        fn_submit();
+                    },
+                    fail: function (error) {
+                        console.dir(error);
+                        alert(error.message);
+                    }
+                });
+            });
         });
 
         function fn_submit() {
 
-            var frm = document.getElementById('post');
+            var frm = document.getElementById('edit');
 
             if (frm.title.value == "") {
                 alert("제목을 입력하세요.");
@@ -39,8 +75,7 @@
                 alert("내용을 입력하세요.");
                 return false;
             }
-
-            $("#post").submit();
+            frm.submit();
         }
 
     </script>
@@ -57,22 +92,24 @@
                     관리자
                 </li>
                 <li>
-                    ${bbsNm}
+                    ${bbsNm} 관리
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">${bbsNm}</h1>
+                <h1 class="fw700">${bbsNm} 관리</h1>
                 <div class="side-wrap">
                 </div>
             </div>
             <div class="content">
                 <!-- 컨텐츠 start -->
                 <div class="write-container">
-                    <form:form modelAttribute="post" action="post.do" method="post" id="post">
+                    <form:form modelAttribute="edit" action="edit.do" method="post" id="edit">
                         <input type="hidden" name="action"/>
                         <form:hidden path="bbsId"/>
                         <form:hidden path="boardSeq"/>
                         <form:hidden path="stat"/>
+                        <form:hidden path="jsonFileList"/>
+                        <form:hidden path="jsonDeletedFileList"/>
                         <div class="write-wrap">
                             <div class="line-wrap">
                                 <div class="label">
@@ -88,15 +125,21 @@
                                 </div>
                                 <div class="input-wrap">
                                     <form:textarea path="cont" cssClass="form-control"/>
-
                                 </div>
                             </div>
-
+                            <div class="line-wrap">
+                                <div class="label">
+                                    첨부파일
+                                </div>
+                                <div class="file-uploader-wrapper">
+                                    <div class="file-uploader"></div>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.box-body -->
                     </form:form>
                     <div class="write-bottom">
-                        <button  onclick="fn_submit()"  class="submit" style="width:130px">저장</button>
+                        <button id="submit" class="submit" style="width:130px">저장</button>
                         <a href="<c:url value="/admin/ready/${rs.bbsId}/view.do?boardSeq=${rs.boardSeq}"/>">
                             취소
                         </a>
@@ -105,7 +148,6 @@
             </div><!-- /. box -->
         </div>
         <!-- row end -->
-    </div>
     </div>
 </div>
 
