@@ -36,43 +36,41 @@
                                 <li>작성일 : ${fn:substring(rs.rgst_dt,0,10)}</li>
                             </ul>
                         </div>
-                        <div class="file-wrap">
-                            <p class="label">첨부파일</p>
-                            <ul>
-                                <c:forEach var="attach" items="${attachList}">
-                                    <li>
-                                        <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
-                                            <c:out value="${attach.fileNm}"/>
-                                        </a>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </div>
-                        <div class="gallery-container">
-                            <div class="active-img-wrap">
-                                <!--    이미지 예시입니다.     -->
-                                <img src="<c:url value="/images/card/001.jpg"/>">
-                                <div class="cont">
-                                    ${fx:resetXSSMinimum(rs.cont)}
+                        <c:choose>
+                            <c:when test="${fn:length(attachList) > 0}">
+                                <div class="gallery-container">
+                                    <div class="active-img-wrap">
+                                        <!--    이미지 예시입니다.     -->
+                                        <img src="<c:url value="${FileUploadController.makeDownloadLink(attachList[0].savedFilePath, attachList[0].fileNm)}"/>" alt="<c:out value="${attachList[0].fileNm}"/>"
+                                             onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
+                                        <div class="cont">
+                                                ${fx:resetXSSMinimum(rs.cont)}
+                                        </div>
+                                    </div>
+                                    <div class="gallery-list">
+                                        <c:forEach var="attach" items="${attachList}">
+                                            <img src="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>" alt="<c:out value="${attach.fileNm}"/>"
+                                                 onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
+                                        </c:forEach>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="gallery-list">
-                                <img src="<c:url value="/images/card/001.jpg"/>">
-                                <img src="<c:url value="/images/card/002.jpg"/>">
-                                <img src="<c:url value="/images/card/003.jpg"/>">
-                                <img src="<c:url value="/images/card/004.jpg"/>">
-                                <img src="<c:url value="/images/card/005.jpg"/>">
-                                <img src="<c:url value="/images/card/006.jpg"/>">
-                                <img src="<c:url value="/images/card/007.jpg"/>">
-
-                            </div>
-                        </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="gallery-container">
+                                    <div class="active-img-wrap">
+                                        <div class="cont">
+                                                ${fx:resetXSSMinimum(rs.cont)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <!-- 컨텐츠 end -->
-                    <div class="write-bottom">
+                    <%--<div class="write-bottom">
                         <a href="<c:url value="/admin/trace/edit.do?seq=${rs.seq}"/>" class="submit">수정</a>
                         <a href="<c:url value="/admin/trace/delete.do?seq=${rs.seq}"/>">삭제</a>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>

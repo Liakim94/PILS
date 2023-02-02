@@ -32,7 +32,9 @@
     .content table td.al {
         text-align: left;
     }
-
+    #gboard-list .lst {
+        overflow: hidden;
+    }
 </style>
 <div id="content">
     <div id="board">
@@ -60,11 +62,10 @@
                     <c:forEach var="rs" items="${rs }" varStatus="status">
                         <div class="lst">
                             <a href="<c:url value="/front/guide/trace/view.do?seq=${rs.seq}"/>">
-<%--                                <div class="thumbnail" style="background:url('<c:out value="${FileUploadController.makeDownloadLink(rs.savedFilePath,rs.file_nm)}"/>')--%>
-<%--                                        , url('<c:url value="/images/no-image.jpg"/>')"></div>--%>
-                                <img src="<c:url value="${FileUploadController.makeDownloadLink(rs.savedFilePath, rs.file_nm)}"/>"
-                                     onerror="this.src='<c:url value="/images/no-image.jpg"/>'"
-                                     style="height:180px;width: 290px">
+                                <div class="thumbnail" style="background:url('<c:url value="${FileUploadController.makeDownloadLink(rs.savedFilePath,rs.file_nm)}"/>');"></div>
+<%--                                <img src="<c:url value="${FileUploadController.makeDownloadLink(rs.savedFilePath, rs.file_nm)}"/>"--%>
+<%--                                     onerror="this.src='<c:url value="/images/no-image.jpg"/>'"--%>
+<%--                                     style="height:180px;width: 290px">--%>
                                 <div class="lst-info">
                                     <h3 class="title"> ${rs.title}</h3>
                                     <p class="regdate">${fn:substring(rs.rgst_dt,0,10)}</p>
