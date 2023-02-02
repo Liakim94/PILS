@@ -239,4 +239,10 @@ public class JoinController {
         }
         return  "forward:/common/error.jsp";
     }
+    //실제 사례 보기 준비 중 화면
+    @GetMapping(value = "/agree/temp.do")
+    public ModelAndView agreeTemp() throws Exception {
+        ModelAndView mav = new ModelAndView("join/agreement/agree_temp");
+        return mav;
+    }
 }

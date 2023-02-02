@@ -48,11 +48,11 @@
                     납품대금연동제 동참하기
                 </li>
                 <li>
-                    약정서 작성
+                    약정서 작성하기
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">약정서 작성</h1>
+                <h1 class="fw700">약정서 작성하기</h1>
                 <div class="side-wrap">
                 </div>
             </div>

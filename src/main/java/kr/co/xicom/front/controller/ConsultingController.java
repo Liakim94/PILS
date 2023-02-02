@@ -25,8 +25,12 @@ public class ConsultingController extends Alerts {
     @Autowired
     private ConsultingService consultingService;
 
-
-
+    //컨설팅 신청 준비 중 화면
+    @GetMapping(value = "/consulting/temp.do")
+    public ModelAndView temp() throws Exception {
+        ModelAndView mav = new ModelAndView("communication/consulting/con_temp");
+        return mav;
+    }
     //컨설팅 신청 화면
     @GetMapping(value = "/consulting/apply.do")
     public ModelAndView apply(HttpSession session,

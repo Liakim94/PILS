@@ -23,11 +23,11 @@
                     납품대금 연동제란?
                 </li>
                 <li>
-                    주요 통계
+                    시범운영 분석 결과
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">주요 통계</h1>
+                <h1 class="fw700">시범운영 분석 결과</h1>
             </div>
             <div id="about" class="content">
                 <!-- 컨텐츠 start -->

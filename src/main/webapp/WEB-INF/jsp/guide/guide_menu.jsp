@@ -28,7 +28,7 @@
                 <a href="<c:url value="/front/guide/ordinance.do"/>" class="">관련 법령</a>
             </li>
             <li class="<c:if test="${URI.contains('/front/guide/statistics')}">on</c:if>">
-                <a href="<c:url value="/front/guide/statistics.do"/>" class="">주요 통계</a>
+                <a href="<c:url value="/front/guide/statistics.do"/>" class="">시범운영 분석 결과</a>
             </li>
         </ul>
     </div>

@@ -2133,11 +2133,12 @@
     top: 6px;
 }
 #agreement .info-link a:nth-child(1){
-    color: #E60024;
-}
-#agreement .info-link a:nth-child(2){
+    line-height : 65px;
     background-color: #E60024;
     color: #ffffff;
+}
+#agreement .info-link a:nth-child(2){
+    color: #E60024;
 }
 #agreement .write-container{
     width: 100%;
