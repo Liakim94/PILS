@@ -162,7 +162,6 @@
                     </div>
                     <div class="line-wrap">
                         <div class="label label-long">첨부서류</div>
-                        <div class="input-wrap" style="margin:5px">
                             <div class="upload-list">
                                 <c:forEach var="attach" items="${attachList}">
                                     <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">

@@ -217,9 +217,6 @@
                         <a href="<c:url value="/front/board/ready/list.do"/>">카드뉴스</a>
                         <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
                         <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
-                        <a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>
-                        <a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>
-                        <a href="<c:url value="/front/report/temp.do"/>">신고센터</a>
                         <%--                        <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
                         <%--                        <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>--%>
                     </div>
