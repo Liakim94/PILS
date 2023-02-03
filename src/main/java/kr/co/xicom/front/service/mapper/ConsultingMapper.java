@@ -13,7 +13,7 @@ public interface ConsultingMapper {
     int insertMemberInfo(CmpMemberVo vo) throws Exception;
 
     List<CmpMemberVo> list(CmpMemberVo vo) throws Exception;
-
+    int mainCount(CmpMemberVo vo) throws Exception;
     int listCount(CmpMemberVo vo) throws Exception;
     int joinCmp(CmpMemberVo vo) throws Exception;
 

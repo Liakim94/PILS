@@ -72,7 +72,7 @@ public class ConsultingServiceImpl implements ConsultingService {
 
         try{
             list = mapper.list(vo);
-            cnt = mapper.listCount(vo);
+            cnt = mapper.mainCount(vo);
             joinCmp = mapper.joinCmp(vo);
             map.put("resultList",list);
             map.put("resultCnt", cnt);

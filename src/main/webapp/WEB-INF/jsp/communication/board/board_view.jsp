@@ -41,44 +41,49 @@
                 </div>
             </div>
 
-            <form name="frmDelete" id="frmDelete" method="POST" action="<c:url value="/front/board/${bbsId}/delete.do"/>">
+            <form name="frmDelete" id="frmDelete" method="POST"
+                  action="<c:url value="/front/board/${bbsId}/delete.do"/>">
                 <input type="hidden" id="stat" name="stat" value="0"/>
                 <input type="hidden" id="bbsId" name="bbsId" value="${bbsId}"/>
                 <input type="hidden" value="${rs.boardSeq}" name="boardSeq" id="boardSeq">
 
                 <div class="content">
-                    <!-- 컨텐츠 start -->
-                    <div class="board-view-wrap01">
-                        <p class="subj">${rs.title }</p>
-                        <div class="info">
-                            <ul>
-                                <li>작성자 : 관리자</li>
-                                <li>작성일 : ${fn:substring(rs.regDe,0,10)}</li>
-                            </ul>
+                    <div id="company-write" class="content">
+                        <!-- 컨텐츠 start -->
+                        <div class="board-view-wrap01">
+                            <p class="subj">${rs.title }</p>
+                            <div class="info">
+                                <ul>
+                                    <li>작성자 : 관리자</li>
+                                    <li>작성일 : ${fn:substring(rs.regDe,0,10)}</li>
+                                </ul>
+                            </div>
+                            <div class="file-wrap">
+                                <p class="label">첨부파일</p>
+                                <ul>
+                                    <c:forEach var="attach" items="${attachList}">
+                                        <li>
+                                            <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                                <c:out value="${attach.fileNm}"/>
+                                            </a>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                            <div class="cont">
+                                ${fx:resetXSSMinimum(rs.cont)}
+                            </div>
+
                         </div>
-                        <div class="file-wrap">
-                            <p class="label">첨부파일</p>
-                            <ul>
-                                <c:forEach var="attach" items="${attachList}">
-                                    <li>
-                                        <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
-                                            <c:out value="${attach.fileNm}"/>
-                                        </a>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </div>
-                        <div class="cont">
-                            ${fx:resetXSSMinimum(rs.cont)}
-                        </div>
-                        <div>
-                            <a href="<c:url value="/front/board/${rs.bbsId}/list.do"/>" class="go-lst" style=" float:right; margin:10px;" title="목록">목록</a>
+                        <div class="write-bottom">
                             <c:if test="${sessionId eq 'admin' }">
-                                <a href="<c:url value="/front/board/${rs.bbsId}/edit.do?boardSeq=${rs.boardSeq}"/>" class="go-lst" title="수정" style="width: 140px;  float:right; margin:10px;">
-                                    게시물 수정
+                                <a href="<c:url value="/front/board/${rs.bbsId}/edit.do?boardSeq=${rs.boardSeq}"/>"
+                                   class="submit" title="수정">
+                                    수정
                                 </a>
-                                <a onclick="javascript:deleteBbs();return false;" class="go-lst" style="width: 140px;  float:right; margin:10px;">게시물 삭제</a>
+                                <a onclick="javascript:deleteBbs();return false;" class="submit">삭제</a>
                             </c:if>
+                            <a href="<c:url value="/front/board/${rs.bbsId}/list.do"/>" title="목록">목록</a>
                         </div>
                     </div>
                 </div>

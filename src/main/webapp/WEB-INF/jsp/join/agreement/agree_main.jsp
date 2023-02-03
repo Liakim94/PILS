@@ -56,22 +56,24 @@
                     <div class="item">
                     <c:if test="${rs eq id}">
                             <a href="${pageContext.request.contextPath}/join/agreeView.do">
-                                <img src="${pageContext.request.contextPath}/images/common/document-icon2.png"
-                                     alt="약정서 체험하기">내 약정서 확인하기</a>
+                                <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
+                                <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">내 약정서 확인하기</a>
                     </c:if>
                     <c:if test="${rs eq '0'}">
-                            <a href="${pageContext.request.contextPath}/join/agree.do" class="button button-border">
-                            <img src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
+                            <a href="${pageContext.request.contextPath}/join/agree.do" >
+                                <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
+                                <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
                                 약정서 작성 체험</a>
                     </c:if>
                     </div>
                     <div class="item">
-                        <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp" class="button button-border"><img
-                                src="<c:url value="/images/common/download-icon.png"/>" alt="약정서 다운로드">
+                        <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp">
+                            <img class="hover" src="<c:url value="/images/common/download-icon2.png"/>" alt="약정서 다운로드">
+                            <img class="unhover" src="<c:url value="/images/common/download-icon.png"/>" alt="약정서 다운로드">
                             양식 다운로드</a>
                     </div>
                 </div>
-                <h4 class="fw400 mb20">위탁기업과 수탁기업은 다음 사항에 대해 충분히 협의하여 약정서에 기재해야 합니다.</h4>
+                <h3 >위탁기업과 수탁기업은 다음 사항에 대해 충분히 협의하여 약정서에 기재해야 합니다.</h3>
                 <p class="tip mb40">※ ｢납품대금 연동 특별약정서｣는 납품대금 연동 약정의 표준을 제시하기 위해 중소벤처기업부에서 제공하고 있는 양식입니다.</p>
 
                 <div class="accordion-container">
@@ -249,7 +251,7 @@
                                     <p class="text">* 원재료 가격 기준지표에 따른 주요 원재료의 특정 시점의 단위당 가격</p>
                                     <p class="text">&#9675; 원재료의 기준가격의 변동률은 ‘기준시점’ 대비 ‘비교시점’의 기준가격 증감률을 말합니다. 예컨대, 기준시점의
                                         기준가격이 10,000원/kg이고, 비교시점의 기준가격이 12,000원/kg이라면 기준가격의 변동률은 <img class="math"
-                                                                                                      src="img/common/math.png"
+                                                                                                      src="<c:url value="/images/common/math.png"/>"
                                                                                                       alt="수식">* 100 =
                                         20%입니다.</p>
                                     <p class="text">&#9675;‘기준시점’은 대금 변경이 있었던 직전 조정일을 기준으로 정할 수 있으며, ‘비교시점’은 이번 조정일을
