@@ -99,7 +99,7 @@
                             </li>
                         </ul>
                     </h4>
-                    <h2 class="title mt40">④ <strong>조정된 납품대금</strong>의 지급</h2>
+                    <h2 class="title mt40">④ 조정된 납품대금의 지급</h2>
                     <h4>
                         <ul class="disc">
                             <li class="mb20">

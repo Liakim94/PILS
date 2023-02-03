@@ -12,6 +12,9 @@
     <div class="lnb">
         <h2>납품대금 연동제란?</h2>
         <ul>
+            <li class="<c:if test="${URI.contains('/front/guide/greeting')}">on</c:if>">
+                <a href="<c:url value="/front/guide/greeting.do"/>" class="">인사말</a>
+            </li>
             <li class="<c:if test="${URI.contains('/front/guide/background')}">on</c:if>">
                 <a href="<c:url value="/front/guide/background.do"/>" class="">도입배경</a>
             </li>

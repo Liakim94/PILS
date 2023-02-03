@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -55,8 +56,12 @@ public class QnaController extends Alerts {
         Map<String, Object> rs = new HashMap<String, Object>();
         rs = qnaService.list(VO);
 
-        int totalCnt = 0;
-        totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+        List<QnaVO> qnaVOList = (List<QnaVO>) rs.get("resultList");
+        qnaVOList.forEach(qnaVO -> {
+            qnaVO.setTitle(qnaVO.getTitle().replaceAll("(?<=.{2})." , "*"));
+        });
+
+        int totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
         paginationInfo.setTotalRecordCount(totalCnt);
 
         mav.addObject("totalCnt", rs.get("resultCnt"));
@@ -185,9 +190,6 @@ public class QnaController extends Alerts {
     /**
      * 1:1문의 답변 화면
      *
-     * @param
-     * @return
-     * @throws BusinessLogicException
      */
     @GetMapping(value = "/qna/repost.do")
     public ModelAndView repost(ModelMap model,
@@ -211,9 +213,6 @@ public class QnaController extends Alerts {
     /**
      * 1:1문의 답변
      *
-     * @param
-     * @return
-     * @throws BusinessLogicException
      */
     @RequestMapping(value = "/qna/repost.do", method = {RequestMethod.POST})
     public void doRepost(ModelMap model,

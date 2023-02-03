@@ -123,7 +123,7 @@
                         <c:if test="${status.index mod 3 eq 0}">
                             <div class="line-wrap">
                             <div class="label label-long">${st.index_dv_nm} </div>
-                            <div class="tri">
+                            <div class="tri" style="text-align:right">
                         </c:if>
                         <div class="border" style="margin:5px">
                         ${st.index_data}
@@ -162,7 +162,6 @@
                     </div>
                     <div class="line-wrap">
                         <div class="label label-long">첨부서류</div>
-                        <div class="input-wrap" style="margin:5px">
                             <div class="upload-list">
                                 <c:forEach var="attach" items="${attachList}">
                                     <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
@@ -172,11 +171,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 <div class="write-bottom">
                     <a id="edit" href='${pageContext.request.contextPath}/main/joinEdit.do' class="submit">수정하기</a>
-                    <a href="${pageContext.request.contextPath}/main/myPage.do">목록</a>
+<%--                    <a href="${pageContext.request.contextPath}/main/myPage.do">목록</a>--%>
                 </div>
+                </div>
+
             </div>
         </div>
     </div>

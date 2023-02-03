@@ -34,12 +34,20 @@ public class GuideController extends Alerts {
     public String index() throws Exception {
         return "redirect:/front/guide/background.do";
     }
+    /**
+     * 납품대금 연동제란? - 인사말
+     */
+    @RequestMapping("/guide/greeting.do")
+    public ModelAndView greeting() throws Exception {
+        ModelAndView mav = new ModelAndView("guide/greeting");
 
+        return mav;
+    }
     /**
      * 납품대금 연동제란? - 도입배경 페이지 출력
      */
     @RequestMapping("/guide/background.do")
-    public String backgrouind() throws Exception {
+    public String background() throws Exception {
         return "guide/background";
     }
 

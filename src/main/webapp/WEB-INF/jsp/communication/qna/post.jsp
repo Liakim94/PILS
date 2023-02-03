@@ -8,8 +8,10 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <head>
-    <title></title>
+    <title>중소벤처기업부 | 질의응답 게시판</title>
     <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
+
 </head>
 <script>
 
@@ -23,54 +25,39 @@
         });
     });
 
+
     $(function () {
-        $(document).on('change', 'input[name="id"]', function () {
 
-            if ($("input[name=id]:checked").val() == "0") {
-                $("input:text[name=passwd]").attr("disabled", false);
-
-            } else if ($("input[name=id]:checked").val() == "1") {
-                $("input:text[name=passwd]").attr("disabled", true);
-
+        $("#frmWrite").validate({
+            ignore: "",
+            rules: {
+                name: {required: true,  maxlength:10 },
+                passwd: {required: true, minlength: 4, maxlength:10 },
+                title: {required: true},
+                cont: {required: true}
+            },
+            messages: {
+                name: {required: "작성자 입력하세요.", maxlength:"10자 이상 입력 불가합니다."},
+                passwd: {required: "비밀번호를 확인하세요.", minlength: "최소 4자 이상 입력해주세요.", maxlength:"10자 이상 입력 불가합니다." },
+                title: {required: "제목을 입력하세요."},
+                cont: {required: "내용을 입력하세요."}
+            },
+            submitHandler: function (frm) {
+                oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
+                frm.submit();
             }
         });
     });
-
-    // submit
-    function fn_submit() {
-
-        var frm = document.getElementById('frmWrite');
-
-        if (frm.name.value == "") {
-            alert("작성자를 입력하세요.");
-            return false;
-        }
-        if (frm.id.value == "") {
-            alert("공개여부를 선택하세요.");
-            return false;
-        }
-        if (frm.passwd.value == "" && document.getElementById('ChkBox2').checked) {
-            alert("비밀번호를 입력하세요.");
-            return false;
-        }
-        if (frm.title.value == "") {
-            alert("제목을 입력하세요.");
-            return false;
-        }
-
-        oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
-
-        var ir1 = $("#cont").val();
-        if (ir1 == "" || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>') {
-            alert("내용을 입력하세요.");
-            return false;
-        }
-
-        $("#frmWrite").submit();
-    }
-
 </script>
-
+<style type="text/css">
+    input.error, textarea.error{
+        border:1px dashed red;
+    }
+    label.error{
+        display:block;
+        color:red;
+    }
+</style>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu"/>
@@ -134,7 +121,7 @@
                             </div>
                         </div>
                         <div class="write-bottom">
-                            <input type="button" class="submit" onclick="fn_submit()" value="저장"/>
+                            <button style="width:130px" class="submit">저장</button>
                             <a href="<c:url value="/front/qna/list.do"/>">취소</a>
                         </div>
                     </form>

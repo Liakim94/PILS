@@ -145,6 +145,12 @@
           and b.manage_cd = 'M501'
         order by joincmp desc
     </select>
+    <select id="mainCount" resultType="int">
+        SELECT COUNT(1)
+        FROM tb_pils_cmpmbr A
+        where cmp_mbr_cd = #{mem_cd}
+
+    </select>
     <select id="listCount" resultType="int">
         SELECT COUNT(1)
         FROM tb_pils_cmpmbr A

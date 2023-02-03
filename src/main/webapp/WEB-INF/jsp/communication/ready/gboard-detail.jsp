@@ -33,65 +33,69 @@
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">  ${bbsNm}</h1>
+                <h1 class="fw700"> ${bbsNm}</h1>
                 <div class="side-wrap">
                 </div>
             </div>
             <div class="content">
-                <!-- 컨텐츠 start -->
-                <div class="board-view-wrap01">
-                    <p class="subj">${rs.title}</p>
-                    <div class="info">
-                        <ul>
-                            <li>작성자 : 관리자</li>
-                            <li>작성일 :  ${fn:substring(rs.regDe,0,10)}</li>
-                        </ul>
-                    </div>
-                    <%--
-                    <div class="file-wrap">
-                        <p class="label">첨부파일</p>
-                        <ul>
-                            <c:forEach var="attach" items="${attachList}">
-                                <li>
-                                    <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
-                                        <c:out value="${attach.fileNm}"/>
-                                    </a>
-                                </li>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                    --%>
-                    <div class="card-news">
-                        <span class="card-prev"><i class="fas fa-chevron-left"></i></span>
-                        <span class="card-next"><i class="fas fa-chevron-right"></i></span>
-                        <div class="card-slide-container">
-                            <div class="swiper-wrapper">
-                                 <c:forEach var="attach" items="${attachList}">
-                                <div class="swiper-slide">
-                                    <img src="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                <div class="write-content">
+
+                    <!-- 컨텐츠 start -->
+                    <div class="board-view-wrap01">
+                        <p class="subj">${rs.title}</p>
+                        <div class="info">
+                            <ul>
+                                <li>작성자 : 관리자</li>
+                                <li>작성일 : ${fn:substring(rs.regDe,0,10)}</li>
+                            </ul>
+                        </div>
+                        <%--
+                        <div class="file-wrap">
+                            <p class="label">첨부파일</p>
+                            <ul>
+                                <c:forEach var="attach" items="${attachList}">
+                                    <li>
+                                        <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                            <c:out value="${attach.fileNm}"/>
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                        --%>
+                        <div class="card-news">
+                            <span class="card-prev"><i class="fas fa-chevron-left"></i></span>
+                            <span class="card-next"><i class="fas fa-chevron-right"></i></span>
+                            <div class="card-slide-container">
+                                <div class="swiper-wrapper">
+                                    <c:forEach var="attach" items="${attachList}">
+                                        <div class="swiper-slide">
+                                            <img src="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
+                                        </div>
+                                    </c:forEach>
                                 </div>
-                            </c:forEach>
                             </div>
                         </div>
+                        <div class="write-bottom">
+                            <a class="go-lst" href="<c:url value="/front/board/ready/list.do"/>">목록</a>
+                        </div>
                     </div>
-                    <a class="go-lst" href="<c:url value="/front/board/ready/list.do"/>">목록</a>
+                    <!-- 컨텐츠 end -->
                 </div>
-                <!-- 컨텐츠 end -->
             </div>
         </div>
     </div>
-</div>
-<script>
-    var cardSlide = new Swiper(".card-slide-container", {
-        slidesPerView: 1,
-        loop: true,
-        speed: 1000,
-        observer: true,
-        observeParents: true,
-        navigation : { // 네비게이션 설정
-            nextEl : '.card-next', // 다음 버튼 클래스명
-            prevEl : '.card-prev', // 이번 버튼 클래스명
-        },
-    });
-</script>
+    <script>
+        var cardSlide = new Swiper(".card-slide-container", {
+            slidesPerView: 1,
+            loop: true,
+            speed: 1000,
+            observer: true,
+            observeParents: true,
+            navigation: { // 네비게이션 설정
+                nextEl: '.card-next', // 다음 버튼 클래스명
+                prevEl: '.card-prev', // 이번 버튼 클래스명
+            },
+        });
+    </script>
 

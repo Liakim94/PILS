@@ -9,6 +9,8 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 
 <head>
+    <title>중소벤처기업부 | 동행기업 신청</title>
+
     <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">

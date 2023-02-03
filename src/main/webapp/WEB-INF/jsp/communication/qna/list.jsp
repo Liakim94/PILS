@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
-    <title></title>
+    <title>중소벤처기업부 | 질의응답 게시판</title>
 
 
 </head>
@@ -17,7 +17,6 @@
         form.pageIndex.value = num;
         form.submit();
     }
-
 </script>
 
 <div id="content">
@@ -78,7 +77,8 @@
                                             </c:when>
                                             <c:otherwise>
                                                 <a href="javascript:modalOpen(${list.no})" id="checkPw"
-                                                  >[비공개]</a>
+                                                  >${list.title}
+                                                </a>
                                             </c:otherwise>
                                         </c:choose>
                                     </td>
