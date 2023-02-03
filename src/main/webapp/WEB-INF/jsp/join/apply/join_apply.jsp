@@ -9,7 +9,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <head>
-    <title></title>
+    <title>중소벤처기업부 | 동행기업 신청</title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
@@ -68,6 +68,9 @@
             var bizNo = $("#bizNo1").val() + $("#bizNo2").val() + $("#bizNo3").val();
             $('input[name=bizNo]').attr('value', bizNo);
 
+            var email =$("#email1").val() + $("#email2").val();
+            $('input[name=email]').attr('value', email);
+
             fileUploader.upload({
                 done: function (result, deleted, uploaded) {
                     // 업로드 완료 후 전송된 파일 리스트 정보를
@@ -107,10 +110,7 @@
             ignore: "",
             rules: {
                 cmpNm: {required: true},
-                bizNo1: {required: true, digits : true},
-                bizNo2: {required: true, digits : true},
-                bizNo3: {required: true, digits : true},
-                bizNo: {
+                bizNo: {required: true,
                     remote: {
                         type: "post"
                         , url: "${pageContext.request.contextPath}/join/checkBizno.do"
@@ -120,7 +120,7 @@
                             }
                         }
                     },
-                    digits : true
+                    digits : true, minlength :10
                 },
                 ceo: {required: true},
                 fdate: {required: true},
@@ -146,16 +146,11 @@
                 },
                 passwd: {required: true, regex: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,10}$/ },
                 passwdChk: {required: true, equalTo: "#passwd"},
+                email: {required: true}
             },
-            // onkeyup: false,
-            // onclick: false,
-            // onfocusout: false,
             messages: {
                 cmpNm: {required: "기업명을 입력하세요."},
-                bizNo1: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
-                bizNo2: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
-                bizNo3: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
-                bizNo: {remote: "이미 존재하는 사업자번호입니다.",  digits : "숫자만 입력하세요"},
+                bizNo: {required: "사업자번호를 확인하세요.", remote: "이미 존재하는 사업자번호입니다.",  digits : "숫자만 입력하세요", minlength: "사업자번호를 확인하세요."},
                 ceo: {required: "대표자명을 입력하세요."},
                 fdate: {required: "설립일자를 입력하세요."},
                 address: {required: "본사 주소를 입력하세요."},
@@ -173,16 +168,11 @@
                 },
                 name: {required: "담당자 성명을 입력하세요."},
                 mbphno: {required: "담당자 전화번호를 입력하세요."},
-                deptNm: {required: "담당자 소속부서를 입력하세요."},
-                position: {required: "담당자 직위를 입력하세요."},
-                email1: {required: "이메일을 입력하세요."},
-                email2: {required: "이메일을 입력하세요."},
-                memTelNo: {required: "사무실전화를 입력하세요."},
-                memFaxNo: {required: "담당자 팩스를 입력하세요."},
                 conQ: {required: "컨설팅시 주요 질의사항를 입력하세요."},
                 passwd: {required: "비밀번호를 입력하세요.",
                     regex:"비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."},
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
+                email: {required: "이메일을 입력하세요."}
             },
         });
     });
@@ -238,11 +228,11 @@
                             </div>
                             <div class="input-wrap">
                                 <td>
-                                    <input class="multi" type="text" id="bizNo1" name="bizNo1"/>
+                                    <input class="multi" type="text" id="bizNo1" name="bizNo1" maxlength="3"/>
                                     <span>-</span>
-                                    <input class="multi" type="text" id="bizNo2" name="bizNo2"/>
+                                    <input class="multi" type="text" id="bizNo2" name="bizNo2" maxlength="2"/>
                                     <span>-</span>
-                                    <input class="multi" type="text" id="bizNo3" name="bizNo3"/>
+                                    <input class="multi" type="text" id="bizNo3" name="bizNo3" maxlength="5"/>
                                     <input type="hidden" id="bizNo" name=bizNo value="">
 
                             </div>
@@ -262,7 +252,7 @@
                                 설립일자<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
-                                <input type="date" id="fdate" name="fdate" required/>
+                                <input type="text" id="fdate" name="fdate" required/>
                             </div>
                         </div>
                     </div>
@@ -309,7 +299,7 @@
                             <div class="label">
                                 자본금<span class="required">*</span>
                             </div>
-                            <div class="input-wrap labeled-input-wrap label-right">
+                            <div class="input-wrap labeled-input-wrap ">
                             <input type="text" id="capital" name="capital"
                                    placeholder="자본금을 입력해주세요." required/>백만원
                             </div>
@@ -338,13 +328,13 @@
                     </div>
                     <div class="tri">
                         <div class="border">
-                            <input type="text" id=ix_data1" name="ix_data1"/>
+                            <input type="text" id=ix_data1" name="ix_data1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                         </div>
                         <div class="border">
-                            <input type="text" id=ix_data2" name="ix_data2"/>
+                            <input type="text" id=ix_data2" name="ix_data2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                         </div>
                         <div class="border">
-                            <input type="text" id=ix_data3" name="ix_data3"/>
+                            <input type="text" id=ix_data3" name="ix_data3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                         </div>
                     </div>
                 </div>
@@ -354,13 +344,13 @@
                     </div>
                     <div class="tri">
                         <div class="border">
-                            <input type="text" id="ix_data4" name="ix_data4"/>
+                            <input type="text" id="ix_data4" name="ix_data4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                         </div>
                         <div class="border">
-                            <input type="text" id="ix_data5" name="ix_data5"/>
+                            <input type="text" id="ix_data5" name="ix_data5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                         </div>
                         <div class="border">
-                            <input type="text" id="ix_data6" name="ix_data6"/>
+                            <input type="text" id="ix_data6" name="ix_data6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                         </div>
                     </div>
                 </div>
@@ -370,13 +360,13 @@
                     </div>
                     <div class="tri">
                         <div class="border">
-                            <input type="text" id="ix_data7" name="ix_data7"/>
+                            <input type="text" id="ix_data7" name="ix_data7" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                         </div>
                         <div class="border">
-                            <input type="text" id="ix_data8" name="ix_data8"/>
+                            <input type="text" id="ix_data8" name="ix_data8" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                         </div>
                         <div class="border">
-                            <input type="text" id="ix_data9" name="ix_data9"/>
+                            <input type="text" id="ix_data9" name="ix_data9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                         </div>
                     </div>
                 </div>
@@ -426,19 +416,18 @@
                 <div class="line-wrap">
                     <div class="fx2">
                         <div class="label">
-                            소속 부서<span class="required">*</span>
+                            소속 부서
                         </div>
                         <div class="input-wrap">
-                            <input type="text" id="deptNm" name="deptNm" placeholder="소속부서를 입력해주세요." required/>
+                            <input type="text" id="deptNm" name="deptNm" placeholder="소속부서를 입력해주세요." />
                         </div>
                     </div>
                     <div class="fx2">
                         <div class="label">
-                            직위<span class="required">*</span>
+                            직위
                         </div>
                         <div class="input-wrap">
-                            <input type="text" id="position" name="position" placeholder="직위를 입력해주세요."
-                                   required/>
+                            <input type="text" id="position" name="position" placeholder="직위를 입력해주세요."/>
                         </div>
                     </div>
                 </div>
@@ -455,9 +444,9 @@
                         이메일<span class="required">*</span>
                     </div>
                     <div class="input-wrap ">
-                        <input type="text" class="multi" name="email1" id="email1" required/>
+                        <input type="text" class="multi" name="email1" id="email1"/>
                         <span>@</span>
-                        <input type="text" style="width: 130px" name="email2" id="email2" required/>
+                        <input type="text" style="width: 130px" name="email2" id="email2"/>
                         <select id="email3" style="width: 130px"
                                 onclick="selectEmail(this)">
                             <option value="1">직접입력</option>
@@ -465,6 +454,8 @@
                             <option value="daum.net">daum.net</option>
                             <option value="gmail.com">gmail.com</option>
                         </select>
+                        <input type="hidden" value="" id="email" name="email">
+
                     </div>
                 </div>
                 <div class="line-wrap">
@@ -526,7 +517,7 @@
             </form:form>
             <div class="write-bottom">
                 <button id="apply" class="submit" style="width:130px">등록</button>
-                <a href="${pageContext.request.contextPath}">취소</a>
+                <a href="${pageContext.request.contextPath}/join/joinMain.do">취소</a>
             </div>
         </div>
     </div>

@@ -8,7 +8,6 @@
     <title>참여 기업 현황</title>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-core.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-map.min.js"></script>
-    <script src="${pageContext.request.contextPath }/js/chart/anychart-treemap.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-cartesian.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/2.2.0/countries/south_korea/south_korea.js"></script>
 
@@ -29,22 +28,132 @@
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700" style="margin-bottom:20px">참여 기업 현황</h1>
+                <h1 class="fw700">참여 기업 현황</h1>
             </div>
             <div id="main">
                 <!-- 컨텐츠 start -->
-                <div class="tab">
-                    <ul class="tabnav">
-                        <li><a href="#tab01">1. 업종별 통계</a></li>
-                        <li><a href="#tab02">2. 지역별 통계</a></li>
-                        <li><a href="#tab03">3. 기업 규모별 통계</a></li>
-                    </ul>
-                    <div class="tabcontent">
-                        <div id="tab01" style="height:100%;" ><div id="chart" style="height:100%;"></div></div>
-                        <div id="tab02" style="height:100%;"><div id="map" style="height:100%;"></div></div>
-                        <div id="tab03" style="height:100%;"><div id="bar_chart" style="height:100%;"></div></div>
+                <div class="statistics-wrap">
+                    <div class="item" onclick="modalOpen(1)">
+                        <img class="unhover" src="<c:url value="/images/company/statistics1-1.png"/>" alt="업종별 통계" />
+                        <img class="hover" src="<c:url value="/images/company/statistics1-2.png"/>" alt="업종별 통계" />
+                        업종별 통계
+                    </div>
+                    <div class="item" onclick="modalOpen(2)">
+                        <img class="unhover" src="<c:url value="/images/company/statistics2-1.png"/>" alt="지역별 통계" />
+                        <img class="hover" src="<c:url value="/images/company/statistics2-2.png"/>" alt="지역별 통계" />
+                        지역별 통계
+                    </div>
+                    <div class="item" onclick="modalOpen(3)">
+                        <img class="unhover" src="<c:url value="/images/company/statistics3-1.png"/>" alt="기업 규모별 통계" />
+                        <img class="hover" src="<c:url value="/images/company/statistics3-2.png"/>" alt="기업 규모별 통계" />
+                        기업 규모별 통계
                     </div>
                 </div>
+                <!-- Popup -->
+                <div class="modal-background" onclick="modalClose()"></div>
+                <div class="detail-modal-box">
+                    <div class="modal-close inline-focus" onclick="modalClose()">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <!--  업종별 통계  -->
+                    <div id="contents1" class="contents-wrap">
+                        <h2 class="title">업종별 통계</h2>
+                        <div class="industry-container">
+                            <div class="item machine hover-info">
+                                <div class="text-wrap">
+                                    <h3>기계·자동차·조선</h3>
+                                    <h2>14개사</h2>
+                                </div>
+                                <div class="info-box">
+                                    <h4>기계·자동차·조선</h4>
+                                    <hr>
+                                    <h3>14개사</h3>
+                                </div>
+                            </div>
+                            <div class="item electronics hover-info">
+                                <div class="text-wrap">
+                                    <h3>전기·전자</h3>
+                                    <h2>10개사</h2>
+                                </div>
+                                <div class="info-box">
+                                    <h4>전기·전자</h4>
+                                    <hr>
+                                    <h3>10개사</h3>
+                                </div>
+                            </div>
+                            <div class="item chemistry hover-info">
+                                <div class="text-wrap">
+                                    <h3>화학·금속·비금속</h3>
+                                    <h2>9개사</h2>
+                                </div>
+                                <div class="info-box">
+                                    <h4>화학·금속·비금속</h4>
+                                    <hr>
+                                    <h3>9개사</h3>
+                                </div>
+                            </div>
+                            <div class="item others">
+                                <div class="item food hover-info">
+                                    <div class="text-wrap">
+                                        <h3>식품</h3>
+                                        <h2>5개사</h2>
+                                    </div>
+                                    <div class="info-box">
+                                        <h4>식품</h4>
+                                        <hr>
+                                        <h3>5개사</h3>
+                                    </div>
+                                </div>
+                                <div class="item communication hover-info">
+                                    <div class="text-wrap">
+                                        <h3>통신</h3>
+                                        <h2>4개사</h2>
+                                    </div>
+                                    <div class="info-box">
+                                        <h4>통신</h4>
+                                        <hr>
+                                        <h3>4개사</h3>
+                                    </div>
+                                </div>
+                                <div class="item building hover-info">
+                                    <div class="text-wrap">
+                                        <h3>건설</h3>
+                                        <h2>3개사</h2>
+                                    </div>
+                                    <div class="info-box">
+                                        <h4>건설</h4>
+                                        <hr>
+                                        <h3>3개사</h3>
+                                    </div>
+                                </div>
+                                <div class="item service hover-info">
+                                    <div class="text-wrap">
+                                        <h3>서비스</h3>
+                                        <h2>2개사</h2>
+                                    </div>
+                                    <div class="info-box">
+                                        <h4>서비스</h4>
+                                        <hr>
+                                        <h3>2개사</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  지역별 통계  -->
+                    <div id="contents2" class="contents-wrap">
+                        <h2 class="title">지역별 통계</h2>
+                        <div id="map" style="height: 350px"></div>
+                    </div>
+                    <!--  기업 규모별 통계  -->
+                    <div id="contents3" class="contents-wrap">
+                        <h2 class="title">기업 규모별 통계</h2>
+                        <div id="bar_chart" style="height: 350px"></div>
+
+                    </div>
+                </div>
+
                 <section>
                     <div class="company-list-container">
                         <c:forEach var="company" items="${list }" varStatus="status">
@@ -68,51 +177,42 @@
     </div>
 </div>
 <script>
-    $(function(){
-        $('.tabcontent > div').hide();
-        $('.tabnav a').click(function () {
-            $('.tabcontent > div').hide().filter(this.hash).fadeIn();
-            $('.tabnav a').removeClass('active');
-            $(this).addClass('active');
-            return false;
-        }).filter(':eq(0)').click();
+    $(document).ready(function(){
+        $(".hover-info").hover(function (){
+                var divX = $(this).offset().left;
+                var divY = $(this).offset().top;
+                $(this).find('.info-box').fadeIn("500");
+                $(document).mousemove(function(e) {
+                    mouseX = e.pageX;
+                    mouseY = e.pageY;
+                    $(this).find('.info-box').css("left", mouseX - divX + 10).css("top", mouseY-divY + 15);
+                    console.log("divX = " + divX);
+                    console.log("mouseX = " + mouseX);
+                });
+
+
+            },
+            function (){
+                $(this).find('.info-box').hide();
+            });
     });
-    anychart.onDocumentReady(function () {
 
-        // create the data
-        var dataSet = [
-            {name: "업종", children: [
-                            {name: "기계·자동차·조선", value: 14},
-                            {name: "전기·전자", value: 10},
-                            {name: "화학·금속·비금속", value: 9},
-                            {name: "통신", value: 4},
-                            {name: "건설", value: 3},
-                            {name: "식품", value: 5},
-                            {name: "서비스", value: 2}
-                    ]}
+    function modalOpen(set){
+        $(".contents-wrap").hide();
+        $("#contents"+set).show();
 
-        ];
+        $(".detail-modal-box").css({
+            "top": (($(window).height()-$(".detail-modal-box").outerHeight())/2+$(window).scrollTop())+"px",
+            "left": (($(window).width()-$(".detail-modal-box").outerWidth())/2+$(window).scrollLeft())+"px"
+        });
+        $(".modal-background").css("display","block");
+        $(".detail-modal-box").css("display","block");
+    }
+    function modalClose(){
+        $(".modal-background").css("display","none");
+        $(".detail-modal-box").css("display","none");
+    }
 
-        // create the treemap chart and set the data
-        var chart = anychart.treeMap(dataSet, "as-tree");
-
-
-        // set a custom color scale
-        var customColorScale = anychart.scales.linearColor();
-        customColorScale.colors(['#f78437', '#ffcc00']);
-        chart.colorScale(customColorScale);
-        chart.colorRange().length('100%');
-
-        // format the labels
-        chart.labels().useHtml(true);
-        chart.labels().format(
-            "<span style='font-size: 10px; color: #070707'>{%name}</span><br>{%value}개사"
-        );
-        // set the container id for the chart
-        chart.container("chart");
-        chart.draw();
-
-    });
     anychart.onDocumentReady(function() {
         // create map
         var map = anychart.map();
@@ -191,20 +291,3 @@
         chart.draw();
     });
 </script>
-<style>
-    html,body {width:100%;  }
-    body,div,ul,li{margin:0; padding:0;}
-    ul,li {list-style:none;}
-
-    /*tab css*/
-    .tab{margin:0 auto;  width:955px; height:400px;padding: 15px; }
-    .tabnav{font-size:0; width:600px;}
-    .tabnav li{display: inline-block;  height:30px; text-align:center; border-right:1px solid #ddd;  border:1px solid #ddd;}
-    .tabnav li a:before{content:""; position:absolute; left:0; top:0px; width:100%; height:3px; }
-    .tabnav li a.active:before{background:#7ea21e;}
-    .tabnav li a.active{border-bottom:1px solid #fff;}
-    .tabnav li a{ position:relative; display:block; background: #f8f8f8; color: #000; padding:0 20px; line-height:32px; text-decoration:none; font-size:14px;}
-    .tabnav li a:hover,
-    .tabnav li a.active{background:#fff; color:#7ea21e; }
-    .tabcontent{height:330px; border:1px solid #ddd; }
-</style>

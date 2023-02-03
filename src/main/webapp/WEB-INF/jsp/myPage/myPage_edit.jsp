@@ -18,6 +18,11 @@
 
 </head>
 <script>
+    function checkNumber(event) {
+        if(event.keyCode<48 || event.keyCode>57){
+            event.returnValue=false;
+        }
+    }
     //주소찾기
     function execPostCode() {
         daum.postcode.load(function () {
@@ -264,7 +269,7 @@
                                 <div class="tri">
                             </c:if>
                             <div class="border">
-                            <input type="text"
+                            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                    id="ix_data${status.index+1}"
                                    name="ix_data${status.index+1}" value="${st.index_data}"/>
                             <c:if test="${status.index mod 3 eq 2}">

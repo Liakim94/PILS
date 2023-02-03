@@ -16,10 +16,10 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
 
 <aside class="sidebar">
     <div class ="lnb">
-        <h2>납품대금연동제 동참하기</h2>
+        <h2>납품대금 연동제 동참하기</h2>
         <ul>
             <li class="<c:if test="${URI.contains('/join/process')}">on</c:if>">
-                <a href ="<c:url value="/join/process/info.do"/>">납품대금 연동 절차 알아보기</a>
+                <a href ="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
             </li>
             <li class="<c:if test="${URI.contains('/join/ex')}">on</c:if>">
             <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>

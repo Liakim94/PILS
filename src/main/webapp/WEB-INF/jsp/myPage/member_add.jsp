@@ -28,7 +28,13 @@
             $email2.val($ele.val());
         }
     }
-
+    function emailChk(frm) {
+        var email1 = $("#email1").val();
+        var email2 = $("#email2").val();
+        var result = email1+email2;
+        $("#email").val(result);
+        return frm.submit;
+    }
     $.validator.addMethod("regex", function (value, element, regexpr) {
         return regexpr.test(value);
     });
@@ -38,6 +44,8 @@
             ignore: "",
             rules: {
                 name: {required: true},
+                mbphno: {required: true, digits : true},
+                email: {required: true},
                 id: {
                     required: true, remote: {
                         type: "post"
@@ -55,6 +63,8 @@
             messages: {
                 name: {
                     required: "이름을 입력하세요"},
+                mbphno: {required: "전화번호를 입력하세요.",  digits : "숫자만 입력하세요"},
+                email: {required: "이메일을 입력하세요."},
                 id: {
                     required: "아이디를 입력하세요",
                     remote: "이미 존재하는 아이디입니다."
@@ -64,9 +74,6 @@
                     regex: "비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."
                 },
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
-            },
-            submitHandler: function (frm) {
-                $("#frmWrite").submit();
             },
         });
     });
@@ -132,7 +139,7 @@
                         </div>
                         <div class="line-wrap">
                             <div class="label">
-                                전화번호
+                                전화번호<span class="required">*</span>
                             </div>
                             <div class="input-wrap">
                                 <input type="text" id="mbphno" name="mbphno" />
@@ -140,7 +147,7 @@
                         </div>
                         <div class="line-wrap">
                             <div class="label">
-                                이메일
+                                이메일<span class="required">*</span>
                             </div>
                             <div class="input-wrap ">
                                 <input type="text" class="multi" name="email1" id="email1" />
@@ -153,6 +160,7 @@
                                     <option value="daum.net">daum.net</option>
                                     <option value="gmail.com">gmail.com</option>
                                 </select>
+                                <input type="hidden" value="" id="email" name="email">
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -204,7 +212,7 @@
                         </div>
                     </div>
                     <div class="write-bottom">
-                        <button type="submit" class="submit" style="width: 130px">등록</button>
+                        <button onclick="emailChk(this.form)"  class="submit" style="width: 130px">등록</button>
                         <a href="${pageContext.request.contextPath}/main/management.do" class="go-lst">취소</a>
                     </div>
                 </form:form>

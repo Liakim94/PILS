@@ -8,7 +8,7 @@
 <%@ taglib uri="fx" prefix="fx" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <head>
-    <title></title>
+    <title>중소벤처기업부 | 질의응답 게시판</title>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
 
 </head>
@@ -35,25 +35,26 @@
                 </div>
             </div>
             <div class="content">
-                <!-- 컨텐츠 start -->
+                <div id="company-write" class="content">
+                    <!-- 컨텐츠 start -->
 
-                <input type="hidden" id="no" name="no" value="${rs.no}"/>
-                <div class="board-view-wrap01">
-                    <p class="subj">작성자 : ${rs.name }</p>
-                    <p class="subj">제목 : ${rs.title }</p>
-                    <div class="cont">
-                        ${fn:replace(rs.body, crcf, "<br>") }
+                    <input type="hidden" id="no" name="no" value="${rs.no}"/>
+                    <div class="board-view-wrap01">
+                        <p class="subj">작성자 : ${rs.name }</p>
+                        <p class="subj">제목 : ${rs.title }</p>
+                        <div class="cont">
+                            ${fx:resetXSSMinimum(rs.body)}
+                        </div>
                     </div>
                     <div class="write-bottom">
-                        <a href="<c:url value="/front/qna/list.do"/>" class="go-lst"  style=" float:right; margin:10px;">목록</a>
-                        <a href="<c:url value="/front/qna/delete.do?no=${rs.no}"/>" class="go-lst" style="width: 90px;  float:right; margin:10px;">삭제</a>
+                        <a href="<c:url value="/front/qna/delete.do?no=${rs.no}"/>" class="submit">삭제</a>
                         <c:if test="${sessionId eq 'admin' }">
-                            <a href="<c:url value="/front/qna/repost.do?no=${rs.no}"/>" class="go-lst"
-                               style="width: 120px;  float:right; margin:10px;">답변달기</a>
+                            <a href="<c:url value="/front/qna/repost.do?no=${rs.no}"/>" class="submit">답변달기</a>
                         </c:if>
-
+                        <a href="<c:url value="/front/qna/list.do"/>" >목록</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

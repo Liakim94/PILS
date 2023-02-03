@@ -130,7 +130,8 @@
                     </div>
                 </div>
                 <div class="write-bottom">
-                    <a class="back" href="<c:url value="/join/agreeDelete.do?id=${rs.id}"/>">새로 작성하기</a>
+                    <a class="submit" href="<c:url value="/join/agreeDelete.do?id=${rs.id}"/>">새로 작성하기</a>
+                    <a href="<c:url value="/join/agreeMain.do"/>">목록</a>
 <%--                    <a class="print" href="javascript:window.print();"><img src="${pageContext.request.contextPath}/images/common/Print.png">프린트 하기</a>--%>
                 </div>
                 <!-- 컨텐츠 end -->

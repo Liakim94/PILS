@@ -9,7 +9,7 @@
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
-    <title></title>
+    <title>중소벤처기업부 | 동행기업 신청</title>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
 
 </head>

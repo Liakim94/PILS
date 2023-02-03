@@ -36,13 +36,22 @@
                 <!-- 컨텐츠 start -->
                 <div class="info-link">
                     <div class="item">
-                        <a href="${pageContext.request.contextPath}/join/joinApply.do"><img src="<c:url value="/images/common/document-icon.png"/>" alt="동행기업 신청">동행기업 신청</a>
+                        <a href="${pageContext.request.contextPath}/join/joinApply.do">
+                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
+                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
+                            동행기업 신청</a>
                     </div>
-                    <div class="item">
-                        <a href=""><img src="<c:url value="/images/common/document-icon2.png"/>" alt="납품대금 연동제 동행기업 모집공고">납품대금 연동제 동행기업 모집공고</a>
+                    <div class="item" style="width: 22%">
+                        <a href="">
+                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
+                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
+                            동행기업 모집공고</a>
                     </div>
-                    <div class="item">
-                        <a href=""><img src="<c:url value="/images/common/download-icon.png"/>" alt="동행기업 신청 필요서류 양식">동행기업 신청 필요서류 양식</a>
+                    <div class="item" style="width: 22%">
+                        <a href="">
+                            <img class="hover" src="<c:url value="/images/common/download-icon2.png"/>" alt="약정서 다운로드">
+                            <img class="unhover" src="<c:url value="/images/common/download-icon.png"/>" alt="약정서 다운로드">
+                            필요서류 양식</a>
                     </div>
                 </div>
                 <h2 class="title">동행기업이란?</h2>

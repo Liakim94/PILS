@@ -266,7 +266,9 @@
                                     <p class="text">&#9634; 조정일에 원재료 기준가격*의 변동률을 산정하기 위한 ‘기준시점’과 ‘비교시점’을 기재합니다.</p>
                                     <p class="text">* 원재료 가격 기준지표에 따른 주요 원재료의 특정 시점의 단위당 가격</p>
                                     <p class="text">&#9675; 원재료의 기준가격의 변동률은 ‘기준시점’ 대비 ‘비교시점’의 기준가격 증감률을 말합니다. 예컨대,
-                                        기준시점의 기준가격이 10,000원/kg이고, 비교시점의 기준가격이 12,000원/kg이라면 기준가격의 변동률은 * 100 =
+                                        기준시점의 기준가격이 10,000원/kg이고, 비교시점의 기준가격이 12,000원/kg이라면 기준가격의 변동률은 <img class="math"
+                                                                                                            src="<c:url value="/images/common/math.png"/>"
+                                                                                                            alt="수식">* 100 =
                                         20%입니다.</p>
                                     <p class="text">&#9675;‘기준시점’은 대금 변경이 있었던 직전 조정일을 기준으로 정할 수 있으며, ‘비교시점’은 이번 조정일을
                                         기준으로 정할 수 있습니다.</p>
@@ -748,7 +750,7 @@
                     </div>
                     <div class="write-bottom">
                         <input type="submit" class="submit" value="등록"/>
-                        <a href="${pageContext.request.contextPath}/join/agree.do">취소</a>
+                        <a href="${pageContext.request.contextPath}/join/agreeMain.do">취소</a>
                     </div>
                 </form>
                 <!-- 컨텐츠 end -->

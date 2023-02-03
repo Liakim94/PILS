@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <head>
-    <title></title>
+    <title>중소벤처기업부 | 질의응답 게시판</title>
     <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 </head>
@@ -82,7 +82,7 @@
                                     제목
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" value="&nbsp;ㄴ>[Re]${rs.title }" name="title" readonly>
+                                    <input type="text" value="ㄴ>[답변]${rs.title }" name="title" readonly>
                                 </div>
                             </div>
                             <div class="line-wrap">

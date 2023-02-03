@@ -10,6 +10,8 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/temp.css"/>">
+    <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
+
 </head>
 <script>
 
@@ -26,7 +28,43 @@
             $email2.val($ele.val());
         }
     }
+
+    function emailChk(frm) {
+        var email1 = $("#email1").val();
+        var email2 = $("#email2").val();
+        var result = email1+email2;
+        $("#email").val(result);
+        return frm.submit;
+    }
+
+    $(function () {
+        $("#frmEdit").validate({
+            ignore: "",
+            rules: {
+                name: {required: true},
+                mbphno: {required: true, digits : true},
+                email: {required: true}
+            },
+            messages: {
+                name: {required: "성명을 입력하세요."},
+                mbphno: {required: "전화번호를 입력하세요.",  digits : "숫자만 입력하세요"},
+                email: {required: "이메일을 입력하세요."}
+            },
+            submitHandler: function (frm) {
+                frm.submit();
+            }
+        });
+    });
 </script>
+<style type="text/css">
+    input.error, textarea.error{
+        border:1px dashed red;
+    }
+    label.error{
+        display:block;
+        color:red;
+    }
+</style>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu_myPage"/>
@@ -49,13 +87,13 @@
             <div id="company-write" class="content">
                 <div class="write-container">
                     <div class="line-wrap">
-                        <div class="label">성명</div>
+                        <div class="label">성명<span class="required">*</span></div>
                         <div class="input-wrap">
                             <input type="text" name="name" id="name" value="${rs.name}"/>
                         </div>
                     </div>
                     <div class="line-wrap">
-                        <div class="label">전화번호</div>
+                        <div class="label">전화번호<span class="required">*</span></div>
                         <div class="input-wrap">
                             <input type="text" id="mbphno" name="mbphno"
                                    value="${rs.mbphno}"/></div>
@@ -74,7 +112,7 @@
                         </div>
                     </div>
                     <div class="line-wrap">
-                        <div class="label">이메일</div>
+                        <div class="label">이메일<span class="required">*</span></div>
                         <div class="input-wrap ">
                             <input type="text" class="multi" name="email1" id="email1" value="${rs.email1}"/>
                             <span>@</span>
@@ -85,6 +123,7 @@
                                 <option value="daum.net">daum.net</option>
                                 <option value="gmail.com">gmail.com</option>
                             </select>
+                            <input type="hidden" value="" id="email" name="email">
                         </div>
                     </div>
                     <div class="line-wrap">
@@ -101,7 +140,7 @@
                     </div>
                 </div>
                 <div class="write-bottom">
-                    <button type="submit" class="submit">저장</button>
+                    <button  class="submit"  onclick="emailChk(this.form)" id="apply">저장</button>
                     <a href="${pageContext.request.contextPath}/main/changePw.do" class="submit">비밀번호 변경</a>
                     <a href="${pageContext.request.contextPath}/main/management.do" class="go-lst">취소</a>
                 </div>
