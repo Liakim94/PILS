@@ -12,16 +12,13 @@
 </head>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu"/>
+        <page:applyDecorator name="menu_report"/>
         <div class="article">
             <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>
-                    소통마당
-                </li>
                 <li>
                     신고센터
                 </li>

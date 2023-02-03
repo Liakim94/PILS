@@ -38,18 +38,6 @@
                                 <li>작성일 : ${fn:substring(rs.rgst_dt,0,10)}</li>
                             </ul>
                         </div>
-                        <div class="file-wrap">
-                            <p class="label">첨부파일</p>
-                            <ul>
-                                <c:forEach var="attach" items="${attachList}">
-                                    <li>
-                                        <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
-                                            <c:out value="${attach.fileNm}"/>
-                                        </a>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </div>
                         <div class="gallery-container">
                             <div class="active-img-wrap">
                                 <!--    이미지 예시입니다.     -->

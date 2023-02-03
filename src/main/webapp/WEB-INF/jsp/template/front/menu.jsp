@@ -29,15 +29,6 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
             <li class="<c:if test="${URI.contains('/front/qna')}">on</c:if>">
                 <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
             </li>
-            <li class="<c:if test="${URI.contains('/front/consulting')}">on</c:if>">
-                <a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>
-            </li>
-            <li class="<c:if test="${URI.contains('/front/material')}">on</c:if>">
-                <a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>
-            </li>
-            <li class="<c:if test="${URI.contains('/front/report')}">on</c:if>">
-                <a href="<c:url value="/front/report/temp.do"/>">신고센터</a>
-            </li>
 <%--<c:if test="${sessionId eq 'admin' }">--%>
 
 <%--            <li class="<c:if test="${URI.contains('/front/consulting/apply')}">on</c:if>">--%>

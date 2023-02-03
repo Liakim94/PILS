@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
-    <title> 동행기업 신청하기</title>
+    <title> 관리자 |   동행기업 신청 현황</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
@@ -48,9 +48,10 @@
                             <table class="tbl-list01">
                                 <colgroup>
                                 <col width="10%">
-                                <col width="65%">
+                                <col width="53%">
                                 <col width="15%">
                                 <col width="10%">
+                                <col width="12%">
                             </colgroup>
                             <thead>
                             <tr>
@@ -58,6 +59,7 @@
                                 <th scope="col">신청기업</th>
                                 <th scope="col">작성자</th>
                                 <th scope="col">신청일</th>
+                                <th scope="col">마지막 수정일</th>
                             </tr>
                                 </thead>
                                 <tbody>
@@ -67,12 +69,13 @@
                                         <td class="al">
 
 
-                                            <a href="${pageContext.request.contextPath}/join/joinView.do?bizNo=${list.bizNo}">
+                                            <a href="${pageContext.request.contextPath}/admin/join/view.do?bizNo=${list.bizNo}">
                                                     ${list.cmpNm }
                                                 </a>
                                         </td>
                                         <td> ${list.name }</td>
                                         <td>${list.appdate }</td>
+                                        <td>${fn:substring(list.update,0,10)}</td>
                                     </tr>
                                 </c:forEach>
                                 <c:if test="${empty list }">

@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
-import kr.co.xicom.front.model.AttachVO;
-import kr.co.xicom.front.model.BoardVO;
-import kr.co.xicom.front.model.CmpMemberVo;
-import kr.co.xicom.front.model.TraceVO;
+import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.AdminService;
 import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.front.service.ConsultingService;
@@ -70,6 +67,33 @@ public class adminController {
         mav.addObject("list", rs.get("resultList"));
         mav.addObject("paginationInfo", paginationInfo);
         mav.addObject("vo", cmpVO);
+
+        return mav;
+    }
+    @GetMapping(value = "/join/view.do")
+    public ModelAndView joinView(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+                             @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
+                             @RequestParam(value = "bizNo") String bizNo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/join_view");
+
+        cmpVO.setBizNo(bizNo);
+        cmpVO.setMem_cd("M302");
+
+            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+            List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
+
+            CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
+            rs.setBizNo1(rs.getBizNo().substring(0, 3));
+            rs.setBizNo2(rs.getBizNo().substring(3, 5));
+            rs.setBizNo3(rs.getBizNo().substring(5, 10));
+            if (rs == null && sttus == null) {
+                System.out.println("비정상적인 접근입니다.");
+            }
+
+            mav.addObject("rs", rs);
+            mav.addObject("st", sttus);
+            mav.addObject("attachList", attachList);
 
         return mav;
     }
