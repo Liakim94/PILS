@@ -65,8 +65,9 @@
                                 </div>
                             </c:otherwise>
                         </c:choose>
-                        <a class="go-lst" href="<c:url value="/front/guide/trace.do"/>">목록</a>
-
+                        <div class="button-group">
+                            <a class="button" href="<c:url value="/front/guide/trace.do"/>">목록</a>
+                        </div>
                     </div>
                     <!-- 컨텐츠 end -->
                 </div>
