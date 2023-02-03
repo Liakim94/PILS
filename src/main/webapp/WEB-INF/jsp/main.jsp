@@ -67,11 +67,11 @@
                     </div>
                     <div class="slide-item">
                         <h3>납품대금연동제 알아보기</h3>
-                        <img class="thumbnail" src="<c:url value="/images/card/001.jpg"/>"  onclick="modalOpen('modal-box-3')"/>
+                        <img class="thumbnail" src="<c:url value="/images/card/001.jpg"/>"  onclick="openCardNews('modal-box-3')"/>
                     </div>
                     <div class="slide-item">
                         <h3>납품대금연동제 알아보기</h3>
-                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>"  onclick="modalOpen('modal-box-3')"/>
+                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>"  onclick="openCardNews('modal-box-3')"/>
                     </div>
                 </div>
             </div>
@@ -100,26 +100,26 @@
 </div>
 <div class="modal-background" onclick="modalClose()"></div>
 <div id="modal-box-1" class="main-modal-box">
-    <div class="modal-close inline-focus" onclick="modalClose()">
+    <div class="modal-close inline-focus" onclick="playerClose()">
         <span></span>
         <span></span>
     </div>
     <div class="contents-wrap">
         <h1 class="title">납품대금연동제 시책 설명회</h1>
-        <div class="video-wrap">
-            <iframe width="840" height="472" src="https://www.youtube.com/embed/srd5e4iU16k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="video-wrap" id="player1">
+            <%--<iframe width="840" height="472" src="https://www.youtube.com/embed/srd5e4iU16k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>--%>
         </div>
     </div>
 </div>
 <div id="modal-box-2" class="main-modal-box">
-    <div class="modal-close inline-focus" onclick="modalClose()">
+    <div class="modal-close inline-focus" onclick="playerClose()">
         <span></span>
         <span></span>
     </div>
     <div class="contents-wrap">
         <h1 class="title">가슴 벅찬 첫걸음, 납품대금 연동제 시범운영 본격 개시</h1>
-        <div class="video-wrap">
-            <iframe width="840" height="472" src="https://www.youtube.com/embed/deoTuJCLNFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="video-wrap" id="player2">
+            <%--<iframe width="840" height="472" src="https://www.youtube.com/embed/deoTuJCLNFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>--%>
         </div>
     </div>
 </div>
@@ -135,7 +135,7 @@
         <div class="card-news">
             <span class="modal-prev"><i class="fas fa-chevron-left"></i></span>
             <span class="modal-next"><i class="fas fa-chevron-right"></i></span>
-            <div class="modal-slide-container">
+            <div class="modal-slide-container" id="modal-slide-container1">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="<c:url value="/images/card/001.jpg"/>"/>
@@ -164,13 +164,35 @@
     </div>
 </div>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
+    <%-- WildRain 추가 2023-02-03 : Youtube 동영상 중지 처리 추가 --%>
+    var player1;
+    var player2;
+    function onYouTubeIframeAPIReady() {
+        player1 = new YT.Player('player1', {
+            width: '840',
+            height: '472',
+            videoId: 'srd5e4iU16k'
+        });
+        player2 = new YT.Player('player2', {
+            width: '840',
+            height: '472',
+            videoId: 'deoTuJCLNFY'
+        })
+    }
+    function playerClose() {
+        if (player1) {
+            player1.pauseVideo();
+        }
+        if (player2) {
+            player2.pauseVideo();
+        }
+        modalClose();
+    }
 
     function modalOpen(current){
-
         $(".main-modal-box").css("display","none");
-
-
         $(".main-modal-box").css({
             "top": (($(window).height()-$(".main-modal-box").outerHeight())/2+$(window).scrollTop())+"px",
             "left": (($(window).width()-$(".main-modal-box").outerWidth())/2+$(window).scrollLeft())+"px"
@@ -178,12 +200,36 @@
         $(".modal-background").css("display","block");
         //$(".main-modal-box").css("display","block");
         $('#' + current).css('display', 'block');
+
     }
     function modalClose(){
         $(".modal-background").css("display","none");
         $(".main-modal-box").css("display","none");
     }
 
+    <%-- WildRain 수정 20023-02-03 : 카드 뉴스 닫은 후 재 오픈시 작동 안되는 문제 해결을 위하여... --%>
+    let modalSlide1;
+    function openCardNews(current) {
+        if (modalSlide1) {
+            modalSlide1.destroy(true, true);
+        }
+        modalSlide1 = new Swiper(".modal-slide-container", {
+            slidesPerView: 1,
+            loop: true,
+            speed: 1000,
+            observer: true,
+            observeParents: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation : { // 네비게이션 설정
+                nextEl : '.modal-next', // 다음 버튼 클래스명
+                prevEl : '.modal-prev', // 이번 버튼 클래스명
+            },
+        });
+        modalOpen(current);
+    }
     $(function($){
 
         var mainSlide = new Swiper(".main-slide-container", {
@@ -200,21 +246,8 @@
                 prevEl : '.main-prev', // 이번 버튼 클래스명
             },
         });
-        var modalSlide = new Swiper(".modal-slide-container", {
-            slidesPerView: 1,
-            loop: true,
-            speed: 1000,
-            observer: true,
-            observeParents: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            navigation : { // 네비게이션 설정
-                nextEl : '.modal-next', // 다음 버튼 클래스명
-                prevEl : '.modal-prev', // 이번 버튼 클래스명
-            },
-        });
+
+
 
 
         $('.info-slide-wrap').slick({

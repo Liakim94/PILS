@@ -10,6 +10,25 @@
 <head>
     <title>중소벤처기업부 | 약정서 작성하기</title>
 </head>
+<style>
+    .button {
+
+
+    }
+    .button-border {
+        border: 1px solid #E60024;
+        border-radius: 50px;
+        padding: 7px 10px;
+        display: inline-block;
+        font-size: 16px;
+        box-sizing: border-box;
+        line-height: 32px;
+        text-align: center;
+        width: 100%;
+        color: #E60024!important;
+        background-color: white!important;
+    }
+</style>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu2"/>
@@ -41,13 +60,13 @@
                                      alt="약정서 체험하기">내 약정서 확인하기</a>
                     </c:if>
                     <c:if test="${rs eq '0'}">
-                            <a href="${pageContext.request.contextPath}/join/agree.do">
+                            <a href="${pageContext.request.contextPath}/join/agree.do" class="button button-border">
                             <img src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
                                 약정서 작성 체험</a>
                     </c:if>
                     </div>
                     <div class="item">
-                        <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp"><img
+                        <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp" class="button button-border"><img
                                 src="<c:url value="/images/common/download-icon.png"/>" alt="약정서 다운로드">
                             양식 다운로드</a>
                     </div>

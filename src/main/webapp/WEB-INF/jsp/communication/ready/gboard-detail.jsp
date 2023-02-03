@@ -47,6 +47,7 @@
                             <li>작성일 :  ${fn:substring(rs.regDe,0,10)}</li>
                         </ul>
                     </div>
+                    <%--
                     <div class="file-wrap">
                         <p class="label">첨부파일</p>
                         <ul>
@@ -59,6 +60,7 @@
                             </c:forEach>
                         </ul>
                     </div>
+                    --%>
                     <div class="card-news">
                         <span class="card-prev"><i class="fas fa-chevron-left"></i></span>
                         <span class="card-next"><i class="fas fa-chevron-right"></i></span>
