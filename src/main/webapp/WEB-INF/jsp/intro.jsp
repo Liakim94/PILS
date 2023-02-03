@@ -66,7 +66,7 @@
                         <strong>시작됩니다.</strong>
                     </p>
                 </div>
-                <a class="go-main" href="https://www.smes.go.kr/pis-dev/main/index.do">바로가기</a>
+                <a class="go-main" href="<c:url value="/main/index.do"/>">바로가기</a>
             </div>
         </div>
     </div>

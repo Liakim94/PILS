@@ -36,24 +36,20 @@
                 <div class="info-link">
                     <div class="item">
                     <c:if test="${rs eq id}">
-                            <p>｢납품대금 연동 특별약정서｣ 확인</p>
                             <a href="${pageContext.request.contextPath}/join/agreeView.do">
-                                <img src="${pageContext.request.contextPath}/images/common/document-icon.png"
+                                <img src="${pageContext.request.contextPath}/images/common/document-icon2.png"
                                      alt="약정서 체험하기">내 약정서 확인하기</a>
                     </c:if>
                     <c:if test="${rs eq '0'}">
-                            <p>｢납품대금 연동 특별약정서｣ 작성</p>
-                            <a href="${pageContext.request.contextPath}/join/agree.do"
-                               style="padding: 20px 10px;">
-                            <img src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
+                            <a href="${pageContext.request.contextPath}/join/agree.do">
+                            <img src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
                                 약정서 작성 체험</a>
                     </c:if>
                     </div>
                     <div class="item">
-                        <p>｢납품대금 연동 특별약정서｣ </p>
                         <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp"><img
                                 src="<c:url value="/images/common/download-icon.png"/>" alt="약정서 다운로드">
-                            납품대금 연동 특별약정서 양식 다운로드</a>
+                            양식 다운로드</a>
                     </div>
                 </div>
                 <h4 class="fw400 mb20">위탁기업과 수탁기업은 다음 사항에 대해 충분히 협의하여 약정서에 기재해야 합니다.</h4>

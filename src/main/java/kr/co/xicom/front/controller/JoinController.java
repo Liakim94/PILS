@@ -31,7 +31,12 @@ public class JoinController {
     private BoardService boardService;
 
 
-    //동행기업 신청 화면
+    //동행기업 신청 main
+    @GetMapping(value = "/joinMain.do")
+    public ModelAndView main( ) throws Exception {
+        ModelAndView mav = new ModelAndView("join/apply/join_main");
+        return mav;
+    }
     @GetMapping(value = "/joinApply.do")
     public ModelAndView apply(@ModelAttribute("frmApply") CmpMemberVo cmpVO,
                               HttpServletRequest request,

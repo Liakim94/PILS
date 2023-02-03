@@ -58,7 +58,7 @@
         <%-- 23.01.18 DO 메뉴 구성 변경 --%>
         <nav class="nav-wrap">
             <div class="wrapper">
-                <a class="font18" href="<c:url value="/front/guide/background.do"/>">납품대금 연동제란?</a>
+                <a class="font18 menu" href="<c:url value="/front/guide/background.do"/>">납품대금 연동제란?</a>
                 <div class="submenu">
                     <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
                     <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
@@ -69,68 +69,92 @@
                 </div>
             </div>
             <div class="wrapper">
-                <a class="font18" href="${pageContext.request.contextPath}/join/process/info.do">납품대금 연동제 동참하기</a>
+                <a class="font18 menu" href="${pageContext.request.contextPath}/join/process/info.do">납품대금 연동제 동참하기</a>
                 <div class="submenu">
                     <a href="<c:url value="/join/process/info.do"/>">납품대금 연동 절차 알아보기</a>
                     <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                     <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
-                    <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청하기</a>
+                    <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청하기</a>
                 </div>
             </div>
             <div class="wrapper">
-                <a class="font18" href="<c:url value="/front/board/11/list.do"/>">소통마당</a>
+                <a class="font18 menu" href="<c:url value="/front/board/11/list.do"/>">소통마당</a>
                 <div class="submenu">
                     <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
                     <a href="<c:url value="/front/board/ready/list.do"/>">카드뉴스</a>
                     <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
                     <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
-                    <a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>
-                    <a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>
-                    <a href="<c:url value="/front/report/temp.do"/>">신고센터</a>
                     <%--                    <c:if test="${sessionId eq 'admin' }">--%>
                     <%--                    <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
                     <%--                    <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a--%>
                     <%--                    </c:if>--%>
                 </div>
             </div>
+            <div class="wrapper">
+                <a class="font18 menu" href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>
+            </div>
+            <div class="wrapper">
+                <a class="font18 menu" href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>
+            </div>
+            <div class="wrapper">
+                <a class="font18 menu" href="<c:url value="/front/report/temp.do"/>">신고센터</a>
+            </div>
         </nav>
         <div class="side-wrap">
             <c:if test="${sessionId eq null }">
-                <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/login.do">로그인</a>
-            </c:if>
-            <c:if test="${sessionId ne null  && sessionId ne 'admin'}">
-                <div>
-                    <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/myPage.do"
-                    >마이페이지</a>
-                </div>
-                <div>
-                    <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/logout.do"
-                    >로그아웃</a>
-                </div>
-            </c:if>
-            <c:if test="${sessionId eq 'admin' }">
-                <div>
-                    <a class="login font14 point2-text" href="${pageContext.request.contextPath}/admin/join/list.do"
-                    >관리자 페이지</a>
-                </div>
-                <div>
-                    <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/logout.do"
-                    >로그아웃</a>
-                </div>
-            </c:if>
+            <a class="login font14 point2-text inline-focus" tabindex="0"
+               href="${pageContext.request.contextPath}/main/login.do">로그인</a>
 
-            <div class="mobile-menu" onclick="mobileMenuOpen(this)">
+            <div class="mobile-menu" tabindex="0" onclick="mobileMenuOpen(this)">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
+        </c:if>
+        <c:if test="${sessionId ne null  && sessionId ne 'admin'}">
+            <div>
+                <a class="login font14 point2-text inline-focus" tabindex="0"
+                   href="${pageContext.request.contextPath}/main/myPage.do"
+                >마이페이지</a>
+            </div>
+            <div>
+                <a class="login font14 point2-text inline-focus" tabindex="0"
+                   href="${pageContext.request.contextPath}/main/logout.do"
+                >로그아웃</a>
+            </div>
+                <div class="mobile-menu" tabindex="0" onclick="mobileMenuOpen(this)">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </c:if>
+        <c:if test="${sessionId eq 'admin' }">
+            <div>
+                <a class="login font14 point2-text inline-focus" tabindex="0"
+                   href="${pageContext.request.contextPath}/admin/join/list.do"
+                >관리자 페이지</a>
+            </div>
+            <div>
+                <a class="login font14 point2-text inline-focus" tabindex="0"
+                   href="${pageContext.request.contextPath}/main/logout.do"
+                >로그아웃</a>
+            </div>
+                <div class="mobile-menu" tabindex="0" onclick="mobileMenuOpen(this)">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </c:if>
     </div>
     <div class="mobile-gnb-container">
         <div class="mobile-gnb-wrap">
             <div class="head">
                 <c:if test="${sessionId eq null }">
-                    <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/login.do">로그인</a>
+                    <a class="login font14 point2-text inline-focus" tabindex="0"
+                       href="${pageContext.request.contextPath}/main/login.do">로그인</a>
                 </c:if>
                 <c:if test="${sessionId ne null && sessionId ne 'admin' }">
                     <div>
@@ -179,7 +203,7 @@
                         <a href="<c:url value="/join/process/info.do"/>">납품대금 연동 절차 알아보기</a>
                         <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                         <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
-                        <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청하기</a>
+                        <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청하기</a>
                     </div>
                 </div>
                 <div class="menu">
@@ -196,9 +220,19 @@
                         <a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>
                         <a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>
                         <a href="<c:url value="/front/report/temp.do"/>">신고센터</a>
-<%--                        <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
-<%--                        <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>--%>
+                        <%--                        <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
+                        <%--                        <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>--%>
                     </div>
+                </div>
+                <div class="menu">
+                    <p><a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a></p>
+
+                </div>
+                <div class="menu">
+                    <p><a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a></p>
+                </div>
+                <div class="menu">
+                    <p><a href="<c:url value="/front/report/temp.do"/>">신고센터</a></p>
                 </div>
             </nav>
         </div>
