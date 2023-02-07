@@ -8,7 +8,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <head>
-    <title>중소벤처기업부 | 실제 사례 보기</title>
+    <title>중소벤처기업부 | 동행기업 실적 제출하기</title>
 </head>
 <div id="content">
     <div id="board">
@@ -20,14 +20,11 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    소통마당
-                </li>
-                <li>
-                    실제 사례 보기
+                    동행기업 실적 제출하기
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">실제 사례 보기</h1>
+                <h1 class="fw700">동행기업 실적 제출하기</h1>
                 <div class="side-wrap">
                 </div>
             </div>

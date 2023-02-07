@@ -16,7 +16,7 @@
                 <a href="<c:url value="/front/guide/greeting.do"/>" class="">인사말</a>
             </li>
             <li class="<c:if test="${URI.contains('/front/guide/background')}">on</c:if>">
-                <a href="<c:url value="/front/guide/background.do"/>" class="">도입배경</a>
+                <a href="<c:url value="/front/guide/background.do"/>" class="">추진경과</a>
             </li>
             <li class="<c:if test="${URI.contains('/front/guide/concept')}">on</c:if>">
                 <a href="<c:url value="/front/guide/concept.do"/>" class="">개념</a>

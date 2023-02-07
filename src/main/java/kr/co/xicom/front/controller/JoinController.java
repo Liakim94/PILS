@@ -175,6 +175,7 @@ public class JoinController {
         mav.addObject("id",session.getId());
         return mav;
     }
+
     //약정서 작성하기
     @GetMapping(value = "/agree.do")
     public ModelAndView agree(HttpSession session,
@@ -216,9 +217,7 @@ public class JoinController {
     }
     @GetMapping(value = "/agreeView.do")
     public ModelAndView agreeView(@ModelAttribute("AgreementVO") AgreementVO vo,
-                            HttpSession session,
-                            HttpServletRequest request,
-                            HttpServletResponse response) throws Exception {
+                            HttpSession session) throws Exception {
 
         ModelAndView mav = new ModelAndView("join/agreement/agree_view");
 
@@ -234,6 +233,16 @@ public class JoinController {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+        return mav;
+    }
+    //약정서 미리보기
+    @GetMapping(value = "/agree/preview.do")
+    public ModelAndView agreePreView(@ModelAttribute("AgreementVO") AgreementVO vo,
+                                     HttpSession session) throws Exception {
+        ModelAndView mav = new ModelAndView("join/agreement/agree_preview");
+        AgreementVO rs = agreementService.agreeView(session.getId());
+        mav.addObject("rs", rs);
+
         return mav;
     }
     @GetMapping("/agreeDelete.do")
@@ -254,6 +263,12 @@ public class JoinController {
     @GetMapping(value = "/process/info.do")
     public ModelAndView process() throws Exception {
         ModelAndView mav = new ModelAndView("join/process");
+        return mav;
+    }
+    //동행기업 실적 제출하기
+    @GetMapping(value = "/joinSubmit.do")
+    public ModelAndView joinSubmit() throws Exception {
+        ModelAndView mav = new ModelAndView("join/join_submit");
         return mav;
     }
 }

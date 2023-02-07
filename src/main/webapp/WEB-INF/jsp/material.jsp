@@ -8,11 +8,11 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <head>
-    <title>중소벤처기업부 | 컨설팅 신청</title>
+    <title>중소벤처기업부 | 원재료 정보</title>
 </head>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu_consulting"/>
+        <page:applyDecorator name="menu_mat"/>
         <div class="article">
             <br>
             <ul class="loc-list">
@@ -20,18 +20,18 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    컨설팅 신청
+                    원재료 정보
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">컨설팅 신청</h1>
+                <h1 class="fw700">원재료 정보</h1>
                 <div class="side-wrap">
                 </div>
             </div>
             <div id="agreement" class="content">
                 <!-- 컨텐츠 start -->
                 <p class="info-text">
-                    준비 중입니다.
+                    <img src="<c:url value="/images/common/tempImage.png"/>">
                 </p>
                 <!-- 컨텐츠 end -->
             </div>

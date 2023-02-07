@@ -10,8 +10,14 @@ import java.util.List;
 public interface AdminMapper {
 
     List<CmpMemberVo>joinList(CmpMemberVo vo)  throws Exception;
+    CmpMemberVo memInfo(CmpMemberVo vo) throws Exception;
+
     int listCount(CmpMemberVo vo) throws Exception;
     List<CmpMemberVo> memManageList(CmpMemberVo vo)  throws Exception;
+    CmpMemberVo memEdit(CmpMemberVo vo) throws Exception;
+    int updateMem(CmpMemberVo vo) throws Exception;
+    int changePw(CmpMemberVo vo) throws Exception;
+
     int tracePost(TraceVO vo) throws Exception;
     List<TraceVO> traceList(TraceVO vo) throws Exception;
     TraceVO traceView(int seq) throws Exception;

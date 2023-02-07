@@ -53,11 +53,32 @@
             LIMIT #{pageUnit} OFFSET #{firstIndex}
         </if>
     </select>
+    <select id="memInfo" resultMap="CmpMemberVo">
+        select cmp_nm        as cmpNm
+             , bizno         as bizNo
+             , cmp_mbr_cd    as mem_cd
+             , ceo           as ceo
+             , fdate         as fdate
+             , addr          as address
+             , addr_dtl      as address_dtl
+             , telno         as telNo
+             , faxno         as faxno
+             , biz_ty        as bizType
+             , capl          as capital
+             , deal_ty       as deal_type
+             , yr_deal_scale as deal_scale
+             , prmy_mat      as material
+             , con_q         as conQ
+             , product       as product
+             , joincmp       as joinCmp
+             , main_product   as mainProduct
+        from tb_pils_cmpmbr
+        where cmp_mbr_cd = #{mem_cd}
+          and bizno = #{bizNo}
+    </select>
     <select id="listCount" resultType="int">
         SELECT COUNT(1)
-        FROM tb_pils_cmpmbr A
-                 join tb_pils_mbr B
-                      ON A.bizno = B.bizno
+        FROM tb_pils_cmpmbr
         WHERE 1 = 1
           and cmp_mbr_cd = #{mem_cd}
 
@@ -69,11 +90,43 @@
              , mbphno        as mbphno
              , psitn_dept_nm as deptNm
              , pstn as position
+             , c.cmp_nm as cmpNm
         from tb_pils_mbr A,
-            ( select cd, cd_nm from tb_cd_data where cd_grp = 'M500') B
+            ( select cd, cd_nm from tb_cd_data where cd_grp = 'M500') B,
+            (select bizno,cmp_nm,joincmp from tb_pils_cmpmbr tpc where cmp_mbr_cd='M302') C
         where A.manage_cd =B.cd
-        order by join_dt asc
+          and A.bizno =c.bizno
+        order by c.joincmp desc, cd='M501'desc
     </select>
+    <select id="memEdit" resultMap="CmpMemberVo">
+        select nm            as name
+             , mbphno        as mbphno
+             , psitn_dept_nm as deptNm
+             , pstn as position
+             , email_addr    as email
+             , telno         as memTelNo
+             , faxno         as memFaxNo
+             , user_id       as id
+        from tb_pils_mbr
+        where user_id =#{id}
+    </select>
+    <update id="updateMem">
+        update tb_pils_mbr
+        set nm            = #{name}
+          , mbphno        = #{mbphno}
+          , psitn_dept_nm = #{deptNm}
+          , pstn          = #{position}
+          , email_addr    = #{email}
+          , telno         = #{memTelNo}
+          , faxno         = #{memFaxNo}
+          , upd_dt        = current_date
+        where user_id = #{id}
+    </update>
+    <update id="changePw">
+        update tb_pils_mbr
+        set pswd = encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+        where user_id = #{id}
+    </update>
     <insert id="tracePost">
         insert into tb_pils_trace( title
                                  , cont

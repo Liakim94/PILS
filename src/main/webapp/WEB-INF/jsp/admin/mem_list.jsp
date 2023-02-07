@@ -41,16 +41,18 @@
                     <div class="write-container">
                         <table class="table-form">
                             <colgroup>
+                                <col width="15%"/>
+                                <col width="15%"/>
+                                <col width="15%"/>
+                                <col width="15%"/>
                                 <col width="20%"/>
                                 <col width="20%"/>
-                                <col width="20%"/>
-                                <col width="20%"/>
-                                <col width="20%"/>
-                                <col width="20%"/>
+                                <col width="15%"/>
                             </colgroup>
                             <thead>
                             <th class="txt_alcnt" scope="col">아이디</th>
                             <th class="txt_alcnt" scope="col">이름</th>
+                            <th class="txt_alcnt" scope="col">회사</th>
                             <th class="txt_alcnt" scope="col">직위</th>
                             <th class="txt_alcnt" scope="col">부서</th>
                             <th class="txt_alcnt" scope="col">전화번호</th>
@@ -59,8 +61,9 @@
                             <tbody>
                             <c:forEach var="rs" items="${rs }" varStatus="status">
                                 <tr>
-                                    <td>${rs.id }</td>
+                                    <td><a href="${pageContext.request.contextPath}/admin/memEdit.do?id=${rs.id}" style="color: rgb(0, 72, 255);">${rs.id }</a></td>
                                     <td>${rs.name}</td>
+                                    <td>${rs.cmpNm}</td>
                                     <td>${rs.position}</td>
                                     <td>${rs.deptNm}</td>
                                     <td>${rs.mbphno}</td>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
 * {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -5,11 +6,17 @@
 body {
     margin: 0;
     padding: 0;
+    background: #fff;
 }
 .page {
     width: 21cm;
     min-height: 29.7cm;
     padding: 1.5cm 1.5cm 2cm 1.5cm;
+    margin: 0 auto 40px;
+    background: #fff;
+}
+.page:nth-last-child(1){
+    margin: 0 auto 0px;
 }
 @page {
     size: A4;
@@ -24,17 +31,168 @@ body {
         min-height: initial;
         box-shadow: initial;
         background: initial;
-        page-break-after: always;
+        page-break-inside:avoid;
+        page-break-after:auto
     }
 }
-.head{
-
+.print-container{
+    padding: 55px 0;
+    background: #d7d7d7;
+    position: relative;
 }
-.head .first-head{
+.print-container .btn-fixed{
+    background: #FFFFFF;
+    border-bottom: 1px solid #DDDDDD;
+    width: 100%;
+    text-align: right;
+    padding: 9px 10px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.print-container .btn-fixed span{
+    color: #E60024;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    border: 1px solid #E60024;
+    border-radius: 5px;
+    padding: 7px 12px;
+    box-sizing: border-box;
+    display: inline-block;
+    cursor: pointer;
+}
+.print-container .btn-fixed img{
+    width: 20px;
+    margin-left: 5px;
+    position: relative;
+    vertical-align: sub;
+}
+.print-container .btn-fixed .print-btn .hover{
+    display: none;
+}
+.print-container .btn-fixed .print-btn:hover{
+    border: 1px solid #fff;
+    color:#fff;
+    background: #E60024;
+}
+.print-container .btn-fixed .print-btn:hover .hover{
+    display: inline-block;
+}
+.print-container .btn-fixed .print-btn:hover .unhover{
+    display: none;
+}
+.print-container .btn-fixed img{
+    width: 20px;
+    margin-left: 5px;
+    position: relative;
+    vertical-align: sub;
+}
+#printArea{
+    background: #d7d7d7;
+}
+.first-head{
     display: flex;
+    margin-bottom: 50px;
 }
-.head .first-head span:nth-child(1){
-    font-size: 25px;
+.first-head span:nth-child(1){
+    font-size: 23px;
+    padding: 5px 25px;
+    box-sizing: border-box;
+    background: #fec099;
+    border: 1px solid #000;
+    margin-right: 10px;
+    font-weight: 500;
+}
+.first-head span:nth-child(2){
+    font-size: 23px;
     padding: 5px 10px;
     box-sizing: border-box;
+    border: 1px solid #000;
+    width: calc(100% - 15px);
+    font-weight: 500;
+}
+h1{
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    word-break: unset !important;
+    font-size: 24px;
+}
+h3{
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 400;
+    text-align: left;
+    line-height: 30px;
+    letter-spacing: 1px;
+    word-break: normal !important;
+    font-size: 16px;
+}
+h3 b{
+    font-family: 'Nanum Myeongjo', serif;
+}
+.float-right{
+    float: right;
+    font-family: 'Nanum Myeongjo', serif;
+    padding-right: 150px;
+}
+h3 ol{
+    padding-left: 18px;
+}
+h3 ol li{
+    font-family: 'Nanum Myeongjo', serif;
+    list-style: auto;
+    padding-left: 3px;
+    line-height: 30px;
+}
+.witeDate{
+    text-align: center;
+    font-family: 'Nanum Myeongjo', serif;
+}
+.write-area{
+    display: flex;
+    margin: 60px auto 0;
+    width: 90%;
+}
+.write-area .item{
+    width: 50%;
+}
+.text-left{
+    text-align: left;
+}
+table{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table th{
+    font-family: 'Nanum Myeongjo', serif;
+    background: #e5e5ff;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 900;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+table td{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 16px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding:8px 5px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+table .tit{
+    font-weight: 900;
+}
+table .td2{
+    height: 60px;
+    color: #bebebe;
+    text-align: center;
 }

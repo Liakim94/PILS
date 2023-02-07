@@ -58,13 +58,13 @@
                                 대표자명
                             </div>
                             <div class="input-wrap" style="margin:5px">
-                                ${rs.ceo}"
+                                ${rs.ceo}
                             </div>
                         </div>
                         <div class="fx2">
                             <div class="label">설립일자</div>
                             <div class="input-wrap" style="margin:5px">
-                                ${rs.fdate}"
+                                ${rs.fdate}
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -336,7 +335,7 @@ public class BoardController extends Alerts {
      */
     @GetMapping(value = "/material/temp.do")
     public ModelAndView matTemp() throws Exception {
-        ModelAndView mav = new ModelAndView("communication/material");
+        ModelAndView mav = new ModelAndView("material");
         return mav;
     }
 
@@ -345,7 +344,7 @@ public class BoardController extends Alerts {
      */
     @GetMapping(value = "/report/temp.do")
     public ModelAndView reportTemp() throws Exception {
-        ModelAndView mav = new ModelAndView("communication/report");
+        ModelAndView mav = new ModelAndView("report");
         return mav;
     }
 }
