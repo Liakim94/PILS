@@ -31,7 +31,7 @@
             <div id="agreement" class="content">
                 <!-- 컨텐츠 start -->
                 <p class="info-text">
-                    준비 중입니다.
+                    <img src="<c:url value="/images/common/tempImage.png"/>">
                 </p>
                 <!-- 컨텐츠 end -->
             </div>

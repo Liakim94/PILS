@@ -5,7 +5,7 @@
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 
 <head>
-    <title>참여 기업 현황</title>
+    <title>참여기업 현황</title>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-core.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-map.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-cartesian.min.js"></script>
@@ -24,11 +24,11 @@
                     납품대금 연동제란?
                 </li>
                 <li>
-                    참여 기업 현황
+                    참여기업 현황
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">참여 기업 현황</h1>
+                <h1 class="fw700">참여기업 현황</h1>
             </div>
             <div id="main">
                 <!-- 컨텐츠 start -->

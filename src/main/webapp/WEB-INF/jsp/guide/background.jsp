@@ -14,11 +14,11 @@
                     납품대금 연동제란?
                 </li>
                 <li>
-                    도입배경
+                    추진경과
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700" style="margin-bottom:27px">도입배경</h1>
+                <h1 class="fw700" style="margin-bottom:27px">추진경과</h1>
             </div>
             <div id="about" class="content">
                 <!-- 컨텐츠 start -->

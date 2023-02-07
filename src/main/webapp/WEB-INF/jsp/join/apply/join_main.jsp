@@ -119,7 +119,7 @@
                         <h3>자세히 보기</h3>
                         <img class="icon" src="<c:url value="/images/common/arrow-top.png"/>" alt="상세보기">
                         <div class="detail-info">
-                            <h3 class="mb20">연동 약정 및 실적 화긴 세부절차</h3>
+                            <h3 class="mb20">연동 약정 및 실적 확인 세부절차</h3>
                             <p class="tip">* (협력재단 역할) 위탁기업-수탁기업 간 계약기간 중 원재료 가격 변동에 따라 납품대금을 연동하여 조정한 실적을 확인</p>
                             <div class="peristalsis-process">
                                 <div class="item">

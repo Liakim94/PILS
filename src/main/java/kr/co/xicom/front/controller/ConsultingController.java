@@ -1,6 +1,5 @@
 package kr.co.xicom.front.controller;
 
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
 import kr.co.xicom.front.service.ConsultingService;
@@ -15,9 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RequestMapping("/front")
 @Controller
@@ -28,7 +25,7 @@ public class ConsultingController extends Alerts {
     //컨설팅 신청 준비 중 화면
     @GetMapping(value = "/consulting/temp.do")
     public ModelAndView temp() throws Exception {
-        ModelAndView mav = new ModelAndView("communication/consulting/con_temp");
+        ModelAndView mav = new ModelAndView("con_temp");
         return mav;
     }
     //컨설팅 신청 화면

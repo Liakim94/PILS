@@ -61,7 +61,7 @@
                 <a class="font18 menu" href="<c:url value="/front/guide/background.do"/>">납품대금 연동제란?</a>
                 <div class="submenu">
                     <a href="<c:url value="/front/guide/greeting.do"/>" class="">인사말</a>
-                    <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
+                    <a href="<c:url value="/front/guide/background.do"/>">추진경과</a>
                     <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
                     <a href="<c:url value="/front/guide/trace.do"/>">걸어온 발자취</a>
                     <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
@@ -76,6 +76,7 @@
                     <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                     <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
                     <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청하기</a>
+                    <a href="<c:url value="/join/joinSubmit.do"/>">동행기업 실적 제출하기</a>
                 </div>
             </div>
             <div class="wrapper">
@@ -187,7 +188,7 @@
                     </div>
                     <div class="submenu">
                         <a href="<c:url value="/front/guide/greeting.do"/>" class="">인사말</a>
-                        <a href="<c:url value="/front/guide/background.do"/>">도입배경</a>
+                        <a href="<c:url value="/front/guide/background.do"/>">추진경과</a>
                         <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
                         <a href="<c:url value="/front/guide/trace.do"/>">걸어온 발자취</a>
                         <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
@@ -206,6 +207,7 @@
                         <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                         <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
                         <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청하기</a>
+                        <a href="<c:url value="/join/joinSubmit.do"/>">동행기업 실적 제출하기</a>
                     </div>
                 </div>
                 <div class="menu">
