@@ -17,7 +17,7 @@
                     <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    납품대금 연동제란?
+                    관리자페이지
                 </li>
                 <li>
                     걸어온 발자취 관리
@@ -56,7 +56,7 @@
                     <!-- 컨텐츠 end -->
                     <div class="write-bottom">
                         <a href="<c:url value="/admin/trace/edit.do?seq=${rs.seq}"/>" class="submit">수정</a>
-                        <a href="<c:url value="/admin/trace/delete.do?seq=${rs.seq}"/>">삭제</a>
+                        <a href="<c:url value="/admin/trace/delete.do?seq=${rs.seq}"/>" class="back">삭제</a>
                     </div>
                 </div>
             </div>

@@ -371,7 +371,7 @@
                     </div>
                 </div>
                 <div class="line-wrap">
-                    <div class="label" style="width: 155px">
+                    <div class="label">
                         주요 제품<span class="required">*</span>
                     </div>
                     <div class="input-wrap">
@@ -380,7 +380,7 @@
                 </div>
                 <div class="line-wrap">
                     <div class="fx2">
-                        <div class="label" style="width: 164px">주요 적용 제품
+                        <div class="label" >주요 적용 제품
                             <span class="required">*</span>
                         </div>
                         <div class="input-wrap">
@@ -396,7 +396,7 @@
                     </div>
                 </div>
                 <div class="line-wrap">
-                    <div class="label" style="width: 155px">주요 원재료<span class="required">*</span>
+                    <div class="label">주요 원재료<span class="required">*</span>
                     </div>
                     <div class="input-wrap">
                         <input type="text" name="material" id="material" required/>
@@ -517,7 +517,7 @@
             </form:form>
             <div class="write-bottom">
                 <button id="apply" class="submit" style="width:130px">등록</button>
-                <a href="${pageContext.request.contextPath}/join/joinMain.do">취소</a>
+                <a href="${pageContext.request.contextPath}/join/joinMain.do" class="back">취소</a>
             </div>
         </div>
     </div>

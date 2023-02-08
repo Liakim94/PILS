@@ -15,7 +15,7 @@
 
 </head>
 
-<div id="content">
+<div id="content" class="pd-0" >
     <div id="main">
         <section id="main-banner">
             <div class="main-slide-container">

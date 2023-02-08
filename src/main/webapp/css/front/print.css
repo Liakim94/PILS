@@ -9,7 +9,7 @@ body {
     background: #fff;
 }
 .page {
-    width: 21cm;
+    width: 23cm;
     min-height: 29.7cm;
     padding: 1.5cm 1.5cm 2cm 1.5cm;
     margin: 0 auto 40px;
@@ -130,6 +130,7 @@ h3{
     letter-spacing: 1px;
     word-break: normal !important;
     font-size: 16px;
+    margin:0;padding:0;border:0;vertical-align:baseline;
 }
 h3 b{
     font-family: 'Nanum Myeongjo', serif;
@@ -145,8 +146,8 @@ h3 ol{
 h3 ol li{
     font-family: 'Nanum Myeongjo', serif;
     list-style: auto;
-    padding-left: 3px;
-    line-height: 30px;
+    padding-left: 0px;
+    line-height: 28px;
 }
 .witeDate{
     text-align: center;

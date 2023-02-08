@@ -132,7 +132,7 @@
                 <div class="write-bottom">
                     <a class="submit" href="<c:url value="/join/agreeDelete.do?id=${rs.id}"/>">새로 작성하기</a>
                     <a class="print" onclick="previewOpen()" style="margin-right:20px">약정서 미리보기</a>
-                    <a href="<c:url value="/join/agreeMain.do"/>">목록</a>
+                    <a href="<c:url value="/join/agreeMain.do"/>" class="back">목록</a>
                 </div>
                 <!-- 컨텐츠 end -->
             </div>
