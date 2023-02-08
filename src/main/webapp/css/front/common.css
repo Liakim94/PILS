@@ -2867,6 +2867,9 @@
     margin-top: 40px;
     padding-bottom: 30px;
 }
+#company-write .write-container .line-wrap .non-flex{
+    display: unset;
+}
 #company-write .sub{
     position: relative;
     color: #E60024;
