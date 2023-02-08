@@ -177,13 +177,12 @@
                         </div>
                     </div>
                 </div>
-
+                    <div class="write-bottom">
+                        <a id="edit" href='${pageContext.request.contextPath}/admin/join/edit.do?bizNo=${rs.bizNo}' class="submit">수정하기</a>
+                        <a class="back" href="${pageContext.request.contextPath}/admin/join/list.do">목록</a>
+                    </div>
 
                 </div>
-                    <div class="write-bottom">
-                        <a id="edit" href='${pageContext.request.contextPath}/admin/join/edit.do?bizNo=${rs.bizNo}'+ class="submit">수정하기</a>
-                        <a class="go-lst" href="${pageContext.request.contextPath}/admin/join/list.do">목록</a>
-                    </div>
             </div>
         </div>
         <!-- 컨텐츠 end -->

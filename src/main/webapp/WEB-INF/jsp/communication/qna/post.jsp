@@ -122,7 +122,7 @@
                         </div>
                         <div class="write-bottom">
                             <button style="width:130px" class="submit">저장</button>
-                            <a href="<c:url value="/front/qna/list.do"/>">취소</a>
+                            <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
                         </div>
                     </form>
                     <!-- 컨텐츠 end -->

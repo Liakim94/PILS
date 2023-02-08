@@ -83,7 +83,7 @@
                                 </a>
                                 <a onclick="javascript:deleteBbs();return false;" class="submit">삭제</a>
                             </c:if>
-                            <a href="<c:url value="/front/board/${rs.bbsId}/list.do"/>" title="목록">목록</a>
+                            <a href="<c:url value="/front/board/${rs.bbsId}/list.do"/>" class="back">목록</a>
                         </div>
                     </div>
                 </div>

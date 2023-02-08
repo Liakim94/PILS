@@ -402,7 +402,7 @@
                     </div>
                     <div class="write-bottom">
                         <input type="submit" class="submit" value="등록">
-                        <a href="<c:url value="/front/consulting/view.do?bizNo=${rs.bizNo}"/>">취소</a>
+                        <a href="<c:url value="/front/consulting/view.do?bizNo=${rs.bizNo}"/>" class="back">취소</a>
                     </div>
                     </form:form>
                 </div>

@@ -44,7 +44,7 @@
                                 기업명
                             </div>
                             <div class="input-wrap">
-                                <input value="${rs.cmpNm}" readonly>
+                                ${rs.cmpNm}
                             </div>
                         </div>
                         <div class="fx2">
@@ -52,7 +52,7 @@
                                 사업자 번호
                             </div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.bizNo1}-${rs.bizNo2}-${rs.bizNo3}">
+                               ${rs.bizNo1}-${rs.bizNo2}-${rs.bizNo3}
                             </div>
                         </div>
                     </div>
@@ -62,33 +62,33 @@
                                 대표자명
                             </div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.ceo}">
+                                ${rs.ceo}
                             </div>
                         </div>
                         <div class="fx2">
                             <div class="label">설립일자</div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.fdate}">
+                              ${rs.fdate}
                             </div>
                         </div>
                     </div>
                     <div class="line-wrap">
                         <div class="label">본사 주소</div>
                         <div class="input-wrap">
-                            <input readonly value="${rs.address} &nbsp; ${rs.address_dtl}">
+                           ${rs.address} &nbsp; ${rs.address_dtl}
                         </div>
                     </div>
                     <div class="line-wrap">
                         <div class="fx2">
                             <div class="label">전화번호</div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.telNo}">
+                                ${rs.telNo}
                             </div>
                         </div>
                         <div class="fx2">
                             <div class="label">팩스</div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.faxNo}">
+                                ${rs.faxNo}
                             </div>
                         </div>
                     </div>
@@ -96,13 +96,13 @@
                         <div class="fx2">
                             <div class="label">업종</div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.bizType}">
+                                ${rs.bizType}
                             </div>
                         </div>
                         <div class="fx2">
                             <div class="label">자본금</div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.capital}">
+                               ${rs.capital}
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                             <div class="tri">
                         </c:if>
                         <div class="border">
-                        <input readonly value="${st.index_data}">
+                       ${st.index_data}
                         <c:if test="${status.index mod 3 eq 2}">
                             </div>
                             </div>
@@ -140,7 +140,7 @@
                     <div class="line-wrap">
                         <div class="label label-long">주요 제품</div>
                         <div class="input-wrap">
-                            <input readonly value="${rs.product}">
+                           ${rs.product}
                         </div>
                     </div>
                     <div class="line-wrap">
@@ -148,20 +148,20 @@
                             <div class="label label-long">주요 적용 제품
                             </div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.mainProduct}">
+                                ${rs.mainProduct}
                             </div>
                         </div>
                         <div class="fx2">
                             <div class="label">참여기업 수</div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.joinCmp}">
+                                ${rs.joinCmp}
                             </div>
                         </div>
                     </div>
                     <div class="line-wrap">
                         <div class="label label-long">주요 원재료</div>
                         <div class="input-wrap">
-                            <input readonly value="${rs.material}">
+                            ${rs.material}
                         </div>
                     </div>
                 </div>
@@ -170,14 +170,14 @@
                     <div class="line-wrap">
                         <div class="label">성명</div>
                         <div class="input-wrap">
-                            <input readonly value="${rs.name}">
+                            ${rs.name}
                         </div>
                     </div>
                     <div class="line-wrap">
                         <div class="fx2">
                             <div class="label">소속 부서</div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.deptNm}">
+                               ${rs.deptNm}
                             </div>
                         </div>
                         <div class="fx2">
@@ -185,32 +185,32 @@
                                 직위
                             </div>
                             <div class="input-wrap">
-                                <input readonly value="${rs.position}">
+                                ${rs.position}
                             </div>
                         </div>
                     </div>
                     <div class="line-wrap">
                         <div class="label">전화번호</div>
                         <div class="input-wrap">
-                            <input readonly value="${rs.mbphno}">
+                            ${rs.mbphno}
                         </div>
                     </div>
                     <div class="line-wrap">
                         <div class="label">이메일</div>
                         <div class="input-wrap ">
-                            <input readonly value="${rs.email}">
+                            ${rs.email}
                         </div>
                     </div>
                     <div class="line-wrap">
                         <div class="label">사무실 전화</div>
-                        <div class="input-wrap">
-                            <input readonly value="${rs.memTelNo}">
+                        <div class="input-wrap" >
+                            ${rs.memTelNo}
                         </div>
                     </div>
                     <div class="line-wrap">
                         <div class="label">팩스</div>
-                        <div class="input-wrap">
-                            <input readonly value="${rs.memFaxNo}">
+                        <div class="input-wrap" >
+                            ${rs.memFaxNo}
                         </div>
                     </div>
                     <div class="line-wrap">

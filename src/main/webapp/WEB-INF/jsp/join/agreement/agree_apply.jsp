@@ -750,7 +750,7 @@
                     </div>
                     <div class="write-bottom">
                         <input type="submit" class="submit" value="등록"/>
-                        <a href="${pageContext.request.contextPath}/join/agreeMain.do">취소</a>
+                        <a href="${pageContext.request.contextPath}/join/agreeMain.do" class="back">취소</a>
                     </div>
                 </form>
                 <!-- 컨텐츠 end -->

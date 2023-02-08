@@ -58,7 +58,7 @@
         <%-- 23.01.18 DO 메뉴 구성 변경 --%>
         <nav class="nav-wrap">
             <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/guide/background.do"/>">납품대금 연동제란?</a>
+                <a class="font18 menu" href="<c:url value="/front/guide/greeting.do"/>">납품대금 연동제란?</a>
                 <div class="submenu">
                     <a href="<c:url value="/front/guide/greeting.do"/>" class="">인사말</a>
                     <a href="<c:url value="/front/guide/background.do"/>">추진경과</a>

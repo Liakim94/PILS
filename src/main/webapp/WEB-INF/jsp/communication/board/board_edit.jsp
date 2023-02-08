@@ -180,7 +180,7 @@
                     <div class="write-bottom">
                         <button id="submit" class="submit"  style="width:130px">저장</button>
                         <%--<a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=${bbsId}" class="btn blue" title="취소">취소</a>--%>
-                        <a href="<c:url value="/front/board/${frmPost.bbsId}/view.do?boardSeq=${frmPost.boardSeq}"/>">
+                        <a class="back" href="<c:url value="/front/board/${frmPost.bbsId}/view.do?boardSeq=${frmPost.boardSeq}"/>">
                             취소
                         </a>
                     </div>

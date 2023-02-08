@@ -139,7 +139,7 @@
 
                     <div class="write-bottom">
                         <input id="submit" class="submit" value="게시" style="width: 135px"/>
-                        <a href="<c:url value="/front/board/${bbsId}/list.do"/>" title="취소">취소</a>
+                        <a href="<c:url value="/front/board/${bbsId}/list.do"/>" class="back">취소</a>
                     </div>
                 </div>
             </div>

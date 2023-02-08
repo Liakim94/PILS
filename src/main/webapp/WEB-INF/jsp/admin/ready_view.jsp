@@ -77,7 +77,7 @@
                                 <a href="<c:url value="/admin/ready/edit.do?boardSeq=${rs.boardSeq}"/>"
                                    class="submit" title="수정">수정
                                 </a>
-                                <a onclick="javascript:deleteBbs();return false;">삭제</a>
+                                <a onclick="javascript:deleteBbs();return false;" class="back">삭제</a>
                             </div>
                         </form>
                     </div>

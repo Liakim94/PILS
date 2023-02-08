@@ -57,7 +57,7 @@
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>마이페이지</li>
+                <li>관리자페이지</li>
                 <li>담당자 관리</li>
             </ul>
             <div class="article-header">
@@ -86,7 +86,7 @@
                 </div>
                 <div class="write-bottom">
                     <button type="submit" class="submit">저장</button>
-                    <a href="${pageContext.request.contextPath}/admin/management/list.do" class="go-lst">취소</a>
+                    <a href="${pageContext.request.contextPath}/admin/management/list.do" class="back">취소</a>
                 </div>
             </div>
         </div>

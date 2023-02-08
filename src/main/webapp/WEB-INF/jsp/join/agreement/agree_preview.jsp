@@ -9,7 +9,9 @@
 <head>
     <title>중소벤처기업부 | 약정서 미리보기</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/print.css"/>" />
-
+<%--    <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/reset.css"/>" />--%>
+<%--    <script type="text/javascript" src="<c:url value="/js/front/jquery-1.12.4.min.js"/>"/>--%>
+<%--    <script type="text/javascript" src="<c:url value="/js/front/common.js"/>"/>--%>
 </head>
 
 <div class="print-container">
@@ -59,7 +61,7 @@
         </div>
         <div class="page">
             <h3>
-                <ol start="7">
+                <ol start="7" style="margin:0">
                     <li>
                         ‘조정대금 반영시점‘이란 물품등에 대하여 조정된 납품대금을 적용하는 기준이 되는 날을 말한다.
                     </li>
@@ -305,9 +307,7 @@
                 </tbody>
             </table>
             <h3>
-                <br>
                 * 납품단가가 아닌 납품대금을 기준으로 조정한 경우에는 조정된 납품대금을 기재
-                <br>
                 <br>
                 ◇ 구매·계약시스템 등 상기 내용을 모두 포함하는 전자문서로 양 당사자가 내용을 확인할 수 있는 경우에는 당해 전자문서로 납품대금 변동표를 갈음할 수 있음
             </h3>
@@ -333,6 +333,4 @@
         function afterPrint(){
             document.body.innerHTML = initBody;
         }
-
-
     </script>

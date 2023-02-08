@@ -325,7 +325,7 @@
                 </form:form>
                 <div class="write-bottom">
                     <button id="submit" class="submit" style="width:135px" >저장</button>
-                    <a href="${pageContext.request.contextPath}/admin/join/view.do">취소</a>
+                    <a href="${pageContext.request.contextPath}/admin/join/view.do?bizNo=${frmEdit.bizNo}" class="back">취소</a>
                 </div>
             </div>
         </div>

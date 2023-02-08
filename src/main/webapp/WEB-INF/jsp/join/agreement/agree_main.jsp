@@ -57,7 +57,7 @@
                     <c:if test="${rs eq id}">
                             <a href="${pageContext.request.contextPath}/join/agreeView.do">
                                 <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
-                                <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">내 약정서 확인하기</a>
+                                <img class="unhover"  src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">내 약정서 확인하기</a>
                     </c:if>
                     <c:if test="${rs eq '0'}">
                             <a href="${pageContext.request.contextPath}/join/agree.do" >

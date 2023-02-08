@@ -140,7 +140,7 @@
                     </form:form>
                     <div class="write-bottom">
                         <button id="submit" class="submit" style="width:130px">저장</button>
-                        <a href="<c:url value="/admin/ready/${rs.bbsId}/view.do?boardSeq=${rs.boardSeq}"/>">
+                        <a href="<c:url value="/admin/ready/view.do?boardSeq=${edit.boardSeq}"/>" class="back">
                             취소
                         </a>
                     </div>

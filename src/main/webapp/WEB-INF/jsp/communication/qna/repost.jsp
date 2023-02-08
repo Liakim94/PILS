@@ -104,7 +104,7 @@
                         </div>
                         <div class="write-bottom">
                             <button type="button" class="submit" onclick="fn_submit()" style="width:135px">저장</button>
-                            <a href="<c:url value="/front/qna/list.do"/>">취소</a>
+                            <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
                         </div>
                     </div>
                 </form>

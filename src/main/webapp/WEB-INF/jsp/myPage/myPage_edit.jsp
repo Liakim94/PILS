@@ -324,7 +324,7 @@
                 </form:form>
                 <div class="write-bottom">
                     <button id="submit" class="submit" style="width:135px" >저장</button>
-                    <a href="${pageContext.request.contextPath}/main/myPage.do">취소</a>
+                    <a href="${pageContext.request.contextPath}/main/myPage.do" class="back">취소</a>
                 </div>
             </div>
         </div>
