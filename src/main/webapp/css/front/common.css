@@ -935,6 +935,36 @@
     padding-bottom: 100px;
     min-height: calc(100vh - 380px);
 }
+#content .write-bottom {
+    text-align: right;
+    margin-top: 40px;
+    padding-bottom: 30px;
+}
+#content .write-bottom .back{
+    border: 1px solid #E60024 !important;
+    border-radius: 50px;
+    padding: 12px 50px;
+    box-sizing: border-box;
+    color: #E60024;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    margin-right: 20px;
+    background: #fff;
+}
+#content .write-bottom .submit{
+    background: #E60024;
+    border-radius: 50px;
+    padding: 12px 50px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    margin-right: 20px;
+}
 .bg-top{
     position: relative;
     padding-top: 50px;

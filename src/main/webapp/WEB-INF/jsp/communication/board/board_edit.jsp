@@ -142,12 +142,13 @@
                         <div class="write-wrap">
                             <div class="line-wrap">
                                 <div class="label">
-                                    공지 제목
+                                    제목
                                 </div>
                                 <div class="input-wrap">
                                     <form:input path="title" maxlength="85"/>
                                 </div>
                             </div>
+                            <c:if test="${bbsId eq 11}">
                             <div class="line-wrap">
                                 <div class="label">
                                     상단 고정 여부
@@ -156,6 +157,7 @@
                                     고정 <input type="checkbox" name="notiAt" id="notiAt" value="Y" style="width:50px"/>
                                 </div>
                             </div>
+                            </c:if>
                             <c:if test="${bbsId eq 7}">
                                 <div class="line-wrap">
                                     <div class="label">
@@ -197,13 +199,13 @@
                             <div class="file-uploader"></div>
                         </div>
                     </div>
-                    <div class="write-bottom">
-                        <button id="submit" class="submit"  style="width:130px">저장</button>
-                        <%--<a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=${bbsId}" class="btn blue" title="취소">취소</a>--%>
-                        <a class="back" href="<c:url value="/front/board/${frmPost.bbsId}/view.do?boardSeq=${frmPost.boardSeq}"/>">
-                            취소
-                        </a>
-                    </div>
+                </div>
+                <div class="write-bottom">
+                    <button id="submit" class="submit"  style="width:130px">저장</button>
+                    <%--<a href="${pageContext.request.contextPath}/cmm/boardList.do?bbsId=${bbsId}" class="btn blue" title="취소">취소</a>--%>
+                    <a class="back" href="<c:url value="/front/board/${frmPost.bbsId}/view.do?boardSeq=${frmPost.boardSeq}"/>">
+                        취소
+                    </a>
                 </div>
             </div><!-- /. box -->
         </div>
