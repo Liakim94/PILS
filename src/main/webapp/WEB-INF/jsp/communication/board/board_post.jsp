@@ -103,12 +103,13 @@
                         <div class="write-wrap">
                             <div class="line-wrap">
                                 <div class="label">
-                                    공지 제목
+                                    제목
                                 </div>
                                 <div class="input-wrap">
                                     <form:input type="text" path="title" placeholder="제목을 입력하세요" maxlength="85"/>
                                 </div>
                             </div>
+                            <c:if test="${bbsId eq 11}">
                             <div class="line-wrap">
                                 <div class="label">
                                     상단 고정 여부
@@ -117,6 +118,7 @@
                                     고정 <input type="checkbox" name="notiAt" id="notiAt" value="Y" style="width:50px"/>
                                 </div>
                             </div>
+                            </c:if>
                             <c:if test="${bbsId eq 7}">
                                 <div class="line-wrap">
                                     <div class="label">
@@ -155,10 +157,10 @@
                         </div>
                     </div>
 
-                    <div class="write-bottom">
-                        <input id="submit" class="submit" value="게시" style="width: 135px"/>
-                        <a href="<c:url value="/front/board/${bbsId}/list.do"/>" class="back">취소</a>
-                    </div>
+                </div>
+                <div class="write-bottom">
+                    <input id="submit" class="submit" value="게시" style="width: 135px"/>
+                    <a href="<c:url value="/front/board/${bbsId}/list.do"/>" class="back">취소</a>
                 </div>
             </div>
         </div>
