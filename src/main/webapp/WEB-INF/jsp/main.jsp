@@ -66,17 +66,17 @@
                         <img class="thumbnail" onclick="modalOpen('modal-box-2')" src="<c:url value="/images/common/youtube-temp2.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
                     <div class="slide-item">
-                        <h3>납품대금연동제 알아보기</h3>
+                        <h3>납품대금 연동제 알아보기</h3>
                         <img class="thumbnail" src="<c:url value="/images/card/001.jpg"/>"  onclick="openCardNews('modal-box-3')"/>
                     </div>
                     <div class="slide-item">
-                        <h3>납품대금연동제 알아보기</h3>
-                        <img class="thumbnail" src="<c:url value="/images/common/video-temp.png"/>"  onclick="openCardNews('modal-box-3')"/>
+                        <h3>납품대금 연동제 '동행기업' 모집공고</h3>
+                        <img class="thumbnail" src="<c:url value="/images/card02/001.jpg"/>"  onclick="openCardNews('modal-box-4')"/>
                     </div>
                 </div>
             </div>
         </section>
-        <section>
+        <section class="gray-bg py-60">
             <h1 class="title"><strong>참여기업</strong> 현황</h1>
             <h3 class="fw400">현재 ${cnt}개 위탁기업, ${joinCmpCnt}개 수탁기업이 납품대금 연동제에 동참하고 있습니다.</h3>
             <div class="company-list-container">
@@ -135,7 +135,7 @@
         <div class="card-news">
             <span class="modal-prev"><i class="fas fa-chevron-left"></i></span>
             <span class="modal-next"><i class="fas fa-chevron-right"></i></span>
-            <div class="modal-slide-container" id="modal-slide-container1">
+            <div class="modal-slide-container" id="modal-slide-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="<c:url value="/images/card/001.jpg"/>"/>
@@ -163,7 +163,49 @@
         </div>
     </div>
 </div>
-
+<div id="modal-box-4" class="main-modal-box">
+    <div class="modal-close inline-focus" onclick="modalClose()">
+        <span></span>
+        <span></span>
+    </div>
+    <div class="contents-wrap">
+        <!--   CardNews Slide     -->
+        <h1 class="title">납품대금연동제 알아보기</h1>
+        <!--   카드뉴시 일시     -->
+        <div class="card-news">
+            <span class="modal-prev"><i class="fas fa-chevron-left"></i></span>
+            <span class="modal-next"><i class="fas fa-chevron-right"></i></span>
+            <div class="modal-slide-container2" id="modal-slide-container2">
+                <div class="swiper-wrapper" style="width: 100%">
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card02/001.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card02/002.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card02/003.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card02/004.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card02/005.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card02/006.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card02/007.jpg"/>"/>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="<c:url value="/images/card02/008.jpg"/>"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
     <%-- WildRain 추가 2023-02-03 : Youtube 동영상 중지 처리 추가 --%>
@@ -209,6 +251,7 @@
 
     <%-- WildRain 수정 20023-02-03 : 카드 뉴스 닫은 후 재 오픈시 작동 안되는 문제 해결을 위하여... --%>
     let modalSlide1;
+    let modalSlide2;
     function openCardNews(current) {
         if (modalSlide1) {
             modalSlide1.destroy(true, true);
@@ -227,7 +270,22 @@
                 nextEl : '.modal-next', // 다음 버튼 클래스명
                 prevEl : '.modal-prev', // 이번 버튼 클래스명
             },
-        });
+        }),
+            modalSlide2 = new Swiper(".modal-slide-container2", {
+                slidesPerView: 1,
+                loop: true,
+                speed: 1000,
+                observer: true,
+                observeParents: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                navigation : { // 네비게이션 설정
+                    nextEl : '.modal-next', // 다음 버튼 클래스명
+                    prevEl : '.modal-prev', // 이번 버튼 클래스명
+                },
+            });
         modalOpen(current);
     }
     $(function($){

@@ -45,6 +45,7 @@
              ,B.pswd as passwd
              , a.logo_img_path as logoImgPath
              , a.updt as update
+             , a.joincmp as joinCmp
         from tb_pils_cmpmbr A join tb_pils_mbr B
                                    on A.bizno =B.bizno
         where cmp_mbr_cd= #{mem_cd} and b.manage_cd ='M501'
