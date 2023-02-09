@@ -137,7 +137,7 @@
                         </form:form>
                         <div class="write-bottom">
                             <button class="submit" id="submit" style="width: 135px">게시</button>
-                            <a href="<c:url value="/admin/trace/list.do"/>" title="취소">취소</a>
+                            <a href="<c:url value="/admin/trace/list.do"/>" class="back">취소</a>
                         </div>
 
                     </div>

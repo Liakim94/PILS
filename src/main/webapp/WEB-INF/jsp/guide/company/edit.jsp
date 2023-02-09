@@ -688,9 +688,9 @@
                 </div>
             </section>
         </form:form>
-        <div class="button-group">
-            <a href="<c:url value="/front/guide/company/details.do?bizNo=${company.bizNo}"/>" class="button">취소</a>
-            <button id="submit-button" class="button button-color-red">저장</button>
+        <div class="write-bottom">
+            <a href="<c:url value="/front/guide/company/details.do?bizNo=${company.bizNo}"/>" class="back">취소</a>
+            <button id="submit-button" class="submit">저장</button>
         </div>
 <%--        </c:forEach>--%>
     </div>

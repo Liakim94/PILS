@@ -218,7 +218,7 @@
                             <div class="label">
                                 기업명<span class="required">*</span>
                             </div>
-                            <div class="input-wrap">
+                            <div class="input-wrap non-flex">
                                 <input type="text" id="cmpNm" name="cmpNm" placeholder="기업명을 입력해주세요." required/>
                             </div>
                         </div>
@@ -226,7 +226,7 @@
                             <div class="label">
                                 사업자 번호
                             </div>
-                            <div class="input-wrap">
+                            <div class="input-wrap non-flex">
                                 <td>
                                     <input class="multi" type="text" id="bizNo1" name="bizNo1" maxlength="3"/>
                                     <span>-</span>
@@ -243,7 +243,7 @@
                             <div class="label">
                                 대표자명<span class="required">*</span>
                             </div>
-                            <div class="input-wrap">
+                            <div class="input-wrap non-flex">
                                 <input type="text" id="ceo" name="ceo" laceholder="대표자명을 입력해주세요." required/>
                             </div>
                         </div>
@@ -251,7 +251,7 @@
                             <div class="label">
                                 설립일자<span class="required">*</span>
                             </div>
-                            <div class="input-wrap">
+                            <div class="input-wrap non-flex">
                                 <input type="text" id="fdate" name="fdate" required/>
                             </div>
                         </div>
@@ -260,7 +260,7 @@
                         <div class="label">
                             본사 주소<span class="required">*</span>
                         </div>
-                        <div class="input-wrap address-input-wrap">
+                        <div class="input-wrap non-flex address-input-wrap">
                             <input type="text" name="address" id="address" onclick="execPostCode()"
                                    readonly/>
                             <button type="button" class="btn" onclick="execPostCode()">주소찾기</button>
@@ -272,7 +272,7 @@
                             <div class="label">
                                 전화번호<span class="required">*</span>
                             </div>
-                            <div class="input-wrap">
+                            <div class="input-wrap non-flex">
                                 <input type="text" id="telNo" name="telNo" required/>
                             </div>
                         </div>
@@ -280,7 +280,7 @@
                             <div class="label">
                                 팩스<span class="required">*</span>
                             </div>
-                            <div class="input-wrap">
+                            <div class="input-wrap non-flex">
                                 <input type="text" id="faxNo" name="faxNo" required/>
                             </div>
                         </div>
@@ -290,7 +290,7 @@
                             <div class="label">
                                 업종<span class="required">*</span>
                             </div>
-                            <div class="input-wrap">
+                            <div class="input-wrap non-flex">
                                 <input type="text" id="bizType" name="bizType" required/>
                                 </td>
                             </div>
@@ -299,7 +299,7 @@
                             <div class="label">
                                 자본금<span class="required">*</span>
                             </div>
-                            <div class="input-wrap labeled-input-wrap ">
+                            <div class="input-wrap  non-flex labeled-input-wrap ">
                             <input type="text" id="capital" name="capital"
                                    placeholder="자본금을 입력해주세요." required/>백만원
                             </div>
@@ -371,34 +371,34 @@
                     </div>
                 </div>
                 <div class="line-wrap">
-                    <div class="label" style="width: 155px">
+                    <div class="label">
                         주요 제품<span class="required">*</span>
                     </div>
-                    <div class="input-wrap">
+                    <div class="input-wrap non-flex">
                         <input type="text" id="product" name="product" required/>
                     </div>
                 </div>
                 <div class="line-wrap">
                     <div class="fx2">
-                        <div class="label" style="width: 164px">주요 적용 제품
+                        <div class="label" >주요 적용 제품
                             <span class="required">*</span>
                         </div>
-                        <div class="input-wrap">
+                        <div class="input-wrap  non-flex">
                             <input type="text" id="mainProduct" name="mainProduct" required/>
                         </div>
                     </div>
                     <div class="fx2">
                         <div class="label">참여기업 수<span class="required">*</span>
                         </div>
-                        <div class="input-wrap">
+                        <div class="input-wrap  non-flex">
                             <input type="text" id="joinCmp" name="joinCmp" required/>
                         </div>
                     </div>
                 </div>
                 <div class="line-wrap">
-                    <div class="label" style="width: 155px">주요 원재료<span class="required">*</span>
+                    <div class="label">주요 원재료<span class="required">*</span>
                     </div>
-                    <div class="input-wrap">
+                    <div class="input-wrap  non-flex" >
                         <input type="text" name="material" id="material" required/>
                     </div>
                 </div>
@@ -409,7 +409,7 @@
                     <div class="label">
                         성명<span class="required">*</span>
                     </div>
-                    <div class="input-wrap">
+                    <div class="input-wrap  non-flex">
                         <input type="text" name="name" id="name" placeholder="성명을 입력해주세요." required/>
                     </div>
                 </div>
@@ -435,7 +435,7 @@
                     <div class="label">
                         전화번호<span class="required">*</span>
                     </div>
-                    <div class="input-wrap">
+                    <div class="input-wrap  non-flex">
                         <input type="text" id="mbphno" name="mbphno" required/>
                     </div>
                 </div>
@@ -468,7 +468,7 @@
                 </div>
                 <div class="line-wrap">
                     <div class="label">팩스</div>
-                    <div class="input-wrap">
+                    <div class="input-wrap ">
                         <input type="text" id="memFaxNo" name="memFaxNo"/>
                     </div>
                 </div>
@@ -489,7 +489,7 @@
                     <div class="label label-long">
                         사용자 ID<span class="required">*</span>
                     </div>
-                    <div class="input-wrap long-input">
+                    <div class="input-wrap  non-flex long-input">
                         <input type="text" name="id" id="id" placeholder="ID를 입력해주세요." required/>
                     </div>
                 </div>
@@ -498,7 +498,7 @@
                         <div class="label label-long">
                             비밀번호<span class="required">*</span>
                         </div>
-                        <div class="input-wrap long-input">
+                        <div class="input-wrap  non-flex long-input">
                             <input type="password" id="passwd" name="passwd" placeholder="비밀번호를 입력해주세요." required>
                             <h5 class="sub">※ 비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다.</h5>
                         </div>
@@ -517,7 +517,7 @@
             </form:form>
             <div class="write-bottom">
                 <button id="apply" class="submit" style="width:130px">등록</button>
-                <a href="${pageContext.request.contextPath}/join/joinMain.do">취소</a>
+                <a href="${pageContext.request.contextPath}/join/joinMain.do" class="back">취소</a>
             </div>
         </div>
     </div>

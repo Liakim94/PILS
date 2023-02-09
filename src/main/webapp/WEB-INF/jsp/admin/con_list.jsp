@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
-    <title></title>
+    <title>관리자페이지 | 컨설팅 신청 현황</title>
 </head>
 
 <div id="content">

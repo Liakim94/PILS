@@ -11,6 +11,7 @@
         <pattern>/common/*</pattern>
         <pattern>/exclude/*</pattern>
         <pattern>/main/intro.do</pattern>
+        <pattern>/join/agree/preview.do</pattern>
     </excludes>
 
     <decorator name="guide_menu" page="/WEB-INF/jsp/guide/guide_menu.jsp"/>

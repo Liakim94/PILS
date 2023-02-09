@@ -27,8 +27,11 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
             <li class="<c:if test="${URI.contains('/join/agree')}">on</c:if>">
                 <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
             </li>
-            <li class="<c:if test="${URI.contains('/join/join')}">on</c:if>">
+            <li class="<c:if test="${URI.contains('/join/joinMain')}">on</c:if>">
                 <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청하기</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/join/joinSubmit')}">on</c:if>">
+            <a href="<c:url value="/join/joinSubmit.do"/>">동행기업 실적 제출하기</a>
             </li>
         </ul>
     </div>

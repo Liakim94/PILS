@@ -34,7 +34,7 @@
                 passwd: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"}
             },
             submitHandler: function (frm) {
-                $("#frmChange").submit();
+                frm.submit();
             },
             showErrors: function (errorMap, errorList) {
                 if (!$.isEmptyObject(errorList)) {
@@ -49,20 +49,19 @@
 </script>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu_myPage"/>
+        <page:applyDecorator name="menu_admin"/>
         <form:form name="frmChange" id="frmChange" method="POST" action="changePw.do">
 
         <div class="article">
-            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>마이페이지</li>
-                <li>담당자 정보 수정</li>
+                <li>관리자페이지</li>
+                <li>담당자 관리</li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">비밀번호 변경</h1>
+                <h1 class="fw700">담당자 관리</h1>
                 <div class="side-wrap">
                 </div>
             </div>
@@ -87,7 +86,7 @@
                 </div>
                 <div class="write-bottom">
                     <button type="submit" class="submit">저장</button>
-                    <a href="${pageContext.request.contextPath}/main/management.do" class="back">취소</a>
+                    <a href="${pageContext.request.contextPath}/admin/management/list.do" class="back">취소</a>
                 </div>
             </div>
         </div>

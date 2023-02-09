@@ -9,7 +9,7 @@
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
-    <title> 관리자 | 동행기업 신청 현황</title>
+    <title> 관리자페이지 | 동행기업 신청 현황</title>
 
 </head>
 <div id="content">
@@ -62,13 +62,13 @@
                                 대표자명
                             </div>
                             <div class="input-wrap" style="margin:5px">
-                                ${rs.ceo}"
+                                ${rs.ceo}
                             </div>
                         </div>
                         <div class="fx2">
                             <div class="label">설립일자</div>
                             <div class="input-wrap" style="margin:5px">
-                                ${rs.fdate}"
+                                ${rs.fdate}
                             </div>
                         </div>
                     </div>
@@ -164,55 +164,6 @@
                             ${rs.material}
                         </div>
                     </div>
-                </div>
-                <h2 class="title mt40">담당자</h2>
-                <div class="write-container">
-                    <div class="line-wrap">
-                        <div class="label">성명</div>
-                        <div class="input-wrap" style="margin:5px">
-                            ${rs.name}
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="fx2">
-                            <div class="label">소속 부서</div>
-                            <div class="input-wrap" style="margin:5px">
-                                ${rs.deptNm}
-                            </div>
-                        </div>
-                        <div class="fx2">
-                            <div class="label">
-                                직위
-                            </div>
-                            <div class="input-wrap" style="margin:5px">
-                                ${rs.position}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="label">전화번호</div>
-                        <div class="input-wrap" style="margin:5px">
-                            ${rs.mbphno}
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="label">이메일</div>
-                        <div class="input-wrap" style="margin:5px">
-                            ${rs.email}
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="label">사무실 전화</div>
-                        <div class="input-wrap" style="margin:5px">
-                            ${rs.memTelNo}
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="label">팩스</div>
-                        <div class="input-wrap" style="margin:5px">
-                            ${rs.memFaxNo}
-                        </div>
-                    </div>
                     <div class="line-wrap">
                         <div class="label">첨부서류</div>
                         <div class="input-wrap" style="margin:5px">
@@ -225,11 +176,13 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                     <div class="write-bottom">
-                        <a class="go-lst" href="${pageContext.request.contextPath}/admin/join/list.do">목록</a>
+                        <a id="edit" href='${pageContext.request.contextPath}/admin/join/edit.do?bizNo=${rs.bizNo}' class="submit">수정하기</a>
+                        <a class="back" href="${pageContext.request.contextPath}/admin/join/list.do">목록</a>
                     </div>
+
+                </div>
             </div>
         </div>
         <!-- 컨텐츠 end -->

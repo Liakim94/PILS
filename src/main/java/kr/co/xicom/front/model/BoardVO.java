@@ -34,6 +34,16 @@ public class BoardVO extends DefaultVO{
 
 	private String  lnk						= "";	//게시판 링크
 
+	//Do 추가 2023-02-09
+	private String keyword ="";  //검색어
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	// WildRain 추가 2023-01-13
 	/**
 	 * FileUploader.js에 의해 업로드된 파일 리스트 (JSON 문자열)

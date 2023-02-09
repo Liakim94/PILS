@@ -67,23 +67,23 @@
 </style>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu_myPage"/>
+        <page:applyDecorator name="menu_admin"/>
         <form:form name="frmEdit" id="frmEdit" method="POST" action="memEdit.do">
+        <input type="hidden" name="id" id="id" value="${rs.id}">
         <div class="article">
-            <br>
             <ul class="loc-list">
                 <li>
-                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png"
-                         alt="홈">
+                    <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>마이페이지</li>
-                <li>담당자 정보 수정</li>
+                <li>관리자페이지</li>
+                <li>담당자 관리</li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">담당자 정보 수정</h1>
+                <h1 class="fw700">담당자 관리</h1>
                 <div class="side-wrap">
                 </div>
             </div>
+            <div class="content">
             <div id="company-write" class="content">
                 <div class="write-container">
                     <div class="line-wrap">
@@ -141,8 +141,8 @@
                 </div>
                 <div class="write-bottom">
                     <button  class="submit"  onclick="emailChk(this.form)" id="apply">저장</button>
-                    <a href="${pageContext.request.contextPath}/main/changePw.do" class="submit">비밀번호 변경</a>
-                    <a href="${pageContext.request.contextPath}/main/management.do" class="back">취소</a>
+                    <a href="${pageContext.request.contextPath}/admin/changePw.do" class="submit">비밀번호 변경</a>
+                    <a href="${pageContext.request.contextPath}/admin/management/list.do" class="back">취소</a>
                 </div>
             </div>
             </form:form>

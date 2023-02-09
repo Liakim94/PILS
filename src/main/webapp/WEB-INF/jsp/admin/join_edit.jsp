@@ -9,6 +9,7 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
+    <title> 관리자페이지 | 동행기업 신청 현황</title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
@@ -133,23 +134,23 @@
 </style>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu_myPage"/>
+        <page:applyDecorator name="menu_admin"/>
         <div class="article">
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>마이페이지</li>
-                <li>동행기업 수정</li>
+                <li>관리자</li>
+                <li>동행기업 신청 수정</li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">동행기업 수정</h1>
+                <h1 class="fw700">동행기업 신청 수정</h1>
                 <div class="side-wrap">
                 </div>
             </div>
             <div id="company-write" class="content">
                 <!-- 컨텐츠 start -->
-                <form:form modelAttribute="frmEdit" id="frmEdit" action="joinEdit.do">
+                <form:form modelAttribute="frmEdit" id="frmEdit" action="edit.do">
                     <form:hidden path="jsonFileList"/>
                     <form:hidden path="jsonDeletedFileList"/>
                     <h2 class="title">기업 정보</h2>
@@ -159,7 +160,7 @@
                                 <div class="label">
                                     기업명<span class="required">*</span>
                                 </div>
-                                <div class="input-wrap non-flex">
+                                <div class="input-wrap">
                                     <form:input path="cmpNm"/>
                                 </div>
                             </div>
@@ -167,7 +168,7 @@
                                 <div class="label">
                                     사업자 번호
                                 </div>
-                                <div class="input-wrap non-flex">
+                                <div class="input-wrap">
                                     <form:input path="bizNo1" class="multi" readonly="true"/>
                                     <span>-</span>
                                     <form:input path="bizNo2" class="multi"  readonly="true"/>
@@ -182,7 +183,7 @@
                                 <div class="label">
                                     대표자명<span class="required">*</span>
                                 </div>
-                                <div class="input-wrap non-flex">
+                                <div class="input-wrap">
                                     <form:input path="ceo"/>
                                 </div>
                             </div>
@@ -190,7 +191,7 @@
                                 <div class="label">
                                     설립일자<span class="required">*</span>
                                 </div>
-                                <div class="input-wrap non-flex">
+                                <div class="input-wrap">
                                     <form:input path="fdate"/>
                                 </div>
                             </div>
@@ -199,7 +200,7 @@
                             <div class="label">
                                 본사 주소<span class="required">*</span>
                             </div>
-                            <div class="input-wrap non-flex">
+                            <div class="input-wrap">
                                 <form:input path="address" onclick="execPostCode()" readonly="true"/>
                                 <button type="button" class="btn"
                                         onclick="execPostCode()">주소찾기
@@ -212,7 +213,7 @@
                                 <div class="label">
                                     전화번호<span class="required">*</span>
                                 </div>
-                                <div class="input-wrap non-flex">
+                                <div class="input-wrap">
                                     <form:input path="telNo"/>
                                 </div>
                             </div>
@@ -220,7 +221,7 @@
                                 <div class="label">
                                     팩스<span class="required">*</span>
                                 </div>
-                                <div class="input-wrap non-flex">
+                                <div class="input-wrap">
                                     <form:input path="faxNo"/>
                                 </div>
                             </div>
@@ -230,7 +231,7 @@
                                 <div class="label">
                                     업종<span class="required">*</span>
                                 </div>
-                                <div class="input-wrap non-flex">
+                                <div class="input-wrap">
                                     <form:input path="bizType"/>
                                 </div>
                             </div>
@@ -238,7 +239,7 @@
                                 <div class="label">
                                     자본금<span class="required">*</span>
                                 </div>
-                                <div class="input-wrap non-flex">
+                                <div class="input-wrap">
                                     <form:input path="capital" style="width:100px;"/>백만원
                                 </div>
                             </div>
@@ -279,39 +280,39 @@
                             </div>
                         </c:forEach>
                         <div class="line-wrap">
-                            <div class="label" >
+                            <div class="label" style="width: 155px">
                                 주요생산품<span class="required">*</span>
                             </div>
-                            <div class="input-wrap non-flex">
+                            <div class="input-wrap">
                                 <form:input path="product"/>
                             </div>
                         </div>
                         <div class="line-wrap">
                             <div class="fx2">
-                                <div class="label" >주요 적용 제품
+                                <div class="label" style="width: 164px">주요 적용 제품
                                     <span class="required">*</span>
                                 </div>
-                                <div class="input-wrap non-flex">
+                                <div class="input-wrap">
                                     <form:input path="mainProduct"/>
                                 </div>
                             </div>
                             <div class="fx2">
                                 <div class="label">참여기업 수<span class="required">*</span>
                                 </div>
-                                <div class="input-wrap non-flex">
+                                <div class="input-wrap">
                                     <form:input path="joinCmp"/>
                                 </div>
                             </div>
                         </div>
                         <div class="line-wrap">
-                            <div class="label">주요 원재료<span class="required">*</span>
+                            <div class="label" style="width: 155px">주요 원재료<span class="required">*</span>
                             </div>
-                            <div class="input-wrap non-flex">
+                            <div class="input-wrap">
                                 <form:input path="material"/>
                             </div>
                         </div>
                         <div class="line-wrap">
-                            <div class="label" >
+                            <div class="label" style="width: 155px">
                                 첨부서류
                             </div>
                             <div class="input-wrap ">
@@ -324,7 +325,7 @@
                 </form:form>
                 <div class="write-bottom">
                     <button id="submit" class="submit" style="width:135px" >저장</button>
-                    <a href="${pageContext.request.contextPath}/main/myPage.do" class="back">취소</a>
+                    <a href="${pageContext.request.contextPath}/admin/join/view.do?bizNo=${frmEdit.bizNo}" class="back">취소</a>
                 </div>
             </div>
         </div>

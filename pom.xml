@@ -399,6 +399,15 @@
             <scope>system</scope>
             <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/smes-commons-filter-0.1-SNAPSHOT.jar</systemPath>
         </dependency>
+        <!-- WildRain 추가 2023-02-08 -->
+        <!-- /WEB-INF/lib 폴더 정리 -->
+        <dependency>
+            <groupId>log4sql</groupId>
+            <artifactId>log4sql</artifactId>
+            <version>7.9.8</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/log4sql.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>

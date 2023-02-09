@@ -451,7 +451,7 @@
                     </div>
                     <div class="write-bottom">
                         <input type="submit" class="submit" value="등록">
-                        <a href="<c:url value="/front/consulting/apply.do"/>">취소</a>
+                        <a href="<c:url value="/front/consulting/apply.do"/>" class="back">취소</a>
                     </div>
                 </form>
             </div>

@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 <head>
-    <title>공지사항</title>
+    <title>중소벤처기업부 | 자주 묻는 질문</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
     <script src="${pageContext.request.contextPath }/js/cms/board/post.js"></script>
@@ -117,6 +117,24 @@
                                     고정 <input type="checkbox" name="notiAt" id="notiAt" value="Y" style="width:50px"/>
                                 </div>
                             </div>
+                            <c:if test="${bbsId eq 7}">
+                                <div class="line-wrap">
+                                    <div class="label">
+                                        구분
+                                    </div>
+                                    <div class="input-wrap labeled-input-wrap label-right">
+                                        <select id="tag" name="tag">
+                                            <option value="M701">적용 대상</option>
+                                            <option value="M702">연동 약정</option>
+                                            <option value="M703">현행법과의 관계</option>
+                                            <option value="M704">위반 시 제재</option>
+                                            <option value="M705">동행기업</option>
+                                            <option value="M706">지원</option>
+                                            <option value="M707">기타</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </c:if>
                             <div class="line-wrap">
                                 <div class="label">
                                     내용
@@ -139,7 +157,7 @@
 
                     <div class="write-bottom">
                         <input id="submit" class="submit" value="게시" style="width: 135px"/>
-                        <a href="<c:url value="/front/board/${bbsId}/list.do"/>" title="취소">취소</a>
+                        <a href="<c:url value="/front/board/${bbsId}/list.do"/>" class="back">취소</a>
                     </div>
                 </div>
             </div>

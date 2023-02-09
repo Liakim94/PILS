@@ -131,11 +131,29 @@
                 </div>
                 <div class="write-bottom">
                     <a class="submit" href="<c:url value="/join/agreeDelete.do?id=${rs.id}"/>">새로 작성하기</a>
-                    <a href="<c:url value="/join/agreeMain.do"/>">목록</a>
-<%--                    <a class="print" href="javascript:window.print();"><img src="${pageContext.request.contextPath}/images/common/Print.png">프린트 하기</a>--%>
+                    <a class="print" onclick="previewOpen()" style="margin-right:20px">약정서 미리보기</a>
+                    <a href="<c:url value="/join/agreeMain.do"/>" class="back">목록</a>
                 </div>
                 <!-- 컨텐츠 end -->
             </div>
         </div>
     </div>
 </div>
+<script>
+
+    function previewOpen(){
+        var options = 'top=10, left=10, width=1000, height=750, status=no, menubar=no, toolbar=no, resizable=no';
+        window.open('<c:url value="/join/agree/preview.do"/>', '약정서 미리보기', options);
+    }
+
+    function infoOpen(i){
+        if(!$(i).hasClass("open")){
+            $(i).addClass("open");
+            $(i).parents(".line-wrap").find(".info-box").slideDown();
+        }
+        else{
+            $(i).removeClass("open");
+            $(i).parents(".line-wrap").find(".info-box").slideUp();
+        }
+    }
+</script>

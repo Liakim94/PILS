@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,6 +98,62 @@ public class adminController {
 
         return mav;
     }
+    @GetMapping(value = "/join/edit.do")
+    public ModelAndView joinEdit(@ModelAttribute("frmEdit") CmpMemberVo cmpVO,
+                                 @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
+                                 @RequestParam(value = "bizNo") String bizNo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/join_edit");
+
+        cmpVO.setBizNo(bizNo);
+        cmpVO.setMem_cd("M302");
+        try {
+            cmpVO = adminService.memInfo(cmpVO);
+            cmpVO.setBizNo1(cmpVO.getBizNo().substring(0, 3));
+            cmpVO.setBizNo2(cmpVO.getBizNo().substring(3, 5));
+            cmpVO.setBizNo3(cmpVO.getBizNo().substring(5, 10));
+
+            stVO.setBizNo(bizNo);
+            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+
+            List<AttachVO> attachList = this.consultingService.getAttachList(cmpVO);
+            if (attachList != null && attachList.size() > 0) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                String jsonFileList = gson.toJson(attachList);
+                cmpVO.setJsonFileList(jsonFileList);
+            }
+
+            mav.addObject("frmEdit", cmpVO);
+            mav.addObject("st", sttus);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+    //수정 처리
+    @PostMapping(value = "/join/edit.do")
+    public String doJoinEdit(
+            @ModelAttribute("frmEdit") CmpMemberVo cmpVO,
+            @ModelAttribute("CmpSttusVO") CmpSttusVO stVO) throws Exception {
+
+        try {
+            String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
+            cmpVO.setBizNo(bizNo);
+            stVO.setBizNo(bizNo);
+
+            int result = consultingService.updateJoin(cmpVO, stVO,null);
+
+            if (result > 0) {
+                return "redirect:/admin/join/view.do?bizNo="+bizNo;
+            } else {
+
+                return "forward:/common/error.jsp";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
 
     //컨설팅 신청 현황
     @GetMapping(value = "/consulting/list.do")
@@ -134,9 +191,8 @@ public class adminController {
     //담당자 현황
     @GetMapping("/management/list.do")
     public ModelAndView memManage(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
-            , HttpSession session) throws Exception {
+                                  ) throws Exception {
         ModelAndView mav = new ModelAndView("admin/mem_list");
-        cmpVO.setBizNo((String) session.getAttribute("sessionBizNo"));
         try {
             List<CmpMemberVo> result = adminService.memManageList(cmpVO);
             if (result == null) {
@@ -148,6 +204,70 @@ public class adminController {
             System.out.println(e.toString());
         }
         return mav;
+    }
+    //수정 화면
+    @GetMapping(value = "/memEdit.do")
+    public ModelAndView memEdit(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
+                                ,@RequestParam("id") String id) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/mem_edit");
+        cmpVO.setId(id);
+        try {
+            CmpMemberVo rs = adminService.memEdit(cmpVO);
+            String[] email = rs.getEmail().split("@");
+            rs.setEmail1(email[0]);
+            rs.setEmail2(email[1]);
+            if (rs == null) {
+                System.out.println("비정상적인 접근입니다.");
+            }
+            mav.addObject("rs", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+    //수정 처리
+    @RequestMapping(value = "/memEdit.do", method = {RequestMethod.POST})
+    public String doMemEdit(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+                            @RequestParam("id") String id) throws Exception {
+        cmpVO.setId(id);
+        try {
+            String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
+            cmpVO.setEmail(email);
+            int result = adminService.updateMem(cmpVO);
+
+            if (result > 0) {
+                return "redirect:/admin/management/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
+    @GetMapping(value = "/changePw.do")
+    public ModelAndView change(HttpSession session) throws Exception{
+        ModelAndView mav = new ModelAndView("admin/mem_changePw");
+        return mav;
+    }
+
+    @RequestMapping(value = "/changePw.do", method = {RequestMethod.POST})
+    public void changePw(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
+                        ,HttpServletResponse response
+                        ,HttpServletRequest request) throws Exception {
+
+        int result = adminService.changePw(cmpVO);
+        if(result>0){
+            response.sendRedirect(request.getContextPath() + "/admin/management/list.do");
+        }
+        PrintWriter writer = response.getWriter();
+
+        response.setContentType("text/html; charset=UTF-8;");
+        request.setCharacterEncoding("utf-8");
+        writer.println("<script type='text/javascript'>");
+        writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
+        writer.println("history.back();");
+        writer.println("</script>");
+        writer.flush();
     }
 
     //걸어온 발자취 게시판 관리

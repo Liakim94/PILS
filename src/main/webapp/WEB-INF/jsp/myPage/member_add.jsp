@@ -213,7 +213,7 @@
                     </div>
                     <div class="write-bottom">
                         <button onclick="emailChk(this.form)"  class="submit" style="width: 130px">등록</button>
-                        <a href="${pageContext.request.contextPath}/main/management.do" class="go-lst">취소</a>
+                        <a href="${pageContext.request.contextPath}/main/management.do" class="back">취소</a>
                     </div>
                 </form:form>
 

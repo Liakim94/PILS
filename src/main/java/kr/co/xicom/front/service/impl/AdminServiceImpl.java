@@ -62,6 +62,11 @@ public class AdminServiceImpl implements AdminService {
         map.put("resultCnt", cnt);
         return map;
     }
+    //동행기업 상세화면
+    @Override
+    public CmpMemberVo memInfo(CmpMemberVo vo) throws Exception {
+        return adminMapper.memInfo(vo);
+    }
     //컨설팅 list
     @Override
     public  Map<String, Object> conList(CmpMemberVo vo) throws Exception {
@@ -83,6 +88,18 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<CmpMemberVo> memManageList(CmpMemberVo vo) throws Exception {
         return adminMapper.memManageList(vo);
+    }
+    @Override
+    public CmpMemberVo memEdit(CmpMemberVo vo) throws Exception{
+        return adminMapper.memEdit(vo);
+    }
+    @Override
+    public int updateMem(CmpMemberVo vo) throws Exception{
+        return adminMapper.updateMem(vo);
+    }
+    @Override
+    public int changePw(CmpMemberVo vo) throws Exception{
+        return adminMapper.changePw(vo);
     }
 
     //걸어온 발자취 관리
