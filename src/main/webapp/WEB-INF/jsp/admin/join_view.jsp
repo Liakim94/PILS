@@ -9,7 +9,7 @@
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
-    <title> 관리자 | 동행기업 신청 현황</title>
+    <title> 관리자페이지 | 동행기업 신청 현황</title>
 
 </head>
 <div id="content">

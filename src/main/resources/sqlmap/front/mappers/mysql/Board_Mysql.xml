@@ -123,7 +123,7 @@
         B.BBS_SN AS board_seq
         , B.BBS_ID AS bbs_id
         , B.STTS AS stat
-        , ( SELECT CD_NM FROM tb_cd_data WHERE cd_grp = '90000' AND CD = B.STTS) as STAT_NM /*fn_getcodename*/
+        , ( SELECT CD_NM FROM tb_cd_data WHERE cd_grp = 'M700' AND CD = B.tag) as tag
         , B.TTL AS title
         , B.REGSTR_NM AS reg_nm
         , B.REGIST_DATE AS reg_de
@@ -136,8 +136,11 @@
         WHERE 1 = 1
         AND B.BBS_ID = #{bbsId}
         AND B.STTS = #{stat}
-        <if test="searchKeyword != ''">
-            AND (B.TTL LIKE CONCAT('%', #{searchKeyword}, '%') OR B.REGSTR_NM LIKE CONCAT('%', #{searchKeyword}, '%'))
+        <if test="keyword != null and keyword != ''">
+            and (ttl like CONCAT('%',#{keyword},'%') or brkdw like CONCAT('%',#{keyword},'%'))
+        </if>
+        <if test="tag != null and tag != ''">
+            and tag = #{tag}
         </if>
         ) T WHERE 1 = 1
         <!-- ) S WHERE 1 = 1 -->
@@ -156,8 +159,11 @@
         WHERE 1 = 1
         AND B.STTS = #{stat}
         AND B.BBS_ID = #{bbsId}
-        <if test="searchKeyword != ''">
-            AND (B.TTL LIKE CONCAT('%', #{searchKeyword}, '%') OR B.REGSTR_NM LIKE CONCAT('%', #{searchKeyword}, '%'))
+        <if test="keyword != null and keyword != ''">
+            and (ttl like CONCAT('%',#{keyword},'%') or brkdw like CONCAT('%',#{keyword},'%'))
+        </if>
+        <if test="tag != null and tag != ''">
+            and tag = #{tag}
         </if>
     </select>
 
@@ -183,7 +189,7 @@
         , NOTICE_BGN_DT AS noti_str_dt
         , NOTICE_STPGE_DT AS noti_end_dt
         , BEGIN_AT AS opn_at
-        , TAG AS tag
+        , ( SELECT CD_NM FROM tb_cd_data WHERE cd_grp = 'M700' AND CD = B.tag) as tag
         , CNNC AS lnk
         FROM TB_BBS_INFO B
         WHERE
@@ -192,7 +198,6 @@
         <if test='stat.equals("1")'>
             AND STTS = '1'
         </if>
-
     </select>
 
     <update id="updateBoard">
@@ -271,4 +276,5 @@
             reg_de desc
         ;
     </select>
+
 </mapper>

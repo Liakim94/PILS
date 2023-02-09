@@ -8,7 +8,7 @@
 <%@ taglib uri="fx" prefix="fx" %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
-    <title>${menuName }</title>
+    <title>중소벤처기업부 | 자주 묻는 질문</title>
     <script>
         function deleteBbs() {
             if (confirm("정말 삭제하시겠습니까?")) {
@@ -54,6 +54,9 @@
                             <p class="subj">${rs.title }</p>
                             <div class="info">
                                 <ul>
+                                    <c:if test="${bbsId eq 7}">
+                                    <li>구분 : ${rs.tag}</li>
+                                    </c:if>
                                     <li>작성자 : 관리자</li>
                                     <li>작성일 : ${fn:substring(rs.regDe,0,10)}</li>
                                 </ul>

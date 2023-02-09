@@ -9,7 +9,7 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
-    <title> 관리자 | 동행기업 신청 현황</title>
+    <title> 관리자페이지 | 동행기업 신청 현황</title>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
