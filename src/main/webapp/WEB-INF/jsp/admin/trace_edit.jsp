@@ -63,6 +63,7 @@
             });
         });
     });
+
     function fn_submit() {
 
         var frm = document.getElementById('edit');
@@ -87,6 +88,7 @@
     <div id="board">
         <page:applyDecorator name="menu_admin"/>
         <div class="article">
+            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -102,45 +104,42 @@
             <div class="content">
                 <!-- 컨텐츠 start -->
                 <div class="write-container">
-                    <div class="write-container">
-                        <form:form modelAttribute="edit" action="edit.do" method="post" id="edit">
-                            <form:hidden path="jsonFileList"/>
-                            <form:hidden path="jsonDeletedFileList"/>
-                            <div class="write-wrap">
-                                <div class="line-wrap">
-                                    <form:input path="seq" type="hidden"/>
-                                    <div class="label">
-                                        제목
-                                    </div>
-                                    <div class="input-wrap">
-                                        <form:input type="text" path="title" maxlength="85"/>
-                                    </div>
+                    <form:form modelAttribute="edit" action="edit.do" method="post" id="edit">
+                        <form:hidden path="jsonFileList"/>
+                        <form:hidden path="jsonDeletedFileList"/>
+                        <div class="write-wrap">
+                            <div class="line-wrap">
+                                <form:input path="seq" type="hidden"/>
+                                <div class="label">
+                                    제목
                                 </div>
-
-                                <div class="line-wrap">
-                                    <div class="label">
-                                        내용
-                                    </div>
-                                    <div class="input-wrap">
-                                        <form:textarea path="cont" cssClass="form-control"/>
-                                    </div>
-                                </div>
-                                <div class="line-wrap">
-                                    <div class="label">
-                                        첨부파일
-                                    </div>
-                                    <div class="file-uploader-wrapper">
-                                        <div class="file-uploader"></div>
-                                    </div>
+                                <div class="input-wrap">
+                                    <form:input type="text" path="title" maxlength="85"/>
                                 </div>
                             </div>
-                        </form:form>
-                        <div class="write-bottom">
-                            <button class="submit" id="submit" style="width: 135px">게시</button>
-                            <a href="<c:url value="/admin/trace/list.do"/>" class="back">취소</a>
-                        </div>
 
-                    </div>
+                            <div class="line-wrap">
+                                <div class="label">
+                                    내용
+                                </div>
+                                <div class="input-wrap">
+                                    <form:textarea path="cont" cssClass="form-control"/>
+                                </div>
+                            </div>
+                            <div class="line-wrap">
+                                <div class="label">
+                                    첨부파일
+                                </div>
+                                <div class="file-uploader-wrapper">
+                                    <div class="file-uploader"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form:form>
+                </div>
+                <div class="write-bottom">
+                    <button class="submit" id="submit" style="width: 135px">게시</button>
+                    <a href="<c:url value="/admin/trace/list.do"/>" class="back">취소</a>
                 </div>
             </div>
         </div>

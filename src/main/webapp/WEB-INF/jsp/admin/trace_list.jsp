@@ -7,6 +7,7 @@
     <div id="board">
         <page:applyDecorator name="menu_admin"/>
         <div class="article">
+            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -23,7 +24,7 @@
                 <!-- 컨텐츠 start -->
                 <div class="tbl-wrap for_board">
                     <a href="<c:url value="/admin/trace/post.do"/>" class="write-question"
-                       style="width: 135px">
+                       style="width: 141px">
                         게시물 등록
                     </a>
                     <table class="tbl-list01" >
