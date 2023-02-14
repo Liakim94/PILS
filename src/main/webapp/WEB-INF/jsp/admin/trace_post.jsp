@@ -87,6 +87,7 @@
     <div id="board">
         <page:applyDecorator name="menu_admin"/>
         <div class="article">
+            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -132,10 +133,11 @@
                             </div>
                         </div>
                     </form:form>
-                    <div class="write-bottom">
-                        <button id="submit" class="submit" style="width: 135px">게시</button>
-                        <a class="back" href="<c:url value="/admin/trace/list.do"/>">취소</a>
-                    </div>
+
+                </div>
+                <div class="write-bottom">
+                    <button id="submit" class="submit" style="width: 135px">게시</button>
+                    <a class="back" href="<c:url value="/admin/trace/list.do"/>">취소</a>
                 </div>
             </div>
         </div>

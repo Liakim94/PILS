@@ -73,7 +73,7 @@
                         <div class="tbl-wrap for_board">
                             <c:if test="${sessionId eq 'admin' }">
                                 <a href="<c:url value="/front/board/${bbsId}/post.do"/>" class="write-question"
-                                   style="width: 135px">
+                                   style="width: 141px">
                                     게시물 등록
                                 </a>
                             </c:if>

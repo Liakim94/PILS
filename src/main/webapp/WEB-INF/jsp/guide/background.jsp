@@ -24,135 +24,92 @@
                 <!-- 컨텐츠 start -->
 
                 <section>
-                    <div class="timeline">
-                        <div class="timeline-group">
-                            <span class="timeline-year">2008</span>
-                            <div class="timeline-box">
-                                <div class="timeline-date">
-                                    <span class="timeline-day">01/06</span>
-                                </div>
-                                <div class="timeline-post">
-                                    <div class="timeline-content">
-                                        제17대 대통령직 인수위 업무보고, "납품대금 연동 시스템 도입 추진" 발표
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timeline-box">
-                                <div class="timeline-date">
-                                    <span class="timeline-day">07/11</span>
-                                </div>
-                                <div class="timeline-post">
-                                    <div class="timeline-content">
-                                        중소기업계, "납품대금 연동제 법제화" 촉구 결의
-                                    </div>
+                    <div class="history-container">
+                        <div class="item img-top">
+                            <span class="year">
+                                2008
+                            </span>
+                            <div class="left">
+                                <div class="content">
+                                    <span>
+                                        제17대 대통령직 인수위 업무보고,<br> "납품대금 연동 시스템 도입 추진" 발표</span>
+                                    <span class="date">01.06</span>
                                 </div>
                             </div>
-                            <div class="timeline-box">
-                                <div class="timeline-date">
-                                    <span class="timeline-day">08/13</span>
+                            <div class="right">
+                                <div class="content">
+                                    <span class="date">07.11</span>
+                                    <span>중소기업계, "납품대금 연동제 법제화" 촉구 결의</span>
                                 </div>
-                                <div class="timeline-post">
-                                    <div class="timeline-content">
-                                        납품대금 연동제 도입을 내용으로 하는 하도급법 최초 발의
-                                    </div>
+                            </div>
+                            <div class="left mt40">
+                                <div class="content">
+                                    <span>납품대금 연동제 도입을<br> 내용으로 하는 하도급법 최초 발의</span>
+                                    <span class="date">08.13</span>
                                 </div>
                             </div>
                         </div>
-                        <img class="timeline-img" src="<c:url value="/images/common/timeline.png"/>" alt="중소기업계의 14년간의 두드림">
-                        <div class="timeline-group">
-                            <div class="timeline-box">
-                                <div class="timeline-date">
-                                    <span class="timeline-year" style="line-height:19px; font-weight: 700">2022</span>
-                                    <span class="timeline-day">06/17</span>
+                        <img class="history-img" src="<c:url value="/images/common/history-text.png"/>" alt="중소기업계의 14년간의 두드림">
+                        <div class="item img-bottom">
+                            <span class="year">
+                                2022
+                            </span>
+                            <div class="left">
+                                <div class="content">
+                                    <span>납품대금 연동제 TF 출범</span>
+                                    <span class="date">06.17</span>
                                 </div>
-                                <div class="timeline-post">
-                                    <div class="timeline-content">
-                                        <div class="img-content">
-                                            <div class="img-wrap">
-                                                <img src="<c:url value="/images/introduction/220617.png"/>" alt="납품대금 연동제 TF 출범" />
-                                            </div>
-                                            <div class="text-wrap">
-                                                납품대금 연동제 TF 출범
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="img-wrap">
+                                    <img src="<c:url value="/images/introduction/220617.png"/>" alt="납품대금 연동제 TF 출범" />
                                 </div>
                             </div>
-                            <div class="timeline-box">
-                                <div class="timeline-date">
-                                    <span class="timeline-day">08/11</span>
+                            <div class="right">
+                                <div class="content">
+                                    <span class="date">10.01</span>
+                                    <span>
+                                        납품대금 연동 특별약정서 제정<br>
+                                        납품대금 연동제 시범운영 방안 발표
+                                    </span>
                                 </div>
-                                <div class="timeline-post">
-                                    <div class="timeline-content">
-                                        <div class="img-content">
-                                            <div class="img-wrap">
-                                                <img src="<c:url value="/images/introduction/220811.png"/>" alt="납품대금 연동 특별약정서 제정" />
-                                            </div>
-                                            <div class="text-wrap">
-                                                납품대금 연동 특별약정서 제정<br>
-                                                납품대금 연동제 시범운영 방안 발표
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="img-wrap">
+                                    <img src="<c:url value="/images/introduction/220811.png"/>" alt="납품대금 연동 특별약정서 제정" />
                                 </div>
                             </div>
-                            <div class="timeline-box">
-                                <div class="timeline-date">
-                                    <span class="timeline-day">09/14</span>
+                            <div class="left">
+                                <div class="content">
+                                    <span>납품대금 연동제 자율추진 협약식 개최</span>
+                                    <span class="date">09.14</span>
                                 </div>
-                                <div class="timeline-post">
-                                    <div class="timeline-content">
-                                        <div class="img-content">
-                                            <div class="img-wrap">
-                                                <img src="<c:url value="/images/introduction/220914.png"/>" alt="납품대금 연동제 자율추진 협약식 개최" />
-                                            </div>
-                                            <div class="text-wrap">
-                                                납품대금 연동제 자율추진 협약식 개최
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="img-wrap">
+                                    <img src="<c:url value="/images/introduction/220914.png"/>" alt="납품대금 연동제 자율추진 협약식 개최" />
                                 </div>
                             </div>
-                            <div class="timeline-box">
-                                <div class="timeline-date">
-                                    <span class="timeline-day">11/09</span>
+                            <div class="right">
+                                <div class="content">
+                                    <span class="date">10.01</span>
+                                    <span>
+                                        납품대금 연동제 민당정협의회 개최
+                                    </span>
                                 </div>
-                                <div class="timeline-post">
-                                    <div class="timeline-content">
-                                        <div class="img-content">
-                                            <div class="img-wrap">
-                                                <img src="<c:url value="/images/introduction/221109.png"/>" alt="납품대금 연동제 민당정협의회 개최" />
-                                            </div>
-                                            <div class="text-wrap">
-                                                납품대금 연동제 민당정협의회 개최
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="img-wrap">
+                                    <img src="<c:url value="/images/introduction/221109.png"/>" alt="납품대금 연동제 민당정협의회 개최" />
                                 </div>
                             </div>
-                            <div class="timeline-box">
-                                <div class="timeline-date">
-                                    <span class="timeline-day">12/08</span>
+                            <div class="left">
+                                <div class="content">
+                                    <span>납품대금 연동제 도입을 내용으로 하는 [상생협력법] 개정안 국회 통과</span>
+                                    <span class="date">12.08</span>
                                 </div>
-                                <div class="timeline-post">
-                                    <div class="timeline-content">
-                                        <div class="img-content">
-                                            <div class="img-wrap">
-                                                <img src="<c:url value="/images/introduction/221208.png"/>" alt="납품대금 연동제 도입을 내용으로 하는 [상생협력법] 개정안 국회 통과" />
-                                            </div>
-                                            <div class="text-wrap">
-                                                납품대금 연동제 도입을 내용으로 하는 [상생협력법] 개정안 국회 통과
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="img-wrap">
+                                    <img src="<c:url value="/images/introduction/221208.png"/>" alt="납품대금 연동제 도입을 내용으로 하는 [상생협력법] 개정안 국회 통과" />
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <h3 class="bottom-text">우리 경제에 <strong class="text-red">납품대금 연동제</strong>가 안착될 수 있도록 많은 관심과 성원을 부탁드립니다.</h3>
                 </section>
                 <!-- 컨텐츠 end -->
             </div>
         </div>
     </div>
 </div>
-

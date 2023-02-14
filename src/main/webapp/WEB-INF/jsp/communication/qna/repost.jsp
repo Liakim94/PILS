@@ -102,10 +102,11 @@
                                 <textarea id="txta" class="form-control" name="body"></textarea>
                             </div>
                         </div>
-                        <div class="write-bottom">
-                            <button type="button" class="submit" onclick="fn_submit()" style="width:135px">저장</button>
-                            <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
-                        </div>
+
+                    </div>
+                    <div class="write-bottom">
+                        <button type="button" class="submit" onclick="fn_submit()" style="width:135px">저장</button>
+                        <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
                     </div>
                 </form>
                 <!-- 컨텐츠 end -->
