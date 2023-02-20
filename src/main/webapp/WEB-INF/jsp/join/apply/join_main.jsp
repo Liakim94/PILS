@@ -43,7 +43,7 @@
                             동행기업 신청</a>
                     </div>
                     <div class="item" style="width: 22%">
-                        <a href="<c:url value="/front/board/11/list.do"/>">
+                        <a href="<c:url value="/front/board/11/view.do?boardSeq=5"/>">
                             <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
                             <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
                             동행기업 모집공고</a>
