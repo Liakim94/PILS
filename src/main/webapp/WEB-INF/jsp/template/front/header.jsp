@@ -80,26 +80,26 @@
                 </div>
             </div>
             <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/board/11/list.do"/>">소통마당</a>
-                <div class="submenu">
-                    <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
-                    <a href="<c:url value="/front/board/ready/list.do"/>">카드뉴스</a>
-                    <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
-                    <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
-                    <%--                    <c:if test="${sessionId eq 'admin' }">--%>
-                    <%--                    <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
-                    <%--                    <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a--%>
-                    <%--                    </c:if>--%>
-                </div>
+                <a class="font18 menu" href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>
             </div>
             <div class="wrapper">
                 <a class="font18 menu" href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>
             </div>
             <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>
+                <a class="font18 menu" href="<c:url value="/front/report/temp.do"/>">신고센터</a>
             </div>
             <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/report/temp.do"/>">신고센터</a>
+                <a class="font18 menu" href="<c:url value="/front/board/11/list.do"/>">소통·상담</a>
+                <div class="submenu" style="left: -65px;">
+                    <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
+                    <a href="<c:url value="/front/board/ready/list.do"/>">카드뉴스</a>
+                    <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
+                    <a href="<c:url value="/front/qna/list.do"/>">상담하기</a>
+                    <%--                    <c:if test="${sessionId eq 'admin' }">--%>
+                    <%--                    <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
+                    <%--                    <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a--%>
+                    <%--                    </c:if>--%>
+                </div>
             </div>
         </nav>
         <div class="side-wrap">
@@ -211,7 +211,16 @@
                     </div>
                 </div>
                 <div class="menu">
-                    <p onclick="menuToggleMobile(this)">소통마당</p>
+                    <p><a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a></p>
+                </div>
+                <div class="menu">
+                    <p><a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a></p>
+                </div>
+                <div class="menu">
+                    <p><a href="<c:url value="/front/report/temp.do"/>">신고센터</a></p>
+                </div>
+                <div class="menu">
+                    <p onclick="menuToggleMobile(this)">소통·상담</p>
                     <div class="toggle">
                         <span></span>
                         <span></span>
@@ -220,20 +229,10 @@
                         <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
                         <a href="<c:url value="/front/board/ready/list.do"/>">카드뉴스</a>
                         <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
-                        <a href="<c:url value="/front/qna/list.do"/>">질의응답 게시판</a>
+                        <a href="<c:url value="/front/qna/list.do"/>">상담하기</a>
                         <%--                        <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
                         <%--                        <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>--%>
                     </div>
-                </div>
-                <div class="menu">
-                    <p><a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a></p>
-
-                </div>
-                <div class="menu">
-                    <p><a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a></p>
-                </div>
-                <div class="menu">
-                    <p><a href="<c:url value="/front/report/temp.do"/>">신고센터</a></p>
                 </div>
             </nav>
         </div>

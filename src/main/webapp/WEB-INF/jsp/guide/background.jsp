@@ -22,7 +22,7 @@
             </div>
             <div id="about" class="content">
                 <!-- 컨텐츠 start -->
-
+<br><br>
                 <section>
                     <div class="history-container">
                         <div class="item img-top">
@@ -65,10 +65,9 @@
                             </div>
                             <div class="right">
                                 <div class="content">
-                                    <span class="date">10.01</span>
+                                    <span class="date">8.11</span>
                                     <span>
-                                        납품대금 연동 특별약정서 제정<br>
-                                        납품대금 연동제 시범운영 방안 발표
+                                        납품대금 연동 특별약정서 제정, <br>납품대금 연동제 시범운영 방안 발표
                                     </span>
                                 </div>
                                 <div class="img-wrap">

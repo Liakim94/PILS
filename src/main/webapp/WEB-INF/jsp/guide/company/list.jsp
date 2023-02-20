@@ -25,11 +25,11 @@
                     납품대금 연동제란?
                 </li>
                 <li>
-                    참여기업 현황
+                    참여기업 현황(위탁기업)
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">참여기업 현황</h1>
+                <h1 class="fw700">참여기업 현황(위탁기업)</h1>
             </div>
             <div id="main">
                 <!-- 컨텐츠 start -->
