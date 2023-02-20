@@ -33,6 +33,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title><%= systemTitle %></title>
     <link rel="stylesheet" href="https://www.smes.go.kr/humanframe/theme/portal/assets/style/common.css?dummy=20201231100842706" type="text/css">
     <link rel="stylesheet" href="https://www.smes.go.kr/humanframe/theme/portal/assets/style/main.css?dummy=20201231100842706" type="text/css">
@@ -51,10 +52,19 @@
             font-weight: bold;
         }
         .logo-element {
-            width: 700px!important;
+            width: 100%!important;
         }
         .error-txt p {
             color : #e3ecf3;
+        }
+        @media screen and (max-width: 768px) {
+            .logo-element {
+                width: 100%;
+            }
+            .error-txt {
+                margin:20px;
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
