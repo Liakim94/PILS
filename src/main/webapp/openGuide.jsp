@@ -64,7 +64,7 @@
         <div class="logo-element">
             <div class="inner"></div>
             <div class="error-txt">
-                <%= systemTitle %> 시스템 <strong>오픈 준비중</strong>입니다.<br>
+                <%= systemTitle %> 시스템 <strong id="ok-target">오픈 준비중</strong>입니다.<br>
                 <%--<% if (targetDt.getYear() < 9999) { %>
                 <%= targetDt.getYear() %>년 <%= targetDt.getMonthValue() %>월 <%= targetDt.getDayOfMonth() %>일
                 <%= targetDt.getHour() %>시에 새로운 모습으로 찾아 뵙겠습니다.<br>
@@ -84,6 +84,12 @@
             document.cookie = "GUIDEOK=1";
             document.location = '<%= redirectUrl %>';
         }
+    });
+    var okTarget = document.getElementById("ok-target");
+    okTarget.addEventListener("touchend", function(e) {
+
+        document.cookie = "GUIDEOK=1";
+        document.location = '<%= redirectUrl %>';
     });
 </script>
 <% } else { %>
@@ -112,6 +118,12 @@
             document.cookie = "GUIDEOK=1";
             document.location = '<%= redirectUrl %>';
         }
+    });
+    var okTarget = document.getElementById("ok-target");
+    okTarget.addEventListener("touchend", function(e) {
+
+        document.cookie = "GUIDEOK=1";
+        document.location = '<%= redirectUrl %>';
     });
     // countdown();
 </script>
