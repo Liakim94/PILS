@@ -56,25 +56,6 @@
             </div>
         </div>
         <section>
-            <h1 class="title">주요 제품</h1>
-            <div class="table">
-                <div class="label">
-                    <h4>주요 제품</h4>
-                </div>
-                <div class="value">
-                    <h4>${company.product}</h4>
-                </div>
-            </div>
-            <div class="img-flex">
-                <c:forEach var="prod" items="${company.prodImageList}">
-                    <img class="logo"
-                         src="<c:url value="${FileUploadController.makeDownloadLink(prod.savedFilepath, prod.fileName)}"/>"
-                         alt="<c:out value="${prod.fileName}"/>"
-                         onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
-                </c:forEach>
-            </div>
-        </section>
-        <section>
             <h1 class="title">납품대금 연동제 적용 현황</h1>
             <h4 class="info-text">
                 <span class="bold">${company.cmpNm}은(는) ${fn:substring(company.appdate,0,4)}년 ${fn:substring(company.appdate,5,7)}월 부터</span>
@@ -98,29 +79,48 @@
             </div>
         </section>
         <section>
-            <h1 class="title">기업홍보</h1>
-            <div class="promotion-wrap">
-                <c:if test="${company.subMovieUrl ne null and company.subMovieUrl ne ''}">
-                    <div class="item">
-                        <div class="video-wrap">
-                            <iframe width="560" height="315"
-                                    src="<c:out value="${company.subMovieUrl}"/>"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </c:if>
-                <c:forEach var="prmt" items="${company.prmtImageList}">
-                    <div class="item">
-                        <img class="logo"
-                             src="<c:url value="${FileUploadController.makeDownloadLink(prmt.savedFilepath, prmt.fileName)}"/>"
-                             alt="<c:out value="${prod.fileName}"/>"
-                             onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
-                    </div>
+            <h1 class="title">주요 제품</h1>
+            <div class="table">
+                <div class="label">
+                    <h4>주요 제품</h4>
+                </div>
+                <div class="value">
+                    <h4>${company.product}</h4>
+                </div>
+            </div>
+            <div class="img-flex">
+                <c:forEach var="prod" items="${company.prodImageList}">
+                    <img class="logo"
+                         src="<c:url value="${FileUploadController.makeDownloadLink(prod.savedFilepath, prod.fileName)}"/>"
+                         alt="<c:out value="${prod.fileName}"/>"
+                         onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
                 </c:forEach>
             </div>
         </section>
+<%--        <section>--%>
+<%--            <h1 class="title">기업홍보</h1>--%>
+<%--            <div class="promotion-wrap">--%>
+<%--                <c:if test="${company.subMovieUrl ne null and company.subMovieUrl ne ''}">--%>
+<%--                    <div class="item">--%>
+<%--                        <div class="video-wrap">--%>
+<%--                            <iframe width="560" height="315"--%>
+<%--                                    src="<c:out value="${company.subMovieUrl}"/>"--%>
+<%--                                    title="YouTube video player" frameborder="0"--%>
+<%--                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"--%>
+<%--                                    allowfullscreen></iframe>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </c:if>--%>
+<%--                <c:forEach var="prmt" items="${company.prmtImageList}">--%>
+<%--                    <div class="item">--%>
+<%--                        <img class="logo"--%>
+<%--                             src="<c:url value="${FileUploadController.makeDownloadLink(prmt.savedFilepath, prmt.fileName)}"/>"--%>
+<%--                             alt="<c:out value="${prod.fileName}"/>"--%>
+<%--                             onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>--%>
+<%--                    </div>--%>
+<%--                </c:forEach>--%>
+<%--            </div>--%>
+<%--        </section>--%>
         <section>
             <h1 class="title">기업정보</h1>
             <div class="company-info-wrap">

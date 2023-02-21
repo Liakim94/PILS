@@ -31,6 +31,11 @@ public class QnaController extends Alerts {
     @Autowired
     private QnaService qnaService;
 
+    @GetMapping(value = "/qna/main.do")
+    public ModelAndView qnaMain()throws Exception{
+        ModelAndView mav = new ModelAndView("communication/qna/main");
+        return mav;
+    }
     /**
      * 1:1문의 목록
      */

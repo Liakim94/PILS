@@ -24,7 +24,7 @@
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>소통마당</li>
+                <li>소통·상담</li>
                 <li>컨설팅 신청 확인</li>
             </ul>
             <div class="article-header">

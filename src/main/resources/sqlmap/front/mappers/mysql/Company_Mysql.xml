@@ -21,6 +21,9 @@
         where
             cmp_mbr_cd= #{mem_cd}
             and b.manage_cd ='M501'
+        <if test="bizcd !=  null and bizcd !=  ''">
+            and bizcd = #{bizcd}
+        </if>
         order by
             joincmp desc
 

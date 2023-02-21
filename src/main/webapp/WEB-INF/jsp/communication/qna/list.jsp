@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
-    <title>중소벤처기업부 | 질의응답 게시판</title>
+    <title>중소벤처기업부 | 온라인 상담</title>
 
 
 </head>
@@ -29,14 +29,14 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    소통마당
+                    소통·상담
                 </li>
                 <li>
-                    질의응답 게시판
+                    온라인 상담
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700"> 질의응답 게시판</h1>
+                <h1 class="fw700"> 온라인 상담</h1>
                 <div class="side-wrap">
                 </div>
             </div>

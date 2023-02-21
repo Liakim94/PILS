@@ -23,7 +23,7 @@
             <div id="about" class="content">
                 <!-- 컨텐츠 start -->
                 <section>
-                    <h2 class="title">「대중소기업 상생협력 촉진에 관한 법률」</h2>
+                    <h2 class="title">「대·중소기업 상생협력 촉진에 관한 법률」</h2>
                     <div class="accordion-container">
                         <div class="item-wrap" onclick="detailOpen(this)" tabindex="1">
                             <h3>제2조(정의)</h3>
