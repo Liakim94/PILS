@@ -86,13 +86,10 @@ public class CompanyServiceImpl implements CompanyService {
      * @throws Exception
      */
     @Override
-    public List<CmpMemberVo> list() throws Exception {
-        // 파라미터 생성
-        CmpMemberVo cmpMemberVo = CmpMemberVo.builder()
-                        .mem_cd("M302")
-                        .build();
+    public List<CmpMemberVo> list(CmpMemberVo vo) throws Exception {
+        vo.setMem_cd("M302");
         // 데이터 추출 및 반환
-        return this.companyMapper.list(cmpMemberVo);
+        return companyMapper.list(vo);
     }
 
     /**

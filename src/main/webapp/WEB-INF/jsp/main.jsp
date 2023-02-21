@@ -41,7 +41,8 @@
                     <div class="swiper-slide" style="background: url(<c:url value='/images/main/cardnews_banner.jpg'/>)"
                          OnClick="location.href ='<c:url value="/front/board/ready/list.do"/>'">
                     </div>
-                    <div class="swiper-slide" style="background: url(<c:url value='/images/main/event_banner.jpg'/>)"></div>
+                    <div class="swiper-slide" style="background: url(<c:url value='/images/main/event_banner.jpg'/>)"
+                         OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=40"/>'"></div>
                     </div>
             </div>
             <div class="main-navi">
@@ -82,7 +83,7 @@
         </section>
         <section class="gray-bg py-60">
             <h1 class="title"><strong>참여기업</strong> 현황</h1>
-            <h3 class="fw400">현재 ${cnt}개 위탁기업, 368개 수탁기업이 납품대금 연동제에 동참하고 있습니다.</h3>
+            <h3 class="fw400">현재 ${cnt}개 위탁기업,  ${joinCmpCnt}개 수탁기업이 납품대금 연동제에 동참하고 있습니다.</h3>
             <div class="company-list-container">
                 <c:forEach var="company" items="${list}" varStatus="status">
                 <div class="list-item">
