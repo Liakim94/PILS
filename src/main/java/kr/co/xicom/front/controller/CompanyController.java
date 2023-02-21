@@ -7,12 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.enterprise.inject.Model;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -35,14 +35,13 @@ public class CompanyController {
      * 참여기업 현황 리스트 페이지 출력
      */
     @RequestMapping("/front/guide/company/list.do")
-    public ModelAndView list() throws Exception {
+    public ModelAndView list(@ModelAttribute("vo") CmpMemberVo cmpMemberVo) throws Exception {
 
         ModelAndView mav = new ModelAndView("guide/company/list");
-
-        List<CmpMemberVo> list = this.companyService.list();
+        List<CmpMemberVo> list = this.companyService.list(cmpMemberVo);
 
         mav.addObject("list", list);
-
+        mav.addObject("vo", cmpMemberVo);
         return mav;
     }
 

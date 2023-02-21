@@ -26,7 +26,7 @@ public interface CompanyService {
      * @return
      * @throws Exception
      */
-    List<CmpMemberVo> list() throws Exception;
+    List<CmpMemberVo> list(CmpMemberVo vo) throws Exception;
 
     /**
      * 참여회사 등록.

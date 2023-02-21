@@ -51,6 +51,7 @@ public class CmpMemberVo extends DefaultVO {
     private String management_cd = ""; //담당자구분코드
     private int joinCmp =0; //참여기업
     private String mainProduct =""; //주요 적용 제품
+    private String bizcd=""; //업종구분코드
 
     /**
      * FileUploader.js에 의해 업로드된 파일 리스트 (JSON 문자열)

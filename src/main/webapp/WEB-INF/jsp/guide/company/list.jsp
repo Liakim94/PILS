@@ -58,10 +58,11 @@
                         <span></span>
                     </div>
                     <!--  업종별 통계  -->
+                    <form action="<c:url value="/front/guide/company/list.do"/>" id="comSearch" method="get">
                     <div id="contents1" class="contents-wrap">
                         <h2 class="title">업종별 통계</h2>
                         <div class="industry-container">
-                            <div class="item machine hover-info">
+                            <div class="item machine hover-info" onclick="comSearch('machinery')">
                                 <div class="text-wrap">
                                     <h3>기계·자동차·조선</h3>
                                     <h2>14개사</h2>
@@ -72,7 +73,7 @@
                                     <h3>14개사</h3>
                                 </div>
                             </div>
-                            <div class="item electronics hover-info">
+                            <div class="item electronics hover-info"  onclick="comSearch('elect')">
                                 <div class="text-wrap">
                                     <h3>전기·전자</h3>
                                     <h2>10개사</h2>
@@ -83,7 +84,7 @@
                                     <h3>10개사</h3>
                                 </div>
                             </div>
-                            <div class="item chemistry hover-info">
+                            <div class="item chemistry hover-info" onclick="comSearch('chemical')">
                                 <div class="text-wrap">
                                     <h3>화학·금속·비금속</h3>
                                     <h2>9개사</h2>
@@ -95,7 +96,7 @@
                                 </div>
                             </div>
                             <div class="item others">
-                                <div class="item food hover-info">
+                                <div class="item food hover-info" onclick="comSearch('food')">
                                     <div class="text-wrap">
                                         <h3>식품</h3>
                                         <h2>5개사</h2>
@@ -106,7 +107,7 @@
                                         <h3>5개사</h3>
                                     </div>
                                 </div>
-                                <div class="item communication hover-info">
+                                <div class="item communication hover-info" onclick="comSearch('tel')">
                                     <div class="text-wrap">
                                         <h3>통신</h3>
                                         <h2>4개사</h2>
@@ -117,7 +118,7 @@
                                         <h3>4개사</h3>
                                     </div>
                                 </div>
-                                <div class="item building hover-info">
+                                <div class="item building hover-info" onclick="comSearch('con')">
                                     <div class="text-wrap">
                                         <h3>건설</h3>
                                         <h2>3개사</h2>
@@ -128,7 +129,7 @@
                                         <h3>3개사</h3>
                                     </div>
                                 </div>
-                                <div class="item service hover-info">
+                                <div class="item service hover-info" onclick="comSearch('service')">
                                     <div class="text-wrap">
                                         <h3>서비스</h3>
                                         <h2>2개사</h2>
@@ -142,6 +143,7 @@
                             </div>
                         </div>
                     </div>
+                    </form>
                     <!--  지역별 통계  -->
                     <div id="contents2" class="contents-wrap">
                         <h2 class="title">지역별 통계</h2>
@@ -291,4 +293,15 @@
         chart.container("bar_chart");
         chart.draw();
     });
+
+    function comSearch(code){
+        var form = document.getElementById('comSearch');
+        var input = document.createElement('input');
+        input.setAttribute('type','hidden');
+        input.setAttribute('value',code);
+        input.setAttribute('name','bizcd');
+
+        form.appendChild(input);
+        form.submit();
+    }
 </script>
