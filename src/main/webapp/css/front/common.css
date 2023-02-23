@@ -2500,13 +2500,16 @@
     text-align: center;
 }
 #about .info-link .item:nth-child(1){
-    width: 22%
+    width: 20%
 }
 #about .info-link .item:nth-child(2){
-    width: 45%
+    width: 23%
 }
 #about .info-link .item:nth-child(3){
-    width: 35%
+    width: 30%
+}
+#about .info-link .item:nth-child(4){
+    width: 22%
 }
 #about .info-link p{
     color: #E60024;

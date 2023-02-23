@@ -42,6 +42,12 @@
                             <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
                             동행기업 신청</a>
                     </div>
+                    <div class="item">
+                        <a href="${pageContext.request.contextPath}/join//joinRecom.do">
+                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
+                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
+                            동행기업 참여 추천</a>
+                    </div>
                     <div class="item" style="width: 22%">
                         <a href="<c:url value="/front/board/11/view.do?boardSeq=5"/>">
                             <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
@@ -72,7 +78,7 @@
                         </li>
                     </ul>
                 </h4>
-                <h2 class="title mt40">동행기업이란?</h2>
+                <h2 class="title mt40">동행기업 신청 및 선정</h2>
                 <h4>
                     <ul class="disc">
                         <li class="mb20">
