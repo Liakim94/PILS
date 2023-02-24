@@ -9,12 +9,12 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <head>
-    <title>중소벤처기업부 | 동행기업 신청</title>
+    <title>중소벤처기업부 | 제도 설명</title>
 </head>
 
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu2"/>
+        <page:applyDecorator name="menu_join"/>
         <div class="article">
             <br>
             <ul class="loc-list">
@@ -22,32 +22,32 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    납품대금 연동제 동참하기
+                    동행기업
                 </li>
                 <li>
-                    동행기업 신청하기
+                    동행기업 알아보기
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">동행기업 신청하기</h1>
+                <h1 class="fw700">동행기업 알아보기</h1>
                 <div class="side-wrap">
                 </div>
             </div>
             <div id="about" class="content">
                 <!-- 컨텐츠 start -->
                 <div class="info-link">
-                    <div class="item">
-                        <a href="${pageContext.request.contextPath}/join/joinApply.do">
-                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
-                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
-                            동행기업 신청</a>
-                    </div>
-                    <div class="item">
-                        <a href="${pageContext.request.contextPath}/join//joinRecom.do">
-                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
-                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
-                            동행기업 참여 추천</a>
-                    </div>
+<%--                    <div class="item">--%>
+<%--                        <a href="${pageContext.request.contextPath}/join/joinApply.do">--%>
+<%--                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">--%>
+<%--                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">--%>
+<%--                            동행기업 신청</a>--%>
+<%--                    </div>--%>
+<%--                    <div class="item">--%>
+<%--                        <a href="${pageContext.request.contextPath}/join//joinRecom.do">--%>
+<%--                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">--%>
+<%--                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">--%>
+<%--                            동행기업 참여 추천</a>--%>
+<%--                    </div>--%>
                     <div class="item" style="width: 22%">
                         <a href="<c:url value="/front/board/11/view.do?boardSeq=5"/>">
                             <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">

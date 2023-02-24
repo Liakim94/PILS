@@ -136,7 +136,7 @@
 </script>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu2"/>
+        <page:applyDecorator name="menu_join"/>
         <form:form name="frmEdit" id="frmEdit" method="POST" action="joinEdit.do">
             <form:hidden path="jsonFileList"/>
             <form:hidden path="jsonDeletedFileList"/>

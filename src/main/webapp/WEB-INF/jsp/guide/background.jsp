@@ -85,7 +85,7 @@
                             </div>
                             <div class="right">
                                 <div class="content">
-                                    <span class="date">10.01</span>
+                                    <span class="date">11.09</span>
                                     <span>
                                         납품대금 연동제 민당정협의회 개최
                                     </span>

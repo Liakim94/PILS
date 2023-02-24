@@ -8,11 +8,11 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <head>
-    <title>중소벤처기업부 | 동행기업 실적 제출하기</title>
+    <title>중소벤처기업부 | 동행기업 실적 제출</title>
 </head>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu2"/>
+        <page:applyDecorator name="menu_join"/>
         <div class="article">
             <br>
             <ul class="loc-list">
@@ -23,11 +23,11 @@
                     납품대금 연동제 동참하기
                 </li>
                 <li>
-                    동행기업 실적 제출하기
+                    동행기업 실적 제출
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">동행기업 실적 제출하기</h1>
+                <h1 class="fw700">동행기업 실적 제출</h1>
                 <div class="side-wrap">
                 </div>
             </div>

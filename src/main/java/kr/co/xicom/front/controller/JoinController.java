@@ -277,4 +277,10 @@ public class JoinController {
         ModelAndView mav = new ModelAndView("join/join_submit");
         return mav;
     }
+    //동행기업 제도 설명
+    @GetMapping(value = "/concept.do")
+    public ModelAndView concept() throws Exception {
+        ModelAndView mav = new ModelAndView("join/join_concept");
+        return mav;
+    }
 }
