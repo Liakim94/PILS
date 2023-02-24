@@ -31,6 +31,10 @@
             <div id="agreement" class="content">
                 <!-- 컨텐츠 start -->
                 <p class="info-text">
+                    납품대금 연동 약정 체결에 어려움을 겪는 기업을 대상으로 전문 컨설팅을 제공할 예정입니다.<br>
+                    2023년 6월 업데이트 예정입니다.<br>
+                </p>
+                <p class="info-text">
                     <img src="<c:url value="/images/common/tempImage.png"/>">
                 </p>
                 <!-- 컨텐츠 end -->

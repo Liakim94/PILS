@@ -16,16 +16,19 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
 
 <aside class="sidebar">
     <div class ="lnb">
-        <h2>납품대금 연동제 도입하기</h2>
+        <h2>동행기업</h2>
         <ul>
-            <li class="<c:if test="${URI.contains('/join/process')}">on</c:if>">
-                <a href ="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
+            <li class="<c:if test="${URI.contains('/join/joinMain.do')}">on</c:if>">
+                <a href="<c:url value="/join/joinMain.do"/>">제도 설명</a>
             </li>
-            <li class="<c:if test="${URI.contains('/join/ex')}">on</c:if>">
-            <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
+            <li class="<c:if test="${URI.contains('/front/guide/company')}">on</c:if>">
+                <a href="<c:url value="/front/guide/company/list.do"/>">동행기업 현황</a>
             </li>
-            <li class="<c:if test="${URI.contains('/join/agree')}">on</c:if>">
-                <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
+            <li class="<c:if test="${URI.contains('/join/joinApply.do')}">on</c:if>">
+                <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/join/joinSubmit')}">on</c:if>">
+                <a href="<c:url value="/join/joinSubmit.do"/>">동행기업 실적 제출</a>
             </li>
         </ul>
     </div>

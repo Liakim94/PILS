@@ -30,8 +30,11 @@
             </div>
             <div id="agreement" class="content">
                 <!-- 컨텐츠 start -->
+                <p class="info-text">납품대금 연동에 활용할 수 있는 원재료 가격 기준지표에 관한 정보를 제공할 예정입니다.<br>
+                    2023년 6월 업데이트 예정입니다.
+                </p>
                 <p class="info-text">
-                    <img src="<c:url value="/images/common/tempImage.png"/>">
+                <img src="<c:url value="/images/common/tempImage.png"/>">
                 </p>
                 <!-- 컨텐츠 end -->
             </div>

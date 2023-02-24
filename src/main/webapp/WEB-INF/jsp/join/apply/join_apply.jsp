@@ -189,7 +189,7 @@
 </style>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu2"/>
+        <page:applyDecorator name="menu_join"/>
         <div class="article">
             <br>
             <ul class="loc-list">
@@ -197,7 +197,7 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    납품대금 연동제 동참하기
+                    동행기업
                 </li>
                 <li>
                     동행기업 신청하기

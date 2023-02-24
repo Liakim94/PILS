@@ -161,7 +161,13 @@ public class JoinController {
         }
         return mav;
     }
+    //동행기업 참여 추천
+    @GetMapping(value = "/joinRecom.do")
+    public ModelAndView apply() throws Exception {
 
+        ModelAndView mav = new ModelAndView("join/apply/join_recom");
+        return mav;
+    }
     //약정서 작성 첫 화면
     @GetMapping(value = "/agreeMain.do")
     public ModelAndView agreeMain(HttpSession session,
@@ -269,6 +275,12 @@ public class JoinController {
     @GetMapping(value = "/joinSubmit.do")
     public ModelAndView joinSubmit() throws Exception {
         ModelAndView mav = new ModelAndView("join/join_submit");
+        return mav;
+    }
+    //동행기업 제도 설명
+    @GetMapping(value = "/concept.do")
+    public ModelAndView concept() throws Exception {
+        ModelAndView mav = new ModelAndView("join/join_concept");
         return mav;
     }
 }

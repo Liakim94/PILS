@@ -128,6 +128,17 @@ public class CommonController {
 		mav = new ModelAndView("template/front/menu_consulting");
 		return mav;
 	}
+	@GetMapping(value = "/menu_join.do")
+	public ModelAndView menu_join(ModelMap model,
+										HttpServletRequest request,
+										HttpServletResponse response,
+										HttpSession session)
+			throws Exception {
+		ModelAndView mav = null;
+		mav = new ModelAndView("template/front/menu_join");
+		return mav;
+	}
+
 	/**
 	 * location 화면
 	 * 

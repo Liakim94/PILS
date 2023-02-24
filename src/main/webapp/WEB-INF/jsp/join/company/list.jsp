@@ -5,7 +5,7 @@
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 
 <head>
-    <title>참여기업 현황</title>
+    <title>중소벤처기업부 | 동행기업</title>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-core.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-map.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-cartesian.min.js"></script>
@@ -14,7 +14,7 @@
 </head>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="guide_menu"/>
+        <page:applyDecorator name="menu_join"/>
         <div class="article">
             <br>
             <ul class="loc-list">
@@ -22,14 +22,14 @@
                     <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
                     <a href="/">홈</a></li>
                 <li>
-                    납품대금 연동제란?
+                    동행기업
                 </li>
                 <li>
-                    참여기업 현황(위탁기업)
+                    동행기업 현황(위탁기업)
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">참여기업 현황(위탁기업)</h1>
+                <h1 class="fw700">동행기업 현황(위탁기업)</h1>
             </div>
             <div id="main">
                 <!-- 컨텐츠 start -->
