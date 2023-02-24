@@ -116,7 +116,7 @@
                     <a href="${pageContext.request.contextPath}">홈</a>
                 </li>
                 <li>
-                    소통마당
+                    소통·상담
                 </li>
                 <li>
                     ${bbsNm}

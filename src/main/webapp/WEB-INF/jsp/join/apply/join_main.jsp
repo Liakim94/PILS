@@ -9,40 +9,47 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <head>
-    <title>중소벤처기업부 | 동행기업 신청</title>
+    <title>중소벤처기업부 | 제도 설명</title>
 </head>
 
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu2"/>
+        <page:applyDecorator name="menu_join"/>
         <div class="article">
+            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    납품대금 연동제 동참하기
+                    동행기업
                 </li>
                 <li>
-                    동행기업 신청하기
+                    동행기업 알아보기
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">동행기업 신청하기</h1>
+                <h1 class="fw700">동행기업 알아보기</h1>
                 <div class="side-wrap">
                 </div>
             </div>
             <div id="about" class="content">
                 <!-- 컨텐츠 start -->
                 <div class="info-link">
-                    <div class="item">
-                        <a href="${pageContext.request.contextPath}/join/joinApply.do">
-                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
-                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
-                            동행기업 신청</a>
-                    </div>
+<%--                    <div class="item">--%>
+<%--                        <a href="${pageContext.request.contextPath}/join/joinApply.do">--%>
+<%--                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">--%>
+<%--                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">--%>
+<%--                            동행기업 신청</a>--%>
+<%--                    </div>--%>
+<%--                    <div class="item">--%>
+<%--                        <a href="${pageContext.request.contextPath}/join//joinRecom.do">--%>
+<%--                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">--%>
+<%--                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">--%>
+<%--                            동행기업 참여 추천</a>--%>
+<%--                    </div>--%>
                     <div class="item" style="width: 22%">
-                        <a href="">
+                        <a href="<c:url value="/front/board/11/view.do?boardSeq=5"/>">
                             <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
                             <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
                             동행기업 모집공고</a>
@@ -65,10 +72,13 @@
                             <p class="tip">
                                 * 일부 변경하여 사용하는 것도 가능합니다.
                             </p>
+                            <p class="tip">
+                            ** 기존 계약에 특별약정으로서 추가로 체결하는 것도 가능합니다.
+                            </p>
                         </li>
                     </ul>
                 </h4>
-                <h2 class="title mt40">동행기업이란?</h2>
+                <h2 class="title mt40">동행기업 신청 및 선정</h2>
                 <h4>
                     <ul class="disc">
                         <li class="mb20">
@@ -81,7 +91,7 @@
                         </li>
                         <li class="mb20">
                             참여를 희망하는 위탁기업은 모집공고문을 확인한 후 홈페이지 또는 이메일을 통해 필요 서류를 제출하시기 바랍니다.<br>
-                            · 홈페이지 신청: 아래의 ‘동행기업 신청’ 버튼 클릭<br>
+                            · 홈페이지 신청: 상단의 ‘동행기업 신청’ 버튼 클릭<br>
                             · 이메일 신청: med@win-win.or.kr로 송부
                         </li>
                         <li class="">
@@ -105,13 +115,19 @@
                         <img src="<c:url value="/images/common/company-process3.png"/>" alt="연동 약정 체결"/>
                     </div>
                     <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process6.png"/>" alt="연동 특별약정서 제출"/>
+                        <img src="<c:url value="/images/common/company-process4.png"/>" alt="연동 특별약정서 제출"/>
                     </div>
                     <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process5.png"/>" alt="연동실적 제출 및 확인"/>
+                        <img src="<c:url value="/images/common/company-process8.png"/>" alt="연동실적 제출 및 확인"/>
                     </div>
                     <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process4.png"/>" alt="우수기업 선정 및 인센티브 부여"/>
+                        <img src="<c:url value="/images/common/company-process7.png"/>" alt="우수기업 선정 및 인센티브 부여"/>
+                    </div>
+                    <div class="prwrap">
+                        <img src="<c:url value="/images/common/company-process6.png"/>" alt="우수기업 선정 및 인센티브 부여"/>
+                    </div>
+                    <div class="prwrap">
+                        <img src="<c:url value="/images/common/company-process5.png"/>" alt="우수기업 선정 및 인센티브 부여"/>
                     </div>
                 </div>
                 <div class="accordion-container">
@@ -123,57 +139,49 @@
                             <p class="tip">* (협력재단 역할) 위탁기업-수탁기업 간 계약기간 중 원재료 가격 변동에 따라 납품대금을 연동하여 조정한 실적을 확인</p>
                             <div class="peristalsis-process">
                                 <div class="item">
-                                    ① 연동 특별 약정서 제출
+                                    ① 연동 특별약정서 제출
                                 </div>
                                 <div class="item">
-                                    ② 확인서 발급
+                                    ② 참여확인서 발급
                                 </div>
                                 <div class="item">
-                                    ③ 조정실적 제출
+                                    ③ 인센티브 부여
                                 </div>
                                 <div class="item">
-                                    ④ 우수기업 선정
+                                    ④ 조정실적 제출
                                 </div>
                             </div>
                             <h4 class="mb20">
-                                ① <strong>(연동 특별약정서 제출)</strong> 위탁기업-수탁기업 간 체결한 계약서의 특별약정에해당하는 부분 제출
+                                ① <strong>(연동 특별약정서 제출)</strong> 위탁기업-수탁기업 간 체결한 계약서의 특별약정에 해당하는 부분 제출
                                 <p class="tip">* 영업비밀에 해당할 수 있는 내용은 제외, 위탁기업-수탁기업 담당자 정보 포함</p>
                             </h4>
                             <h4 class="mb20">
-                                ② <strong>(확인서 발급)</strong> 위탁기업이 연동 특별약정서를 제출한 뒤 확인서 발급을 요청하면 ‘납품대금 연동제 동행기업 참여 확인서’(인센티브 부여 시 활용 가능) 발급
+                                ② <strong>(참여확인서 발급)</strong> 위탁기업이 연동 특별약정서를 제출한 뒤 확인서 발급을 요청하면 ‘납품대금 연동제 동행기업 참여 확인서’ 발급
                             </h4>
                             <h4 class="mb20">
-                                ③ <strong>(조정실적 제출)</strong> 위탁기업이 납품대금 연동 약정에 따라 납품대금을 조정하여 지급한 내역서를 제출
+                                ③ <strong>(인센티브 부여)</strong>참여기업은 ‘동행기업 참여시 제공 인센티브’를 부여받고자 하는 해당기관에 ‘납품대금 연동제 동행기업 참여 확인서’를 제출
                             </h4>
                             <h4 class="">
-                                ④ <strong>(우수기업 선정)</strong> 연동 확산 지원본부에서 해당 제출자료 검토 후 필요시 증빙자료 등을 제출 요청 및 확인하여 우수기업 선정
+                                ④ <strong>(조정실적 제출)</strong> 위탁기업이 납품대금 연동 약정에 따라 납품대금을 조정하여 지급한 내역서를 제출
                             </h4>
                             <hr>
                             <h3 class="mb20"> 우수기업 선정 세부절차</h3>
                             <h4>
                                 ◦ 동행기업은 ‘23년도 납품대금 연동제 추진실적을 ‘23.10.2일부터 ’23.10.31일까지 제출<br>
-                                ◦ 다만, ‘23.8.1일 이후 동행기업으로 선정되는 기업은 ’24년도 우수기업 선정시 실적 제출(’24년)<br>
+                                ◦ 다만, ‘23.8.1일 이후 동행기업으로 선정된 기업의 연동실적은  ‘24년 10월 말까지 제출하여 ‘24년도 우수기업 선정에 반영
+                                <br>
                                 ◦ ’23년 실적을 제출한 기업에 한해 평가를 통해 우수기업으로 선정·포상(12월 예정)<br>
                                 <p class="tip">※ 관계부처 협의를 통해 우수기업 인센티브 확정 예정(~’23년 중)</p>
                             </h4>
                         </div>
                     </div>
                 </div>
-                <h2 class="title">동행기업에 대한 인센티브는? (2023년 적용)</h2>
+                <h2 class="title mt40" style="margin-bottom:20px">동행기업 참여 시 제공 인센티브(’23년)</h2>
                 <h4>
                     <ul class="disc">
-                        <li class="mb20">
-                            동행기업은 ‘23년도 납품대금 연동제 추진실적을 ‘23.10.2일부터 ’23.10.31일까지 제출
-                        </li>
-                        <li class="mb20">
-                            다만, ‘23.8.1일 이후 동행기업으로 선정되는 기업은 ’24년도 우수기업 선정시 실적 제출(’24년)
-                        </li>
-                        <li class="">
-                            ’23년 실적을 제출한 기업에 한해 평가를 통해 우수기업으로 선정·포상(12월 예정)
-                            <p class="tip">
-                                ※ 관계부처 협의를 통해 우수기업 인센티브 확정 예정(~’23년 중)
-                            </p>
-                        </li>
+                        <p class="tip">
+                            ※ ‘동행기업 참여확인서’ 등을 제출한 기업에 한하여 제공
+                        </p>
                     </ul>
                 </h4>
                 <div class="accordion-container mt40">
@@ -182,11 +190,18 @@
                         <img class="icon" src="<c:url value="/images/common/arrow-top.png"/>" alt="상세보기">
                         <div class="detail-info">
                             <h4>
-                                ◦ (공통) 연동제 실시 위탁기업에 금리감면 대출로 운전자금 공급(1조원, 산은)
+                                ◦ (공통) 정부포상(동반성장유공) 우대평가<br>
+                                ◦ (공통) 스마트공장 지원사업 참여시 가점 부여(5점)<br>
+                                ◦ (공통) 의무고발요청 여부 심의 시 법 위반점수 감경(최대 –0.15점)<br>
+                                ◦ (대기업) 동반성장 대기업 실적평가지표인 ‘납품단가 조정’ 항목에 납품대금 연동제 ‘도입’ 및 ‘운영 실적’ 추가(최대 3점(일부업종 4점))<br>
+                                ◦ (대‧중견기업) 대·중소기업 동반진출사업 주관기업 선정 시 가점 부여(1점)<br>
+                                ◦ (중소기업) 중소기업 정책자금 최대 대출한도(잔액) 100억원(←60억원)까지 확대<br>
+                                ◦ (중소기업) 수출중소기업에 대한 기술보증기금 보증우대(보증료 0.4%p 감면, 보증비율 95%)<br>
+                                ◦ (중소기업) 수출컨소시엄 참여 중소기업에 대한 가점 부여(2점)<br>
+                                ◦ (중소기업) 해외규격인증지원사업 가점 부여(5점)<br>
+                                ◦ (중소기업) 수출바우처사업 가점 부여(1점)<br>
+                                ◦ (중소기업) 병역지정업체 추천 평가 가점 부여<br>
                             </h4>
-                            <p class="pl10">
-                                * (금리감면) 대기업 최대 0.3%p, 중견‧중소기업 최대 0.7%p
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -200,8 +215,22 @@
                             </h3>
                             <h4 class="">
                                 ① (공통) 공정거래협약 이행평가 기준에 연동 실적 반영(5점)<br>
-                                ② (공통) 하도급거래 모범업체 선정 시 연동(조정) 실적에 따른 가점 부여<br>
-                                ③ (공통) 하도급법 벌점 경감 사유로 인정(최대 3.5점)
+                                ② (공통) 하도급법 벌점 경감 사유로 인정*(최대 3.5점)<br>
+                                <p class="pl10"> * 연동계약 체결비율, 대금 인상실적 등 하도급법상 기준에 따라 인센티브 제공</p>
+                                ③ (중소기업) 하도급거래 모범업체 선정 시 가점 부여<br>
+                                ④ (공통) 공정거래 업무 유공 포상 추천
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-container mt40">
+                    <div class="item-wrap" onclick="detailOpen(this)" tabindex="1">
+                        <h3>금융위원회 제공 인센티브</h3>
+                        <img class="icon" src="<c:url value="/images/common/arrow-top.png"/>" alt="상세보기">
+                        <div class="detail-info">
+                            <h4 class="">
+                                ◦ (공통) 연동제 실시 위탁기업에 금리감면 대출로 운전자금 공급(1조원, 산은)
+                                <p class="pl10">  * (금리감면) 대기업 최대 0.3%p, 중견‧중소기업 최대 0.7%p</p>
                             </h4>
                         </div>
                     </div>

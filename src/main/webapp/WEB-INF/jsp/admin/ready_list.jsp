@@ -29,7 +29,7 @@
                 <!-- 컨텐츠 start -->
                 <div class="tbl-wrap for_board">
                     <a href="<c:url value="/admin/ready/post.do"/>" class="write-question"
-                       style="width: 135px">
+                       style="width: 141px">
                         게시물 등록
                     </a>
                     <table class="tbl-list01">

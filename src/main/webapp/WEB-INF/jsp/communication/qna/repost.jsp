@@ -50,7 +50,7 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    소통마당
+                    소통·상담
                 </li>
                 <li>
                     질의응답 게시판
@@ -102,10 +102,11 @@
                                 <textarea id="txta" class="form-control" name="body"></textarea>
                             </div>
                         </div>
-                        <div class="write-bottom">
-                            <button type="button" class="submit" onclick="fn_submit()" style="width:135px">저장</button>
-                            <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
-                        </div>
+
+                    </div>
+                    <div class="write-bottom">
+                        <button type="button" class="submit" onclick="fn_submit()" style="width:135px">저장</button>
+                        <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
                     </div>
                 </form>
                 <!-- 컨텐츠 end -->

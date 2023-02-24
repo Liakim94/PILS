@@ -20,7 +20,7 @@ input[type=number] {
     padding-right: 0!important;
 }
 select {
-    border-radius: 0!important;
+    border-radius: 5px;
     padding: 10px!important;
     margin-top: 0!important;
 }

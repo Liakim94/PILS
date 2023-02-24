@@ -84,6 +84,7 @@
     <div id="board">
         <page:applyDecorator name="menu_admin"/>
         <div class="article">
+            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -138,12 +139,13 @@
                         </div>
                         <!-- /.box-body -->
                     </form:form>
-                    <div class="write-bottom">
-                        <button id="submit" class="submit" style="width:130px">저장</button>
-                        <a href="<c:url value="/admin/ready/view.do?boardSeq=${edit.boardSeq}"/>" class="back">
-                            취소
-                        </a>
-                    </div>
+
+                </div>
+                <div class="write-bottom">
+                    <button id="submit" class="submit" style="width:130px">저장</button>
+                    <a href="<c:url value="/admin/ready/view.do?boardSeq=${edit.boardSeq}"/>" class="back">
+                        취소
+                    </a>
                 </div>
             </div><!-- /. box -->
         </div>

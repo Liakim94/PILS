@@ -23,7 +23,7 @@
                     <div class="swiper-slide" style="background: url(<c:url value='/images/main/main-banner.png'/>)">
                         <div class="text-wrap">
                             <h1 class="slide-text">
-                                <p>현재 <strong>338개</strong> 기업이</p>
+                                <p>현재 <strong>392개</strong> 기업이</p>
                                 <p>납품대금 연동제에 동참하고 있습니다.</p>
                             </h1>
                             <a href="<c:url value="/front/guide/company/list.do"/>" class="more-btn">참여기업 현황 바로가기<i class="fas fa-chevron-right"></i></a>
@@ -38,7 +38,14 @@
                             <a href="<c:url value="/front/guide/concept.do"/>" class="more-btn">납품대금 연동제 소개 바로가기<i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
-                </div>
+                    <div class="swiper-slide" style="background: url(<c:url value='/images/main/cardnews_banner.jpg'/>)"
+                         OnClick="location.href ='<c:url value="/front/board/ready/list.do"/>'">
+                    </div>
+                    <div class="swiper-slide" style="background: url(<c:url value='/images/main/event_banner.jpg'/>)"
+                         OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=40"/>'"></div>
+                <div class="swiper-slide" style="background: url(<c:url value='/images/main/recruit_banner.jpg'/>)"
+                     OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=5"/>'"></div>
+            </div>
             </div>
             <div class="main-navi">
                 <div class="navi main-prev">
@@ -71,14 +78,22 @@
                     </div>
                     <div class="slide-item">
                         <h3>납품대금 연동제 '동행기업' 모집공고</h3>
-                        <img class="thumbnail" src="<c:url value="/images/card02/001.jpg"/>"  onclick="openCardNews('modal-box-4')"/>
+                         <img class="thumbnail" src="<c:url value="/images/card02/001.jpg"/>"  onclick="openCardNews('modal-box-4')"/>
+                    </div>
+                    <div class="slide-item">
+                        <h3>납품대금 연동제 로드쇼 개막식</h3>
+                        <img class="thumbnail" onclick="modalOpen('modal-box-5')" src="<c:url value="/images/common/youtube_temp3.png"/>" alt="납품대금연동제 설명회"/>
+                    </div>
+                    <div class="slide-item">
+                        <h3>품대금 연동제 로드쇼 개막식 Q&A</h3>
+                        <img class="thumbnail" onclick="modalOpen('modal-box-6')" src="<c:url value="/images/common/youtube_temp4.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
                 </div>
             </div>
         </section>
         <section class="gray-bg py-60">
             <h1 class="title"><strong>참여기업</strong> 현황</h1>
-            <h3 class="fw400">현재 ${cnt}개 위탁기업, ${joinCmpCnt}개 수탁기업이 납품대금 연동제에 동참하고 있습니다.</h3>
+            <h3 class="fw400">현재 ${cnt}개 위탁기업,  ${joinCmpCnt}개 수탁기업이 납품대금 연동제에 동참하고 있습니다.</h3>
             <div class="company-list-container">
                 <c:forEach var="company" items="${list}" varStatus="status">
                 <div class="list-item">
@@ -206,11 +221,35 @@
         </div>
     </div>
 </div>
+<div id="modal-box-5" class="main-modal-box">
+    <div class="modal-close inline-focus" onclick="playerClose()">
+        <span></span>
+        <span></span>
+    </div>
+    <div class="contents-wrap">
+        <h1 class="title">납품대금 연동제 로드쇼 개막식 풀버전</h1>
+        <div class="video-wrap" id="player3">
+        </div>
+    </div>
+</div>
+<div id="modal-box-6" class="main-modal-box">
+    <div class="modal-close inline-focus" onclick="playerClose()">
+        <span></span>
+        <span></span>
+    </div>
+    <div class="contents-wrap">
+        <h1 class="title">납품대금 연동제 로드쇼 개막식 Q&A</h1>
+        <div class="video-wrap" id="player4">
+        </div>
+    </div>
+</div>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
     <%-- WildRain 추가 2023-02-03 : Youtube 동영상 중지 처리 추가 --%>
     var player1;
     var player2;
+    var player3;
+    var player4;
     function onYouTubeIframeAPIReady() {
         player1 = new YT.Player('player1', {
             width: '840',
@@ -221,7 +260,17 @@
             width: '840',
             height: '472',
             videoId: 'deoTuJCLNFY'
-        })
+        });
+        player3 = new YT.Player('player3', {
+            width: '840',
+            height: '472',
+            videoId: '6N9ko0YKfzU'
+        });
+        player4 = new YT.Player('player4', {
+            width: '840',
+            height: '472',
+            videoId: 'YG80p4iRcZo'
+        });
     }
     function playerClose() {
         if (player1) {
@@ -229,6 +278,12 @@
         }
         if (player2) {
             player2.pauseVideo();
+        }
+        if (player3) {
+            player3.pauseVideo();
+        }
+        if (player4) {
+            player4.pauseVideo();
         }
         modalClose();
     }

@@ -71,6 +71,7 @@
         <form:form name="frmEdit" id="frmEdit" method="POST" action="memEdit.do">
         <input type="hidden" name="id" id="id" value="${rs.id}">
         <div class="article">
+            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">

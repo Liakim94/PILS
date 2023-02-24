@@ -67,7 +67,7 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    소통마당
+                    소통·상담
                 </li>
                 <li>
                     질의응답 게시판
@@ -120,13 +120,14 @@
                                 </div>
                             </div>
                         </div>
+                </div>
                         <div class="write-bottom">
                             <button style="width:130px" class="submit">저장</button>
                             <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
                         </div>
                     </form>
                     <!-- 컨텐츠 end -->
-                </div>
+
             </div>
         </div>
     </div>

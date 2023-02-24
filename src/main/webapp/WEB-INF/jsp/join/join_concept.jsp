@@ -7,7 +7,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <head>
-<title>중소벤처기업부 | 연동 절차 알아보기</title>
+<title>중소벤처기업부 | 제도 설명</title>
 </head>
 <body>
 
@@ -21,14 +21,14 @@
                     <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
                     <a href="/">홈</a></li>
                 <li>
-                    납품대금 연동제 도입하기
+                    동행기업
                 </li>
                 <li>
-                    납품대금 연동 절차 알아보기
+                    제도 설명
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">납품대금 연동 절차 알아보기</h1>
+                <h1 class="fw700">제도 설명</h1>
                 <div class="side-wrap">
                 </div>
             </div>

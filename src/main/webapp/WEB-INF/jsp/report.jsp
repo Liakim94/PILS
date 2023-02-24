@@ -31,8 +31,14 @@
             <div id="agreement" class="content">
                 <!-- 컨텐츠 start -->
                 <p class="info-text">
+                    2023년 10월 4일 개정 상생협력법이 시행되면 위탁기업은 수탁기업과 납품대금 연동 약정을 체결해야 합니다.<br>
+                    수탁기업은 신고센터를 통해 납품대금 연동 관련 상생협력법 위반행위로 인한 피해 사실을 신고할 수 있습니다.<br>
+                    2023년 10월 업데이트 예정입니다.<br>
+                </p>
+                <p class="info-text">
                     <img src="<c:url value="/images/common/tempImage.png"/>">
                 </p>
+
                 <!-- 컨텐츠 end -->
             </div>
         </div>

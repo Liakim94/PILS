@@ -17,6 +17,7 @@
     <div id="board">
         <page:applyDecorator name="menu2"/>
         <div class="article">
+            <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
