@@ -18,6 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
     <title><%= systemTitle %> 테스트 사이트</title>
     <link rel="stylesheet" href="https://www.smes.go.kr/humanframe/theme/portal/assets/style/common.css?dummy=20201231100842706" type="text/css">
     <link rel="stylesheet" href="https://www.smes.go.kr/humanframe/theme/portal/assets/style/main.css?dummy=20201231100842706" type="text/css">
@@ -35,7 +36,7 @@
             font-weight: bold;
         }
         .logo-element {
-            width: 1000px !important;
+            width: 100% !important;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.js"></script>
