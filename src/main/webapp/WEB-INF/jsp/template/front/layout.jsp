@@ -26,6 +26,7 @@
     <%@include file="/WEB-INF/jsp/common/front/javascript_inc.jsp" %>
 
     <decorator:head />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 </head>
 <%--<body class="homepage" id="body">--%>
