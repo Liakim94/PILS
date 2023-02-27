@@ -146,7 +146,7 @@
                              src="<c:url value="/images/common/youtube_temp3.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
                     <div class="slide-item">
-                        <h3>품대금 연동제 로드쇼 개막식 Q&A</h3>
+                        <h3>품대금 연동제 설명회</h3>
                         <img class="thumbnail" onclick="modalOpen('modal-box-6')"
                              src="<c:url value="/images/common/youtube_temp4.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
@@ -300,7 +300,7 @@
         <span></span>
     </div>
     <div class="contents-wrap">
-        <h1 class="title">납품대금 연동제 로드쇼 개막식 Q&A</h1>
+        <h1 class="title">납품대금 연동제 설명회</h1>
         <div class="video-wrap" id="player4">
         </div>
     </div>
@@ -332,7 +332,7 @@
         player4 = new YT.Player('player4', {
             width: '840',
             height: '472',
-            videoId: 'YG80p4iRcZo'
+            videoId: 'KsP_fLcYVKA'
         });
     }
 
