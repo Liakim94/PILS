@@ -54,12 +54,18 @@
         <div class="logo-element">
             <div class="inner"></div>
             <div class="error-txt">
-                이곳은 <%= systemTitle%> <strong>테스트 사이트</strong>입니다.<br>
+                이곳은 <%= systemTitle%> <strong id="ok-target">테스트 사이트</strong>입니다.<br>
                 <%= systemTitle %>에 방문하시려면
                 <a href="<%= targetUrl %>"><%= targetUrl %></a>로 이동하세요.
             </div>
         </div>
     </div>
 </div>
+<script>
+    document.getElementById("ok-target").addEventListener("touchend", function(e) {
+        document.cookie = "GUIDEOK=1";
+        document.location = '<%= redirectUrl %>';
+    });
+</script>
 </body>
 </html>
