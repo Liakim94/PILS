@@ -18,17 +18,17 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
     <div class ="lnb">
         <h2>동행기업</h2>
         <ul>
-            <li class="<c:if test="${URI.contains('/join/joinMain.do')}">on</c:if>">
-                <a href="<c:url value="/join/joinMain.do"/>">제도 설명</a>
+            <li class="<c:if test="${URI.contains('/join/concept.do')}">on</c:if>">
+                <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
             </li>
             <li class="<c:if test="${URI.contains('/front/guide/company')}">on</c:if>">
                 <a href="<c:url value="/front/guide/company/list.do"/>">동행기업 현황</a>
             </li>
-            <li class="<c:if test="${URI.contains('/join/joinApply.do')}">on</c:if>">
-                <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청</a>
+            <li class="<c:if test="${URI.contains('/join/join')}">on</c:if>">
+                <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
             </li>
-            <li class="<c:if test="${URI.contains('/join/joinSubmit')}">on</c:if>">
-                <a href="<c:url value="/join/joinSubmit.do"/>">동행기업 실적 제출</a>
+            <li class="<c:if test="${URI.contains('/join/submit.do')}">on</c:if>">
+                <a href="<c:url value="/join/submit.do"/>">동행기업 실적 제출</a>
             </li>
         </ul>
     </div>

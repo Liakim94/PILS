@@ -1596,9 +1596,9 @@
 }
 .content table th,
 .content table td {
-    height: 60px;
+    height: 50px;
     min-height: 60px;
-    padding: 10px;
+    padding: 7px;
     border-left: 1px solid #D2D2D2;
     box-sizing: border-box;
     border-right: 1px solid #D2D2D2;

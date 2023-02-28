@@ -77,23 +77,23 @@
                 </div>
             </div>
             <div class="wrapper">
-                <a class="font18 menu" href="${pageContext.request.contextPath}/join/joinMain.do">동행기업</a>
+                <a class="font18 menu" href="${pageContext.request.contextPath}/join/concept.do">동행기업</a>
                 <div class="submenu">
-                    <a href="<c:url value="/join/joinMain.do"/>">제도 설명</a>
+                    <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
                     <a href="<c:url value="/front/guide/company/list.do"/>">동행기업 현황</a>
-                    <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청</a>
-                    <a href="<c:url value="/join/joinSubmit.do"/>">동행기업 실적 제출</a>
+                    <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
+                    <a href="<c:url value="/join/submit.do"/>">동행기업 실적 제출</a>
                 </div>
             </div>
-            <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>
-            </div>
-            <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>
-            </div>
-            <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/report/temp.do"/>">신고센터</a>
-            </div>
+<%--            <div class="wrapper">--%>
+<%--                <a class="font18 menu" href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>--%>
+<%--            </div>--%>
+<%--            <div class="wrapper">--%>
+<%--                <a class="font18 menu" href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>--%>
+<%--            </div>--%>
+<%--            <div class="wrapper">--%>
+<%--                <a class="font18 menu" href="<c:url value="/front/report/temp.do"/>">신고센터</a>--%>
+<%--            </div>--%>
             <div class="wrapper">
                 <a class="font18 menu" href="<c:url value="/front/board/11/list.do"/>">소통·상담</a>
                 <div class="submenu" style="left: -65px;">
@@ -221,21 +221,21 @@
                         <span></span>
                     </div>
                     <div class="submenu">
-                        <a href="<c:url value="/join/joinMain.do"/>">제도 설명</a>
-                        <a href="<c:url value="/front/guide/company/list.do"/>">동행기업 현황</a>
+                        <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
+                        <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
                         <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청</a>
-                        <a href="<c:url value="/join/joinSubmit.do"/>">동행기업 실적 제출</a>
+                        <a href="<c:url value="/join/submit.do"/>">동행기업 실적 제출</a>
                     </div>
                 </div>
-                <div class="menu">
-                    <p><a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a></p>
-                </div>
-                <div class="menu">
-                    <p><a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a></p>
-                </div>
-                <div class="menu">
-                    <p><a href="<c:url value="/front/report/temp.do"/>">신고센터</a></p>
-                </div>
+<%--                <div class="menu">--%>
+<%--                    <p><a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a></p>--%>
+<%--                </div>--%>
+<%--                <div class="menu">--%>
+<%--                    <p><a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a></p>--%>
+<%--                </div>--%>
+<%--                <div class="menu">--%>
+<%--                    <p><a href="<c:url value="/front/report/temp.do"/>">신고센터</a></p>--%>
+<%--                </div>--%>
                 <div class="menu">
                     <p onclick="menuToggleMobile(this)">소통·상담</p>
                     <div class="toggle">

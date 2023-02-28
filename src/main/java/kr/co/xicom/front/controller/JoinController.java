@@ -1,6 +1,5 @@
 package kr.co.xicom.front.controller;
 
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.AgreementService;
 import kr.co.xicom.front.service.BoardService;
@@ -15,9 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RequestMapping("/join")
 @Controller
@@ -31,12 +28,19 @@ public class JoinController {
     private BoardService boardService;
 
 
+    //제도 설명
+    @GetMapping(value = "/concept.do")
+    public ModelAndView concept( ) throws Exception {
+        ModelAndView mav = new ModelAndView("join/apply/join_concept");
+        return mav;
+    }
     //동행기업 신청 main
     @GetMapping(value = "/joinMain.do")
     public ModelAndView main( ) throws Exception {
-        ModelAndView mav = new ModelAndView("join/apply/join_main");
+        ModelAndView mav = new ModelAndView("join/apply/join_apply_main");
         return mav;
     }
+
     @GetMapping(value = "/joinApply.do")
     public ModelAndView apply(@ModelAttribute("frmApply") CmpMemberVo cmpVO,
                               HttpServletRequest request,
@@ -163,10 +167,13 @@ public class JoinController {
     }
     //동행기업 참여 추천
     @GetMapping(value = "/joinRecom.do")
-    public ModelAndView apply() throws Exception {
-
+    public ModelAndView recommend() throws Exception {
         ModelAndView mav = new ModelAndView("join/apply/join_recom");
         return mav;
+    }
+    @PostMapping(value = "/joinRecom.do")
+    public void doRcmd(@ModelAttribute("RcmdVO")RcmdVO vo) throws Exception {
+
     }
     //약정서 작성 첫 화면
     @GetMapping(value = "/agreeMain.do")
@@ -272,15 +279,9 @@ public class JoinController {
         return mav;
     }
     //동행기업 실적 제출하기
-    @GetMapping(value = "/joinSubmit.do")
+    @GetMapping(value = "/submit.do")
     public ModelAndView joinSubmit() throws Exception {
         ModelAndView mav = new ModelAndView("join/join_submit");
-        return mav;
-    }
-    //동행기업 제도 설명
-    @GetMapping(value = "/concept.do")
-    public ModelAndView concept() throws Exception {
-        ModelAndView mav = new ModelAndView("join/join_concept");
         return mav;
     }
 }

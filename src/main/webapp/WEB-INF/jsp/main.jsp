@@ -100,6 +100,16 @@
                                         class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
+                        <div class="swiper-slide"
+                             style="background: url(<c:url value='/images/mobile/banner03.jpg'/>)"
+                             OnClick="location.href ='<c:url value="/front/board/ready/list.do"/>'">
+                        </div>
+                        <div class="swiper-slide"
+                             style="background: url(<c:url value='/images/mobile/banner_04.jpg'/>)"
+                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=40"/>'"></div>
+                        <div class="swiper-slide"
+                             style="background: url(<c:url value='/images/mobile/banner_05.jpg'/>)"
+                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=5"/>'"></div>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" 		prefix="fn" 		%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"				prefix="fmt" 		%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
+<head>
+    <title>중소벤처기업부 | 참여기업 현황</title>
+</head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
 <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
 

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 <head>
-    <title>중소벤처기업부 | 주요통계</title>
+    <title>중소벤처기업부 | 시범운영 분석 결과</title>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-core.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-treemap.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-cartesian.min.js"></script>
@@ -329,7 +329,8 @@
                             </tr>
                         </table>
                     </div>
-                    자료: 중소벤처기업부 ｢납품대금 연동제 시범운영｣, '22.11.4'
+                    <br>
+                    자료: 중소벤처기업부 ｢납품대금 연동제 시범운영｣, '22.11.13' 기준
                 </section>
                 <!-- 컨텐츠 end -->
             </div>

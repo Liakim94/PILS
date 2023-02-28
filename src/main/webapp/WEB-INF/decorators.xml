@@ -44,10 +44,12 @@
     <decorator name="menu_join" page="/menu_join.do"/>
     <decorator name="location" page="/location.do"/>
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
+        <pattern>/join/concept.do</pattern>
         <pattern>/join/joinApply.do</pattern>
+        <pattern>/join/joinRecom.do</pattern>
         <pattern>/front/guide/company/</pattern>
         <pattern>/join/joinMain.do</pattern>
-        <pattern>/join/joinSubmit.do</pattern>
+        <pattern>/join/submit.do</pattern>
         <pattern>/join/joinView.do</pattern>
         <pattern>/common/deny.jsp</pattern>
     </decorator>
