@@ -5,6 +5,9 @@
 <%@ taglib uri="fx" prefix="fx" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
+<head>
+    <title>중소벤처기업부 | 걸어온 발자취</title>
+</head>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="guide_menu"/>

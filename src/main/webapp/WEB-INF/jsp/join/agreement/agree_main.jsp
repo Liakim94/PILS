@@ -67,14 +67,20 @@
                     </c:if>
                     </div>
                     <div class="item">
-                        <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금 연동제 약정서.hwp">
+                        <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금_연동제_약정서.hwp">
                             <img class="hover" src="<c:url value="/images/common/download-icon2.png"/>" alt="약정서 다운로드">
                             <img class="unhover" src="<c:url value="/images/common/download-icon.png"/>" alt="약정서 다운로드">
                             양식 다운로드</a>
                     </div>
+                    <div class="item">
+                        <a href="<c:url value="/files/guidebook.pdf"/>" download="납품대금_연동_특별약정서_가이드북.pdf">
+                            <img class="hover" src="<c:url value="/images/common/download-icon2.png"/>" >
+                            <img class="unhover" src="<c:url value="/images/common/download-icon.png"/>" >
+                            가이드북 다운로드</a>
+                    </div>
                 </div>
                 <h3 >위탁기업과 수탁기업은 다음 사항에 대해 충분히 협의하여 약정서에 기재해야 합니다.</h3>
-                <p class="tip mb40">※ ｢납품대금 연동 특별약정서｣는 납품대금 연동 약정의 표준을 제시하기 위해 중소벤처기업부에서 제공하고 있는 양식입니다.</p>
+                <p class="tip mb40">※ 다음 사항은 납품대금 연동 약정의 표준을 제시하기 위해 중소벤처기업부에서 제공하고 있는 양식인 ｢납품대금 연동 특별약정서｣를 기준으로 하고 있습니다.</p>
 
                 <div class="accordion-container">
                     <!--   물품등의 명칭   -->
@@ -139,7 +145,7 @@
                                     </ul>
                                     <p class="text mt10">&#9675; 예를 들어, 수탁기업이 위탁기업에 납품하는 코팅용액에 “니켈”이 주된 원재료로 사용되는 경우,
                                         수탁·위탁기업 간 협의를 통해 “니켈”을 주요 원재료로 정할 수 있습니다.</p>
-                                    <p class="example">(예시) 코팅용액에 사용되는 “니켈”, 동 케이블에 사용되는 “동”, 건설자재로 사용되는 “시멘트”</p>
+                                    <p class="text">(예시) 코팅용액에 사용되는 “니켈”, 동 케이블에 사용되는 “동”, 건설자재로 사용되는 “시멘트”</p>
                                     <div class="table">
                                         <table>
                                             <tr>
@@ -180,7 +186,7 @@
                                         기재합니다.</p>
                                     <p class="text">&#9675; 기준지표는 공신력 있는 기관이 주기적으로 고시하는 지표 또는 이에 준하는 지표로 정함을 원칙으로
                                         합니다.</p>
-                                    <p class="example">(예시) 런던금속거래소(LME, London Metal Exchange), 한국은행(www.bok.or.kr),
+                                    <p class="text">(예시) 런던금속거래소(LME, London Metal Exchange), 한국은행(www.bok.or.kr),
                                         e-나라지표(www.index.go.kr), 조달청(www.pps.go.kr), 산업통상자원부(www.motle.go.kr), 기획재정부장관에게
                                         등록한 전문가격조사기관 등에서 고시하는 지표</p>
                                     <div class="table mb10">

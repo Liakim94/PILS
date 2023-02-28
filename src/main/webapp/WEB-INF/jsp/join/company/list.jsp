@@ -5,7 +5,7 @@
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 
 <head>
-    <title>중소벤처기업부 | 동행기업</title>
+    <title>중소벤처기업부 | 참여기업 현황</title>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-core.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-map.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/chart/anychart-cartesian.min.js"></script>
@@ -25,28 +25,28 @@
                     동행기업
                 </li>
                 <li>
-                    동행기업 현황(위탁기업)
+                    참여기업 현황(위탁기업)
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">동행기업 현황(위탁기업)</h1>
+                <h1 class="fw700">참여기업 현황(위탁기업)</h1>
             </div>
             <div id="main">
                 <!-- 컨텐츠 start -->
                 <div class="statistics-wrap">
                     <div class="item" onclick="modalOpen(1)">
-                        <img class="unhover" src="<c:url value="/images/company/statistics1-1.png"/>" alt="업종별 통계" />
-                        <img class="hover" src="<c:url value="/images/company/statistics1-2.png"/>" alt="업종별 통계" />
+                        <img class="unhover" src="<c:url value="/images/company/statistics1-1.png"/>" alt="업종별 통계"/>
+                        <img class="hover" src="<c:url value="/images/company/statistics1-2.png"/>" alt="업종별 통계"/>
                         업종별 통계
                     </div>
                     <div class="item" onclick="modalOpen(2)">
-                        <img class="unhover" src="<c:url value="/images/company/statistics2-1.png"/>" alt="지역별 통계" />
-                        <img class="hover" src="<c:url value="/images/company/statistics2-2.png"/>" alt="지역별 통계" />
+                        <img class="unhover" src="<c:url value="/images/company/statistics2-1.png"/>" alt="지역별 통계"/>
+                        <img class="hover" src="<c:url value="/images/company/statistics2-2.png"/>" alt="지역별 통계"/>
                         지역별 통계
                     </div>
                     <div class="item" onclick="modalOpen(3)">
-                        <img class="unhover" src="<c:url value="/images/company/statistics3-1.png"/>" alt="기업 규모별 통계" />
-                        <img class="hover" src="<c:url value="/images/company/statistics3-2.png"/>" alt="기업 규모별 통계" />
+                        <img class="unhover" src="<c:url value="/images/company/statistics3-1.png"/>" alt="기업 규모별 통계"/>
+                        <img class="hover" src="<c:url value="/images/company/statistics3-2.png"/>" alt="기업 규모별 통계"/>
                         기업 규모별 통계
                     </div>
                 </div>
@@ -59,95 +59,95 @@
                     </div>
                     <!--  업종별 통계  -->
                     <form action="<c:url value="/front/guide/company/list.do"/>" id="comSearch" method="get">
-                    <div id="contents1" class="contents-wrap">
-                        <h2 class="title">업종별 통계</h2>
-                        <div class="industry-container">
-                            <div class="item machine hover-info" onclick="comSearch('machinery')">
-                                <div class="text-wrap">
-                                    <h3>기계·자동차·조선</h3>
-                                    <h2>14개사</h2>
-                                </div>
-                                <div class="info-box">
-                                    <h4>기계·자동차·조선</h4>
-                                    <hr>
-                                    <h3>14개사</h3>
-                                </div>
-                            </div>
-                            <div class="item electronics hover-info"  onclick="comSearch('elect')">
-                                <div class="text-wrap">
-                                    <h3>전기·전자</h3>
-                                    <h2>10개사</h2>
-                                </div>
-                                <div class="info-box">
-                                    <h4>전기·전자</h4>
-                                    <hr>
-                                    <h3>10개사</h3>
-                                </div>
-                            </div>
-                            <div class="item chemistry hover-info" onclick="comSearch('chemical')">
-                                <div class="text-wrap">
-                                    <h3>화학·금속·비금속</h3>
-                                    <h2>9개사</h2>
-                                </div>
-                                <div class="info-box">
-                                    <h4>화학·금속·비금속</h4>
-                                    <hr>
-                                    <h3>9개사</h3>
-                                </div>
-                            </div>
-                            <div class="item others">
-                                <div class="item food hover-info" onclick="comSearch('food')">
+                        <div id="contents1" class="contents-wrap">
+                            <h2 class="title">업종별 통계</h2>
+                            <div class="industry-container">
+                                <div class="item machine hover-info" onclick="comSearch('machinery')">
                                     <div class="text-wrap">
-                                        <h3>식품</h3>
-                                        <h2>5개사</h2>
+                                        <h3>기계·자동차·조선</h3>
+                                        <h2>14개사</h2>
                                     </div>
                                     <div class="info-box">
-                                        <h4>식품</h4>
+                                        <h4>기계·자동차·조선</h4>
                                         <hr>
-                                        <h3>5개사</h3>
+                                        <h3>14개사</h3>
                                     </div>
                                 </div>
-                                <div class="item communication hover-info" onclick="comSearch('tel')">
+                                <div class="item electronics hover-info" onclick="comSearch('elect')">
                                     <div class="text-wrap">
-                                        <h3>통신</h3>
-                                        <h2>4개사</h2>
+                                        <h3>전기·전자</h3>
+                                        <h2>10개사</h2>
                                     </div>
                                     <div class="info-box">
-                                        <h4>통신</h4>
+                                        <h4>전기·전자</h4>
                                         <hr>
-                                        <h3>4개사</h3>
+                                        <h3>10개사</h3>
                                     </div>
                                 </div>
-                                <div class="item building hover-info" onclick="comSearch('con')">
+                                <div class="item chemistry hover-info" onclick="comSearch('chemical')">
                                     <div class="text-wrap">
-                                        <h3>건설</h3>
-                                        <h2>3개사</h2>
+                                        <h3>화학·금속·비금속</h3>
+                                        <h2>9개사</h2>
                                     </div>
                                     <div class="info-box">
-                                        <h4>건설</h4>
+                                        <h4>화학·금속·비금속</h4>
                                         <hr>
-                                        <h3>3개사</h3>
+                                        <h3>9개사</h3>
                                     </div>
                                 </div>
-                                <div class="item service hover-info" onclick="comSearch('service')">
-                                    <div class="text-wrap">
-                                        <h3>서비스</h3>
-                                        <h2>2개사</h2>
+                                <div class="item others">
+                                    <div class="item food hover-info" onclick="comSearch('food')">
+                                        <div class="text-wrap">
+                                            <h3>식품</h3>
+                                            <h2>5개사</h2>
+                                        </div>
+                                        <div class="info-box">
+                                            <h4>식품</h4>
+                                            <hr>
+                                            <h3>5개사</h3>
+                                        </div>
                                     </div>
-                                    <div class="info-box">
-                                        <h4>서비스</h4>
-                                        <hr>
-                                        <h3>2개사</h3>
+                                    <div class="item communication hover-info" onclick="comSearch('tel')">
+                                        <div class="text-wrap">
+                                            <h3>통신</h3>
+                                            <h2>4개사</h2>
+                                        </div>
+                                        <div class="info-box">
+                                            <h4>통신</h4>
+                                            <hr>
+                                            <h3>4개사</h3>
+                                        </div>
+                                    </div>
+                                    <div class="item building hover-info" onclick="comSearch('con')">
+                                        <div class="text-wrap">
+                                            <h3>건설</h3>
+                                            <h2>3개사</h2>
+                                        </div>
+                                        <div class="info-box">
+                                            <h4>건설</h4>
+                                            <hr>
+                                            <h3>3개사</h3>
+                                        </div>
+                                    </div>
+                                    <div class="item service hover-info" onclick="comSearch('service')">
+                                        <div class="text-wrap">
+                                            <h3>서비스</h3>
+                                            <h2>2개사</h2>
+                                        </div>
+                                        <div class="info-box">
+                                            <h4>서비스</h4>
+                                            <hr>
+                                            <h3>2개사</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </form>
                     <!--  지역별 통계  -->
                     <div id="contents2" class="contents-wrap">
                         <h2 class="title">지역별 통계</h2>
-                        <div id="map" style="height: 350px"></div>
+                        <div id="map" style="height: 400px"></div>
                     </div>
                     <!--  기업 규모별 통계  -->
                     <div id="contents3" class="contents-wrap">
@@ -180,74 +180,72 @@
     </div>
 </div>
 <script>
-    $(document).ready(function(){
-        $(".hover-info").hover(function (){
+    $(document).ready(function () {
+        $(".hover-info").hover(function () {
                 var divX = $(this).offset().left;
                 var divY = $(this).offset().top;
                 $(this).find('.info-box').fadeIn("500");
-                $(document).mousemove(function(e) {
+                $(document).mousemove(function (e) {
                     mouseX = e.pageX;
                     mouseY = e.pageY;
-                    $(this).find('.info-box').css("left", mouseX - divX + 10).css("top", mouseY-divY + 15);
+                    $(this).find('.info-box').css("left", mouseX - divX + 10).css("top", mouseY - divY + 15);
                     console.log("divX = " + divX);
                     console.log("mouseX = " + mouseX);
                 });
 
 
             },
-            function (){
+            function () {
                 $(this).find('.info-box').hide();
             });
     });
 
-    function modalOpen(set){
+    function modalOpen(set) {
         $(".contents-wrap").hide();
-        $("#contents"+set).show();
+        $("#contents" + set).show();
 
         $(".detail-modal-box").css({
-            "top": (($(window).height()-$(".detail-modal-box").outerHeight())/2+$(window).scrollTop())+"px",
-            "left": (($(window).width()-$(".detail-modal-box").outerWidth())/2+$(window).scrollLeft())+"px"
+            "top": (($(window).height() - $(".detail-modal-box").outerHeight()) / 2 + $(window).scrollTop()) + "px",
+            "left": (($(window).width() - $(".detail-modal-box").outerWidth()) / 2 + $(window).scrollLeft()) + "px"
         });
-        $(".modal-background").css("display","block");
-        $(".detail-modal-box").css("display","block");
-    }
-    function modalClose(){
-        $(".modal-background").css("display","none");
-        $(".detail-modal-box").css("display","none");
+        $(".modal-background").css("display", "block");
+        $(".detail-modal-box").css("display", "block");
     }
 
-    anychart.onDocumentReady(function() {
+    function modalClose() {
+        $(".modal-background").css("display", "none");
+        $(".detail-modal-box").css("display", "none");
+    }
+
+    anychart.onDocumentReady(function () {
         // create map
         var map = anychart.map();
 
         // create data set
-        var dataSet = anychart.data.set(
-            [{"id":"KR.4194","value":47},
-                {"id":"KR.GB","value":2},//충북
-                {"id":"KR.IN","value":2},  //인천
-                {"id":"KR.KW","value":1},  //강원도
-                {"id":"KR.SO","value":20}, //서울
-                {"id":"KR.KG","value":10}, //경기
-                {"id":"KR.CB","value":1}, //전남
-                {"id":"KR.KJ","value":1}, //광주
-                {"id":"KR.GN","value":1}, //충남
-                {"id":"KR.TJ","value":0},
-                {"id":"KR.TG","value":0},
-                {"id":"KR.KN","value":3},  //경남
-                {"id":"KR.2685","value":0},
-                {"id":"KR.PU","value":1}, //부산
-                {"id":"KR.UL","value":2},  //울산
-                {"id":"KR.2688","value":2},  //경북
-                {"id":"KR.CJ","value":1},  //제주
-                {"id":"KR.SJ","value":0}]
-        );
+        mapData = [
+            {'id': "KR.GB", "value": 2, 'name':"충북"},
+            {"id": "KR.IN", "value": 2, 'name':"인천"},
+            {"id": "KR.KW", "value": 1, 'name':"강원도"},
+            {"id": "KR.SO", "value": 20, 'name':"서울"},
+            {"id": "KR.KG", "value": 10, 'name':"경기"},
+            {"id": "KR.CB", "value": 1, 'name':"전북"},
+            {"id": "KR.KJ", "value": 1, 'name':"광주"},
+            {"id": "KR.GN", "value": 1, 'name':"충남"},
+            {"id": "KR.TJ", "value": 0, 'name':"대전"},
+            {"id": "KR.KN", "value": 3, 'name':"경남"},
+            {"id": "KR.2685", "value": 0, 'name':"전남"},
+            {"id": "KR.PU", "value": 1, 'name':"부산"},
+            {"id": "KR.UL", "value": 2, 'name':"울산"},
+            {"id": "KR.2688", "value": 2, 'name':"경북"},
+            {"id": "KR.CJ", "value": 1, 'name':"제주"},
+            {"id": "KR.SJ", "value": 0, 'name':"세종"}];
 
         // create choropleth series
-        series = map.choropleth(dataSet);
-
-        // set geoIdField to 'id', this field contains in geo data meta properties
-        series.geoIdField('id');
-        series.labels(false);
+        var series = map.choropleth(mapData);
+        series.tooltip().format(function(e){
+            return "지역: " + e.getData("name") +"\n"+
+                "참여기업: " + e.getData("value")
+        });
         // set map color settings
         series.colorScale(anychart.scales.linearColor('#deebf7', '#3182bd'));
         series.hovered().fill('#addd8e');
@@ -255,18 +253,21 @@
         // set geo data, you can find this map in our geo maps collection
         // https://cdn.anychart.com/#maps-collection
         map.geoData(anychart.maps['south_korea']);
-
+        // set geoIdField to 'id', this field contains in geo data meta properties
+        series.geoIdField('id');
+        series.labels(false);
         //set map container id (div)
         map.container('map');
         map.draw();
     });
+
     anychart.onDocumentReady(function () {
 
         // create a data set
         var data = anychart.data.set([
             ["대기업", 31],
             ["중견기업", 9],
-            ["중소기업",7]
+            ["중소기업", 7]
         ]);
 
         // map the data
@@ -294,12 +295,12 @@
         chart.draw();
     });
 
-    function comSearch(code){
+    function comSearch(code) {
         var form = document.getElementById('comSearch');
         var input = document.createElement('input');
-        input.setAttribute('type','hidden');
-        input.setAttribute('value',code);
-        input.setAttribute('name','bizcd');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('value', code);
+        input.setAttribute('name', 'bizcd');
 
         form.appendChild(input);
         form.submit();

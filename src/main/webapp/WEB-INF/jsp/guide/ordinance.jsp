@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
+<head>
+    <title>중소벤처기업부 |  관련 법령</title>
+</head>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="guide_menu"/>
