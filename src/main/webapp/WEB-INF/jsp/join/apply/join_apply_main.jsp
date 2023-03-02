@@ -43,6 +43,7 @@
                                         </div>
                                         <div class="item">
 <%--                                            <a href="${pageContext.request.contextPath}/join/joinRecom.do">--%>
+                                            <a href="">
                                                 <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
                                                 <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
                                                 동행기업 참여 추천</a>
