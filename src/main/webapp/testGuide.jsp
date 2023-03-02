@@ -18,7 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
     <title><%= systemTitle %> 테스트 사이트</title>
     <link rel="stylesheet" href="https://www.smes.go.kr/humanframe/theme/portal/assets/style/common.css?dummy=20201231100842706" type="text/css">
     <link rel="stylesheet" href="https://www.smes.go.kr/humanframe/theme/portal/assets/style/main.css?dummy=20201231100842706" type="text/css">
@@ -36,18 +36,17 @@
             font-weight: bold;
         }
         .logo-element {
-            width: 100%;
-        }
-        @media screen and (max-width: 768px) {
-            .logo-element {
-                width: 100%;
-            }
-            .error-txt {
-                margin:20px;
-                font-size: 1.2em;
-            }
+            width: 100% !important;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.js"></script>
+    <script>
+        Mousetrap.bind('ctrl+shift+x', function (e) {
+            <%-- web.xml에 정의한 cookieName과 동일한 값의 쿠키명을 입력! --%>
+            document.cookie = "GUIDEOK=1";
+            document.location = '<%= redirectUrl %>';
+        });
+    </script>
 </head>
 <body>
 <div class="smes_wrapper" id="smes" style="">
@@ -55,23 +54,15 @@
         <div class="logo-element">
             <div class="inner"></div>
             <div class="error-txt">
-                이곳은 <%= systemTitle%> <strong id="ok-target"> 테스트 사이트</strong>입니다.<br>
+                이곳은 <%= systemTitle%> <strong id="ok-target">테스트 사이트</strong>입니다.<br>
                 <%= systemTitle %>에 방문하시려면
                 <a href="<%= targetUrl %>"><%= targetUrl %></a>로 이동하세요.
             </div>
         </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5/mousetrap.js"></script>
 <script>
-    Mousetrap.bind('ctrl+shift+x', function (e) {
-        <%-- web.xml에 정의한 cookieName과 동일한 값의 쿠키명을 입력! --%>
-        document.cookie = "GUIDEOK=1";
-        document.location = '<%= redirectUrl %>';
-    });
-    var okTarget = document.getElementById("ok-target");
-    okTarget.addEventListener("touchend", function(e) {
-
+    document.getElementById("ok-target").addEventListener("touchend", function(e) {
         document.cookie = "GUIDEOK=1";
         document.location = '<%= redirectUrl %>';
     });

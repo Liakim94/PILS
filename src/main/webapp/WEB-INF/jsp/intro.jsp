@@ -24,7 +24,7 @@
                 <div class="intro-bg intro3"></div>
                 <div class="text-wrap">
                     <p>
-                        2023년</br>
+                        2023년 10월 4일</br>
                         중소기업의 14년 숙원</br>
                         <strong>납품대금 연동제</strong>가</br>
                         시작됩니다.
@@ -36,7 +36,7 @@
                 <div class="intro-bg intro2"></div>
                 <div class="text-wrap">
                     <p>
-                        2023년</br>
+                        2023년 10월 4일</br>
                         <strong>중소기업의 14년 숙원</strong></br>
                         납품대금 연동제가</br>
                         시작됩니다.
@@ -48,7 +48,7 @@
                 <div class="intro-bg intro1"></div>
                 <div class="text-wrap">
                     <p>
-                        <strong>2023년</strong></br>
+                        2023년 10월 4일</br>
                         중소기업의 14년 숙원</br>
                         납품대금 연동제가</br>
                         시작됩니다.
@@ -60,7 +60,7 @@
                 <div class="intro-bg intro4"></div>
                 <div class="text-wrap">
                     <p>
-                        2023년</br>
+                        2023년 10월 4일</br>
                         중소기업의 14년 숙원</br>
                         납품대금 연동제가</br>
                         <strong>시작됩니다.</strong>

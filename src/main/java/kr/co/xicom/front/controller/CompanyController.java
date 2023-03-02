@@ -37,7 +37,7 @@ public class CompanyController {
     @RequestMapping("/front/guide/company/list.do")
     public ModelAndView list(@ModelAttribute("vo") CmpMemberVo cmpMemberVo) throws Exception {
 
-        ModelAndView mav = new ModelAndView("guide/company/list");
+        ModelAndView mav = new ModelAndView("join/company/list");
         List<CmpMemberVo> list = this.companyService.list(cmpMemberVo);
 
         mav.addObject("list", list);
@@ -54,7 +54,7 @@ public class CompanyController {
     @RequestMapping("/front/guide/company/details.do")
     public ModelAndView details(@RequestParam String bizNo) throws Exception {
 
-        ModelAndView mav = new ModelAndView("guide/company/details");
+        ModelAndView mav = new ModelAndView("join/company/details");
 
         CmpMemberVo cmpMemberVo = this.companyService.details(bizNo);
 
@@ -75,7 +75,7 @@ public class CompanyController {
                              @ModelAttribute("company") CmpMemberVo cmpMemberVo,
                              HttpSession session) throws Exception {
 
-        ModelAndView mav = new ModelAndView("guide/company/edit");
+        ModelAndView mav = new ModelAndView("join/company/edit");
 
         // 권한 확인
         String sessionId = (String)session.getAttribute("sessionId");

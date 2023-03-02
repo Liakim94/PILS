@@ -64,30 +64,36 @@
                     <a href="<c:url value="/front/guide/background.do"/>">추진경과</a>
                     <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
                     <a href="<c:url value="/front/guide/trace.do"/>">걸어온 발자취</a>
-                    <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
                     <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
                     <a href="<c:url value="/front/guide/statistics.do"/>">시범운영 분석 결과</a>
                 </div>
             </div>
             <div class="wrapper">
-                <a class="font18 menu" href="${pageContext.request.contextPath}/join/process/info.do">납품대금 연동제 동참하기</a>
+                <a class="font18 menu" href="${pageContext.request.contextPath}/join/process/info.do">납품대금 연동제 도입하기</a>
                 <div class="submenu">
                     <a href="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
                     <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                     <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
-                    <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청하기</a>
-                    <a href="<c:url value="/join/joinSubmit.do"/>">동행기업 실적 제출하기</a>
                 </div>
             </div>
             <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>
+                <a class="font18 menu" href="${pageContext.request.contextPath}/join/concept.do">동행기업</a>
+                <div class="submenu">
+                    <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
+                    <a href="<c:url value="/front/guide/company/list.do"/>">동행기업 현황</a>
+                    <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
+                    <a href="<c:url value="/join/submit.do"/>">동행기업 실적 제출</a>
+                </div>
             </div>
-            <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>
-            </div>
-            <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/report/temp.do"/>">신고센터</a>
-            </div>
+<%--            <div class="wrapper">--%>
+<%--                <a class="font18 menu" href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>--%>
+<%--            </div>--%>
+<%--            <div class="wrapper">--%>
+<%--                <a class="font18 menu" href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>--%>
+<%--            </div>--%>
+<%--            <div class="wrapper">--%>
+<%--                <a class="font18 menu" href="<c:url value="/front/report/temp.do"/>">신고센터</a>--%>
+<%--            </div>--%>
             <div class="wrapper">
                 <a class="font18 menu" href="<c:url value="/front/board/11/list.do"/>">소통·상담</a>
                 <div class="submenu" style="left: -65px;">
@@ -197,7 +203,7 @@
                     </div>
                 </div>
                 <div class="menu">
-                    <p onclick="menuToggleMobile(this)">납품대금 연동제 동참하기</p>
+                    <p onclick="menuToggleMobile(this)">납품대금 연동제 도입하기</p>
                     <div class="toggle">
                         <span></span>
                         <span></span>
@@ -206,19 +212,30 @@
                         <a href="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
                         <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                         <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
-                        <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청하기</a>
-                        <a href="<c:url value="/join/joinSubmit.do"/>">동행기업 실적 제출하기</a>
                     </div>
                 </div>
                 <div class="menu">
-                    <p><a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a></p>
+                    <p onclick="menuToggleMobile(this)">동행기업</p>
+                    <div class="toggle">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="submenu">
+                        <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
+                        <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
+                        <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청</a>
+                        <a href="<c:url value="/join/submit.do"/>">동행기업 실적 제출</a>
+                    </div>
                 </div>
-                <div class="menu">
-                    <p><a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a></p>
-                </div>
-                <div class="menu">
-                    <p><a href="<c:url value="/front/report/temp.do"/>">신고센터</a></p>
-                </div>
+<%--                <div class="menu">--%>
+<%--                    <p><a href="<c:url value="/front/material/temp.do"/>">원재료 정보</a></p>--%>
+<%--                </div>--%>
+<%--                <div class="menu">--%>
+<%--                    <p><a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a></p>--%>
+<%--                </div>--%>
+<%--                <div class="menu">--%>
+<%--                    <p><a href="<c:url value="/front/report/temp.do"/>">신고센터</a></p>--%>
+<%--                </div>--%>
                 <div class="menu">
                     <p onclick="menuToggleMobile(this)">소통·상담</p>
                     <div class="toggle">

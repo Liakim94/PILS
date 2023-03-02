@@ -5,6 +5,9 @@
 <%@ taglib uri="fx" prefix="fx" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
+<head>
+    <title>중소벤처기업부 | 걸어온 발자취</title>
+</head>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="guide_menu"/>
@@ -65,8 +68,9 @@
                                 </div>
                             </c:otherwise>
                         </c:choose>
-                        <a class="go-lst" href="<c:url value="/front/guide/trace.do"/>">목록</a>
-
+                        <div class="button-group">
+                            <a class="button" href="<c:url value="/front/guide/trace.do"/>">목록</a>
+                        </div>
                     </div>
                     <!-- 컨텐츠 end -->
                 </div>

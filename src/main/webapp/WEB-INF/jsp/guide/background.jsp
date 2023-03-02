@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
+<head>
+    <title>중소벤처기업부 | 추진경과</title>
+</head>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="guide_menu"/>
@@ -85,7 +88,7 @@
                             </div>
                             <div class="right">
                                 <div class="content">
-                                    <span class="date">10.01</span>
+                                    <span class="date">11.09</span>
                                     <span>
                                         납품대금 연동제 민당정협의회 개최
                                     </span>

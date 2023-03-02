@@ -23,13 +23,13 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="/">홈</a></li>
                 <li>
-                    납품대금연동제 동참하기
+                    납품대금 연동제 도입하기
                 </li>
                 <li>
                     약정서 작성
                 </li>
             </ul>
-            <div class="article-header">
+       v      <div class="article-header">
                 <h1 class="fw700">약정서 작성</h1>
                 <div class="side-wrap">
                 </div>

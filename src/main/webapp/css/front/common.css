@@ -790,7 +790,7 @@
     background: url("../../images/intro/intro-banner1.png");
 }
 #intro .intro2{
-    background: url("../../images/intro/intro2.png");
+    background: url("../../images/intro/intro2.jpg");
 }
 #intro .intro3{
     background: url("../../images/intro/intro3.png");
@@ -1596,9 +1596,9 @@
 }
 .content table th,
 .content table td {
-    height: 60px;
+    height: 50px;
     min-height: 60px;
-    padding: 10px;
+    padding: 7px;
     border-left: 1px solid #D2D2D2;
     box-sizing: border-box;
     border-right: 1px solid #D2D2D2;
@@ -2500,13 +2500,16 @@
     text-align: center;
 }
 #about .info-link .item:nth-child(1){
-    width: 22%
+    width: 20%
 }
 #about .info-link .item:nth-child(2){
-    width: 45%
+    width: 23%
 }
 #about .info-link .item:nth-child(3){
-    width: 35%
+    width: 30%
+}
+#about .info-link .item:nth-child(4){
+    width: 22%
 }
 #about .info-link p{
     color: #E60024;
@@ -4132,7 +4135,7 @@
     }
 
 }
-@media (max-width: 1200px) {
+@media (max-width: 1322px) {
 
     /*  Header  */
     .gnb-container .gnb-wrap .logo-wrap .slogan{
@@ -4191,6 +4194,9 @@
     #intro .text-wrap p, #intro .text-wrap strong{
         font-size: 40px;
     }
+    .history-container .item .right{
+        margin-top: 70px;
+    }
 
     /* 겔러리 게시판 */
     #gboard-list .lst .thumbnail{
@@ -4231,6 +4237,18 @@
 
     #intro .text-wrap p, #intro .text-wrap strong{
         font-size: 28px;
+    }
+    #intro .intro1{
+        background: url("../../images/mobile/mobile_intro1.png");
+    }
+    #intro .intro2{
+        background: url("../../images/mobile/mobile_intro2.png");
+    }
+    #intro .intro3{
+        background: url("../../images/mobile/mobile_intro3.png");
+    }
+    #intro .intro4{
+        background: url("../../images/mobile/mobile_intro4.png");
     }
 
 
@@ -4335,6 +4353,9 @@
         margin-bottom: 40px;
         margin-top: 30px;
     }
+    .tbl-wrap .tbl-list01{
+        min-width: 600px !important;
+    }
     #board .write-container .line-wrap .input-wrap .file-label{
         display: block;
         width: 130px;
@@ -4348,6 +4369,10 @@
     }
     #company-write .write-container .line-wrap .input-wrap .upload-list{
         margin-top: 30px;
+    }
+    .content table th, .content table td{
+        font-size:14px;
+        padding:10px 5px;
     }
 
     /*  겔러리 게시판  */
@@ -4689,8 +4714,17 @@
 
 @media (max-width: 480px) {
     /* 메인 */
+    #main .company-list-container{
+        gap:15px
+    }
     #main .company-list-container .list-item {
-        width: 47%;
+        width: 30%;
+    }
+    #main .company-list-container .list-item .list-wrapper .img-wrap {
+        height: 75px;
+    }
+    #main .company-list-container .list-item .list-wrapper .company-name{
+        font-size: 11px;
     }
     /*  참여기업 상세페이지 */
     #company-detail section .table .label{

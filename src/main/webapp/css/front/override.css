@@ -35,6 +35,15 @@ select {
     text-align: center;
     color: #E60024;
     background-color: white;
+    display: inline-block;
+}
+.button:hover,
+.button:active {
+    text-decoration: none;
+}
+.button:focus {
+    border-radius: 50px;
+    outline: 1px solid #E60024;
 }
 .button-color-red {
     background-color: #E60024;
@@ -46,6 +55,9 @@ select {
     line-height: 32px;
     box-sizing: border-box;
     margin: 20px;
+}
+.button-group .button {
+    margin: 5px;
 }
 .write-container .line-wrap .input-wrap {
     padding: 10px!important;

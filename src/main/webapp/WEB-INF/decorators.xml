@@ -31,7 +31,26 @@
     <decorator name="menu2" page="/menu2.do"/>
     <decorator name="location" page="/location.do"/>
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
-        <pattern>/join/*</pattern>
+        <pattern>/join/process/info.do</pattern>
+        <pattern>/join/ex/temp.do</pattern>
+        <pattern>/join/agreeMain.do</pattern>
+        <pattern>/join/agree.do</pattern>
+        <pattern>/join/agreeView.do</pattern>
+        <pattern>/common/deny.jsp</pattern>
+    </decorator>
+
+    <decorator name="header" page="/header.do"/>
+    <decorator name="footer" page="/footer.do"/>
+    <decorator name="menu_join" page="/menu_join.do"/>
+    <decorator name="location" page="/location.do"/>
+    <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
+        <pattern>/join/concept.do</pattern>
+        <pattern>/join/joinApply.do</pattern>
+        <pattern>/join/joinRecom.do</pattern>
+        <pattern>/front/guide/company/</pattern>
+        <pattern>/join/joinMain.do</pattern>
+        <pattern>/join/submit.do</pattern>
+        <pattern>/join/joinView.do</pattern>
         <pattern>/common/deny.jsp</pattern>
     </decorator>
 

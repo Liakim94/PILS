@@ -16,7 +16,7 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
 
 <aside class="sidebar">
     <div class ="lnb">
-        <h2>납품대금 연동제 동참하기</h2>
+        <h2>납품대금 연동제 도입하기</h2>
         <ul>
             <li class="<c:if test="${URI.contains('/join/process')}">on</c:if>">
                 <a href ="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
@@ -26,12 +26,6 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
             </li>
             <li class="<c:if test="${URI.contains('/join/agree')}">on</c:if>">
                 <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
-            </li>
-            <li class="<c:if test="${URI.contains('/join/joinMain')}">on</c:if>">
-                <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청하기</a>
-            </li>
-            <li class="<c:if test="${URI.contains('/join/joinSubmit')}">on</c:if>">
-            <a href="<c:url value="/join/joinSubmit.do"/>">동행기업 실적 제출하기</a>
             </li>
         </ul>
     </div>

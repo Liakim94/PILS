@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.xicom.front.service.mapper.RcmdMapper">
+    <insert id="insertRcmd" >
+        insert into tb_pils_rcmd
+        ( apply_cmp_nm
+        , apply_ceo
+        , apply_addr
+        , apply_biz_ty
+        , apply_telno
+        , apply_mem_email
+        , apply_mem_telno
+        , rcmd_cmp_nm
+        , rcmd_ceo
+        , rcmd_addr
+        , rcmd_biz_ty
+        , rcmd_telno
+        , rcmd_mem_email
+        , rcmd_mem_telno
+        , rcmd_detail
+        , appdt
+        )
+        values ( #{app_cmpNm}
+               , #{app_ceo}
+               , #{app_address}
+               , #{app_bizType}
+               , #{app_telNo}
+               , #{app_mem_email}
+               , #{app_mem_telNo}
+               , #{rcmd_cmpNm}
+               , #{rcmd_ceo}
+               , #{rcmd_address}
+               , #{rcmd_bizType}
+               , #{rcmd_telNo}
+               , #{rcmd_mem_email}
+               , #{rcmd_mem_telNo}
+               , #{rcmd_detail}
+               , current_timestamp
+        )
+    </insert>
+
+</mapper>
