@@ -8,7 +8,7 @@
 <%@ taglib uri="fx" prefix="fx" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <head>
-    <title>중소벤처기업부 | 질의응답 게시판</title>
+    <title>중소벤처기업부 | 온라인 상담</title>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
 
 </head>
@@ -26,11 +26,11 @@
                     소통·상담
                 </li>
                 <li>
-                    질의응답 게시판
+                    온라인 상담
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700"> 질의응답 게시판</h1>
+                <h1 class="fw700"> 온라인 상담</h1>
                 <div class="side-wrap">
                 </div>
             </div>

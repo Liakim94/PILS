@@ -52,8 +52,6 @@
         <div class="logo-wrap">
             <a href="<c:url value="/main/index.do"/>">
                 <img class="logo" src="${pageContext.request.contextPath}/images/common/logo.png" alt="중소벤처기업부"/></a>
-            <img class="slogan" src="${pageContext.request.contextPath}/images/common/slogan.png"
-                 alt="다시 도약하는 대한민국 함께 잘사는 국민의 나라"/>
         </div>
         <%-- 23.01.18 DO 메뉴 구성 변경 --%>
         <nav class="nav-wrap">
@@ -100,7 +98,8 @@
                     <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
                     <a href="<c:url value="/front/board/ready/list.do"/>">카드뉴스</a>
                     <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
-                    <a href="<c:url value="/front/qna/list.do"/>">상담하기</a>
+                    <a href="<c:url value="/front/qna/main.do"/>">상담하기</a>
+                    <a href="<c:url value="/front/policy.do"/>">개인정보처리방침</a>
                     <%--                    <c:if test="${sessionId eq 'admin' }">--%>
                     <%--                    <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
                     <%--                    <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a--%>
@@ -246,7 +245,8 @@
                         <a href="<c:url value="/front/board/11/list.do"/>">공지사항</a>
                         <a href="<c:url value="/front/board/ready/list.do"/>">카드뉴스</a>
                         <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
-                        <a href="<c:url value="/front/qna/list.do"/>">상담하기</a>
+                        <a href="<c:url value="/front/qna/main.do"/>">상담하기</a>
+                        <a href="<c:url value="/front/policy.do"/>">개인정보처리방침</a>
                         <%--                        <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
                         <%--                        <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>--%>
                     </div>

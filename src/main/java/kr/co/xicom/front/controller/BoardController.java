@@ -347,4 +347,12 @@ public class BoardController extends Alerts {
         ModelAndView mav = new ModelAndView("report");
         return mav;
     }
+    /**
+     * 개인정보처리방침
+     */
+    @GetMapping(value = "/policy.do")
+    public ModelAndView policy() throws Exception {
+        ModelAndView mav = new ModelAndView("communication/policy");
+        return mav;
+    }
 }
