@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <head>
-    <title>중소벤처기업부 | 질의응답 게시판</title>
+    <title>중소벤처기업부 | 온라인 상담</title>
     <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 </head>
@@ -53,11 +53,11 @@
                     소통·상담
                 </li>
                 <li>
-                    질의응답 게시판
+                    온라인 상담
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700"> 질의응답 게시판</h1>
+                <h1 class="fw700"> 온라인 상담</h1>
                 <div class="side-wrap">
                 </div>
             </div>
