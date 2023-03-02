@@ -13,6 +13,9 @@
     <div class="footer-wrap">
         <div class="area">
             <img class="logo" src="${pageContext.request.contextPath}/images/common/footer-logo.png" alt="중소벤처기업부" />
+            <div class="site-map">
+                <a href="<c:url value="/front/policy.do"/>">개인정보처리방침</a>
+            </div>
         </div>
         <div class="area">
             <p class="site-info">
