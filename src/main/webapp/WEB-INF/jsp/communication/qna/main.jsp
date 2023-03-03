@@ -57,7 +57,7 @@
                             <tbody>
                             <tr>
                                 <td class="tbody">1</td>
-                                <td class="">중소기업벤쳐기업부</td>
+                                <td class="">중소기업벤처기업부</td>
                                 <td class="">044-204-7905, 7948</td>
                             </tr>
                             <tr>

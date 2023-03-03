@@ -352,7 +352,7 @@ public class BoardController extends Alerts {
      */
     @GetMapping(value = "/policy.do")
     public ModelAndView policy() throws Exception {
-        ModelAndView mav = new ModelAndView("communication/policy");
+        ModelAndView mav = new ModelAndView("policy");
         return mav;
     }
 }
