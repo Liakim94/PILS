@@ -41,6 +41,13 @@
                                                 <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
                                                 동행기업 신청</a>
                                         </div>
+
+                    <div class="item">
+                        <a href="<c:url value="/files/joinApplyDoc.hwp"/>" download="동행기업 참여 신청 필요서류 양식.hwp">
+                            <img class="hover" src="<c:url value="/images/common/download-icon2.png"/>" >
+                            <img class="unhover" src="<c:url value="/images/common/download-icon.png"/>" >
+                            필요서류 양식</a>
+                    </div>
                                         <div class="item">
 <%--                                            <a href="${pageContext.request.contextPath}/join/joinRecom.do">--%>
                                             <a href="">
