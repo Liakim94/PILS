@@ -121,40 +121,40 @@
     </div>
     <h3>비밀번호 확인</h3>
     <div class="modal-body">
-        <form id="modalFrm">
+        <form id="modalFrm" action="<c:url value="/front/chkPasswd.do"/>" method="post">
             <div class="input-wrap">
-            <input type="hidden" value="" id="hiddenNo">
+            <input type="hidden" value="" id="hiddenNo" name="no">
             <input id="passwd" type="password" name="passwd" placeholder="비밀번호를 입력해주세요." required>
-                <input id="btnPw" type="button" class="submit" value="확인"/>
+                <input id="btnPw" type="submit" class="submit" value="확인"/>
             </div>
         </form>
     </div>
 </div>
 <script>
 
-    $(document).ready(function () {
-        $("#btnPw").click(function () {
-            try {
-                $.ajax({
-                    type: "post",
-                    url: "${pageContext.request.contextPath}/front/chkPasswd.do",
-                    data: "no=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),
-                    success: function (data) {
-                        if (data == "1") {
-                            location.href = "${pageContext.request.contextPath}/front/qna/view.do?no=" + $("#hiddenNo").val()
-                        } else {
-                            alert("비밀번호를 확인해주세요.")
-                        }
-                    },
-                    error: function (test) {
-                        alert("error");
-                    }
-                })
-            } catch (e) {
-                alert(e);
-            }
-        })
-    });
+<%--    $(document).ready(function () {--%>
+<%--        $("#btnPw").click(function () {--%>
+<%--            try {--%>
+<%--                $.ajax({--%>
+<%--                    type: "post",--%>
+<%--                    url: "${pageContext.request.contextPath}/front/chkPasswd.do",--%>
+<%--                    data: "no=" + $("#hiddenNo").val() + "&passwd=" + $('#passwd').val(),--%>
+<%--                    success: function (data) {--%>
+<%--                        if (data == "1") {--%>
+<%--                            location.href = "${pageContext.request.contextPath}/front/qna/view.do?no=" + $("#hiddenNo").val()--%>
+<%--                        } else {--%>
+<%--                            alert("비밀번호를 확인해주세요.")--%>
+<%--                        }--%>
+<%--                    },--%>
+<%--                    error: function (test) {--%>
+<%--                        alert("error");--%>
+<%--                    }--%>
+<%--                })--%>
+<%--            } catch (e) {--%>
+<%--                alert(e);--%>
+<%--            }--%>
+<%--        })--%>
+<%--    });--%>
 
 
     function modalOpen(num) {
