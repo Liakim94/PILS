@@ -31,14 +31,14 @@
         $("#frmWrite").validate({
             ignore: "",
             rules: {
-                name: {required: true,  maxlength:10 },
-                passwd: {required: true, minlength: 4, maxlength:10 },
+                name: {required: true, maxlength: 10},
+                passwd: {required: true, minlength: 4, maxlength: 10},
                 title: {required: true},
                 cont: {required: true}
             },
             messages: {
-                name: {required: "작성자 입력하세요.", maxlength:"10자 이상 입력 불가합니다."},
-                passwd: {required: "비밀번호를 확인하세요.", minlength: "최소 4자 이상 입력해주세요.", maxlength:"10자 이상 입력 불가합니다." },
+                name: {required: "작성자 입력하세요.", maxlength: "10자 이상 입력 불가합니다."},
+                passwd: {required: "비밀번호를 확인하세요.", minlength: "최소 4자 이상 입력해주세요.", maxlength: "10자 이상 입력 불가합니다."},
                 title: {required: "제목을 입력하세요."},
                 cont: {required: "내용을 입력하세요."}
             },
@@ -48,14 +48,49 @@
             }
         });
     });
+
+    window.onload = function(){
+
+        document.querySelector('#check').addEventListener('click', function(){
+            // var params = {answer : document.querySelector('#answer').getAttribute('value')};
+            try {
+                    $.ajax({
+                        type: "post",
+                        url: "${pageContext.request.contextPath}/front/qna/chkAnswer.do",
+                        data: "answer="+ $("#answer").val(),
+                        success: function (data) {
+                            if (data == "200") {
+                                location.href = "${pageContext.request.contextPath}/front/qna/view.do?no="
+                            } else {
+                                alert("비밀번호를 확인해주세요.");
+                                getImage();
+                                document.querySelector('#answer').setAttribute('value', '');
+                            }
+                        },
+                        error: function (test) {
+                            alert("error");
+                        }
+                    })
+                } catch (e) {
+                    alert(e);
+            }
+        });
+    }
+    function getImage(){
+        var rand = Math.random();
+        var url = '${pageContext.request.contextPath}/front/qna/getCaptchaImg.do?rand='+rand;
+        document.querySelector('#capimg').setAttribute('src', url);
+    }
+
 </script>
 <style type="text/css">
-    input.error, textarea.error{
-        border:1px dashed red;
+    input.error, textarea.error {
+        border: 1px dashed red;
     }
-    label.error{
-        display:block;
-        color:red;
+
+    label.error {
+        display: block;
+        color: red;
     }
 </style>
 <div id="content">
@@ -120,16 +155,26 @@
                                 </div>
                             </div>
                         </div>
-                </div>
+                        <div style="overflow:hidden">
+                            <div style="float:left">
+                                <img title="캡차이미지" src="${pageContext.request.contextPath}/front/qna/getCaptchaImg.do" alt="캡차이미지" id="capimg"/>
+                            </div>
+                        </div>
+                        <div style="padding:3px">
+                            <input id="reload" type="button" onclick="javaScript:getImage()" value="새로고침"/>
+                        </div>
+                        <div style="padding:3px">
+                            <input id="answer" type="text" value="">
+                        </div>
                         <div class="write-bottom">
-                            <button style="width:130px" class="submit">저장</button>
+                            <input style="width:130px" class="submit" id="check" type="button" value="저장"/>
                             <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
                         </div>
                     </form>
                     <!-- 컨텐츠 end -->
 
+                </div>
             </div>
         </div>
     </div>
 </div>
-

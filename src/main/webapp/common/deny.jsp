@@ -18,7 +18,7 @@
 <div class="article">   
 
 <div class="content">
-		     <h1 class ="inner_title">접근거부</h1>           
+		     <h1 class ="inner_title mt40">접근거부</h1>
             <p>해당페이지에 접근권한이 없습니다.<p>
 
 	<!-- <div class="row">
@@ -39,8 +39,8 @@
 	</div> -->
 
           <div class="btn-wrap">
-          	<a class="btn blue" href="${pageContext.request.contextPath }/">메인으로</a>
-          	<a class="btn blue" href="javascript:history.go(-1);">이전 화면으로</a>
+          	<a class="submit" href="${pageContext.request.contextPath }/">메인으로</a>
+          	<a class="submit" href="javascript:history.go(-1);">이전 화면으로</a>
           	<!-- <button type="button" class="btn btn-flat btn-info">관리자 문의</button> -->
           </div>
       <!-- /.error-page -->
