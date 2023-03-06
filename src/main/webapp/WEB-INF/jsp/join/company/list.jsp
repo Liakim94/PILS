@@ -33,23 +33,23 @@
             </div>
             <div id="main">
                 <!-- 컨텐츠 start -->
-                <div class="statistics-wrap">
-                    <div class="item" onclick="modalOpen(1)">
-                        <img class="unhover" src="<c:url value="/images/company/statistics1-1.png"/>" alt="업종별 통계"/>
-                        <img class="hover" src="<c:url value="/images/company/statistics1-2.png"/>" alt="업종별 통계"/>
-                        업종별 통계
-                    </div>
-                    <div class="item" onclick="modalOpen(2)">
-                        <img class="unhover" src="<c:url value="/images/company/statistics2-1.png"/>" alt="지역별 통계"/>
-                        <img class="hover" src="<c:url value="/images/company/statistics2-2.png"/>" alt="지역별 통계"/>
-                        지역별 통계
-                    </div>
-                    <div class="item" onclick="modalOpen(3)">
-                        <img class="unhover" src="<c:url value="/images/company/statistics3-1.png"/>" alt="기업 규모별 통계"/>
-                        <img class="hover" src="<c:url value="/images/company/statistics3-2.png"/>" alt="기업 규모별 통계"/>
-                        기업 규모별 통계
-                    </div>
-                </div>
+<%--                <div class="statistics-wrap">--%>
+<%--                    <div class="item" onclick="modalOpen(1)">--%>
+<%--                        <img class="unhover" src="<c:url value="/images/company/statistics1-1.png"/>" alt="업종별 통계"/>--%>
+<%--                        <img class="hover" src="<c:url value="/images/company/statistics1-2.png"/>" alt="업종별 통계"/>--%>
+<%--                        업종별 통계--%>
+<%--                    </div>--%>
+<%--                    <div class="item" onclick="modalOpen(2)">--%>
+<%--                        <img class="unhover" src="<c:url value="/images/company/statistics2-1.png"/>" alt="지역별 통계"/>--%>
+<%--                        <img class="hover" src="<c:url value="/images/company/statistics2-2.png"/>" alt="지역별 통계"/>--%>
+<%--                        지역별 통계--%>
+<%--                    </div>--%>
+<%--                    <div class="item" onclick="modalOpen(3)">--%>
+<%--                        <img class="unhover" src="<c:url value="/images/company/statistics3-1.png"/>" alt="기업 규모별 통계"/>--%>
+<%--                        <img class="hover" src="<c:url value="/images/company/statistics3-2.png"/>" alt="기업 규모별 통계"/>--%>
+<%--                        기업 규모별 통계--%>
+<%--                    </div>--%>
+<%--                </div>--%>
                 <!-- Popup -->
                 <div class="modal-background" onclick="modalClose()"></div>
                 <div class="detail-modal-box">

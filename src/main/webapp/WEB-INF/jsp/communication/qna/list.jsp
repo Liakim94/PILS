@@ -76,8 +76,11 @@
                                                         ${list.title }</a>
                                             </c:when>
                                             <c:otherwise>
-                                                <a href="javascript:modalOpen(${list.no})" id="checkPw"
-                                                  >${list.title}
+                                                <c:if test="${list.depth eq 1}">
+                                                    <img src="<c:url value="/images/common/reply.png"/>"
+                                                         style="width: 20px;float: left;margin-right: 9px;margin-top: 5px;margin-left: 8px;"/>
+                                                </c:if>
+                                                <a href="javascript:modalOpen(${list.no})" id="checkPw">${list.title}
                                                 </a>
                                             </c:otherwise>
                                         </c:choose>

@@ -31,18 +31,18 @@
         $("#frmWrite").validate({
             ignore: "",
             rules: {
-                name: { required: true, maxlength: 10},
-                passwd: { required: true, minlength: 4, maxlength: 10},
-                title: { required: true},
-                cont: { required: true},
-                answer: { required: true}
+                name: {required: true, maxlength: 10},
+                passwd: {required: true, minlength: 4, maxlength: 10},
+                title: {required: true},
+                cont: {required: true},
+                answer: {required: true}
             },
             messages: {
-                name: { required: "작성자 입력하세요.", maxlength: "10자 이상 입력 불가합니다."},
-                passwd: { required: "비밀번호를 확인하세요.", minlength: "최소 4자 이상 입력해주세요.", maxlength: "10자 이상 입력 불가합니다."},
-                title: { required: "제목을 입력하세요."},
-                cont: { required: "내용을 입력하세요."},
-                answer: { required: "이미지에 보이는 정확한 숫자를 입력하세요."}
+                name: {required: "작성자 입력하세요.", maxlength: "10자 이상 입력 불가합니다."},
+                passwd: {required: "비밀번호를 확인하세요.", minlength: "최소 4자 이상 입력해주세요.", maxlength: "10자 이상 입력 불가합니다."},
+                title: {required: "제목을 입력하세요."},
+                cont: {required: "내용을 입력하세요."},
+                answer: {required: "이미지에 보이는 정확한 숫자를 입력하세요."}
             },
             submitHandler: function (frm) {
                 oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
@@ -52,7 +52,7 @@
         });
     });
 
-    window.onload = function(){
+    window.onload = function () {
 
         <%--document.querySelector('#check').addEventListener('click', function(){--%>
         <%--    // var params = {answer : document.querySelector('#answer').getAttribute('value')};--%>
@@ -81,9 +81,10 @@
         <%--    }--%>
         <%--});--%>
     }
-    function getImage(){
+
+    function getImage() {
         var rand = Math.random();
-        var url = '${pageContext.request.contextPath}/front/qna/getCaptchaImg.do?rand='+rand;
+        var url = '${pageContext.request.contextPath}/front/qna/getCaptchaImg.do?rand=' + rand;
         document.querySelector('#capimg').setAttribute('src', url);
     }
 
@@ -96,6 +97,10 @@
     label.error {
         display: block;
         color: red;
+    }
+    .write-container .line-wrap .label .required{
+        color: #E60024;
+        margin-left: 2px;
     }
 </style>
 <div id="content">
@@ -120,66 +125,77 @@
             </div>
             <div class="content">
                 <!-- 컨텐츠 start -->
-                <div class="write-container">
-                    <form name="frmWrite" id="frmWrite" method="post"
-                          action="<c:url value="/front/qna/post.do"/>">
+                    <div class="write-container">
+                        <form name="frmWrite" id="frmWrite" method="post"
+                              action="<c:url value="/front/qna/post.do"/>">
 
-                        <div class="write-wrap">
-                            <div class="line-wrap">
-                                <div class="label">
-                                    작성자
+                            <div class="write-wrap">
+                                <div class="line-wrap">
+                                    <div class="label">
+                                        작성자<span class="required">*</span>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input type="text" id="name" name="name" placeholder="작성자 입력"/>
+                                    </div>
                                 </div>
-                                <div class="input-wrap">
-                                    <input type="text" id="name" name="name" placeholder="작성자 입력"/>
+                                <div class="line-wrap">
+                                    <div class="label">
+                                        비밀번호<span class="required">*</span>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input type="text" class="uni_input_text wdh100" name="passwd" id="passwd"
+                                               placeholder="비밀번호 입력"/>
+                                    </div>
+                                </div>
+                                <div class="line-wrap">
+                                    <div class="label">
+                                        제목<span class="required">*</span>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input type="text" class="uni_input_text wdh100" name="title" id="title"
+                                               placeholder="제목 입력"/>
+                                    </div>
+                                </div>
+                                <div class="line-wrap">
+                                    <div class="label">
+                                        내용<span class="required">*</span>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <textarea id="cont" class="form-control" name="body"></textarea>
+                                    </div>
                                 </div>
                             </div>
                             <div class="line-wrap">
                                 <div class="label">
-                                    비밀번호
+                                    자동화 방지 코드<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" class="uni_input_text wdh100" name="passwd" id="passwd"
-                                           placeholder="비밀번호 입력"/>
-                                </div>
-                            </div>
-                            <div class="line-wrap">
-                                <div class="label">
-                                    제목
-                                </div>
-                                <div class="input-wrap">
-                                    <input type="text" class="uni_input_text wdh100" name="title" id="title"
-                                           placeholder="제목 입력"/>
-                                </div>
-                            </div>
-                            <div class="line-wrap">
-                                <div class="label">
-                                    내용
-                                </div>
-                                <div class="input-wrap">
-                                    <textarea id="cont" class="form-control" name="body"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="overflow:hidden">
-                            <div style="float:left">
-                                <img title="캡차이미지" src="${pageContext.request.contextPath}/front/qna/getCaptchaImg.do" alt="캡차이미지" id="capimg"/>
-                            </div>
-                        </div>
-                        <div style="padding:3px">
-                            <input id="reload" type="button" onclick="javaScript:getImage()" value="새로고침"/>
-                        </div>
-                        <div style="padding:3px">
-                            <input id="answer" name="answer" type="text" value="">
-                        </div>
-                        <div class="write-bottom">
-                            <input style="width:130px" class="submit" id="check" type="submit" value="저장"/>
-                            <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
-                        </div>
-                    </form>
-                    <!-- 컨텐츠 end -->
+                                    <div style="overflow:hidden">
+                                        <div style="float:left">
+                                            <img title="캡차이미지"
+                                                 src="${pageContext.request.contextPath}/front/qna/getCaptchaImg.do"
+                                                 alt="캡차이미지" id="capimg"/>
+                                            <img id="reload" src="<c:url value="/images/common/refresh.png"/>"
+                                                 onclick="javaScript:getImage()" alt="새로고침" style="width: 30px;"/>
 
+                                        </div>
+                                    </div>
+                                    <%--                                    <input id="reload" type="button" onclick="javaScript:getImage()" value="새로고침"/>--%>
+                                    <div style="padding:3px">
+                                        <input id="answer" name="answer" type="text" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="write-bottom">
+                                <input style="width:130px" class="submit" id="check" type="submit" value="저장"/>
+                                <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
+                            </div>
+                        </form>
+                        <!-- 컨텐츠 end -->
+
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
