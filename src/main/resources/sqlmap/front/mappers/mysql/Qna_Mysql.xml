@@ -105,6 +105,7 @@
                 , ttl       AS title
                 , bdtxt     AS body
                 , rspns     AS reply
+                , ip_addr   as ip
         from tb_banner_qust_answr
         where 1 = 1
         and no = #{no}::INT4

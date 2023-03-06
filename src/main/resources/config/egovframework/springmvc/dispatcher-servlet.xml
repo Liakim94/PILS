@@ -98,6 +98,30 @@
         </property>
     </bean>
 	<!-- /For Pagination Tag -->
-
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**" />
+            <mvc:mapping path="/front/board/11/post.do" />
+            <mvc:mapping path="/front/board/7/post.do" />
+            <mvc:mapping path="/front/board/11/delete.do" />
+            <mvc:mapping path="/front/board/7/delete.do" />
+            <mvc:mapping path="/front/board/11/edit.do" />
+            <mvc:mapping path="/front/board/7/edit.do" />
+            <mvc:mapping path="/front/qna/repost.do" />
+            <mvc:mapping path="/front/qna/delete.do" />
+            <bean class="kr.co.xicom.AdminInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/main/myPage.do" />
+            <mvc:mapping path="/main/joinEdit.do" />
+            <mvc:mapping path="/main/memEdit.do" />
+            <mvc:mapping path="/main/management.do" />
+            <mvc:mapping path="/main/memAdd.do" />
+            <mvc:mapping path="/main/changePw.do" />
+            <bean class="kr.co.xicom.MypageInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

@@ -232,6 +232,7 @@
             {"id": "KR.KJ", "value": 1, 'name':"광주"},
             {"id": "KR.GN", "value": 1, 'name':"충남"},
             {"id": "KR.TJ", "value": 0, 'name':"대전"},
+            {"id":"KR.TG", "value":0, 'name':"대구"},
             {"id": "KR.KN", "value": 3, 'name':"경남"},
             {"id": "KR.2685", "value": 0, 'name':"전남"},
             {"id": "KR.PU", "value": 1, 'name':"부산"},

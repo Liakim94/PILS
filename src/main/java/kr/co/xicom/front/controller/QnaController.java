@@ -4,6 +4,8 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.QnaVO;
 import kr.co.xicom.front.service.QnaService;
 import kr.co.xicom.util.Alerts;
+import kr.co.xicom.util.CaptchaUtil;
+import nl.captcha.Captcha;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +27,20 @@ import java.util.Map;
 @Controller
 public class QnaController extends Alerts {
 
-    /** Logger */
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(QnaController.class);
 
     @Autowired
     private QnaService qnaService;
 
     @GetMapping(value = "/qna/main.do")
-    public ModelAndView qnaMain()throws Exception{
+    public ModelAndView qnaMain() throws Exception {
         ModelAndView mav = new ModelAndView("communication/qna/main");
         return mav;
     }
+
     /**
      * 1:1문의 목록
      */
@@ -63,7 +68,7 @@ public class QnaController extends Alerts {
 
         List<QnaVO> qnaVOList = (List<QnaVO>) rs.get("resultList");
         qnaVOList.forEach(qnaVO -> {
-            qnaVO.setTitle(qnaVO.getTitle().replaceAll("(?<=.{2})." , "*"));
+            qnaVO.setTitle(qnaVO.getTitle().replaceAll("(?<=.{2}).", "*"));
         });
 
         int totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
@@ -102,6 +107,10 @@ public class QnaController extends Alerts {
                        HttpServletResponse response) throws Exception {
 
         try {
+            //ip 주소가 같은 경우에만 처리
+            String clientIp = request.getHeader("X-FORWARDED-FOR");
+            if (clientIp == null) clientIp = request.getRemoteAddr();
+            qnaVO.setIp(clientIp);
             int result = qnaService.insertBbsQna(qnaVO);
 
             if (result > 0) {
@@ -120,8 +129,7 @@ public class QnaController extends Alerts {
                 writer.println("</script>");
                 writer.flush();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
         }
     }
@@ -129,7 +137,6 @@ public class QnaController extends Alerts {
     /**
      * 비밀번호 확인
      */
-    @ResponseBody
     @RequestMapping(value = "/chkPasswd.do", method = {RequestMethod.POST})
     public String chkPasswd(ModelMap model,
                             @RequestParam(value = "no") int no,
@@ -149,9 +156,11 @@ public class QnaController extends Alerts {
         }
 
         if (result == 1) {
-            return "1";
+            HttpSession session = request.getSession();
+            session.setAttribute("qnaId", no);
+            return "redirect:/front/qna/view.do?no=" + no;
         } else {
-            return "0";
+            return "forward:/common/deny.jsp";
 
         }
     }
@@ -169,6 +178,33 @@ public class QnaController extends Alerts {
 
         ModelAndView mav = new ModelAndView("communication/qna/view");
 
+        boolean isAccess = false;
+        boolean isAdmin = false;
+        String sId = (String) session.getAttribute("sessionId");
+        int qId = (int) session.getAttribute("qnaId");
+        // admin이면
+        if (sId != null && sId.equals("admin")) {
+            isAdmin = true;
+            isAccess = true;
+        }
+
+        // admin도 아니고 작성자도 아니면 접속거부
+        if (qId == 0 && !isAdmin) {
+            response.sendRedirect(request.getContextPath() + "/common/deny.jsp");
+        } else {
+            if (!isAdmin) {
+                // 작성자
+                int qint = (int) session.getAttribute("qnaId");
+                if (qint == no) {
+                    isAccess = true;
+                }
+            }
+        }
+
+        if (!isAccess) {
+            response.sendRedirect(request.getContextPath() + "/common/deny.jsp");
+        }
+
         qnaVO.setNo(no);
         QnaVO rs = qnaService.getBbsQnabyId(qnaVO);
 
@@ -184,17 +220,27 @@ public class QnaController extends Alerts {
 
     @GetMapping(value = "/qna/delete.do")
     public void qnaDelete(@RequestParam(value = "no") int no
-                         , HttpServletRequest request
-                         , HttpServletResponse response) throws Exception {
-        int result = qnaService.qnaDelete(no);
-        if (result > 0) {
-            response.sendRedirect(request.getContextPath() + "/front/qna/list.do");
+            , @ModelAttribute("QnaVO") QnaVO qnaVO
+            , HttpServletRequest request
+            , HttpServletResponse response) throws Exception {
+        String clientIp = request.getHeader("X-FORWARDED-FOR");
+        if (clientIp == null) clientIp = request.getRemoteAddr();
+        QnaVO rs = qnaService.getBbsQnabyId(qnaVO);
+        //ip 주소가 같은 경우에만 처리
+        if (!rs.getIp().equals(clientIp)) {
+            response.sendRedirect(request.getContextPath() + "/common/deny.jsp");
+        } else {
+            int result = qnaService.qnaDelete(no);
+            if (result > 0) {
+                response.sendRedirect(request.getContextPath() + "/front/qna/list.do");
+            }
         }
+
+
     }
 
     /**
      * 1:1문의 답변 화면
-     *
      */
     @GetMapping(value = "/qna/repost.do")
     public ModelAndView repost(ModelMap model,
@@ -217,7 +263,6 @@ public class QnaController extends Alerts {
 
     /**
      * 1:1문의 답변
-     *
      */
     @RequestMapping(value = "/qna/repost.do", method = {RequestMethod.POST})
     public void doRepost(ModelMap model,
@@ -250,5 +295,30 @@ public class QnaController extends Alerts {
 
     }
 
+    // 보안문자 이미지 가져오기
+    @RequestMapping(value = "/qna/getCaptchaImg")
+    @ResponseBody
+    public void captchaImg(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        new CaptchaUtil().captcaImg(request, response);
+    }
+
+    // 사용자가 입력한 보안문자 체크하는 메서드
+    @PostMapping("/qna/chkAnswer.do")
+    @ResponseBody
+    public String chkAnswer(HttpServletRequest req, HttpServletResponse res) {
+        String result = "";
+        Captcha captcha = (Captcha) req.getSession().getAttribute(Captcha.NAME);
+        String ans = req.getParameter("answer");
+        System.out.println("ddddddd"+ans);
+        if (ans != null && !"".equals(ans)) {
+            if (captcha.isCorrect(ans)) {
+                req.getSession().removeAttribute(Captcha.NAME);
+                result = "200";
+            } else {
+                result = "300";
+            }
+        }
+        return result;
+    }
 
 }

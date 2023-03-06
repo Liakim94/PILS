@@ -38,8 +38,8 @@
                             원재료의 가격 변동에 따른 납품대금 연동과 관련하여 위탁기업(원사업자를 포함한다. 이하 같다)과 수탁기업(수급사업자를 포함한다. 이하 같다)은 수탁·위탁거래약정에 부수하여 다음과 같이 납품대금 연동 특별약정을 체결한다.
                             <br>
                             <br>
-                            ◇ 대상 수탁·위탁거래약정 : (명칭)
-                            <span class="float-right">(체결 일자)</span>
+                            ◇ 대상 수탁·위탁거래약정 : (명칭)   고정식 프로펠러 공급
+                            <span class="float-right">(체결 일자)&nbsp; 2023.3.15</span>
                             <br>
                             <br>
                             <b>제1조(목적)</b> 이 특별약정은 상기 수탁·위탁거래약정과 관련하여, 원재료의 가격이 변동하는 경우, 그 변동분에 연동하여 납품대금(납품단가를 포함한다. 이하 같다)을 조정하는 것(이하 ‘납품대금 연동’이라 한다)에 필요한 제반 사항을 규정함을 목적으로 한다.
@@ -116,26 +116,26 @@
                             <br>
                             이 특별약정의 체결사실 및 특별약정내용을 증명하기 위하여 이 특별약정서를 2부 작성하여 양 당사자가 각각 서명 또는 기명날인한 후 각자 1부씩 보관한다.                            <br>
                             <br>
-                            <p class="witeDate">년&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일</p>
+                            <p class="witeDate">2023년&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3월&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15일</p>
                             <div class="write-area">
                                 <div class="item">
                                     <h3>
                                         <b>위탁기업</b><br>
-                                        상호 또는 명칭 :<br>
-                                        전화번호 :<br>
-                                        주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소 :<br>
-                                        대표자 성명 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(인)<br>
-                                        사업자(법인) 번호 :
+                                        상호 또는 명칭 : ㅇㅇㅇ물산(주)<br>
+                                        전화번호 :  02-1234-0000<br>
+                                        주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소 : 서울시 000 000로 00<br>
+                                        대표자 성명 :&nbsp;&nbsp;&nbsp; 0 0 0&nbsp;&nbsp;(인)<br>
+                                        사업자(법인) 번호 : 000-00-00000
                                     </h3>
                                 </div>
                                 <div class="item">
                                     <h3>
                                         <b>수탁기업</b><br>
-                                        상호 또는 명칭 :<br>
-                                        전화번호 :<br>
-                                        주 소 :<br>
-                                        대표자 성명 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(인)<br>
-                                        사업자(법인)번호 :<br>
+                                        상호 또는 명칭 : ㅇㅇ산업(주)<br>
+                                        전화번호 : 031-4321-0000<br>
+                                        주 소 : 경기도 00시 000로 00<br>
+                                        대표자 성명 :&nbsp;&nbsp;&nbsp; 0 0 0&nbsp;&nbsp;(인)<br>
+                                        사업자(법인)번호 : 000-00-00000<br>
                                     </h3>
                                 </div>
                             </div>
