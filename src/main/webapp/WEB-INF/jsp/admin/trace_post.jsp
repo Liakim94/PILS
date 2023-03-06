@@ -11,7 +11,7 @@
 <head>
     <title>관리자 | 걸어온 발자취 관리</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
-    <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath }/editor/naver-se/js/HuskyEZCreator.js" charset="utf-8"></script>
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
     <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
 
@@ -24,7 +24,7 @@
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: oEditors,
             elPlaceHolder: "cont",
-            sSkinURI: "${pageContext.request.contextPath }/editor/naver/SmartEditor2Skin.html",
+            sSkinURI: "${pageContext.request.contextPath }/editor/naver-se/SmartEditor2Skin.html",
             fCreator: "createSEditor2"
         });
         var fileUploader = new smes.FileUploader('.file-uploader').init({

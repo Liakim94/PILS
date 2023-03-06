@@ -9,7 +9,7 @@
 
 <head>
     <title>중소벤처기업부 | 온라인 상담</title>
-    <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath }/editor/naver-se/js/HuskyEZCreator.js" charset="utf-8"></script>
     <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
 
 </head>
@@ -20,7 +20,7 @@
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: oEditors,
             elPlaceHolder: "cont",
-            sSkinURI: "${pageContext.request.contextPath }/editor/naver/SmartEditor2Skin.html",
+            sSkinURI: "${pageContext.request.contextPath }/editor/naver-se/SmartEditor2Skin.html",
             fCreator: "createSEditor2"
         });
     });
@@ -31,50 +31,55 @@
         $("#frmWrite").validate({
             ignore: "",
             rules: {
-                name: {required: true, maxlength: 10},
-                passwd: {required: true, minlength: 4, maxlength: 10},
-                title: {required: true},
-                cont: {required: true}
+                name: { required: true, maxlength: 10},
+                passwd: { required: true, minlength: 4, maxlength: 10},
+                title: { required: true},
+                cont: { required: true},
+                answer: { required: true}
             },
             messages: {
-                name: {required: "작성자 입력하세요.", maxlength: "10자 이상 입력 불가합니다."},
-                passwd: {required: "비밀번호를 확인하세요.", minlength: "최소 4자 이상 입력해주세요.", maxlength: "10자 이상 입력 불가합니다."},
-                title: {required: "제목을 입력하세요."},
-                cont: {required: "내용을 입력하세요."}
+                name: { required: "작성자 입력하세요.", maxlength: "10자 이상 입력 불가합니다."},
+                passwd: { required: "비밀번호를 확인하세요.", minlength: "최소 4자 이상 입력해주세요.", maxlength: "10자 이상 입력 불가합니다."},
+                title: { required: "제목을 입력하세요."},
+                cont: { required: "내용을 입력하세요."},
+                answer: { required: "이미지에 보이는 정확한 숫자를 입력하세요."}
             },
             submitHandler: function (frm) {
                 oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
-                frm.submit();
+                //frm.submit();
+                return true;
             }
         });
     });
 
     window.onload = function(){
 
-        document.querySelector('#check').addEventListener('click', function(){
-            // var params = {answer : document.querySelector('#answer').getAttribute('value')};
-            try {
-                    $.ajax({
-                        type: "post",
-                        url: "${pageContext.request.contextPath}/front/qna/chkAnswer.do",
-                        data: "answer="+ $("#answer").val(),
-                        success: function (data) {
-                            if (data == "200") {
-                                location.href = "${pageContext.request.contextPath}/front/qna/view.do?no="
-                            } else {
-                                alert("비밀번호를 확인해주세요.");
-                                getImage();
-                                document.querySelector('#answer').setAttribute('value', '');
-                            }
-                        },
-                        error: function (test) {
-                            alert("error");
-                        }
-                    })
-                } catch (e) {
-                    alert(e);
-            }
-        });
+        <%--document.querySelector('#check').addEventListener('click', function(){--%>
+        <%--    // var params = {answer : document.querySelector('#answer').getAttribute('value')};--%>
+        <%--    try {--%>
+        <%--            $.ajax({--%>
+        <%--                type: "post",--%>
+        <%--                url: "${pageContext.request.contextPath}/front/qna/chkAnswer.do",--%>
+        <%--                data: "answer="+ $("#answer").val(),--%>
+        <%--                success: function (data) {--%>
+        <%--                    if (data == "200") {--%>
+        <%--                        //location.href = "${pageContext.request.contextPath}/front/qna/view.do?no="--%>
+        <%--                        $("#frmWrite").submit();--%>
+        <%--                    } else {--%>
+        <%--                        alert("이미지에 보이는 숫자를 정확히 입력하세요.");--%>
+        <%--                        getImage();--%>
+        <%--                        $('#answer').focus();--%>
+        <%--                        document.querySelector('#answer').setAttribute('value', '');--%>
+        <%--                    }--%>
+        <%--                },--%>
+        <%--                error: function (test) {--%>
+        <%--                    alert("error");--%>
+        <%--                }--%>
+        <%--            })--%>
+        <%--        } catch (e) {--%>
+        <%--            alert(e);--%>
+        <%--    }--%>
+        <%--});--%>
     }
     function getImage(){
         var rand = Math.random();
@@ -164,10 +169,10 @@
                             <input id="reload" type="button" onclick="javaScript:getImage()" value="새로고침"/>
                         </div>
                         <div style="padding:3px">
-                            <input id="answer" type="text" value="">
+                            <input id="answer" name="answer" type="text" value="">
                         </div>
                         <div class="write-bottom">
-                            <input style="width:130px" class="submit" id="check" type="button" value="저장"/>
+                            <input style="width:130px" class="submit" id="check" type="submit" value="저장"/>
                             <a href="<c:url value="/front/qna/list.do"/>" class="back">취소</a>
                         </div>
                     </form>

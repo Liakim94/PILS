@@ -6,6 +6,7 @@ import kr.co.xicom.front.service.QnaService;
 import kr.co.xicom.util.Alerts;
 import kr.co.xicom.util.CaptchaUtil;
 import nl.captcha.Captcha;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,8 +104,33 @@ public class QnaController extends Alerts {
     @RequestMapping(value = "/qna/post.do", method = {RequestMethod.POST})
     public void doPost(ModelMap model,
                        @ModelAttribute("QnaVO") QnaVO qnaVO,
+                       HttpSession session,
                        HttpServletRequest request,
                        HttpServletResponse response) throws Exception {
+
+
+        Captcha captcha = (Captcha) session.getAttribute(Captcha.NAME);
+        String answer = qnaVO.getAnswer();
+
+        if (StringUtils.isBlank(answer)) {
+            // 이미 클라이언트에서 해당 값(answer)에 빈값을 체크 할것이므르로
+            // 이럴일은 없겠지만 방어 코딩 필요.
+        }
+
+        if (!captcha.isCorrect(answer)) {
+            response.setContentType("text/html; charset=UTF-8;");
+            PrintWriter writer = response.getWriter();
+            writer.println("<script type='text/javascript'>");
+            writer.println("alert('이미지에 보이는 정확한 숫자을 입력하세요.');");
+            writer.println("history.back();");
+            writer.println("</script>");
+            writer.flush();
+            return;
+        }
+        else {
+            session.removeAttribute(Captcha.NAME);
+        }
+
 
         try {
             //ip 주소가 같은 경우에만 처리

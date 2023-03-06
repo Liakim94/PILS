@@ -11,7 +11,7 @@
 <head>
     <title>관리자 | 카드뉴스</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/file-uploader-1.0.0.css" type="text/css">
-    <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath }/editor/naver-se/js/HuskyEZCreator.js" charset="utf-8"></script>
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
     <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
 </head>

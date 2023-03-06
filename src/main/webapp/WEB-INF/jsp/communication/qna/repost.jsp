@@ -8,7 +8,7 @@
 
 <head>
     <title>중소벤처기업부 | 온라인 상담</title>
-    <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath }/editor/naver-se/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 </head>
 <script>
@@ -17,7 +17,7 @@
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: oEditors,
             elPlaceHolder: "txta",
-            sSkinURI: "${pageContext.request.contextPath }/editor/naver/SmartEditor2Skin.html",
+            sSkinURI: "${pageContext.request.contextPath }/editor/naver-se/SmartEditor2Skin.html",
             fCreator: "createSEditor2"
         });
     });
