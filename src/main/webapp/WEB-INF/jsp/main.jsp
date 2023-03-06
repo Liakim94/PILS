@@ -208,7 +208,7 @@
                              src="<c:url value="/images/common/youtube_temp3.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
                     <div class="slide-item">
-                        <h3>품대금 연동제 설명회</h3>
+                        <h3>납품대금 연동제 설명회</h3>
                         <img class="thumbnail" onclick="modalOpen('modal-box-6')"
                              src="<c:url value="/images/common/youtube_temp4.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
