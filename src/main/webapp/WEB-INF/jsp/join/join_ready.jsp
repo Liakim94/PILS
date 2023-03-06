@@ -356,7 +356,7 @@
                                 원재료는 원재료와 재료를 포괄하는 개념으로, 천연재료, 화합물, 가공물, 중간재 등을 포함하되 이에 한정하지는 않습니다.
                             </li>
                             <div class="accordion-container">
-                                <div class="item-wrap mt20" onclick="detailOpen(this)" tabindex="1">
+                                <div class="item-wrap mt20" onclick="detailOpen(this)" tabindex="1"  style="padding: 10px 20px !important">
                                     <h3 class="ar-title">주요 원재료의 예시는?</h3>
                                     <img class="icon" src="<c:url value="/images/common/arrow-top.png"/>" alt="법률 상세보기">
                                     <div class="detail-info">
