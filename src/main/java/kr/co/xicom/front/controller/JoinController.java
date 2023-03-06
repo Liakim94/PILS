@@ -284,4 +284,10 @@ public class JoinController {
         ModelAndView mav = new ModelAndView("join/join_submit");
         return mav;
     }
+    //도입 준비하기
+    @GetMapping(value = "/ready.do")
+    public ModelAndView joinReady() throws Exception {
+        ModelAndView mav = new ModelAndView("join/join_ready");
+        return mav;
+    }
 }

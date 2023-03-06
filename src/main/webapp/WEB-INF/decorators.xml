@@ -36,6 +36,7 @@
         <pattern>/join/agreeMain.do</pattern>
         <pattern>/join/agree.do</pattern>
         <pattern>/join/agreeView.do</pattern>
+        <pattern>/join/ready.do</pattern>
         <pattern>/common/deny.jsp</pattern>
     </decorator>
 

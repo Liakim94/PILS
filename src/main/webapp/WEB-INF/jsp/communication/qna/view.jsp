@@ -47,8 +47,8 @@
                         </div>
                     </div>
                     <div class="write-bottom">
-                        <a href="<c:url value="/front/qna/delete.do?no=${rs.no}"/>" class="submit">삭제</a>
                         <c:if test="${sessionId eq 'admin' }">
+                            <a href="<c:url value="/front/qna/delete.do?no=${rs.no}"/>" class="submit">삭제</a>
                             <a href="<c:url value="/front/qna/repost.do?no=${rs.no}"/>" class="submit">답변달기</a>
                         </c:if>
                         <a href="<c:url value="/front/qna/list.do"/>" class="back">목록</a>
