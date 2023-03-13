@@ -2,14 +2,12 @@ package kr.co.xicom.front.service.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import kr.co.xicom.front.model.AttachVO;
-import kr.co.xicom.front.model.BoardVO;
-import kr.co.xicom.front.model.CmpMemberVo;
-import kr.co.xicom.front.model.CmpSttusVO;
+import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.mapper.AttachMapper;
 import kr.co.xicom.front.service.mapper.BoardMapper;
 import kr.co.xicom.front.service.mapper.ConsultingMapper;
+import kr.co.xicom.front.service.mapper.RcmdMapper;
 import kr.co.xicom.util.HtmlTagUtils;
 import kr.go.smes.fileservice.FileService;
 import org.apache.commons.io.FilenameUtils;
@@ -32,6 +30,8 @@ import java.util.Map;
 public class ConsultingServiceImpl implements ConsultingService {
     @Autowired
     private ConsultingMapper mapper;
+    @Autowired
+    private RcmdMapper rcmdMapper;
 
     /** 첨부파일 Mapper */
     @Resource
@@ -262,7 +262,16 @@ public class ConsultingServiceImpl implements ConsultingService {
         attachVO.setAttchCode("M602");
 
         return attachMapper.joinAttList(attachVO);
+    }
+    //동행기업 참여 추천
+    @Override
+    public int insertRecom(RcmdVO vo) throws Exception{
+      return rcmdMapper.insertRcmd(vo);
+    }
 
+    @Override
+    public RcmdVO rcmdView(int no ) throws Exception{
+        return rcmdMapper.rcmdView(no);
     }
 
 }
