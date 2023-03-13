@@ -6,6 +6,7 @@ import kr.co.xicom.front.service.QnaService;
 import kr.co.xicom.util.Alerts;
 import kr.co.xicom.util.CaptchaUtil;
 import nl.captcha.Captcha;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,20 +104,40 @@ public class QnaController extends Alerts {
     @RequestMapping(value = "/qna/post.do", method = {RequestMethod.POST})
     public void doPost(ModelMap model,
                        @ModelAttribute("QnaVO") QnaVO qnaVO,
+                       HttpSession session,
                        HttpServletRequest request,
                        HttpServletResponse response) throws Exception {
 
-        try {
-            //ip 주소가 같은 경우에만 처리
-            String clientIp = request.getHeader("X-FORWARDED-FOR");
-            if (clientIp == null) clientIp = request.getRemoteAddr();
-            qnaVO.setIp(clientIp);
-            int result = qnaService.insertBbsQna(qnaVO);
+        Captcha captcha = (Captcha) session.getAttribute(Captcha.NAME);
+        String answer = qnaVO.getAnswer();
 
+        if (StringUtils.isBlank(answer)) {
+            // 이미 클라이언트에서 해당 값(answer)에 빈값을 체크 할것이므르로
+            // 이럴일은 없겠지만 방어 코딩 필요.
+        }
+
+        if (!captcha.isCorrect(answer)) {
+            response.setContentType("text/html; charset=UTF-8;");
+            PrintWriter writer = response.getWriter();
+            writer.println("<script type='text/javascript'>");
+            writer.println("alert('이미지에 보이는 정확한 숫자을 입력하세요.');");
+            writer.println("history.back();");
+            writer.println("</script>");
+            writer.flush();
+            return;
+        }
+        else {
+            session.removeAttribute(Captcha.NAME);
+        }
+
+        try {
+            int result = qnaService.insertBbsQna(qnaVO);
             if (result > 0) {
 
+                session = request.getSession();
+                session.setAttribute("qnaId", qnaVO.getNo());
                 request.setAttribute("hid", "");
-                response.sendRedirect(request.getContextPath() + "/front/qna/list.do");
+                response.sendRedirect(request.getContextPath() + "/front/qna/view.do?no="+qnaVO.getNo());
 
             } else {
                 PrintWriter writer = response.getWriter();
@@ -156,8 +177,8 @@ public class QnaController extends Alerts {
         }
 
         if (result == 1) {
-            HttpSession session = request.getSession();
-            session.setAttribute("qnaId", no);
+           HttpSession session = request.getSession();
+            session.setAttribute("qnaId", qnaVO.getNo());
             return "redirect:/front/qna/view.do?no=" + no;
         } else {
             return "forward:/common/deny.jsp";
@@ -182,6 +203,7 @@ public class QnaController extends Alerts {
         boolean isAdmin = false;
         String sId = (String) session.getAttribute("sessionId");
         int qId = (int) session.getAttribute("qnaId");
+        System.out.println((int) session.getAttribute("qnaId"));
         // admin이면
         if (sId != null && sId.equals("admin")) {
             isAdmin = true;
@@ -223,17 +245,17 @@ public class QnaController extends Alerts {
             , @ModelAttribute("QnaVO") QnaVO qnaVO
             , HttpServletRequest request
             , HttpServletResponse response) throws Exception {
-        String clientIp = request.getHeader("X-FORWARDED-FOR");
-        if (clientIp == null) clientIp = request.getRemoteAddr();
-        QnaVO rs = qnaService.getBbsQnabyId(qnaVO);
-        //ip 주소가 같은 경우에만 처리
-        if (!rs.getIp().equals(clientIp)) {
-            response.sendRedirect(request.getContextPath() + "/common/deny.jsp");
-        } else {
+        //DO 23-03-06 관리자만 질의 삭제 가능으로 변경
+//        String clientIp = request.getHeader("X-FORWARDED-FOR");
+//        if (clientIp == null) clientIp = request.getRemoteAddr();
+//        QnaVO rs = qnaService.getBbsQnabyId(qnaVO);
+//        //ip 주소가 같은 경우에만 처리
+//        if (!rs.getIp().equals(clientIp)) {
+//            response.sendRedirect(request.getContextPath() + "/common/deny.jsp");
+//        } else {
             int result = qnaService.qnaDelete(no);
             if (result > 0) {
                 response.sendRedirect(request.getContextPath() + "/front/qna/list.do");
-            }
         }
 
 
@@ -276,7 +298,7 @@ public class QnaController extends Alerts {
             if (result > 0) {
 
                 request.setAttribute("hid", "");
-                response.sendRedirect(request.getContextPath() + "/front/qna/list.do");
+                response.sendRedirect(request.getContextPath() + "/front/qna/view.do?no="+qnaVO.getNo());
 
             } else {
                 PrintWriter writer = response.getWriter();

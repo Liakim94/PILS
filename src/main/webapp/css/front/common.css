@@ -1961,10 +1961,9 @@
     border-radius: 50px;
     padding: 10px 50px;
     box-sizing: border-box;
-    color: #FFFFFF;
+    color: #E60024;
     font-weight: 700;
     font-size: 16px;
-    background: #DDDDDD;
     position: relative;
     top: 1px;
 }
@@ -3165,7 +3164,6 @@
     flex-wrap: wrap;
     gap: 45px;
 }
-
 #about .mobile-process-wrap .img-wrap{
     max-width: 250px;
     width: calc(50% - 40px);
@@ -3218,6 +3216,76 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 26px;
+}
+/* 도입 준비하기 */
+#ready .title{
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+#ready .title strong{
+    font-family: 'GmarketSans', sans-serif;
+}
+#ready .title:after{
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 4px;
+    height: 25px;
+    background-color: #E60024;
+}
+#ready .pc-process-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+}
+#ready .pc-process-wrap .process{
+    width: calc(25% - 60px);
+}
+#ready .pc-process-wrap .next{
+    width: 23px;
+    margin: 0 20px;
+}
+#ready .mobile-process-wrap{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 45px;
+}
+#ready .mobile-process-wrap .img-wrap{
+    max-width: 250px;
+    width: calc(50% - 40px);
+    position: relative;;
+}
+#ready .mobile-process-wrap .img-wrap:nth-child(1):before{
+    content: "";
+    position: absolute;
+    background: url("../../images/common/next.png");
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 28px;
+    top: calc(50% - 14px);
+    right: -35px;
+}
+#ready .mobile-process-wrap .img-wrap:nth-child(3):before{
+    content: "";
+    position: absolute;
+    background: url("../../images/common/next.png");
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 28px;
+    top: calc(50% - 14px);
+    right: -35px;
+}
+#ready .mobile-process-wrap .process{
+    width: 100%;
 }
 
 /* 위탁기업이란? 모바일 */
@@ -4564,6 +4632,14 @@
         display: none;
     }
     #about .mobile-process-wrap{
+        display: flex;
+    }
+
+    /* 도입 준비하기 */
+    #ready .pc-process-wrap{
+        display: none;
+    }
+    #ready .mobile-process-wrap{
         display: flex;
     }
 

@@ -36,6 +36,7 @@
         <pattern>/join/agreeMain.do</pattern>
         <pattern>/join/agree.do</pattern>
         <pattern>/join/agreeView.do</pattern>
+        <pattern>/join/ready.do</pattern>
         <pattern>/common/deny.jsp</pattern>
     </decorator>
 
@@ -46,11 +47,12 @@
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
         <pattern>/join/concept.do</pattern>
         <pattern>/join/joinApply.do</pattern>
-        <pattern>/join/joinRecom.do</pattern>
+        <pattern>/join/recom.do</pattern>
         <pattern>/front/guide/company/</pattern>
         <pattern>/join/joinMain.do</pattern>
         <pattern>/join/submit.do</pattern>
         <pattern>/join/joinView.do</pattern>
+        <pattern>/join/recom/view.do</pattern>
         <pattern>/common/deny.jsp</pattern>
     </decorator>
 

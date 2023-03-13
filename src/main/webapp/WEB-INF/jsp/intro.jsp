@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <!--  <link rel="icon" href="/favicon.ico" />-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>납품대금 연동제</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/reset.css"/>" />
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/common.css"/>" />

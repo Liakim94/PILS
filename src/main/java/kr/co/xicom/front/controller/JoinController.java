@@ -166,15 +166,58 @@ public class JoinController {
         return mav;
     }
     //동행기업 참여 추천
-    @GetMapping(value = "/joinRecom.do")
-    public ModelAndView recommend() throws Exception {
+    @GetMapping(value = "/recom.do")
+    public ModelAndView recommend(@ModelAttribute("frmRecom")RcmdVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("join/apply/join_recom");
         return mav;
     }
-    @PostMapping(value = "/joinRecom.do")
-    public void doRcmd(@ModelAttribute("RcmdVO")RcmdVO vo) throws Exception {
+    @PostMapping(value = "/recom.do")
+    public void doRcmd(@ModelAttribute("frmRecom")RcmdVO vo, HttpServletRequest request,
+                       HttpServletResponse response) throws Exception {
+        try {
+            int result = consultingService.insertRecom(vo);
+            if (result > 0) {
+                response.sendRedirect(request.getContextPath() + "/join/recom/view.do?no=" + vo.getRcmd_no());
 
+            } else {
+                PrintWriter writer = response.getWriter();
+
+                response.setContentType("text/html; charset=UTF-8;");
+                request.setCharacterEncoding("utf-8");
+                writer.println("<script type='text/javascript'>");
+                writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
+                writer.println("history.back();");
+                writer.println("</script>");
+                writer.flush();
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
+    @GetMapping(value = "/recom/view.do")
+    public ModelAndView rcmdView( @ModelAttribute("RcmdVO") RcmdVO vo,
+                                  @RequestParam(value = "no") int no) throws Exception {
+        ModelAndView mav = new ModelAndView("join/apply/join_recom_view");
+
+            try {
+                RcmdVO rs = consultingService.rcmdView(no);
+                rs.setApp_bizNo1(rs.getApply_bizno().substring(0, 3));
+                rs.setApp_bizNo2(rs.getApply_bizno().substring(3, 5));
+                rs.setApp_bizNo3(rs.getApply_bizno().substring(5, 10));
+                rs.setRcmd_bizNo1(rs.getRcmd_bizno().substring(0, 3));
+                rs.setRcmd_bizNo2(rs.getRcmd_bizno().substring(3, 5));
+                rs.setRcmd_bizNo3(rs.getRcmd_bizno().substring(5, 10));
+                if (rs == null ) {
+                    System.out.println("비정상적인 접근입니다.");
+                }
+                mav.addObject("rs", rs);
+
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        return mav;
+    }
+
     //약정서 작성 첫 화면
     @GetMapping(value = "/agreeMain.do")
     public ModelAndView agreeMain(HttpSession session,
@@ -282,6 +325,12 @@ public class JoinController {
     @GetMapping(value = "/submit.do")
     public ModelAndView joinSubmit() throws Exception {
         ModelAndView mav = new ModelAndView("join/join_submit");
+        return mav;
+    }
+    //도입 준비하기
+    @GetMapping(value = "/ready.do")
+    public ModelAndView joinReady() throws Exception {
+        ModelAndView mav = new ModelAndView("join/join_ready");
         return mav;
     }
 }

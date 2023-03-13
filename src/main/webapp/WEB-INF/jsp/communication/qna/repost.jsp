@@ -5,10 +5,11 @@
 <%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-
+<%@ taglib uri="fx" prefix="fx" %>
+<%pageContext.setAttribute("crcf", "\r\n"); %>
 <head>
     <title>중소벤처기업부 | 온라인 상담</title>
-    <script src="${pageContext.request.contextPath }/editor/naver/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="${pageContext.request.contextPath }/editor/naver-se/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 </head>
 <script>
@@ -17,7 +18,7 @@
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: oEditors,
             elPlaceHolder: "txta",
-            sSkinURI: "${pageContext.request.contextPath }/editor/naver/SmartEditor2Skin.html",
+            sSkinURI: "${pageContext.request.contextPath }/editor/naver-se/SmartEditor2Skin.html",
             fCreator: "createSEditor2"
         });
     });
@@ -82,7 +83,9 @@
                                     제목
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" value="ㄴ>[답변]${rs.title }" name="title" readonly>
+                                    <img src="<c:url value="/images/common/reply.png"/>"
+                                         style="width: 24px;float: left;margin-right: 9px;margin-top: 10px;"/>
+                                    <input type="text" value="${rs.title }" name="title" readonly style="width: 94%;">
                                 </div>
                             </div>
                             <div class="line-wrap">
@@ -90,7 +93,7 @@
                                     내용
                                 </div>
                                 <div style="margin:18px">
-                                    ${rs.body }
+                                    ${fx:resetXSSMinimum(rs.body)}
                                 </div>
                             </div>
                         </div>

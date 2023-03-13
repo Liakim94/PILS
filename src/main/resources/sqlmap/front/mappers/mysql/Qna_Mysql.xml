@@ -48,10 +48,7 @@
         </if>
     </select>
 
-    <update id="insertBbsQna">
-       <selectKey resultType="int" keyProperty="headnum" order="BEFORE">
-           select nextval('tb_banner_qust_answr_seq') as headnum
-       </selectKey>
+    <insert id="insertBbsQna">
         INSERT INTO tb_banner_qust_answr
         (   hedofc_no
            , sort_no
@@ -65,7 +62,7 @@
            , regist_date
         )
         values
-        (  #{headnum}::INT4
+        ( (select nextval('tb_banner_qust_answr_seq'))
            , 0
            , 0
            , '0'
@@ -76,8 +73,10 @@
            , #{ip}
            , extract(epoch from now() at time zone 'utc')
         )
-
-    </update>
+        <selectKey keyProperty="no" resultType="integer" order="AFTER">
+            SELECT MAX(no) FROM tb_banner_qust_answr;
+        </selectKey>
+    </insert>
 
     <select id="chkPasswd" resultType="int">
         select
@@ -111,7 +110,7 @@
         and no = #{no}::INT4
     </select>
 
-    <update id="repostBbsQna">
+    <insert id="repostBbsQna">
         insert into tb_banner_qust_answr
             (
              hedofc_no
@@ -133,8 +132,10 @@
             , #{body}
             , extract(epoch from now() at time zone 'utc')
         )
-
-    </update>
+        <selectKey keyProperty="no" resultType="integer" order="AFTER">
+            SELECT MAX(no) FROM tb_banner_qust_answr;
+        </selectKey>
+    </insert>
     <delete id="qnaDelete">
         delete from tb_banner_qust_answr where no=  #{no}
     </delete>

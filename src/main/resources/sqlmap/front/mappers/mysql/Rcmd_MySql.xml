@@ -1,42 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.xicom.front.service.mapper.RcmdMapper">
+    <resultMap id="RcmdVO" type="kr.co.xicom.front.model.RcmdVO">
+        <result property="rcmd_no" column="remd_no"/>
+        <result property="status" column="status"/>
+        <result property="apply_cmpNm" column="apply_cmpNm"/>
+        <result property="apply_bizno" column="apply_bizno"/>
+        <result property="apply_ceo" column="apply_ceo"/>
+        <result property="apply_telNo" column="apply_telNo"/>
+        <result property="apply_email" column="apply_email"/>
+        <result property="rcmd_cmpNm" column="rcmd_cmpNm"/>
+        <result property="rcmd_bizno" column="rcmd_bizno"/>
+        <result property="rcmd_telNo" column="rcmd_telNo"/>
+        <result property="rcmd_email" column="rcmd_email"/>
+        <result property="rcmd_detail" column="rcmd_detail"/>
+        <result property="appdt" column="appdt"/>
+    </resultMap>
     <insert id="insertRcmd" >
         insert into tb_pils_rcmd
         ( apply_cmp_nm
+        , apply_bizno
         , apply_ceo
-        , apply_addr
-        , apply_biz_ty
         , apply_telno
-        , apply_mem_email
-        , apply_mem_telno
+        , apply_email
         , rcmd_cmp_nm
-        , rcmd_ceo
-        , rcmd_addr
-        , rcmd_biz_ty
+        , rcmd_bizno
         , rcmd_telno
-        , rcmd_mem_email
-        , rcmd_mem_telno
+        , rcmd_email
         , rcmd_detail
         , appdt
+        , status
         )
-        values ( #{app_cmpNm}
-               , #{app_ceo}
-               , #{app_address}
-               , #{app_bizType}
-               , #{app_telNo}
-               , #{app_mem_email}
-               , #{app_mem_telNo}
+        values ( #{apply_cmpNm}
+               , #{apply_bizno}
+               , #{apply_ceo}
+               , #{apply_telNo}
+               , #{apply_email}
                , #{rcmd_cmpNm}
-               , #{rcmd_ceo}
-               , #{rcmd_address}
-               , #{rcmd_bizType}
+               , #{rcmd_bizno}
                , #{rcmd_telNo}
-               , #{rcmd_mem_email}
-               , #{rcmd_mem_telNo}
+               , #{rcmd_email}
                , #{rcmd_detail}
                , current_timestamp
+               , #{status}
         )
+        <selectKey keyProperty="rcmd_no" resultType="integer" order="AFTER">
+            SELECT MAX(rcmd_no) FROM tb_pils_rcmd;
+        </selectKey>
     </insert>
+    <select id="rcmdView" resultMap="RcmdVO">
+        select apply_cmp_nm as apply_cmpNm
+             , apply_bizno
+             , apply_ceo
+             , apply_telno as apply_telNo
+             , apply_email
+             , rcmd_cmp_nm as rcmd_cmpNm
+             , rcmd_bizno
+             , rcmd_telno as rcmd_telNo
+             , rcmd_email
+             , rcmd_detail
+             , appdt
+             , status
+        from tb_pils_rcmd
+        where rcmd_no = #{rcmd_no}
+    </select>
 
 </mapper>

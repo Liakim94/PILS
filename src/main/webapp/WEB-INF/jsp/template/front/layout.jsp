@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html lang="ko" class="ko">
 <head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <%--
         WildRain 추가 2023-01-17
         https://www.smes.go.kr/pis-dev 사이트 검색엔진 색인 방지

@@ -69,6 +69,7 @@
             <div class="wrapper">
                 <a class="font18 menu" href="${pageContext.request.contextPath}/join/process/info.do">납품대금 연동제 도입하기</a>
                 <div class="submenu">
+                    <a href="<c:url value="/join/ready.do"/>">도입 준비하기</a>
                     <a href="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
                     <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                     <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
@@ -207,6 +208,7 @@
                         <span></span>
                     </div>
                     <div class="submenu">
+                        <a href="<c:url value="/join/ready.do"/>">도입 준비하기</a>
                         <a href="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
                         <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
                         <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
@@ -221,7 +223,7 @@
                     <div class="submenu">
                         <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
                         <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
-                        <a href="<c:url value="/join/joinApply.do"/>">동행기업 신청</a>
+                        <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
                         <a href="<c:url value="/join/submit.do"/>">동행기업 실적 제출</a>
                     </div>
                 </div>

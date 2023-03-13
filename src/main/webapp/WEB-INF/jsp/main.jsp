@@ -27,12 +27,64 @@
         #main .pc {
             display: none
         }
-
         #main .mobile {
             display: inline;
         }
+        #main .main-slide-container {
+            height: 600px;
+            border-bottom-right-radius: 0;
+        }
     }
-
+    @media (max-width: 280px ) {
+        #main .main-slide-container {
+            height: 327px;
+        }
+    }
+    @media (min-width: 281px) and (max-width: 360px ) {
+        #main .main-slide-container {
+            height: 420px;
+        }
+    }
+    @media (min-width: 361px) and (max-width: 375px ) {
+        #main .main-slide-container {
+            height: 437px;
+        }
+    }
+    @media (min-width: 376px) and (max-width: 390px ) {
+        #main .main-slide-container {
+            height: 455px;
+        }
+    }
+    @media (min-width: 391px) and (max-width: 393px ) {
+        #main .main-slide-container {
+            height: 458px;
+        }
+    }
+    @media (min-width: 394px) and (max-width: 412px ) {
+        #main .main-slide-container {
+            height: 481px;
+        }
+    }
+    @media (min-width: 413px) and (max-width: 414px ) {
+        #main .main-slide-container {
+            height: 483px;
+        }
+    }
+    @media (min-width: 415px) and (max-width: 445px ) {
+        #main .main-slide-container {
+            height: 519px;
+        }
+    }
+    @media (min-width: 446px) and (max-width: 475px ) {
+        #main .main-slide-container {
+            height: 554px;
+        }
+    }
+    @media (min-width: 476px) and (max-width: 505px ) {
+        #main .main-slide-container {
+            height: 589px;
+        }
+    }
 </style>
 <div id="content" class="pd-0">
     <div id="main">
@@ -79,7 +131,7 @@
                 <div class="main-slide-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/mobile/mobile_banner01.png'/>)">
+                             style="background-image: url(<c:url value='/images/mobile/mobile_banner01.png'/>)">
                             <div class="text-wrap">
                                 <h1 class="slide-text">
                                     <p>현재 <strong>392개</strong> 기업이</p>
@@ -90,7 +142,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/mobile/mobile_banner02.png'/>)">
+                             style="background-image: url(<c:url value='/images/mobile/mobile_banner02.png'/>)">
                             <div class="text-wrap">
                                 <h1 class="slide-text">
                                     <p>중소기업의 14년 숙원, </p>
@@ -101,14 +153,14 @@
                             </div>
                         </div>
                         <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/mobile/banner03.jpg'/>)"
+                             style="background-image: url(<c:url value='/images/mobile/banner03.jpg'/>)"
                              OnClick="location.href ='<c:url value="/front/board/ready/list.do"/>'">
                         </div>
                         <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/mobile/banner_04.jpg'/>)"
+                             style="background-image: url(<c:url value='/images/mobile/banner_04.jpg'/>)"
                              OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=40"/>'"></div>
                         <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/mobile/banner_05.jpg'/>)"
+                             style="background-image: url(<c:url value='/images/mobile/banner_05.jpg'/>)"
                              OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=5"/>'"></div>
                     </div>
                 </div>
@@ -156,7 +208,7 @@
                              src="<c:url value="/images/common/youtube_temp3.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
                     <div class="slide-item">
-                        <h3>품대금 연동제 설명회</h3>
+                        <h3>납품대금 연동제 설명회</h3>
                         <img class="thumbnail" onclick="modalOpen('modal-box-6')"
                              src="<c:url value="/images/common/youtube_temp4.png"/>" alt="납품대금연동제 설명회"/>
                     </div>
