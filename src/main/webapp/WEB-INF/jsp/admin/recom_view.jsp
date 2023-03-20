@@ -7,13 +7,13 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
-    <title>중소벤처기업부 | 동행기업 참여 추천</title>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <title> 관리자페이지 | 동행기업 참여 추천 현황</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu_join"/>
+        <page:applyDecorator name="menu_admin"/>
         <div class="article">
             <br>
             <ul class="loc-list">
@@ -21,14 +21,14 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    동행기업
+                    관리자페이지
                 </li>
                 <li>
-                    동행기업 참여 추천
+                    동행기업 참여 추천 현황
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">동행기업 참여 추천</h1>
+                <h1 class="fw700">동행기업 참여 추천 현황</h1>
                 <div class="side-wrap">
                 </div>
             </div>
@@ -128,7 +128,7 @@
 <%--                </div>--%>
             </div>
             <div class="write-bottom">
-                <a href="${pageContext.request.contextPath}/join/joinMain.do" class="back">돌아가기</a>
+                <a href="${pageContext.request.contextPath}/admin/recom/list.do" class="back">목록</a>
             </div>
             <!-- 컨텐츠 end -->
         </div>

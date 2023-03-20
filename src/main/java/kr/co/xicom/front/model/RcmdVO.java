@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RcmdVO {
+public class RcmdVO extends DefaultVO{
     private int rcmd_no = 0;  //pk
     private String status = "";  //공개여부
     private String apply_cmpNm = "";  //신청기업_기업명

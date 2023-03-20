@@ -1,9 +1,6 @@
 package kr.co.xicom.front.service;
 
-import kr.co.xicom.front.model.AttachVO;
-import kr.co.xicom.front.model.BoardVO;
-import kr.co.xicom.front.model.CmpMemberVo;
-import kr.co.xicom.front.model.TraceVO;
+import kr.co.xicom.front.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,4 +41,6 @@ public interface AdminService {
     int updatePost(BoardVO vo) throws Exception;
 
     List<AttachVO> getAttachList(TraceVO vo) throws Exception;
+
+    Map<String, Object> recomList(RcmdVO vo) throws Exception;
 }

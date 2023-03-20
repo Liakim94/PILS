@@ -2,10 +2,7 @@ package kr.co.xicom.front.service.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import kr.co.xicom.front.model.AttachVO;
-import kr.co.xicom.front.model.BoardVO;
-import kr.co.xicom.front.model.CmpMemberVo;
-import kr.co.xicom.front.model.TraceVO;
+import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.AdminService;
 import kr.co.xicom.front.service.mapper.AdminMapper;
 import kr.co.xicom.front.service.mapper.AttachMapper;
@@ -13,6 +10,7 @@ import kr.co.xicom.front.service.mapper.BoardMapper;
 import kr.co.xicom.front.service.mapper.ConsultingMapper;
 import kr.co.xicom.util.HtmlTagUtils;
 import kr.go.smes.fileservice.FileService;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections.functors.ExceptionPredicate;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -31,17 +29,15 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
-    @Autowired
-    private AdminMapper adminMapper;
-    @Autowired
-    private BoardMapper boardMapper;
-    @Autowired
-    private AttachMapper attachMapper;
-    @Autowired
-    ConsultingMapper consultingMapper;
-    @Autowired
-    private DataSourceTransactionManager transactionManager;
+
+    private final AdminMapper adminMapper;
+    private final BoardMapper boardMapper;
+    private final AttachMapper attachMapper;
+    private final ConsultingMapper consultingMapper;
+    private final DataSourceTransactionManager transactionManager;
+
     /**
      * Logger
      */
@@ -310,5 +306,15 @@ public class AdminServiceImpl implements AdminService {
 
         return attachMapper.list(attachVO);
 
+    }
+
+    @Override
+    public Map<String, Object> recomList(RcmdVO vo) throws Exception{
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<RcmdVO> list = adminMapper.recomList(vo);
+        int cnt = adminMapper.recomCount(vo);
+        map.put("resultList", list);
+        map.put("resultCnt", cnt);
+        return map;
     }
 }
