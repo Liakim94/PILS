@@ -22,7 +22,7 @@
     // targetDt가 오늘 이후이고 9999년 보다 작으면 오픈 준비중 화면을 출력한다.
     // ※ 오픈 일자가 정해지지 않았다면 년도를 9999년으로 설정하자!
     // ※ targetDt의 설정 일자는 web.xml에 정의한 OpenGuideFilter에 설정된 openDateTime 값과 동일하여야 한다.
-    LocalDateTime targetDt  = LocalDateTime.parse("9999-12-23T09:00:00");
+    LocalDateTime targetDt  = LocalDateTime.parse("2023-03-20T14:00:00");
     LocalDateTime currentDt = LocalDateTime.now();
     if (currentDt.isAfter(targetDt)) {
         response.sendRedirect(redirectUrl);
