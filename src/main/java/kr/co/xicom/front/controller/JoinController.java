@@ -172,7 +172,7 @@ public class JoinController {
         return mav;
     }
     @PostMapping(value = "/recom.do")
-    public void doRcmd(@ModelAttribute("frmRecom")RcmdVO vo, HttpServletRequest request,
+    public void doRecom(@ModelAttribute("frmRecom")RcmdVO vo, HttpServletRequest request,
                        HttpServletResponse response) throws Exception {
         try {
             int result = consultingService.insertRecom(vo);
@@ -195,7 +195,7 @@ public class JoinController {
         }
     }
     @GetMapping(value = "/recom/view.do")
-    public ModelAndView rcmdView( @ModelAttribute("RcmdVO") RcmdVO vo,
+    public ModelAndView recomView( @ModelAttribute("RcmdVO") RcmdVO vo,
                                   @RequestParam(value = "no") int no) throws Exception {
         ModelAndView mav = new ModelAndView("join/apply/join_recom_view");
 

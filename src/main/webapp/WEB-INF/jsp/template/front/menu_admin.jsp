@@ -21,6 +21,9 @@
             <li class="<c:if test="${URI.contains('/admin/join')}">on</c:if>">
             <a href ="${pageContext.request.contextPath}/admin/join/list.do">동행기업 신청 현황</a>
             </li>
+            <li class="<c:if test="${URI.contains('/admin/recom')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/admin/recom/list.do">동행기업 참여 추천 현황</a>
+            </li>
             <li class="<c:if test="${URI.contains('/admin/consulting')}">on</c:if>">
                 <a href ="${pageContext.request.contextPath}/admin/consulting/list.do">컨설팅 신청 현황</a>
             </li>

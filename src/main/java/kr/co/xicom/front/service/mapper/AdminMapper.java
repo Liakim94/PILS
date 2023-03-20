@@ -2,6 +2,7 @@ package kr.co.xicom.front.service.mapper;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import kr.co.xicom.front.model.CmpMemberVo;
+import kr.co.xicom.front.model.RcmdVO;
 import kr.co.xicom.front.model.TraceVO;
 
 import java.util.List;
@@ -24,4 +25,8 @@ public interface AdminMapper {
     int traceCount(TraceVO vo) throws Exception;
     int traceDelete(int seq) throws Exception;
     int traceUpdate(TraceVO vo) throws Exception;
+
+    List<RcmdVO>recomList(RcmdVO vo) throws Exception;
+    int recomCount(RcmdVO vo) throws Exception;
+    
 }
