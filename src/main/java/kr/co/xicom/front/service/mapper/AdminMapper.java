@@ -28,4 +28,5 @@ public interface AdminMapper {
 
     List<RcmdVO>recomList(RcmdVO vo) throws Exception;
     int recomCount(RcmdVO vo) throws Exception;
+    
 }
