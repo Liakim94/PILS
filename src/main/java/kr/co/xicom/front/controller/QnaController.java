@@ -255,8 +255,6 @@ public class QnaController extends Alerts {
             if (result > 0) {
                 response.sendRedirect(request.getContextPath() + "/front/qna/list.do");
         }
-
-
     }
 
     /**
