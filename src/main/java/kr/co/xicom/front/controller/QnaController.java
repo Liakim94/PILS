@@ -202,16 +202,14 @@ public class QnaController extends Alerts {
         boolean isAccess = false;
         boolean isAdmin = false;
         String sId = (String) session.getAttribute("sessionId");
-        int qId = (int) session.getAttribute("qnaId");
-        System.out.println((int) session.getAttribute("qnaId"));
+
         // admin이면
-        if (sId != null && sId.equals("admin")) {
+        if ( sId != null && sId.equals("admin")) {
             isAdmin = true;
             isAccess = true;
         }
-
         // admin도 아니고 작성자도 아니면 접속거부
-        if (qId == 0 && !isAdmin) {
+        if (session.getAttribute("qnaId")==null && !isAdmin) {
             response.sendRedirect(request.getContextPath() + "/common/deny.jsp");
         } else {
             if (!isAdmin) {
