@@ -9,6 +9,11 @@
 <!DOCTYPE html>
 <html lang="ko" class="ko">
 <head>
+    <%--
+        WildRain 추가 2023-03-21
+        네이버 등록 Tag
+    --%>
+    <meta name="naver-site-verification" content="1682456b8adca1f59583031e4454b7fe7255af9f" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <%--
         WildRain 추가 2023-01-17
