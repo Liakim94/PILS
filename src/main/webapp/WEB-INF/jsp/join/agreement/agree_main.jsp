@@ -70,7 +70,7 @@
                         <a href="<c:url value="/files/agreementDownload.hwp"/>" download="납품대금_연동제_약정서.hwp">
                             <img class="hover" src="<c:url value="/images/common/download-icon2.png"/>" alt="약정서 다운로드">
                             <img class="unhover" src="<c:url value="/images/common/download-icon.png"/>" alt="약정서 다운로드">
-                            양식 다운로드</a>
+                             양식 다운로드</a>
                     </div>
                     <div class="item">
                         <a href="<c:url value="/files/guidebook.pdf"/>" download="납품대금_연동_특별약정서_가이드북.pdf">
