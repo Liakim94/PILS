@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <!--  <link rel="icon" href="/favicon.ico" />-->
+    <meta name="description" content="납품대금 연동제 소개, 약정서 작성 체험하기, 동행기업 참여 신청, 연동제 관련 온라인 상담을 신청할 수 있는 납품대금 연동제 공식 홈페이지입니다.">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>납품대금 연동제</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/reset.css"/>" />
