@@ -308,69 +308,69 @@
                 </div>
             </div>
             <div class="write-container bt-none">
-                <div class="line-wrap">
-                    <div class="label-full">
-                        기업현황 (최근 3년)
-                    </div>
-                </div>
-                <div class="line-wrap">
-                    <div class="label label-long">
-                        지표
-                    </div>
-                    <div class="tri">
-                        <div class="colored">2019년</div>
-                        <div class="colored">2020년</div>
-                        <div class="colored">2021년</div>
-                    </div>
-                </div>
-                <div class="line-wrap">
-                    <div class="label label-long">
-                        매출액(백만원)
-                    </div>
-                    <div class="tri">
-                        <div class="border">
-                            <input type="text" id=ix_data1" name="ix_data1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-                        </div>
-                        <div class="border">
-                            <input type="text" id=ix_data2" name="ix_data2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-                        </div>
-                        <div class="border">
-                            <input type="text" id=ix_data3" name="ix_data3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="line-wrap">
-                    <div class="label label-long">
-                        영업이익(백만원)
-                    </div>
-                    <div class="tri">
-                        <div class="border">
-                            <input type="text" id="ix_data4" name="ix_data4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-                        </div>
-                        <div class="border">
-                            <input type="text" id="ix_data5" name="ix_data5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-                        </div>
-                        <div class="border">
-                            <input type="text" id="ix_data6" name="ix_data6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="line-wrap">
-                    <div class="label label-long">
-                        종업원수(명)
-                    </div>
-                    <div class="tri">
-                        <div class="border">
-                            <input type="text" id="ix_data7" name="ix_data7" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-                        </div>
-                        <div class="border">
-                            <input type="text" id="ix_data8" name="ix_data8" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-                        </div>
-                        <div class="border">
-                            <input type="text" id="ix_data9" name="ix_data9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
-                        </div>
-                    </div>
-                </div>
+<%--                <div class="line-wrap">--%>
+<%--                    <div class="label-full">--%>
+<%--                        기업현황 (최근 3년)--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="line-wrap">--%>
+<%--                    <div class="label label-long">--%>
+<%--                        지표--%>
+<%--                    </div>--%>
+<%--                    <div class="tri">--%>
+<%--                        <div class="colored">2019년</div>--%>
+<%--                        <div class="colored">2020년</div>--%>
+<%--                        <div class="colored">2021년</div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="line-wrap">--%>
+<%--                    <div class="label label-long">--%>
+<%--                        매출액(백만원)--%>
+<%--                    </div>--%>
+<%--                    <div class="tri">--%>
+<%--                        <div class="border">--%>
+<%--                            <input type="text" id=ix_data1" name="ix_data1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>--%>
+<%--                        </div>--%>
+<%--                        <div class="border">--%>
+<%--                            <input type="text" id=ix_data2" name="ix_data2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>--%>
+<%--                        </div>--%>
+<%--                        <div class="border">--%>
+<%--                            <input type="text" id=ix_data3" name="ix_data3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="line-wrap">--%>
+<%--                    <div class="label label-long">--%>
+<%--                        영업이익(백만원)--%>
+<%--                    </div>--%>
+<%--                    <div class="tri">--%>
+<%--                        <div class="border">--%>
+<%--                            <input type="text" id="ix_data4" name="ix_data4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>--%>
+<%--                        </div>--%>
+<%--                        <div class="border">--%>
+<%--                            <input type="text" id="ix_data5" name="ix_data5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>--%>
+<%--                        </div>--%>
+<%--                        <div class="border">--%>
+<%--                            <input type="text" id="ix_data6" name="ix_data6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="line-wrap">--%>
+<%--                    <div class="label label-long">--%>
+<%--                        종업원수(명)--%>
+<%--                    </div>--%>
+<%--                    <div class="tri">--%>
+<%--                        <div class="border">--%>
+<%--                            <input type="text" id="ix_data7" name="ix_data7" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>--%>
+<%--                        </div>--%>
+<%--                        <div class="border">--%>
+<%--                            <input type="text" id="ix_data8" name="ix_data8" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>--%>
+<%--                        </div>--%>
+<%--                        <div class="border">--%>
+<%--                            <input type="text" id="ix_data9" name="ix_data9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
                 <div class="line-wrap">
                     <div class="label">
                         주요 제품<span class="required">*</span>

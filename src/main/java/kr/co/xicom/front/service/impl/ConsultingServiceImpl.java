@@ -135,7 +135,9 @@ public class ConsultingServiceImpl implements ConsultingService {
     }
     //동행기업 신청
     @Override
-    public int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
+//    public int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
+    public int insertJoinApply(CmpMemberVo vo, AttachVO attachVO) throws Exception {
+
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
 
@@ -145,7 +147,7 @@ public class ConsultingServiceImpl implements ConsultingService {
             int result1= mapper.insertJoin(vo);
             int result2=  mapper.insertMemberJoin(vo);
 //            int result2 =0;
-            int result3= mapper.insertCmpSttus(stVO);
+//            int result3= mapper.insertCmpSttus(stVO);
 
             String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
             if (StringUtils.isNotBlank(jsonFileList)) {
@@ -169,8 +171,10 @@ public class ConsultingServiceImpl implements ConsultingService {
                 }
             }
 
-            if(result1  > 0 && result2 > 0 && result3 > 0){
-                return 1;
+//            if(result1  > 0 && result2 > 0 && result3 > 0){
+                if(result1  > 0 && result2 > 0 ){
+
+                    return 1;
             }
         }catch (Exception e){
             transactionManager.rollback(status);
@@ -181,15 +185,17 @@ public class ConsultingServiceImpl implements ConsultingService {
 
     //동행기업 수정
     @Override
-    public int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
-        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+//    public int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
+        public int updateJoin(CmpMemberVo vo, AttachVO attachVO) throws Exception {
+
+            DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
 
         TransactionStatus status = transactionManager.getTransaction(def);
 
         try {
             int result1 = mapper.updateJoin(vo);
-            int result2 = mapper.updateCmpSttus(stVO);
+//            int result2 = mapper.updateCmpSttus(stVO);
 
             AttachVO attach = new AttachVO();
             attach.setBizNo(vo.getBizNo());

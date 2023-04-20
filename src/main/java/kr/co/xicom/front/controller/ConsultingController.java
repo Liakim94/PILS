@@ -118,7 +118,7 @@ public class ConsultingController extends Alerts {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M301");
         try {
-            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+//            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
 
             CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
@@ -128,7 +128,7 @@ public class ConsultingController extends Alerts {
                 writeAlert("비정상적인 접근입니다.", request, response);
             }
             mav.addObject("rs", rs);
-            mav.addObject("st", sttus);
+//            mav.addObject("st", sttus);
 
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -151,7 +151,7 @@ public class ConsultingController extends Alerts {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M301");
         try {
-            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+//            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
             CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
             rs.setBizNo2(rs.getBizNo().substring(3, 5));
@@ -164,7 +164,7 @@ public class ConsultingController extends Alerts {
             }
 
             mav.addObject("rs", rs);
-            mav.addObject("st", sttus);
+//            mav.addObject("st", sttus);
 
         } catch (Exception e) {
             System.out.println(e.toString());

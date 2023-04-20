@@ -19,13 +19,15 @@ public interface ConsultingService {
 
 
     //동행기업 신청
-    int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception;
+//    int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception;
+    int insertJoinApply(CmpMemberVo vo, AttachVO attachVO) throws Exception;
 
     int checkBizno(String bizNo) throws Exception;
 
     int checkId(String id) throws Exception;
     //동행기업 수정
-    int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception;
+//    int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception;
+    int updateJoin(CmpMemberVo vo, AttachVO attachVO) throws Exception;
 
     //기업현황
     List<CmpSttusVO>  getCmpSttus(CmpSttusVO vo) throws Exception;

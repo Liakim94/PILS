@@ -247,39 +247,39 @@
                         </div>
                     </div>
                     <div class="write-container bt-none">
-                        <div class="line-wrap">
-                            <div class="label-full">
-                                기업현황 (최근 3년)
-                            </div>
-                        </div>
-                        <div class="line-wrap">
-                            <div class="label label-long">
-                                지표
-                            </div>
-                            <div class="tri">
-                                <div class="colored">2019년</div>
-                                <div class="colored">2020년</div>
-                                <div class="colored">2021년</div>
-                            </div>
-                        </div>
-                        <c:forEach var="st" items="${st}" varStatus="status">
-                            <c:if test="${status.index mod 3 eq 0}">
-                                <div class="line-wrap">
-                                <div class="label label-long">
-                                        ${st.index_dv_nm}
-                                </div>
-                                <div class="tri">
-                            </c:if>
-                            <div class="border">
-                            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                   id="ix_data${status.index+1}"
-                                   name="ix_data${status.index+1}" value="${st.index_data}"/>
-                            <c:if test="${status.index mod 3 eq 2}">
-                                </div>
-                                </div>
-                            </c:if>
-                            </div>
-                        </c:forEach>
+<%--                        <div class="line-wrap">--%>
+<%--                            <div class="label-full">--%>
+<%--                                기업현황 (최근 3년)--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="line-wrap">--%>
+<%--                            <div class="label label-long">--%>
+<%--                                지표--%>
+<%--                            </div>--%>
+<%--                            <div class="tri">--%>
+<%--                                <div class="colored">2019년</div>--%>
+<%--                                <div class="colored">2020년</div>--%>
+<%--                                <div class="colored">2021년</div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <c:forEach var="st" items="${st}" varStatus="status">--%>
+<%--                            <c:if test="${status.index mod 3 eq 0}">--%>
+<%--                                <div class="line-wrap">--%>
+<%--                                <div class="label label-long">--%>
+<%--                                        ${st.index_dv_nm}--%>
+<%--                                </div>--%>
+<%--                                <div class="tri">--%>
+<%--                            </c:if>--%>
+<%--                            <div class="border">--%>
+<%--                            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"--%>
+<%--                                   id="ix_data${status.index+1}"--%>
+<%--                                   name="ix_data${status.index+1}" value="${st.index_data}"/>--%>
+<%--                            <c:if test="${status.index mod 3 eq 2}">--%>
+<%--                                </div>--%>
+<%--                                </div>--%>
+<%--                            </c:if>--%>
+<%--                            </div>--%>
+<%--                        </c:forEach>--%>
                         <div class="line-wrap">
                             <div class="label" style="width: 155px">
                                 주요생산품<span class="required">*</span>
@@ -290,7 +290,7 @@
                         </div>
                         <div class="line-wrap">
                             <div class="fx2">
-                                <div class="label" style="width: 164px">주요 적용 제품
+                                <div class="label" style="width: 158px">주요 적용 제품
                                     <span class="required">*</span>
                                 </div>
                                 <div class="input-wrap">
