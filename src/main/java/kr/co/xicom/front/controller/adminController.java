@@ -81,19 +81,20 @@ public class adminController {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M302");
 
-            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+//            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
             List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
 
             CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
             rs.setBizNo2(rs.getBizNo().substring(3, 5));
             rs.setBizNo3(rs.getBizNo().substring(5, 10));
-            if (rs == null && sttus == null) {
+//            if (rs == null && sttus == null) {
+                if (rs == null) {
                 System.out.println("비정상적인 접근입니다.");
             }
 
             mav.addObject("rs", rs);
-            mav.addObject("st", sttus);
+//            mav.addObject("st", sttus);
             mav.addObject("attachList", attachList);
 
         return mav;
@@ -114,7 +115,7 @@ public class adminController {
             cmpVO.setBizNo3(cmpVO.getBizNo().substring(5, 10));
 
             stVO.setBizNo(bizNo);
-            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+//            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
 
             List<AttachVO> attachList = this.consultingService.getAttachList(cmpVO);
             if (attachList != null && attachList.size() > 0) {
@@ -124,7 +125,7 @@ public class adminController {
             }
 
             mav.addObject("frmEdit", cmpVO);
-            mav.addObject("st", sttus);
+//            mav.addObject("st", sttus);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -141,7 +142,9 @@ public class adminController {
             cmpVO.setBizNo(bizNo);
             stVO.setBizNo(bizNo);
 
-            int result = consultingService.updateJoin(cmpVO, stVO,null);
+//            int result = consultingService.updateJoin(cmpVO, stVO,null);
+            int result = consultingService.updateJoin(cmpVO, null);
+
 
             if (result > 0) {
                 return "redirect:/admin/join/view.do?bizNo="+bizNo;

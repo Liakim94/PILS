@@ -109,35 +109,35 @@
                     </div>
                 </div>
                 <div class="write-container bt-none">
-                    <div class="line-wrap">
-                        <div class="label-full">
-                            기업현황 (최근 3년)
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="label label-long">
-                            지표
-                        </div>
-                        <div class="tri">
-                            <div class="colored">2019년</div>
-                            <div class="colored">2020년</div>
-                            <div class="colored">2021년</div>
-                        </div>
-                    </div>
-                    <c:forEach var="st" items="${st}" varStatus="status">
-                        <c:if test="${status.index mod 3 eq 0}">
-                            <div class="line-wrap">
-                            <div class="label label-long">${st.index_dv_nm} </div>
-                            <div class="tri" style="text-align:right">
-                        </c:if>
-                        <div class="border" style="margin:5px">
-                        ${st.index_data}
-                        <c:if test="${status.index mod 3 eq 2}">
-                            </div>
-                            </div>
-                        </c:if>
-                        </div>
-                    </c:forEach>
+<%--                    <div class="line-wrap">--%>
+<%--                        <div class="label-full">--%>
+<%--                            기업현황 (최근 3년)--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="line-wrap">--%>
+<%--                        <div class="label label-long">--%>
+<%--                            지표--%>
+<%--                        </div>--%>
+<%--                        <div class="tri">--%>
+<%--                            <div class="colored">2019년</div>--%>
+<%--                            <div class="colored">2020년</div>--%>
+<%--                            <div class="colored">2021년</div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <c:forEach var="st" items="${st}" varStatus="status">--%>
+<%--                        <c:if test="${status.index mod 3 eq 0}">--%>
+<%--                            <div class="line-wrap">--%>
+<%--                            <div class="label label-long">${st.index_dv_nm} </div>--%>
+<%--                            <div class="tri" style="text-align:right">--%>
+<%--                        </c:if>--%>
+<%--                        <div class="border" style="margin:5px">--%>
+<%--                        ${st.index_data}--%>
+<%--                        <c:if test="${status.index mod 3 eq 2}">--%>
+<%--                            </div>--%>
+<%--                            </div>--%>
+<%--                        </c:if>--%>
+<%--                        </div>--%>
+<%--                    </c:forEach>--%>
                     <div class="line-wrap">
                         <div class="label label-long">주요 제품</div>
                         <div class="input-wrap" style="margin:5px">

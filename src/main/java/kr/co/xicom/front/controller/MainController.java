@@ -113,17 +113,18 @@ public class MainController {
         try {
             cmpVO = mainService.getMemInfo(cmpVO);
             List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
-            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+//            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
 
             cmpVO.setBizNo1(cmpVO.getBizNo().substring(0, 3));
             cmpVO.setBizNo2(cmpVO.getBizNo().substring(3, 5));
             cmpVO.setBizNo3(cmpVO.getBizNo().substring(5, 10));
-            if (cmpVO == null && sttus == null) {
+//            if (cmpVO == null && sttus == null) {
+                if (cmpVO == null) {
                 System.out.println("비정상적인 접근입니다.");
             }
 
             mav.addObject("rs", cmpVO);
-            mav.addObject("st", sttus);
+//            mav.addObject("st", sttus);
             mav.addObject("attachList", attachList);
 
         } catch (Exception e) {
@@ -150,7 +151,7 @@ public class MainController {
             cmpVO.setBizNo3(cmpVO.getBizNo().substring(5, 10));
 
             stVO.setBizNo(bizNo);
-            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+//            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
 
             List<AttachVO> attachList = this.consultingService.getAttachList(cmpVO);
             if (attachList != null && attachList.size() > 0) {
@@ -160,7 +161,7 @@ public class MainController {
             }
 
             mav.addObject("frmEdit", cmpVO);
-            mav.addObject("st", sttus);
+//            mav.addObject("st", sttus);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -178,7 +179,8 @@ public class MainController {
             cmpVO.setBizNo(bizNo);
             stVO.setBizNo(bizNo);
 
-            int result = consultingService.updateJoin(cmpVO, stVO,null);
+//            int result = consultingService.updateJoin(cmpVO, stVO,null);
+            int result = consultingService.updateJoin(cmpVO,null);
 
             if (result > 0) {
                 return "redirect:myPage.do";
