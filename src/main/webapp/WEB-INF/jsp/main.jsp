@@ -120,7 +120,7 @@
                         </div>
                         <div class="swiper-slide"
                              style="background: url(<c:url value='/images/main/event_banner.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=40"/>'"></div>
+                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=45"/>'"></div>
                         <div class="swiper-slide"
                              style="background: url(<c:url value='/images/main/recruit_banner.jpg'/>)"
                              OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=5"/>'"></div>
@@ -158,7 +158,7 @@
                         </div>
                         <div class="swiper-slide"
                              style="background-image: url(<c:url value='/images/mobile/banner_04.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=40"/>'"></div>
+                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=45"/>'"></div>
                         <div class="swiper-slide"
                              style="background-image: url(<c:url value='/images/mobile/banner_05.jpg'/>)"
                              OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=5"/>'"></div>
