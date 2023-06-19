@@ -43,7 +43,7 @@
                                         </div>
 
                     <div class="item">
-                        <a href="<c:url value="/files/joinApplyDoc.hwp"/>" download="동행기업 참여 신청 필요서류 양식.hwp">
+                        <a href="<c:url value="/files/(동행기업)신청서.zip"/>" download="동행기업 참여 신청 필요서류 양식.zip">
                             <img class="hover" src="<c:url value="/images/common/download-icon2.png"/>" >
                             <img class="unhover" src="<c:url value="/images/common/download-icon.png"/>" >
                             필요서류 양식</a>
