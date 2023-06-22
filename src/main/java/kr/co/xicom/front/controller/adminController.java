@@ -299,8 +299,11 @@ public class adminController {
         return "forward:/common/error.jsp";
     }
     @GetMapping(value = "/changePw.do")
-    public ModelAndView change(HttpSession session) throws Exception{
+        public ModelAndView change(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
+                                   ,@RequestParam("id") String id) throws Exception {
         ModelAndView mav = new ModelAndView("admin/mem_changePw");
+        cmpVO.setId(id);
+        mav.addObject("rs", cmpVO);
         return mav;
     }
 

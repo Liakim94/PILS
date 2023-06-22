@@ -111,24 +111,7 @@
                , current_date
                , #{management_cd})
     </insert>
-<!--    <insert id="insertCmpSttus">-->
-<!--        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data, rgstdt)-->
-<!--        VALUES (#{bizNo}, 2019, 'M201', #{ix_data1}, current_timestamp),-->
-<!--               (#{bizNo}, 2019, 'M202', #{ix_data2}, current_timestamp),-->
-<!--               (#{bizNo}, 2019, 'M203', #{ix_data3}, current_timestamp);-->
 
-
-<!--        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data, rgstdt)-->
-<!--        VALUES (#{bizNo}, 2020, 'M201', #{ix_data4}, current_timestamp),-->
-<!--               (#{bizNo}, 2020, 'M202', #{ix_data5}, current_timestamp),-->
-<!--               (#{bizNo}, 2020, 'M203', #{ix_data6}, current_timestamp);-->
-
-<!--        INSERT INTO tb_pils_cmp_sttus (bizno, base_yy, ix_dvsn, ix_data, rgstdt)-->
-<!--        VALUES (#{bizNo}, 2021, 'M201', #{ix_data7}, current_timestamp),-->
-<!--               (#{bizNo}, 2021, 'M202', #{ix_data8}, current_timestamp),-->
-<!--               (#{bizNo}, 2021, 'M203', #{ix_data9}, current_timestamp);-->
-
-<!--    </insert>-->
     <select id="list" resultMap="CmpMemberVo">
         select A.bizno                        as bizNo
              , A.cmp_mbr_cd                   as mem_cd
@@ -213,33 +196,6 @@
         order by appdt desc
     </select>
 
-<!--    <select id="getCmpSttus" resultMap="CmpSttusVO">-->
-<!--        select base_yy  as base_year-->
-<!--             , ix_dvsn  as index_dv-->
-<!--             , ix_data  as index_data-->
-<!--             , bb.cd_nm as index_dv_nm-->
-<!--        from tb_pils_cmp_sttus AA,-->
-<!--             (select cd, cd_nm from tb_cd_data where cd_grp = 'M200') BB-->
-<!--        where aa.bizno = #{bizNo}-->
-<!--          and aa.ix_dvsn = bb.cd-->
-<!--        order by ix_dvsn, base_yy-->
-<!--    </select>-->
-<!--    <select id="sttusIsEmpty" resultMap="CmpSttusVO">-->
-<!--        select-->
-<!--            aa.base_yy as base_year-->
-<!--             , bb.cd_nm as index_dv_nm-->
-<!--             , 0 as index_data-->
-<!--        from-->
-<!--            (-->
-<!--                select cast(to_char(current_date, 'yyyy') as integer)-2 as base_yy-->
-<!--                union-->
-<!--                select cast(to_char(current_date, 'yyyy') as integer)-3 as base_yy-->
-<!--                union-->
-<!--                select cast(to_char(current_date, 'yyyy') as integer)-4 as base_yy-->
-<!--            ) AA-->
-<!--           ,( select cd, cd_nm from tb_cd_data where cd_grp = 'M200') BB-->
-<!--        order by bb.cd ,  aa.base_yy desc-->
-<!--    </select>-->
     <update id="update">
         update tb_pils_cmpmbr
         set cmp_nm        = #{cmpNm}
@@ -262,6 +218,7 @@
           , main_product  = #{mainProduct}
         where bizno = #{bizNo}
     </update>
+
     <update id="memUpdate">
         update tb_pils_mbr
         set nm            = #{name}
@@ -274,53 +231,7 @@
           , upd_dt        = current_date
         where bizno = #{bizNo}
     </update>
-    <update id="updateCmpSttus">
-        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
-        values (#{bizNo}, 2019, 'M201', #{ix_data1}, current_timestamp)
-        on conflict(bizno, base_yy, ix_dvsn) do
-        update set ix_data = #{ix_data1}, bizno = #{bizNo},base_yy = 2019,ix_dvsn = 'M201';
 
-        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
-        values (#{bizNo}, 2019, 'M202', #{ix_data2}, current_timestamp)
-            on conflict(bizno, base_yy, ix_dvsn) do
-        update set ix_data = #{ix_data2}, bizno = #{bizNo},base_yy = 2019,ix_dvsn = 'M202';
-
-        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
-        values (#{bizNo}, 2019, 'M203', #{ix_data3}, current_timestamp)
-            on conflict(bizno, base_yy, ix_dvsn) do
-        update set ix_data = #{ix_data3}, bizno = #{bizNo},base_yy = 2019,ix_dvsn = 'M203';
-
-        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
-        values (#{bizNo}, 2020, 'M201', #{ix_data4}, current_timestamp)
-            on conflict(bizno, base_yy, ix_dvsn) do
-        update set ix_data = #{ix_data4}, bizno = #{bizNo},base_yy = 2020,ix_dvsn = 'M201';
-
-        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
-        values (#{bizNo}, 2020, 'M202', #{ix_data5}, current_timestamp)
-            on conflict(bizno, base_yy, ix_dvsn) do
-        update set ix_data = #{ix_data5}, bizno = #{bizNo},base_yy = 2020,ix_dvsn = 'M202';
-
-        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
-        values (#{bizNo}, 2020, 'M203', #{ix_data6}, current_timestamp)
-            on conflict(bizno, base_yy, ix_dvsn) do
-        update set ix_data = #{ix_data6}, bizno = #{bizNo},base_yy = 2020,ix_dvsn = 'M203';
-
-        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
-        values (#{bizNo}, 2021, 'M201', #{ix_data7}, current_timestamp)
-            on conflict(bizno, base_yy, ix_dvsn) do
-        update set ix_data = #{ix_data7}, bizno = #{bizNo},base_yy = 2021,ix_dvsn = 'M201';
-
-        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
-        values (#{bizNo}, 2021, 'M202', #{ix_data8}, current_timestamp)
-            on conflict(bizno, base_yy, ix_dvsn) do
-        update set ix_data = #{ix_data8}, bizno = #{bizNo},base_yy = 2021,ix_dvsn = 'M202';
-
-        insert into tb_pils_cmp_sttus(bizno, base_yy, ix_dvsn, ix_data, rgstdt)
-        values (#{bizNo}, 2021, 'M203', #{ix_data9}, current_timestamp)
-            on conflict(bizno, base_yy, ix_dvsn) do
-        update set ix_data = #{ix_data9}, bizno = #{bizNo},base_yy = 2021,ix_dvsn = 'M203';
-
-    </update>
     <select id="checkId" resultType="String">
 
         select user_id
