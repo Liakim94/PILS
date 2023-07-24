@@ -51,13 +51,13 @@ public class ConsultingServiceImpl implements ConsultingService {
         TransactionStatus status = transactionManager.getTransaction(def);
 
         try{
-           int result= mapper.insertConsulting(vo);
+            int result= mapper.insertConsulting(vo);
             int result2=  mapper.insertMemberInfo(vo);
             int result3= mapper.insertCmpSttus(stVO);
 
-            if(result  > 0 && result2>0 && result3>0){
-                return 1;
-            }
+            transactionManager.commit(status);
+            return 1;
+
         }catch (Exception e){
             transactionManager.rollback(status);
         }
@@ -102,12 +102,9 @@ public class ConsultingServiceImpl implements ConsultingService {
             int result= mapper.update(vo);
             int result2=  mapper.memUpdate(vo);
             int result3 = mapper.updateCmpSttus(stVO);
-            if(result  > 0 && result2 > 0 && result3 > 0){
-                return 1;
-            }else{
-                return 0;
-            }
 
+            transactionManager.commit(status);
+            return 1;
         }catch (Exception e){
             transactionManager.rollback(status);
         }
