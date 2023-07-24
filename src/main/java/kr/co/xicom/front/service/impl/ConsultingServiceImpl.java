@@ -146,8 +146,6 @@ public class ConsultingServiceImpl implements ConsultingService {
         try{
             int result1= mapper.insertJoin(vo);
             int result2=  mapper.insertMemberJoin(vo);
-//            int result2 =0;
-//            int result3= mapper.insertCmpSttus(stVO);
 
             String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
             if (StringUtils.isNotBlank(jsonFileList)) {
@@ -171,13 +169,11 @@ public class ConsultingServiceImpl implements ConsultingService {
                 }
             }
 
-//            if(result1  > 0 && result2 > 0 && result3 > 0){
-                if(result1  > 0 && result2 > 0 ){
-
-                    return 1;
-            }
-        }catch (Exception e){
+            transactionManager.commit(status);
+            return 1;
+        } catch (Exception e) {
             transactionManager.rollback(status);
+            System.out.println(e.toString());
         }
         return 0;
     }

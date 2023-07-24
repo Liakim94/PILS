@@ -31,8 +31,7 @@
                     관리자페이지
                 </li>
                 <li>
-                    동행기업 신청 현황
-                </li>
+                    동행기업 연동 실적 제출
             </ul>
             <div class="article-header">
                 <h1 class="fw700">동행기업 신청 현황</h1>
