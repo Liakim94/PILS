@@ -17,6 +17,13 @@
         form.pageIndex.value = num;
         form.submit();
     }
+    function Checkform() {
+        const selectedValue = document.getElementById("tag").value;
+        if (selectedValue === "") {
+            alert("검색 항목을 선택해주세요.");
+            return false;
+        }
+    }
 </script>
 <div id="content">
     <div id="board">
@@ -37,8 +44,21 @@
             </div>
             <div class="content">
                 <!-- 컨텐츠 start -->
-                <form action="" name="frmSearch" method="get">
+                <form action="" name="frmSearch" method="get" onSubmit="return Checkform()">
                     <input type="hidden" name="pageIndex" id="pageIndex" value="1">
+                    <section style="margin-bottom: 10px">
+                        <select id="tag" name="tag" value="${vo.tag}">
+                            <option value="">선택</option>
+                            <option value="user_id">아이디</option>
+                            <option value="nm">이름</option>
+                            <option value="cmp_nm">회사</option>
+                            <option value="mbphno">전화번호</option>
+                        </select>
+                        <input type="text" name="keyword" value="${vo.keyword}" style=" border-radius: 5px;">
+                        <button type="submit" style=" background: #E60024; border-radius: 5px;
+                                 padding: 10px 12px; color: #FFFFFF;  font-weight: 300; font-size: 15px;border: none;">검색
+                        </button>
+                    </section>
                     <div class="write-container">
                         <table class="table-form">
                             <colgroup>
@@ -79,6 +99,15 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- paging -->
+                    <div class="board_bottom_wrap">
+                        <div class="paging_wrap">
+                            <ul class="paging">
+                                <ui:pagination paginationInfo="${paginationInfo }" type="image" jsFunction="linkPage"/>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- paging -->
                 </form>
                 <!-- 컨텐츠 end -->
             </div>

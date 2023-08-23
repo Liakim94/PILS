@@ -17,7 +17,7 @@ public interface AdminService {
     Map<String, Object> conList(CmpMemberVo vo) throws Exception;
 
     //관리자페이지
-    List<CmpMemberVo> memManageList(CmpMemberVo vo) throws Exception;
+    Map<String, Object> memManageList(CmpMemberVo vo) throws Exception;
 
     CmpMemberVo memEdit(CmpMemberVo vo) throws Exception;
 

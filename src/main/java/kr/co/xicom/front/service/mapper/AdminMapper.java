@@ -15,6 +15,8 @@ public interface AdminMapper {
 
     int listCount(CmpMemberVo vo) throws Exception;
     List<CmpMemberVo> memManageList(CmpMemberVo vo)  throws Exception;
+    int memManageListCount(CmpMemberVo vo) throws Exception;
+
     CmpMemberVo memEdit(CmpMemberVo vo) throws Exception;
     int updateMem(CmpMemberVo vo) throws Exception;
     int changePw(CmpMemberVo vo) throws Exception;
