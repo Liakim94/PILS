@@ -82,9 +82,22 @@ public class AdminServiceImpl implements AdminService {
 
     //담당자 관리
     @Override
-    public List<CmpMemberVo> memManageList(CmpMemberVo vo) throws Exception {
-        return adminMapper.memManageList(vo);
+    public Map<String, Object> memManageList(CmpMemberVo vo) throws Exception {
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<CmpMemberVo> list = null;
+        int cnt = 0;
+        try{
+            list = adminMapper.memManageList(vo);
+            cnt = adminMapper.memManageListCount(vo);
+            map.put("resultList",list);
+            map.put("resultCnt", cnt);
+        } catch (Exception e){
+            System.out.println(e.toString());
+        }
+        return map;
     }
+
     @Override
     public CmpMemberVo memEdit(CmpMemberVo vo) throws Exception{
         return adminMapper.memEdit(vo);

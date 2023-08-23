@@ -63,8 +63,25 @@
              , a.joincmp as joinCmp
         from tb_pils_cmpmbr A join tb_pils_mbr B
                                    on A.bizno =B.bizno
-        where cmp_mbr_cd= #{mem_cd} and b.manage_cd ='M501'
-        order by joincmp desc
+        where cmp_mbr_cd= #{mem_cd}
+            and b.manage_cd ='M501'
+            <if test="keyword != null and keyword != ''">
+                and (cmp_nm like CONCAT('%',#{keyword},'%') or nm like CONCAT('%',#{keyword},'%'))
+            </if>
+            <if test="tag != null and tag != ''">
+                and ${tag} like CONCAT('%',#{keyword},'%')
+            </if>
+        <choose>
+            <when test="sort == 'cmp_nm' or sort == 'nm'">
+               order by ${sort} asc
+            </when>
+            <when test="sort == 'joincmp' or sort == 'appdt' or sort == 'upd_dt'">
+                order by ${sort} desc
+            </when>
+            <otherwise>
+                order by appdt desc
+            </otherwise>
+        </choose>
         <if test="pageIndex > 0">
             LIMIT #{pageUnit} OFFSET #{firstIndex}
         </if>
@@ -94,10 +111,17 @@
     </select>
     <select id="listCount" resultType="int">
         SELECT COUNT(1)
-        FROM tb_pils_cmpmbr
+        from tb_pils_cmpmbr A join tb_pils_mbr B
+        on A.bizno =B.bizno
         WHERE 1 = 1
-          and cmp_mbr_cd = #{mem_cd}
-
+          and A.cmp_mbr_cd = #{mem_cd}
+          and b.manage_cd ='M501'
+        <if test="keyword != null and keyword != ''">
+            and (cmp_nm like CONCAT('%',#{keyword},'%') or nm like CONCAT('%',#{keyword},'%'))
+        </if>
+        <if test="tag != null and tag != ''">
+            and ${tag} like CONCAT('%',#{keyword},'%')
+        </if>
     </select>
     <select id="memManageList" resultMap="CmpMemberVo">
         select user_id       as id
@@ -112,7 +136,27 @@
             (select bizno,cmp_nm,joincmp from tb_pils_cmpmbr tpc where cmp_mbr_cd='M302') C
         where A.manage_cd =B.cd
           and A.bizno =c.bizno
+        <if test="tag != null and tag != ''">
+            and ${tag} like CONCAT('%',#{keyword},'%')
+        </if>
         order by c.joincmp desc, cd='M501'desc
+        <if test="pageIndex > 0">
+            LIMIT #{pageUnit} OFFSET #{firstIndex}
+        </if>
+    </select>
+    <select id="memManageListCount" resultType="int">
+        SELECT COUNT(1)
+        from tb_pils_mbr A,
+        ( select cd, cd_nm from tb_cd_data where cd_grp = 'M500') B,
+        (select bizno,cmp_nm,joincmp from tb_pils_cmpmbr tpc where cmp_mbr_cd='M302') C
+        where A.manage_cd =B.cd
+        and A.bizno =c.bizno
+        <if test="keyword != null and keyword != ''">
+            and (cmp_nm like CONCAT('%',#{keyword},'%') or nm like CONCAT('%',#{keyword},'%'))
+        </if>
+        <if test="tag != null and tag != ''">
+            and ${tag} like CONCAT('%',#{keyword},'%')
+        </if>
     </select>
     <select id="memEdit" resultMap="CmpMemberVo">
         select nm            as name

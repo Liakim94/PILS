@@ -116,5 +116,10 @@ public class CmpMemberVo extends DefaultVO {
     /** 홍보 이미지 리스트 */
     private List<CompanyAttachVO> prmtImageList;
 
+    //Do 추가 2023-08-23
+    private String keyword ="";  //검색어
+    private String tag ="";     //태그
+    private String sort ="";  //정렬조건
+
 
 }

@@ -247,13 +247,30 @@ public class adminController {
     public ModelAndView memManage(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                                   ) throws Exception {
         ModelAndView mav = new ModelAndView("admin/mem_list");
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(cmpVO.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(cmpVO.getPageSize());
+
+        cmpVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        cmpVO.setLastIndex(paginationInfo.getLastRecordIndex());
+        cmpVO.setPageUnit(paginationInfo.getRecordCountPerPage());
+
         try {
-            List<CmpMemberVo> result = adminService.memManageList(cmpVO);
-            if (result == null) {
+            Map<String, Object> rs = adminService.memManageList(cmpVO);
+            int totalCnt = 0;
+            totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+            paginationInfo.setTotalRecordCount(totalCnt);
+
+            if (rs.get("resultList") == null) {
                 ModelAndView error = new ModelAndView("common/error.jsp");
                 return error;
             }
-            mav.addObject("rs", result);
+            mav.addObject("totalCnt", rs.get("resultCnt"));
+            mav.addObject("rs", rs.get("resultList"));
+            mav.addObject("paginationInfo", paginationInfo);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         }
