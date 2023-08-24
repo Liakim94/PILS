@@ -48,7 +48,7 @@
                     <div class="tbl-wrap for_board">
                         <a href="<c:url value="/front/qna/post.do"/>" class="write-question" style="width: 126px;">질의 등록</a>
                         <table class="tbl-list01">
-                            <caption>자주 묻는 질문: 번호, 응답여부, 제목, 작성자, 작성일, 조회수</caption>
+                            <caption>온라인 상담: 번호, 제목, 작성자, 작성일</caption>
                             <colgroup>
                                 <col width="10%">
                                 <col width="65%">

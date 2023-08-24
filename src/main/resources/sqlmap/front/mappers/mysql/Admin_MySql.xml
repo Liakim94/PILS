@@ -65,9 +65,6 @@
                                    on A.bizno =B.bizno
         where cmp_mbr_cd= #{mem_cd}
             and b.manage_cd ='M501'
-            <if test="keyword != null and keyword != ''">
-                and (cmp_nm like CONCAT('%',#{keyword},'%') or nm like CONCAT('%',#{keyword},'%'))
-            </if>
             <if test="tag != null and tag != ''">
                 and ${tag} like CONCAT('%',#{keyword},'%')
             </if>
@@ -116,9 +113,6 @@
         WHERE 1 = 1
           and A.cmp_mbr_cd = #{mem_cd}
           and b.manage_cd ='M501'
-        <if test="keyword != null and keyword != ''">
-            and (cmp_nm like CONCAT('%',#{keyword},'%') or nm like CONCAT('%',#{keyword},'%'))
-        </if>
         <if test="tag != null and tag != ''">
             and ${tag} like CONCAT('%',#{keyword},'%')
         </if>
@@ -139,7 +133,9 @@
         <if test="tag != null and tag != ''">
             and ${tag} like CONCAT('%',#{keyword},'%')
         </if>
-        order by c.joincmp desc, cd='M501'desc
+        <if test="sort != null and sort != ''">
+                order by ${sort} asc, cd='M501'desc
+        </if>
         <if test="pageIndex > 0">
             LIMIT #{pageUnit} OFFSET #{firstIndex}
         </if>
@@ -151,9 +147,6 @@
         (select bizno,cmp_nm,joincmp from tb_pils_cmpmbr tpc where cmp_mbr_cd='M302') C
         where A.manage_cd =B.cd
         and A.bizno =c.bizno
-        <if test="keyword != null and keyword != ''">
-            and (cmp_nm like CONCAT('%',#{keyword},'%') or nm like CONCAT('%',#{keyword},'%'))
-        </if>
         <if test="tag != null and tag != ''">
             and ${tag} like CONCAT('%',#{keyword},'%')
         </if>
