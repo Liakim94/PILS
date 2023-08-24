@@ -81,19 +81,20 @@ public class adminController {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M302");
 
-            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+//            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
             List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
 
             CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
             rs.setBizNo2(rs.getBizNo().substring(3, 5));
             rs.setBizNo3(rs.getBizNo().substring(5, 10));
-            if (rs == null && sttus == null) {
+//            if (rs == null && sttus == null) {
+                if (rs == null) {
                 System.out.println("비정상적인 접근입니다.");
             }
 
             mav.addObject("rs", rs);
-            mav.addObject("st", sttus);
+//            mav.addObject("st", sttus);
             mav.addObject("attachList", attachList);
 
         return mav;
@@ -114,7 +115,7 @@ public class adminController {
             cmpVO.setBizNo3(cmpVO.getBizNo().substring(5, 10));
 
             stVO.setBizNo(bizNo);
-            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+//            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
 
             List<AttachVO> attachList = this.consultingService.getAttachList(cmpVO);
             if (attachList != null && attachList.size() > 0) {
@@ -124,7 +125,7 @@ public class adminController {
             }
 
             mav.addObject("frmEdit", cmpVO);
-            mav.addObject("st", sttus);
+//            mav.addObject("st", sttus);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -141,7 +142,9 @@ public class adminController {
             cmpVO.setBizNo(bizNo);
             stVO.setBizNo(bizNo);
 
-            int result = consultingService.updateJoin(cmpVO, stVO,null);
+//            int result = consultingService.updateJoin(cmpVO, stVO,null);
+            int result = consultingService.updateJoin(cmpVO, null);
+
 
             if (result > 0) {
                 return "redirect:/admin/join/view.do?bizNo="+bizNo;
@@ -153,6 +156,57 @@ public class adminController {
             System.out.println(e.toString());
         }
         return "forward:/common/error.jsp";
+    }
+
+    //동행기업 추천 현황
+    @GetMapping(value = "/recom/list.do")
+    public ModelAndView recomList(@ModelAttribute("RcmdVO")RcmdVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/recom_list");
+
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+
+        Map<String, Object> rs = adminService.recomList(vo);
+        int totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("paginationInfo", paginationInfo);
+        mav.addObject("totalCnt", rs.get("resultCnt"));
+        mav.addObject("rs", rs.get("resultList"));
+
+        return mav;
+    }
+    @GetMapping(value = "/recom/view.do")
+    public ModelAndView recomView(@ModelAttribute("RcmdVO")RcmdVO vo,
+                                  @RequestParam(value = "no") int no ) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/recom_view");
+
+        try {
+            RcmdVO rs = consultingService.rcmdView(no);
+            rs.setApp_bizNo1(rs.getApply_bizno().substring(0, 3));
+            rs.setApp_bizNo2(rs.getApply_bizno().substring(3, 5));
+            rs.setApp_bizNo3(rs.getApply_bizno().substring(5, 10));
+            rs.setRcmd_bizNo1(rs.getRcmd_bizno().substring(0, 3));
+            rs.setRcmd_bizNo2(rs.getRcmd_bizno().substring(3, 5));
+            rs.setRcmd_bizNo3(rs.getRcmd_bizno().substring(5, 10));
+            if (rs == null ) {
+                System.out.println("비정상적인 접근입니다.");
+            }
+            mav.addObject("rs", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
     }
 
     //컨설팅 신청 현황
@@ -193,13 +247,30 @@ public class adminController {
     public ModelAndView memManage(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                                   ) throws Exception {
         ModelAndView mav = new ModelAndView("admin/mem_list");
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(cmpVO.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(cmpVO.getPageSize());
+
+        cmpVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        cmpVO.setLastIndex(paginationInfo.getLastRecordIndex());
+        cmpVO.setPageUnit(paginationInfo.getRecordCountPerPage());
+
         try {
-            List<CmpMemberVo> result = adminService.memManageList(cmpVO);
-            if (result == null) {
+            Map<String, Object> rs = adminService.memManageList(cmpVO);
+            int totalCnt = 0;
+            totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+            paginationInfo.setTotalRecordCount(totalCnt);
+
+            if (rs.get("resultList") == null) {
                 ModelAndView error = new ModelAndView("common/error.jsp");
                 return error;
             }
-            mav.addObject("rs", result);
+            mav.addObject("totalCnt", rs.get("resultCnt"));
+            mav.addObject("rs", rs.get("resultList"));
+            mav.addObject("paginationInfo", paginationInfo);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -245,8 +316,11 @@ public class adminController {
         return "forward:/common/error.jsp";
     }
     @GetMapping(value = "/changePw.do")
-    public ModelAndView change(HttpSession session) throws Exception{
+        public ModelAndView change(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
+                                   ,@RequestParam("id") String id) throws Exception {
         ModelAndView mav = new ModelAndView("admin/mem_changePw");
+        cmpVO.setId(id);
+        mav.addObject("rs", cmpVO);
         return mav;
     }
 

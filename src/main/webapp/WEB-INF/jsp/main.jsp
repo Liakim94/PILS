@@ -96,7 +96,7 @@
                              style="background: url(<c:url value='/images/main/main-banner.png'/>)">
                             <div class="text-wrap">
                                 <h1 class="slide-text">
-                                    <p>현재 <strong>392개</strong> 기업이</p>
+                                    <p>현재 <strong>${cnt + joinCmpCnt}개</strong> 기업이</p>
                                     <p>납품대금 연동제에 동참하고 있습니다.</p>
                                 </h1>
                                 <a href="<c:url value="/front/guide/company/list.do"/>" class="more-btn">참여기업 현황 바로가기<i
@@ -118,9 +118,9 @@
                              style="background: url(<c:url value='/images/main/cardnews_banner.jpg'/>)"
                              OnClick="location.href ='<c:url value="/front/board/ready/list.do"/>'">
                         </div>
-                        <div class="swiper-slide"
+                        <%--<div class="swiper-slide"
                              style="background: url(<c:url value='/images/main/event_banner.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=40"/>'"></div>
+                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=45"/>'"></div>--%>
                         <div class="swiper-slide"
                              style="background: url(<c:url value='/images/main/recruit_banner.jpg'/>)"
                              OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=5"/>'"></div>
@@ -158,7 +158,7 @@
                         </div>
                         <div class="swiper-slide"
                              style="background-image: url(<c:url value='/images/mobile/banner_04.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=40"/>'"></div>
+                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=45"/>'"></div>
                         <div class="swiper-slide"
                              style="background-image: url(<c:url value='/images/mobile/banner_05.jpg'/>)"
                              OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=5"/>'"></div>

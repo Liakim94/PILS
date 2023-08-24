@@ -66,6 +66,12 @@
         document.cookie = "GUIDEOK=1";
         document.location = '<%= redirectUrl %>';
     });
+    document.getElementById("ok-target").addEventListener("click", function(e) {
+        if (e.shiftKey) {
+            document.cookie = "GUIDEOK=1";
+            document.location = '<%= redirectUrl %>';
+        }
+    });
 </script>
 </body>
 </html>

@@ -72,6 +72,10 @@
                                     <td class="al">
                                         <c:choose>
                                             <c:when test="${sessionId eq 'admin'}">
+                                                <c:if test="${list.depth eq 1}">
+                                                    <img src="<c:url value="/images/common/reply.png"/>"
+                                                         style="width: 20px;float: left;margin-right: 9px;margin-top: 5px;margin-left: 8px;"/>
+                                                </c:if>
                                                 <a href="<c:url value="/front/qna/view.do?no=${list.no}"/>">
                                                         ${list.title }</a>
                                             </c:when>

@@ -82,9 +82,10 @@ public class JoinController {
             String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
             cmpVO.setEmail(email);
             cmpVO.setMem_cd("M302"); //동행기업회원구분코드
-            stVO.setBizNo(bizNo);
+//            stVO.setBizNo(bizNo);
             cmpVO.setManagement_cd("M501"); //담당자구분코드
-            int result = consultingService.insertJoinApply(cmpVO, stVO,null);
+//            int result = consultingService.insertJoinApply(cmpVO, stVO,null);
+            int result = consultingService.insertJoinApply(cmpVO,null);
             if (result > 0) {
 
                 response.sendRedirect(request.getContextPath() + "/join/joinView.do?bizNo=" + cmpVO.getBizNo());
@@ -145,19 +146,20 @@ public class JoinController {
         cmpVO.setBizNo(bizNo);
         cmpVO.setMem_cd("M302");
         try {
-            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
+//            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
             List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
 
             CmpMemberVo rs = consultingService.getViewByBizNo(cmpVO);
             rs.setBizNo1(rs.getBizNo().substring(0, 3));
             rs.setBizNo2(rs.getBizNo().substring(3, 5));
             rs.setBizNo3(rs.getBizNo().substring(5, 10));
-            if (rs == null && sttus == null) {
+//            if (rs == null && sttus == null) {
+                if (rs == null) {
                 System.out.println("비정상적인 접근입니다.");
             }
 
             mav.addObject("rs", rs);
-            mav.addObject("st", sttus);
+//            mav.addObject("st", sttus);
             mav.addObject("attachList", attachList);
 
         } catch (Exception e) {
@@ -172,7 +174,7 @@ public class JoinController {
         return mav;
     }
     @PostMapping(value = "/recom.do")
-    public void doRcmd(@ModelAttribute("frmRecom")RcmdVO vo, HttpServletRequest request,
+    public void doRecom(@ModelAttribute("frmRecom")RcmdVO vo, HttpServletRequest request,
                        HttpServletResponse response) throws Exception {
         try {
             int result = consultingService.insertRecom(vo);
@@ -195,7 +197,7 @@ public class JoinController {
         }
     }
     @GetMapping(value = "/recom/view.do")
-    public ModelAndView rcmdView( @ModelAttribute("RcmdVO") RcmdVO vo,
+    public ModelAndView recomView( @ModelAttribute("RcmdVO") RcmdVO vo,
                                   @RequestParam(value = "no") int no) throws Exception {
         ModelAndView mav = new ModelAndView("join/apply/join_recom_view");
 

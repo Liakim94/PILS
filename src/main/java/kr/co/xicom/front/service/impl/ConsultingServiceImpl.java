@@ -51,13 +51,13 @@ public class ConsultingServiceImpl implements ConsultingService {
         TransactionStatus status = transactionManager.getTransaction(def);
 
         try{
-           int result= mapper.insertConsulting(vo);
+            int result= mapper.insertConsulting(vo);
             int result2=  mapper.insertMemberInfo(vo);
             int result3= mapper.insertCmpSttus(stVO);
 
-            if(result  > 0 && result2>0 && result3>0){
-                return 1;
-            }
+            transactionManager.commit(status);
+            return 1;
+
         }catch (Exception e){
             transactionManager.rollback(status);
         }
@@ -102,12 +102,9 @@ public class ConsultingServiceImpl implements ConsultingService {
             int result= mapper.update(vo);
             int result2=  mapper.memUpdate(vo);
             int result3 = mapper.updateCmpSttus(stVO);
-            if(result  > 0 && result2 > 0 && result3 > 0){
-                return 1;
-            }else{
-                return 0;
-            }
 
+            transactionManager.commit(status);
+            return 1;
         }catch (Exception e){
             transactionManager.rollback(status);
         }
@@ -135,7 +132,9 @@ public class ConsultingServiceImpl implements ConsultingService {
     }
     //동행기업 신청
     @Override
-    public int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
+//    public int insertJoinApply(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
+    public int insertJoinApply(CmpMemberVo vo, AttachVO attachVO) throws Exception {
+
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
 
@@ -144,8 +143,6 @@ public class ConsultingServiceImpl implements ConsultingService {
         try{
             int result1= mapper.insertJoin(vo);
             int result2=  mapper.insertMemberJoin(vo);
-//            int result2 =0;
-            int result3= mapper.insertCmpSttus(stVO);
 
             String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
             if (StringUtils.isNotBlank(jsonFileList)) {
@@ -169,11 +166,11 @@ public class ConsultingServiceImpl implements ConsultingService {
                 }
             }
 
-            if(result1  > 0 && result2 > 0 && result3 > 0){
-                return 1;
-            }
-        }catch (Exception e){
+            transactionManager.commit(status);
+            return 1;
+        } catch (Exception e) {
             transactionManager.rollback(status);
+            System.out.println(e.toString());
         }
         return 0;
     }
@@ -181,15 +178,17 @@ public class ConsultingServiceImpl implements ConsultingService {
 
     //동행기업 수정
     @Override
-    public int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
-        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+//    public int updateJoin(CmpMemberVo vo, CmpSttusVO stVO, AttachVO attachVO) throws Exception {
+        public int updateJoin(CmpMemberVo vo, AttachVO attachVO) throws Exception {
+
+            DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
 
         TransactionStatus status = transactionManager.getTransaction(def);
 
         try {
             int result1 = mapper.updateJoin(vo);
-            int result2 = mapper.updateCmpSttus(stVO);
+//            int result2 = mapper.updateCmpSttus(stVO);
 
             AttachVO attach = new AttachVO();
             attach.setBizNo(vo.getBizNo());

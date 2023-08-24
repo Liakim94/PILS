@@ -227,26 +227,26 @@
                             파일찾기
                         </td>
                     </tr>
-                    <th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>
-                    <tr>
-                        <th class="txt_alcnt" scope="row">지표</th>
-                        <th class="txt_alcnt" scope="row">2019년</th>
-                        <th class="txt_alcnt" scope="row">2020년</th>
-                        <th class="txt_alcnt" scope="row">2021년</th>
-                    </tr>
-                    <c:forEach var="st" items="${st}" varStatus="status">
-                        <c:if test="${status.index mod 3 eq 0}">
-                            <tr>
-                            <th class="txt_alcnt" scope="row">${st.index_dv_nm} </th>
-                        </c:if>
-                        <td align="center">
-                            <input type="text" class="uni_input_text wdh100" id="ix_data${status.index+1}"
-                                   name="ix_data${status.index+1}" value="${st.index_data}"/>
-                        </td>
-                        <c:if test="${status.index mod 3 eq 2}">
-                            </tr>
-                        </c:if>
-                    </c:forEach>
+<%--                    <th colspan="4" class="txt_alcnt" scope="row">기업현황 (최근 3년)</th>--%>
+<%--                    <tr>--%>
+<%--                        <th class="txt_alcnt" scope="row">지표</th>--%>
+<%--                        <th class="txt_alcnt" scope="row">2019년</th>--%>
+<%--                        <th class="txt_alcnt" scope="row">2020년</th>--%>
+<%--                        <th class="txt_alcnt" scope="row">2021년</th>--%>
+<%--                    </tr>--%>
+<%--                    <c:forEach var="st" items="${st}" varStatus="status">--%>
+<%--                        <c:if test="${status.index mod 3 eq 0}">--%>
+<%--                            <tr>--%>
+<%--                            <th class="txt_alcnt" scope="row">${st.index_dv_nm} </th>--%>
+<%--                        </c:if>--%>
+<%--                        <td align="center">--%>
+<%--                            <input type="text" class="uni_input_text wdh100" id="ix_data${status.index+1}"--%>
+<%--                                   name="ix_data${status.index+1}" value="${st.index_data}"/>--%>
+<%--                        </td>--%>
+<%--                        <c:if test="${status.index mod 3 eq 2}">--%>
+<%--                            </tr>--%>
+<%--                        </c:if>--%>
+<%--                    </c:forEach>--%>
 
                     <tr>
                         <th class="txt_alcnt" scope="row">주요 제품</th>

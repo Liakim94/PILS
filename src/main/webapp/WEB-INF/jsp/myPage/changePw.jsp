@@ -33,9 +33,6 @@
                 },
                 passwd: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"}
             },
-            submitHandler: function (frm) {
-                $("#frmChange").submit();
-            },
             showErrors: function (errorMap, errorList) {
                 if (!$.isEmptyObject(errorList)) {
                     $.each(errorList, function () {

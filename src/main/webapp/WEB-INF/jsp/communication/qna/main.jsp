@@ -63,67 +63,72 @@
                             <tr>
                                 <td class="tbody">2</td>
                                 <td class="">서울지방중소벤처기업청</td>
-                                <td class="">02-2110-6341</td>
+                                <td class="">02-798-9831, 02-2110-6351</td>
                             </tr>
                             <tr>
                                 <td class="tbody">3</td>
                                 <td class="">경기지방중소벤처기업청</td>
-                                <td class="">031-201-6929</td>
+                                <td class="">031-201-6868</td>
                             </tr>
                             <tr>
                                 <td class="tbody">4</td>
                                 <td class="">인천지방중소벤처기업청</td>
-                                <td class="">032-450-1146</td>
+                                <td class="">032-450-1148~1150</td>
                             </tr>
                             <tr>
                                 <td class="tbody">5</td>
                                 <td class="">대전·세종지방중소벤처기업청</td>
-                                <td class="">042-856-6131</td>
+                                <td class="">042-865-6183</td>
                             </tr>
                             <tr>
                                 <td class="tbody">6</td>
                                 <td class="">충북지방중소벤처기업청</td>
-                                <td class="">043-230-5324</td>
+                                <td class="">043-230-5307~8</td>
                             </tr>
                             <tr>
                                 <td class="tbody">7</td>
                                 <td class="">충남지방중소벤처기업청</td>
-                                <td class="">041-415-0633</td>
+                                <td class="">041-415-0623, 041-564-3862</td>
                             </tr>
                             <tr>
                                 <td class="tbody">8</td>
                                 <td class="">대구·경북지방중소벤처기업청</td>
-                                <td class="">053-659-2263</td>
+                                <td class="">053-659-2270~3</td>
                             </tr>
                             <tr>
                                 <td class="tbody">9</td>
                                 <td class="">울산지방중소벤처기업청</td>
-                                <td class="">052-210-0049</td>
+                                <td class="">052-210-0031,0032</td>
                             </tr>
                             <tr>
                                 <td class="tbody">10</td>
                                 <td class="">부산지방중소벤처기업청</td>
-                                <td class="">051-601-5135</td>
+                                <td class="">051-831-1357</td>
                             </tr>
                             <tr>
                                 <td class="tbody">11</td>
                                 <td class="">경남지방중소벤처기업청</td>
-                                <td class="">055-268-2561</td>
+                                <td class="">055-268-2546~8</td>
                             </tr>
                             <tr>
                                 <td class="tbody">12</td>
                                 <td class="">광주·전남지방중소벤처기업청</td>
-                                <td class="">062-360-9158</td>
+                                <td class="">062-360-9139</td>
                             </tr>
                             <tr>
                                 <td class="tbody">13</td>
                                 <td class="">전북지방중소벤처기업청</td>
-                                <td class="">063-210-6446</td>
+                                <td class="">063-210-6436~8</td>
                             </tr>
                             <tr>
                                 <td class="tbody">14</td>
                                 <td class="">강원지방중소벤처기업청</td>
-                                <td class="">033-260-1621</td>
+                                <td class="">033-260-1625~6</td>
+                            </tr>
+                            <tr>
+                                <td class="tbody">15</td>
+                                <td class="">대‧중소기업‧농어업협력재단(납품대금 연동 확산지원본부)</td>
+                                <td class="">02-368-8470, 8969, 8962, 8963</td>
                             </tr>
                             </tbody>
                         </table>

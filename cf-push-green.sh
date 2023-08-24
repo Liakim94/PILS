@@ -1,13 +1,21 @@
+#!/bin/zsh
+
+echo "Start... cf push -f manifest-cloud-green.yml"
+echo ""
+
+export https_proxy=http://192.168.0.34:808
+
+cf target -s 납품대금연동제
 
 cf push -f manifest-green.yml --no-start
 
-cf bind-service pis-green redis-instance
+#cf bind-service pis-green redis-instance
 
 cf bind-service pis-green pinpoint-instance -c "{\"application_name\":\"pis-green\"}"
 
-cf restage pis-green
+#cf restage pis-green
 
-    cf start pis-green
+cf start pis-green
 
 cf apps
 
@@ -27,6 +35,12 @@ cf apps
 
 cf stop pis
 
-cf rename pis pis-old-0322a
+today=`date +%Y%m%d_%H%M%S`
+
+old_app="pis-old-$today"
+
+cf rename pis $old_app
 
 cf rename pis-green pis
+
+cf apps

@@ -33,9 +33,6 @@
                 },
                 passwd: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"}
             },
-            submitHandler: function (frm) {
-                frm.submit();
-            },
             showErrors: function (errorMap, errorList) {
                 if (!$.isEmptyObject(errorList)) {
                     $.each(errorList, function () {
@@ -69,7 +66,7 @@
             <div id="company-write" class="content">
                 <div class="write-container">
                     <div class="line-wrap">
-                        <input type="hidden" id=id name="id" value="${sessionId}">
+                        <input type="hidden" id=id name="id" value="${rs.id}">
                         <div class="fx2">
                             <div class="label">비밀번호</div>
                             <div class="input-wrap">

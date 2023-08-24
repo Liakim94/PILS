@@ -9,6 +9,12 @@
 <!DOCTYPE html>
 <html lang="ko" class="ko">
 <head>
+    <%--
+        WildRain 추가 2023-03-21
+        네이버 등록 Tag
+    --%>
+    <meta name="naver-site-verification" content="1682456b8adca1f59583031e4454b7fe7255af9f">
+    <meta name="description" content="납품대금 연동제 소개, 약정서 작성 체험하기, 동행기업 참여 신청, 연동제 관련 온라인 상담을 신청할 수 있는 납품대금 연동제 공식 홈페이지입니다.">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <%--
         WildRain 추가 2023-01-17
