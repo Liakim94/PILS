@@ -48,6 +48,7 @@
                 <h1 class="fw700">동행기업 신청 현황</h1>
                 <div class="side-wrap"></div>
             </div>
+
             <div class="content">
                 <!-- 컨텐츠 start -->
                 <form action="" name="frmSearch" id="frmSearch" method="get" onSubmit="return Checkform()">
