@@ -14,7 +14,7 @@
 <%--<link rel="stylesheet" href="${pageContext.request.contextPath }/css/front/default.css" />--%>
 <%--퍼블리셔 추가--%>
 <link rel="stylesheet" href="<c:url value="/css/front/reset.css"/>" />
-<link rel="stylesheet" href="<c:url value="/css/front/common.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/front/common.css?v=20230824a"/>" />
 <link rel="stylesheet" href="<c:url value="/css/front/common2.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/front/slick.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/front/mainvisual.css"/>" />
