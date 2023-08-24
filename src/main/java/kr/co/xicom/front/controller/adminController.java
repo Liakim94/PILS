@@ -259,8 +259,19 @@ public class adminController {
 
         try {
             Map<String, Object> rs = adminService.memManageList(cmpVO);
-            int totalCnt = 0;
-            totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+            List<CmpMemberVo> cmpVOList = (List<CmpMemberVo>) rs.get("resultList");
+            cmpVOList.forEach(vo -> {
+                vo.setMbphno(vo.getMbphno().replaceAll("(?<=.{9}).","*"));
+            });
+            cmpVOList.forEach(vo -> {
+                if(vo.getName().length()<3){
+                    vo.setName(vo.getName().replaceAll("(?<=.{1}).","*"));
+                }
+                vo.setName(vo.getName().replaceFirst("(?<=.{1}).","*"));
+
+            });
+
+            int totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
             paginationInfo.setTotalRecordCount(totalCnt);
 
             if (rs.get("resultList") == null) {
@@ -270,6 +281,7 @@ public class adminController {
             mav.addObject("totalCnt", rs.get("resultCnt"));
             mav.addObject("rs", rs.get("resultList"));
             mav.addObject("paginationInfo", paginationInfo);
+            mav.addObject("vo", cmpVO);
 
         } catch (Exception e) {
             System.out.println(e.toString());
