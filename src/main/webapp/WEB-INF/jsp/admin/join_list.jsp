@@ -81,7 +81,7 @@
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('nm')">작성자</a></th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('appdt')">신청일</a></th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('upd_dt')">마지막 수정일</a></th>
-                                    <input type="hidden" name="sort" id="sort" value="">
+                                    <input type="hidden" name="sort" id="sort" value="${vo.sort}">
                                 </tr>
                             </thead>
                             <tbody>
