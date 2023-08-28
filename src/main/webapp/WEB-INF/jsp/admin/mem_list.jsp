@@ -85,7 +85,7 @@
                                     <th scope="col">부서</th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('mbphno')">전화번호</a></th>
                                     <th scope="col">담당자구분</th>
-                                    <input type="hidden" name="sort" id="sort" value="">
+                                    <input type="hidden" name="sort" id="sort" value="${vo.sort}">
                                 </tr>
                             </thead>
                             <tbody>
