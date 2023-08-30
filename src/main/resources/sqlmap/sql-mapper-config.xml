@@ -7,5 +7,5 @@
 		<typeAlias alias="default" 	type="kr.co.xicom.front.model.DefaultVO"/>
 		<typeAlias alias="attach" 	type="kr.co.xicom.front.model.AttachVO"/>
 		<typeAlias alias="board" 	type="kr.co.xicom.front.model.BoardVO"/>
-    </typeAliases>
+	</typeAliases>
 </configuration>
