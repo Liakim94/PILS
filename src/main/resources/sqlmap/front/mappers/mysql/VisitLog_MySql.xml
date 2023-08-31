@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.xicom.front.service.mapper.VisitLogMapper">
+    <resultMap id="VisitLogVO" type="kr.co.xicom.front.model.VisitLogVO">
+        <result property="seq" column="seq"/>
+        <result property="ip" column="ip"/>
+        <result property="url" column="url"/>
+        <result property="referer" column="referer"/>
+        <result property="userAgent" column="userAgent"/>
+        <result property="visit_date" column="visit_date"/>
+    </resultMap>
+
+    <insert id="create">
+        insert into tb_pils_visitor (
+            seq,
+            ip,
+            url,
+            referer,
+            user_agent,
+            visit_date
+        )
+        values (
+                       (select nextval('tb_pils_visitor_seq')),
+                       #{ip},
+                       #{url},
+                       #{referer},
+                       #{userAgent},
+                       now()
+               )
+    </insert>
+
+</mapper>
