@@ -13,6 +13,9 @@ public interface AdminService {
 
     CmpMemberVo memInfo(CmpMemberVo vo) throws Exception;
 
+    //동행기업 삭제하기
+    int deleteCmp(String bizNo) throws Exception;
+
     //컨설팅 list
     Map<String, Object> conList(CmpMemberVo vo) throws Exception;
 
@@ -22,6 +25,8 @@ public interface AdminService {
     CmpMemberVo memEdit(CmpMemberVo vo) throws Exception;
 
     int updateMem(CmpMemberVo vo) throws Exception;
+
+    int deleteMem(String bizNo, String id) throws Exception;
 
     int changePw(CmpMemberVo vo) throws Exception;
 

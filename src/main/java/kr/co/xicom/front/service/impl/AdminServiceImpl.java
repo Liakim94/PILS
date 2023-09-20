@@ -11,12 +11,10 @@ import kr.co.xicom.front.service.mapper.ConsultingMapper;
 import kr.co.xicom.util.HtmlTagUtils;
 import kr.go.smes.fileservice.FileService;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.collections.functors.ExceptionPredicate;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionDefinition;
@@ -63,6 +61,11 @@ public class AdminServiceImpl implements AdminService {
     public CmpMemberVo memInfo(CmpMemberVo vo) throws Exception {
         return adminMapper.memInfo(vo);
     }
+    //동행기업 삭제하기
+    @Override
+    public int deleteCmp(String bizNo) throws Exception{
+        return adminMapper.deleteCmp(bizNo);
+    }
     //컨설팅 list
     @Override
     public  Map<String, Object> conList(CmpMemberVo vo) throws Exception {
@@ -105,6 +108,10 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int updateMem(CmpMemberVo vo) throws Exception{
         return adminMapper.updateMem(vo);
+    }
+    @Override
+    public int deleteMem(String bizNo, String id) throws Exception{
+        return adminMapper.deleteMem(bizNo, id);
     }
     @Override
     public int changePw(CmpMemberVo vo) throws Exception{

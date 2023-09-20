@@ -99,6 +99,20 @@ public class adminController {
 
         return mav;
     }
+    //동행기업 삭제하기
+    @PostMapping(value = "/join/view.do")
+    public String deleteCmp(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO) throws Exception{
+        try {
+            int result = adminService.deleteCmp(cmpVO.getBizNo());
+            if (result > 0) {
+                return "redirect:/admin/management/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
+    //동행기업 정보 수정하기
     @GetMapping(value = "/join/edit.do")
     public ModelAndView joinEdit(@ModelAttribute("frmEdit") CmpMemberVo cmpVO,
                                  @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
@@ -288,6 +302,38 @@ public class adminController {
         }
         return mav;
     }
+    //상세 화면
+    @GetMapping(value = "/memDetail.do")
+    public ModelAndView memDetail(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
+            ,@RequestParam("id") String id) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/mem_view");
+        cmpVO.setId(id);
+        try {
+            CmpMemberVo rs = adminService.memEdit(cmpVO);
+            if (rs == null) {
+                System.out.println("비정상적인 접근입니다.");
+            }
+            mav.addObject("rs", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+    //담당자 삭제 처리
+    @PostMapping(value = "/memDetail.do")
+    public String memDelete(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO) throws Exception {
+        try {
+            int result = adminService.deleteMem(cmpVO.getBizNo(), cmpVO.getId());
+
+            if (result > 0) {
+                return "redirect:/admin/management/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
     //수정 화면
     @GetMapping(value = "/memEdit.do")
     public ModelAndView memEdit(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
@@ -327,6 +373,7 @@ public class adminController {
         }
         return "forward:/common/error.jsp";
     }
+
     @GetMapping(value = "/changePw.do")
         public ModelAndView change(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                                    ,@RequestParam("id") String id) throws Exception {

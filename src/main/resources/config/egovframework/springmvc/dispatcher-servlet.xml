@@ -116,6 +116,7 @@
         <mvc:interceptor>
             <mvc:mapping path="/main/myPage.do" />
             <mvc:mapping path="/main/joinEdit.do" />
+            <mvc:mapping path="/main/memDetail.do" />
             <mvc:mapping path="/main/memEdit.do" />
             <mvc:mapping path="/main/management.do" />
             <mvc:mapping path="/main/memAdd.do" />

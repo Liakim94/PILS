@@ -92,7 +92,7 @@
                             <c:forEach var="rs" items="${rs }" varStatus="status">
                                 <tr>
                                     <td>${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
-                                    <td class="al"><a href="${pageContext.request.contextPath}/admin/memEdit.do?id=${rs.id}" style="color: rgb(0, 72, 255);">${rs.id }</a></td>
+                                    <td class="al"><a href="${pageContext.request.contextPath}/admin/memDetail.do?id=${rs.id}" style="color: rgb(0, 72, 255);">${rs.id }</a></td>
                                     <td>${rs.name}</td>
                                     <td class="al">${rs.cmpNm}</td>
                                     <td>${rs.position}</td>
@@ -103,7 +103,7 @@
                             </c:forEach>
                             <c:if test="${empty rs }">
                                 <tr>
-                                    <td colspan="7" class="text-center">조회된 데이터가 없습니다.</td>
+                                    <td colspan="8" class="text-center">조회된 데이터가 없습니다.</td>
                                 </tr>
                             </c:if>
                             </tbody>

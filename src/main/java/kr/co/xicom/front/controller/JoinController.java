@@ -30,13 +30,14 @@ public class JoinController {
 
     //제도 설명
     @GetMapping(value = "/concept.do")
-    public ModelAndView concept( ) throws Exception {
+    public ModelAndView concept() throws Exception {
         ModelAndView mav = new ModelAndView("join/apply/join_concept");
         return mav;
     }
+
     //동행기업 신청 main
     @GetMapping(value = "/joinMain.do")
-    public ModelAndView main( ) throws Exception {
+    public ModelAndView main() throws Exception {
         ModelAndView mav = new ModelAndView("join/apply/join_apply_main");
         return mav;
     }
@@ -50,19 +51,21 @@ public class JoinController {
         mav.addObject("frmPost", cmpVO);
         return mav;
     }
-    @PostMapping(value ="/checkId.do")
-    public void checkId(@RequestParam("id")String id,HttpServletResponse response)throws Exception{
+
+    @PostMapping(value = "/checkId.do")
+    public void checkId(@RequestParam("id") String id, HttpServletResponse response) throws Exception {
         PrintWriter out = response.getWriter();
-        if(consultingService.checkId(id) >0){
+        if (consultingService.checkId(id) > 0) {
             out.print(false);
-        }else {
+        } else {
             out.print(true);
         }
     }
-    @PostMapping(value ="/checkBizno.do")
-    public void checkBizno(@RequestParam("bizNo")String bizNo,HttpServletResponse response)throws Exception{
+
+    @PostMapping(value = "/checkBizno.do")
+    public void checkBizno(@RequestParam("bizNo") String bizNo, HttpServletResponse response) throws Exception {
         PrintWriter out = response.getWriter();
-        if(consultingService.checkBizno(bizNo) >0){
+        if (consultingService.checkBizno(bizNo) > 0) {
             out.print(false);
         } else {
             out.print(true);
@@ -85,7 +88,7 @@ public class JoinController {
 //            stVO.setBizNo(bizNo);
             cmpVO.setManagement_cd("M501"); //담당자구분코드
 //            int result = consultingService.insertJoinApply(cmpVO, stVO,null);
-            int result = consultingService.insertJoinApply(cmpVO,null);
+            int result = consultingService.insertJoinApply(cmpVO, null);
             if (result > 0) {
 
                 response.sendRedirect(request.getContextPath() + "/join/joinView.do?bizNo=" + cmpVO.getBizNo());
@@ -154,7 +157,7 @@ public class JoinController {
             rs.setBizNo2(rs.getBizNo().substring(3, 5));
             rs.setBizNo3(rs.getBizNo().substring(5, 10));
 //            if (rs == null && sttus == null) {
-                if (rs == null) {
+            if (rs == null) {
                 System.out.println("비정상적인 접근입니다.");
             }
 
@@ -167,15 +170,17 @@ public class JoinController {
         }
         return mav;
     }
+
     //동행기업 참여 추천
     @GetMapping(value = "/recom.do")
-    public ModelAndView recommend(@ModelAttribute("frmRecom")RcmdVO vo) throws Exception {
+    public ModelAndView recommend(@ModelAttribute("frmRecom") RcmdVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("join/apply/join_recom");
         return mav;
     }
+
     @PostMapping(value = "/recom.do")
-    public void doRecom(@ModelAttribute("frmRecom")RcmdVO vo, HttpServletRequest request,
-                       HttpServletResponse response) throws Exception {
+    public void doRecom(@ModelAttribute("frmRecom") RcmdVO vo, HttpServletRequest request,
+                        HttpServletResponse response) throws Exception {
         try {
             int result = consultingService.insertRecom(vo);
             if (result > 0) {
@@ -196,27 +201,28 @@ public class JoinController {
             System.out.println(e.toString());
         }
     }
+
     @GetMapping(value = "/recom/view.do")
-    public ModelAndView recomView( @ModelAttribute("RcmdVO") RcmdVO vo,
+    public ModelAndView recomView(@ModelAttribute("RcmdVO") RcmdVO vo,
                                   @RequestParam(value = "no") int no) throws Exception {
         ModelAndView mav = new ModelAndView("join/apply/join_recom_view");
 
-            try {
-                RcmdVO rs = consultingService.rcmdView(no);
-                rs.setApp_bizNo1(rs.getApply_bizno().substring(0, 3));
-                rs.setApp_bizNo2(rs.getApply_bizno().substring(3, 5));
-                rs.setApp_bizNo3(rs.getApply_bizno().substring(5, 10));
-                rs.setRcmd_bizNo1(rs.getRcmd_bizno().substring(0, 3));
-                rs.setRcmd_bizNo2(rs.getRcmd_bizno().substring(3, 5));
-                rs.setRcmd_bizNo3(rs.getRcmd_bizno().substring(5, 10));
-                if (rs == null ) {
-                    System.out.println("비정상적인 접근입니다.");
-                }
-                mav.addObject("rs", rs);
-
-            } catch (Exception e) {
-                System.out.println(e.toString());
+        try {
+            RcmdVO rs = consultingService.rcmdView(no);
+            rs.setApp_bizNo1(rs.getApply_bizno().substring(0, 3));
+            rs.setApp_bizNo2(rs.getApply_bizno().substring(3, 5));
+            rs.setApp_bizNo3(rs.getApply_bizno().substring(5, 10));
+            rs.setRcmd_bizNo1(rs.getRcmd_bizno().substring(0, 3));
+            rs.setRcmd_bizNo2(rs.getRcmd_bizno().substring(3, 5));
+            rs.setRcmd_bizNo3(rs.getRcmd_bizno().substring(5, 10));
+            if (rs == null) {
+                System.out.println("비정상적인 접근입니다.");
             }
+            mav.addObject("rs", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         return mav;
     }
 
@@ -225,12 +231,12 @@ public class JoinController {
     public ModelAndView agreeMain(HttpSession session,
                                   HttpServletRequest request,
                                   HttpServletResponse response
-                                 ,@ModelAttribute("AgreementVO") AgreementVO vo) throws Exception {
+            , @ModelAttribute("AgreementVO") AgreementVO vo) throws Exception {
 
         ModelAndView mav = new ModelAndView("join/agreement/agree_main");
         String result = agreementService.agreeChk(session.getId());
-        mav.addObject("rs",result);
-        mav.addObject("id",session.getId());
+        mav.addObject("rs", result);
+        mav.addObject("id", session.getId());
         return mav;
     }
 
@@ -250,7 +256,7 @@ public class JoinController {
                         HttpServletResponse response,
                         @ModelAttribute("AgreementVO") AgreementVO vo
     ) throws Exception {
-              vo.setId(session.getId());
+        vo.setId(session.getId());
         try {
             int result = agreementService.apply(vo);
             if (result > 0) {
@@ -273,16 +279,17 @@ public class JoinController {
         }
 
     }
+
     @GetMapping(value = "/agreeView.do")
     public ModelAndView agreeView(@ModelAttribute("AgreementVO") AgreementVO vo,
-                            HttpSession session) throws Exception {
+                                  HttpSession session) throws Exception {
 
         ModelAndView mav = new ModelAndView("join/agreement/agree_view");
 
         try {
             AgreementVO rs = agreementService.agreeView(session.getId());
 
-            if (rs == null ) {
+            if (rs == null) {
                 System.out.println("비정상적인 접근입니다.");
             }
 
@@ -293,6 +300,7 @@ public class JoinController {
         }
         return mav;
     }
+
     //약정서 미리보기
     @GetMapping(value = "/agree/preview.do")
     public ModelAndView agreePreView(@ModelAttribute("AgreementVO") AgreementVO vo,
@@ -303,36 +311,55 @@ public class JoinController {
 
         return mav;
     }
+
     @GetMapping("/agreeDelete.do")
-    public String agreeDelete(@RequestParam("id")String id)throws Exception{
+    public String agreeDelete(@RequestParam("id") String id) throws Exception {
         int result = agreementService.agreeDelete(id);
-        if(result>0){
+        if (result > 0) {
             return "redirect:/join/agree.do";
         }
-        return  "forward:/common/error.jsp";
+        return "forward:/common/error.jsp";
     }
+
     //실제 사례 보기 준비 중 화면
     @GetMapping(value = "/ex/temp.do")
     public ModelAndView agreeTemp() throws Exception {
         ModelAndView mav = new ModelAndView("join/agreement/agree_temp");
         return mav;
     }
+
     //남품대금 연동절차 알아보기
     @GetMapping(value = "/process/info.do")
     public ModelAndView process() throws Exception {
         ModelAndView mav = new ModelAndView("join/process");
         return mav;
     }
+
     //동행기업 실적 제출하기
     @GetMapping(value = "/submit.do")
     public ModelAndView joinSubmit() throws Exception {
         ModelAndView mav = new ModelAndView("join/join_submit");
         return mav;
     }
+
     //도입 준비하기
     @GetMapping(value = "/ready.do")
     public ModelAndView joinReady() throws Exception {
         ModelAndView mav = new ModelAndView("join/join_ready");
         return mav;
     }
+
+    //표준 미연동계약서 작성하기
+    @GetMapping(value = "/contract.do")
+    public ModelAndView contract() throws Exception {
+        ModelAndView mav = new ModelAndView("join/contract");
+        return mav;
+    }
+    //표준 미연동계약서 작성하기
+    @GetMapping(value = "/notice.do")
+    public ModelAndView notice() throws Exception {
+        ModelAndView mav = new ModelAndView("join/notice");
+        return mav;
+    }
+
 }
