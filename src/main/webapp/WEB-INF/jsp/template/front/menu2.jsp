@@ -25,10 +25,16 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
                 <a href ="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
             </li>
             <li class="<c:if test="${URI.contains('/join/ex')}">on</c:if>">
-            <a href="<c:url value="/join/ex/temp.do"/>">실제 사례 보기</a>
+                <a href="<c:url value="/join/ex/temp.do"/>">연동표 작성 예시 보기</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/join/contract')}">on</c:if>">
+                <a href="<c:url value="/join/contract.do"/>">표준 미연동계약서 작성하기</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/join/notice')}">on</c:if>">
+                <a href="<c:url value="/join/notice.do"/>">납품대금 연동 관련 유의사항</a>
             </li>
             <li class="<c:if test="${URI.contains('/join/agree')}">on</c:if>">
-                <a href="<c:url value="/join/agreeMain.do"/>">약정서 작성하기</a>
+                <a href="<c:url value="/join/agreeMain.do"/>">연동표 작성하기</a>
             </li>
         </ul>
     </div>
