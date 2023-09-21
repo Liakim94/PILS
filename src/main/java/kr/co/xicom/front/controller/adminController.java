@@ -105,7 +105,7 @@ public class adminController {
         try {
             int result = adminService.deleteCmp(cmpVO.getBizNo());
             if (result > 0) {
-                return "redirect:/admin/management/list.do";
+                return "redirect:/admin/join/list.do";
             }
         } catch (Exception e) {
             System.out.println(e.toString());
