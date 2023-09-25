@@ -122,8 +122,8 @@
                              style="background: url(<c:url value='/images/main/event_banner.jpg'/>)"
                              OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=45"/>'"></div>--%>
                         <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/main/recruit_banner.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=5"/>'"></div>
+                             style="background: url(<c:url value='/images/main/recruit_banner.png'/>)"
+                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=79"/>'"></div>
                     </div>
                 </div>
             </div>
