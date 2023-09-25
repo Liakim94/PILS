@@ -340,11 +340,11 @@ public class BoardController extends Alerts {
     }
 
     /**
-     * 신고센터 준비중 화면
+     * 불공정거래신고하기
      */
-    @GetMapping(value = "/report/temp.do")
+    @GetMapping(value = "/report.do")
     public ModelAndView reportTemp() throws Exception {
-        ModelAndView mav = new ModelAndView("report");
+        ModelAndView mav = new ModelAndView("communication/report");
         return mav;
     }
     /**

@@ -23,6 +23,7 @@
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
         <pattern>/cmm/*</pattern>
         <pattern>/front/*</pattern>
+<!--        <pattern>/front/report.do</pattern>-->
         <pattern>/common/deny.jsp</pattern>
     </decorator>
 
@@ -84,12 +85,6 @@
     <decorator name="menu_mat" page="/menu_mat.do"/>
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
         <pattern>/front/material</pattern>
-    </decorator>
-    <decorator name="header" page="/header.do"/>
-    <decorator name="footer" page="/footer.do"/>
-    <decorator name="menu_report" page="/menu_report.do"/>
-    <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
-        <pattern>/front/report</pattern>
     </decorator>
     <decorator name="header" page="/header.do"/>
     <decorator name="footer" page="/footer.do"/>

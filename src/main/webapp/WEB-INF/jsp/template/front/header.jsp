@@ -70,6 +70,7 @@
                 <a class="font18 menu" href="${pageContext.request.contextPath}/join/process/info.do">납품대금 연동제 도입하기</a>
                 <div class="submenu">
                     <a href="<c:url value="/join/ready.do"/>">도입 준비하기</a>
+<%--                    <a href="<c:url value="/join/priceInfo.do"/>">원재료 가격정보 제공 사이트</a>--%>
                     <a href="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
                     <a href="<c:url value="/join/ex/temp.do"/>">연동표 작성 예시 보기</a>
                     <a href="<c:url value="/join/contract.do"/>">표준 미연동계약서 작성하기</a>
@@ -92,9 +93,6 @@
 <%--            <div class="wrapper">--%>
 <%--                <a class="font18 menu" href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>--%>
 <%--            </div>--%>
-<%--            <div class="wrapper">--%>
-<%--                <a class="font18 menu" href="<c:url value="/front/report/temp.do"/>">신고센터</a>--%>
-<%--            </div>--%>
             <div class="wrapper">
                 <a class="font18 menu" href="<c:url value="/front/board/11/list.do"/>">소통·상담</a>
                 <div class="submenu" style="left: -65px;">
@@ -102,6 +100,7 @@
                     <a href="<c:url value="/front/board/ready/list.do"/>">카드뉴스</a>
                     <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는 질문</a>
                     <a href="<c:url value="/front/qna/main.do"/>">상담하기</a>
+                    <a href="<c:url value="/front/report.do"/>">불공정거래신고하기</a>
                     <%--                    <c:if test="${sessionId eq 'admin' }">--%>
                     <%--                    <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
                     <%--                    <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a--%>
@@ -211,6 +210,7 @@
                     </div>
                     <div class="submenu">
                         <a href="<c:url value="/join/ready.do"/>">도입 준비하기</a>
+<%--                        <a href="<c:url value="/join/priceInfo.do"/>">원재료 가격정보 제공 사이트</a>--%>
                         <a href="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
                         <a href="<c:url value="/join/ex/temp.do"/>">연동표 작성 예시 보기</a>
                         <a href="<c:url value="/join/contract.do"/>">표준 미연동계약서 작성하기</a>
@@ -237,9 +237,6 @@
 <%--                <div class="menu">--%>
 <%--                    <p><a href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a></p>--%>
 <%--                </div>--%>
-<%--                <div class="menu">--%>
-<%--                    <p><a href="<c:url value="/front/report/temp.do"/>">신고센터</a></p>--%>
-<%--                </div>--%>
                 <div class="menu">
                     <p onclick="menuToggleMobile(this)">소통·상담</p>
                     <div class="toggle">
@@ -251,7 +248,8 @@
                         <a href="<c:url value="/front/board/ready/list.do"/>">카드뉴스</a>
                         <a href="<c:url value="/front/board/7/list.do"/>">자주 묻는질문</a>
                         <a href="<c:url value="/front/qna/main.do"/>">상담하기</a>
-                        <%--                        <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
+                        <a href="<c:url value="/front/report.do"/>">불공정거래신고하기</a>
+                    <%--                        <a href="<c:url value="/front/consulting/apply.do"/>">컨설팅 신청</a>--%>
                         <%--                        <a href="<c:url value="/front/consulting/confirm.do"/>">컨설팅 신청 확인</a>--%>
                     </div>
                 </div>

@@ -114,14 +114,14 @@
                 </section>
                 <!-- 컨텐츠 end -->
                 <br>
-                    <div class="info-link">
-                        <div class="item">
-                            <a href="${pageContext.request.contextPath}/join/agree.do" >
-                                <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
-                                <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
-                                약정서 작성하기</a>
-                        </div>
-                    </div>
+<%--                    <div class="info-link">--%>
+<%--                        <div class="item">--%>
+<%--                            <a href="${pageContext.request.contextPath}/join/agree.do" >--%>
+<%--                                <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">--%>
+<%--                                <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">--%>
+<%--                                약정서 작성하기</a>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
         </div>
     </div>
 </div>
