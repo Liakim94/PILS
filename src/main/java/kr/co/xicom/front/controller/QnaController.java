@@ -268,7 +268,7 @@ public class QnaController extends Alerts {
                                HttpServletRequest request,
                                HttpServletResponse response) throws Exception {
 
-        ModelAndView mav = new ModelAndView("communication/qna/repost");
+        ModelAndView mav = new ModelAndView("communication/qna/onlineQna");
 
         qnaVO.setNo(no);
         QnaVO rs = qnaService.getBbsQnabyId(qnaVO);

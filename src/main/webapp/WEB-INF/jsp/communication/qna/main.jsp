@@ -39,6 +39,12 @@
                             <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>">
                             온라인 상담 신청</a>
                     </div>
+                    <div class="item">
+                        <a href="">
+                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" >
+                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>">
+                            원가분석 컨설팅 신청</a>
+                    </div>
                 </div>
                 <section>
                     <h2 class="title">납품대금 연동제 문의 및 상담 안내</h2>
@@ -57,8 +63,8 @@
                             <tbody>
                             <tr>
                                 <td class="tbody">1</td>
-                                <td class="">중소기업벤처기업부</td>
-                                <td class="">044-204-7905, 7948</td>
+                                <td class="">중소벤처기업부</td>
+                                <td class="">044-204-7905, 7908, 7942</td>
                             </tr>
                             <tr>
                                 <td class="tbody">2</td>

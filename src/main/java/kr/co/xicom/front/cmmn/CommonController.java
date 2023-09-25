@@ -108,16 +108,6 @@ public class CommonController {
 		mav = new ModelAndView("template/front/menu_mat");
 		return mav;
 	}
-	@GetMapping(value = "/menu_report.do")
-	public ModelAndView menu_report(ModelMap model,
-								   HttpServletRequest request,
-								   HttpServletResponse response,
-								   HttpSession session)
-			throws Exception {
-		ModelAndView mav = null;
-		mav = new ModelAndView("template/front/menu_report");
-		return mav;
-	}
 	@GetMapping(value = "/menu_consulting.do")
 	public ModelAndView menu_consulting(ModelMap model,
 									HttpServletRequest request,
