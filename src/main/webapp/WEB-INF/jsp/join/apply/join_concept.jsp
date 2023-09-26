@@ -215,19 +215,19 @@
                         <img src="<c:url value="/images/common/company-process3.png"/>" alt="연동 약정 체결"/>
                     </div>
                     <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process4.png"/>" alt="연동 특별약정서 제출"/>
+                        <img src="<c:url value="/images/common/company-process4.png"/>" alt="표준 연동계약서 제출"/>
                     </div>
                     <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process8.png"/>" alt="연동실적 제출 및 확인"/>
+                        <img src="<c:url value="/images/common/company-process8.png"/>" alt="우수기업 선정,포상"/>
                     </div>
                     <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process7.png"/>" alt="우수기업 선정 및 인센티브 부여"/>
+                        <img src="<c:url value="/images/common/company-process7.png"/>" alt="조정 실적 제출"/>
                     </div>
                     <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process6.png"/>" alt="우수기업 선정 및 인센티브 부여"/>
+                        <img src="<c:url value="/images/common/company-process6.png"/>" alt="참여확인서 제출 및 인센티브 부여"/>
                     </div>
                     <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process5.png"/>" alt="우수기업 선정 및 인센티브 부여"/>
+                        <img src="<c:url value="/images/common/company-process5.png"/>" alt="참여확인서 발급"/>
                     </div>
                 </div>
                 <div class="accordion-container">
