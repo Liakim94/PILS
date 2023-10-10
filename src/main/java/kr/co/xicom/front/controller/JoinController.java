@@ -1,5 +1,6 @@
 package kr.co.xicom.front.controller;
 
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.AgreementService;
 import kr.co.xicom.front.service.BoardService;
@@ -14,11 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import kr.co.xicom.util.Alerts;
+
 
 @RequestMapping("/join")
 @Controller
-public class JoinController {
+public class JoinController extends Alerts{
 
     @Autowired
     private ConsultingService consultingService;
@@ -264,15 +269,7 @@ public class JoinController {
                 response.sendRedirect(request.getContextPath() + "/join/agreeView.do");
 
             } else {
-                PrintWriter writer = response.getWriter();
-
-                response.setContentType("text/html; charset=UTF-8;");
-                request.setCharacterEncoding("utf-8");
-                writer.println("<script type='text/javascript'>");
-                writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
-                writer.println("history.back();");
-                writer.println("</script>");
-                writer.flush();
+                writeAlert("데이터 저장 중 오류가 발생하였습니다.", request, response);
             }
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -282,7 +279,9 @@ public class JoinController {
 
     @GetMapping(value = "/agreeView.do")
     public ModelAndView agreeView(@ModelAttribute("AgreementVO") AgreementVO vo,
-                                  HttpSession session) throws Exception {
+                                  HttpSession session,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) throws Exception {
 
         ModelAndView mav = new ModelAndView("join/agreement/agree_view");
 
@@ -290,7 +289,7 @@ public class JoinController {
             AgreementVO rs = agreementService.agreeView(session.getId());
 
             if (rs == null) {
-                System.out.println("비정상적인 접근입니다.");
+                writeAlert("비정상적인 접근입니다.", request, response);
             }
 
             mav.addObject("rs", rs);
@@ -363,8 +362,52 @@ public class JoinController {
     }
     //원재료 가격정보 제공 사이트
     @GetMapping(value = "/priceInfo.do")
-    public ModelAndView priceInfo() throws Exception {
+    public ModelAndView priceInfo(@ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
         ModelAndView mav = new ModelAndView("join/price/price_list");
+        int bbsId = 8;
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(boardVO.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(boardVO.getPageSize());
+
+        boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
+        boardVO.setPageUnit(paginationInfo.getRecordCountPerPage());
+        boardVO.setBbsId(bbsId);
+        boardVO.setStat("1");
+
+        Map<String, Object> rs = new HashMap<String, Object>();
+        rs = boardService.readyList(boardVO);
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("totalCnt", rs.get("resultCnt"));
+        mav.addObject("list", rs.get("resultList"));
+        mav.addObject("paginationInfo", paginationInfo);
+        return mav;
+    }
+    @GetMapping(value = "/priceInfoView.do")
+    public ModelAndView priceInfoView(@ModelAttribute("BoardVO") BoardVO boardVO,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response,
+                                  HttpSession session) throws Exception {
+
+        ModelAndView mav = new ModelAndView("join/price/price_detail");
+        int bbsId=8;
+        boardVO.setBbsId(bbsId);
+        boardVO.setStat("1");
+        BoardVO rs = boardService.getView(boardVO);
+
+        if (rs == null) {
+            writeAlert("존재하지 않는 게시물입니다.", request, response);
+        }
+        List<AttachVO> attachList = boardService.getAttachList(boardVO);
+
+        mav.addObject("rs", rs);
+        mav.addObject("attachList", attachList);
+
         return mav;
     }
 }

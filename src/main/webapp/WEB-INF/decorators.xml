@@ -40,6 +40,8 @@
         <pattern>/join/ready.do</pattern>
         <pattern>/join/contract.do</pattern>
         <pattern>/join/notice.do</pattern>
+        <pattern>/join/priceInfo.do</pattern>
+        <pattern>/join/priceInfoView.do</pattern>
         <pattern>/common/deny.jsp</pattern>
     </decorator>
 

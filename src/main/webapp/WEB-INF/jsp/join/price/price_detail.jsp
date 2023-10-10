@@ -8,8 +8,7 @@
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 
 <head>
-    <title>중소벤처기업부 | 카드뉴스</title>
-
+    <title>중소벤처기업부 | 원재료 가격정보 제공 사이트</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
@@ -18,7 +17,7 @@
 
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu"/>
+        <page:applyDecorator name="menu2"/>
         <div class="article">
             <br>
             <ul class="loc-list">
@@ -26,43 +25,22 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    소통·상담
+                    납품대금 연동제 도입하기
                 </li>
                 <li>
-                    ${bbsNm}
+                    원재료 가격정보 제공 사이트
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700"> ${bbsNm}</h1>
+                <h1 class="fw700">원재료 가격정보 제공 사이트</h1>
                 <div class="side-wrap">
                 </div>
             </div>
             <div class="content">
-                <div class="write-content">
+                <div id="company-write" class="content">
 
                     <!-- 컨텐츠 start -->
                     <div class="board-view-wrap01">
-                        <p class="subj">${rs.title}</p>
-                        <div class="info">
-                            <ul>
-                                <li>작성자 : 관리자</li>
-                                <li>작성일 : ${fn:substring(rs.regDe,0,10)}</li>
-                            </ul>
-                        </div>
-                        <%--
-                        <div class="file-wrap">
-                            <p class="label">첨부파일</p>
-                            <ul>
-                                <c:forEach var="attach" items="${attachList}">
-                                    <li>
-                                        <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
-                                            <c:out value="${attach.fileNm}"/>
-                                        </a>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </div>
-                        --%>
                         <div class="card-news">
                             <span class="card-prev"><i class="fas fa-chevron-left"></i></span>
                             <span class="card-next"><i class="fas fa-chevron-right"></i></span>
@@ -76,8 +54,40 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="write-container">
+                            <div class="line-wrap">
+                                <div class="label">사이트명</div>
+                                <div class="input-wrap" style="margin:5px">
+                                    ${rs.title}
+                                </div>
+                            </div>
+                            <div class="line-wrap">
+                                <div class="label">URL주소</div>
+                                <div class="input-wrap" style="margin:5px">
+                                    <a href="http://${rs.siteUrl}"> ${rs.siteUrl}</a>
+                                </div>
+                            </div>
+                            <div class="line-wrap">
+                                <div class="label">확인 가능 정보</div>
+                                <div class="input-wrap" style="margin:5px">
+                                    ${rs.chkInfo}
+                                </div>
+                            </div>
+                            <div class="line-wrap">
+                                <div class="label">주요 특징</div>
+                                <div class="input-wrap" style="margin:5px">
+                                    ${rs.features}
+                                </div>
+                            </div>
+                            <div class="line-wrap">
+                                <div class="label">유‧무료 여부</div>
+                                <div class="input-wrap" style="margin:5px">
+                                    ${rs.chrg}
+                                </div>
+                            </div>
+                        </div>
                         <div class="write-bottom">
-                            <a class="go-lst" href="<c:url value="/front/board/ready/list.do"/>">목록</a>
+                            <a class="go-lst" href="<c:url value="/front/join/priceInfoView.do"/>">목록</a>
                         </div>
                     </div>
                     <!-- 컨텐츠 end -->
@@ -85,6 +95,7 @@
             </div>
         </div>
     </div>
+</div>
     <script>
         var cardSlide = new Swiper(".card-slide-container", {
             slidesPerView: 1,
@@ -98,4 +109,3 @@
             },
         });
     </script>
-

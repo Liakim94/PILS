@@ -334,7 +334,7 @@ public class MainController {
 
         try {
 
-            EmsResponse result = emsClient.send("wildrain@u-cube.kr", "납품대금 연동제 클라우드 이메일 발송 테스트", "납품대금 연동제 클라우드 이메일 발송 테스트");
+            EmsResponse result = emsClient.send("do942003@u-cube.kr", "납품대금 연동제 클라우드 이메일 발송 테스트", "납품대금 연동제 클라우드 이메일 발송 테스트");
 
             String status = result.isSuccess() ? "SUCCESS" : "FAIL";
 

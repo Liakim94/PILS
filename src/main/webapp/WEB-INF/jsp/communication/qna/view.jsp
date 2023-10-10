@@ -41,6 +41,9 @@
                     <input type="hidden" id="no" name="no" value="${rs.no}"/>
                     <div class="board-view-wrap01">
                         <p class="subj">작성자 : ${rs.name }</p>
+                        <c:if test="${rs.depth eq 0}">
+                            <p class="subj">이메일 : ${rs.email }</p>
+                        </c:if>
                         <p class="subj">제목 : ${rs.title }</p>
                         <div class="cont">
                             ${fx:resetXSSMinimum(rs.body)}

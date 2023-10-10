@@ -75,9 +75,11 @@
                                     작성자
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="text" value="관리자" name="name" readonly>
+                                    <p style="margin:10px"> 관리자</p>
+                                    <input type="hidden" value="관리자" name="name">
                                 </div>
                             </div>
+                            <input type="hidden" value="${rs.email}" name="email">
                             <div class="line-wrap">
                                 <div class="label">
                                     제목
@@ -85,7 +87,8 @@
                                 <div class="input-wrap">
                                     <img src="<c:url value="/images/common/reply.png"/>"
                                          style="width: 24px;float: left;margin-right: 9px;margin-top: 10px;"/>
-                                    <input type="text" value="${rs.title }" name="title" readonly style="width: 94%;">
+                                    <p style="margin:10px"> ${rs.title }</p>
+                                    <input type="hidden" value="${rs.title }" name="title" style="width: 94%;">
                                 </div>
                             </div>
                             <div class="line-wrap">

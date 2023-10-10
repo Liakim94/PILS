@@ -15,6 +15,7 @@
         <result property="ip"                               column="ip"/>
         <result property="rdate"                            column="rdate"/>
         <result property="reply"                            column="reply"/>
+        <result property="email"                            column="email"/>
     </resultMap>
 
     <select id="list" resultMap="bbsQna">
@@ -60,6 +61,7 @@
            , bdtxt
            , ip_addr
            , regist_date
+           , email_addr
         )
         values
         ( (select nextval('tb_banner_qust_answr_seq'))
@@ -72,6 +74,7 @@
            , #{body}
            , #{ip}
            , extract(epoch from now() at time zone 'utc')
+           , #{email}
         )
         <selectKey keyProperty="no" resultType="integer" order="AFTER">
             SELECT MAX(no) FROM tb_banner_qust_answr;
@@ -105,6 +108,7 @@
                 , bdtxt     AS body
                 , rspns     AS reply
                 , ip_addr   as ip
+                , email_addr   as email
         from tb_banner_qust_answr
         where 1 = 1
         and no = #{no}::INT4
@@ -121,6 +125,7 @@
             , ttl
             , bdtxt
             , regist_date
+            , email_addr
         )
         values (
            #{headnum}
@@ -131,6 +136,7 @@
             , #{title}
             , #{body}
             , extract(epoch from now() at time zone 'utc')
+            , #{email}
         )
         <selectKey keyProperty="no" resultType="integer" order="AFTER">
             SELECT MAX(no) FROM tb_banner_qust_answr;
