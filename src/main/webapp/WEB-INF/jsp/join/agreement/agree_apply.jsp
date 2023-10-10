@@ -558,7 +558,7 @@
                         </div>
                         <div class="line-wrap">
                             <div class="label">
-                                8. 조정대금 반영시점
+                                8. 조정대금 반영일
                                 <img class="inline-focus info" onclick="infoOpen(this);" tabindex="0"
                                      src="${pageContext.request.contextPath}/images/common/info-icon.png"
                                      alt="자세히 보기">
@@ -567,7 +567,7 @@
                                 <input type="text" id="reflect_point" name="reflect_point" required/>
                                 <div class="info-box">
                                     <section>
-                                        <h3>8. 조정대금 반영시점</h3>
+                                        <h3>8. 조정대금 반영일</h3>
                                         <p class="text">&#9634; 물품등에 대하여 조정된 납품대금을 적용하는 기준이 되는 날을 기재 합니다.</p>
                                         <p class="text">&#9675; 표준 연동계약서 제6조 제4항에 따라 위탁기업은 조정대금 반영일 이후에 납품되는 물품등에 대하여 납품대금 연동에 따라 조정된 금액을 기준으로 납품대금을 지급하여야 합니다.</p>
                                         <div class="table">
@@ -577,7 +577,7 @@
                                                     <td class="title" width="50%">기재사항</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>8. 조정대금 반영시점</td>
+                                                    <td>8. 조정대금 반영일</td>
                                                     <td>매월 1일</td>
                                                 </tr>
                                             </table>
@@ -587,7 +587,7 @@
                                                     <td class="title" width="50%">기재사항</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>8. 조정대금 반영시점</td>
+                                                    <td>8. 조정대금 반영일</td>
                                                     <td>조정일로부터 7일 이내</td>
                                                 </tr>
                                             </table>
@@ -689,6 +689,19 @@
                                             </table>
                                         </div>
                                     </section>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-wrap">
+                            <div class="label">
+                                9.1. 반영비율
+                                <img class="inline-focus info" onclick="infoOpen(this);" tabindex="0"
+                                     src="${pageContext.request.contextPath}/images/common/info-icon.png"
+                                     alt="자세히 보기">
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" id="ratio" name="ratio" required/>
+                                <div class="info-box">
                                     <section>
                                         <h3 style="margin-top: 20px;">9.1. 반영비율</h3>
                                         <p class="text">&#9634; 원재료 가격 변동분을 전부 반영하지 않고, 일부만 반영하는 경우 등 반영비율 개념을 사용하는 경우 다음과 같이 정할 수 있습니다</p>

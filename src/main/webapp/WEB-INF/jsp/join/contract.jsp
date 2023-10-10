@@ -11,22 +11,89 @@
     <title>중소벤처기업부 | 표준 미연동계약서 작성하기</title>
 </head>
 <style>
-    .button {
-
+    .temp .example {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        border-radius: 10px;
+        padding: 20px;
+        box-sizing: border-box;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    .temp .example img {
+        float: right;
+        position: relative;
+        bottom: 5px;
+        transform: rotate(180deg);
+    }
+    .temp .example:focus{
+        border: 1px solid #E60024;
+    }
+    .temp .example h3{
+        display: inline-block;
+    }
+    .temp .example h3 ul{
+        padding-left: 20px;
+        font-weight: 400;
+        text-align: left;
+        line-height: 30px;
+        letter-spacing: 1px;
+        word-break: normal !important;
+        font-size: 16px;
+    }
+    .temp .example img{
+        float: right;
+        position: relative;
+        bottom: 5px;
+        transform: rotate(180deg);
+    }
+    .temp .open img{
+        transform: rotate(0deg);
 
     }
-    .button-border {
-        border: 1px solid #E60024;
-        border-radius: 50px;
-        padding: 7px 10px;
-        display: inline-block;
+    .temp .example .detail-info{
+        margin-top: 41px;
+        position: relative;
+        display: none;
+    }
+    .temp .example .detail-info:after{
+        position: absolute;
+        content: "";
+        width: calc(100% + 40px);
+        top:-20px;
+        left: -20px;
+        height: 1px;
+        background-color: #dddddd;
+    }
+    .temp .info-box{
+        padding: 0 !important;
+        border: none;
+    }
+    .temp .info-box-box{
+        border-radius: unset;
+        border-style:solid;
+        border-width: thin;
+        border-color: #D2D2D2;
+        background: #fff;
+    }
+    .temp .example h3 .table table{
+        border: 1px solid #FFC7C7;
+        margin-top: 10px;
+    }
+    .temp .example h3 .table table tr{
+        border-bottom: 1px solid #D2D2D2;
+    }
+    .temp .example h3 .table table td{
+        padding: 10px;
+        min-height: unset;
+        height: auto;
+        border-bottom: none;
         font-size: 16px;
-        box-sizing: border-box;
-        line-height: 32px;
-        text-align: center;
-        width: 100%;
-        color: #E60024!important;
-        background-color: white!important;
+        line-height: 26px;
+    }
+    .temp .example h3 .table table .title{
+        background: #FFEFEF;
+        border-right: 1px solid #FFC7C7;
     }
 </style>
 <div id="content">
@@ -58,6 +125,83 @@
 <%--                &nbsp;&nbsp;&nbsp;&nbsp;이하에서 (표) 형태로 제시하는 수치 또는 내용은 모두 가상의 상황을 가정하여 작성한 예시로서 실제 계약 시 내용은 계약당사자가 협의하여 정하여야 합니다.--%>
 <%--                </p>--%>
                 <div class="accordion-container">
+                    <section class="temp">
+                        <div class="example" onclick="detailOpen(this)" tabindex="1">
+                        <h3>표준 미연동계약서</h3>
+                        <img class="icon" src="<c:url value="/images/common/arrow-top.png"/>" alt="법률 상세보기">
+                        <div class="detail-info">
+                            <div class="page">
+                                <h1>표준 미연동계약서</h1>
+                                <h3>
+                                    ｢하도급거래 공정화에 관한 법률｣ 또는 ｢대·중소기업 상생협력 촉진에 관한 법률｣에 따른 하도급대금 또는 납품대금(이하 “하도급대금등”이라 한다)
+                                    연동과 관련하여 원사업자 또는 위탁기업(이하 “원사업자등”이라 한다)과 수급사업자 또는 수탁기업(이하 “수급사업자등”이라 한다)은
+                                    아래 하도급계약 또는 수탁·위탁거래약정(이하 “하도급계약등”이라 한다)에 부수하여 다음과 같이 미연동계약을 체결한다.
+                                    <br>
+                                    <br>
+                                    ◇ 하도급계약등 명칭 :<br>
+                                    ◇ 하도급계약등의 체결 일자 :<br>
+                                    ◇ 미연동 대상 목적물등 또는 물품등의 명칭 :<br>
+                                    ◇ 미연동 대상 주요 원재료 명칭 :<br>
+                                    ◇ 협의 개요 :<br>
+                                    &nbsp;(협의한 일시/방법)<br>
+                                    &nbsp;(원사업자등 측 협의책임자 성명/직위)<br>
+                                    &nbsp;(수급사업자등 측 협의책임자 성명/직위)<br>
+                                    <br>
+                                    <b>제1조(하도급대금등 미연동 합의)</b>
+                                    원사업자등과 수급사업자등은 위 하도급계약등의 주요 원재료에 대해 아래의 사유로 하도급대금등 연동을 하지 아니하기로 합의(이하 “미연동 합의”라 한다)한다.<br>                                    <br>
+                                    <div class="table">
+                                        <table>
+                                            <tr>
+                                                <td class="title" colspan="2">미연동 사유</td>
+                                            </tr>
+                                            <tr>
+                                                <td>원사업자등</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>수급사업자등</td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <br>
+                                    <b>제2조(해석)</b> 이 계약은 ｢하도급거래 공정화에 관한 법률｣ 제16조(설계변경 등에 따른 하도급대금의 조정), 제16조의2(공급원가 등의 변동에 따른 하도급대금의 조정), ｢대‧중소기업 상생협력 촉진에 관한 법률｣
+                                    제22조의2(공급원가 변동에 따른 납품대금의 조정), 제25조(준수사항)제1항제4호의 적용을 배제하는 것으로 해석되지 않는다.
+                                    <br>
+                                    <b>제3조(금지행위)</b>
+                                    ① 원사업자등은 미연동 합의와 관련하여 하도급거래에 관한 거래상 지위 또는 수탁‧위탁거래에 관한 거래상 지위를 남용하거나 거짓 또는 그 밖의 부정한 방법을 사용하지 아니한다.<br>
+                                    ② 원사업자등이 제1항을 위반한 경우 수급사업자등은 주요 원재료에 대해 하도급대금등 연동계약의 체결을 요구할 수 있으며, 원사업자등은 이에 응하여 연동 관련 의무를 준수해야 한다.<br>
+                                    <br>
+                                    이 계약의 체결사실 및 계약내용을 증명하기 위하여 이 계약서를 2부 작성하여 양 당사자가 각각 서명 또는 기명날인한 후 각자 1부씩 보관한다.<br>
+                                    <br>
+                                    <p class="witeDate">2023년&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3월&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15일</p>
+                                    <div class="write-area">
+                                        <div class="item">
+                                            <h3>
+                                                <b>원사업자등</b><br>
+                                                상호 또는 명칭 : ㅇㅇㅇ물산(주)<br>
+                                                전화번호 :  02-1234-0000<br>
+                                                주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소 : 서울시 000 000로 00<br>
+                                                대표자 성명 :&nbsp;&nbsp;&nbsp; 0 0 0&nbsp;&nbsp;(인)<br>
+                                                사업자(법인) 번호 : 000-00-00000
+                                            </h3>
+                                        </div>
+                                        <div class="item">
+                                            <h3>
+                                                <b>수급사업자등</b><br>
+                                                상호 또는 명칭 : ㅇㅇ산업(주)<br>
+                                                전화번호 : 031-4321-0000<br>
+                                                주 소 : 경기도 00시 000로 00<br>
+                                                대표자 성명 :&nbsp;&nbsp;&nbsp; 0 0 0&nbsp;&nbsp;(인)<br>
+                                                사업자(법인)번호 : 000-00-00000<br>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    </section>
                     <!--   미연동 대상 주요 원재료 명칭 -->
                     <div class="item-wrap" onclick="detailOpen(this)" tabindex="1">
                         <h3>1. 미연동 대상 주요 원재료 명칭</h3>

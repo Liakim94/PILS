@@ -73,9 +73,9 @@
 <%--                    <a href="<c:url value="/join/priceInfo.do"/>">원재료 가격정보 제공 사이트</a>--%>
                     <a href="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
                     <a href="<c:url value="/join/ex/temp.do"/>">연동표 작성 예시 보기</a>
-                    <a href="<c:url value="/join/contract.do"/>">표준 미연동계약서 작성하기</a>
                     <a href="<c:url value="/join/notice.do"/>">납품대금 연동 관련 유의사항</a>
                     <a href="<c:url value="/join/agreeMain.do"/>">연동표 작성하기</a>
+                    <a href="<c:url value="/join/contract.do"/>">표준 미연동계약서 작성하기</a>
                 </div>
             </div>
             <div class="wrapper">
@@ -213,9 +213,9 @@
 <%--                        <a href="<c:url value="/join/priceInfo.do"/>">원재료 가격정보 제공 사이트</a>--%>
                         <a href="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
                         <a href="<c:url value="/join/ex/temp.do"/>">연동표 작성 예시 보기</a>
-                        <a href="<c:url value="/join/contract.do"/>">표준 미연동계약서 작성하기</a>
                         <a href="<c:url value="/join/notice.do"/>">납품대금 연동 관련 유의사항</a>
                         <a href="<c:url value="/join/agreeMain.do"/>">연동표 작성하기</a>
+                        <a href="<c:url value="/join/contract.do"/>">표준 미연동계약서 작성하기</a>
                     </div>
                 </div>
                 <div class="menu">
