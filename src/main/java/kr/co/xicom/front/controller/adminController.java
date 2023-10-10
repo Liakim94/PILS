@@ -2,16 +2,11 @@ package kr.co.xicom.front.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.AdminService;
 import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.front.service.ConsultingService;
-import kr.co.xicom.front.service.MainService;
-import kr.co.xicom.util.HtmlTagUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -622,6 +617,132 @@ public class adminController {
         int result = boardService.updateStat(boardVO);
         if (result > 0) {
             return "redirect:/admin/ready/list.do";
+        }
+        return "forward:/common/error.jsp";
+    }
+
+    //원재료 가격정보 관리
+    @RequestMapping(value = "/price/list.do", method = {RequestMethod.GET})
+    public ModelAndView priceInfoList(@ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/price_list");
+
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(boardVO.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(boardVO.getPageSize());
+
+        boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
+        boardVO.setPageUnit(paginationInfo.getRecordCountPerPage());
+        int bbsId = 8;
+        boardVO.setBbsId(bbsId);
+        boardVO.setStat("1");
+
+        Map<String, Object> result = new HashMap<String, Object>();
+        result = boardService.list(boardVO);
+        String menu = boardService.getMenu(bbsId);
+
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
+
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", result.get("resultList"));
+        mav.addObject("totalCnt", result.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+        mav.addObject("bbsId", bbsId);
+        mav.addObject("bbsNm", menu);
+
+
+        return mav;
+    }
+
+    @GetMapping(value = "/price/view.do")
+    public ModelAndView priceInfoView(@ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/price_view");
+        int bbsId=8;
+        boardVO.setBbsId(bbsId);
+        boardVO.setStat("1");
+        BoardVO rs = boardService.getView(boardVO);
+        String menu = boardService.getMenu(bbsId);
+        List<AttachVO> attachList = boardService.getAttachList(boardVO);
+
+        mav.addObject("rs", rs);
+        mav.addObject("bbsId", bbsId);
+        mav.addObject("bbsNm", menu);
+        mav.addObject("attachList", attachList);
+
+        return mav;
+    }
+    @GetMapping(value = "/price/post.do")
+    public ModelAndView priceInfoPost(@ModelAttribute("post") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav =  new ModelAndView("admin/price_post");
+        int bbsId=8;
+        String menu = boardService.getMenu(bbsId);
+
+        mav.addObject("bbsId", bbsId);
+        mav.addObject("post", boardVO);
+        mav.addObject("bbsNm", menu);
+        return mav;
+    }
+    @PostMapping(value = "/price/post.do")
+    public String doPriceInfoPost(@ModelAttribute("post") BoardVO boardVO) throws Exception {
+        boardVO.setBbsId(8);
+        boardVO.setStat("1");
+        int result = adminService.readyPost(boardVO,null);
+
+        if (result > 0) {
+            return "redirect:/admin/price/view.do?boardSeq=" + boardVO.getBoardSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/price/edit.do")
+    public ModelAndView priceInfoEdit(@ModelAttribute("edit") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/price_edit");
+        int bbsId=8;
+        boardVO.setBbsId(bbsId);
+        BoardVO rs = boardService.getView(boardVO);
+        //게시판 이름
+        String menu = boardService.getMenu(bbsId);
+        // 첨부파일 리스트
+        List<AttachVO> attachList = this.boardService.getAttachList(boardVO);
+        if (attachList != null && attachList.size() > 0) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String jsonFileList = gson.toJson(attachList);
+            rs.setJsonFileList(jsonFileList);
+        }
+        mav.addObject("edit", rs);
+        mav.addObject("bbsNm", menu);
+        return mav;
+    }
+
+    @PostMapping(value = "/price/edit.do")
+    public String doPriceEdit( @ModelAttribute("edit") BoardVO boardVO) throws Exception {
+        int bbsId=8;
+        boardVO.setBbsId(bbsId);
+        int result = adminService.updatePost(boardVO);
+
+        if (result > 0) {
+            return "redirect:/admin/price/view.do?boardSeq=" + boardVO.getBoardSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+
+    @PostMapping("/price/delete.do")
+    public String priceInfoDelete( @ModelAttribute("post") BoardVO boardVO) throws Exception {
+        boardVO.setBbsId(8);
+        int result = boardService.updateStat(boardVO);
+        if (result > 0) {
+            return "redirect:/admin/price/list.do";
         }
         return "forward:/common/error.jsp";
     }

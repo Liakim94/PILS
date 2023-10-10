@@ -302,9 +302,15 @@ public class QnaController extends Alerts {
 
         try {
             int result = qnaService.repostBbsQna(qnaVO);
-
             if (result > 0) {
-
+                // 답변 알림 메일 발송
+                try {
+                    EmsResponse ems = emsClient.send(qnaVO.getEmail(), "납품대금 연동제 홈페이지 온라인상담 답글 등록 알림", "납품대금 연동제 클라우드 이메일 발송 테스트");
+                    String status = ems.isSuccess() ? "SUCCESS" : "FAIL";
+                    System.out.println(status);
+                }catch(Exception e){
+                    System.out.println(e.toString()+"????????");
+                }
                 request.setAttribute("hid", "");
                 response.sendRedirect(request.getContextPath() + "/front/qna/view.do?no="+qnaVO.getNo());
 

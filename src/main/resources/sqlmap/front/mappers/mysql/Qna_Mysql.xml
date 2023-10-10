@@ -125,6 +125,7 @@
             , ttl
             , bdtxt
             , regist_date
+            , email_addr
         )
         values (
            #{headnum}
@@ -135,6 +136,7 @@
             , #{title}
             , #{body}
             , extract(epoch from now() at time zone 'utc')
+            , #{email}
         )
         <selectKey keyProperty="no" resultType="integer" order="AFTER">
             SELECT MAX(no) FROM tb_banner_qust_answr;

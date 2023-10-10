@@ -21,9 +21,6 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
             <li class="<c:if test="${URI.contains('/join/ready.do')}">on</c:if>">
                 <a href ="<c:url value="/join/ready.do"/>">도입 준비하기</a>
             </li>
-<%--            <li class="<c:if test="${URI.contains('/join/priceInfo.do')}">on</c:if>">--%>
-<%--                <a href ="<c:url value="/join/priceInfo.do"/>">원재료 가격정보 제공 사이트</a>--%>
-<%--            </li>--%>
             <li class="<c:if test="${URI.contains('/join/process')}">on</c:if>">
                 <a href ="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
             </li>
@@ -38,6 +35,9 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
             </li>
             <li class="<c:if test="${URI.contains('/join/contract')}">on</c:if>">
                 <a href="<c:url value="/join/contract.do"/>">표준 미연동계약서 작성하기</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/join/priceInfo.do')}">on</c:if>">
+                <a href ="<c:url value="/join/priceInfo.do"/>">원재료 가격정보 제공 사이트</a>
             </li>
         </ul>
     </div>

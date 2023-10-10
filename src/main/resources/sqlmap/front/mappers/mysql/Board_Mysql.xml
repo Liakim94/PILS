@@ -38,6 +38,10 @@
         <result property="dislike" column="DISLKE"/>
         <result property="steId" column="STE_ID"/>
         <result property="lnk" column="LNK"/>
+        <result property="chkInfo" column="chk_info"/>
+        <result property="siteUrl" column="site_url"/>
+        <result property="features" column="features"/>
+        <result property="chrg" column="chrg"/>
     </resultMap>
 
     <insert id="addBoard" flushCache="true">
@@ -64,7 +68,11 @@
         NOTICE_STPGE_DT,
         BEGIN_AT,
         TAG,
-        CNNC
+        CNNC,
+        site_url,
+        chk_info,
+        features,
+        chrg
         )
         VALUES
         (
@@ -89,7 +97,11 @@
         #{notiEndDt},
         COALESCE(#{opnAt}, 'N'),
         #{tag},
-        #{lnk}
+        #{lnk},
+        #{siteUrl},
+        #{chkInfo},
+        #{features},
+        #{chrg}
         )
         <selectKey keyProperty="boardSeq" resultType="integer" order="AFTER">
             SELECT MAX(BBS_SN) FROM tb_bbs_info;
@@ -190,7 +202,11 @@
         , NOTICE_STPGE_DT AS noti_end_dt
         , BEGIN_AT AS opn_at
         , ( SELECT CD_NM FROM tb_cd_data WHERE cd_grp = 'M700' AND CD = B.tag) as tag
-        , CNNC AS lnk
+        , CNNC AS lnk,
+        site_url as siteUrl,
+        chk_info as chkInfo,
+        features as features,
+        chrg as chrg
         FROM TB_BBS_INFO B
         WHERE
         BBS_SN = #{boardSeq}
@@ -220,7 +236,11 @@
             NOTICE_STPGE_DT = #{notiEndDt},
             BEGIN_AT        = COALESCE(#{opnAt}, 'N'),
             TAG             = #{tag},
-            CNNC            = #{lnk}
+            CNNC            = #{lnk},
+            site_url            = #{siteUrl},
+            chk_info            = #{chkInfo},
+            features            = #{features},
+            chrg                = #{chrg}
         WHERE BBS_SN = #{boardSeq}
 
     </update>
@@ -256,7 +276,7 @@
                      from
                          tb_atch ta
                      where
-                         bbs_id = '6'
+                         bbs_id = #{bbsId}
                        and bbs_sn = A.bbs_sn) as atch_sn
             from
                 tb_bbs_info A
@@ -271,7 +291,7 @@
                 left join tb_atch a
                           on s.atch_sn = a.atch_sn
         where s.stat ='1'
-          and s.bbs_id =6
+          and s.bbs_id =#{bbsId}
         order by
             reg_de desc
         ;
