@@ -8,12 +8,15 @@ import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
 import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.MainService;
+import kr.go.smes.ems.EmsClient;
+import kr.go.smes.ems.EmsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -34,6 +37,8 @@ public class MainController {
     @Autowired
     private ConsultingService consultingService;
 
+    @Resource
+    private EmsClient emsClient;
 
     @GetMapping(value = "/index.do")
     public ModelAndView main(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVo)
@@ -324,4 +329,33 @@ public class MainController {
         return "intro";
     }
 
+    @RequestMapping(value = "/mailTest.do")
+    public void mailTest(HttpServletResponse response) {
+
+        try {
+
+            EmsResponse result = emsClient.send("wildrain@u-cube.kr", "납품대금 연동제 클라우드 이메일 발송 테스트", "납품대금 연동제 클라우드 이메일 발송 테스트");
+
+            String status = result.isSuccess() ? "SUCCESS" : "FAIL";
+
+            PrintWriter printWriter = response.getWriter();
+            printWriter.println("<html><head><title>SmsTest Result!</title></head><body><h1>" + status + "</h1><h2>" + result.getErrorCode() + "</h2></body></html>");
+            printWriter.flush();
+            printWriter.close();
+
+        }
+        catch (Exception ex) {
+            String message = ex.getMessage();
+            try {
+                PrintWriter printWriter = response.getWriter();
+                printWriter.println("<html><head><title>FAIL!</title></head><body><h1>" + message + "</h1></body></html>");
+                printWriter.flush();
+                printWriter.close();
+            }
+            catch (Exception exx) {
+                exx.printStackTrace();
+            }
+        }
+
+    }
 }
