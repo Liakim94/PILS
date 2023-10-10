@@ -26,11 +26,11 @@
                     납품대금 연동제 도입하기
                 </li>
                 <li>
-                    약정서 작성
+                    연동표 작성
                 </li>
             </ul>
        v      <div class="article-header">
-                <h1 class="fw700">약정서 작성</h1>
+                <h1 class="fw700">연동표 작성</h1>
                 <div class="side-wrap">
                 </div>
             </div>
@@ -122,6 +122,14 @@
                     </div>
                     <div class="line-wrap">
                         <div class="label">
+                            9.1. 반영비율
+                        </div>
+                        <div class="value-wrap">
+                            ${rs.ratio}
+                        </div>
+                    </div>
+                    <div class="line-wrap">
+                        <div class="label">
                             10. 기타사항
                         </div>
                         <div class="value-wrap">
@@ -131,7 +139,7 @@
                 </div>
                 <div class="write-bottom">
                     <a class="submit" href="<c:url value="/join/agreeDelete.do?id=${rs.id}"/>">새로 작성하기</a>
-                    <a class="print" onclick="previewOpen()" style="margin-right:20px">약정서 미리보기</a>
+                    <a class="print" onclick="previewOpen()" style="margin-right:20px">연동표 미리보기</a>
                     <a href="<c:url value="/join/agreeMain.do"/>" class="back">목록</a>
                 </div>
                 <!-- 컨텐츠 end -->
@@ -143,7 +151,7 @@
 
     function previewOpen(){
         var options = 'top=10, left=10, width=1000, height=750, status=no, menubar=no, toolbar=no, resizable=no';
-        window.open('<c:url value="/join/agree/preview.do"/>', '약정서 미리보기', options);
+        window.open('<c:url value="/join/agree/preview.do"/>', '연동표 미리보기', options);
     }
 
     function infoOpen(i){

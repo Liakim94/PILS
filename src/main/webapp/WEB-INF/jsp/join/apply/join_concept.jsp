@@ -80,6 +80,69 @@
                         </li>
                     </ul>
                 </div>
+                <h2 class="title mt40">동행기업 운영 절차는?</h2>
+                <div class="company-process">
+                    <div class="prwrap">
+                        <img src="<c:url value="/images/common/company-process1.png"/>" alt="참여 신청·접수"/>
+                    </div>
+                    <div class="prwrap">
+                        <img src="<c:url value="/images/common/company-process2.png"/>" alt="참여기업 선정" />
+                    </div>
+                    <div class="prwrap">
+                        <img src="<c:url value="/images/common/company-process3.png"/>" alt="연동 약정 체결"/>
+                    </div>
+                    <div class="prwrap">
+                        <img src="<c:url value="/images/common/company-process4.png"/>" alt="표준 연동계약서 제출"/>
+                    </div>
+                    <div class="prwrap">
+                        <img src="<c:url value="/images/common/company-process8.png"/>" alt="우수기업 선정,포상"/>
+                    </div>
+                    <div class="prwrap">
+                        <img src="<c:url value="/images/common/company-process7.png"/>" alt="조정 실적 제출"/>
+                    </div>
+                    <div class="prwrap">
+                        <img src="<c:url value="/images/common/company-process6.png"/>" alt="참여확인서 제출 및 인센티브 부여"/>
+                    </div>
+                    <div class="prwrap">
+                        <img src="<c:url value="/images/common/company-process5.png"/>" alt="참여확인서 발급"/>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <div class="item-wrap" onclick="detailOpen(this)" tabindex="1">
+                        <h3>자세히 보기</h3>
+                        <img class="icon" src="<c:url value="/images/common/arrow-top.png"/>" alt="상세보기">
+                        <div class="detail-info">
+                            <h3 class="mb20">연동체결 및 조정실적 제출 세부 운영절차</h3>
+                            <%--                            <div class="peristalsis-process">--%>
+                            <%--                                <div class="item">--%>
+                            <%--                                    ① 연동 특별약정서 제출--%>
+                            <%--                                </div>--%>
+                            <%--                                <div class="item">--%>
+                            <%--                                    ② 참여확인서 발급--%>
+                            <%--                                </div>--%>
+                            <%--                                <div class="item">--%>
+                            <%--                                    ③ 인센티브 부여--%>
+                            <%--                                </div>--%>
+                            <%--                                <div class="item">--%>
+                            <%--                                    ④ 조정실적 제출--%>
+                            <%--                                </div>--%>
+                            <%--                            </div>--%>
+                            <h4 class="mb20">
+                                ① <strong>(표준 연동계약서 제출)</strong> 위탁기업-수탁기업 간 체결한 계약서의 연동약정에해당하는 부분 제출
+                                <p class="pl10 tip">* 영업비밀에 해당할 수 있는 내용은 제외, 위탁기업-수탁기업 담당자 정보 포함</p>
+                            </h4>
+                            <h4 class="mb20">
+                                ② <strong>(참여확인서 발급)</strong> 위탁기업이 표준 연동계약서를 제출한 뒤 확인서 발급을 요청하면 ‘납품대금 연동제 동행기업 참여 확인서’ 발급
+                            </h4>
+                            <h4 class="mb20">
+                                ③ <strong>(인센티브 부여)</strong>참여기업은 ‘동행기업 참여시 제공 인센티브’를 부여받고자 하는 해당기관에 ‘납품대금 연동제 동행기업 참여 확인서’를 제출
+                            </h4>
+                            <h4 class="">
+                                ④ <strong>(조정실적 제출)</strong> 위탁기업이 납품대금 연동 약정에 따라 납품대금을 조정하여 지급한 내역서를 제출
+                            </h4>
+                        </div>
+                    </div>
+                </div>
                 <h2 class="title mt40" style="margin-bottom:20px">동행기업 참여 시 제공 인센티브(’23년)</h2>
                 <h4>
                     <ul class="disc">
@@ -199,69 +262,6 @@
                                 <p class="pl10">- ‘23.10.31일 기준 동행기업으로 참여한 위탁기업 중 참여 수탁기업수, 연동계약 체결 기업 수 등을 평가하여, 실적이 우수한 기업을 선정하여 포상(’23. 12월 예정)</p>
                                 ※ 기타사항<br>
                                 <p class="pl10">- 기존 시범운영(중기부 공고 제2022-482호) 및 상시모집(제2022-526호)과 자율운영(공정위 공고 제2022-147호) 참여기업의 경우 동행기업 참여의사 확인 후 ‘동행기업’에 참여한 것으로 인정</p>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                <h2 class="title mt40">동행기업 운영 절차는?</h2>
-                <div class="company-process">
-                    <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process1.png"/>" alt="참여 신청·접수"/>
-                    </div>
-                    <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process2.png"/>" alt="참여기업 선정" />
-                    </div>
-                    <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process3.png"/>" alt="연동 약정 체결"/>
-                    </div>
-                    <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process4.png"/>" alt="표준 연동계약서 제출"/>
-                    </div>
-                    <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process8.png"/>" alt="우수기업 선정,포상"/>
-                    </div>
-                    <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process7.png"/>" alt="조정 실적 제출"/>
-                    </div>
-                    <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process6.png"/>" alt="참여확인서 제출 및 인센티브 부여"/>
-                    </div>
-                    <div class="prwrap">
-                        <img src="<c:url value="/images/common/company-process5.png"/>" alt="참여확인서 발급"/>
-                    </div>
-                </div>
-                <div class="accordion-container">
-                    <div class="item-wrap" onclick="detailOpen(this)" tabindex="1">
-                        <h3>자세히 보기</h3>
-                        <img class="icon" src="<c:url value="/images/common/arrow-top.png"/>" alt="상세보기">
-                        <div class="detail-info">
-                            <h3 class="mb20">연동체결 및 조정실적 제출 세부 운영절차</h3>
-<%--                            <div class="peristalsis-process">--%>
-<%--                                <div class="item">--%>
-<%--                                    ① 연동 특별약정서 제출--%>
-<%--                                </div>--%>
-<%--                                <div class="item">--%>
-<%--                                    ② 참여확인서 발급--%>
-<%--                                </div>--%>
-<%--                                <div class="item">--%>
-<%--                                    ③ 인센티브 부여--%>
-<%--                                </div>--%>
-<%--                                <div class="item">--%>
-<%--                                    ④ 조정실적 제출--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-                            <h4 class="mb20">
-                                ① <strong>(표준 연동계약서 제출)</strong> 위탁기업-수탁기업 간 체결한 계약서의 연동약정에해당하는 부분 제출
-                                <p class="pl10 tip">* 영업비밀에 해당할 수 있는 내용은 제외, 위탁기업-수탁기업 담당자 정보 포함</p>
-                            </h4>
-                            <h4 class="mb20">
-                                ② <strong>(참여확인서 발급)</strong> 위탁기업이 표준 연동계약서를 제출한 뒤 확인서 발급을 요청하면 ‘납품대금 연동제 동행기업 참여 확인서’ 발급
-                            </h4>
-                            <h4 class="mb20">
-                                ③ <strong>(인센티브 부여)</strong>참여기업은 ‘동행기업 참여시 제공 인센티브’를 부여받고자 하는 해당기관에 ‘납품대금 연동제 동행기업 참여 확인서’를 제출
-                            </h4>
-                            <h4 class="">
-                                ④ <strong>(조정실적 제출)</strong> 위탁기업이 납품대금 연동 약정에 따라 납품대금을 조정하여 지급한 내역서를 제출
                             </h4>
                         </div>
                     </div>

@@ -17,6 +17,7 @@ public class AgreementVO {
     private String rqrm_date="";
     private String  reflect_point="";
     private String formula="";
+    private String ratio="";
     private String etc="";
 
 }
