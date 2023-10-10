@@ -29,7 +29,7 @@
                     연동표 작성
                 </li>
             </ul>
-       v      <div class="article-header">
+            <div class="article-header">
                 <h1 class="fw700">연동표 작성</h1>
                 <div class="side-wrap">
                 </div>

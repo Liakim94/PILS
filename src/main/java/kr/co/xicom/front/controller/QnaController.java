@@ -5,6 +5,8 @@ import kr.co.xicom.front.model.QnaVO;
 import kr.co.xicom.front.service.QnaService;
 import kr.co.xicom.util.Alerts;
 import kr.co.xicom.util.CaptchaUtil;
+import kr.go.smes.ems.EmsClient;
+import kr.go.smes.ems.EmsResponse;
 import nl.captcha.Captcha;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -15,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,6 +30,8 @@ import java.util.Map;
 @RequestMapping("/front")
 @Controller
 public class QnaController extends Alerts {
+    @Resource
+    private EmsClient emsClient;
 
     /**
      * Logger
@@ -112,7 +117,7 @@ public class QnaController extends Alerts {
         String answer = qnaVO.getAnswer();
 
         if (StringUtils.isBlank(answer)) {
-            // 이미 클라이언트에서 해당 값(answer)에 빈값을 체크 할것이므르로
+            // 이미 클라이언트에서 해당 값(answer)에 빈값을 체크 할것이므로
             // 이럴일은 없겠지만 방어 코딩 필요.
         }
 
@@ -133,7 +138,14 @@ public class QnaController extends Alerts {
         try {
             int result = qnaService.insertBbsQna(qnaVO);
             if (result > 0) {
-
+                // 질의 등록 알림 메일 발송
+                try {
+                    EmsResponse ems = emsClient.send("do942003@u-cube.kr", "납품대금 연동제 클라우드 이메일 발송 테스트", "납품대금 연동제 클라우드 이메일 발송 테스트");
+                    String status = ems.isSuccess() ? "SUCCESS" : "FAIL";
+                    System.out.println(status);
+                }catch(Exception e){
+                    System.out.println(e.toString()+"????????");
+                }
                 session = request.getSession();
                 session.setAttribute("qnaId", qnaVO.getNo());
                 request.setAttribute("hid", "");
