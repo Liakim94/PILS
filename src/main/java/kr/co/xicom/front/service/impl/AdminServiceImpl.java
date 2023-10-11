@@ -253,7 +253,7 @@ public class AdminServiceImpl implements AdminService {
                     for (int i = 0; i < attachList.size(); i++) {
                         AttachVO attach = attachList.get(i);
                         attach.setBoardSeq(vo.getBoardSeq());
-                        attach.setBbsId(6);
+                        attach.setBbsId(vo.getBbsId());
                         attach.setRegSeq(vo.getRegSeq());
                         attach.setUpdSeq(vo.getUpdSeq());
                         attach.setRegNm(vo.getRegNm());
@@ -278,7 +278,7 @@ public class AdminServiceImpl implements AdminService {
 
         AttachVO attach = new AttachVO();
         attach.setBoardSeq(vo.getBoardSeq());
-        attach.setBbsId(6);
+        attach.setBbsId(vo.getBbsId());
         this.attachMapper.delete(attach);
         // 다시 첨부파일 정보 등록
         String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
