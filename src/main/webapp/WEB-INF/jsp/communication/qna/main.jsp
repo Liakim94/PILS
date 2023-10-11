@@ -40,7 +40,7 @@
                             온라인 상담 신청</a>
                     </div>
                     <div class="item">
-                        <a href="">
+                        <a href="<c:url value="/front/board/11/view.do?boardSeq=82"/>">
                             <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" >
                             <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>">
                             원가분석 컨설팅 신청</a>
@@ -69,7 +69,8 @@
                             <tr>
                                 <td class="tbody">2</td>
                                 <td class="">서울지방중소벤처기업청</td>
-                                <td class="">02-798-9831, 02-2110-6351</td>
+                                <td class="">02-2110-6341, 6348, 6315, 6316
+                                    / 02-723-9100</td>
                             </tr>
                             <tr>
                                 <td class="tbody">3</td>
@@ -99,12 +100,12 @@
                             <tr>
                                 <td class="tbody">8</td>
                                 <td class="">대구·경북지방중소벤처기업청</td>
-                                <td class="">053-659-2270~3</td>
+                                <td class="">053-659-2263</td>
                             </tr>
                             <tr>
                                 <td class="tbody">9</td>
                                 <td class="">울산지방중소벤처기업청</td>
-                                <td class="">052-210-0031,0032</td>
+                                <td class="">052-210-0042, 052-210-0031~32</td>
                             </tr>
                             <tr>
                                 <td class="tbody">10</td>
@@ -114,22 +115,22 @@
                             <tr>
                                 <td class="tbody">11</td>
                                 <td class="">경남지방중소벤처기업청</td>
-                                <td class="">055-268-2546~8</td>
+                                <td class="">055-268-2563, 2585, 2546</td>
                             </tr>
                             <tr>
                                 <td class="tbody">12</td>
                                 <td class="">광주·전남지방중소벤처기업청</td>
-                                <td class="">062-360-9139</td>
+                                <td class="">062-360-9139, 9158</td>
                             </tr>
                             <tr>
                                 <td class="tbody">13</td>
                                 <td class="">전북지방중소벤처기업청</td>
-                                <td class="">063-210-6436~8</td>
+                                <td class="">063-210-6446, 6436~8</td>
                             </tr>
                             <tr>
                                 <td class="tbody">14</td>
                                 <td class="">강원지방중소벤처기업청</td>
-                                <td class="">033-260-1625~6</td>
+                                <td class="">033-260-1625~26</td>
                             </tr>
                             <tr>
                                 <td class="tbody">15</td>
