@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="content">
-                <div id="company-write" class="content">
+                <div class="content">
 
                     <!-- 컨텐츠 start -->
                     <div class="board-view-wrap01">
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="write-container">
+                        <div class="write-container" style="border-top: 2px solid #262626;border-bottom: 2px solid #262626;">
                             <div class="line-wrap">
                                 <div class="label">사이트명</div>
                                 <div class="input-wrap" style="margin:5px">
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="write-bottom">
-                            <a class="go-lst" href="<c:url value="/front/join/priceInfoView.do"/>">목록</a>
+                            <a class="go-lst" href="<c:url value="/join/priceInfo.do"/>">목록</a>
                         </div>
                     </div>
                     <!-- 컨텐츠 end -->
