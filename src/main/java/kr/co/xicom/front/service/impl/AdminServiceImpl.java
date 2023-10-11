@@ -291,7 +291,7 @@ public class AdminServiceImpl implements AdminService {
                 for (int i = 0; i < attachList.size(); i++) {
                     attach = attachList.get(i);
                     attach.setBoardSeq(vo.getBoardSeq());
-                    attach.setBbsId(6);
+                    attach.setBbsId(vo.getBbsId());
                     attach.setRegSeq(vo.getRegSeq());
                     attach.setUpdSeq(vo.getUpdSeq());
                     attach.setRegNm(vo.getRegNm());
@@ -317,6 +317,7 @@ public class AdminServiceImpl implements AdminService {
         return result;
     }
 
+    //걸어온발자취 첨부파일 list
     @Override
     public List<AttachVO> getAttachList(TraceVO vo) throws Exception {
 
