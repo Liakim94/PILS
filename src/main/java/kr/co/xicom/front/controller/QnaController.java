@@ -140,7 +140,7 @@ public class QnaController extends Alerts {
             if (result > 0) {
                 // 질의 등록 알림 메일 발송
                 try {
-                    EmsResponse ems = emsClient.send("do942003@u-cube.kr", "납품대금 연동제 클라우드 이메일 발송 테스트", "납품대금 연동제 클라우드 이메일 발송 테스트");
+                    EmsResponse ems = emsClient.send(qnaVO.getEmail(), "납품대금 연동제 클라우드 이메일 발송 테스트", "납품대금 연동제 클라우드 이메일 발송 테스트");
                     String status = ems.isSuccess() ? "SUCCESS" : "FAIL";
                     System.out.println(status);
                 }catch(Exception e){
