@@ -119,12 +119,9 @@
                              OnClick="location.href ='<c:url value="/front/board/ready/list.do"/>'">
                         </div>
                         <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/main/consulting_banner.JPG'/>)"
+                             style="background: url(<c:url value='/images/main/consulting_banner.jpg'/>)"
                              OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=82"/>'">
                         </div>
-                        <%--<div class="swiper-slide"
-                             style="background: url(<c:url value='/images/main/event_banner.jpg'/>)"
-                             OnClick="locationcation.href ='<c:url value="/front/board/11/view.do?boardSeq=45"/>'"></div>--%>
                         <div class="swiper-slide"
                              style="background: url(<c:url value='/images/main/recruit_banner.png'/>)"
                              OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=79"/>'"></div>
@@ -161,11 +158,12 @@
                              OnClick="location.href ='<c:url value="/front/board/ready/list.do"/>'">
                         </div>
                         <div class="swiper-slide"
-                             style="background-image: url(<c:url value='/images/mobile/banner_04.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=45"/>'"></div>
+                             style="background: url(<c:url value='/images/mobile/consulting_banner_mobile.jpg'/>)"
+                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=82"/>'">
+                        </div>
                         <div class="swiper-slide"
                              style="background-image: url(<c:url value='/images/mobile/banner_05.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=5"/>'"></div>
+                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=79"/>'"></div>
                     </div>
                 </div>
             </div>
