@@ -313,7 +313,7 @@
         file_size,
         file_ty,
         saved_path,
-        saved_file_name
+        saved_file_nm
         )
         VALUES(
         #{banNm},

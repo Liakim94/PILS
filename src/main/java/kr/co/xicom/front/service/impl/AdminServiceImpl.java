@@ -362,7 +362,7 @@ public class AdminServiceImpl implements AdminService {
             if (!StringUtils.isBlank(pcImage)) {
                 // HTMLTagFilter 적용 되돌리기
                 pcImage = kr.go.smes.util.HtmlTagUtils.restore(pcImage);
-                List<CompanyAttachVO> logoAttachs = gson.fromJson(pcImage, listType);
+                List<BannerVO> logoAttachs = gson.fromJson(pcImage, listType);
                 if (logoAttachs != null && logoAttachs.size() > 0) {
                     vo.setPcImgPath(logoAttachs.get(0).getSavedFilepath());
                     vo.setBanTy("pc");
@@ -373,7 +373,7 @@ public class AdminServiceImpl implements AdminService {
             if (!StringUtils.isBlank(mobileImage)) {
                 // HTMLTagFilter 적용 되돌리기
                 mobileImage = kr.go.smes.util.HtmlTagUtils.restore(mobileImage);
-                List<CompanyAttachVO> logoAttachs = gson.fromJson(mobileImage, listType);
+                List<BannerVO> logoAttachs = gson.fromJson(mobileImage, listType);
                 if (logoAttachs != null && logoAttachs.size() > 0) {
                     vo.setMobileImgPath(logoAttachs.get(0).getSavedFilepath());
                     vo.setBanTy("mobile");
