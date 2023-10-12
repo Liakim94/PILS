@@ -9,6 +9,7 @@ import java.util.List;
 public interface MainMapper {
     int memberLogin(CmpMemberVo memberVo) throws Exception;
     String memberBizno(String id) throws Exception;
+    String memAuthCd(String id) throws Exception;
     List<CmpMemberVo>memManage(CmpMemberVo vo)  throws Exception;
     int memAdd(CmpMemberVo vo) throws Exception;
     CmpMemberVo getMemInfo(CmpMemberVo vo) throws Exception;

@@ -1,6 +1,7 @@
 package kr.co.xicom.front.service.mapper;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
+import kr.co.xicom.front.model.BannerVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.RcmdVO;
 import kr.co.xicom.front.model.TraceVO;
@@ -31,5 +32,10 @@ public interface AdminMapper {
 
     List<RcmdVO>recomList(RcmdVO vo) throws Exception;
     int recomCount(RcmdVO vo) throws Exception;
+
+    List<BannerVO> banList(BannerVO vo) throws Exception;
+    int banCount(BannerVO vo) throws Exception;
+
+    int banPost(BannerVO vo) throws Exception;
     
 }

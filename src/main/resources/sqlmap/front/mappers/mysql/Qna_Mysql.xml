@@ -17,7 +17,12 @@
         <result property="reply"                            column="reply"/>
         <result property="email"                            column="email"/>
     </resultMap>
-
+    <resultMap id="ContactVO" type="kr.co.xicom.front.model.ContactVO">
+        <result property="sortSeq" column="sort_seq"/>
+        <result property="instNm" column="inst_nm"/>
+        <result property="contact" column="contact"/>
+        <result property="upDt" column="up_dt"/>
+    </resultMap>
     <select id="list" resultMap="bbsQna">
         select no           AS no
                 , hedofc_no AS headnum
@@ -145,4 +150,16 @@
     <delete id="qnaDelete">
         delete from tb_banner_qust_answr where no=  #{no}
     </delete>
+
+    <select id="contact" resultMap="ContactVO">
+        select *
+        from tb_pils_qna_contact
+        order by sort_seq asc
+    </select>
+    <update id="updateContact">
+            update tb_pils_qna_contact
+            set inst_nm        = #{instNm}
+              , contact = #{contact}
+            where seq = #{seq}
+    </update>
 </mapper>

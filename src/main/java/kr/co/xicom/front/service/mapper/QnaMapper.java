@@ -3,10 +3,15 @@ package kr.co.xicom.front.service.mapper;
 import java.util.List;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
+import kr.co.xicom.front.model.ContactVO;
 import kr.co.xicom.front.model.QnaVO;
+import org.opengis.metadata.citation.Contact;
 
 @Mapper("QnaMapper")
 public interface QnaMapper {
+
+	List<ContactVO> contact(ContactVO vo)throws Exception;
+	int updateContact(ContactVO vo)throws Exception;
 
 	List<QnaVO> list(QnaVO vo)throws Exception;
 

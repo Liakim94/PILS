@@ -1,6 +1,8 @@
 package kr.co.xicom.front.controller;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import kr.co.xicom.front.model.BoardVO;
+import kr.co.xicom.front.model.ContactVO;
 import kr.co.xicom.front.model.QnaVO;
 import kr.co.xicom.front.service.QnaService;
 import kr.co.xicom.util.Alerts;
@@ -42,11 +44,32 @@ public class QnaController extends Alerts {
     private QnaService qnaService;
 
     @GetMapping(value = "/qna/main.do")
-    public ModelAndView qnaMain() throws Exception {
+    public ModelAndView qnaMain(@ModelAttribute("update") ContactVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("communication/qna/main");
+        List<ContactVO> rs = qnaService.contact(vo);
+        mav.addObject("rs",rs);
         return mav;
     }
+    @RequestMapping(value="/qna/main.do", method = {RequestMethod.POST})
+    public void updateContact( @ModelAttribute("update") ContactVO vo,
+                                 HttpServletResponse response,
+                                 HttpServletRequest request) throws Exception {
 
+        int result = qnaService.updateContact(vo);
+        if (result > 0) {
+            response.sendRedirect(request.getContextPath() + "/front/qna/main.do");
+        }else {
+            PrintWriter writer = response.getWriter();
+
+            response.setContentType("text/html; charset=UTF-8;");
+            request.setCharacterEncoding("utf-8");
+            writer.println("<script type='text/javascript'>");
+            writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
+            writer.println("history.back();");
+            writer.println("</script>");
+            writer.flush();
+        }
+    }
     /**
      * 1:1문의 목록
      */

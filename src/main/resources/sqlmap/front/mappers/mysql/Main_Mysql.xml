@@ -43,6 +43,11 @@
         from tb_pils_mbr tpm
         where user_id = #{id}
     </select>
+    <select id="memAuthCd" resultType="String">
+        select auth_cd as auth_cd
+        from tb_pils_mbr tpm
+        where user_id = #{id}
+    </select>
     <select id="memManage" resultMap="CmpMemberVo">
         select user_id       as id
              , nm            as name

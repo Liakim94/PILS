@@ -22,6 +22,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -337,5 +338,53 @@ public class AdminServiceImpl implements AdminService {
         map.put("resultList", list);
         map.put("resultCnt", cnt);
         return map;
+    }
+
+    // 메인 배너 list
+    @Override
+    public Map<String, Object> banList(BannerVO vo) throws Exception {
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<BannerVO> list = adminMapper.banList(vo);
+        int cnt = adminMapper.banCount(vo);
+        map.put("resultList", list);
+        map.put("resultCnt", cnt);
+        return map;
+    }
+    @Override
+    public int banPost(BannerVO vo) throws Exception {
+        int result = 0;
+        try {
+            // JSON 처리용 Gson
+            Gson gson = new Gson();
+            Type listType = new com.google.common.reflect.TypeToken<List<BannerVO>>(){}.getType();
+
+            String pcImage = vo.getJsonPcImage();
+            if (!StringUtils.isBlank(pcImage)) {
+                // HTMLTagFilter 적용 되돌리기
+                pcImage = kr.go.smes.util.HtmlTagUtils.restore(pcImage);
+                List<CompanyAttachVO> logoAttachs = gson.fromJson(pcImage, listType);
+                if (logoAttachs != null && logoAttachs.size() > 0) {
+                    vo.setPcImgPath(logoAttachs.get(0).getSavedFilepath());
+                    vo.setBanTy("pc");
+                    adminMapper.banPost(vo);
+                }
+            }
+            String mobileImage = vo.getJsonMobileImage();
+            if (!StringUtils.isBlank(mobileImage)) {
+                // HTMLTagFilter 적용 되돌리기
+                mobileImage = kr.go.smes.util.HtmlTagUtils.restore(mobileImage);
+                List<CompanyAttachVO> logoAttachs = gson.fromJson(mobileImage, listType);
+                if (logoAttachs != null && logoAttachs.size() > 0) {
+                    vo.setMobileImgPath(logoAttachs.get(0).getSavedFilepath());
+                    vo.setBanTy("mobile");
+                    adminMapper.banPost(vo);
+                }
+            }
+        }
+        catch (Exception ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            throw ex;
+        }
+        return result;
     }
 }

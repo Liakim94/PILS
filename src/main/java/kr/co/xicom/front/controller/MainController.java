@@ -75,6 +75,7 @@ public class MainController {
             String bizNo = mainService.memberBizno(vo.getId());
             HttpSession session = request.getSession();
             session.setAttribute("sessionId", vo.getId());
+            session.setAttribute("auth_cd", mainService.memAuthCd(vo.getId()));
             session.setAttribute("sessionBizNo", bizNo);
             response.sendRedirect(request.getContextPath() + "/main/index.do");
         } else {

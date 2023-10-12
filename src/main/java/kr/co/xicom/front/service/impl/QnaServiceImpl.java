@@ -1,5 +1,6 @@
 package kr.co.xicom.front.service.impl;
 
+import kr.co.xicom.front.model.ContactVO;
 import kr.co.xicom.front.model.QnaVO;
 import kr.co.xicom.front.service.QnaService;
 import kr.co.xicom.front.service.mapper.QnaMapper;
@@ -15,6 +16,16 @@ public class QnaServiceImpl implements QnaService {
 
 	@Autowired
 	private QnaMapper mapper;
+
+	@Override
+	public List<ContactVO> contact(ContactVO vo) throws Exception {
+		return mapper.contact(vo);
+	}
+	@Override
+	public int updateContact(ContactVO vo) throws Exception {
+		return mapper.updateContact(vo);
+	}
+
 
 	@Override
 	public Map<String, Object> list(QnaVO vo) throws Exception {
@@ -57,4 +68,6 @@ public class QnaServiceImpl implements QnaService {
 	public int qnaDelete(int no) throws Exception{
 		return mapper.qnaDelete(no);
 	}
+
+
 }

@@ -49,6 +49,21 @@
         <result property="rcmd_detail" column="rcmd_detail"/>
         <result property="appdt" column="appdt"/>
     </resultMap>
+    <resultMap id="BannerVO" type="kr.co.xicom.front.model.BannerVO">
+        <result property="banSeq" column="ban_sn"/>
+        <result property="banNm" column="ban_nm"/>
+        <result property="siteUrl" column="site_url"/>
+        <result property="stts" column="stts"/>
+        <result property="sortSeq" column="sort_seq"/>
+        <result property="banTy" column="ban_ty"/>
+        <result property="registDt" column="regist_dt"/>
+        <result property="upDt" column="up_dt"/>
+        <result property="fileNm" column="file_nm"/>
+        <result property="fileSize" column="file_sise"/>
+        <result property="fileType" column="file_ty"/>
+        <result property="savedPath" column="saved_path"/>
+        <result property="savedFileName" column="saved_file_nm"/>
+    </resultMap>
     <select id="joinList" resultMap="CmpMemberVo">
         select
             A.bizno as bizNo
@@ -274,4 +289,44 @@
         FROM tb_pils_rcmd
         WHERE 1 = 1
     </select>
+    <select id="banCount" resultType="int">
+        SELECT COUNT(1)
+        FROM tb_pils_banner
+        WHERE 1 = 1
+    </select>
+    <select id="banList" resultMap="BannerVO">
+        select *
+        from tb_pils_banner
+        where stts =1
+        and ban_ty = 'pc'
+        order by regist_dt desc
+    </select>
+    <insert id="banPost" parameterType="kr.co.xicom.front.model.BannerVO">
+        INSERT INTO tb_pils_banner (
+        ban_nm,
+        site_url,
+        stts,
+        ban_ty,
+        sort_seq,
+        regist_dt,
+        file_nm,
+        file_size,
+        file_ty,
+        saved_path,
+        saved_file_name
+        )
+        VALUES(
+        #{banNm},
+        #{siteUrl},
+        #{stts},
+        #{banTy},
+        #{sortSeq},
+        NOW(),
+        #{fileNm},
+        #{fileSize},
+        #{fileType},
+        #{savedPath},
+        #{savedFileName}
+        )
+    </insert>
 </mapper>

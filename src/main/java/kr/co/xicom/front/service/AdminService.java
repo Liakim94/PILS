@@ -48,4 +48,9 @@ public interface AdminService {
     List<AttachVO> getAttachList(TraceVO vo) throws Exception;
 
     Map<String, Object> recomList(RcmdVO vo) throws Exception;
+
+    // 메인 배너 list
+    Map<String, Object> banList(BannerVO vo) throws Exception;
+
+    int banPost(BannerVO vo) throws Exception;
 }

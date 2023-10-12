@@ -12,6 +12,9 @@ import java.util.Map;
 public interface MainService {
     int memberLogin(CmpMemberVo memberVo) throws Exception;
     String memberBizno(String id) throws Exception;
+
+    String memAuthCd(String id) throws Exception;
+
     List<CmpMemberVo> memManage(CmpMemberVo vo) throws Exception;
 
     int memAdd(CmpMemberVo vo) throws Exception;

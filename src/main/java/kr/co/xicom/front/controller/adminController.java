@@ -746,4 +746,54 @@ public class adminController {
         }
         return "forward:/common/error.jsp";
     }
+
+    // 메인 배너 관리
+    @RequestMapping(value = "/banner/list.do", method = {RequestMethod.GET})
+    public ModelAndView banList(@ModelAttribute("BannerVo") BannerVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/banner_list");
+
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+        vo.setStts(1);
+
+        Map<String, Object> result = adminService.banList(vo);
+
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
+
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", result.get("resultList"));
+        mav.addObject("totalCnt", result.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+
+        return mav;
+    }
+    @GetMapping(value = "/banner/post.do")
+    public ModelAndView banPost(@ModelAttribute("post") BannerVO vo) throws Exception {
+
+        ModelAndView mav =  new ModelAndView("admin/banner_post");
+
+        return mav;
+    }
+    @PostMapping(value = "/banner/post.do")
+    public String doBanPost(@ModelAttribute("post") BannerVO vo) throws Exception {
+        vo.setStts(1);
+        int result = adminService.banPost(vo);
+
+        if (result > 0) {
+            return "redirect:/admin/banner/view.do?banSeq=" + vo.getBanSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
 }

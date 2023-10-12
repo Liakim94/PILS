@@ -5,11 +5,35 @@
 <%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
     <title>중소벤처기업부 | 상담하기</title>
 </head>
+<script>
+    $(document).ready(function () {
+        $("#textTable").show();
+        $("#updateTable").hide();
 
+        $("#updateContact").click(function () {
+            $("#textTable").hide();
+            $("#updateTable").show();
+            $(".test").show();
+            $("#updateContact").hide();
+        })
+    });
+    function getSeq(val){
+        if(val != null) {
+            const seq = document.getElementById("seq");
+            const instNm = "instNm" + val;
+            const contact = "contact" + val;
+            seq.value = val;
+            document.getElementById(instNm).setAttribute('name','instNm');
+            document.getElementById(contact).setAttribute('name','contact');
+        }
+        return $('#update').submit();
+    }
+</script>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu"/>
@@ -53,95 +77,62 @@
                         ② 납품대금 연동제 일반 문의 및 상담 : 지방중소벤처기업청 소상공인과/지역혁신과<br>
                         ③ 동행기업 참여 관련 문의 및 상담 : 협력재단 납품대금연동·확산지원TF<br>
                     </h4>
+                    <div class="tbl-wrap for_board">
+                        <c:if test="${auth_cd eq 'M101' }">
+                            <a type="button" id="updateContact" class="write-question" style="width: 141px">
+                                연락처 수정
+                            </a>
+                        </c:if>
+                    </div>
                     <div class="s-table-wrap">
-                        <table class="s-table c-table" id="table2">
+                        <table class="s-table c-table" id="textTable" >
                             <thead>
                             <th class="c-th" width="15%">연번</th>
                             <th class="c-th">담당기관</th>
                             <th class="c-th">전화번호</th>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="tbody">1</td>
-                                <td class="">중소벤처기업부</td>
-                                <td class="">044-204-7905, 7908, 7942</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">2</td>
-                                <td class="">서울지방중소벤처기업청</td>
-                                <td class="">02-2110-6341, 6348, 6315, 6316
-                                    / 02-723-9100</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">3</td>
-                                <td class="">경기지방중소벤처기업청</td>
-                                <td class="">031-201-6868</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">4</td>
-                                <td class="">인천지방중소벤처기업청</td>
-                                <td class="">032-450-1148~1150</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">5</td>
-                                <td class="">대전·세종지방중소벤처기업청</td>
-                                <td class="">042-865-6183</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">6</td>
-                                <td class="">충북지방중소벤처기업청</td>
-                                <td class="">043-230-5307~8</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">7</td>
-                                <td class="">충남지방중소벤처기업청</td>
-                                <td class="">041-415-0623, 041-564-3862</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">8</td>
-                                <td class="">대구·경북지방중소벤처기업청</td>
-                                <td class="">053-659-2263</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">9</td>
-                                <td class="">울산지방중소벤처기업청</td>
-                                <td class="">052-210-0042, 052-210-0031~32</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">10</td>
-                                <td class="">부산지방중소벤처기업청</td>
-                                <td class="">051-831-1357</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">11</td>
-                                <td class="">경남지방중소벤처기업청</td>
-                                <td class="">055-268-2563, 2585, 2546</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">12</td>
-                                <td class="">광주·전남지방중소벤처기업청</td>
-                                <td class="">062-360-9139, 9158</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">13</td>
-                                <td class="">전북지방중소벤처기업청</td>
-                                <td class="">063-210-6446, 6436~8</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">14</td>
-                                <td class="">강원지방중소벤처기업청</td>
-                                <td class="">033-260-1625~26</td>
-                            </tr>
-                            <tr>
-                                <td class="tbody">15</td>
-                                <td class="">대‧중소기업‧농어업협력재단(납품대금 연동 확산지원본부)</td>
-                                <td class="">02-368-8470, 8969, 8962, 8963</td>
-                            </tr>
+                            <c:forEach var="rs" items="${rs }" varStatus="status">
+                                <tr>
+                                    <td class="tbody">${rs.sortSeq}</td>
+                                    <td class="">${rs.instNm}</td>
+                                    <td class="">${rs.contact}</td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                        <table class="s-table c-table" id="updateTable">
+                            <thead>
+                            <th class="c-th" width="10%">연번</th>
+                            <th class="c-th">담당기관</th>
+                            <th class="c-th">전화번호</th>
+                            <th class="c-th" width="10%">수정하기</th>
+                            </thead>
+                            <tbody>
+                            <form:form modelAttribute="update" method="post" action="main.do">
+                            <c:forEach var="rs" items="${rs }" varStatus="status">
+                                <input type="hidden" value="" name="seq" id="seq"/>
+                                <tr>
+                                    <td class="tbody">
+                                        ${rs.sortSeq}
+                                   </td>
+                                    <td class="">
+                                        <input type="text" value="${rs.instNm}" id="instNm${rs.seq}" name="">
+                                    </td>
+                                    <td class="">
+                                        <input type="text" value="${rs.contact}" id="contact${rs.seq}" name="">
+                                    </td>
+                                    <td>
+                                        <input type="button" style="border: 1px solid #E60024; border-radius: 50px;padding: 7px; width:80%;color: #E60024;"
+                                               onclick="getSeq(${rs.seq})" id="test" value="수정" >
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </form:form>
                             </tbody>
                         </table>
                     </div>
                 </section>
-
             </div>
         </div>
     </div>
