@@ -21,7 +21,7 @@ public class BannerVO extends DefaultVO{
     private Integer stts =0;
 
     /** 정렬 순서 */
-    private Integer sortSeq =0;
+    private Integer sortSeq;
 
     /** 등록 일시 */
     private String registDt ="";

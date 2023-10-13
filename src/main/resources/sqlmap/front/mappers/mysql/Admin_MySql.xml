@@ -327,7 +327,14 @@
         )
     </insert>
     <select id="bannerView" resultMap="BannerVO">
-        select *
+        select
+            ban_nm as banNm,
+            site_url as siteUrl,
+            stts as stts,
+            sort_seq as sortSeq,
+            regist_dt as registDt,
+            pc_img_path as pcImgPath,
+            mobile_img_path as mobileImgPath
         from tb_pils_banner
         where stts = 1
         and ban_sn = #{banSeq}
