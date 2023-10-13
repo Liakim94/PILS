@@ -364,9 +364,7 @@ public class AdminServiceImpl implements AdminService {
                 pcImage = kr.go.smes.util.HtmlTagUtils.restore(pcImage);
                 List<BannerVO> logoAttachs = gson.fromJson(pcImage, listType);
                 if (logoAttachs != null && logoAttachs.size() > 0) {
-                    vo.setSavedPath(logoAttachs.get(0).getSavedFilepath());
-                    vo.setBanTy("pc");
-                    adminMapper.banPost(vo);
+                    vo.setPcImgPath(logoAttachs.get(0).getSavedFilepath());
                 }
             }
             String mobileImage = vo.getJsonMobileImage();
@@ -375,11 +373,10 @@ public class AdminServiceImpl implements AdminService {
                 mobileImage = kr.go.smes.util.HtmlTagUtils.restore(mobileImage);
                 List<BannerVO> logoAttachs = gson.fromJson(mobileImage, listType);
                 if (logoAttachs != null && logoAttachs.size() > 0) {
-                    vo.setSavedPath(logoAttachs.get(0).getSavedFilepath());
-                    vo.setBanTy("mobile");
-                    adminMapper.banPost(vo);
+                    vo.setMobileImgPath(logoAttachs.get(0).getSavedFilepath());
                 }
             }
+            this.adminMapper.banPost(vo);
         }
         catch (Exception ex) {
             LOGGER.error(ex.getMessage(), ex);

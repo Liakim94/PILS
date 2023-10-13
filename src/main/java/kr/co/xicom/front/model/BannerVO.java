@@ -23,11 +23,6 @@ public class BannerVO extends DefaultVO{
     /** 정렬 순서 */
     private int sortSeq =0;
 
-    /** 배너 유형
-     *  pc : pc 사이즈
-     *  mobile : 모바일 사이즈
-     */
-    private String banTy ="";
     /** 등록 일시 */
     private String registDt ="";
     /** 수정 일시 */

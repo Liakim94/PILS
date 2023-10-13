@@ -299,7 +299,6 @@
         select *
         from tb_pils_banner
         where stts =1
-        and ban_ty = 'pc'
         order by regist_dt desc
     </select>
     <insert id="banPost" parameterType="kr.co.xicom.front.model.BannerVO">
@@ -307,26 +306,26 @@
         ban_nm,
         site_url,
         stts,
-        ban_ty,
         sort_seq,
         regist_dt,
         file_nm,
         file_size,
         file_ty,
-        saved_path,
+        pc_img_path,
+        mobile_img_path,
         saved_file_nm
         )
         VALUES(
         #{banNm},
         #{siteUrl},
         #{stts},
-        #{banTy},
         #{sortSeq},
         NOW(),
         #{fileNm},
         #{fileSize},
         #{fileType},
-        #{savedPath},
+        #{pcImgPath},
+        #{mobileImgPath},
         #{savedFileName}
         )
     </insert>

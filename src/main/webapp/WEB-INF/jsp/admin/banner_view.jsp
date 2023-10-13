@@ -60,7 +60,7 @@
                                     <div class="label">PC 배너</div>
                                     <div class="input-wrap" style="margin:5px">
                                         <img class="logo"
-                                             src="<c:url value="${FileUploadController.makeDownloadLink(rs.pcImgPath)}"/>"
+                                             src="<c:url value="${FileUploadController.makeDownloadLink(rs.savedPath)}"/>"
                                              onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                     <div class="label">MOBILE 배너</div>
                                     <div class="input-wrap" style="margin:5px">
                                         <img class="logo"
-                                             src="<c:url value="${FileUploadController.makeDownloadLink(rs.mobileImgPath)}"/>"
+                                             src="<c:url value="${FileUploadController.makeDownloadLink(rs.savedPath)}"/>"
                                              onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
                                     </div>
                                 </div>
