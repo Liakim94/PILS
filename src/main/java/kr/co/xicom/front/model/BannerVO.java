@@ -78,10 +78,10 @@ public class BannerVO extends DefaultVO{
     private String pcImgPath;
     private String mobileImgPath;
 
-    /**
-     * banner 오리지널 파일명
-     */
-    private String logoFileName;
+//    /**
+//     * banner 오리지널 파일명
+//     */
+//    private String logoFileName;
 
     /**
      * banner 파일정보 (JSON 문자열)

@@ -796,4 +796,23 @@ public class adminController {
             return "forward:/common/error.jsp";
         }
     }
+    @GetMapping(value = "/banner/view.do")
+    public ModelAndView banView(@RequestParam(value = "banSeq") int banSeq) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/banner_view");
+        BannerVO rs = adminService.bannerView(banSeq);
+
+        mav.addObject("rs", rs);
+
+        return mav;
+    }
+    @PostMapping("/banner/delete.do")
+    public String bannerDelete( @ModelAttribute("delete") BannerVO vo) throws Exception {
+        vo.setStts(0);
+        int result = adminService.bannerDelete(vo);
+        if (result > 0) {
+            return "redirect:/admin/banner/list.do";
+        }
+        return "forward:/common/error.jsp";
+    }
 }

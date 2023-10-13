@@ -293,6 +293,7 @@
         SELECT COUNT(1)
         FROM tb_pils_banner
         WHERE 1 = 1
+          and ban_ty ='pc'
     </select>
     <select id="banList" resultMap="BannerVO">
         select *
@@ -329,4 +330,16 @@
         #{savedFileName}
         )
     </insert>
+    <select id="bannerView" resultMap="BannerVO">
+        select *
+        from tb_pils_banner
+        where stts = 1
+        and ban_sn = #{banSeq}
+        order by regist_dt desc
+    </select>
+    <update id="bannerDelete">
+        update tb_pils_banner
+        set stts = #{stts}
+        where ban_sn = #{banSeq}
+    </update>
 </mapper>

@@ -278,6 +278,12 @@
                                     </div>
                                 </div>
                                 <div class="line-wrap">
+                                    <div class="label">정렬순서</div>
+                                    <div class="input-wrap" >
+                                        <form:input type="text" path="sortSeq"/>
+                                    </div>
+                                </div>
+                                <div class="line-wrap">
                                     <form:hidden path="jsonPcImage"/>
                                     <div class="label">PC 배너 선택</div>
                                     <div id="pc-banner-selector" class="input-box file-selector">
