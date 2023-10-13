@@ -89,6 +89,7 @@
 <div id="content" class="pd-0">
     <div id="main">
         <section id="main-banner">
+
             <div class="pc">
                 <div class="main-slide-container">
                     <div class="swiper-wrapper">
@@ -114,17 +115,18 @@
                                         class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
-                        <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/main/cardnews_banner.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/ready/list.do"/>'">
-                        </div>
-                        <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/main/consulting_banner.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=82"/>'">
-                        </div>
-                        <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/main/recruit_banner.png'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=79"/>'"></div>
+                        <c:forEach var="ban" items="${banner}">
+                        <img class="swiper-slide"
+                             srg="<c:url value="${FileUploadController.makeDownloadLink(ban.pcImgPath)}"/>"
+                             OnClick="location.href ='${ban.siteUrl}'"/>
+                        </c:forEach>
+<%--                        <div class="swiper-slide"--%>
+<%--                             style="background: url(<c:url value='/images/main/consulting_banner.jpg'/>)"--%>
+<%--                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=82"/>'">--%>
+<%--                        </div>--%>
+<%--                        <div class="swiper-slide"--%>
+<%--                             style="background: url(<c:url value='/images/main/recruit_banner.png'/>)"--%>
+<%--                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=79"/>'"></div>--%>
                     </div>
                 </div>
             </div>
@@ -135,7 +137,7 @@
                              style="background-image: url(<c:url value='/images/mobile/mobile_banner01.png'/>)">
                             <div class="text-wrap">
                                 <h1 class="slide-text">
-                                    <p>현재 <strong>392개</strong> 기업이</p>
+                                    <p>현재 <strong>${cnt + joinCmpCnt}개</strong> 기업이</p>
                                     <p>납품대금 연동제에 동참하고 있습니다.</p>
                                 </h1>
                                 <a href="<c:url value="/front/guide/company/list.do"/>" class="more-btn">참여기업 현황 바로가기<i
@@ -153,20 +155,24 @@
                                         class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
+                        <c:forEach var="ban" items="${banner}">
                         <div class="swiper-slide"
-                             style="background-image: url(<c:url value='/images/mobile/banner03.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/ready/list.do"/>'">
+                             style="background-image: url(<c:url value="${FileUploadController.makeDownloadLink(ban.mobileImgPath)}"/>)"
+                             OnClick="location.href ='${ban.siteUrl}'">
                         </div>
-                        <div class="swiper-slide"
-                             style="background: url(<c:url value='/images/mobile/consulting_banner_mobile.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=82"/>'">
-                        </div>
-                        <div class="swiper-slide"
-                             style="background-image: url(<c:url value='/images/mobile/banner_05.jpg'/>)"
-                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=79"/>'"></div>
+                        </c:forEach>
+<%--                        <div class="swiper-slide"--%>
+<%--                             style="background: url(<c:url value='/images/mobile/consulting_banner_mobile.jpg'/>)"--%>
+<%--                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=82"/>'">--%>
+<%--                        </div>--%>
+<%--                        <div class="swiper-slide"--%>
+<%--                             style="background-image: url(<c:url value='/images/mobile/banner_05.jpg'/>)"--%>
+<%--                             OnClick="location.href ='<c:url value="/front/board/11/view.do?boardSeq=79"/>'">--%>
+<%--                        </div>--%>
                     </div>
                 </div>
             </div>
+
             <div class="main-navi">
                 <div class="navi main-prev">
                     <i class="fas fa-chevron-left"></i>

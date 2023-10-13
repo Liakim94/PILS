@@ -1,6 +1,7 @@
 package kr.co.xicom.front.service.mapper;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
+import kr.co.xicom.front.model.BannerVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 
 import java.util.List;
@@ -16,5 +17,7 @@ public interface MainMapper {
     CmpMemberVo memEdit(CmpMemberVo vo) throws Exception;
     int updateMem(CmpMemberVo vo) throws Exception;
     int changePw(CmpMemberVo vo) throws Exception;
+
+   List<BannerVO> bannerAll(BannerVO vo) throws Exception;
 
 }

@@ -293,6 +293,7 @@
         SELECT COUNT(1)
         FROM tb_pils_banner
         WHERE 1 = 1
+        and stts=1
     </select>
     <select id="banList" resultMap="BannerVO">
         select *
@@ -331,6 +332,7 @@
     </insert>
     <select id="bannerView" resultMap="BannerVO">
         select
+            ban_sn as banSeq,
             ban_nm as banNm,
             site_url as siteUrl,
             stts as stts,
@@ -346,6 +348,6 @@
     <update id="bannerDelete">
         update tb_pils_banner
         set stts = #{stts}
-        where ban_sn = #{banSeq}
+        where ban_sn = ${banSeq}
     </update>
 </mapper>

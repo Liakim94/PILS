@@ -1,5 +1,6 @@
 package kr.co.xicom.front.service.impl;
 
+import kr.co.xicom.front.model.BannerVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.service.MainService;
 import kr.co.xicom.front.service.mapper.AttachMapper;
@@ -76,6 +77,9 @@ public class MainServiceImpl implements MainService {
         return mapper.changePw(vo);
     }
 
-
+    @Override
+    public List<BannerVO> bannerAll(BannerVO vo) throws Exception{
+        return mapper.bannerAll(vo);
+    }
 
 }

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.AttachVO;
+import kr.co.xicom.front.model.BannerVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
 import kr.co.xicom.front.service.ConsultingService;
@@ -41,14 +42,17 @@ public class MainController {
     private EmsClient emsClient;
 
     @GetMapping(value = "/index.do")
-    public ModelAndView main(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVo)
-            throws Exception {
+    public ModelAndView main(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVo,
+                             @ModelAttribute("BannerVO")BannerVO bannerVO) throws Exception {
         ModelAndView mav = new ModelAndView("main");
 
         cmpVo.setMem_cd("M302"); //회원구분
         Map<String, Object> rs = new HashMap<String, Object>();
         rs = consultingService.list(cmpVo);
 
+        List<BannerVO> banner = mainService.bannerAll(bannerVO);
+
+        mav.addObject("banner", banner);
         mav.addObject("list", rs.get("resultList"));
         mav.addObject("cnt", rs.get("resultCnt"));
         mav.addObject("joinCmpCnt", rs.get("joinCmpCnt"));
