@@ -28,7 +28,7 @@
         <div class="logo-wrap">
             <img class="logo"
                  src="<c:url value="${FileUploadController.makeDownloadLink(company.logoImgPath)}"/>"
-                 alt="<c:out value="${company.logoFileName}"/>"
+<%--                 alt="<c:out value="${company.logoFileName}"/>"--%>
                  onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
         </div>
         <h1 class="company-name tc mb30">${company.cmpNm}</h1>

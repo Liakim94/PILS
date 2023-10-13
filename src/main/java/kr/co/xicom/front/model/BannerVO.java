@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BannerVO extends DefaultVO{
-    private String banSeq ="";
+    private Integer banSeq;
     private String banNm ="";
     private String siteUrl ="";
     /** 상태값 (사용여부) */

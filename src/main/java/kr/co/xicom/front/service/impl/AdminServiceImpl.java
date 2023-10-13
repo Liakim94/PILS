@@ -352,7 +352,6 @@ public class AdminServiceImpl implements AdminService {
     }
     @Override
     public int banPost(BannerVO vo) throws Exception {
-        int result = 0;
         try {
             // JSON 처리용 Gson
             Gson gson = new Gson();
@@ -376,13 +375,12 @@ public class AdminServiceImpl implements AdminService {
                     vo.setMobileImgPath(logoAttachs.get(0).getSavedFilepath());
                 }
             }
-            this.adminMapper.banPost(vo);
         }
         catch (Exception ex) {
             LOGGER.error(ex.getMessage(), ex);
             throw ex;
         }
-        return result;
+        return adminMapper.banPost(vo);
     }
     @Override
     public BannerVO bannerView(int banSeq) throws Exception {
