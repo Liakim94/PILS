@@ -293,7 +293,6 @@
         SELECT COUNT(1)
         FROM tb_pils_banner
         WHERE 1 = 1
-          and ban_ty ='pc'
     </select>
     <select id="banList" resultMap="BannerVO">
         select *
@@ -312,8 +311,7 @@
         file_size,
         file_ty,
         pc_img_path,
-        mobile_img_path,
-        saved_file_nm
+        mobile_img_path
         )
         VALUES(
         #{banNm},
@@ -325,8 +323,7 @@
         #{fileSize},
         #{fileType},
         #{pcImgPath},
-        #{mobileImgPath},
-        #{savedFileName}
+        #{mobileImgPath}
         )
     </insert>
     <select id="bannerView" resultMap="BannerVO">

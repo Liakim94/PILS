@@ -18,10 +18,10 @@ public class BannerVO extends DefaultVO{
     private String banNm ="";
     private String siteUrl ="";
     /** 상태값 (사용여부) */
-    private int stts =0;
+    private Integer stts =0;
 
     /** 정렬 순서 */
-    private int sortSeq =0;
+    private Integer sortSeq =0;
 
     /** 등록 일시 */
     private String registDt ="";
