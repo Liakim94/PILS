@@ -37,6 +37,7 @@
                     <!-- 컨텐츠 start -->
                     <div class="board-view-wrap01">
                         <form action="<c:url value="/admin/banner/delete.do"/>" method="post" id="delete">
+                            <input type="hidden" value=" ${rs.banSeq}">
                             <div class="write-container">
                                 <div class="line-wrap">
                                     <div class="label">사이트명</div>

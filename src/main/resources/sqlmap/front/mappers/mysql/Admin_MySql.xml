@@ -325,6 +325,9 @@
         #{pcImgPath},
         #{mobileImgPath}
         )
+        <selectKey keyProperty="banSeq" resultType="integer" order="AFTER">
+            SELECT MAX(banSeq) FROM tb_pils_banner;
+        </selectKey>
     </insert>
     <select id="bannerView" resultMap="BannerVO">
         select
