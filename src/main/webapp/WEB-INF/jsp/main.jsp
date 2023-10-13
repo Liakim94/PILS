@@ -116,9 +116,10 @@
                             </div>
                         </div>
                         <c:forEach var="ban" items="${banner}">
-                        <img class="swiper-slide"
-                             srg="<c:url value="${FileUploadController.makeDownloadLink(ban.pcImgPath)}"/>"
-                             OnClick="location.href ='${ban.siteUrl}'"/>
+                        <div class="swiper-slide"
+                             style="background: url(<c:url value="${FileUploadController.makeDownloadLink(ban.pcImgPath)}"/>)"
+                             OnClick="location.href ='${ban.siteUrl}'">
+                        </div>
                         </c:forEach>
 <%--                        <div class="swiper-slide"--%>
 <%--                             style="background: url(<c:url value='/images/main/consulting_banner.jpg'/>)"--%>
