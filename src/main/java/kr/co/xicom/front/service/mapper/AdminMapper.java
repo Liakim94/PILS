@@ -34,7 +34,7 @@ public interface AdminMapper {
     int banCount(BannerVO vo) throws Exception;
 
     int banPost(BannerVO vo) throws Exception;
-    BannerVO bannerView(int banSeq) throws Exception;
+    BannerVO bannerView(BannerVO vo) throws Exception;
     int bannerEdit(BannerVO vo) throws Exception;
 
     int bannerDelete(BannerVO vo) throws Exception;

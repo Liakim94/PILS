@@ -384,8 +384,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public BannerVO bannerView(int banSeq) throws Exception {
-        return adminMapper.bannerView(banSeq);
+    public BannerVO bannerView(BannerVO vo) throws Exception {
+        return adminMapper.bannerView(vo);
     }
     @Override
     public int bannerEdit(BannerVO vo) throws Exception {

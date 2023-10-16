@@ -18,7 +18,7 @@ public class BannerVO extends DefaultVO{
     private String banNm ="";
     private String siteUrl ="";
     /** 상태값 (사용여부) */
-    private Integer stts =0;
+    private Integer stts;
 
     /** 정렬 순서 */
     private Integer sortSeq;

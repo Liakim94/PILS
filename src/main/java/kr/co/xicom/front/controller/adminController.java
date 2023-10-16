@@ -797,11 +797,10 @@ public class adminController {
         }
     }
     @GetMapping(value = "/banner/edit.do")
-    public ModelAndView banEdit(@ModelAttribute("edit") BannerVO vo,
-                                @RequestParam(value = "banSeq") int banSeq) throws Exception {
+    public ModelAndView banEdit(@ModelAttribute("edit") BannerVO vo) throws Exception {
 
         ModelAndView mav =  new ModelAndView("admin/banner_edit");
-        BannerVO rs = adminService.bannerView(banSeq);
+        BannerVO rs = adminService.bannerView(vo);
         mav.addObject("edit", rs);
         return mav;
     }
@@ -817,10 +816,10 @@ public class adminController {
         }
     }
     @GetMapping(value = "/banner/view.do")
-    public ModelAndView banView(@RequestParam(value = "banSeq") int banSeq) throws Exception {
+    public ModelAndView banView(@ModelAttribute("delete") BannerVO vo) throws Exception {
 
         ModelAndView mav = new ModelAndView("admin/banner_view");
-        BannerVO rs = adminService.bannerView(banSeq);
+        BannerVO rs = adminService.bannerView(vo);
 
         mav.addObject("rs", rs);
 

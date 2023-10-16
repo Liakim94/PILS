@@ -169,7 +169,7 @@
                 console.log("mobile,,,");
             }
 
-            $('#post').submit();
+            $('#edit').submit();
         });
     });
 
@@ -263,6 +263,7 @@
                 <!-- 컨텐츠 start -->
                 <div class="write-container">
                     <form:form modelAttribute="edit" action="edit.do" method="post" >
+                        <form:hidden path="banSeq"/>
                         <div class="write-wrap">
                             <div class="write-container">
                                 <div class="line-wrap">

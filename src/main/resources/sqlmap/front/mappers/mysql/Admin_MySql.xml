@@ -353,16 +353,22 @@
     </select>
     <update id="bannerEdit">
         update tb_pils_banner
-        set  ban_nm = #{banNm},
+        <set>
+             ban_nm = #{banNm},
              site_url = #{siteUrl},
              sort_seq = #{sortSeq},
              up_dt = NOW(),
              file_nm =#{fileNm},
              file_size =#{fileSize},
              file_ty = #{fileType},
-             pc_img_path #{pcImgPath},
-             mobile_img_path =#{mobileImgPath}
-        where ban_sn = ${banSeq}
+            <if test="pcImgPath != null">
+                pc_img_path = #{pcImgPath},
+            </if>
+            <if test="mobileImgPath != null">
+                mobile_img_path = #{mobileImgPath}
+            </if>
+        </set>
+        where ban_sn = #{banSeq}
     </update>
     <update id="bannerDelete">
         update tb_pils_banner

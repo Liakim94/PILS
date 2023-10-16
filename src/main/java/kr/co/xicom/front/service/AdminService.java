@@ -54,7 +54,7 @@ public interface AdminService {
 
     int banPost(BannerVO vo) throws Exception;
 
-    BannerVO bannerView(int banSeq) throws Exception;
+    BannerVO bannerView(BannerVO vo) throws Exception;
 
     int bannerEdit(BannerVO vo) throws Exception;
 
