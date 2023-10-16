@@ -14,6 +14,24 @@
     <script src="${pageContext.request.contextPath }/js/file-uploader-1.0.0.js?v=1"></script>
 </head>
 <script>
+    function fn_submit() {
+        var frm = document.getElementById('edit');
+
+        if (frm.banNm.value == "") {
+            alert("배너명을 입력하세요.");
+            return false;
+        }
+        if (frm.sortSeq.value == "") {
+            alert("정렬순서를 입력하세요.");
+            return false;
+        }
+        if(isNaN(frm.sortSeq.value)){
+            alert("정렬순서는 숫자만 입력하세요.");
+            return false;
+        }
+
+        frm.submit();
+    }
     $(document).ready(function() {
 
         /* pc 베너 추가 */
@@ -72,10 +90,6 @@
 
         /* 저장 버튼 처리 */
         $('#submit').on('click', function() {
-
-            if (!confirm("현재 상태로 저장하시겠습니까?")) {
-                return false;
-            }
 
             // pc 배너 업로드
             let pcFiles = $('#pcImgFile')[0].files;
@@ -168,8 +182,8 @@
                 });
                 console.log("mobile,,,");
             }
-
-            $('#edit').submit();
+            fn_submit();
+            // $('#edit').submit();
         });
     });
 
@@ -267,7 +281,7 @@
                         <div class="write-wrap">
                             <div class="write-container">
                                 <div class="line-wrap">
-                                    <div class="label">사이트명</div>
+                                    <div class="label">배너명</div>
                                     <div class="input-wrap" >
                                         <form:input type="text" path="banNm"/>
                                     </div>

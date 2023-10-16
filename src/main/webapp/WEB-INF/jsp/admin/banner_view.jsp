@@ -40,7 +40,7 @@
                             <input type="hidden" value=" ${rs.banSeq}" name="banSeq">
                             <div class="write-container">
                                 <div class="line-wrap">
-                                    <div class="label">사이트명</div>
+                                    <div class="label">배너명</div>
                                     <div class="input-wrap" style="margin:5px">
                                         ${rs.banNm}
                                     </div>
