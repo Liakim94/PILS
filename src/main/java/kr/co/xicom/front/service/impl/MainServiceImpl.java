@@ -1,10 +1,8 @@
 package kr.co.xicom.front.service.impl;
 
-import kr.co.xicom.front.model.AttachVO;
-import kr.co.xicom.front.model.BoardVO;
+import kr.co.xicom.front.model.BannerVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.service.MainService;
-import kr.co.xicom.front.service.mapper.AdminMapper;
 import kr.co.xicom.front.service.mapper.AttachMapper;
 import kr.co.xicom.front.service.mapper.MainMapper;
 import kr.go.smes.fileservice.FileService;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -47,6 +44,10 @@ public class MainServiceImpl implements MainService {
     public String memberBizno(String id) throws Exception {
         return mapper.memberBizno(id);
     }
+    @Override
+    public String memAuthCd(String id) throws Exception {
+        return mapper.memAuthCd(id);
+    }
 
     @Override
     public List<CmpMemberVo> memManage(CmpMemberVo vo) throws Exception {
@@ -76,6 +77,9 @@ public class MainServiceImpl implements MainService {
         return mapper.changePw(vo);
     }
 
-
+    @Override
+    public List<BannerVO> bannerAll(BannerVO vo) throws Exception{
+        return mapper.bannerAll(vo);
+    }
 
 }

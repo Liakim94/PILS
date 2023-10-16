@@ -746,4 +746,179 @@ public class adminController {
         }
         return "forward:/common/error.jsp";
     }
+
+    // 메인 배너 관리
+    @RequestMapping(value = "/banner/list.do", method = {RequestMethod.GET})
+    public ModelAndView banList(@ModelAttribute("BannerVo") BannerVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/banner_list");
+
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+        vo.setStts(1);
+
+        Map<String, Object> result = adminService.banList(vo);
+
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
+
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", result.get("resultList"));
+        mav.addObject("totalCnt", result.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+
+        return mav;
+    }
+    @GetMapping(value = "/banner/post.do")
+    public ModelAndView banPost(@ModelAttribute("post") BannerVO vo) throws Exception {
+
+        ModelAndView mav =  new ModelAndView("admin/banner_post");
+
+        return mav;
+    }
+    @PostMapping(value = "/banner/post.do")
+    public String doBanPost(@ModelAttribute("post") BannerVO vo) throws Exception {
+        vo.setStts(1);
+        int result = adminService.banPost(vo);
+
+        if (result > 0) {
+            return "redirect:/admin/banner/view.do?banSeq=" + vo.getBanSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/banner/edit.do")
+    public ModelAndView banEdit(@ModelAttribute("edit") BannerVO vo) throws Exception {
+
+        ModelAndView mav =  new ModelAndView("admin/banner_edit");
+        BannerVO rs = adminService.bannerView(vo);
+        mav.addObject("edit", rs);
+        return mav;
+    }
+    @PostMapping(value = "/banner/edit.do")
+    public String doBanEdit(@ModelAttribute("edit") BannerVO vo) throws Exception {
+        int result = adminService.bannerEdit(vo);
+
+        if (result > 0) {
+            return "redirect:/admin/banner/view.do?banSeq=" + vo.getBanSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/banner/view.do")
+    public ModelAndView banView(@ModelAttribute("delete") BannerVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/banner_view");
+        BannerVO rs = adminService.bannerView(vo);
+
+        mav.addObject("rs", rs);
+
+        return mav;
+    }
+    @PostMapping("/banner/delete.do")
+    public String bannerDelete( @ModelAttribute("delete") BannerVO vo) throws Exception {
+        vo.setStts(0);
+        int result = adminService.bannerDelete(vo);
+        if (result > 0) {
+            return "redirect:/admin/banner/list.do";
+        }
+        return "forward:/common/error.jsp";
+    }
+
+    // 상담하기 연락처 관리
+    @RequestMapping(value = "/qna/contact.do", method = {RequestMethod.GET})
+    public ModelAndView contact(@ModelAttribute("ContactVO") ContactVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/contact_list");
+
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+
+        Map<String, Object> rs = adminService.contact(vo);
+
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", rs.get("resultList"));
+        mav.addObject("totalCnt", rs.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+
+        return mav;
+    }
+    @GetMapping(value = "/qna/conPost.do")
+    public ModelAndView conPost(@ModelAttribute("post") ContactVO vo) throws Exception {
+
+        ModelAndView mav =  new ModelAndView("admin/contact_post");
+
+        return mav;
+    }
+    @PostMapping(value = "/qna/conPost.do")
+    public String doConPost(@ModelAttribute("post") ContactVO vo) throws Exception {
+        int result = adminService.conPost(vo);
+
+        if (result > 0) {
+            return "redirect:/admin/qna/conView.do?seq=" + vo.getSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/qna/conEdit.do")
+    public ModelAndView conEdit(@ModelAttribute("edit") ContactVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/contact_edit");
+        ContactVO rs = adminService.conView(vo);
+        mav.addObject("rs",rs);
+        return mav;
+
+    }
+    //수정 처리
+    @PostMapping(value = "/qna/conEdit.do")
+    public String doConEdit(@ModelAttribute("edit") ContactVO vo) throws Exception {
+
+        int rs = adminService.conEdit(vo);
+        if (rs > 0) {
+            return "redirect:/admin/qna/conView.do?seq=" + vo.getSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/qna/conView.do")
+    public ModelAndView conView(@ModelAttribute("delete")ContactVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/contact_view");
+        ContactVO rs = adminService.conView(vo);
+        mav.addObject("rs", rs);
+
+        return mav;
+    }
+    @PostMapping("/qna/delete.do")
+    public String conDelete( @ModelAttribute("delete") ContactVO vo) throws Exception {
+        int result = adminService.conDelete(vo);
+        if (result > 0) {
+            return "redirect:/admin/qna/contact.do";
+        }
+        return "forward:/common/error.jsp";
+    }
+
 }

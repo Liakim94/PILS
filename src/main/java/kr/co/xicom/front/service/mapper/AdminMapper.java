@@ -1,9 +1,7 @@
 package kr.co.xicom.front.service.mapper;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
-import kr.co.xicom.front.model.CmpMemberVo;
-import kr.co.xicom.front.model.RcmdVO;
-import kr.co.xicom.front.model.TraceVO;
+import kr.co.xicom.front.model.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -31,5 +29,24 @@ public interface AdminMapper {
 
     List<RcmdVO>recomList(RcmdVO vo) throws Exception;
     int recomCount(RcmdVO vo) throws Exception;
-    
+
+    List<BannerVO> banList(BannerVO vo) throws Exception;
+    int banCount(BannerVO vo) throws Exception;
+
+    int banPost(BannerVO vo) throws Exception;
+    BannerVO bannerView(BannerVO vo) throws Exception;
+    int bannerEdit(BannerVO vo) throws Exception;
+
+    int bannerDelete(BannerVO vo) throws Exception;
+
+    int contactCount(ContactVO vo) throws Exception;
+
+    List<ContactVO> contact(ContactVO vo)throws Exception;
+
+    ContactVO conView(ContactVO vo)throws Exception;
+    int conPost(ContactVO vo)throws Exception;
+    int conEdit(ContactVO vo)throws Exception;
+
+    int conDelete(ContactVO vo) throws Exception;
+
 }

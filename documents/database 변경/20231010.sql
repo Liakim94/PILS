@@ -14,3 +14,50 @@ ALTER TABLE pis.tb_bbs_info ADD features varchar(1000) NULL;
 COMMENT ON COLUMN pis.tb_bbs_info.features IS '주요 특징';
 ALTER TABLE pis.tb_bbs_info ADD chrg varchar(10) NULL;
 COMMENT ON COLUMN pis.tb_bbs_info.chrg IS '유무료여부';
+
+---------------------------------
+CREATE TABLE pis.tb_pils_banner (
+                                    ban_sn bigserial NOT NULL,
+                                    ban_nm varchar(255) NULL,
+                                    site_url varchar(255) NULL,
+                                    stts int8 NULL,
+                                    ban_ty varchar(10) NULL,
+                                    sort_seq int8 NULL,
+                                    regist_dt timestamp NULL,
+                                    up_dt timestamp NULL,
+                                    file_nm varchar(512) NULL,
+                                    file_size int4 NULL,
+                                    file_ty varchar(128) NULL,
+                                    saved_file_nm varchar(512) NULL,
+                                    saved_path varchar(512) NULL,
+                                    CONSTRAINT tb_pils_banner_pk PRIMARY KEY (ban_sn)
+);
+
+-- Column comments
+
+COMMENT ON COLUMN pis.tb_pils_banner.ban_sn IS '배너연번';
+COMMENT ON COLUMN pis.tb_pils_banner.ban_nm IS '배너명';
+COMMENT ON COLUMN pis.tb_pils_banner.site_url IS '이미지링크';
+COMMENT ON COLUMN pis.tb_pils_banner.stts IS '상태값';
+COMMENT ON COLUMN pis.tb_pils_banner.ban_ty IS '배너유형(pc,mobile)';
+COMMENT ON COLUMN pis.tb_pils_banner.sort_seq IS '정렬순서';
+COMMENT ON COLUMN pis.tb_pils_banner.regist_dt IS '작성일자';
+COMMENT ON COLUMN pis.tb_pils_banner.up_dt IS '수정일자';
+COMMENT ON COLUMN pis.tb_pils_banner.file_nm IS '파일명';
+
+CREATE TABLE pis.tb_pils_qna_contact (
+                                         seq bigserial NOT NULL,
+                                         sort_seq int4 NULL,
+                                         inst_nm varchar(100) NULL,
+                                         contact varchar(100) NULL,
+                                         up_dt timestamp NULL,
+                                         CONSTRAINT tb_pils_qna_contact_pk PRIMARY KEY (seq)
+);
+
+-- Column comments
+
+COMMENT ON COLUMN pis.tb_pils_qna_contact.seq IS 'pk';
+COMMENT ON COLUMN pis.tb_pils_qna_contact.sort_seq IS '정렬순서';
+COMMENT ON COLUMN pis.tb_pils_qna_contact.inst_nm IS '기관명';
+COMMENT ON COLUMN pis.tb_pils_qna_contact.contact IS '연락처';
+COMMENT ON COLUMN pis.tb_pils_qna_contact.up_dt IS '수정일자';

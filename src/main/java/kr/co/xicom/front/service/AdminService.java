@@ -48,4 +48,25 @@ public interface AdminService {
     List<AttachVO> getAttachList(TraceVO vo) throws Exception;
 
     Map<String, Object> recomList(RcmdVO vo) throws Exception;
+
+    // 메인 배너 list
+    Map<String, Object> banList(BannerVO vo) throws Exception;
+
+    int banPost(BannerVO vo) throws Exception;
+
+    BannerVO bannerView(BannerVO vo) throws Exception;
+
+    int bannerEdit(BannerVO vo) throws Exception;
+
+    int bannerDelete(BannerVO vo) throws Exception;
+
+    Map<String, Object> contact(ContactVO vo) throws Exception;
+
+    ContactVO conView(ContactVO vo) throws Exception;
+
+    int conPost(ContactVO vo) throws Exception;
+
+    int conEdit(ContactVO vo) throws Exception;
+
+    int conDelete(ContactVO vo) throws Exception;
 }

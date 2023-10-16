@@ -27,7 +27,21 @@
         <result property="memTelNo" column="memTelNo"/>
         <result property="memFaxNo" column="memFaxNo"/>
     </resultMap>
-
+    <resultMap id="BannerVO" type="kr.co.xicom.front.model.BannerVO">
+        <result property="banSeq" column="ban_sn"/>
+        <result property="banNm" column="ban_nm"/>
+        <result property="siteUrl" column="site_url"/>
+        <result property="stts" column="stts"/>
+        <result property="sortSeq" column="sort_seq"/>
+        <result property="banTy" column="ban_ty"/>
+        <result property="registDt" column="regist_dt"/>
+        <result property="upDt" column="up_dt"/>
+        <result property="fileNm" column="file_nm"/>
+        <result property="fileSize" column="file_sise"/>
+        <result property="fileType" column="file_ty"/>
+        <result property="savedPath" column="saved_path"/>
+        <result property="savedFileName" column="saved_file_nm"/>
+    </resultMap>
     <select id="memberLogin" resultType="int">
         select case
                    when inPass = pswd then 1
@@ -40,6 +54,11 @@
     </select>
     <select id="memberBizno" resultType="String">
         select bizno as bizNo
+        from tb_pils_mbr tpm
+        where user_id = #{id}
+    </select>
+    <select id="memAuthCd" resultType="String">
+        select auth_cd as auth_cd
         from tb_pils_mbr tpm
         where user_id = #{id}
     </select>
@@ -137,4 +156,18 @@
         set pswd = encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
         where user_id = #{id}
     </update>
+    <select id="bannerAll" resultMap="BannerVO">
+        select
+            ban_sn as banSeq,
+            ban_nm as banNm,
+            site_url as siteUrl,
+            stts as stts,
+            sort_seq as sortSeq,
+            regist_dt as registDt,
+            pc_img_path as pcImgPath,
+            mobile_img_path as mobileImgPath
+        from tb_pils_banner
+        where stts = 1
+        order by sort_seq asc
+    </select>
 </mapper>

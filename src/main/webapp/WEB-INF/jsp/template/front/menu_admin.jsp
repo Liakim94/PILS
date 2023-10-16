@@ -36,8 +36,14 @@
             <li class="<c:if test="${URI.contains('/admin/price')}">on</c:if>">
                 <a href ="${pageContext.request.contextPath}/admin/price/list.do">원재료 사이트 관리</a>
             </li>
+            <li class="<c:if test="${URI.contains('/admin/banner')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/admin/banner/list.do">메인 배너 관리</a>
+            </li>
             <li class="<c:if test="${URI.contains('/admin/management')}">on</c:if>">
                 <a href ="${pageContext.request.contextPath}/admin/management/list.do">담당자 관리</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/admin/qna')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/admin/qna/contact.do">상담하기 연락처 관리</a>
             </li>
         </ul>
     </div>

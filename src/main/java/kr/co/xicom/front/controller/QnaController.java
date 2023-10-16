@@ -1,6 +1,8 @@
 package kr.co.xicom.front.controller;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import kr.co.xicom.front.model.BoardVO;
+import kr.co.xicom.front.model.ContactVO;
 import kr.co.xicom.front.model.QnaVO;
 import kr.co.xicom.front.service.QnaService;
 import kr.co.xicom.util.Alerts;
@@ -42,11 +44,12 @@ public class QnaController extends Alerts {
     private QnaService qnaService;
 
     @GetMapping(value = "/qna/main.do")
-    public ModelAndView qnaMain() throws Exception {
+    public ModelAndView qnaMain(@ModelAttribute("update") ContactVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("communication/qna/main");
+        List<ContactVO> rs = qnaService.contact(vo);
+        mav.addObject("rs",rs);
         return mav;
     }
-
     /**
      * 1:1문의 목록
      */
