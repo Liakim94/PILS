@@ -75,6 +75,7 @@
                                 </div>
                             </div>
                             <div class="write-bottom">
+                                <a href="${pageContext.request.contextPath}/admin/banner/edit.do?banSeq=${rs.banSeq}" class="submit">수정</a>
                                 <a onclick="javascript:deleteBan();return false;" class="back">삭제</a>
                             </div>
                         </form>

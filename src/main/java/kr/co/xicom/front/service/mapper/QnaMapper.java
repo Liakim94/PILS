@@ -11,7 +11,6 @@ import org.opengis.metadata.citation.Contact;
 public interface QnaMapper {
 
 	List<ContactVO> contact(ContactVO vo)throws Exception;
-	int updateContact(ContactVO vo)throws Exception;
 
 	List<QnaVO> list(QnaVO vo)throws Exception;
 

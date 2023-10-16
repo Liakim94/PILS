@@ -56,5 +56,17 @@ public interface AdminService {
 
     BannerVO bannerView(int banSeq) throws Exception;
 
+    int bannerEdit(BannerVO vo) throws Exception;
+
     int bannerDelete(BannerVO vo) throws Exception;
+
+    Map<String, Object> contact(ContactVO vo) throws Exception;
+
+    ContactVO conView(ContactVO vo) throws Exception;
+
+    int conPost(ContactVO vo) throws Exception;
+
+    int conEdit(ContactVO vo) throws Exception;
+
+    int conDelete(ContactVO vo) throws Exception;
 }

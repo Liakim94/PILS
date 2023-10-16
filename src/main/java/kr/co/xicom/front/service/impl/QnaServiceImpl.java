@@ -21,11 +21,6 @@ public class QnaServiceImpl implements QnaService {
 	public List<ContactVO> contact(ContactVO vo) throws Exception {
 		return mapper.contact(vo);
 	}
-	@Override
-	public int updateContact(ContactVO vo) throws Exception {
-		return mapper.updateContact(vo);
-	}
-
 
 	@Override
 	public Map<String, Object> list(QnaVO vo) throws Exception {

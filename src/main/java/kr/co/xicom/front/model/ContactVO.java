@@ -9,8 +9,8 @@ import lombok.ToString;
 @Getter
 public class ContactVO extends DefaultVO{
 
-	private int seq = 0;
-	private int sortSeq = 0;
+	private Integer seq;
+	private Integer sortSeq;
 	private String instNm ="";
 	private String contact ="";
 	private String upDt ="";

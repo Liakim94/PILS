@@ -42,6 +42,9 @@
             <li class="<c:if test="${URI.contains('/admin/management')}">on</c:if>">
                 <a href ="${pageContext.request.contextPath}/admin/management/list.do">담당자 관리</a>
             </li>
+            <li class="<c:if test="${URI.contains('/admin/qna')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/admin/qna/contact.do">상담하기 연락처 관리</a>
+            </li>
         </ul>
     </div>
 </aside>

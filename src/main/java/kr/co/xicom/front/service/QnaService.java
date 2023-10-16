@@ -12,8 +12,6 @@ public interface QnaService {
 
     List<ContactVO> contact(ContactVO vo) throws Exception;
 
-    int updateContact(ContactVO vo) throws Exception;
-
     Map<String, Object> list(QnaVO vo)throws Exception;
 
 	int insertBbsQna(QnaVO vo)throws Exception;

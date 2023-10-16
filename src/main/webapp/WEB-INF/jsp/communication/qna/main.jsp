@@ -10,30 +10,6 @@
 <head>
     <title>중소벤처기업부 | 상담하기</title>
 </head>
-<script>
-    $(document).ready(function () {
-        $("#textTable").show();
-        $("#updateTable").hide();
-
-        $("#updateContact").click(function () {
-            $("#textTable").hide();
-            $("#updateTable").show();
-            $(".test").show();
-            $("#updateContact").hide();
-        })
-    });
-    function getSeq(val){
-        if(val != null) {
-            const seq = document.getElementById("seq");
-            const instNm = "instNm" + val;
-            const contact = "contact" + val;
-            seq.value = val;
-            document.getElementById(instNm).setAttribute('name','instNm');
-            document.getElementById(contact).setAttribute('name','contact');
-        }
-        return $('#update').submit();
-    }
-</script>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu"/>
@@ -77,13 +53,6 @@
                         ② 납품대금 연동제 일반 문의 및 상담 : 지방중소벤처기업청 소상공인과/지역혁신과<br>
                         ③ 동행기업 참여 관련 문의 및 상담 : 협력재단 납품대금연동·확산지원TF<br>
                     </h4>
-                    <div class="tbl-wrap for_board">
-                        <c:if test="${auth_cd eq 'M101' }">
-                            <a type="button" id="updateContact" class="write-question" style="width: 141px">
-                                연락처 수정
-                            </a>
-                        </c:if>
-                    </div>
                     <div class="s-table-wrap">
                         <table class="s-table c-table" id="textTable" >
                             <thead>
@@ -99,36 +68,6 @@
                                     <td class="">${rs.contact}</td>
                                 </tr>
                             </c:forEach>
-                            </tbody>
-                        </table>
-                        <table class="s-table c-table" id="updateTable">
-                            <thead>
-                            <th class="c-th" width="10%">연번</th>
-                            <th class="c-th">담당기관</th>
-                            <th class="c-th">전화번호</th>
-                            <th class="c-th" width="10%">수정하기</th>
-                            </thead>
-                            <tbody>
-                            <form:form modelAttribute="update" method="post" action="main.do">
-                            <c:forEach var="rs" items="${rs }" varStatus="status">
-                                <input type="hidden" value="" name="seq" id="seq"/>
-                                <tr>
-                                    <td class="tbody">
-                                        ${rs.sortSeq}
-                                   </td>
-                                    <td class="">
-                                        <input type="text" value="${rs.instNm}" id="instNm${rs.seq}" name="">
-                                    </td>
-                                    <td class="">
-                                        <input type="text" value="${rs.contact}" id="contact${rs.seq}" name="">
-                                    </td>
-                                    <td>
-                                        <input type="button" style="border: 1px solid #E60024; border-radius: 50px;padding: 7px; width:80%;color: #E60024;"
-                                               onclick="getSeq(${rs.seq})" id="test" value="수정" >
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            </form:form>
                             </tbody>
                         </table>
                     </div>

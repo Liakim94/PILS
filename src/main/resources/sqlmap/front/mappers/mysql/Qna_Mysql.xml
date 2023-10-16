@@ -156,10 +156,4 @@
         from tb_pils_qna_contact
         order by sort_seq asc
     </select>
-    <update id="updateContact">
-            update tb_pils_qna_contact
-            set inst_nm        = #{instNm}
-              , contact = #{contact}
-            where seq = #{seq}
-    </update>
 </mapper>

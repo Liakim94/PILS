@@ -50,26 +50,6 @@ public class QnaController extends Alerts {
         mav.addObject("rs",rs);
         return mav;
     }
-    @RequestMapping(value="/qna/main.do", method = {RequestMethod.POST})
-    public void updateContact( @ModelAttribute("update") ContactVO vo,
-                                 HttpServletResponse response,
-                                 HttpServletRequest request) throws Exception {
-
-        int result = qnaService.updateContact(vo);
-        if (result > 0) {
-            response.sendRedirect(request.getContextPath() + "/front/qna/main.do");
-        }else {
-            PrintWriter writer = response.getWriter();
-
-            response.setContentType("text/html; charset=UTF-8;");
-            request.setCharacterEncoding("utf-8");
-            writer.println("<script type='text/javascript'>");
-            writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
-            writer.println("history.back();");
-            writer.println("</script>");
-            writer.flush();
-        }
-    }
     /**
      * 1:1문의 목록
      */

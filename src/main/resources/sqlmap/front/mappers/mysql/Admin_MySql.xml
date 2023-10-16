@@ -64,6 +64,12 @@
         <result property="savedPath" column="saved_path"/>
         <result property="savedFileName" column="saved_file_nm"/>
     </resultMap>
+    <resultMap id="ContactVO" type="kr.co.xicom.front.model.ContactVO">
+        <result property="sortSeq" column="sort_seq"/>
+        <result property="instNm" column="inst_nm"/>
+        <result property="contact" column="contact"/>
+        <result property="upDt" column="up_dt"/>
+    </resultMap>
     <select id="joinList" resultMap="CmpMemberVo">
         select
             A.bizno as bizNo
@@ -345,9 +351,65 @@
         and ban_sn = #{banSeq}
         order by regist_dt desc
     </select>
+    <update id="bannerEdit">
+        update tb_pils_banner
+        set  ban_nm = #{banNm},
+             site_url = #{siteUrl},
+             sort_seq = #{sortSeq},
+             up_dt = NOW(),
+             file_nm =#{fileNm},
+             file_size =#{fileSize},
+             file_ty = #{fileType},
+             pc_img_path #{pcImgPath},
+             mobile_img_path =#{mobileImgPath}
+        where ban_sn = ${banSeq}
+    </update>
     <update id="bannerDelete">
         update tb_pils_banner
         set stts = #{stts}
         where ban_sn = ${banSeq}
     </update>
+    <select id="contactCount" resultType="int">
+        SELECT COUNT(1)
+        FROM tb_pils_qna_contact
+        WHERE 1 = 1
+    </select>
+    <select id="contact" resultMap="ContactVO">
+        select *
+        from tb_pils_qna_contact
+        order by sort_seq asc
+    </select>
+    <select id="conView" resultMap="ContactVO">
+        select *
+        from tb_pils_qna_contact
+        where seq = #{seq}
+    </select>
+    <insert id="conPost" parameterType="kr.co.xicom.front.model.ContactVO">
+        INSERT INTO tb_pils_qna_contact (
+        sort_seq,
+        inst_nm,
+        contact,
+        up_dt
+        )
+        VALUES(
+        #{sortSeq},
+        #{instNm},
+        #{contact},
+        NOW()
+        )
+        <selectKey keyProperty="seq" resultType="integer" order="AFTER">
+            SELECT MAX(seq) FROM tb_pils_qna_contact;
+        </selectKey>
+    </insert>
+    <update id="conEdit">
+        update tb_pils_qna_contact
+        set sort_seq  =    #{sortSeq},
+            inst_nm        = #{instNm},
+            contact = #{contact},
+            up_dt = NOW()
+        where seq = #{seq}
+    </update>
+    <delete id="conDelete">
+        delete from tb_pils_qna_contact where seq = #{seq}
+    </delete>
 </mapper>
