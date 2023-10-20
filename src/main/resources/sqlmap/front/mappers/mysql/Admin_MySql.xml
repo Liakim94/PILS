@@ -76,16 +76,10 @@
              ,A.cmp_mbr_cd as mem_cd
              ,A.cmp_nm as cmpNm
              ,to_char(A.appdt, 'YYYY-MM-DD') as appdate
-             ,B.nm as name
-             ,B.user_id as id
-             ,B.pswd as passwd
              , a.logo_img_path as logoImgPath
              , a.updt as update
              , a.joincmp as joinCmp
-        from tb_pils_cmpmbr A join tb_pils_mbr B
-                                   on A.bizno =B.bizno
-        where cmp_mbr_cd= #{mem_cd}
-            and b.manage_cd ='M501'
+        from tb_pils_cmpmbr A
             <if test="tag != null and tag != ''">
                 and ${tag} like CONCAT('%',#{keyword},'%')
             </if>
@@ -132,11 +126,7 @@
     </delete>
     <select id="listCount" resultType="int">
         SELECT COUNT(1)
-        from tb_pils_cmpmbr A join tb_pils_mbr B
-        on A.bizno =B.bizno
-        WHERE 1 = 1
-          and A.cmp_mbr_cd = #{mem_cd}
-          and b.manage_cd ='M501'
+        from tb_pils_cmpmbr
         <if test="tag != null and tag != ''">
             and ${tag} like CONCAT('%',#{keyword},'%')
         </if>
@@ -148,10 +138,11 @@
              , mbphno        as mbphno
              , psitn_dept_nm as deptNm
              , pstn as position
+             , auth_cd as auth_cd
              , c.cmp_nm as cmpNm
         from tb_pils_mbr A,
             ( select cd, cd_nm from tb_cd_data where cd_grp = 'M500') B,
-            (select bizno,cmp_nm,joincmp from tb_pils_cmpmbr tpc where cmp_mbr_cd='M302') C
+            (select bizno,cmp_nm,joincmp from tb_pils_cmpmbr tpc where cmp_mbr_cd ='M302') C
         where A.manage_cd =B.cd
           and A.bizno =c.bizno
         <if test="tag != null and tag != ''">
@@ -159,6 +150,9 @@
         </if>
         <if test="sort != null and sort != ''">
                 order by ${sort} asc, cd='M501'desc
+        </if>
+        <if test="tag = null and tag = '' and sort = null and sort = ''">
+            order by upd_dt desc
         </if>
         <if test="pageIndex > 0">
             LIMIT #{pageUnit} OFFSET #{firstIndex}
@@ -185,9 +179,13 @@
              , faxno         as memFaxNo
              , user_id       as id
              , bizno         as bizNo
+             ,auth_cd        as auth_cd
         from tb_pils_mbr
         where user_id =#{id}
     </select>
+    <update id="approveMem">
+        update tb_pils_mbr set auth_cd =#{auth_cd} where user_id = #{id}
+    </update>
     <delete id="deleteMem">
         delete from tb_pils_mbr where bizno = #{bizNo} and user_id = #{id}
     </delete>

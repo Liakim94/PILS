@@ -74,6 +74,7 @@
                                 <col width="20%"/>
                                 <col width="20%"/>
                                 <col width="15%"/>
+                                <col width="10%"/>
                             </colgroup>
                             <thead>
                                 <tr>
@@ -85,6 +86,7 @@
                                     <th scope="col">부서</th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('mbphno')">전화번호</a></th>
                                     <th scope="col">담당자구분</th>
+                                    <th scope="col">승인여부</th>
                                     <input type="hidden" name="sort" id="sort" value="${vo.sort}">
                                 </tr>
                             </thead>
@@ -99,11 +101,19 @@
                                     <td class="al">${rs.deptNm}</td>
                                     <td>${rs.mbphno}</td>
                                     <td>${rs.management_cd}</td>
+                                    <c:choose>
+                                        <c:when test="${rs.auth_cd eq 'M102' }">
+                                            <td>승인</td>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <td>신청</td>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </tr>
                             </c:forEach>
                             <c:if test="${empty rs }">
                                 <tr>
-                                    <td colspan="8" class="text-center">조회된 데이터가 없습니다.</td>
+                                    <td colspan="9" class="text-center">조회된 데이터가 없습니다.</td>
                                 </tr>
                             </c:if>
                             </tbody>

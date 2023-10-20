@@ -61,3 +61,9 @@ COMMENT ON COLUMN pis.tb_pils_qna_contact.sort_seq IS '정렬순서';
 COMMENT ON COLUMN pis.tb_pils_qna_contact.inst_nm IS '기관명';
 COMMENT ON COLUMN pis.tb_pils_qna_contact.contact IS '연락처';
 COMMENT ON COLUMN pis.tb_pils_qna_contact.up_dt IS '수정일자';
+
+-------------------
+
+insert into tb_cd_data (cd_grp, cd, cd_nm) values ('M100','M103','신청회원');
+ALTER TABLE pis.tb_pils_mbr ADD cmp_nm varchar(100) NULL;
+COMMENT ON COLUMN pis.tb_pils_mbr.cmp_nm IS '기업명';

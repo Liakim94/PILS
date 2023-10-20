@@ -4,6 +4,7 @@ import kr.co.xicom.front.model.BannerVO;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.service.MainService;
 import kr.co.xicom.front.service.mapper.AttachMapper;
+import kr.co.xicom.front.service.mapper.ConsultingMapper;
 import kr.co.xicom.front.service.mapper.MainMapper;
 import kr.go.smes.fileservice.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class MainServiceImpl implements MainService {
     @Autowired
     private MainMapper mapper;
 
+    @Autowired
+    private ConsultingMapper consultingMapper;
 
     /** 첨부파일 Mapper */
     @Resource
@@ -80,6 +83,16 @@ public class MainServiceImpl implements MainService {
     @Override
     public List<BannerVO> bannerAll(BannerVO vo) throws Exception{
         return mapper.bannerAll(vo);
+    }
+
+    @Override
+    public int mbrApply(CmpMemberVo vo) throws Exception{
+        return   consultingMapper.insertMemberJoin(vo);
+    }
+
+    @Override
+    public CmpMemberVo getViewById(CmpMemberVo vo) throws Exception{
+        return   consultingMapper.getViewById(vo);
     }
 
 }

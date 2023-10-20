@@ -142,7 +142,6 @@ public class ConsultingServiceImpl implements ConsultingService {
 
         try{
             int result1= mapper.insertJoin(vo);
-            int result2=  mapper.insertMemberJoin(vo);
 
             String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
             if (StringUtils.isNotBlank(jsonFileList)) {

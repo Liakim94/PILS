@@ -17,6 +17,7 @@ public interface AdminMapper {
     int memManageListCount(CmpMemberVo vo) throws Exception;
     CmpMemberVo memEdit(CmpMemberVo vo) throws Exception;
     int updateMem(CmpMemberVo vo) throws Exception;
+    int approveMem(CmpMemberVo vo) throws Exception;
     int deleteMem(@Param("bizNo")String bizNo, @Param("id")String id) throws Exception;
     int changePw(CmpMemberVo vo) throws Exception;
 

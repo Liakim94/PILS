@@ -111,6 +111,10 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.updateMem(vo);
     }
     @Override
+    public int approveMem(CmpMemberVo vo) throws Exception{
+        return adminMapper.approveMem(vo);
+    }
+    @Override
     public int deleteMem(String bizNo, String id) throws Exception{
         return adminMapper.deleteMem(bizNo, id);
     }

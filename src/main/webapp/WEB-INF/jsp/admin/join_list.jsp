@@ -78,7 +78,7 @@
                                     <th scope="col">번호</th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('cmp_nm')">신청기업</a></th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('joincmp')">참여기업수</a></th>
-                                    <th scope="col"><a href="javascript:void(0);" onclick="sortList('nm')">작성자</a></th>
+<%--                                    <th scope="col"><a href="javascript:void(0);" onclick="sortList('nm')">작성자</a></th>--%>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('appdt')">신청일</a></th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('upd_dt')">마지막 수정일</a></th>
                                     <input type="hidden" name="sort" id="sort" value="${vo.sort}">
@@ -94,7 +94,7 @@
                                         </a>
                                     </td>
                                     <td>${list.joinCmp}개</td>
-                                    <td> ${list.name }</td>
+<%--                                    <td> ${list.name }</td>--%>
                                     <td>${list.appdate }</td>
                                     <td>${fn:substring(list.update,0,10)}</td>
                                 </tr>

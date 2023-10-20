@@ -30,4 +30,8 @@ public interface MainService {
 
 
     List<BannerVO> bannerAll(BannerVO vo) throws Exception;
+
+    int mbrApply(CmpMemberVo vo) throws Exception;
+
+    CmpMemberVo getViewById(CmpMemberVo vo) throws Exception;
 }

@@ -94,7 +94,76 @@ public class MainController {
             writer.flush();
         }
     }
+    @GetMapping("/mbrApply.do")
+    public ModelAndView mbrApply(@ModelAttribute("mbrApply") CmpMemberVo cmpVO,ModelMap model,
+                              HttpServletRequest request,
+                              HttpServletResponse response) throws Exception {
 
+        ModelAndView mav = new ModelAndView("mbr_apply");
+        return mav;
+    }
+    @PostMapping(value = "/checkId.do")
+    public void checkId(@RequestParam("id") String id, HttpServletResponse response) throws Exception {
+        PrintWriter out = response.getWriter();
+        if (consultingService.checkId(id) > 0) {
+            out.print(false);
+        } else {
+            out.print(true);
+        }
+    }
+
+    @RequestMapping(value = "/mbrApply.do", method = {RequestMethod.POST})
+    public void doMbrApply(@ModelAttribute("mbrApply") CmpMemberVo cmpVO,
+                            HttpServletRequest request,
+                            HttpServletResponse response) throws Exception {
+
+        try {
+            String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
+            cmpVO.setBizNo(bizNo);
+            String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
+            cmpVO.setEmail(email);
+            cmpVO.setManagement_cd("M501"); //담당자구분코드
+            int result = mainService.mbrApply(cmpVO);
+            if (result > 0) {
+
+                response.sendRedirect(request.getContextPath() + "/main/mbr.do?id=" + cmpVO.getId());
+
+            } else {
+                PrintWriter writer = response.getWriter();
+
+                response.setContentType("text/html; charset=UTF-8;");
+                request.setCharacterEncoding("utf-8");
+                writer.println("<script type='text/javascript'>");
+                writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
+                writer.println("history.back();");
+                writer.println("</script>");
+                writer.flush();
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+    @GetMapping("/mbr.do")
+    public ModelAndView mbrApplyView(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO, ModelMap model,
+                                 HttpServletRequest request,
+                                 HttpServletResponse response) throws Exception {
+
+        ModelAndView mav = new ModelAndView("mbr_apply_view");
+        try{
+            CmpMemberVo rs = mainService.getViewById(cmpVO);
+            rs.setBizNo1(rs.getBizNo().substring(0, 3));
+            rs.setBizNo2(rs.getBizNo().substring(3, 5));
+            rs.setBizNo3(rs.getBizNo().substring(5, 10));
+            if (rs == null) {
+                System.out.println("비정상적인 접근입니다.");
+            }
+            mav.addObject("rs", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+            return mav;
+    }
     @GetMapping("/logout.do")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);

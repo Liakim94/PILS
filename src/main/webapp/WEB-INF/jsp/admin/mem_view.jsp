@@ -11,6 +11,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/temp.css"/>">
     <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 <script>
@@ -21,6 +22,20 @@
             return false;
         }
     }
+    $(document).on('click', 'button' , function() {
+        $.ajax({
+            type: "post"
+            , data: {"id": "${rs.id}"}
+            , url: "${pageContext.request.contextPath}/admin/approve.do"
+            , success: function (datas) {
+                    alert("승인이 완료되었습니다.");
+                window.location.href = "${pageContext.request.contextPath}/admin/management/list.do"
+            },
+            error: function (error){
+                alert("에러");
+            }
+        });
+    });
 </script>
 <style type="text/css">
     input.error, textarea.error{
@@ -34,7 +49,7 @@
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu_admin"/>
-        <form:form name="frmDelete" id="frmDelete" method="POST" action="memDetail.do">
+        <form:form modelAttribute="frmDelete" method="POST" action="memDetail.do">
         <input type="hidden" name="id" id="id" value="${rs.id}">
         <input type="hidden" name="bizNo" id="bizNo" value="${rs.bizNo}">
         <div class="article">
@@ -94,6 +109,9 @@
                     </div>
                 </div>
                 <div class="write-bottom">
+                    <c:if test="${rs.auth_cd eq 'M103'}">
+                        <button type="button" class="submit" id="approve">승인하기</button>
+                    </c:if>
                     <a href="${pageContext.request.contextPath}/admin/memEdit.do?id=${rs.id}" class="submit">수정</a>
                     <a onclick="javascript:deleteMem();return false;" class="submit">삭제</a>
                     <a href="${pageContext.request.contextPath}/admin/management/list.do" class="back">목록</a>

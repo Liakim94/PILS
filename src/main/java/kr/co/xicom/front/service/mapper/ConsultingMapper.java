@@ -20,6 +20,7 @@ public interface ConsultingMapper {
     int conChkPw(CmpMemberVo vo) throws Exception;
 
     CmpMemberVo getViewByBizNo(CmpMemberVo vo) throws Exception;
+    CmpMemberVo getViewById(CmpMemberVo vo) throws Exception;
 
     int update(CmpMemberVo vo) throws Exception;
     int memUpdate(CmpMemberVo vo) throws Exception;

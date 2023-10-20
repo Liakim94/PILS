@@ -26,6 +26,8 @@ public interface AdminService {
 
     int updateMem(CmpMemberVo vo) throws Exception;
 
+    int approveMem(CmpMemberVo vo) throws Exception;
+
     int deleteMem(String bizNo, String id) throws Exception;
 
     int changePw(CmpMemberVo vo) throws Exception;

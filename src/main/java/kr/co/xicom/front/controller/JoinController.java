@@ -53,18 +53,19 @@ public class JoinController extends Alerts{
                               HttpServletResponse response) throws Exception {
 
         ModelAndView mav = new ModelAndView("join/apply/join_apply");
+        HttpSession session = request.getSession();
+        String userId=(String)session.getAttribute("sessionId");
+
+        if(userId==null || userId==""){
+            PrintWriter writer = response.getWriter();
+            response.setContentType("text/html; charset=UTF-8;");
+            request.setCharacterEncoding("utf-8");
+            writer.println("<script type='text/javascript'>");
+            writer.println("<script>alert('로그인후 작성 가능합니다.'); history.back(); </script>");
+            writer.flush();
+        }
         mav.addObject("frmPost", cmpVO);
         return mav;
-    }
-
-    @PostMapping(value = "/checkId.do")
-    public void checkId(@RequestParam("id") String id, HttpServletResponse response) throws Exception {
-        PrintWriter out = response.getWriter();
-        if (consultingService.checkId(id) > 0) {
-            out.print(false);
-        } else {
-            out.print(true);
-        }
     }
 
     @PostMapping(value = "/checkBizno.do")
@@ -80,18 +81,13 @@ public class JoinController extends Alerts{
 
     @RequestMapping(value = "/joinApply.do", method = {RequestMethod.POST})
     public void doApply(@ModelAttribute("frmApply") CmpMemberVo cmpVO,
-                        @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
                         HttpServletRequest request,
                         HttpServletResponse response) throws Exception {
 
         try {
             String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
             cmpVO.setBizNo(bizNo);
-            String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
-            cmpVO.setEmail(email);
             cmpVO.setMem_cd("M302"); //동행기업회원구분코드
-//            stVO.setBizNo(bizNo);
-            cmpVO.setManagement_cd("M501"); //담당자구분코드
 //            int result = consultingService.insertJoinApply(cmpVO, stVO,null);
             int result = consultingService.insertJoinApply(cmpVO, null);
             if (result > 0) {

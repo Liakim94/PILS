@@ -49,7 +49,7 @@
                 id: {
                     required: true, remote: {
                         type: "post"
-                        , url: "${pageContext.request.contextPath}/join/checkId.do"
+                        , url: "${pageContext.request.contextPath}/main/checkId.do"
                         , data: {
                             username: function () {
                                 return $("#id").val();

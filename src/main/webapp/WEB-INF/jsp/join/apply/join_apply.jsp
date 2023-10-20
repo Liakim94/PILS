@@ -68,9 +68,6 @@
             var bizNo = $("#bizNo1").val() + $("#bizNo2").val() + $("#bizNo3").val();
             $('input[name=bizNo]').attr('value', bizNo);
 
-            var email =$("#email1").val() + $("#email2").val();
-            $('input[name=email]').attr('value', email);
-
             fileUploader.upload({
                 done: function (result, deleted, uploaded) {
                     // 업로드 완료 후 전송된 파일 리스트 정보를
@@ -98,10 +95,6 @@
             });
             // return false;
         });
-    });
-
-    $.validator.addMethod("regex", function(value, element,regexpr){
-        return regexpr.test(value);
     });
 
     $(function () {
@@ -133,20 +126,6 @@
                 mainProduct: {required: true},
                 joinCmp: {required: true, digits : true},
                 material: {required: true},
-                id: {
-                    required: true, remote: {
-                        type: "post"
-                        , url: "${pageContext.request.contextPath}/join/checkId.do"
-                        , data: {
-                            username: function () {
-                                return $("#id").val();
-                            }
-                        }
-                    }
-                },
-                passwd: {required: true, regex: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,10}$/ },
-                passwdChk: {required: true, equalTo: "#passwd"},
-                email: {required: true}
             },
             messages: {
                 cmpNm: {required: "기업명을 입력하세요."},
@@ -161,18 +140,7 @@
                 product: {required: "주요 제품을 입력하세요."},
                 mainProduct: {required: "주요 적용 제품을 입력하세요."},
                 joinCmp: {required: "참여기업 수를 입력하세요.",  digits : "숫자만 입력하세요"},
-                material: {required: "주요원재료를 입력하세요."},
-                id: {
-                    required: "아이디를 입력하세요",
-                    remote: "이미 존재하는 아이디입니다."
-                },
-                name: {required: "담당자 성명을 입력하세요."},
-                mbphno: {required: "담당자 전화번호를 입력하세요."},
-                conQ: {required: "컨설팅시 주요 질의사항를 입력하세요."},
-                passwd: {required: "비밀번호를 입력하세요.",
-                    regex:"비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."},
-                passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
-                email: {required: "이메일을 입력하세요."}
+                material: {required: "주요원재료를 입력하세요."}
             },
         });
     });
@@ -403,76 +371,6 @@
                         <input type="text" name="material" id="material" required/>
                     </div>
                 </div>
-            </div>
-            <h2 class="title mt40">담당자</h2>
-            <div class="write-container">
-                <div class="line-wrap">
-                    <div class="label">
-                        성명<span class="required">*</span>
-                    </div>
-                    <div class="input-wrap  non-flex">
-                        <input type="text" name="name" id="name" placeholder="성명을 입력해주세요." required/>
-                    </div>
-                </div>
-                <div class="line-wrap">
-                    <div class="fx2">
-                        <div class="label">
-                            소속 부서
-                        </div>
-                        <div class="input-wrap">
-                            <input type="text" id="deptNm" name="deptNm" placeholder="소속부서를 입력해주세요." />
-                        </div>
-                    </div>
-                    <div class="fx2">
-                        <div class="label">
-                            직위
-                        </div>
-                        <div class="input-wrap">
-                            <input type="text" id="position" name="position" placeholder="직위를 입력해주세요."/>
-                        </div>
-                    </div>
-                </div>
-                <div class="line-wrap">
-                    <div class="label">
-                        전화번호<span class="required">*</span>
-                    </div>
-                    <div class="input-wrap  non-flex">
-                        <input type="text" id="mbphno" name="mbphno" required/>
-                    </div>
-                </div>
-                <div class="line-wrap">
-                    <div class="label">
-                        이메일<span class="required">*</span>
-                    </div>
-                    <div class="input-wrap ">
-                        <input type="text" class="multi" name="email1" id="email1"/>
-                        <span>@</span>
-                        <input type="text" style="width: 130px" name="email2" id="email2"/>
-                        <select id="email3" style="width: 130px"
-                                onclick="selectEmail(this)">
-                            <option value="1">직접입력</option>
-                            <option value="naver.com">naver.com</option>
-                            <option value="daum.net">daum.net</option>
-                            <option value="gmail.com">gmail.com</option>
-                        </select>
-                        <input type="hidden" value="" id="email" name="email">
-
-                    </div>
-                </div>
-                <div class="line-wrap">
-                    <div class="label">
-                        사무실 전화
-                    </div>
-                    <div class="input-wrap">
-                        <input type="text" id="memTelNo" name="memTelNo"/>
-                    </div>
-                </div>
-                <div class="line-wrap">
-                    <div class="label">팩스</div>
-                    <div class="input-wrap ">
-                        <input type="text" id="memFaxNo" name="memFaxNo"/>
-                    </div>
-                </div>
                 <div class="line-wrap">
                     <div class="label">
                         첨부서류
@@ -480,38 +378,6 @@
 
                     <div class="file-uploader-wrapper">
                         <div class="file-uploader"></div>
-                    </div>
-
-                </div>
-            </div>
-            <h2 class="title mt40">회원가입 정보</h2>
-            <div class="write-container">
-                <div class="line-wrap">
-                    <div class="label label-long">
-                        사용자 ID<span class="required">*</span>
-                    </div>
-                    <div class="input-wrap  non-flex long-input">
-                        <input type="text" name="id" id="id" placeholder="ID를 입력해주세요." required/>
-                    </div>
-                </div>
-                <div class="line-wrap">
-                    <div class="fx2">
-                        <div class="label label-long">
-                            비밀번호<span class="required">*</span>
-                        </div>
-                        <div class="input-wrap  non-flex long-input">
-                            <input type="password" id="passwd" name="passwd" placeholder="비밀번호를 입력해주세요." required>
-                            <h5 class="sub">※ 비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다.</h5>
-                        </div>
-                    </div>
-                    <div class="fx2">
-                        <div class="label label-long">
-                            비밀번호 재입력<span class="required">*</span>
-                        </div>
-                        <div class="input-wrap long-input">
-                            <input type="password" id="passwdChk" name="passwdChk" placeholder="비밀번호를 재입력해주세요."
-                                   required/>
-                        </div>
                     </div>
                 </div>
             </div>
