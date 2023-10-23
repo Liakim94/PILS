@@ -71,7 +71,6 @@
                                 <col width="10%">
                                 <col width="10%">
                                 <col width="10%">
-                                <col width="12%">
                             </colgroup>
                             <thead>
                                 <tr>

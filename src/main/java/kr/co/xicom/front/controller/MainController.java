@@ -214,7 +214,7 @@ public class MainController {
 
 
     //수정 화면
-    @GetMapping(value = "/joinEdit.do")
+    @GetMapping(value = "/myPage/joinEdit.do")
     public ModelAndView joinEdit(@ModelAttribute("frmEdit") CmpMemberVo cmpVO,
                                 @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
                                 HttpSession session) throws Exception {
@@ -248,7 +248,7 @@ public class MainController {
     }
 
     //수정 처리
-    @PostMapping(value = "/joinEdit.do")
+    @PostMapping(value = "/myPage/joinEdit.do")
     public String doJoinEdit(
             @ModelAttribute("frmEdit") CmpMemberVo cmpVO,
             @ModelAttribute("CmpSttusVO") CmpSttusVO stVO) throws Exception {
@@ -262,10 +262,7 @@ public class MainController {
             int result = consultingService.updateJoin(cmpVO,null);
 
             if (result > 0) {
-                return "redirect:myPage.do";
-            } else {
-
-                return "forward:/common/error.jsp";
+                return "redirect:/main/myPage.do";
             }
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -276,7 +273,7 @@ public class MainController {
     /**
      * 담당자 관리 메뉴
      */
-    @GetMapping("/management.do")
+    @GetMapping("/mem/management.do")
     public ModelAndView memManage(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                                     ,HttpSession session) throws Exception {
         ModelAndView mav = new ModelAndView("myPage/member_list");
@@ -293,13 +290,13 @@ public class MainController {
         }
         return mav;
     }
-    @GetMapping("/memAdd.do")
+    @GetMapping("/mem/memAdd.do")
     public ModelAndView memAdd(HttpSession session) throws Exception{
         ModelAndView mav = new ModelAndView("myPage/member_add");
         return mav;
     }
 
-    @RequestMapping(value = "/memAdd.do",method = {RequestMethod.POST})
+    @RequestMapping(value = "/mem/memAdd.do",method = {RequestMethod.POST})
     public void doMemAdd(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                           , HttpSession session
                           , HttpServletResponse response
@@ -323,7 +320,7 @@ public class MainController {
                 writer.flush();
         }
     //수정 화면
-    @GetMapping(value = "/memEdit.do")
+    @GetMapping(value = "/mem/memEdit.do")
     public ModelAndView memEdit(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                                 ,HttpServletRequest request
                                 ,HttpSession session
@@ -348,7 +345,7 @@ public class MainController {
         return mav;
     }
     //수정 처리
-    @RequestMapping(value = "/memEdit.do", method = {RequestMethod.POST})
+    @RequestMapping(value = "/mem/memEdit.do", method = {RequestMethod.POST})
     public String doMemEdit(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                             HttpSession session) throws Exception {
         try {
@@ -366,13 +363,13 @@ public class MainController {
         }
         return "forward:/common/error.jsp";
     }
-    @GetMapping(value = "/changePw.do")
+    @GetMapping(value = "/mem/changePw.do")
     public ModelAndView change(HttpSession session) throws Exception{
         ModelAndView mav = new ModelAndView("myPage/changePw");
         return mav;
     }
 
-    @RequestMapping(value = "/changePw.do", method = {RequestMethod.POST})
+    @RequestMapping(value = "/mem/changePw.do", method = {RequestMethod.POST})
     public void changePw(HttpSession session
                          ,@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                          ,HttpServletResponse response
@@ -380,7 +377,7 @@ public class MainController {
 
         int result = mainService.changePw(cmpVO);
         if(result>0){
-            response.sendRedirect(request.getContextPath() + "/main/management.do");
+            response.sendRedirect(request.getContextPath() + "/main/mem/management.do");
         }
         PrintWriter writer = response.getWriter();
 

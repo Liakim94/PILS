@@ -11,14 +11,18 @@
 String uploadPath = "";
 uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString().trim()).equals("")?"upload":EgovProperties.getProperty("UploadPath").toString();
 %>
-
+<c:set var="URI" value="${requestScope['javax.servlet.forward.request_uri']}" />
 
 <aside class="main-sidebar">
     <div class ="lnb">
         <h2>마이페이지</h2>
         <ul>
-            <li><a href ="${pageContext.request.contextPath}/main/myPage.do">동행기업 신청 정보</a></li>
-            <li><a href ="${pageContext.request.contextPath}/main/management.do">담당자 관리</a></li>
+            <li class="<c:if test="${URI.contains('/main/myPage')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/main/myPage.do">동행기업 신청 정보</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/main/mem')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/main/mem/management.do">담당자 관리</a>
+            </li>
         </ul>
     </div>
 </aside>

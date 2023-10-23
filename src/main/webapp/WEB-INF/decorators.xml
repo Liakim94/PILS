@@ -73,7 +73,7 @@
     <decorator name="menu_myPage" page="/menu_myPage.do"/>
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
         <pattern>/main/myPage.do</pattern>
-        <pattern>/main/joinEdit.do</pattern>
+        <pattern>/main/myPage/joinEdit.do</pattern>
     </decorator>
 
     <decorator name="header" page="/header.do"/>

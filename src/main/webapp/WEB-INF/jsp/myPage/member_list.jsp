@@ -66,7 +66,7 @@
                                     <td>${rs.deptNm}</td>
                                     <td>${rs.mbphno}</td>
                                     <td><c:if test="${sessionId eq rs.id}">
-                                    <a href="${pageContext.request.contextPath}/main/memEdit.do" style="color: rgb(0, 72, 255);">정보수정</a> </c:if></td>
+                                    <a href="${pageContext.request.contextPath}/main/mem/memEdit.do" style="color: rgb(0, 72, 255);">정보수정</a> </c:if></td>
                                 </tr>
                             </c:forEach>
                             <c:if test="${empty rs }">
@@ -77,7 +77,7 @@
                             </tbody>
                         </table>
                         <div class="write-bottom">
-                            <a href="<c:url value="/main/memAdd.do"/>" class="submit">담당자 추가</a>
+<%--                            <a href="<c:url value="/main/mem/memAdd.do"/>" class="submit">담당자 추가</a>--%>
                         </div>
                     </div>
                 </form>

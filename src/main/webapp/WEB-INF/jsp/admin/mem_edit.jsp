@@ -143,8 +143,8 @@
                 </div>
                 <div class="write-bottom">
                     <button  class="submit"  onclick="emailChk(this.form)" id="apply">저장</button>
-                    <a href="${pageContext.request.contextPath}/admin/changePw.do?id=${rs.id}" class="submit">비밀번호 변경</a>
-                    <a href="${pageContext.request.contextPath}/admin/memDetail.do?id=${rs.id}" class="back">취소</a>
+                    <a href="${pageContext.request.contextPath}/admin/mem/changePw.do?id=${rs.id}" class="submit">비밀번호 변경</a>
+                    <a href="${pageContext.request.contextPath}/admin/mem/memDetail.do?id=${rs.id}" class="back">취소</a>
                 </div>
             </div>
             </form:form>

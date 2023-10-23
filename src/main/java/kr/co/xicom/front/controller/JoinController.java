@@ -52,18 +52,18 @@ public class JoinController extends Alerts{
                               HttpServletRequest request,
                               HttpServletResponse response) throws Exception {
 
-        ModelAndView mav = new ModelAndView("join/apply/join_apply");
         HttpSession session = request.getSession();
         String userId=(String)session.getAttribute("sessionId");
 
         if(userId==null || userId==""){
-            PrintWriter writer = response.getWriter();
-            response.setContentType("text/html; charset=UTF-8;");
-            request.setCharacterEncoding("utf-8");
-            writer.println("<script type='text/javascript'>");
-            writer.println("<script>alert('로그인후 작성 가능합니다.'); history.back(); </script>");
-            writer.flush();
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>");
+            out.println("alert('로그인이 필요합니다.')");
+            out.println("history.back()");
+            out.println("</script>");
         }
+        ModelAndView mav = new ModelAndView("join/apply/join_apply");
         mav.addObject("frmPost", cmpVO);
         return mav;
     }
