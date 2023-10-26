@@ -16,6 +16,13 @@
     <script src="${pageContext.request.contextPath }/x2/plugins/dropzone/dropzone.js"></script>
 
 </head>
+<style>
+    .line-wrap .label {
+        display:inline-grid;
+        align-content:center;
+        vertical-align:middle;
+    }
+</style>
 <script>
     var oEditors = [];
 

@@ -14,7 +14,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 </head>
 <body>
-
+<style>
+    .line-wrap .label {
+        display:inline-grid;
+        align-content:center;
+        vertical-align:middle;
+    }
+</style>
 <div id="content">
     <div id="board">
         <page:applyDecorator name="menu2"/>
@@ -57,7 +63,7 @@
                         <div class="write-container" style="border-top: 2px solid #262626;border-bottom: 2px solid #262626;">
                             <div class="line-wrap">
                                 <div class="label">사이트명</div>
-                                <div class="input-wrap" style="margin:5px">
+                                <div class="input-wrap">
                                     ${rs.title}
                                 </div>
                             </div>
@@ -69,19 +75,19 @@
                             </div>
                             <div class="line-wrap">
                                 <div class="label">확인 가능 정보</div>
-                                <div class="input-wrap" style="margin:5px">
+                                <div class="input-wrap">
                                     ${rs.chkInfo}
                                 </div>
                             </div>
                             <div class="line-wrap">
                                 <div class="label">주요 특징</div>
-                                <div class="input-wrap" style="margin:5px">
+                                <div class="input-wrap">
                                     ${rs.features}
                                 </div>
                             </div>
                             <div class="line-wrap">
                                 <div class="label">유‧무료 여부</div>
-                                <div class="input-wrap" style="margin:5px">
+                                <div class="input-wrap">
                                     ${rs.chrg}
                                 </div>
                             </div>
