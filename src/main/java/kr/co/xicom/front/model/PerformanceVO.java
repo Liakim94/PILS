@@ -21,19 +21,19 @@ public class PerformanceVO extends DefaultVO{
     private String regist_dt ="";
     private String user_id ="";
     /**
-     * 원본파일이름
+     * 파일 경로
      */
     private String intrlck ="";   //연동표
     private String change ="";
     private String intrlck_perf ="";
     private String etc ="";
     /**
-     * 파일 경로
+     * 원본파일이름
      */
-    private String intrlck_path ="";   //연동표
-    private String change_path ="";
-    private String intrlck_perf_path ="";
-    private String etc_path ="";
+    private String intrlck_file_nm ="";   //연동표
+    private String change_file_nm ="";
+    private String intrlck_perf_file_nm ="";
+    private String etc_file_nm ="";
     /**
      * 파일정보 (JSON 문자열)
      */

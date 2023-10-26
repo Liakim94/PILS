@@ -180,10 +180,10 @@
         change,
         intrlck_perf,
         etc,
-        intrlck_path,
-        change_path,
-        intrlck_perf_path,
-        etc_path,
+        intrlck_file_nm,
+        change_file_nm,
+        intrlck_perf_file_nm,
+        etc_file_nm,
         regist_dt,
         user_id
         )
@@ -196,10 +196,10 @@
         #{change},
         #{intrlck_perf},
         #{etc},
-        #{intrlck_path},
-        #{change_path},
-        #{intrlck_perf_path},
-        #{etc_path},
+        #{intrlck_file_nm},
+        #{change_file_nm},
+        #{intrlck_perf_file_nm},
+        #{etc_file_nm},
         NOW(),
         #{user_id}
         )
