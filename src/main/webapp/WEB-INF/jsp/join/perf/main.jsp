@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <h2 class="title"> 동행기업 연동 실적 제출</h2>
-                <h4>
+                <h4 style="    margin: 0 auto 40px;">
                     <ul class="disc">
                         <li class="mb20">
                             동행기업이 수탁기업과 연동약정을 체결하고 연동대금을 지급한 실적 제출<br>
@@ -70,7 +70,7 @@
                 </h4>
                 <div class="info-link">
                     <div class="item" style="width: 30%">
-                        <a href="${pageContext.request.contextPath}/join/perf/apply.do">
+                        <a href="${pageContext.request.contextPath}/main/perf/apply.do">
                             <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" alt="약정서 체험하기">
                             <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>" alt="약정서 체험하기">
                             동행기업 실적 제출하기</a>

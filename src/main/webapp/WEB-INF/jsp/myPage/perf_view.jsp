@@ -67,72 +67,80 @@
                 <input type="hidden" value="${rs.seq}" name="seq"/>
                 <div class="write-container">
                     <div class="line-wrap">
-                            <div class="label" style="width:200px;">
+                            <div class="label" style="width:202px;">
                                 (위탁)기업명
                             </div>
-                            <div class="input-wrap non-flex">
+                            <div class="input-wrap">
                                 ${rs.cmp_nm}
                             </div>
                     </div>
                     <div class="line-wrap">
-                            <div class="label" style="width:200px;">
+                            <div class="label" style="width:202px;">
                                 연동 계약 기간
                             </div>
-                            <div class="input-wrap non-flex">
+                            <div class="input-wrap">
                                 <td>
                                     ${rs.cntr_pd}
                             </div>
                         </div>
                     <div class="line-wrap">
-                            <div class="label"style="width:200px;">
+                            <div class="label"style="width:202px;">
                                 연동약정 계약 건 수(총합)
                             </div>
-                            <div class="input-wrap non-flex">
+                            <div class="input-wrap">
                                 ${rs.cntr_numb}
                             </div>
                     </div>
                     <div class="line-wrap">
-                            <div class="label"style="width:200px;">
+                            <div class="label"style="width:202px;">
                                 연동 약정체결 (수탁)기업 수
                             </div>
-                            <div class="input-wrap non-flex">
+                            <div class="input-wrap">
                                 ${rs.cmp_numb}
                             </div>
                     </div>
                     <div class="line-wrap">
-                        <p class="label" style="width:192px;">연동표</p>
+                        <div class="label" style="width:192px;">연동표</div>
                         <ul class="ul">
-                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck)}"/>"
-                               class="file"  download="<c:out value="${rs.intrlck_file_nm}"/>">
+                            <c:if test="${intrlck ne null}">
+                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck)}"/>"
+                                class="file"  download="<c:out value="${rs.intrlck_file_nm}"/>">
                                 <c:out value="${rs.intrlck_file_nm}"/>
-                            </a>
+                                </a>
+                            </c:if>
                         </ul>
                     </div>
                     <div class="line-wrap">
-                        <p class="label" style="width:192px;">변동표</p>
+                        <div class="label" style="width:192px;">변동표</div>
                         <ul class="ul">
-                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.change)}"/>"
-                             class="file" download="<c:out value="${rs.change_file_nm}"/>">
-                                <c:out value="${rs.change_file_nm}"/>
-                            </a>
+                            <c:if test="${change ne null}">
+                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.change)}"/>"
+                                 class="file" download="<c:out value="${rs.change_file_nm}"/>">
+                                    <c:out value="${rs.change_file_nm}"/>
+                                </a>
+                            </c:if>
                         </ul>
                     </div>
                     <div class="line-wrap">
-                        <p class="label" style="width:192px;">연동실적</p>
+                        <div class="label" style="width:192px;">연동실적</div>
                         <ul class="ul">
-                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck_perf)}"/>"
-                               class="file" download="<c:out value="${rs.intrlck_perf_file_nm}"/>">
-                                <c:out value="${rs.intrlck_perf_file_nm}"/>
-                            </a>
+                            <c:if test="${intrlck_perf ne null}">
+                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck_perf)}"/>"
+                                   class="file" download="<c:out value="${rs.intrlck_perf_file_nm}"/>">
+                                    <c:out value="${rs.intrlck_perf_file_nm}"/>
+                                </a>
+                            </c:if>
                         </ul>
                     </div>
                     <div class="line-wrap">
-                        <p class="label" style="width:192px;">기타</p>
+                        <div class="label" style="width:192px;">기타</div>
                         <ul class="ul">
-                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.etc)}"/>"
-                               class="file" download="<c:out value="${rs.etc_file_nm}"/>">
-                                <c:out value="${rs.etc_file_nm}"/>
-                            </a>
+                            <c:if test="${etc ne null}">
+                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.etc)}"/>"
+                                   class="file" download="<c:out value="${rs.etc_file_nm}"/>">
+                                    <c:out value="${rs.etc_file_nm}"/>
+                                </a>
+                            </c:if>
                         </ul>
                     </div>
                 </div>
