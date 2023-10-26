@@ -83,32 +83,32 @@
                     <div class="file-wrap">
                         <p class="label">연동표</p>
                         <ul>
-                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck)}"/>">
-                                <c:out value="연동표-${rs.cmp_nm}"/>
+                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck_path)}"/>">
+                                <c:out value="${rs.intrlck}"/>
                             </a>
                         </ul>
                     </div>
                     <div class="file-wrap">
                         <p class="label">변동표</p>
                         <ul>
-                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.change)}"/>">
-                                <c:out value="변동표-${rs.cmp_nm}"/>
+                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.change_path)}"/>">
+                                <c:out value="${rs.change}"/>
                             </a>
                         </ul>
                     </div>
                     <div class="file-wrap">
                         <p class="label">연동실적</p>
                         <ul>
-                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck_perf)}"/>">
-                                <c:out value="연동실적-${rs.cmp_nm}"/>
+                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck_perf_path)}"/>">
+                                <c:out value="${rs.intrlck_perf}"/>
                             </a>
                         </ul>
                     </div>
                     <div class="file-wrap">
                         <p class="label">기타</p>
                         <ul>
-                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.etc)}"/>">
-                                <c:out value="기타-${rs.cmp_nm}"/>
+                            <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.etc_path)}"/>">
+                                <c:out value="${rs.etc}"/>
                             </a>
                         </ul>
                     </div>

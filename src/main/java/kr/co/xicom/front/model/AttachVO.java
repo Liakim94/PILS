@@ -80,49 +80,6 @@ public class AttachVO extends DefaultVO {
 		}
 		return this.filePath + this.svFileNm;
 	}
-
-	/*public String getPfNm() {
-		return pfNm;
-	}
-	public void setPfNm(String pfNm) {
-		this.pfNm = pfNm;
-	}
-	public int getPfSeq() {
-		return pfSeq;
-	}
-	public void setPfSeq(int pfSeq) {
-		this.pfSeq = pfSeq;
-	}
-	public int getAppSeq() {
-		return appSeq;
-	}
-	public void setAppSeq(int appSeq) {
-		this.appSeq = appSeq;
-	}
-	public String getCtgr() {
-		return ctgr;
-	}
-	public void setCtgr(String ctgr) {
-		this.ctgr = ctgr;
-	}
-	public int getRepSeq() {
-		return repSeq;
-	}
-	public void setRepSeq(int repSeq) {
-		this.repSeq = repSeq;
-	}
-	public int getReqSeq() {
-		return reqSeq;
-	}
-	public void setReqSeq(int reqSeq) {
-		this.reqSeq = reqSeq;
-	}
-	public int getContSeq() {
-		return contSeq;
-	}
-	public void setContSeq(int contSeq) {
-		this.contSeq = contSeq;
-	}*/
 	public int getAttchSeq() {
 		return attchSeq;
 	}

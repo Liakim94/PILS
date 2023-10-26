@@ -118,32 +118,41 @@ public class MainServiceImpl implements MainService {
             Gson gson = new Gson();
             Type listType = new com.google.common.reflect.TypeToken<List<BannerVO>>(){}.getType();
 
-            String intrlck = vo.getJsonIntrlckFile();
-            if (!StringUtils.isBlank(intrlck)) {
+            String intrlck_path = vo.getJsonIntrlckFile();
+            if (!StringUtils.isBlank(intrlck_path)) {
                 // HTMLTagFilter 적용 되돌리기
-                intrlck = kr.go.smes.util.HtmlTagUtils.restore(intrlck);
-                List<PerformanceVO> attachs = gson.fromJson(intrlck, listType);
+                intrlck_path = kr.go.smes.util.HtmlTagUtils.restore(intrlck_path);
+                List<PerformanceVO> attachs = gson.fromJson(intrlck_path, listType);
                 if (attachs != null && attachs.size() > 0) {
                     vo.setIntrlck(attachs.get(0).getSavedFilepath());
 
                 }
             }
-            String change = vo.getJsonChangeFile();
-            if (!StringUtils.isBlank(change)) {
+            String change_path = vo.getJsonChangeFile();
+            if (!StringUtils.isBlank(change_path)) {
                 // HTMLTagFilter 적용 되돌리기
-                change = kr.go.smes.util.HtmlTagUtils.restore(change);
-                List<PerformanceVO> attachs = gson.fromJson(change, listType);
+                change_path = kr.go.smes.util.HtmlTagUtils.restore(change_path);
+                List<PerformanceVO> attachs = gson.fromJson(change_path, listType);
                 if (attachs != null && attachs.size() > 0) {
                     vo.setChange(attachs.get(0).getSavedFilepath());
                 }
             }
-            String intrlck_perf = vo.getJsonIntrlckPerfFile();
-            if (!StringUtils.isBlank(intrlck_perf)) {
+            String intrlck_perf_path = vo.getJsonIntrlckPerfFile();
+            if (!StringUtils.isBlank(intrlck_perf_path)) {
                 // HTMLTagFilter 적용 되돌리기
-                intrlck_perf = kr.go.smes.util.HtmlTagUtils.restore(intrlck_perf);
-                List<PerformanceVO> attachs = gson.fromJson(intrlck_perf, listType);
+                intrlck_perf_path = kr.go.smes.util.HtmlTagUtils.restore(intrlck_perf_path);
+                List<PerformanceVO> attachs = gson.fromJson(intrlck_perf_path, listType);
                 if (attachs != null && attachs.size() > 0) {
                     vo.setIntrlck_perf(attachs.get(0).getSavedFilepath());
+                }
+            }
+            String etc_path = vo.getJsonChangeFile();
+            if (!StringUtils.isBlank(etc_path)) {
+                // HTMLTagFilter 적용 되돌리기
+                etc_path = kr.go.smes.util.HtmlTagUtils.restore(etc_path);
+                List<PerformanceVO> attachs = gson.fromJson(etc_path, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setChange(attachs.get(0).getSavedFilepath());
                 }
             }
         }

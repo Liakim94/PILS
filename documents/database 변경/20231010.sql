@@ -71,14 +71,22 @@ ALTER TABLE pis.tb_pils_cmp_agre ADD type_cd varchar(36) NULL;
 COMMENT ON COLUMN pis.tb_pils_cmp_agre.type_cd IS '구분코드';
 
 CREATE TABLE pis.tb_pils_perf (
+                                  SEQ bigserial not null,
                                   cmp_nm varchar(100) NULL,
                                   cntr_pd varchar(100) NULL,
                                   cntr_numb int8 NULL,
                                   cmp_numb int8 NULL,
-                                  intrlck varchar(1000) NULL,
-                                  "change" varchar(1000) NULL,
-                                  intrlck_perf varchar(1000) NULL,
-                                  regist_dt timestamp NULL
+                                  intrlck varchar(255) NULL,
+                                  "change" varchar(255) NULL,
+                                  intrlck_perf varchar(255) NULL,
+                                  regist_dt timestamp null,
+                                  user_id varchar(100) not NULL,
+                                  etc varchar(255) NULL,
+                                  intrlck_path varchar(1000) NULL,
+                                  change_path varchar(1000) NULL,
+                                  intrlck_perf_path varchar(1000) NULL,
+                                  etc_path varchar(1000) NULL,
+                                  CONSTRAINT tb_pils_perf_pk PRIMARY KEY (seq)
 );
 
 -- Column comments
@@ -87,14 +95,8 @@ COMMENT ON COLUMN pis.tb_pils_perf.cmp_nm IS '기업명';
 COMMENT ON COLUMN pis.tb_pils_perf.cntr_pd IS '계약기간';
 COMMENT ON COLUMN pis.tb_pils_perf.cntr_numb IS '계약건수';
 COMMENT ON COLUMN pis.tb_pils_perf.cmp_numb IS '약정체결 기업수';
-COMMENT ON COLUMN pis.tb_pils_perf.intrlck IS '연동표';
-COMMENT ON COLUMN pis.tb_pils_perf."change" IS '변동표';
-COMMENT ON COLUMN pis.tb_pils_perf.intrlck_perf IS '연동실적';
+COMMENT ON COLUMN pis.tb_pils_perf.intrlck IS '연동표 파일이름';
+COMMENT ON COLUMN pis.tb_pils_perf."change" IS '변동표 파일이름';
+COMMENT ON COLUMN pis.tb_pils_perf.intrlck_perf IS '연동실적 파일이름';
+COMMENT ON COLUMN pis.tb_pils_perf.etc IS '기타 파일이름';
 COMMENT ON COLUMN pis.tb_pils_perf.regist_dt IS '작성일자';
-ALTER TABLE pis.tb_pils_perf ADD seq bigserial NOT NULL;
-COMMENT ON COLUMN pis.tb_pils_perf.seq IS '연번';
-ALTER TABLE pis.tb_pils_perf ADD CONSTRAINT tb_pils_perf_pk PRIMARY KEY (seq);
-ALTER TABLE pis.tb_pils_perf ADD user_id varchar(36) NOT NULL;
-COMMENT ON COLUMN pis.tb_pils_perf.user_id IS '작성자 정보';
-ALTER TABLE pis.tb_pils_perf ADD etc varchar(1000) NULL;
-COMMENT ON COLUMN pis.tb_pils_perf.etc IS '기타 첨부파일';

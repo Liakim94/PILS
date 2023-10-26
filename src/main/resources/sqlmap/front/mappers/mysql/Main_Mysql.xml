@@ -179,6 +179,11 @@
         intrlck,
         change,
         intrlck_perf,
+        etc,
+        intrlck_path,
+        change_path,
+        intrlck_perf_path,
+        etc_path,
         regist_dt,
         user_id
         )
@@ -190,6 +195,11 @@
         #{intrlck},
         #{change},
         #{intrlck_perf},
+        #{etc},
+        #{intrlck_path},
+        #{change_path},
+        #{intrlck_perf_path},
+        #{etc_path},
         NOW(),
         #{user_id}
         )
@@ -213,6 +223,11 @@
                intrlck,
                change,
                intrlck_perf,
+               etc,
+               intrlck_path,
+               change_path,
+               intrlck_perf_path,
+               etc_path,
                regist_dt
         from tb_pils_perf
         where seq= #{seq}

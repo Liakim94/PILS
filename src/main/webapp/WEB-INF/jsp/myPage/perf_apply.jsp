@@ -470,7 +470,7 @@
                             연동표
                         </div>
                         <div id="intrlck-selector" class="input-box file-selector">
-                            <form:input path="intrlck" readonly="true"/>
+                            <form:input path="intrlck_path" readonly="true"/>
                             <input type="file" name="intrlckFile" id="intrlckFile"/>
                             <label for="intrlckFile" class="button">선택...</label>
                         </div>
@@ -481,7 +481,7 @@
                             변동표
                         </div>
                         <div id="change-selector" class="input-box file-selector">
-                            <form:input path="change" readonly="true"/>
+                            <form:input path="change_path" readonly="true"/>
                             <input type="file" name="changeFile" id="changeFile"/>
                             <label for="changeFile" class="button">선택...</label>
                         </div>
@@ -492,7 +492,7 @@
                             연동실적
                         </div>
                         <div id="intrlck_perf-selector" class="input-box file-selector">
-                            <form:input path="intrlck_perf" readonly="true"/>
+                            <form:input path="intrlck_perf_path" readonly="true"/>
                             <input type="file" name="intrlck_perfFile" id="intrlck_perfFile"/>
                             <label for="intrlck_perfFile" class="button">선택...</label>
                         </div>
@@ -503,7 +503,7 @@
                             기타
                         </div>
                         <div id="etc-selector" class="input-box file-selector">
-                            <form:input path="etc" readonly="true"/>
+                            <form:input path="etc_path" readonly="true"/>
                             <input type="file" name="etcFile" id="etcFile"/>
                             <label for="etcFile" class="button">선택...</label>
                         </div>
