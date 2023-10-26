@@ -16,6 +16,7 @@
     <result property="formula" column="formula"/>
     <result property="ratio" column="ratio"/>
     <result property="etc" column="etc"/>
+    <result property="type_cd" column="type_cd"/>
 </resultMap>
     <insert id="apply">
         insert into tb_pils_cmp_agre
@@ -32,6 +33,7 @@
             ,formula
             ,ratio
             ,etc
+            ,type_cd
         ) values (
              #{id}
             ,#{name}
@@ -46,6 +48,7 @@
             ,#{formula}
             ,#{ratio}
             ,#{etc}
+            ,#{type_cd}
         )
     </insert>
 <select id="agreeView" resultMap="AgreementVO">
@@ -62,6 +65,7 @@
          , formula  as formula
          , ratio  as ratio
          , etc as etc
+         ,type_cd as type_cd
     from tb_pils_cmp_agre
     where id = #{id}
 </select>

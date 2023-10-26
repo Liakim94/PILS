@@ -15,7 +15,7 @@
 </head>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu2"/>
+        <page:applyDecorator name="menu_join"/>
         <div class="article">
             <br>
             <ul class="loc-list">
@@ -163,55 +163,6 @@
                         <div class="label label-long">주요 원재료</div>
                         <div class="input-wrap">
                             ${rs.material}
-                        </div>
-                    </div>
-                </div>
-                <h2 class="title mt40">담당자</h2>
-                <div class="write-container">
-                    <div class="line-wrap">
-                        <div class="label">성명</div>
-                        <div class="input-wrap">
-                            ${rs.name}
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="fx2">
-                            <div class="label">소속 부서</div>
-                            <div class="input-wrap">
-                               ${rs.deptNm}
-                            </div>
-                        </div>
-                        <div class="fx2">
-                            <div class="label">
-                                직위
-                            </div>
-                            <div class="input-wrap">
-                                ${rs.position}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="label">전화번호</div>
-                        <div class="input-wrap">
-                            ${rs.mbphno}
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="label">이메일</div>
-                        <div class="input-wrap ">
-                            ${rs.email}
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="label">사무실 전화</div>
-                        <div class="input-wrap" >
-                            ${rs.memTelNo}
-                        </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="label">팩스</div>
-                        <div class="input-wrap" >
-                            ${rs.memFaxNo}
                         </div>
                     </div>
                     <div class="line-wrap">

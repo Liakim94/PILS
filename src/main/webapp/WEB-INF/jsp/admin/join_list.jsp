@@ -56,7 +56,7 @@
                         <select id="tag" name="tag" value="">
                             <option value="">선택</option>
                             <option value="cmp_nm" <c:if test="${vo.tag == 'cmp_nm'}">selected="selected"</c:if>>신청기업명</option>
-                            <option value="nm" <c:if test="${vo.tag == 'nm'}">selected="selected"</c:if>>작성자</option>
+<%--                            <option value="nm" <c:if test="${vo.tag == 'nm'}">selected="selected"</c:if>>작성자</option>--%>
                         </select>
                         <input type="text" name="keyword" value="${vo.keyword}" style=" border-radius: 5px;">
                         <button type="submit" style=" background: #E60024; border-radius: 5px;
@@ -71,14 +71,13 @@
                                 <col width="10%">
                                 <col width="10%">
                                 <col width="10%">
-                                <col width="12%">
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th scope="col">번호</th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('cmp_nm')">신청기업</a></th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('joincmp')">참여기업수</a></th>
-                                    <th scope="col"><a href="javascript:void(0);" onclick="sortList('nm')">작성자</a></th>
+<%--                                    <th scope="col"><a href="javascript:void(0);" onclick="sortList('nm')">작성자</a></th>--%>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('appdt')">신청일</a></th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('upd_dt')">마지막 수정일</a></th>
                                     <input type="hidden" name="sort" id="sort" value="${vo.sort}">
@@ -94,7 +93,7 @@
                                         </a>
                                     </td>
                                     <td>${list.joinCmp}개</td>
-                                    <td> ${list.name }</td>
+<%--                                    <td> ${list.name }</td>--%>
                                     <td>${list.appdate }</td>
                                     <td>${fn:substring(list.update,0,10)}</td>
                                 </tr>

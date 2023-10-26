@@ -104,7 +104,7 @@
                , #{email}
                , #{memTelNo}
                , #{memFaxNo}
-               , 'M102'
+               , 'M103'
                , #{bizNo}
                , #{id}
                , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
@@ -179,20 +179,8 @@
              , A.product       as product
              , A.joincmp       as joinCmp
              , A.main_product  as mainProduct
-             , B.nm            as name
-             , B.mbphno        as mbphno
-             , B.psitn_dept_nm as deptNm
-             , B.pstn as position
-            ,B.email_addr as email
-            ,B.telno as memTelNo
-            ,B.faxno as memFaxNo
-            ,B.auth_cd as auth_cd
-        from tb_pils_cmpmbr A join tb_pils_mbr B
-        on A.bizno =B.bizno
-        where 1=1
-          and cmp_mbr_cd= #{mem_cd}
-          and A.bizno = #{bizNo}
-          and b.manage_cd ='M501'
+        from tb_pils_cmpmbr A
+        where bizno = #{bizNo}
         order by appdt desc
     </select>
 
@@ -242,7 +230,7 @@
     <select id="checkBizno" resultType="String">
 
         select bizno
-        from tb_pils_mbr
+        from tb_pils_cmpmbr
         where bizno = #{bizNo}
 
     </select>
@@ -284,6 +272,7 @@
     <insert id="insertMemberJoin">
         insert into tb_pils_mbr
         ( nm
+        ,cmp_nm
         , mbphno
         , psitn_dept_nm
         , pstn
@@ -297,19 +286,34 @@
         , join_dt
         , manage_cd)
         values ( #{name}
+               , #{cmpNm}
                , #{mbphno}
                , #{deptNm}
                , #{position}
                , #{email}
                , #{memTelNo}
                , #{memFaxNo}
-               , 'M102'
+               , 'M103'
                , #{bizNo}
                , #{id}
                , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
                , current_date
                , #{management_cd})
     </insert>
+    <select id="getViewById" resultMap="CmpMemberVo">
+        select  bizno                        as bizNo
+             , psitn_dept_nm                 as deptNm
+             , cmp_nm                        as cmpNm
+             , pstn                          as position
+             , nm                           as name
+             , user_id                      as id
+             , mbphno                        as mbphno
+             , email_addr                    as email
+             , telno                        as memTelNo
+             , faxno                        as memFaxNo
+        from tb_pils_mbr
+        where user_id= #{id}
+    </select>
     <update id="updateJoin">
         update tb_pils_cmpmbr
         set cmp_nm        = #{cmpNm}

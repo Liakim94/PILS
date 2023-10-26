@@ -84,7 +84,7 @@
                     <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
                     <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
                     <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
-                    <a href="<c:url value="/join/submit.do"/>">동행기업 실적 제출</a>
+                    <a href="<c:url value="/join/perf/main.do"/>">동행기업 실적 제출</a>
                 </div>
             </div>
 <%--            <div class="wrapper">--%>
@@ -111,7 +111,9 @@
         <div class="side-wrap">
             <c:if test="${sessionId eq null }">
             <a class="login font14 point2-text inline-focus" tabindex="0"
-               href="${pageContext.request.contextPath}/main/login.do">로그인</a>
+               href="${pageContext.request.contextPath}/main/login.do">로그인</a><br>
+                <a class="login font14 point2-text inline-focus" tabindex="0"
+                   href="${pageContext.request.contextPath}/main/mbrApply.do">신규담당자등록</a>
 
             <div class="mobile-menu" tabindex="0" onclick="mobileMenuOpen(this)">
                 <span></span>
@@ -228,7 +230,7 @@
                         <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
                         <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
                         <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
-                        <a href="<c:url value="/join/submit.do"/>">동행기업 실적 제출</a>
+                        <a href="<c:url value="/join/perf/main.do"/>">동행기업 실적 제출</a>
                     </div>
                 </div>
 <%--                <div class="menu">--%>

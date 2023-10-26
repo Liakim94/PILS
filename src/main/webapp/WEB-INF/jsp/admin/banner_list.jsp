@@ -16,7 +16,7 @@
                     <img class="home-icon" src="<c:url value="/images/common/home-icon.png"/>" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    관리자
+                    관리자페이지
                 </li>
                 <li>
                     메인 배너 관리

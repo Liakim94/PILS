@@ -50,7 +50,6 @@ public class adminController {
         cmpVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
         cmpVO.setLastIndex(paginationInfo.getLastRecordIndex());
         cmpVO.setPageUnit(paginationInfo.getRecordCountPerPage());
-        cmpVO.setMem_cd("M302"); //회원구분
 
         Map<String, Object> rs = new HashMap<String, Object>();
         rs = adminService.joinList(cmpVO);
@@ -74,7 +73,6 @@ public class adminController {
         ModelAndView mav = new ModelAndView("admin/join_view");
 
         cmpVO.setBizNo(bizNo);
-        cmpVO.setMem_cd("M302");
 
 //            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
             List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
@@ -116,9 +114,8 @@ public class adminController {
         ModelAndView mav = new ModelAndView("admin/join_edit");
 
         cmpVO.setBizNo(bizNo);
-        cmpVO.setMem_cd("M302");
         try {
-            cmpVO = adminService.memInfo(cmpVO);
+            cmpVO =consultingService.getViewByBizNo(cmpVO);
             cmpVO.setBizNo1(cmpVO.getBizNo().substring(0, 3));
             cmpVO.setBizNo2(cmpVO.getBizNo().substring(3, 5));
             cmpVO.setBizNo3(cmpVO.getBizNo().substring(5, 10));
@@ -299,7 +296,7 @@ public class adminController {
     }
     //상세 화면
     @GetMapping(value = "/memDetail.do")
-    public ModelAndView memDetail(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
+    public ModelAndView memDetail(@ModelAttribute("frmDelete") CmpMemberVo cmpVO
             ,@RequestParam("id") String id) throws Exception {
         ModelAndView mav = new ModelAndView("admin/mem_view");
         cmpVO.setId(id);
@@ -314,6 +311,18 @@ public class adminController {
             System.out.println(e.toString());
         }
         return mav;
+    }
+    //담당자 승인 처리
+    @PostMapping(value = "/approve.do")
+    @ResponseBody
+    public String approve(@ModelAttribute("frmDelete") CmpMemberVo cmpVO) throws Exception {
+        try{
+            cmpVO.setAuth_cd("M102");
+            int result = adminService.approveMem(cmpVO);
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return  "forward:/common/error.jsp";
     }
     //담당자 삭제 처리
     @PostMapping(value = "/memDetail.do")
@@ -920,5 +929,86 @@ public class adminController {
         }
         return "forward:/common/error.jsp";
     }
+    //동행기업 실적 관리
 
+    @GetMapping("/perf/list.do")
+    public ModelAndView perfList(@ModelAttribute("vo") PerformanceVO vo
+            ,HttpSession session) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/perf_list");
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+
+        Map<String, Object> rs = adminService.perfList(vo);
+        int totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", rs.get("resultList"));
+        mav.addObject("totalCnt", rs.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+        mav.addObject("vo", vo);
+        return mav;
+    }
+    @GetMapping(value = "/perf/view.do")
+    public ModelAndView perfView(@ModelAttribute("frmDelete") PerformanceVO vo,
+                                 HttpServletRequest request,
+                                 HttpServletResponse response) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/perf_view");
+        PerformanceVO rs = adminService.perfView(vo);
+        if(rs != null) {
+            mav.addObject("rs", rs);
+            return mav;
+        }else {
+            return new ModelAndView("common/error.jsp");
+        }
+    }
+    @PostMapping(value = "/perf/delete.do")
+    public String perfDelete(@ModelAttribute("frmDelete") PerformanceVO vo) throws Exception {
+        try {
+            int result = adminService.perfDelete(vo.getSeq());
+            if (result > 0) {
+                return "redirect:/admin/perf/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
+    //수정 화면
+    @GetMapping(value = "/perf/edit.do")
+    public ModelAndView perfEdit(@ModelAttribute("frmEdit") PerformanceVO vo
+            ) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/perf_edit");
+        try {
+            PerformanceVO rs = adminService.perfView(vo);
+            if (rs == null) {
+                System.out.println("비정상적인 접근입니다.");
+            }
+            mav.addObject("frmEdit", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+    //수정 처리
+    @RequestMapping(value = "/perf/edit.do", method = {RequestMethod.POST})
+    public String doPerfEdit(@ModelAttribute("frmEdit") PerformanceVO vo) throws Exception {
+        try {
+            int result = adminService.perfEdit(vo);
+            if (result > 0) {
+                return "redirect:/admin/perf/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
 }

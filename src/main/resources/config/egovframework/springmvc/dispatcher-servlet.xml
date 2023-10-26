@@ -115,12 +115,14 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/main/myPage.do" />
-            <mvc:mapping path="/main/joinEdit.do" />
-            <mvc:mapping path="/main/memDetail.do" />
-            <mvc:mapping path="/main/memEdit.do" />
-            <mvc:mapping path="/main/management.do" />
-            <mvc:mapping path="/main/memAdd.do" />
-            <mvc:mapping path="/main/changePw.do" />
+            <mvc:mapping path="/main/myPage/joinEdit.do" />
+            <mvc:mapping path="/main/mem/memDetail.do" />
+            <mvc:mapping path="/main/mem/memEdit.do" />
+            <mvc:mapping path="/main/mem/management.do" />
+            <mvc:mapping path="/main/perf/apply.do" />
+            <mvc:mapping path="/main/perf/list.do" />
+            <mvc:mapping path="/main/mem/memAdd.do" />
+            <mvc:mapping path="/main/mem/changePw.do" />
             <bean class="kr.co.xicom.MypageInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>

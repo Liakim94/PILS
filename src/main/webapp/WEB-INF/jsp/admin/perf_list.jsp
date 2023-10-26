@@ -7,16 +7,11 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
-    <title></title>
+    <title>관리자페이지 | 동행기업 실적 제출 현황</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/front/temp.css"/>">
 </head>
 <script>
-    function linkPage(num) {
-        var form = document.frmSearch;
-        form.pageIndex.value = num;
-        form.submit();
-    }
     function Checkform() {
         const selectedValue = document.getElementById("tag").value;
         if (selectedValue === "") {
@@ -24,9 +19,10 @@
             return false;
         }
     }
-    function sortList(val) {
-        $('input[name=sort]').attr('value',val);
-        document.getElementById('frmSearch').submit();
+    function linkPage(num) {
+        var form = document.frmSearch;
+        form.pageIndex.value = num;
+        form.submit();
     }
 </script>
 <div id="content">
@@ -39,24 +35,22 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>관리자페이지</li>
-                <li>담당자 관리</li>
+                <li>동행기업 실적 제출 현황</li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">담당자 관리</h1>
+                <h1 class="fw700">동행기업 실적 제출 현황</h1>
                 <div class="side-wrap">
                 </div>
             </div>
             <div class="content">
                 <!-- 컨텐츠 start -->
-                <form action="" name="frmSearch" id="frmSearch" method="get" onSubmit="return Checkform()">
+                <form action="" name="frmSearch" method="get" onSubmit="return Checkform()">
                     <input type="hidden" name="pageIndex" id="pageIndex" value="1">
                     <section style="margin-bottom: 10px">
                         <select id="tag" name="tag" value="">
                             <option value="">선택</option>
-                            <option value="user_id" <c:if test="${vo.tag == 'user_id'}">selected="selected"</c:if>>아이디</option>
-                            <option value="nm" <c:if test="${vo.tag == 'nm'}">selected="selected"</c:if>>이름</option>
-                            <option value="cmp_nm" <c:if test="${vo.tag == 'cmp_nm'}">selected="selected"</c:if>>회사</option>
-                            <option value="mbphno" <c:if test="${vo.tag == 'mbphno'}">selected="selected"</c:if>>전화번호</option>
+                            <option value="nm" <c:if test="${vo.tag == 'nm'}">selected="selected"</c:if>>담당자</option>
+                            <option value="a.cmp_nm" <c:if test="${vo.tag == 'a.cmp_nm'}">selected="selected"</c:if>>기업명</option>
                         </select>
                         <input type="text" name="keyword" value="${vo.keyword}" style=" border-radius: 5px;">
                         <button type="submit" style=" background: #E60024; border-radius: 5px;
@@ -64,62 +58,42 @@
                         </button>
                     </section>
                     <div class="write-container">
-                        <table class="tbl-list01">
+                        <table class="table-list01">
                             <colgroup>
                                 <col width="10%"/>
-                                <col width="17%"/>
-                                <col width="12%"/>
-                                <col width="20%"/>
-                                <col width="12%"/>
                                 <col width="20%"/>
                                 <col width="20%"/>
-                                <col width="15%"/>
-                                <col width="10%"/>
+                                <col width="20%"/>
                             </colgroup>
                             <thead>
-                                <tr>
-                                    <th scope="col">번호</th>
-                                    <th scope="col"><a href="javascript:void(0);" onclick="sortList('user_id')">아이디</a></th>
-                                    <th scope="col"><a href="javascript:void(0);" onclick="sortList('nm')">이름</a></th>
-                                    <th scope="col"><a href="javascript:void(0);" onclick="sortList('cmp_nm')">회사</a></th>
-                                    <th scope="col">직위</th>
-                                    <th scope="col">부서</th>
-                                    <th scope="col"><a href="javascript:void(0);" onclick="sortList('mbphno')">전화번호</a></th>
-                                    <th scope="col">담당자구분</th>
-                                    <th scope="col">승인여부</th>
-                                    <input type="hidden" name="sort" id="sort" value="${vo.sort}">
-                                </tr>
+                            <th class="txt_alcnt" scope="col">번호</th>
+                            <th class="txt_alcnt" scope="col">기업명</th>
+                            <th class="txt_alcnt" scope="col">담당자</th>
+                            <th class="txt_alcnt" scope="col">제출일자</th>
                             </thead>
                             <tbody>
                             <c:forEach var="rs" items="${rs }" varStatus="status">
                                 <tr>
-                                    <td>${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
-                                    <td class="al"><a href="${pageContext.request.contextPath}/admin/memDetail.do?id=${rs.id}" style="color: rgb(0, 72, 255);">${rs.id }</a></td>
-                                    <td>${rs.name}</td>
-                                    <td class="al">${rs.cmpNm}</td>
-                                    <td>${rs.position}</td>
-                                    <td class="al">${rs.deptNm}</td>
-                                    <td>${rs.mbphno}</td>
-                                    <td>${rs.management_cd}</td>
-                                    <c:choose>
-                                        <c:when test="${rs.auth_cd eq 'M102' }">
-                                            <td>승인</td>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <td>신청</td>
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <td class="txt_alcnt">
+                                            ${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }
+                                    </td>
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/admin/perf/view.do?seq=${rs.seq}" style="color: rgb(0, 72, 255);">${rs.cmp_nm}</a>
+                                    </td>
+                                    <td>
+                                        ${rs.nm}
+                                    </td>
+                                    <td>${fn:substring(rs.regist_dt,0,10)}</td>
                                 </tr>
                             </c:forEach>
                             <c:if test="${empty rs }">
                                 <tr>
-                                    <td colspan="9" class="text-center">조회된 데이터가 없습니다.</td>
+                                    <td colspan="4" class="text-center">조회된 데이터가 없습니다.</td>
                                 </tr>
                             </c:if>
                             </tbody>
                         </table>
                     </div>
-                    <!-- paging -->
                     <div class="board_bottom_wrap">
                         <div class="paging_wrap">
                             <ul class="paging">
@@ -127,7 +101,6 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- paging -->
                 </form>
                 <!-- 컨텐츠 end -->
             </div>

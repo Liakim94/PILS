@@ -17,6 +17,7 @@ public interface AdminMapper {
     int memManageListCount(CmpMemberVo vo) throws Exception;
     CmpMemberVo memEdit(CmpMemberVo vo) throws Exception;
     int updateMem(CmpMemberVo vo) throws Exception;
+    int approveMem(CmpMemberVo vo) throws Exception;
     int deleteMem(@Param("bizNo")String bizNo, @Param("id")String id) throws Exception;
     int changePw(CmpMemberVo vo) throws Exception;
 
@@ -48,5 +49,11 @@ public interface AdminMapper {
     int conEdit(ContactVO vo)throws Exception;
 
     int conDelete(ContactVO vo) throws Exception;
+
+    List<PerformanceVO> perfListSort(PerformanceVO vo) throws Exception;
+    int perfCount(PerformanceVO vo) throws Exception;
+    PerformanceVO perfView(PerformanceVO vo) throws Exception;
+    int perfDelete(int seq) throws Exception;
+    int perfEdit(PerformanceVO vo) throws Exception;
 
 }

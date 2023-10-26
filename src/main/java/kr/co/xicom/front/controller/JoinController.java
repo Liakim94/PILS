@@ -52,19 +52,20 @@ public class JoinController extends Alerts{
                               HttpServletRequest request,
                               HttpServletResponse response) throws Exception {
 
+        HttpSession session = request.getSession();
+        String userId=(String)session.getAttribute("sessionId");
+
+        if(userId==null || userId==""){
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>");
+            out.println("alert('로그인이 필요합니다.')");
+            out.println("history.back()");
+            out.println("</script>");
+        }
         ModelAndView mav = new ModelAndView("join/apply/join_apply");
         mav.addObject("frmPost", cmpVO);
         return mav;
-    }
-
-    @PostMapping(value = "/checkId.do")
-    public void checkId(@RequestParam("id") String id, HttpServletResponse response) throws Exception {
-        PrintWriter out = response.getWriter();
-        if (consultingService.checkId(id) > 0) {
-            out.print(false);
-        } else {
-            out.print(true);
-        }
     }
 
     @PostMapping(value = "/checkBizno.do")
@@ -80,18 +81,13 @@ public class JoinController extends Alerts{
 
     @RequestMapping(value = "/joinApply.do", method = {RequestMethod.POST})
     public void doApply(@ModelAttribute("frmApply") CmpMemberVo cmpVO,
-                        @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
                         HttpServletRequest request,
                         HttpServletResponse response) throws Exception {
 
         try {
             String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
             cmpVO.setBizNo(bizNo);
-            String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
-            cmpVO.setEmail(email);
             cmpVO.setMem_cd("M302"); //동행기업회원구분코드
-//            stVO.setBizNo(bizNo);
-            cmpVO.setManagement_cd("M501"); //담당자구분코드
 //            int result = consultingService.insertJoinApply(cmpVO, stVO,null);
             int result = consultingService.insertJoinApply(cmpVO, null);
             if (result > 0) {
@@ -335,9 +331,9 @@ public class JoinController extends Alerts{
     }
 
     //동행기업 실적 제출하기
-    @GetMapping(value = "/submit.do")
-    public ModelAndView joinSubmit() throws Exception {
-        ModelAndView mav = new ModelAndView("join/join_submit");
+    @GetMapping(value = "/perf/main.do")
+    public ModelAndView perfMain() throws Exception {
+        ModelAndView mav = new ModelAndView("join/perf/main");
         return mav;
     }
 
