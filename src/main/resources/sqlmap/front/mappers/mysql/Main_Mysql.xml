@@ -170,4 +170,51 @@
         where stts = 1
         order by sort_seq asc
     </select>
+    <insert id="perfApply">
+        INSERT INTO tb_pils_perf (
+        cmp_nm,
+        cntr_pd,
+        cntr_numb,
+        cmp_numb,
+        intrlck,
+        change,
+        intrlck_perf,
+        regist_dt,
+        user_id
+        )
+        VALUES(
+        #{cmp_nm},
+        #{cntr_pd},
+        #{cntr_numb},
+        #{cmp_numb},
+        #{intrlck},
+        #{change},
+        #{intrlck_perf},
+        NOW(),
+        #{user_id}
+        )
+        <selectKey keyProperty="seq" resultType="integer" order="AFTER">
+            SELECT MAX(seq) FROM tb_pils_perf;
+        </selectKey>
+    </insert>
+    <select id="perfList" resultType="kr.co.xicom.front.model.PerformanceVO">
+        select seq,
+               cmp_nm,
+               regist_dt
+        from tb_pils_perf
+        where user_id= #{user_id}
+    </select>
+    <select id="perfView" resultType="kr.co.xicom.front.model.PerformanceVO">
+        select seq,
+               cmp_nm,
+               cntr_pd,
+               cntr_numb,
+               cmp_numb,
+               intrlck,
+               change,
+               intrlck_perf,
+               regist_dt
+        from tb_pils_perf
+        where seq= #{seq}
+    </select>
 </mapper>

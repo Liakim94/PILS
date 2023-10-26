@@ -1,9 +1,6 @@
 package kr.co.xicom.front.service;
 
-import kr.co.xicom.front.model.AttachVO;
-import kr.co.xicom.front.model.BannerVO;
-import kr.co.xicom.front.model.BoardVO;
-import kr.co.xicom.front.model.CmpMemberVo;
+import kr.co.xicom.front.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,4 +31,11 @@ public interface MainService {
     int mbrApply(CmpMemberVo vo) throws Exception;
 
     CmpMemberVo getViewById(CmpMemberVo vo) throws Exception;
+
+    //동행기업 실적 제출하기
+    List<PerformanceVO> perfList(String id) throws Exception;
+
+    int perfApply(PerformanceVO vo) throws Exception;
+
+    PerformanceVO perfView(PerformanceVO vo) throws Exception;
 }

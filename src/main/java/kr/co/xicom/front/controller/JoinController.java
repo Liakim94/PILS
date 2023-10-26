@@ -331,9 +331,9 @@ public class JoinController extends Alerts{
     }
 
     //동행기업 실적 제출하기
-    @GetMapping(value = "/submit.do")
-    public ModelAndView joinSubmit() throws Exception {
-        ModelAndView mav = new ModelAndView("join/join_submit");
+    @GetMapping(value = "/perf/main.do")
+    public ModelAndView perfMain() throws Exception {
+        ModelAndView mav = new ModelAndView("join/perf/main");
         return mav;
     }
 

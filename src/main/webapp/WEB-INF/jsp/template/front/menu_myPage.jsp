@@ -23,6 +23,9 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
             <li class="<c:if test="${URI.contains('/main/mem')}">on</c:if>">
                 <a href ="${pageContext.request.contextPath}/main/mem/management.do">담당자 관리</a>
             </li>
+            <li class="<c:if test="${URI.contains('/main/perf')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/main/perf/list.do">동행기업 실적 제출</a>
+            </li>
         </ul>
     </div>
 </aside>

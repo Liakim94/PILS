@@ -3,10 +3,7 @@ package kr.co.xicom.front.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
-import kr.co.xicom.front.model.AttachVO;
-import kr.co.xicom.front.model.BannerVO;
-import kr.co.xicom.front.model.CmpMemberVo;
-import kr.co.xicom.front.model.CmpSttusVO;
+import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.MainService;
 import kr.go.smes.ems.EmsClient;
@@ -389,7 +386,70 @@ public class MainController {
         writer.println("</script>");
         writer.flush();
     }
+    /**
+     * 동행기업 실적 제출
+     */
+    @GetMapping("/perf/list.do")
+    public ModelAndView perfList(@ModelAttribute("vo") PerformanceVO vo
+            ,HttpSession session) throws Exception {
+        ModelAndView mav = new ModelAndView("myPage/perf_list");
+        try {
+            List<PerformanceVO> rs = mainService.perfList((String)session.getAttribute("sessionId"));
+            if (rs == null) {
+                ModelAndView error = new ModelAndView("common/error.jsp");
+                return error;
+            }
+            mav.addObject("rs", rs);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+    @GetMapping(value = "/perf/apply.do")
+    public ModelAndView perfApply(@ModelAttribute("frmApply") PerformanceVO vo,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) throws Exception {
 
+        HttpSession session = request.getSession();
+        String userId=(String)session.getAttribute("sessionId");
+        if(userId==null || userId==""){
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>");
+            out.println("alert('로그인이 필요합니다.')");
+            out.println("history.back()");
+            out.println("</script>");
+        }
+        ModelAndView mav = new ModelAndView("myPage/perf_apply");
+        return mav;
+    }
+
+    @PostMapping(value = "/perf/apply.do")
+    public String doPerfApply(@ModelAttribute("frmApply") PerformanceVO vo,
+                              HttpSession session) throws Exception {
+        vo.setUser_id((String)session.getAttribute("sessionId"));
+        int result = mainService.perfApply(vo);
+        if (result > 0) {
+            return "redirect:/main/perf/view.do?seq="+vo.getSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/perf/view.do")
+    public ModelAndView perfView(@ModelAttribute("frmApply") PerformanceVO vo,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) throws Exception {
+
+        ModelAndView mav = new ModelAndView("myPage/perf_view");
+        PerformanceVO rs = mainService.perfView(vo);
+        if(rs != null) {
+            mav.addObject("rs", rs);
+            return mav;
+        }else {
+            return new ModelAndView("common/error.jsp");
+        }
+    }
     /**
      * 인트로 페이지 출력
      * @return

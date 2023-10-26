@@ -84,7 +84,7 @@
                     <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
                     <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
                     <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
-                    <a href="<c:url value="/join/submit.do"/>">동행기업 실적 제출</a>
+                    <a href="<c:url value="/join/perf/main.do"/>">동행기업 실적 제출</a>
                 </div>
             </div>
 <%--            <div class="wrapper">--%>
@@ -230,7 +230,7 @@
                         <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
                         <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
                         <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
-                        <a href="<c:url value="/join/submit.do"/>">동행기업 실적 제출</a>
+                        <a href="<c:url value="/join/perf/main.do"/>">동행기업 실적 제출</a>
                     </div>
                 </div>
 <%--                <div class="menu">--%>

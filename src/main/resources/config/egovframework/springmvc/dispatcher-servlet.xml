@@ -119,6 +119,8 @@
             <mvc:mapping path="/main/mem/memDetail.do" />
             <mvc:mapping path="/main/mem/memEdit.do" />
             <mvc:mapping path="/main/mem/management.do" />
+            <mvc:mapping path="/main/perf/apply.do" />
+            <mvc:mapping path="/main/perf/list.do" />
             <mvc:mapping path="/main/mem/memAdd.do" />
             <mvc:mapping path="/main/mem/changePw.do" />
             <bean class="kr.co.xicom.MypageInterceptor" />

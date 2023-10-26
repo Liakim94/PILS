@@ -3,6 +3,7 @@ package kr.co.xicom.front.service.mapper;
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 import kr.co.xicom.front.model.CmpMemberVo;
 import kr.co.xicom.front.model.CmpSttusVO;
+import kr.co.xicom.front.model.PerformanceVO;
 
 import java.util.List;
 
@@ -41,4 +42,6 @@ public interface ConsultingMapper {
     List<CmpSttusVO> getCmpSttus(CmpSttusVO vo) throws Exception;
     List<CmpSttusVO> sttusIsEmpty(CmpSttusVO vo) throws Exception;
     int insertCmpSttus(CmpSttusVO vo) throws Exception;
+
+
 }

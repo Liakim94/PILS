@@ -19,5 +19,6 @@ public class AgreementVO {
     private String formula="";
     private String ratio="";
     private String etc="";
+    private String type_cd="";
 
 }
