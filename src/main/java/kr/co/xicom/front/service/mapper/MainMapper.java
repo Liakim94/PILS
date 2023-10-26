@@ -23,6 +23,9 @@ public interface MainMapper {
     //동행기업 실적 제출하기
     int perfApply(PerformanceVO vo) throws Exception;
     List<PerformanceVO> perfList(String id) throws Exception;
+    int perfCount(String id) throws Exception;
     PerformanceVO perfView(PerformanceVO vo) throws Exception;
 
+    int perfDelete(int seq) throws Exception;
+    int perfEdit(PerformanceVO vo) throws Exception;
 }

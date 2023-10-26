@@ -50,4 +50,10 @@ public interface AdminMapper {
 
     int conDelete(ContactVO vo) throws Exception;
 
+    List<PerformanceVO> perfListSort(PerformanceVO vo) throws Exception;
+    int perfCount(PerformanceVO vo) throws Exception;
+    PerformanceVO perfView(PerformanceVO vo) throws Exception;
+    int perfDelete(int seq) throws Exception;
+    int perfEdit(PerformanceVO vo) throws Exception;
+
 }

@@ -34,7 +34,7 @@
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>관리자</li>
+                <li>관리자페이지</li>
                 <li> 상담하기 연락처 관리</li>
             </ul>
             <div class="article-header">

@@ -56,7 +56,7 @@
                         <select id="tag" name="tag" value="">
                             <option value="">선택</option>
                             <option value="cmp_nm" <c:if test="${vo.tag == 'cmp_nm'}">selected="selected"</c:if>>신청기업명</option>
-                            <option value="nm" <c:if test="${vo.tag == 'nm'}">selected="selected"</c:if>>작성자</option>
+<%--                            <option value="nm" <c:if test="${vo.tag == 'nm'}">selected="selected"</c:if>>작성자</option>--%>
                         </select>
                         <input type="text" name="keyword" value="${vo.keyword}" style=" border-radius: 5px;">
                         <button type="submit" style=" background: #E60024; border-radius: 5px;

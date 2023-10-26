@@ -17,7 +17,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -108,8 +110,13 @@ public class MainServiceImpl implements MainService {
 
     //동행기업 실적 제출하기
     @Override
-    public  List<PerformanceVO> perfList(String id) throws Exception{
-        return mapper.perfList(id);
+    public Map<String, Object> perfList(String id) throws Exception{
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<PerformanceVO> list = mapper.perfList(id);
+        int cnt = mapper.perfCount(id);
+        map.put("resultList", list);
+        map.put("resultCnt", cnt);
+        return map;
     }
     @Override
     public int perfApply(PerformanceVO vo) throws Exception{
@@ -165,5 +172,60 @@ public class MainServiceImpl implements MainService {
     @Override
     public PerformanceVO perfView(PerformanceVO vo) throws Exception{
         return   mapper.perfView(vo);
+    }
+    @Override
+    public int perfDelete(int seq) throws Exception {
+        return mapper.perfDelete(seq);
+    }
+    @Override
+    public int perfEdit(PerformanceVO vo) throws Exception {
+        try {
+            // JSON 처리용 Gson
+            Gson gson = new Gson();
+            Type listType = new com.google.common.reflect.TypeToken<List<BannerVO>>(){}.getType();
+
+            String intrlck_path = vo.getJsonIntrlckFile();
+            if (!StringUtils.isBlank(intrlck_path)) {
+                // HTMLTagFilter 적용 되돌리기
+                intrlck_path = kr.go.smes.util.HtmlTagUtils.restore(intrlck_path);
+                List<PerformanceVO> attachs = gson.fromJson(intrlck_path, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setIntrlck(attachs.get(0).getSavedFilepath());
+
+                }
+            }
+            String change_path = vo.getJsonChangeFile();
+            if (!StringUtils.isBlank(change_path)) {
+                // HTMLTagFilter 적용 되돌리기
+                change_path = kr.go.smes.util.HtmlTagUtils.restore(change_path);
+                List<PerformanceVO> attachs = gson.fromJson(change_path, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setChange(attachs.get(0).getSavedFilepath());
+                }
+            }
+            String intrlck_perf_path = vo.getJsonIntrlckPerfFile();
+            if (!StringUtils.isBlank(intrlck_perf_path)) {
+                // HTMLTagFilter 적용 되돌리기
+                intrlck_perf_path = kr.go.smes.util.HtmlTagUtils.restore(intrlck_perf_path);
+                List<PerformanceVO> attachs = gson.fromJson(intrlck_perf_path, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setIntrlck_perf(attachs.get(0).getSavedFilepath());
+                }
+            }
+            String etc_path = vo.getJsonChangeFile();
+            if (!StringUtils.isBlank(etc_path)) {
+                // HTMLTagFilter 적용 되돌리기
+                etc_path = kr.go.smes.util.HtmlTagUtils.restore(etc_path);
+                List<PerformanceVO> attachs = gson.fromJson(etc_path, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setChange(attachs.get(0).getSavedFilepath());
+                }
+            }
+        }
+        catch (Exception ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            throw ex;
+        }
+        return mapper.perfEdit(vo);
     }
 }

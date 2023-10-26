@@ -45,6 +45,9 @@
             <li class="<c:if test="${URI.contains('/admin/qna')}">on</c:if>">
                 <a href ="${pageContext.request.contextPath}/admin/qna/contact.do">상담하기 연락처 관리</a>
             </li>
+            <li class="<c:if test="${URI.contains('/admin/perf')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/admin/perf/list.do">동행기업 실적 제출 현황</a>
+            </li>
         </ul>
     </div>
 </aside>

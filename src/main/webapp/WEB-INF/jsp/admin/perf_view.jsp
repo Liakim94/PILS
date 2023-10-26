@@ -5,11 +5,11 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
-<%@ page import="kr.co.xicom.common.FileUploadController" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page import="kr.co.xicom.common.FileUploadController" %>
 
 <head>
-    <title>중소벤처기업부 | 동행기업 실적 제출</title>
+    <title>관리자페이지 | 동행기업 실적 제출 현황</title>
 </head>
 <style>
     .line-wrap .file {
@@ -43,28 +43,28 @@
 </script>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu_myPage"/>
+        <page:applyDecorator name="menu_admin"/>
         <form:form modelAttribute="frmDelete" method="POST" action="delete.do">
-                <div class="article">
+        <div class="article">
             <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
                 <li>
-                    마이페이지
+                    관리자페이지
                 </li>
                 <li>
-                    동행기업 실적 제출
+                    동행기업 실적 제출 현황
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">동행기업 실적 제출</h1>
+                <h1 class="fw700">동행기업 실적 제출 현황</h1>
                 <div class="side-wrap">
                 </div>
             </div>
             <div id="company-write" class="content">
-                <input type="hidden" value="${rs.seq}" name="seq"/>
+                <form:hidden path="seq"/>
                 <div class="write-container">
                     <div class="line-wrap">
                             <div class="label" style="width:200px;">
@@ -103,8 +103,8 @@
                         <p class="label" style="width:192px;">연동표</p>
                         <ul class="ul">
                             <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck)}"/>"
-                               class="file"  download="<c:out value="${rs.intrlck_file_nm}"/>">
-                                <c:out value="${rs.intrlck_file_nm}"/>
+                               class="file"  download="(연동표)_<c:out value="${rs.cmp_nm}.xlsx"/>">
+                                <c:out value="(연동표)_${rs.cmp_nm}"/>
                             </a>
                         </ul>
                     </div>
@@ -112,8 +112,8 @@
                         <p class="label" style="width:192px;">변동표</p>
                         <ul class="ul">
                             <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.change)}"/>"
-                             class="file" download="<c:out value="${rs.change_file_nm}"/>">
-                                <c:out value="${rs.change_file_nm}"/>
+                             class="file" download="<c:out value="(변동표)_${rs.cmp_nm}.xlsx"/>">
+                                <c:out value="(변동표)_${rs.cmp_nm}"/>
                             </a>
                         </ul>
                     </div>
@@ -121,8 +121,8 @@
                         <p class="label" style="width:192px;">연동실적</p>
                         <ul class="ul">
                             <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck_perf)}"/>"
-                               class="file" download="<c:out value="${rs.intrlck_perf_file_nm}"/>">
-                                <c:out value="${rs.intrlck_perf_file_nm}"/>
+                               class="file" download="<c:out value="(연동실적)_${rs.cmp_nm}.xlsx"/>">
+                                <c:out value="(연동실적)_${rs.cmp_nm}"/>
                             </a>
                         </ul>
                     </div>
@@ -139,9 +139,9 @@
             </div>
             </form:form>
             <div class="write-bottom">
-                <a href="${pageContext.request.contextPath}/main/perf/edit.do?seq=${rs.seq}" class="submit">수정</a>
+                <a href="${pageContext.request.contextPath}/admin/perf/edit.do?seq=${rs.seq}" class="submit">수정</a>
                 <a onclick="javascript:deleteMem();return false;" class="submit">삭제</a>
-                <a href="${pageContext.request.contextPath}/main/perf/list.do" class="back">취소</a>
+                <a href="${pageContext.request.contextPath}/admin/perf/list.do" class="back">취소</a>
             </div>
         </div>
     </div>

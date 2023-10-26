@@ -33,9 +33,12 @@ public interface MainService {
     CmpMemberVo getViewById(CmpMemberVo vo) throws Exception;
 
     //동행기업 실적 제출하기
-    List<PerformanceVO> perfList(String id) throws Exception;
+    Map<String, Object> perfList(String id) throws Exception;
 
     int perfApply(PerformanceVO vo) throws Exception;
 
     PerformanceVO perfView(PerformanceVO vo) throws Exception;
+
+    int perfDelete(int seq) throws Exception;
+    int perfEdit(PerformanceVO vo) throws Exception;
 }

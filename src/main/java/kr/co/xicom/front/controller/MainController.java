@@ -393,16 +393,23 @@ public class MainController {
     public ModelAndView perfList(@ModelAttribute("vo") PerformanceVO vo
             ,HttpSession session) throws Exception {
         ModelAndView mav = new ModelAndView("myPage/perf_list");
-        try {
-            List<PerformanceVO> rs = mainService.perfList((String)session.getAttribute("sessionId"));
-            if (rs == null) {
-                ModelAndView error = new ModelAndView("common/error.jsp");
-                return error;
-            }
-            mav.addObject("rs", rs);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+
+        Map<String, Object> rs = mainService.perfList((String)session.getAttribute("sessionId"));
+        int totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", rs.get("resultList"));
+        mav.addObject("totalCnt", rs.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
         return mav;
     }
     @GetMapping(value = "/perf/apply.do")
@@ -437,7 +444,7 @@ public class MainController {
         }
     }
     @GetMapping(value = "/perf/view.do")
-    public ModelAndView perfView(@ModelAttribute("frmApply") PerformanceVO vo,
+    public ModelAndView perfView(@ModelAttribute("frmDelete") PerformanceVO vo,
                                   HttpServletRequest request,
                                   HttpServletResponse response) throws Exception {
 
@@ -449,6 +456,48 @@ public class MainController {
         }else {
             return new ModelAndView("common/error.jsp");
         }
+    }
+    @PostMapping(value = "/perf/delete.do")
+    public String perfDelete(@ModelAttribute("frmDelete") PerformanceVO vo) throws Exception {
+        try {
+            int result = mainService.perfDelete(vo.getSeq());
+            if (result > 0) {
+                return "redirect:/main/perf/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
+    //수정 화면
+    @GetMapping(value = "/perf/edit.do")
+    public ModelAndView perfEdit(@ModelAttribute("frmEdit") PerformanceVO vo
+    ) throws Exception {
+        ModelAndView mav = new ModelAndView("myPage/perf_edit");
+        try {
+            PerformanceVO rs = mainService.perfView(vo);
+            if (rs == null) {
+                System.out.println("비정상적인 접근입니다.");
+            }
+            mav.addObject("frmEdit", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+    //수정 처리
+    @RequestMapping(value = "/perf/edit.do", method = {RequestMethod.POST})
+    public String doPerfEdit(@ModelAttribute("frmEdit") PerformanceVO vo) throws Exception {
+        try {
+            int result = mainService.perfEdit(vo);
+            if (result > 0) {
+                return "redirect:/main/perf/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
     }
     /**
      * 인트로 페이지 출력
@@ -487,6 +536,5 @@ public class MainController {
                 exx.printStackTrace();
             }
         }
-
     }
 }

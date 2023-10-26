@@ -81,7 +81,7 @@
              , a.joincmp as joinCmp
         from tb_pils_cmpmbr A
             <if test="tag != null and tag != ''">
-                and ${tag} like CONCAT('%',#{keyword},'%')
+                where ${tag} like CONCAT('%',#{keyword},'%')
             </if>
         <choose>
             <when test="sort == 'cmp_nm' or sort == 'nm'">
@@ -128,7 +128,7 @@
         SELECT COUNT(1)
         from tb_pils_cmpmbr
         <if test="tag != null and tag != ''">
-            and ${tag} like CONCAT('%',#{keyword},'%')
+            where ${tag} like CONCAT('%',#{keyword},'%')
         </if>
     </select>
     <select id="memManageList" resultMap="CmpMemberVo">
@@ -416,4 +416,68 @@
     <delete id="conDelete">
         delete from tb_pils_qna_contact where seq = #{seq}
     </delete>
+    <select id="perfListSort" resultType="kr.co.xicom.front.model.PerformanceVO">
+        select a.user_id,
+               a.regist_dt,
+               a.seq,
+               a.cmp_nm,
+               b.nm
+        from tb_pils_perf A
+                 join tb_pils_mbr B
+                      on A.user_id = B.user_id
+        where A.user_id = B.user_id
+        <if test="tag != null and tag != ''">
+            and ${tag} like CONCAT('%',#{keyword},'%')
+        </if>
+        <if test="tag = null and tag = '' and sort = null and sort = ''">
+            order by regist_dt desc
+        </if>
+        <if test="pageIndex > 0">
+            LIMIT #{pageUnit} OFFSET #{firstIndex}
+        </if>
+    </select>
+    <select id="perfCount" resultType="int">
+        select count(1)
+        from tb_pils_perf
+    </select>
+    <select id="perfView" resultType="kr.co.xicom.front.model.PerformanceVO">
+        select seq,
+               cmp_nm,
+               cntr_pd,
+               cntr_numb,
+               cmp_numb,
+               intrlck,
+               change,
+               intrlck_perf,
+               etc,
+               intrlck_file_nm,
+               change_file_nm,
+               intrlck_perf_file_nm,
+               etc_file_nm,
+               regist_dt,
+               user_id
+        from tb_pils_perf
+        where seq= #{seq}
+    </select>
+    <delete id="perfDelete">
+        delete from tb_pils_perf  where seq= #{seq}
+    </delete>
+    <update id="perfEdit">
+        update tb_pils_perf
+            set
+        cmp_nm =#{cmp_nm},
+        cntr_pd = #{cntr_pd},
+        cntr_numb =#{cntr_numb},
+        cmp_numb =#{cmp_numb},
+        intrlck =#{intrlck},
+        change = #{change},
+        intrlck_perf = #{intrlck_perf},
+        etc =#{etc},
+        intrlck_file_nm= #{intrlck_file_nm},
+        change_file_nm =#{change_file_nm},
+        intrlck_perf_file_nm =#{intrlck_perf_file_nm},
+        etc_file_nm =#{etc_file_nm},
+        regist_dt = NOW()
+        where seq = #{seq}
+    </update>
 </mapper>

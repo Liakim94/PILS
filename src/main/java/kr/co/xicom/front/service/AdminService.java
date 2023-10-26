@@ -71,4 +71,13 @@ public interface AdminService {
     int conEdit(ContactVO vo) throws Exception;
 
     int conDelete(ContactVO vo) throws Exception;
+
+    //동행기업 실적 제출하기
+    Map<String, Object> perfList(PerformanceVO vo) throws Exception;
+
+    PerformanceVO perfView(PerformanceVO vo) throws Exception;
+
+    int perfDelete(int seq) throws Exception;
+
+    int perfEdit(PerformanceVO vo) throws Exception;
 }

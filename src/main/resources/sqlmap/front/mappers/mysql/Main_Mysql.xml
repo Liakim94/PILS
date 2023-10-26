@@ -213,6 +213,12 @@
                regist_dt
         from tb_pils_perf
         where user_id= #{user_id}
+        order by regist_dt desc
+    </select>
+    <select id="perfCount" resultType="int">
+        select count(1)
+        from tb_pils_perf
+        where user_id= #{user_id}
     </select>
     <select id="perfView" resultType="kr.co.xicom.front.model.PerformanceVO">
         select seq,
@@ -224,12 +230,33 @@
                change,
                intrlck_perf,
                etc,
-               intrlck_path,
-               change_path,
-               intrlck_perf_path,
-               etc_path,
+               intrlck_file_nm,
+               change_file_nm,
+               intrlck_perf_file_nm,
+               etc_file_nm,
                regist_dt
         from tb_pils_perf
         where seq= #{seq}
     </select>
+    <delete id="perfDelete">
+        delete from tb_pils_perf  where seq= #{seq}
+    </delete>
+    <update id="perfEdit">
+        update tb_pils_perf
+        set
+            cmp_nm =#{cmp_nm},
+            cntr_pd = #{cntr_pd},
+            cntr_numb =#{cntr_numb},
+            cmp_numb =#{cmp_numb},
+            intrlck =#{intrlck},
+            change = #{change},
+            intrlck_perf = #{intrlck_perf},
+            etc =#{etc},
+            intrlck_file_nm= #{intrlck_file_nm},
+            change_file_nm =#{change_file_nm},
+            intrlck_perf_file_nm =#{intrlck_perf_file_nm},
+            etc_file_nm =#{etc_file_nm},
+            regist_dt = NOW()
+        where seq = #{seq}
+    </update>
 </mapper>

@@ -64,4 +64,8 @@ public class PerformanceVO extends DefaultVO{
      */
     private String jsonFileList;
 
+    private String tag="";
+    private String keyword="";
+    private String nm="";  //담당자 이름
+
 }
