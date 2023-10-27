@@ -168,13 +168,8 @@
                                 <div class="label">
                                     사업자 번호
                                 </div>
-                                <div class="input-wrap non-flex">
-                                    <form:input path="bizNo1" class="multi" readonly="true"/>
-                                    <span>-</span>
-                                    <form:input path="bizNo2" class="multi"  readonly="true"/>
-                                    <span>-</span>
-                                    <form:input path="bizNo3" class="multi"  readonly="true"/>
-                                    <input type="hidden" id="bizNo" name=bizNo value="">
+                                <div class="input-wrap">
+                                        ${fn:substring(frmEdit.bizNo,0,3)}-${fn:substring(frmEdit.bizNo,3,5)}-${fn:substring(frmEdit.bizNo,5,10)}
                                 </div>
                             </div>
                         </div>

@@ -48,7 +48,17 @@
             ignore: "",
             rules: {
                 cmpNm: {required: true},
-                bizNo: {required: true,   digits : true, minlength :10},
+                bizNo: {required: true, digits : true, minlength :10,
+                    remote: {
+                        type: "post"
+                        , url: "${pageContext.request.contextPath}/join/checkBizno.do"
+                        , data: {
+                            username: function () {
+                                return $("#bizNo").val();
+                            }
+                        }
+                    }
+                },
                 id: {
                     required: true, remote: {
                         type: "post"
@@ -68,7 +78,7 @@
             },
             messages: {
                 cmpNm: {required: "기업명을 입력하세요."},
-                bizNo: {required: "사업자번호를 확인하세요.", digits : "숫자만 입력하세요", minlength: "사업자번호를 확인하세요."},
+                bizNo: {required: "사업자번호를 확인하세요.", remote: "이미 존재하는 사업자번호입니다.", digits : "숫자만 입력하세요", minlength: "사업자번호를 확인하세요."},
                 id: {
                     required: "아이디를 입력하세요",
                     remote: "이미 존재하는 아이디입니다."
@@ -147,7 +157,7 @@
     }
 </style>
 <div id="content" class="bg-top">
-    <div id="login" style="max-width: 950px;">
+    <div id="login" style="max-width: 960px;">
         <div class="breadcromb mb40">
             <h4>
                 <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -180,7 +190,7 @@
                                 <input class="multi" type="text" id="bizNo2" name="bizNo2" maxlength="2"/>
                                 <span>-</span>
                                 <input class="multi" type="text" id="bizNo3" name="bizNo3" maxlength="5"/>
-                                <input type="hidden" id="bizNo" name=bizNo value="">
+                                <input type="hidden" id="bizNo" name=bizNo value="" >
 
                         </div>
                     </div>
@@ -227,7 +237,8 @@
                         <input type="text" class="multi" name="email1" id="email1"/>
                         <span>@</span>
                         <input type="text" style="width: 130px" name="email2" id="email2"/>
-                        <select id="selectEmail" name="selectEmail" style="width: 130px" >                        <option value="1">직접입력</option>
+                        <select id="selectEmail" name="selectEmail" style="width: 130px" >
+                            <option value="1">직접입력</option>
                             <option value="naver.com">naver.com</option>
                             <option value="daum.net">daum.net</option>
                             <option value="gmail.com">gmail.com</option>

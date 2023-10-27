@@ -54,17 +54,17 @@ public class JoinController extends Alerts{
 
         HttpSession session = request.getSession();
         String userId=(String)session.getAttribute("sessionId");
+        String bizNo=(String)session.getAttribute("sessionBizNo");
 
         if(userId==null || userId==""){
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>");
-            out.println("alert('로그인이 필요합니다.')");
-            out.println("history.back()");
-            out.println("</script>");
+            out.println("<script>alert('로그인이 필요합니다.'); location.href='"+request.getContextPath()+"/main/login.do"+"';</script>");
+            out.flush();
         }
         ModelAndView mav = new ModelAndView("join/apply/join_apply");
-        mav.addObject("frmPost", cmpVO);
+
+        mav.addObject("bizNo", bizNo);
         return mav;
     }
 
@@ -85,8 +85,8 @@ public class JoinController extends Alerts{
                         HttpServletResponse response) throws Exception {
 
         try {
-            String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
-            cmpVO.setBizNo(bizNo);
+            HttpSession session = request.getSession();
+            cmpVO.setBizNo((String)session.getAttribute("sessionBizNo"));
             cmpVO.setMem_cd("M302"); //동행기업회원구분코드
 //            int result = consultingService.insertJoinApply(cmpVO, stVO,null);
             int result = consultingService.insertJoinApply(cmpVO, null);

@@ -132,7 +132,7 @@
         </if>
     </select>
     <select id="memManageList" resultMap="CmpMemberVo">
-        select user_id       as id
+        <!-- select user_id       as id
              , nm            as name
              , b.cd_nm       as management_cd
              , mbphno        as mbphno
@@ -156,10 +156,33 @@
         </if>
         <if test="pageIndex > 0">
             LIMIT #{pageUnit} OFFSET #{firstIndex}
+        </if> -->
+        select nm            as name
+            , mbphno        as mbphno
+            , psitn_dept_nm as deptNm
+            , pstn          as position
+            , telno         as memTelNo
+            , faxno         as memFaxNo
+            , auth_cd        as auth_cd
+            , manage_cd      as management_cd
+            , cmp_nm         as cmpNm
+            , user_id        as id
+        from tb_pils_mbr tpm
+        <if test="tag != null and tag != ''">
+            where ${tag} like CONCAT('%',#{keyword},'%')
+        </if>
+        <if test="sort != null and sort != ''">
+            order by ${sort} asc, cd='M501'desc
+        </if>
+        <if test="tag = null and tag = '' and sort = null and sort = ''">
+            order by upd_dt desc
+        </if>
+        <if test="pageIndex > 0">
+            LIMIT #{pageUnit} OFFSET #{firstIndex}
         </if>
     </select>
     <select id="memManageListCount" resultType="int">
-        SELECT COUNT(1)
+        <!-- SELECT COUNT(1)
         from tb_pils_mbr A,
         ( select cd, cd_nm from tb_cd_data where cd_grp = 'M500') B,
         (select bizno,cmp_nm,joincmp from tb_pils_cmpmbr tpc where cmp_mbr_cd='M302') C
@@ -167,7 +190,9 @@
         and A.bizno =c.bizno
         <if test="tag != null and tag != ''">
             and ${tag} like CONCAT('%',#{keyword},'%')
-        </if>
+        </if> -->
+        SELECT COUNT(1)
+        from tb_pils_mbr
     </select>
     <select id="memEdit" resultMap="CmpMemberVo">
         select nm            as name

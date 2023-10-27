@@ -103,18 +103,6 @@
             ignore: "",
             rules: {
                 cmpNm: {required: true},
-                bizNo: {required: true,
-                    remote: {
-                        type: "post"
-                        , url: "${pageContext.request.contextPath}/join/checkBizno.do"
-                        , data: {
-                            username: function () {
-                                return $("#bizNo").val();
-                            }
-                        }
-                    },
-                    digits : true, minlength :10
-                },
                 ceo: {required: true},
                 fdate: {required: true},
                 address: {required: true},
@@ -129,7 +117,6 @@
             },
             messages: {
                 cmpNm: {required: "기업명을 입력하세요."},
-                bizNo: {required: "사업자번호를 확인하세요.", remote: "이미 존재하는 사업자번호입니다.",  digits : "숫자만 입력하세요", minlength: "사업자번호를 확인하세요."},
                 ceo: {required: "대표자명을 입력하세요."},
                 fdate: {required: "설립일자를 입력하세요."},
                 address: {required: "본사 주소를 입력하세요."},
@@ -195,15 +182,8 @@
                             <div class="label">
                                 사업자 번호
                             </div>
-                            <div class="input-wrap non-flex">
-                                <td>
-                                    <input class="multi" type="text" id="bizNo1" name="bizNo1" maxlength="3"/>
-                                    <span>-</span>
-                                    <input class="multi" type="text" id="bizNo2" name="bizNo2" maxlength="2"/>
-                                    <span>-</span>
-                                    <input class="multi" type="text" id="bizNo3" name="bizNo3" maxlength="5"/>
-                                    <input type="hidden" id="bizNo" name=bizNo value="">
-
+                            <div class="input-wrap">
+                                    ${fn:substring(bizNo,0,3)}-${fn:substring(bizNo,3,5)}-${fn:substring(bizNo,5,10)}
                             </div>
                         </div>
                     </div>
