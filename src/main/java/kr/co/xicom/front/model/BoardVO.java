@@ -244,4 +244,41 @@ public class BoardVO extends DefaultVO{
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
+
+	private String siteUrl ="";
+	private String chkInfo ="";
+	private String features ="";
+	private String chrg ="";
+	public String getSiteUrl() {
+		return siteUrl;
+	}
+
+	public void setSiteUrl(String siteUrl) {
+		this.siteUrl = siteUrl;
+	}
+
+	public String getChkInfo() {
+		return chkInfo;
+	}
+
+	public void setChkInfo(String chkInfo) {
+		this.chkInfo = chkInfo;
+	}
+
+	public String getFeatures() {
+		return features;
+	}
+
+	public void setFeatures(String features) {
+		this.features = features;
+	}
+
+	public String getChrg() {
+		return chrg;
+	}
+
+	public void setChrg(String chrg) {
+		this.chrg = chrg;
+	}
+
 }

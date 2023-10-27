@@ -23,6 +23,7 @@
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
         <pattern>/cmm/*</pattern>
         <pattern>/front/*</pattern>
+<!--        <pattern>/front/report.do</pattern>-->
         <pattern>/common/deny.jsp</pattern>
     </decorator>
 
@@ -37,6 +38,10 @@
         <pattern>/join/agree.do</pattern>
         <pattern>/join/agreeView.do</pattern>
         <pattern>/join/ready.do</pattern>
+        <pattern>/join/contract.do</pattern>
+        <pattern>/join/notice.do</pattern>
+        <pattern>/join/priceInfo.do</pattern>
+        <pattern>/join/priceInfoView.do</pattern>
         <pattern>/common/deny.jsp</pattern>
     </decorator>
 
@@ -45,14 +50,9 @@
     <decorator name="menu_join" page="/menu_join.do"/>
     <decorator name="location" page="/location.do"/>
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
-        <pattern>/join/concept.do</pattern>
-        <pattern>/join/joinApply.do</pattern>
-        <pattern>/join/recom.do</pattern>
         <pattern>/front/guide/company/</pattern>
-        <pattern>/join/joinMain.do</pattern>
-        <pattern>/join/submit.do</pattern>
-        <pattern>/join/joinView.do</pattern>
-        <pattern>/join/recom/view.do</pattern>
+        <pattern>/join/*</pattern>
+        <pattern>/join/perf/*</pattern>
         <pattern>/common/deny.jsp</pattern>
     </decorator>
 
@@ -68,7 +68,7 @@
     <decorator name="menu_myPage" page="/menu_myPage.do"/>
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
         <pattern>/main/myPage.do</pattern>
-        <pattern>/main/joinEdit.do</pattern>
+        <pattern>/main/myPage/joinEdit.do</pattern>
     </decorator>
 
     <decorator name="header" page="/header.do"/>
@@ -82,12 +82,6 @@
     <decorator name="menu_mat" page="/menu_mat.do"/>
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
         <pattern>/front/material</pattern>
-    </decorator>
-    <decorator name="header" page="/header.do"/>
-    <decorator name="footer" page="/footer.do"/>
-    <decorator name="menu_report" page="/menu_report.do"/>
-    <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
-        <pattern>/front/report</pattern>
     </decorator>
     <decorator name="header" page="/header.do"/>
     <decorator name="footer" page="/footer.do"/>

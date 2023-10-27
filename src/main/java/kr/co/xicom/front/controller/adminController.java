@@ -2,16 +2,11 @@ package kr.co.xicom.front.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.AdminService;
 import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.front.service.ConsultingService;
-import kr.co.xicom.front.service.MainService;
-import kr.co.xicom.util.HtmlTagUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -55,7 +50,6 @@ public class adminController {
         cmpVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
         cmpVO.setLastIndex(paginationInfo.getLastRecordIndex());
         cmpVO.setPageUnit(paginationInfo.getRecordCountPerPage());
-        cmpVO.setMem_cd("M302"); //회원구분
 
         Map<String, Object> rs = new HashMap<String, Object>();
         rs = adminService.joinList(cmpVO);
@@ -79,7 +73,6 @@ public class adminController {
         ModelAndView mav = new ModelAndView("admin/join_view");
 
         cmpVO.setBizNo(bizNo);
-        cmpVO.setMem_cd("M302");
 
 //            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
             List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
@@ -99,6 +92,20 @@ public class adminController {
 
         return mav;
     }
+    //동행기업 삭제하기
+    @PostMapping(value = "/join/view.do")
+    public String deleteCmp(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO) throws Exception{
+        try {
+            int result = adminService.deleteCmp(cmpVO.getBizNo());
+            if (result > 0) {
+                return "redirect:/admin/join/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
+    //동행기업 정보 수정하기
     @GetMapping(value = "/join/edit.do")
     public ModelAndView joinEdit(@ModelAttribute("frmEdit") CmpMemberVo cmpVO,
                                  @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
@@ -107,9 +114,8 @@ public class adminController {
         ModelAndView mav = new ModelAndView("admin/join_edit");
 
         cmpVO.setBizNo(bizNo);
-        cmpVO.setMem_cd("M302");
         try {
-            cmpVO = adminService.memInfo(cmpVO);
+            cmpVO =consultingService.getViewByBizNo(cmpVO);
             cmpVO.setBizNo1(cmpVO.getBizNo().substring(0, 3));
             cmpVO.setBizNo2(cmpVO.getBizNo().substring(3, 5));
             cmpVO.setBizNo3(cmpVO.getBizNo().substring(5, 10));
@@ -259,8 +265,19 @@ public class adminController {
 
         try {
             Map<String, Object> rs = adminService.memManageList(cmpVO);
-            int totalCnt = 0;
-            totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+            List<CmpMemberVo> cmpVOList = (List<CmpMemberVo>) rs.get("resultList");
+            cmpVOList.forEach(vo -> {
+                vo.setMbphno(vo.getMbphno().replaceAll("(?<=.{9}).","*"));
+            });
+            cmpVOList.forEach(vo -> {
+                if(vo.getName().length()<3){
+                    vo.setName(vo.getName().replaceAll("(?<=.{1}).","*"));
+                }
+                vo.setName(vo.getName().replaceFirst("(?<=.{1}).","*"));
+
+            });
+
+            int totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
             paginationInfo.setTotalRecordCount(totalCnt);
 
             if (rs.get("resultList") == null) {
@@ -270,11 +287,56 @@ public class adminController {
             mav.addObject("totalCnt", rs.get("resultCnt"));
             mav.addObject("rs", rs.get("resultList"));
             mav.addObject("paginationInfo", paginationInfo);
+            mav.addObject("vo", cmpVO);
 
         } catch (Exception e) {
             System.out.println(e.toString());
         }
         return mav;
+    }
+    //상세 화면
+    @GetMapping(value = "/memDetail.do")
+    public ModelAndView memDetail(@ModelAttribute("frmDelete") CmpMemberVo cmpVO
+            ,@RequestParam("id") String id) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/mem_view");
+        cmpVO.setId(id);
+        try {
+            CmpMemberVo rs = adminService.memEdit(cmpVO);
+            if (rs == null) {
+                System.out.println("비정상적인 접근입니다.");
+            }
+            mav.addObject("rs", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+    //담당자 승인 처리
+    @PostMapping(value = "/approve.do")
+    @ResponseBody
+    public String approve(@ModelAttribute("frmDelete") CmpMemberVo cmpVO) throws Exception {
+        try{
+            cmpVO.setAuth_cd("M102");
+            int result = adminService.approveMem(cmpVO);
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return  "forward:/common/error.jsp";
+    }
+    //담당자 삭제 처리
+    @PostMapping(value = "/memDetail.do")
+    public String memDelete(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO) throws Exception {
+        try {
+            int result = adminService.deleteMem(cmpVO.getBizNo(), cmpVO.getId());
+
+            if (result > 0) {
+                return "redirect:/admin/management/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
     }
     //수정 화면
     @GetMapping(value = "/memEdit.do")
@@ -315,6 +377,7 @@ public class adminController {
         }
         return "forward:/common/error.jsp";
     }
+
     @GetMapping(value = "/changePw.do")
         public ModelAndView change(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                                    ,@RequestParam("id") String id) throws Exception {
@@ -563,6 +626,388 @@ public class adminController {
         int result = boardService.updateStat(boardVO);
         if (result > 0) {
             return "redirect:/admin/ready/list.do";
+        }
+        return "forward:/common/error.jsp";
+    }
+
+    //원재료 가격정보 관리
+    @RequestMapping(value = "/price/list.do", method = {RequestMethod.GET})
+    public ModelAndView priceInfoList(@ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/price_list");
+
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(boardVO.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(boardVO.getPageSize());
+
+        boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
+        boardVO.setPageUnit(paginationInfo.getRecordCountPerPage());
+        int bbsId = 8;
+        boardVO.setBbsId(bbsId);
+        boardVO.setStat("1");
+
+        Map<String, Object> result = new HashMap<String, Object>();
+        result = boardService.list(boardVO);
+        String menu = boardService.getMenu(bbsId);
+
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
+
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", result.get("resultList"));
+        mav.addObject("totalCnt", result.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+        mav.addObject("bbsId", bbsId);
+        mav.addObject("bbsNm", menu);
+
+
+        return mav;
+    }
+
+    @GetMapping(value = "/price/view.do")
+    public ModelAndView priceInfoView(@ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/price_view");
+        int bbsId=8;
+        boardVO.setBbsId(bbsId);
+        boardVO.setStat("1");
+        BoardVO rs = boardService.getView(boardVO);
+        String menu = boardService.getMenu(bbsId);
+        List<AttachVO> attachList = boardService.getAttachList(boardVO);
+
+        mav.addObject("rs", rs);
+        mav.addObject("bbsId", bbsId);
+        mav.addObject("bbsNm", menu);
+        mav.addObject("attachList", attachList);
+
+        return mav;
+    }
+    @GetMapping(value = "/price/post.do")
+    public ModelAndView priceInfoPost(@ModelAttribute("post") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav =  new ModelAndView("admin/price_post");
+        int bbsId=8;
+        String menu = boardService.getMenu(bbsId);
+
+        mav.addObject("bbsId", bbsId);
+        mav.addObject("post", boardVO);
+        mav.addObject("bbsNm", menu);
+        return mav;
+    }
+    @PostMapping(value = "/price/post.do")
+    public String doPriceInfoPost(@ModelAttribute("post") BoardVO boardVO) throws Exception {
+        boardVO.setBbsId(8);
+        boardVO.setStat("1");
+        int result = adminService.readyPost(boardVO,null);
+
+        if (result > 0) {
+            return "redirect:/admin/price/view.do?boardSeq=" + boardVO.getBoardSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/price/edit.do")
+    public ModelAndView priceInfoEdit(@ModelAttribute("edit") BoardVO boardVO) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/price_edit");
+        int bbsId=8;
+        boardVO.setBbsId(bbsId);
+        BoardVO rs = boardService.getView(boardVO);
+        //게시판 이름
+        String menu = boardService.getMenu(bbsId);
+        // 첨부파일 리스트
+        List<AttachVO> attachList = this.boardService.getAttachList(boardVO);
+        if (attachList != null && attachList.size() > 0) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String jsonFileList = gson.toJson(attachList);
+            rs.setJsonFileList(jsonFileList);
+        }
+        mav.addObject("edit", rs);
+        mav.addObject("bbsNm", menu);
+        return mav;
+    }
+
+    @PostMapping(value = "/price/edit.do")
+    public String doPriceEdit( @ModelAttribute("edit") BoardVO boardVO) throws Exception {
+        int bbsId=8;
+        boardVO.setBbsId(bbsId);
+        int result = adminService.updatePost(boardVO);
+
+        if (result > 0) {
+            return "redirect:/admin/price/view.do?boardSeq=" + boardVO.getBoardSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+
+    @PostMapping("/price/delete.do")
+    public String priceInfoDelete( @ModelAttribute("post") BoardVO boardVO) throws Exception {
+        boardVO.setBbsId(8);
+        int result = boardService.updateStat(boardVO);
+        if (result > 0) {
+            return "redirect:/admin/price/list.do";
+        }
+        return "forward:/common/error.jsp";
+    }
+
+    // 메인 배너 관리
+    @RequestMapping(value = "/banner/list.do", method = {RequestMethod.GET})
+    public ModelAndView banList(@ModelAttribute("BannerVo") BannerVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/banner_list");
+
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+        vo.setStts(1);
+
+        Map<String, Object> result = adminService.banList(vo);
+
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
+
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", result.get("resultList"));
+        mav.addObject("totalCnt", result.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+
+        return mav;
+    }
+    @GetMapping(value = "/banner/post.do")
+    public ModelAndView banPost(@ModelAttribute("post") BannerVO vo) throws Exception {
+
+        ModelAndView mav =  new ModelAndView("admin/banner_post");
+
+        return mav;
+    }
+    @PostMapping(value = "/banner/post.do")
+    public String doBanPost(@ModelAttribute("post") BannerVO vo) throws Exception {
+        vo.setStts(1);
+        int result = adminService.banPost(vo);
+
+        if (result > 0) {
+            return "redirect:/admin/banner/view.do?banSeq=" + vo.getBanSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/banner/edit.do")
+    public ModelAndView banEdit(@ModelAttribute("edit") BannerVO vo) throws Exception {
+
+        ModelAndView mav =  new ModelAndView("admin/banner_edit");
+        BannerVO rs = adminService.bannerView(vo);
+        mav.addObject("edit", rs);
+        return mav;
+    }
+    @PostMapping(value = "/banner/edit.do")
+    public String doBanEdit(@ModelAttribute("edit") BannerVO vo) throws Exception {
+        int result = adminService.bannerEdit(vo);
+
+        if (result > 0) {
+            return "redirect:/admin/banner/view.do?banSeq=" + vo.getBanSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/banner/view.do")
+    public ModelAndView banView(@ModelAttribute("delete") BannerVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/banner_view");
+        BannerVO rs = adminService.bannerView(vo);
+
+        mav.addObject("rs", rs);
+
+        return mav;
+    }
+    @PostMapping("/banner/delete.do")
+    public String bannerDelete( @ModelAttribute("delete") BannerVO vo) throws Exception {
+        vo.setStts(0);
+        int result = adminService.bannerDelete(vo);
+        if (result > 0) {
+            return "redirect:/admin/banner/list.do";
+        }
+        return "forward:/common/error.jsp";
+    }
+
+    // 상담하기 연락처 관리
+    @RequestMapping(value = "/qna/contact.do", method = {RequestMethod.GET})
+    public ModelAndView contact(@ModelAttribute("ContactVO") ContactVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/contact_list");
+
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+
+        Map<String, Object> rs = adminService.contact(vo);
+
+        int totalCnt = 0;
+        totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", rs.get("resultList"));
+        mav.addObject("totalCnt", rs.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+
+        return mav;
+    }
+    @GetMapping(value = "/qna/conPost.do")
+    public ModelAndView conPost(@ModelAttribute("post") ContactVO vo) throws Exception {
+
+        ModelAndView mav =  new ModelAndView("admin/contact_post");
+
+        return mav;
+    }
+    @PostMapping(value = "/qna/conPost.do")
+    public String doConPost(@ModelAttribute("post") ContactVO vo) throws Exception {
+        int result = adminService.conPost(vo);
+
+        if (result > 0) {
+            return "redirect:/admin/qna/conView.do?seq=" + vo.getSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/qna/conEdit.do")
+    public ModelAndView conEdit(@ModelAttribute("edit") ContactVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/contact_edit");
+        ContactVO rs = adminService.conView(vo);
+        mav.addObject("rs",rs);
+        return mav;
+
+    }
+    //수정 처리
+    @PostMapping(value = "/qna/conEdit.do")
+    public String doConEdit(@ModelAttribute("edit") ContactVO vo) throws Exception {
+
+        int rs = adminService.conEdit(vo);
+        if (rs > 0) {
+            return "redirect:/admin/qna/conView.do?seq=" + vo.getSeq();
+        }
+        else {
+            return "forward:/common/error.jsp";
+        }
+    }
+    @GetMapping(value = "/qna/conView.do")
+    public ModelAndView conView(@ModelAttribute("delete")ContactVO vo) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/contact_view");
+        ContactVO rs = adminService.conView(vo);
+        mav.addObject("rs", rs);
+
+        return mav;
+    }
+    @PostMapping("/qna/delete.do")
+    public String conDelete( @ModelAttribute("delete") ContactVO vo) throws Exception {
+        int result = adminService.conDelete(vo);
+        if (result > 0) {
+            return "redirect:/admin/qna/contact.do";
+        }
+        return "forward:/common/error.jsp";
+    }
+    //동행기업 실적 관리
+
+    @GetMapping("/perf/list.do")
+    public ModelAndView perfList(@ModelAttribute("vo") PerformanceVO vo
+            ,HttpSession session) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/perf_list");
+        /*페이징 초기설정*/
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());    // 현재페이지
+        paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+
+        Map<String, Object> rs = adminService.perfList(vo);
+        int totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", rs.get("resultList"));
+        mav.addObject("totalCnt", rs.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+        mav.addObject("vo", vo);
+        return mav;
+    }
+    @GetMapping(value = "/perf/view.do")
+    public ModelAndView perfView(@ModelAttribute("frmDelete") PerformanceVO vo,
+                                 HttpServletRequest request,
+                                 HttpServletResponse response) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/perf_view");
+        PerformanceVO rs = adminService.perfView(vo);
+        if(rs != null) {
+            mav.addObject("rs", rs);
+            return mav;
+        }else {
+            return new ModelAndView("common/error.jsp");
+        }
+    }
+    @PostMapping(value = "/perf/delete.do")
+    public String perfDelete(@ModelAttribute("frmDelete") PerformanceVO vo) throws Exception {
+        try {
+            int result = adminService.perfDelete(vo.getSeq());
+            if (result > 0) {
+                return "redirect:/admin/perf/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
+    //수정 화면
+    @GetMapping(value = "/perf/edit.do")
+    public ModelAndView perfEdit(@ModelAttribute("frmEdit") PerformanceVO vo
+            ) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/perf_edit");
+        try {
+            PerformanceVO rs = adminService.perfView(vo);
+            if (rs == null) {
+                System.out.println("비정상적인 접근입니다.");
+            }
+            mav.addObject("frmEdit", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+    //수정 처리
+    @RequestMapping(value = "/perf/edit.do", method = {RequestMethod.POST})
+    public String doPerfEdit(@ModelAttribute("frmEdit") PerformanceVO vo) throws Exception {
+        try {
+            int result = adminService.perfEdit(vo);
+            if (result > 0) {
+                return "redirect:/admin/perf/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
         return "forward:/common/error.jsp";
     }

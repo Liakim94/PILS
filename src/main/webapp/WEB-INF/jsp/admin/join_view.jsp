@@ -6,11 +6,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="fx" prefix="fx" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <%@ page import="kr.co.xicom.common.FileUploadController" %>
 <head>
     <title> 관리자페이지 | 동행기업 신청 현황</title>
-
 </head>
 <div id="content">
     <div id="board">
@@ -35,7 +35,7 @@
             </div>
             <!-- 컨텐츠 start -->
             <div id="company-write" class="content">
-                <%--                <div class="board-view-wrap01">--%>
+                <form:form name="frmDelete" id="frmDelete" method="POST" action="view.do">
                 <input type="hidden" id="bizNo" name="bizNo" value="${rs.bizNo}"/>
                 <h2 class="title">기업 정보</h2>
                 <div class="write-container">
@@ -180,12 +180,21 @@
                 </div>
                     <div class="write-bottom">
                         <a id="edit" href='${pageContext.request.contextPath}/admin/join/edit.do?bizNo=${rs.bizNo}' class="submit">수정하기</a>
+                        <a id="delete" onclick="deleteMem()" class="submit">삭제하기</a>
                         <a class="back" href="${pageContext.request.contextPath}/admin/join/list.do">목록</a>
                     </div>
-
-                </div>
+                </form:form>
             </div>
         </div>
         <!-- 컨텐츠 end -->
     </div>
 </div>
+<script>
+    function deleteMem() {
+        if (confirm("정말 동행기업 삭제하시겠습니까?")) {
+            $("#frmDelete").submit();
+        } else {
+            return false;
+        }
+    }
+</script>

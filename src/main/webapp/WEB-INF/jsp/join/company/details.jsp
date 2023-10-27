@@ -28,7 +28,7 @@
         <div class="logo-wrap">
             <img class="logo"
                  src="<c:url value="${FileUploadController.makeDownloadLink(company.logoImgPath)}"/>"
-                 alt="<c:out value="${company.logoFileName}"/>"
+<%--                 alt="<c:out value="${company.logoFileName}"/>"--%>
                  onerror="this.src='<c:url value="/images/no-image.jpg"/>'"/>
         </div>
         <h1 class="company-name tc mb30">${company.cmpNm}</h1>
@@ -59,9 +59,9 @@
             <h1 class="title">납품대금 연동제 적용 현황</h1>
             <h4 class="info-text">
                 <span class="bold">${company.cmpNm}은(는) ${fn:substring(company.appdate,0,4)}년 ${fn:substring(company.appdate,5,7)}월 부터</span>
-                납품대금 연동제에 참여하며
-                <span class="bold">${company.joinCmp}개</span>
-                중소기업과 동행하고 있습니다.
+                납품대금 연동제에 참여하여 따뜻한 연대를 실천하고 있습니다.
+<%--                <span class="bold">${company.joinCmp}개</span>--%>
+<%--                중소기업과 동행하고 있습니다.--%>
             </h4>
             <div class="table">
                 <div class="label">

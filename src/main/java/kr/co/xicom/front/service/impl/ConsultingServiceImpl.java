@@ -5,23 +5,23 @@ import com.google.gson.reflect.TypeToken;
 import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.mapper.AttachMapper;
-import kr.co.xicom.front.service.mapper.BoardMapper;
 import kr.co.xicom.front.service.mapper.ConsultingMapper;
 import kr.co.xicom.front.service.mapper.RcmdMapper;
 import kr.co.xicom.util.HtmlTagUtils;
 import kr.go.smes.fileservice.FileService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -142,7 +142,6 @@ public class ConsultingServiceImpl implements ConsultingService {
 
         try{
             int result1= mapper.insertJoin(vo);
-            int result2=  mapper.insertMemberJoin(vo);
 
             String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
             if (StringUtils.isNotBlank(jsonFileList)) {
@@ -272,5 +271,4 @@ public class ConsultingServiceImpl implements ConsultingService {
     public RcmdVO rcmdView(int no ) throws Exception{
         return rcmdMapper.rcmdView(no);
     }
-
 }

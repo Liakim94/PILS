@@ -31,10 +31,22 @@
                 <a href ="${pageContext.request.contextPath}/admin/trace/list.do">걸어온 발자취 관리</a>
             </li>
             <li class="<c:if test="${URI.contains('/admin/ready')}">on</c:if>">
-            <a href ="${pageContext.request.contextPath}/admin/ready/list.do">카드뉴스 관리</a>
+                <a href ="${pageContext.request.contextPath}/admin/ready/list.do">카드뉴스 관리</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/admin/price')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/admin/price/list.do">원재료 사이트 관리</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/admin/banner')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/admin/banner/list.do">메인 배너 관리</a>
             </li>
             <li class="<c:if test="${URI.contains('/admin/management')}">on</c:if>">
                 <a href ="${pageContext.request.contextPath}/admin/management/list.do">담당자 관리</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/admin/qna')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/admin/qna/contact.do">상담하기 연락처 관리</a>
+            </li>
+            <li class="<c:if test="${URI.contains('/admin/perf')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/admin/perf/list.do">동행기업 실적 제출 현황</a>
             </li>
         </ul>
     </div>

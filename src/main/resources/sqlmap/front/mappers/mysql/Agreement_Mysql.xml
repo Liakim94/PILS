@@ -14,7 +14,9 @@
     <result property="rqrm_date" column="rqrm_date"/>
     <result property="reflect_point" column="reflect_point"/>
     <result property="formula" column="formula"/>
+    <result property="ratio" column="ratio"/>
     <result property="etc" column="etc"/>
+    <result property="type_cd" column="type_cd"/>
 </resultMap>
     <insert id="apply">
         insert into tb_pils_cmp_agre
@@ -29,7 +31,9 @@
             ,rqrm_date
             ,reflect_point
             ,formula
+            ,ratio
             ,etc
+            ,type_cd
         ) values (
              #{id}
             ,#{name}
@@ -42,7 +46,9 @@
             ,#{rqrm_date}
             ,#{reflect_point}
             ,#{formula}
+            ,#{ratio}
             ,#{etc}
+            ,#{type_cd}
         )
     </insert>
 <select id="agreeView" resultMap="AgreementVO">
@@ -57,7 +63,9 @@
          , rqrm_date as rqrm_date
          , reflect_point as reflect_point
          , formula  as formula
+         , ratio  as ratio
          , etc as etc
+         ,type_cd as type_cd
     from tb_pils_cmp_agre
     where id = #{id}
 </select>

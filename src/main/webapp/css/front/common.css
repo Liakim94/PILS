@@ -2279,7 +2279,7 @@
     border-bottom: none;
 }
 #agreement .write-container .line-wrap .label{
-    width: 23%;
+    width: 24%;
     background: rgba(145, 145, 145, 0.1);
     padding: 16px 16px;
     box-sizing: border-box;
@@ -3459,7 +3459,7 @@
     font-size: 18px;
 }
 .concept .accordion-container .item-wrap{
-    padding: 10px 20px !important;
+    padding: 10px 20px
 }
 .concept .accordion-container .item-wrap img {
     bottom: 4px;
@@ -4148,10 +4148,11 @@
     text-align: center;
 }
 .temp .tab-content-wrap .tab-content .table-wrap table td{
-    text-align: left;
+    text-align: center;
 }
 .temp .tab-content-wrap .tab-content .table-wrap table .title{
     font-weight: 700 !important;
+    text-align: left;
 }
 .temp .tab-content-wrap .tab-content .table-wrap table .title:after{
     display: none;

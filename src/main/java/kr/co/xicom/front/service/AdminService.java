@@ -13,6 +13,9 @@ public interface AdminService {
 
     CmpMemberVo memInfo(CmpMemberVo vo) throws Exception;
 
+    //동행기업 삭제하기
+    int deleteCmp(String bizNo) throws Exception;
+
     //컨설팅 list
     Map<String, Object> conList(CmpMemberVo vo) throws Exception;
 
@@ -22,6 +25,10 @@ public interface AdminService {
     CmpMemberVo memEdit(CmpMemberVo vo) throws Exception;
 
     int updateMem(CmpMemberVo vo) throws Exception;
+
+    int approveMem(CmpMemberVo vo) throws Exception;
+
+    int deleteMem(String bizNo, String id) throws Exception;
 
     int changePw(CmpMemberVo vo) throws Exception;
 
@@ -43,4 +50,34 @@ public interface AdminService {
     List<AttachVO> getAttachList(TraceVO vo) throws Exception;
 
     Map<String, Object> recomList(RcmdVO vo) throws Exception;
+
+    // 메인 배너 list
+    Map<String, Object> banList(BannerVO vo) throws Exception;
+
+    int banPost(BannerVO vo) throws Exception;
+
+    BannerVO bannerView(BannerVO vo) throws Exception;
+
+    int bannerEdit(BannerVO vo) throws Exception;
+
+    int bannerDelete(BannerVO vo) throws Exception;
+
+    Map<String, Object> contact(ContactVO vo) throws Exception;
+
+    ContactVO conView(ContactVO vo) throws Exception;
+
+    int conPost(ContactVO vo) throws Exception;
+
+    int conEdit(ContactVO vo) throws Exception;
+
+    int conDelete(ContactVO vo) throws Exception;
+
+    //동행기업 실적 제출하기
+    Map<String, Object> perfList(PerformanceVO vo) throws Exception;
+
+    PerformanceVO perfView(PerformanceVO vo) throws Exception;
+
+    int perfDelete(int seq) throws Exception;
+
+    int perfEdit(PerformanceVO vo) throws Exception;
 }

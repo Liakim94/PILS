@@ -115,13 +115,27 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/main/myPage.do" />
-            <mvc:mapping path="/main/joinEdit.do" />
-            <mvc:mapping path="/main/memEdit.do" />
-            <mvc:mapping path="/main/management.do" />
-            <mvc:mapping path="/main/memAdd.do" />
-            <mvc:mapping path="/main/changePw.do" />
+            <mvc:mapping path="/main/myPage/joinEdit.do" />
+            <mvc:mapping path="/main/mem/memDetail.do" />
+            <mvc:mapping path="/main/mem/memEdit.do" />
+            <mvc:mapping path="/main/mem/management.do" />
+            <mvc:mapping path="/main/perf/apply.do" />
+            <mvc:mapping path="/main/perf/list.do" />
+            <mvc:mapping path="/main/mem/memAdd.do" />
+            <mvc:mapping path="/main/mem/changePw.do" />
             <bean class="kr.co.xicom.MypageInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>
-
+    <!--
+    방문자, 페이지뷰 붙석/통계를 위한 Interceptor
+    -->
+    <bean name="visitLogService" class="kr.co.xicom.front.service.impl.VisitLogServiceImpl"/>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/main/index.do"/>
+            <bean class="kr.co.xicom.VisitLogInterceptor">
+                <constructor-arg ref="visitLogService"/>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

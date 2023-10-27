@@ -35,14 +35,16 @@
                 passwd: {required: true, minlength: 4, maxlength: 10},
                 title: {required: true},
                 cont: {required: true},
-                answer: {required: true}
+                answer: {required: true},
+                email: {required: true}
             },
             messages: {
                 name: {required: "작성자 입력하세요.", maxlength: "10자 이상 입력 불가합니다."},
                 passwd: {required: "비밀번호를 확인하세요.", minlength: "최소 4자 이상 입력해주세요.", maxlength: "10자 이상 입력 불가합니다."},
                 title: {required: "제목을 입력하세요."},
                 cont: {required: "내용을 입력하세요."},
-                answer: {required: "이미지에 보이는 정확한 숫자를 입력하세요."}
+                answer: {required: "이미지에 보이는 정확한 숫자를 입력하세요."},
+                email: {required: "이메일을 입력하세요."}
             },
             submitHandler: function (frm) {
                 oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
@@ -136,6 +138,14 @@
                                     </div>
                                     <div class="input-wrap">
                                         <input type="text" id="name" name="name" placeholder="작성자 입력"/>
+                                    </div>
+                                </div>
+                                <div class="line-wrap">
+                                    <div class="label">
+                                        이메일<span class="required">*</span>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input type="text" id="email" name="email" placeholder="작성자 입력"/>
                                     </div>
                                 </div>
                                 <div class="line-wrap">

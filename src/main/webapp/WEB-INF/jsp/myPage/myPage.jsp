@@ -172,7 +172,7 @@
                         </div>
                     </div>
                 <div class="write-bottom">
-                    <a id="edit" href='${pageContext.request.contextPath}/main/joinEdit.do' class="submit">수정하기</a>
+                    <a id="edit" href='${pageContext.request.contextPath}/main/myPage/joinEdit.do' class="submit">수정하기</a>
 <%--                    <a href="${pageContext.request.contextPath}/main/myPage.do">목록</a>--%>
                 </div>
                 </div>

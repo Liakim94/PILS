@@ -49,27 +49,39 @@
         <result property="rcmd_detail" column="rcmd_detail"/>
         <result property="appdt" column="appdt"/>
     </resultMap>
+    <resultMap id="BannerVO" type="kr.co.xicom.front.model.BannerVO">
+        <result property="banSeq" column="ban_sn"/>
+        <result property="banNm" column="ban_nm"/>
+        <result property="siteUrl" column="site_url"/>
+        <result property="stts" column="stts"/>
+        <result property="sortSeq" column="sort_seq"/>
+        <result property="banTy" column="ban_ty"/>
+        <result property="registDt" column="regist_dt"/>
+        <result property="upDt" column="up_dt"/>
+        <result property="fileNm" column="file_nm"/>
+        <result property="fileSize" column="file_sise"/>
+        <result property="fileType" column="file_ty"/>
+        <result property="savedPath" column="saved_path"/>
+        <result property="savedFileName" column="saved_file_nm"/>
+    </resultMap>
+    <resultMap id="ContactVO" type="kr.co.xicom.front.model.ContactVO">
+        <result property="sortSeq" column="sort_seq"/>
+        <result property="instNm" column="inst_nm"/>
+        <result property="contact" column="contact"/>
+        <result property="upDt" column="up_dt"/>
+    </resultMap>
     <select id="joinList" resultMap="CmpMemberVo">
         select
             A.bizno as bizNo
              ,A.cmp_mbr_cd as mem_cd
              ,A.cmp_nm as cmpNm
              ,to_char(A.appdt, 'YYYY-MM-DD') as appdate
-             ,B.nm as name
-             ,B.user_id as id
-             ,B.pswd as passwd
              , a.logo_img_path as logoImgPath
              , a.updt as update
              , a.joincmp as joinCmp
-        from tb_pils_cmpmbr A join tb_pils_mbr B
-                                   on A.bizno =B.bizno
-        where cmp_mbr_cd= #{mem_cd}
-            and b.manage_cd ='M501'
-            <if test="keyword != null and keyword != ''">
-                and (cmp_nm like CONCAT('%',#{keyword},'%') or nm like CONCAT('%',#{keyword},'%'))
-            </if>
+        from tb_pils_cmpmbr A
             <if test="tag != null and tag != ''">
-                and ${tag} like CONCAT('%',#{keyword},'%')
+                where ${tag} like CONCAT('%',#{keyword},'%')
             </if>
         <choose>
             <when test="sort == 'cmp_nm' or sort == 'nm'">
@@ -109,18 +121,14 @@
         where cmp_mbr_cd = #{mem_cd}
           and bizno = #{bizNo}
     </select>
+    <delete id="deleteCmp">
+        delete from tb_pils_cmpmbr where bizno = #{bizNo}
+    </delete>
     <select id="listCount" resultType="int">
         SELECT COUNT(1)
-        from tb_pils_cmpmbr A join tb_pils_mbr B
-        on A.bizno =B.bizno
-        WHERE 1 = 1
-          and A.cmp_mbr_cd = #{mem_cd}
-          and b.manage_cd ='M501'
-        <if test="keyword != null and keyword != ''">
-            and (cmp_nm like CONCAT('%',#{keyword},'%') or nm like CONCAT('%',#{keyword},'%'))
-        </if>
+        from tb_pils_cmpmbr
         <if test="tag != null and tag != ''">
-            and ${tag} like CONCAT('%',#{keyword},'%')
+            where ${tag} like CONCAT('%',#{keyword},'%')
         </if>
     </select>
     <select id="memManageList" resultMap="CmpMemberVo">
@@ -130,16 +138,22 @@
              , mbphno        as mbphno
              , psitn_dept_nm as deptNm
              , pstn as position
+             , auth_cd as auth_cd
              , c.cmp_nm as cmpNm
         from tb_pils_mbr A,
             ( select cd, cd_nm from tb_cd_data where cd_grp = 'M500') B,
-            (select bizno,cmp_nm,joincmp from tb_pils_cmpmbr tpc where cmp_mbr_cd='M302') C
+            (select bizno,cmp_nm,joincmp from tb_pils_cmpmbr tpc where cmp_mbr_cd ='M302') C
         where A.manage_cd =B.cd
           and A.bizno =c.bizno
         <if test="tag != null and tag != ''">
             and ${tag} like CONCAT('%',#{keyword},'%')
         </if>
-        order by c.joincmp desc, cd='M501'desc
+        <if test="sort != null and sort != ''">
+                order by ${sort} asc, cd='M501'desc
+        </if>
+        <if test="tag = null and tag = '' and sort = null and sort = ''">
+            order by upd_dt desc
+        </if>
         <if test="pageIndex > 0">
             LIMIT #{pageUnit} OFFSET #{firstIndex}
         </if>
@@ -151,9 +165,6 @@
         (select bizno,cmp_nm,joincmp from tb_pils_cmpmbr tpc where cmp_mbr_cd='M302') C
         where A.manage_cd =B.cd
         and A.bizno =c.bizno
-        <if test="keyword != null and keyword != ''">
-            and (cmp_nm like CONCAT('%',#{keyword},'%') or nm like CONCAT('%',#{keyword},'%'))
-        </if>
         <if test="tag != null and tag != ''">
             and ${tag} like CONCAT('%',#{keyword},'%')
         </if>
@@ -167,9 +178,17 @@
              , telno         as memTelNo
              , faxno         as memFaxNo
              , user_id       as id
+             , bizno         as bizNo
+             ,auth_cd        as auth_cd
         from tb_pils_mbr
         where user_id =#{id}
     </select>
+    <update id="approveMem">
+        update tb_pils_mbr set auth_cd =#{auth_cd} where user_id = #{id}
+    </update>
+    <delete id="deleteMem">
+        delete from tb_pils_mbr where bizno = #{bizNo} and user_id = #{id}
+    </delete>
     <update id="updateMem">
         update tb_pils_mbr
         set nm            = #{name}
@@ -274,4 +293,191 @@
         FROM tb_pils_rcmd
         WHERE 1 = 1
     </select>
+    <select id="banCount" resultType="int">
+        SELECT COUNT(1)
+        FROM tb_pils_banner
+        WHERE 1 = 1
+        and stts=1
+    </select>
+    <select id="banList" resultMap="BannerVO">
+        select *
+        from tb_pils_banner
+        where stts =1
+        order by regist_dt desc
+    </select>
+    <insert id="banPost" parameterType="kr.co.xicom.front.model.BannerVO">
+        INSERT INTO tb_pils_banner (
+        ban_nm,
+        site_url,
+        stts,
+        sort_seq,
+        regist_dt,
+        file_nm,
+        file_size,
+        file_ty,
+        pc_img_path,
+        mobile_img_path
+        )
+        VALUES(
+        #{banNm},
+        #{siteUrl},
+        #{stts},
+        #{sortSeq},
+        NOW(),
+        #{fileNm},
+        #{fileSize},
+        #{fileType},
+        #{pcImgPath},
+        #{mobileImgPath}
+        )
+        <selectKey keyProperty="banSeq" resultType="integer" order="AFTER">
+            SELECT MAX(ban_sn) FROM tb_pils_banner;
+        </selectKey>
+    </insert>
+    <select id="bannerView" resultMap="BannerVO">
+        select
+            ban_sn as banSeq,
+            ban_nm as banNm,
+            site_url as siteUrl,
+            stts as stts,
+            sort_seq as sortSeq,
+            regist_dt as registDt,
+            pc_img_path as pcImgPath,
+            mobile_img_path as mobileImgPath
+        from tb_pils_banner
+        where stts = 1
+        and ban_sn = #{banSeq}
+        order by regist_dt desc
+    </select>
+    <update id="bannerEdit">
+        update tb_pils_banner
+        <set>
+             ban_nm = #{banNm},
+             site_url = #{siteUrl},
+             sort_seq = #{sortSeq},
+             up_dt = NOW(),
+             file_nm =#{fileNm},
+             file_size =#{fileSize},
+             file_ty = #{fileType},
+            <if test="pcImgPath != null">
+                pc_img_path = #{pcImgPath},
+            </if>
+            <if test="mobileImgPath != null">
+                mobile_img_path = #{mobileImgPath}
+            </if>
+        </set>
+        where ban_sn = #{banSeq}
+    </update>
+    <update id="bannerDelete">
+        update tb_pils_banner
+        set stts = #{stts}
+        where ban_sn = ${banSeq}
+    </update>
+    <select id="contactCount" resultType="int">
+        SELECT COUNT(1)
+        FROM tb_pils_qna_contact
+        WHERE 1 = 1
+    </select>
+    <select id="contact" resultMap="ContactVO">
+        select *
+        from tb_pils_qna_contact
+        order by sort_seq asc
+    </select>
+    <select id="conView" resultMap="ContactVO">
+        select *
+        from tb_pils_qna_contact
+        where seq = #{seq}
+    </select>
+    <insert id="conPost" parameterType="kr.co.xicom.front.model.ContactVO">
+        INSERT INTO tb_pils_qna_contact (
+        sort_seq,
+        inst_nm,
+        contact,
+        up_dt
+        )
+        VALUES(
+        #{sortSeq},
+        #{instNm},
+        #{contact},
+        NOW()
+        )
+        <selectKey keyProperty="seq" resultType="integer" order="AFTER">
+            SELECT MAX(seq) FROM tb_pils_qna_contact;
+        </selectKey>
+    </insert>
+    <update id="conEdit">
+        update tb_pils_qna_contact
+        set sort_seq  =    #{sortSeq},
+            inst_nm        = #{instNm},
+            contact = #{contact},
+            up_dt = NOW()
+        where seq = #{seq}
+    </update>
+    <delete id="conDelete">
+        delete from tb_pils_qna_contact where seq = #{seq}
+    </delete>
+    <select id="perfListSort" resultType="kr.co.xicom.front.model.PerformanceVO">
+        select a.user_id,
+               a.regist_dt,
+               a.seq,
+               a.cmp_nm,
+               b.nm
+        from tb_pils_perf A
+                 join tb_pils_mbr B
+                      on A.user_id = B.user_id
+        where A.user_id = B.user_id
+        <if test="tag != null and tag != ''">
+            and ${tag} like CONCAT('%',#{keyword},'%')
+        </if>
+        <if test="tag = null and tag = '' and sort = null and sort = ''">
+            order by regist_dt desc
+        </if>
+        <if test="pageIndex > 0">
+            LIMIT #{pageUnit} OFFSET #{firstIndex}
+        </if>
+    </select>
+    <select id="perfCount" resultType="int">
+        select count(1)
+        from tb_pils_perf
+    </select>
+    <select id="perfView" resultType="kr.co.xicom.front.model.PerformanceVO">
+        select seq,
+               cmp_nm,
+               cntr_pd,
+               cntr_numb,
+               cmp_numb,
+               intrlck,
+               change,
+               intrlck_perf,
+               etc,
+               intrlck_file_nm,
+               change_file_nm,
+               intrlck_perf_file_nm,
+               etc_file_nm,
+               regist_dt,
+               user_id
+        from tb_pils_perf
+        where seq= #{seq}
+    </select>
+    <delete id="perfDelete">
+        delete from tb_pils_perf  where seq= #{seq}
+    </delete>
+    <update id="perfEdit">
+        update tb_pils_perf
+            set
+        cmp_nm =#{cmp_nm},
+        cntr_pd = #{cntr_pd},
+        cntr_numb =#{cntr_numb},
+        cmp_numb =#{cmp_numb},
+        intrlck =#{intrlck},
+        change = #{change},
+        intrlck_perf = #{intrlck_perf},
+        etc =#{etc},
+        intrlck_file_nm= #{intrlck_file_nm},
+        change_file_nm =#{change_file_nm},
+        intrlck_perf_file_nm =#{intrlck_perf_file_nm},
+        etc_file_nm =#{etc_file_nm},
+        regist_dt = NOW()
+        where seq = #{seq}
+    </update>
 </mapper>

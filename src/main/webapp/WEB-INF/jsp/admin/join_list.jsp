@@ -17,6 +17,13 @@
         form.pageIndex.value = num;
         form.submit();
     }
+    function Checkform() {
+        const selectedValue = document.getElementById("tag").value;
+        if (selectedValue === "") {
+            alert("검색 항목을 선택해주세요.");
+            return false;
+        }
+    }
     function sortList(val) {
         $('input[name=sort]').attr('value',val);
         document.getElementById('frmSearch').submit();
@@ -43,13 +50,13 @@
             </div>
             <div class="content">
                 <!-- 컨텐츠 start -->
-                <form action="" name="frmSearch" id="frmSearch" method="get">
+                <form action="" name="frmSearch" id="frmSearch" method="get" onSubmit="return Checkform()">
                     <input type="hidden" name="pageIndex" id="pageIndex" value="1">
                     <section style="margin-bottom: 10px">
-                        <select id="tag" name="tag" value="${vo.tag}">
+                        <select id="tag" name="tag" value="">
                             <option value="">선택</option>
-                            <option value="cmp_nm">신청기업명</option>
-                            <option value="nm">작성자</option>
+                            <option value="cmp_nm" <c:if test="${vo.tag == 'cmp_nm'}">selected="selected"</c:if>>신청기업명</option>
+<%--                            <option value="nm" <c:if test="${vo.tag == 'nm'}">selected="selected"</c:if>>작성자</option>--%>
                         </select>
                         <input type="text" name="keyword" value="${vo.keyword}" style=" border-radius: 5px;">
                         <button type="submit" style=" background: #E60024; border-radius: 5px;
@@ -64,17 +71,16 @@
                                 <col width="10%">
                                 <col width="10%">
                                 <col width="10%">
-                                <col width="12%">
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th scope="col">번호</th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('cmp_nm')">신청기업</a></th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('joincmp')">참여기업수</a></th>
-                                    <th scope="col"><a href="javascript:void(0);" onclick="sortList('nm')">작성자</a></th>
+<%--                                    <th scope="col"><a href="javascript:void(0);" onclick="sortList('nm')">작성자</a></th>--%>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('appdt')">신청일</a></th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('upd_dt')">마지막 수정일</a></th>
-                                    <input type="hidden" name="sort" id="sort" value="">
+                                    <input type="hidden" name="sort" id="sort" value="${vo.sort}">
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,14 +93,14 @@
                                         </a>
                                     </td>
                                     <td>${list.joinCmp}개</td>
-                                    <td> ${list.name }</td>
+<%--                                    <td> ${list.name }</td>--%>
                                     <td>${list.appdate }</td>
                                     <td>${fn:substring(list.update,0,10)}</td>
                                 </tr>
                             </c:forEach>
                             <c:if test="${empty list }">
                                 <tr>
-                                    <td colspan="5" class="text-center">조회된 데이터가 없습니다.</td>
+                                    <td colspan="6" class="text-center">조회된 데이터가 없습니다.</td>
                                 </tr>
                             </c:if>
                             </tbody>

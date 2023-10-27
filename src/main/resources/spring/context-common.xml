@@ -88,6 +88,15 @@
 
     <bean class="freemarker.template.utility.XmlEscape" id="fmXmlEscape"></bean>
 
+    <!-- WildRain 추가 2023-10-01 -->
+    <!-- 기정원 이메일 클라이언트 추가 -->
+    <bean id="emsClient" class="${Ems.ClientClassName}">
+        <constructor-arg name="linkName" type="java.lang.String" value="${Ems.LinkName}" />
+        <constructor-arg name="targetUrl" type="java.lang.String" value="${Ems.TargetUrl}" />
+        <constructor-arg name="defaultFrom" type="java.lang.String" value="${Ems.DefaultFrom}" />
+        <constructor-arg name="defaultCategory" type="java.lang.String" value="${Ems.DefaultCategory}" />
+    </bean>
+
     <beans profile="cloud">
         <bean id="nasFileService" class="kr.go.smes.fileservice.MinioFileService">
             <constructor-arg name="endPoint" type="java.lang.String" value="${FileService.EndPoint}" />
@@ -96,6 +105,7 @@
             <constructor-arg name="bucketName" type="java.lang.String" value="${FileService.BucketName}" />
         </bean>
     </beans>
+
     <beans profile="cloud-dev">
         <bean id="nasFileService" class="kr.go.smes.fileservice.MinioFileService">
             <constructor-arg name="endPoint" type="java.lang.String" value="${FileService.EndPoint}" />

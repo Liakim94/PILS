@@ -28,13 +28,77 @@
                     <h2 class="title">납품대금 연동제란?</h2>
                     <div class="box-container">
                         <p class="mb20 m-text">
-                            <b class="text-red">납품대금 연동제</b>란 <b class="text-red">위탁기업</b>이 <b class="text-red">수탁기업</b>에 물품, 부품, 반제품 및 원료 등(이하 “물품등”이라 한다)의 제조, 공사, 가공,
-                            수리, 용역 또는 기술개발(이하 “제조”라 한다“)을 <b class="text-red">위탁</b>할 때 납품대금 연동에 관한 사항을
-                            적은 약정서를 그 수탁기업에 발급하도록 하는 제도입니다.
+                            <b class="text-red">납품대금 연동제</b>란 수탁기업이 위탁기업에 납품하는 물품등의 주요 원재료*
+                            가격이 일정 수준** 이상 변동하는 경우 그 변동분에 연동하여 납품대금을 조정하는 내용이 포함된 서면 약정을 체결하는 제도입니다.
                         </p>
-                        <p class="font14 mb40 point9-text tip">
-                            ※ 관련법령: 개정 ｢대·중소기업 상생협력 촉진에 관한 법률｣ [2023.1.3. 일부개정] 제21조 제1항 및 제1항 제4호
+                        <p class="font14 point9-text tip">
+                            * 물품등의 제조를 위해 필요한 재료로서 원료와 재료를 포괄하고, 천연재료, 화합물, 가공물, 중간재 등을 포함하되 이에 한정하지 않음<br>
+                            ** 위탁기업과 수탁기업이 100분의 10 이내의 범위에서 협의하여 정함
+                        <p class="mt20 mb20 m-text">계약체결 당시 예견할 수 없는 원재료 가격 변동에 대해 납품대금을 조정함으로써 공급망 안정화에 기여할 수 있습니다.</p>
                         </p>
+                        <div class="peristalsis-process" style="gap:3%;max-width: 850px;margin-bottom: 20px;">
+                            <div style="width: 25%;margin-top: 20px">
+                                <table class="company-table font14 point4-text">
+                                    <tr class="fw500 font16 point7-text ">
+                                        <td class="t-head">계약서 작성</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">
+                                            가격 기준지표, 조정요건 등 기재
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div>
+                                <img src="<c:url value='/images/common/next2.png'/>" style="width:23px;margin: 66px 0;">
+                            </div>
+                            <div style="width: 82%;">
+                                <table class="company-table font14 point4-text" style="table-layout: auto">
+                                    <tr class="fw500 font16 point7-text ">
+                                        <td class="t-head" colspan="7">납품대금 지급</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">
+                                            가격 기준지표 변동 확인
+                                            (조정요건 충족 여부 확인)
+                                        </td>
+                                        <td style="text-align: center; width:30px">
+                                           :
+                                        </td>
+                                        <td>
+                                            [조정요건 충족]
+                                        </td>
+                                        <td style="width:30px">
+                                            <img src="<c:url value='/images/common/next2.png'/>" style="width:23px;">
+                                        </td>
+                                        <td>
+                                            연동 산식 적용
+                                        </td>
+                                        <td style="width:30px">
+                                            <img src="<c:url value='/images/common/next2.png'/>" style="width:23px;">
+                                        </td>
+                                        <td>
+                                            조정된
+                                            납품대금 지급
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:30px">
+                                            :
+                                        </td>
+                                        <td>
+                                            [조정요건 미충족]
+                                        </td>
+                                        <td colspan="3" style="width:30px">
+                                            <img src="<c:url value='/images/common/next2.png'/>" style="width:23px;">
+                                        </td>
+                                        <td>
+                                            당초 납품대금 지급
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                         <div class="accordion-container">
                             <div class="item-wrap" onclick="detailOpen(this)" tabindex="1" >
                                 <h3 class="ar-title">1. 납품대금 연동이란?</h3>
@@ -229,8 +293,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="item-wrap mb10" onclick="detailOpen(this)" tabindex="1"
-                                 style="padding: 10px 20px !important">
+                            <div class="item-wrap mb10" onclick="detailOpen(this)" tabindex="1">
                                 <h3 class="ar-title">4. 물품등의 제조를 위탁한다는 것의 의미는?</h3>
                                 <img class="icon" src="<c:url value="/images/common/arrow-top.png"/>" alt="법률 상세보기">
                                 <div class="detail-info ">

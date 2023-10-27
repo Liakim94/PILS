@@ -22,6 +22,7 @@ public class QnaVO extends DefaultVO{
 	private String rdate ="";
 	private String reply ="";
 	private String replyDe ="";
+	private String email ="";
 
 	/** Capchar 번호 */
 	private String answer;

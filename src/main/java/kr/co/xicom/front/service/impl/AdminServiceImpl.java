@@ -11,12 +11,10 @@ import kr.co.xicom.front.service.mapper.ConsultingMapper;
 import kr.co.xicom.util.HtmlTagUtils;
 import kr.go.smes.fileservice.FileService;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.collections.functors.ExceptionPredicate;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionDefinition;
@@ -24,6 +22,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +61,11 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public CmpMemberVo memInfo(CmpMemberVo vo) throws Exception {
         return adminMapper.memInfo(vo);
+    }
+    //동행기업 삭제하기
+    @Override
+    public int deleteCmp(String bizNo) throws Exception{
+        return adminMapper.deleteCmp(bizNo);
     }
     //컨설팅 list
     @Override
@@ -105,6 +109,14 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public int updateMem(CmpMemberVo vo) throws Exception{
         return adminMapper.updateMem(vo);
+    }
+    @Override
+    public int approveMem(CmpMemberVo vo) throws Exception{
+        return adminMapper.approveMem(vo);
+    }
+    @Override
+    public int deleteMem(String bizNo, String id) throws Exception{
+        return adminMapper.deleteMem(bizNo, id);
     }
     @Override
     public int changePw(CmpMemberVo vo) throws Exception{
@@ -246,7 +258,7 @@ public class AdminServiceImpl implements AdminService {
                     for (int i = 0; i < attachList.size(); i++) {
                         AttachVO attach = attachList.get(i);
                         attach.setBoardSeq(vo.getBoardSeq());
-                        attach.setBbsId(6);
+                        attach.setBbsId(vo.getBbsId());
                         attach.setRegSeq(vo.getRegSeq());
                         attach.setUpdSeq(vo.getUpdSeq());
                         attach.setRegNm(vo.getRegNm());
@@ -271,7 +283,7 @@ public class AdminServiceImpl implements AdminService {
 
         AttachVO attach = new AttachVO();
         attach.setBoardSeq(vo.getBoardSeq());
-        attach.setBbsId(6);
+        attach.setBbsId(vo.getBbsId());
         this.attachMapper.delete(attach);
         // 다시 첨부파일 정보 등록
         String jsonFileList = HtmlTagUtils.restore(vo.getJsonFileList());
@@ -284,7 +296,7 @@ public class AdminServiceImpl implements AdminService {
                 for (int i = 0; i < attachList.size(); i++) {
                     attach = attachList.get(i);
                     attach.setBoardSeq(vo.getBoardSeq());
-                    attach.setBbsId(6);
+                    attach.setBbsId(vo.getBbsId());
                     attach.setRegSeq(vo.getRegSeq());
                     attach.setUpdSeq(vo.getUpdSeq());
                     attach.setRegNm(vo.getRegNm());
@@ -310,6 +322,7 @@ public class AdminServiceImpl implements AdminService {
         return result;
     }
 
+    //걸어온발자취 첨부파일 list
     @Override
     public List<AttachVO> getAttachList(TraceVO vo) throws Exception {
 
@@ -329,5 +342,186 @@ public class AdminServiceImpl implements AdminService {
         map.put("resultList", list);
         map.put("resultCnt", cnt);
         return map;
+    }
+
+    // 메인 배너 list
+    @Override
+    public Map<String, Object> banList(BannerVO vo) throws Exception {
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<BannerVO> list = adminMapper.banList(vo);
+        int cnt = adminMapper.banCount(vo);
+        map.put("resultList", list);
+        map.put("resultCnt", cnt);
+        return map;
+    }
+    @Override
+    public int banPost(BannerVO vo) throws Exception {
+        try {
+            // JSON 처리용 Gson
+            Gson gson = new Gson();
+            Type listType = new com.google.common.reflect.TypeToken<List<BannerVO>>(){}.getType();
+
+            String pcImage = vo.getJsonPcImage();
+            if (!StringUtils.isBlank(pcImage)) {
+                // HTMLTagFilter 적용 되돌리기
+                pcImage = kr.go.smes.util.HtmlTagUtils.restore(pcImage);
+                List<BannerVO> logoAttachs = gson.fromJson(pcImage, listType);
+                if (logoAttachs != null && logoAttachs.size() > 0) {
+                    vo.setPcImgPath(logoAttachs.get(0).getSavedFilepath());
+                }
+            }
+            String mobileImage = vo.getJsonMobileImage();
+            if (!StringUtils.isBlank(mobileImage)) {
+                // HTMLTagFilter 적용 되돌리기
+                mobileImage = kr.go.smes.util.HtmlTagUtils.restore(mobileImage);
+                List<BannerVO> logoAttachs = gson.fromJson(mobileImage, listType);
+                if (logoAttachs != null && logoAttachs.size() > 0) {
+                    vo.setMobileImgPath(logoAttachs.get(0).getSavedFilepath());
+                }
+            }
+        }
+        catch (Exception ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            throw ex;
+        }
+        return adminMapper.banPost(vo);
+    }
+
+    @Override
+    public BannerVO bannerView(BannerVO vo) throws Exception {
+        return adminMapper.bannerView(vo);
+    }
+    @Override
+    public int bannerEdit(BannerVO vo) throws Exception {
+        try {
+            // JSON 처리용 Gson
+            Gson gson = new Gson();
+            Type listType = new com.google.common.reflect.TypeToken<List<BannerVO>>(){}.getType();
+
+            String pcImage = vo.getJsonPcImage();
+            if (!StringUtils.isBlank(pcImage)) {
+                // HTMLTagFilter 적용 되돌리기
+                pcImage = kr.go.smes.util.HtmlTagUtils.restore(pcImage);
+                List<BannerVO> logoAttachs = gson.fromJson(pcImage, listType);
+                if (logoAttachs != null && logoAttachs.size() > 0) {
+                    vo.setPcImgPath(logoAttachs.get(0).getSavedFilepath());
+                }
+            }
+            String mobileImage = vo.getJsonMobileImage();
+            if (!StringUtils.isBlank(mobileImage)) {
+                // HTMLTagFilter 적용 되돌리기
+                mobileImage = kr.go.smes.util.HtmlTagUtils.restore(mobileImage);
+                List<BannerVO> logoAttachs = gson.fromJson(mobileImage, listType);
+                if (logoAttachs != null && logoAttachs.size() > 0) {
+                    vo.setMobileImgPath(logoAttachs.get(0).getSavedFilepath());
+                }
+            }
+        }
+        catch (Exception ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            throw ex;
+        }
+        return adminMapper.bannerEdit(vo);
+    }
+    @Override
+    public int bannerDelete(BannerVO vo) throws Exception {
+        return adminMapper.bannerDelete(vo);
+    }
+
+    @Override
+    public Map<String, Object> contact(ContactVO vo) throws Exception {
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<ContactVO> list = adminMapper.contact(vo);
+        int cnt = adminMapper.contactCount(vo);
+
+        map.put("resultList", list);
+        map.put("resultCnt", cnt);
+        return map;
+    }
+    @Override
+    public  ContactVO conView(ContactVO vo) throws Exception {
+        return adminMapper.conView(vo);
+    }
+    @Override
+    public int conPost(ContactVO vo) throws Exception {
+        return adminMapper.conPost(vo);
+    }
+    @Override
+    public int conEdit(ContactVO vo) throws Exception {
+        return adminMapper.conEdit(vo);
+    }
+    @Override
+    public int conDelete(ContactVO vo) throws Exception {
+        return adminMapper.conDelete(vo);
+    }
+
+    //동행기업 실적 제출하기
+    @Override
+    public Map<String, Object> perfList(PerformanceVO vo) throws Exception{
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<PerformanceVO> list = adminMapper.perfListSort(vo);
+        int cnt = adminMapper.perfCount(vo);
+        map.put("resultList", list);
+        map.put("resultCnt", cnt);
+        return map;
+    }
+    @Override
+    public PerformanceVO perfView(PerformanceVO vo) throws Exception{
+        return   adminMapper.perfView(vo);
+    }
+    @Override
+    public int perfDelete(int seq) throws Exception {
+        return adminMapper.perfDelete(seq);
+    }
+    @Override
+    public int perfEdit(PerformanceVO vo) throws Exception {
+        try {
+            // JSON 처리용 Gson
+            Gson gson = new Gson();
+            Type listType = new com.google.common.reflect.TypeToken<List<BannerVO>>(){}.getType();
+
+            String intrlck_path = vo.getJsonIntrlckFile();
+            if (!StringUtils.isBlank(intrlck_path)) {
+                // HTMLTagFilter 적용 되돌리기
+                intrlck_path = kr.go.smes.util.HtmlTagUtils.restore(intrlck_path);
+                List<PerformanceVO> attachs = gson.fromJson(intrlck_path, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setIntrlck(attachs.get(0).getSavedFilepath());
+
+                }
+            }
+            String change_path = vo.getJsonChangeFile();
+            if (!StringUtils.isBlank(change_path)) {
+                // HTMLTagFilter 적용 되돌리기
+                change_path = kr.go.smes.util.HtmlTagUtils.restore(change_path);
+                List<PerformanceVO> attachs = gson.fromJson(change_path, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setChange(attachs.get(0).getSavedFilepath());
+                }
+            }
+            String intrlck_perf_path = vo.getJsonIntrlckPerfFile();
+            if (!StringUtils.isBlank(intrlck_perf_path)) {
+                // HTMLTagFilter 적용 되돌리기
+                intrlck_perf_path = kr.go.smes.util.HtmlTagUtils.restore(intrlck_perf_path);
+                List<PerformanceVO> attachs = gson.fromJson(intrlck_perf_path, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setIntrlck_perf(attachs.get(0).getSavedFilepath());
+                }
+            }
+            String etc_path = vo.getJsonChangeFile();
+            if (!StringUtils.isBlank(etc_path)) {
+                // HTMLTagFilter 적용 되돌리기
+                etc_path = kr.go.smes.util.HtmlTagUtils.restore(etc_path);
+                List<PerformanceVO> attachs = gson.fromJson(etc_path, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setChange(attachs.get(0).getSavedFilepath());
+                }
+            }
+        }
+        catch (Exception ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            throw ex;
+        }
+        return adminMapper.perfEdit(vo);
     }
 }

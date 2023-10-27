@@ -39,4 +39,5 @@ public interface ConsultingService {
     int insertRecom(RcmdVO vo) throws Exception;
 
     RcmdVO rcmdView(int no) throws Exception;
+
 }

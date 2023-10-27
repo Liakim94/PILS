@@ -1,10 +1,14 @@
 package kr.co.xicom.front.controller;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import kr.co.xicom.front.model.BoardVO;
+import kr.co.xicom.front.model.ContactVO;
 import kr.co.xicom.front.model.QnaVO;
 import kr.co.xicom.front.service.QnaService;
 import kr.co.xicom.util.Alerts;
 import kr.co.xicom.util.CaptchaUtil;
+import kr.go.smes.ems.EmsClient;
+import kr.go.smes.ems.EmsResponse;
 import nl.captcha.Captcha;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -15,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,6 +32,8 @@ import java.util.Map;
 @RequestMapping("/front")
 @Controller
 public class QnaController extends Alerts {
+    @Resource
+    private EmsClient emsClient;
 
     /**
      * Logger
@@ -37,11 +44,12 @@ public class QnaController extends Alerts {
     private QnaService qnaService;
 
     @GetMapping(value = "/qna/main.do")
-    public ModelAndView qnaMain() throws Exception {
+    public ModelAndView qnaMain(@ModelAttribute("update") ContactVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("communication/qna/main");
+        List<ContactVO> rs = qnaService.contact(vo);
+        mav.addObject("rs",rs);
         return mav;
     }
-
     /**
      * 1:1문의 목록
      */
@@ -112,7 +120,7 @@ public class QnaController extends Alerts {
         String answer = qnaVO.getAnswer();
 
         if (StringUtils.isBlank(answer)) {
-            // 이미 클라이언트에서 해당 값(answer)에 빈값을 체크 할것이므르로
+            // 이미 클라이언트에서 해당 값(answer)에 빈값을 체크 할것이므로
             // 이럴일은 없겠지만 방어 코딩 필요.
         }
 
@@ -133,7 +141,14 @@ public class QnaController extends Alerts {
         try {
             int result = qnaService.insertBbsQna(qnaVO);
             if (result > 0) {
-
+                // 질의 등록 알림 메일 발송
+                try {
+                    EmsResponse ems = emsClient.send("pis@win-win.or.kr", "납품대금 연동제 온라인 상담 문의가 등록되었습니다.", "메일내용");
+                    String status = ems.isSuccess() ? "SUCCESS" : "FAIL";
+                    System.out.println(status);
+                }catch(Exception e){
+                    System.out.println(e.toString()+"????????");
+                }
                 session = request.getSession();
                 session.setAttribute("qnaId", qnaVO.getNo());
                 request.setAttribute("hid", "");
@@ -268,7 +283,7 @@ public class QnaController extends Alerts {
                                HttpServletRequest request,
                                HttpServletResponse response) throws Exception {
 
-        ModelAndView mav = new ModelAndView("communication/qna/repost");
+        ModelAndView mav = new ModelAndView("communication/qna/onlineQna");
 
         qnaVO.setNo(no);
         QnaVO rs = qnaService.getBbsQnabyId(qnaVO);
@@ -290,9 +305,15 @@ public class QnaController extends Alerts {
 
         try {
             int result = qnaService.repostBbsQna(qnaVO);
-
             if (result > 0) {
-
+                // 답변 알림 메일 발송
+                try {
+                    EmsResponse ems = emsClient.send(qnaVO.getEmail(), "납품대금 연동제 홈페이지 온라인상담 답글 등록 알림", "납품대금 연동제 클라우드 이메일 발송 테스트");
+                    String status = ems.isSuccess() ? "SUCCESS" : "FAIL";
+                    System.out.println(status);
+                }catch(Exception e){
+                    System.out.println(e.toString()+"????????");
+                }
                 request.setAttribute("hid", "");
                 response.sendRedirect(request.getContextPath() + "/front/qna/view.do?no="+qnaVO.getNo());
 

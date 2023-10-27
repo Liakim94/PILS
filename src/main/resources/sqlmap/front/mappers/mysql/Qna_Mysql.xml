@@ -15,8 +15,14 @@
         <result property="ip"                               column="ip"/>
         <result property="rdate"                            column="rdate"/>
         <result property="reply"                            column="reply"/>
+        <result property="email"                            column="email"/>
     </resultMap>
-
+    <resultMap id="ContactVO" type="kr.co.xicom.front.model.ContactVO">
+        <result property="sortSeq" column="sort_seq"/>
+        <result property="instNm" column="inst_nm"/>
+        <result property="contact" column="contact"/>
+        <result property="upDt" column="up_dt"/>
+    </resultMap>
     <select id="list" resultMap="bbsQna">
         select no           AS no
                 , hedofc_no AS headnum
@@ -60,6 +66,7 @@
            , bdtxt
            , ip_addr
            , regist_date
+           , email_addr
         )
         values
         ( (select nextval('tb_banner_qust_answr_seq'))
@@ -72,6 +79,7 @@
            , #{body}
            , #{ip}
            , extract(epoch from now() at time zone 'utc')
+           , #{email}
         )
         <selectKey keyProperty="no" resultType="integer" order="AFTER">
             SELECT MAX(no) FROM tb_banner_qust_answr;
@@ -105,6 +113,7 @@
                 , bdtxt     AS body
                 , rspns     AS reply
                 , ip_addr   as ip
+                , email_addr   as email
         from tb_banner_qust_answr
         where 1 = 1
         and no = #{no}::INT4
@@ -121,6 +130,7 @@
             , ttl
             , bdtxt
             , regist_date
+            , email_addr
         )
         values (
            #{headnum}
@@ -131,6 +141,7 @@
             , #{title}
             , #{body}
             , extract(epoch from now() at time zone 'utc')
+            , #{email}
         )
         <selectKey keyProperty="no" resultType="integer" order="AFTER">
             SELECT MAX(no) FROM tb_banner_qust_answr;
@@ -139,4 +150,10 @@
     <delete id="qnaDelete">
         delete from tb_banner_qust_answr where no=  #{no}
     </delete>
+
+    <select id="contact" resultMap="ContactVO">
+        select *
+        from tb_pils_qna_contact
+        order by sort_seq asc
+    </select>
 </mapper>
