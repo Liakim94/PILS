@@ -264,16 +264,16 @@
                 console.log("intrlck_perf,,,");
             }
             // 기타 파일 업로드
-            let etc = $('#etcFile')[0].files;
+            let etcFile = $('#etcFile')[0].files;
 
-            if (etc.length > 0) {
+            if (etcFile.length > 0) {
                 let formData = new FormData();
                 formData.append("targetFolderPath", "perf/etc");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
                 formData.append("maxFileCount", 1);
-                formData.append("savedFileSize", calcTotalSize(etc));
+                formData.append("savedFileSize", calcTotalSize(etcFile));
                 formData.append("savedFileCount", 0);
-                for (const file of etc) {
+                for (const file of etcFile) {
                     formData.append("files", file);
                 }
 

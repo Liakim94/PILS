@@ -153,7 +153,7 @@ public class MainServiceImpl implements MainService {
                     vo.setIntrlck_perf(attachs.get(0).getSavedFilepath());
                 }
             }
-            String etc_path = vo.getJsonChangeFile();
+            String etc_path = vo.getJsonEtcFile();
             if (!StringUtils.isBlank(etc_path)) {
                 // HTMLTagFilter 적용 되돌리기
                 etc_path = kr.go.smes.util.HtmlTagUtils.restore(etc_path);
@@ -212,7 +212,7 @@ public class MainServiceImpl implements MainService {
                     vo.setIntrlck_perf(attachs.get(0).getSavedFilepath());
                 }
             }
-            String etc_path = vo.getJsonChangeFile();
+            String etc_path = vo.getJsonEtcFile();
             if (!StringUtils.isBlank(etc_path)) {
                 // HTMLTagFilter 적용 되돌리기
                 etc_path = kr.go.smes.util.HtmlTagUtils.restore(etc_path);
