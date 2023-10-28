@@ -43,12 +43,14 @@
             rules: {
                 name: {required: true},
                 mbphno: {required: true, digits : true},
-                email: {required: true}
+                email: {required: true},
+                email2: {required: true}
             },
             messages: {
                 name: {required: "성명을 입력하세요."},
                 mbphno: {required: "전화번호를 입력하세요.",  digits : "숫자만 입력하세요"},
-                email: {required: "이메일을 입력하세요."}
+                email: {required: "이메일을 입력하세요."},
+                email2: {required: "이메일을 입력하세요."}
             },
             submitHandler: function (frm) {
                 frm.submit();
@@ -126,6 +128,7 @@
                                 <option value="gmail.com">gmail.com</option>
                             </select>
                             <input type="hidden" value="" id="email" name="email">
+                            <label class="error" for="email2" generated="true" style="display:none;"/>
                         </div>
                     </div>
                     <div class="line-wrap">

@@ -49,7 +49,7 @@
         from (select encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex') as inPass
                    , pswd
               from tb_pils_mbr tpm
-              where user_id = #{id}
+              where user_id = #{id} and auth_cd in('M101', 'M102')
              ) a;
     </select>
     <select id="memberBizno" resultType="String">

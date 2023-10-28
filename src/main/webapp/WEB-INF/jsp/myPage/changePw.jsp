@@ -84,7 +84,7 @@
                 </div>
                 <div class="write-bottom">
                     <button type="submit" class="submit">저장</button>
-                    <a href="${pageContext.request.contextPath}/main/management.do" class="back">취소</a>
+                    <a href="${pageContext.request.contextPath}/main/mem/management.do" class="back">취소</a>
                 </div>
             </div>
         </div>
