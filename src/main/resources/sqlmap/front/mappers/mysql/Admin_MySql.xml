@@ -175,7 +175,11 @@
             order by ${sort} asc, cd='M501'desc
         </if>
         <if test="tag = null and tag = '' and sort = null and sort = ''">
-            order by upd_dt desc
+            order by
+                case when user_id='admin'then 0
+                    when auth_cd ='M103' then 1
+                end
+            , upd_dt desc
         </if>
         <if test="pageIndex > 0">
             LIMIT #{pageUnit} OFFSET #{firstIndex}

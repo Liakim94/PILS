@@ -214,6 +214,7 @@
                                    readonly/>
                             <button type="button" class="btn" onclick="execPostCode()">주소찾기</button>
                             <input type="text" name="address_dtl" id="address_dtl" placeholder="상세주소"/>
+                            <label class="error" for="address" generated="true" style="display:none;"/>
                         </div>
                     </div>
                     <div class="line-wrap">
@@ -249,10 +250,11 @@
                                 자본금<span class="required">*</span>
                             </div>
                             <div class="input-wrap  non-flex labeled-input-wrap ">
-                            <input type="text" id="capital" name="capital"
+                            <input type="text" id="capital" name="capital" style="width: 85%"
                                    placeholder="자본금을 입력해주세요." required/>백만원
+                                <label class="error" for="capital" generated="true" style="display:none;"/>
                             </div>
-                         </div>
+                        </div>
                 </div>
             </div>
             <div class="write-container bt-none">

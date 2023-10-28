@@ -102,11 +102,11 @@
                                     <td>${rs.mbphno}</td>
                                     <td>${rs.management_cd}</td>
                                     <c:choose>
-                                        <c:when test="${rs.auth_cd eq 'M102' }">
+                                        <c:when test="${rs.auth_cd eq 'M102' || rs.auth_cd eq 'M101' }">
                                             <td>승인</td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td>신청</td>
+                                            <td style="color:red;">신청</td>
                                         </c:otherwise>
                                     </c:choose>
                                 </tr>

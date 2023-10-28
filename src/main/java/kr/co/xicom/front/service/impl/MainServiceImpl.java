@@ -123,7 +123,7 @@ public class MainServiceImpl implements MainService {
         try {
             // JSON 처리용 Gson
             Gson gson = new Gson();
-            Type listType = new com.google.common.reflect.TypeToken<List<BannerVO>>(){}.getType();
+            Type listType = new com.google.common.reflect.TypeToken<List<PerformanceVO>>(){}.getType();
 
             String intrlck_path = vo.getJsonIntrlckFile();
             if (!StringUtils.isBlank(intrlck_path)) {
@@ -179,10 +179,6 @@ public class MainServiceImpl implements MainService {
     }
     @Override
     public int perfEdit(PerformanceVO vo) throws Exception {
-//        PerformanceVO gg = new PerformanceVO();
-//        if(gg.getEtc() == '') {
-//            gg.setEtc(vo.getEtc());
-//        }
         try {
             // JSON 처리용 Gson
             Gson gson = new Gson();

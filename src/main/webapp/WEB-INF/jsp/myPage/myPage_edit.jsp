@@ -196,11 +196,12 @@
                                 본사 주소<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex">
-                                <form:input path="address" onclick="execPostCode()" readonly="true"/>
-                                <button type="button" class="btn"
+                                <form:input path="address" onclick="execPostCode()" readonly="true" cssStyle="width: 60%"/>
+                                <button type="button" class="btn" style="vertical-align: top; padding: 10px;"
                                         onclick="execPostCode()">주소찾기
                                 </button>
                                 <form:input path="address_dtl"/>
+                                <label class="error" for="address" generated="true" style="display:none;"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -235,7 +236,8 @@
                                     자본금<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <form:input path="capital" style="width:100px;"/>백만원
+                                    <form:input path="capital" style="width:80%;"/>백만원
+                                    <label class="error" for="capital" generated="true" style="display:none;"/>
                                 </div>
                             </div>
                         </div>

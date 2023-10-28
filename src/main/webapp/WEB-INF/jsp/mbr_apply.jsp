@@ -29,6 +29,7 @@
         });
 
         $('#apply').on('click', function () {
+
             var bizNo = $("#bizNo1").val() + $("#bizNo2").val() + $("#bizNo3").val();
             $('input[name=bizNo]').attr('value', bizNo);
 
@@ -73,6 +74,7 @@
                 passwd: {required: true, regex: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,10}$/ },
                 passwdChk: {required: true, equalTo: "#passwd"},
                 email: {required: true},
+                email2: {required: true},
                 name: {required: true},
                 mbphno: {required: true},
             },
@@ -88,7 +90,8 @@
                 passwd: {required: "비밀번호를 입력하세요.",
                     regex:"비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."},
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
-                email: {required: "이메일을 입력하세요."}
+                email: {required: "이메일을 입력하세요."},
+                email2: {required: "이메일을 확인하세요."}
             },
         });
     });
@@ -244,7 +247,7 @@
                             <option value="gmail.com">gmail.com</option>
                         </select>
                         <input type="hidden" value="" id="email" name="email">
-
+                        <label class="error" for="email2" generated="true" style="display:none;"/>
                     </div>
                 </div>
                 <div class="line-wrap">

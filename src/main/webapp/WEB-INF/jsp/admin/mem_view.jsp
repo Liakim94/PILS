@@ -95,7 +95,7 @@
                     </div>
                     <div class="line-wrap">
                         <div class="fx2">
-                            <div class="label">이메일<span class="required">*</span></div>
+                            <div class="label">이메일</div>
                             <div class="input-wrap ">${rs.email}</div>
                         </div>
                         <div class="fx2">
@@ -112,7 +112,12 @@
                     <c:if test="${rs.auth_cd eq 'M103'}">
                         <button type="button" class="submit" id="approve">승인하기</button>
                     </c:if>
-                    <a href="${pageContext.request.contextPath}/admin/memEdit.do?id=${rs.id}" class="submit">수정</a>
+                    <c:if test="${rs.auth_cd eq 'M102'}">
+                        <a href="${pageContext.request.contextPath}/admin/memEdit.do?id=${rs.id}" class="submit">수정</a>
+                    </c:if>
+                    <c:if test="${rs.auth_cd eq 'M101'}">
+                        <a href="${pageContext.request.contextPath}/admin/changePw.do?id=${rs.id}" class="submit">비밀번호 변경</a>
+                    </c:if>
                     <a onclick="javascript:deleteMem();return false;" class="submit">삭제</a>
                     <a href="${pageContext.request.contextPath}/admin/management/list.do" class="back">목록</a>
                 </div>
