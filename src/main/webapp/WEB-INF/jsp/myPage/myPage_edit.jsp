@@ -168,13 +168,8 @@
                                 <div class="label">
                                     사업자 번호
                                 </div>
-                                <div class="input-wrap non-flex">
-                                    <form:input path="bizNo1" class="multi" readonly="true"/>
-                                    <span>-</span>
-                                    <form:input path="bizNo2" class="multi"  readonly="true"/>
-                                    <span>-</span>
-                                    <form:input path="bizNo3" class="multi"  readonly="true"/>
-                                    <input type="hidden" id="bizNo" name=bizNo value="">
+                                <div class="input-wrap">
+                                        ${fn:substring(frmEdit.bizNo,0,3)}-${fn:substring(frmEdit.bizNo,3,5)}-${fn:substring(frmEdit.bizNo,5,10)}
                                 </div>
                             </div>
                         </div>
@@ -201,11 +196,12 @@
                                 본사 주소<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex">
-                                <form:input path="address" onclick="execPostCode()" readonly="true"/>
-                                <button type="button" class="btn"
+                                <form:input path="address" onclick="execPostCode()" readonly="true" cssStyle="width: 60%"/>
+                                <button type="button" class="btn" style="vertical-align: top; padding: 10px;"
                                         onclick="execPostCode()">주소찾기
                                 </button>
                                 <form:input path="address_dtl"/>
+                                <label class="error" for="address" generated="true" style="display:none;"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -240,7 +236,8 @@
                                     자본금<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <form:input path="capital" style="width:100px;"/>백만원
+                                    <form:input path="capital" style="width:80%;"/>백만원
+                                    <label class="error" for="capital" generated="true" style="display:none;"/>
                                 </div>
                             </div>
                         </div>

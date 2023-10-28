@@ -122,7 +122,14 @@ public class MainController {
             cmpVO.setManagement_cd("M501"); //담당자구분코드
             int result = mainService.mbrApply(cmpVO);
             if (result > 0) {
-
+                // 담당자 신청 알림 메일 발송
+                try {
+                    EmsResponse ems = emsClient.send("pis@win-win.or.kr", "납품대금 연동제 담당자 신청이 등록되었습니다.", "메일내용");
+                    String status = ems.isSuccess() ? "SUCCESS" : "FAIL";
+                    System.out.println(status);
+                }catch(Exception e){
+                    System.out.println(e.toString()+"담당자 신청 알림 메일 발송");
+                }
                 response.sendRedirect(request.getContextPath() + "/main/mbr.do?id=" + cmpVO.getId());
 
             } else {
@@ -251,9 +258,6 @@ public class MainController {
             @ModelAttribute("CmpSttusVO") CmpSttusVO stVO) throws Exception {
 
         try {
-            String bizNo = cmpVO.getBizNo1() + cmpVO.getBizNo2() + cmpVO.getBizNo3();
-            cmpVO.setBizNo(bizNo);
-            stVO.setBizNo(bizNo);
 
 //            int result = consultingService.updateJoin(cmpVO, stVO,null);
             int result = consultingService.updateJoin(cmpVO,null);
@@ -417,16 +421,6 @@ public class MainController {
                                   HttpServletRequest request,
                                   HttpServletResponse response) throws Exception {
 
-        HttpSession session = request.getSession();
-        String userId=(String)session.getAttribute("sessionId");
-        if(userId==null || userId==""){
-            response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            out.println("<script>");
-            out.println("alert('로그인이 필요합니다.')");
-            out.println("history.back()");
-            out.println("</script>");
-        }
         ModelAndView mav = new ModelAndView("myPage/perf_apply");
         return mav;
     }

@@ -29,6 +29,7 @@
         });
 
         $('#apply').on('click', function () {
+
             var bizNo = $("#bizNo1").val() + $("#bizNo2").val() + $("#bizNo3").val();
             $('input[name=bizNo]').attr('value', bizNo);
 
@@ -48,7 +49,17 @@
             ignore: "",
             rules: {
                 cmpNm: {required: true},
-                bizNo: {required: true,   digits : true, minlength :10},
+                bizNo: {required: true, digits : true, minlength :10,
+                    remote: {
+                        type: "post"
+                        , url: "${pageContext.request.contextPath}/join/checkBizno.do"
+                        , data: {
+                            username: function () {
+                                return $("#bizNo").val();
+                            }
+                        }
+                    }
+                },
                 id: {
                     required: true, remote: {
                         type: "post"
@@ -63,12 +74,13 @@
                 passwd: {required: true, regex: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,10}$/ },
                 passwdChk: {required: true, equalTo: "#passwd"},
                 email: {required: true},
+                email2: {required: true},
                 name: {required: true},
                 mbphno: {required: true},
             },
             messages: {
                 cmpNm: {required: "기업명을 입력하세요."},
-                bizNo: {required: "사업자번호를 확인하세요.", digits : "숫자만 입력하세요", minlength: "사업자번호를 확인하세요."},
+                bizNo: {required: "사업자번호를 확인하세요.", remote: "이미 존재하는 사업자번호입니다.", digits : "숫자만 입력하세요", minlength: "사업자번호를 확인하세요."},
                 id: {
                     required: "아이디를 입력하세요",
                     remote: "이미 존재하는 아이디입니다."
@@ -78,7 +90,8 @@
                 passwd: {required: "비밀번호를 입력하세요.",
                     regex:"비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."},
                 passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
-                email: {required: "이메일을 입력하세요."}
+                email: {required: "이메일을 입력하세요."},
+                email2: {required: "이메일을 확인하세요."}
             },
         });
     });
@@ -147,7 +160,7 @@
     }
 </style>
 <div id="content" class="bg-top">
-    <div id="login" style="max-width: 950px;">
+    <div id="login" style="max-width: 960px;">
         <div class="breadcromb mb40">
             <h4>
                 <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
@@ -180,7 +193,7 @@
                                 <input class="multi" type="text" id="bizNo2" name="bizNo2" maxlength="2"/>
                                 <span>-</span>
                                 <input class="multi" type="text" id="bizNo3" name="bizNo3" maxlength="5"/>
-                                <input type="hidden" id="bizNo" name=bizNo value="">
+                                <input type="hidden" id="bizNo" name=bizNo value="" >
 
                         </div>
                     </div>
@@ -227,13 +240,14 @@
                         <input type="text" class="multi" name="email1" id="email1"/>
                         <span>@</span>
                         <input type="text" style="width: 130px" name="email2" id="email2"/>
-                        <select id="selectEmail" name="selectEmail" style="width: 130px" >                        <option value="1">직접입력</option>
+                        <select id="selectEmail" name="selectEmail" style="width: 130px" >
+                            <option value="1">직접입력</option>
                             <option value="naver.com">naver.com</option>
                             <option value="daum.net">daum.net</option>
                             <option value="gmail.com">gmail.com</option>
                         </select>
                         <input type="hidden" value="" id="email" name="email">
-
+                        <label class="error" for="email2" generated="true" style="display:none;"/>
                     </div>
                 </div>
                 <div class="line-wrap">

@@ -36,3 +36,12 @@ COMMENT ON COLUMN pis.tb_pils_perf."change" IS '변동표';
 COMMENT ON COLUMN pis.tb_pils_perf.intrlck_perf IS '연동실적';
 COMMENT ON COLUMN pis.tb_pils_perf.etc IS '기타';
 COMMENT ON COLUMN pis.tb_pils_perf.regist_dt IS '작성일자';
+
+----------추가
+
+
+
+UPDATE tb_pils_mbr a
+SET cmp_nm = b.cmp_nm
+    FROM tb_pils_cmpmbr b
+WHERE a.bizno = b.bizno;

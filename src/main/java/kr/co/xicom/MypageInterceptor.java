@@ -6,6 +6,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 
 public class MypageInterceptor extends HandlerInterceptorAdapter{
 
@@ -18,7 +19,10 @@ public class MypageInterceptor extends HandlerInterceptorAdapter{
                 String id = (String)session.getAttribute("sessionId");
 
                 if(id ==null){
-                    response.sendRedirect(request.getContextPath()+"/main/login.do");
+                    PrintWriter out = response.getWriter();
+                    response.setContentType("text/html;charset=UTF-8");
+                    out.println("<script>alert('로그인이 필요합니다.'); location.href='"+request.getContextPath()+"/main/login.do"+"';</script>");
+                    out.flush();
                     return false;
                 }else{
                     return super.preHandle(request, response, handler);

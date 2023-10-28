@@ -924,7 +924,7 @@
 /*  Page
 */
 #content{
-    padding-bottom: 100px;
+    padding-bottom: 200px;
     min-height: calc(100vh - 380px);
 }
 #content .write-bottom {
