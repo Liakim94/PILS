@@ -191,7 +191,6 @@ public class MainServiceImpl implements MainService {
                 List<PerformanceVO> attachs = gson.fromJson(intrlck_path, listType);
                 if (attachs != null && attachs.size() > 0) {
                     vo.setIntrlck(attachs.get(0).getSavedFilepath());
-
                 }
             }
             String change_path = vo.getJsonChangeFile();
