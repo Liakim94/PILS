@@ -453,8 +453,9 @@
                         <div class="line-wrap">
                             <form:hidden path="jsonIntrlckFile"/>
                             <div class="label">연동표</div>
-                            <div id="pc-banner-selector" class="input-box file-selector">
+                            <div id="intrlck-selector" class="input-box file-selector">
                                 <form:input path="intrlck_file_nm" readonly="true" />
+                                <form:hidden path="intrlck" readonly="true" />
                                 <input type="file" name="intrlckFile" id="intrlckFile"/>
                                 <label for="intrlckFile" class="button">선택...</label>
                             </div>
@@ -462,8 +463,9 @@
                         <div class="line-wrap">
                             <form:hidden path="jsonChangeFile"/>
                             <div class="label">변동표</div>
-                            <div id="mobile-banner-selector" class="input-box file-selector">
+                            <div id="change-selector" class="input-box file-selector">
                                 <form:input path="change_file_nm" readonly="true" />
+                                <form:input path="change" readonly="true" />
                                 <input type="file" name="changeFile" id="changeFile"/>
                                 <label for="changeFile" class="button">선택...</label>
                             </div>
@@ -471,8 +473,9 @@
                         <div class="line-wrap">
                             <form:hidden path="jsonIntrlckPerfFile"/>
                             <div class="label">연동실적</div>
-                            <div id="mobile-banner-selector" class="input-box file-selector">
+                            <div id="intrlck_perf-selector" class="input-box file-selector">
                                 <form:input path="intrlck_perf_file_nm" readonly="true" />
+                                <form:hidden path="intrlck_perf" readonly="true" />
                                 <input type="file" name="intrlck_perfFile" id="intrlck_perfFile"/>
                                 <label for="intrlck_perfFile" class="button">선택...</label>
                             </div>
@@ -480,8 +483,9 @@
                         <div class="line-wrap">
                             <form:hidden path="jsonEtcFile"/>
                             <div class="label">기타</div>
-                            <div id="mobile-banner-selector" class="input-box file-selector">
+                            <div id="etc-selector" class="input-box file-selector">
                                 <form:input path="etc_file_nm" readonly="true" />
+                                <form:hidden path="etc" readonly="true" />
                                 <input type="file" name="etcFile" id="etcFile"/>
                                 <label for="etcFile" class="button">선택...</label>
                             </div>

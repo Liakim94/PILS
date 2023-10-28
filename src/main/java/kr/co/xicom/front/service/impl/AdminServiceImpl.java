@@ -478,7 +478,7 @@ public class AdminServiceImpl implements AdminService {
         try {
             // JSON 처리용 Gson
             Gson gson = new Gson();
-            Type listType = new com.google.common.reflect.TypeToken<List<BannerVO>>(){}.getType();
+            Type listType = new com.google.common.reflect.TypeToken<List<PerformanceVO>>(){}.getType();
 
             String intrlck_path = vo.getJsonIntrlckFile();
             if (!StringUtils.isBlank(intrlck_path)) {
@@ -514,7 +514,7 @@ public class AdminServiceImpl implements AdminService {
                 etc_path = kr.go.smes.util.HtmlTagUtils.restore(etc_path);
                 List<PerformanceVO> attachs = gson.fromJson(etc_path, listType);
                 if (attachs != null && attachs.size() > 0) {
-                    vo.setChange(attachs.get(0).getSavedFilepath());
+                    vo.setEtc(attachs.get(0).getSavedFilepath());
                 }
             }
         }
