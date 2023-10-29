@@ -2,9 +2,11 @@ package kr.co.xicom.front.model;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.*;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 
 @Getter
 @Setter
@@ -63,6 +65,18 @@ public class PerformanceVO extends DefaultVO{
      * FileUploader.js에 의해 업로드된 파일 리스트 (JSON 문자열)
      */
     private String jsonFileList;
+
+    /** 다운로드 파일명 변경*/
+    public void setIntrlckDownloadFileNm(String cmp_nm) {
+//        String decodedFileInfo = new String(Base64.decodeBase64(this.intrlck.getBytes(StandardCharsets.UTF_8)));
+        String[] fileInfos = this.intrlck.split("/");
+        // 오리지널 파일명
+        String fileName = fileInfos[1];
+        this.intrlckDownloadFileNm = "("+fileName+")_" + cmp_nm;
+    }
+    private String intrlckDownloadFileNm;
+    private String changeDownloadFileNm;
+    private String intrlckPerfDownloadFileNm;
 
     private String tag="";
     private String keyword="";

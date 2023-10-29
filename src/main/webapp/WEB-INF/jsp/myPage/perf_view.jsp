@@ -103,8 +103,8 @@
                         <div class="label" style="width:192px;">연동표</div>
                         <ul class="ul">
                             <c:if test="${rs.intrlck ne null && rs.intrlck ne ''}">
-                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck, rs.intrlck_file_nm)}"/>"
-                                class="file"  download="<c:out value="(연동표)_${rs.cmp_nm}"/>">
+                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck, rs.intrlck_file_nm)}&fileName=(연동표)_${rs.cmp_nm}.xlsx"/>"
+                                class="file">
                                 <c:out value="${rs.intrlck_file_nm}"/>
                                 </a>
                             </c:if>
@@ -126,7 +126,7 @@
                         <ul class="ul">
                             <c:if test="${rs.intrlck_perf ne null && rs.intrlck_perf ne ''}">
                                 <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck_perf, rs.intrlck_perf_file_nm)}"/>"
-                                   class="file" download="<c:out value="(연동실적)_${rs.cmp_nm}"/>">
+                                   class="file" download="<c:out value="(연동실적)_${rs.cmp_nm}.xlsx"/>">
                                     <c:out value="${rs.intrlck_perf_file_nm}"/>
                                 </a>
                             </c:if>

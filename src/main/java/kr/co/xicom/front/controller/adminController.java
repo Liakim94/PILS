@@ -963,6 +963,8 @@ public class adminController {
         ModelAndView mav = new ModelAndView("admin/perf_view");
         PerformanceVO rs = adminService.perfView(vo);
         if(rs != null) {
+            rs.setIntrlckDownloadFileNm(rs.getCmp_nm());
+            System.out.println(rs.getIntrlckDownloadFileNm());
             mav.addObject("rs", rs);
             return mav;
         }else {

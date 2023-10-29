@@ -268,4 +268,57 @@ public class FileUploadController {
         String fileName = FilenameUtils.getName(savedFilePath);
         return makeDownloadLink(savedFilePath, fileName);
     }
+    public static String makeDownloadLink(String savedFilePath, String originalFileName, String downloadName, String cmpName) throws Exception {
+        String encodedFileName = URLEncoder.encode(originalFileName, "UTF-8");
+        String fileInfo = savedFilePath + "||" + encodedFileName;
+        // Base64 encode 참조 : https://recordsoflife.tistory.com/331
+        String encodedFileInfo = new String(Base64.encodeBase64(fileInfo.getBytes(StandardCharsets.UTF_8)));
+        encodedFileInfo = URLEncoder.encode(encodedFileInfo, "UTF-8")
+                .replaceAll("\\+", "%20")
+                .replaceAll("\\%21", "!")
+                .replaceAll("\\%27", "'")
+                .replaceAll("\\%28", "(")
+                .replaceAll("\\%29", ")")
+                .replaceAll("\\%7E", "~");
+        return String.format("/files/downloadForPerf.do?file=%s", encodedFileInfo + "&downloadName="+ downloadName +"&cmpName="+ cmpName);
+    }
+    @RequestMapping(value="/files/downloadForPerf.do")
+    public void download(@RequestParam(value="file") String encodedFileInfo,@RequestParam(value="downloadName")String downloadName,
+                         @RequestParam(value="cmpName")String cmpName, HttpServletRequest request,
+                         HttpServletResponse response) throws ServletException, IOException {
+        try {
+
+            // 파라미터로 넘어온 encodedFileInfo값은 Base64로 encode되어
+            // 있는 값이므로 Base64로 decode 한다.
+            // Base64 decode 참조 : https://recordsoflife.tistory.com/331
+            String decodedFileInfo = new String(Base64.decodeBase64(encodedFileInfo.getBytes(StandardCharsets.UTF_8)));
+
+            // 파일 정보 추출.
+            String[] fileInfos = decodedFileInfo.split("\\|\\|");
+            // 파일 저장 경로.
+            String savedFilePath = fileInfos[0];
+            // 파일 추출
+            byte[] content = fileService.getBytes(savedFilePath);
+
+            // 파일명 인코딩
+            // WildRain 수정 2022-06-07
+            // IE 등에서 다운로드 시 한글 파일명 깨지는 문제 해결.
+            downloadName = RequestUtils.encodeFileName(request, downloadName); // new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+            cmpName = RequestUtils.encodeFileName(request, cmpName); // new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+
+            if (content != null && content.length > 0) {
+                response.setContentType("application/x-msdownload");
+                response.setHeader("Content-Disposition", "attachment;filename=(" + downloadName + ")_"+cmpName+ ".xlsx");
+                response.setContentLength(content.length);
+                response.getOutputStream().write(content, 0, content.length);
+                response.getOutputStream().close();
+            }
+            else {
+                throw new FileNotFoundException("");
+            }
+        }
+        catch (Exception ex) {
+            LOGGER.error(ex.getMessage());
+        }
+    }
 }
