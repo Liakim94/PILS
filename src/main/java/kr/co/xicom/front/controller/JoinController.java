@@ -62,6 +62,12 @@ public class JoinController extends Alerts{
             out.println("<script>alert('로그인이 필요합니다.'); location.href='"+request.getContextPath()+"/main/login.do"+"';</script>");
             out.flush();
         }
+        if(consultingService.checkBizno(bizNo) > 0){
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('신청 내역이 있습니다.'); history.back(); </script>");
+            out.flush();
+        }
         ModelAndView mav = new ModelAndView("join/apply/join_apply");
 
         mav.addObject("bizNo", bizNo);

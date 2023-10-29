@@ -73,7 +73,7 @@
                                 <col width="12%"/>
                                 <col width="20%"/>
                                 <col width="20%"/>
-                                <col width="15%"/>
+<%--                                <col width="15%"/>--%>
                                 <col width="10%"/>
                             </colgroup>
                             <thead>
@@ -85,7 +85,7 @@
                                     <th scope="col">직위</th>
                                     <th scope="col">부서</th>
                                     <th scope="col"><a href="javascript:void(0);" onclick="sortList('mbphno')">전화번호</a></th>
-                                    <th scope="col">담당자구분</th>
+<%--                                    <th scope="col">담당자구분</th>--%>
                                     <th scope="col">승인여부</th>
                                     <input type="hidden" name="sort" id="sort" value="${vo.sort}">
                                 </tr>
@@ -100,7 +100,7 @@
                                     <td>${rs.position}</td>
                                     <td class="al">${rs.deptNm}</td>
                                     <td>${rs.mbphno}</td>
-                                    <td>${rs.management_cd}</td>
+<%--                                    <td>${rs.management_cd}</td>--%>
                                     <c:choose>
                                         <c:when test="${rs.auth_cd eq 'M102' || rs.auth_cd eq 'M101' }">
                                             <td>승인</td>

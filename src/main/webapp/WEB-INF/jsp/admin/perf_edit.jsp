@@ -465,7 +465,7 @@
                             <div class="label">변동표</div>
                             <div id="change-selector" class="input-box file-selector">
                                 <form:input path="change_file_nm" readonly="true" />
-                                <form:input path="change" readonly="true" />
+                                <form:hidden path="change" readonly="true" />
                                 <input type="file" name="changeFile" id="changeFile"/>
                                 <label for="changeFile" class="button">선택...</label>
                             </div>

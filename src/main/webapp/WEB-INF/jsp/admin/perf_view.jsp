@@ -103,7 +103,7 @@
                         <div class="label" style="width:192px;">연동표</div>
                         <ul class="ul">
                             <c:if test="${rs.intrlck ne null && rs.intrlck ne ''}">
-                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck)}"/>"
+                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck, rs.intrlck_file_nm)}"/>"
                                    class="file"  download="<c:out value="(연동표)_${rs.cmp_nm}"/>">
                                     <c:out value="${rs.intrlck_file_nm}"/>
                                 </a>
@@ -114,7 +114,7 @@
                         <div class="label" style="width:192px;">변동표</div>
                         <ul class="ul">
                             <c:if test="${rs.change ne null && rs.change ne ''}">
-                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.change)}"/>"
+                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.change, rs.change_file_nm)}"/>"
                                    class="file" download="<c:out value="(변동표)_${rs.cmp_nm}"/>">
                                     <c:out value="${rs.change_file_nm}"/>
                                 </a>
@@ -125,7 +125,7 @@
                         <div class="label" style="width:192px;">연동실적</div>
                         <ul class="ul">
                             <c:if test="${rs.intrlck_perf ne null && rs.intrlck_perf ne ''}">
-                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck_perf)}"/>"
+                                <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck_perf,rs.intrlck_perf_file_nm)}"/>"
                                    class="file" download="<c:out value="(연동실적)_${rs.cmp_nm}"/>">
                                     <c:out value="${rs.intrlck_perf_file_nm}"/>
                                 </a>
@@ -137,7 +137,7 @@
                         <ul class="ul">
                             <c:if test="${rs.etc ne null && rs.etc ne ''}">
                                 <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.etc)}"/>"
-                                   class="file" download="<c:out value="(기타)_${rs.cmp_nm}"/>">
+                                   class="file" download="<c:out value="${rs.etc_file_nm}"/>">
                                     <c:out value="${rs.etc_file_nm}"/>
                                 </a>
                             </c:if>

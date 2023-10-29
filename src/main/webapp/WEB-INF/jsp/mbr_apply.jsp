@@ -49,17 +49,7 @@
             ignore: "",
             rules: {
                 cmpNm: {required: true},
-                bizNo: {required: true, digits : true, minlength :10,
-                    remote: {
-                        type: "post"
-                        , url: "${pageContext.request.contextPath}/join/checkBizno.do"
-                        , data: {
-                            username: function () {
-                                return $("#bizNo").val();
-                            }
-                        }
-                    }
-                },
+                bizNo: {required: true, digits : true, minlength :10},
                 id: {
                     required: true, remote: {
                         type: "post"
@@ -80,7 +70,7 @@
             },
             messages: {
                 cmpNm: {required: "기업명을 입력하세요."},
-                bizNo: {required: "사업자번호를 확인하세요.", remote: "이미 존재하는 사업자번호입니다.", digits : "숫자만 입력하세요", minlength: "사업자번호를 확인하세요."},
+                bizNo: {required: "사업자번호를 확인하세요.", digits : "숫자만 입력하세요", minlength: "사업자번호를 확인하세요."},
                 id: {
                     required: "아이디를 입력하세요",
                     remote: "이미 존재하는 아이디입니다."
