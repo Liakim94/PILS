@@ -272,13 +272,13 @@ public class MainController {
     }
 
     /**
-     * 담당자 관리 메뉴
+     * 담당자 관리 메뉴 (개인정보 수정)
      */
     @GetMapping("/mem/management.do")
     public ModelAndView memManage(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                                     ,HttpSession session) throws Exception {
         ModelAndView mav = new ModelAndView("myPage/member_list");
-        cmpVO.setBizNo((String) session.getAttribute("sessionBizNo"));
+        cmpVO.setId((String) session.getAttribute("sessionId"));
         try {
             List<CmpMemberVo> result = mainService.memManage(cmpVO);
             if (result == null) {

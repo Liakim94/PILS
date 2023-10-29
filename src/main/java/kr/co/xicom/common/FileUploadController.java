@@ -272,7 +272,7 @@ public class FileUploadController {
         String encodedFileName = URLEncoder.encode(originalFileName, "UTF-8");
         String fileInfo = savedFilePath + "||" + encodedFileName;
         // Base64 encode 참조 : https://recordsoflife.tistory.com/331
-        String encodedFileInfo = new String(Base64.encodeBase64(fileInfo.getBytes(StandardCharsets.UTF_8)));
+        String encodedFileInfo = new String(Base64.encodeBase64(fileInfo.getBytes("EUC-KR")));
         encodedFileInfo = URLEncoder.encode(encodedFileInfo, "UTF-8")
                 .replaceAll("\\+", "%20")
                 .replaceAll("\\%21", "!")
@@ -287,12 +287,14 @@ public class FileUploadController {
                          HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         try {
-            String decodedFileInfo = new String(Base64.decodeBase64(encodedFileInfo.getBytes(StandardCharsets.UTF_8)));
-            decodedFileInfo = URLDecoder.decode(decodedFileInfo, "UTF-8");
+            encodedFileInfo = RequestUtils.encodeFileName(request, encodedFileInfo);
+            String decodedFileInfo = new String(Base64.decodeBase64(encodedFileInfo.getBytes("EUC-KR")));
+
             // 파일 정보 추출.
             String[] fileInfos = decodedFileInfo.split("\\|\\|");
             // 파일 저장 경로.
             String savedFilePath = fileInfos[0];
+            savedFilePath = URLDecoder.decode(savedFilePath, "UTF-8");
             // 파일 추출
             byte[] content = fileService.getBytes(savedFilePath);
 
