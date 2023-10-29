@@ -10,17 +10,11 @@
             A.cmp_mbr_cd                    as mem_cd,
             A.cmp_nm                        as cmpNm,
             to_char(A.appdt, 'YYYY-MM-DD')  as appdate,
-            B.nm                            as "name",
-            B.user_id                       as "id",
-            B.pswd                          as passwd,
             a.logo_img_path                 as logoImgPath
         from
             tb_pils_cmpmbr A
-            join tb_pils_mbr B
-                on A.bizno = B.bizno
         where
             cmp_mbr_cd= #{mem_cd}
-            and b.manage_cd ='M501'
         <if test="bizcd !=  null and bizcd !=  ''">
             and bizcd = #{bizcd}
         </if>
@@ -50,25 +44,14 @@
             A.joincmp       as joinCmp,
             A.main_product  as mainProduct,
             A.appdt         as appdate,
-            B.nm            as "name",
-            B.mbphno        as mbphno,
-            B.psitn_dept_nm as deptNm,
-            B.pstn          as "position",
-            B.email_addr    as email,
-            B.telno         as memTelNo,
-            B.faxno         as memFaxNo,
-            B.auth_cd       as auth_cd,
             a.logo_img_path as logoImgPath,
             a.main_movie_url    as mainMovieUrl,
             a.sub_movie_url     as subMovieUrl
         from
             tb_pils_cmpmbr A
-            join tb_pils_mbr B
-                on A.bizno =B.bizno
         where
             cmp_mbr_cd= #{mem_cd}
             and A.bizno = #{bizNo}
-            and b.manage_cd ='M501'
         order by
             appdt desc
     </select>
