@@ -268,7 +268,7 @@ public class FileUploadController {
         String fileName = FilenameUtils.getName(savedFilePath);
         return makeDownloadLink(savedFilePath, fileName);
     }
-    public static String makeDownloadLink(String savedFilePath, String originalFileName, String downloadName, String cmpName) throws Exception {
+    public static String makeDownloadLink(String savedFilePath, String originalFileName, String downloadName) throws Exception {
         String encodedFileName = URLEncoder.encode(originalFileName, "UTF-8");
         String fileInfo = savedFilePath + "||" + encodedFileName;
         // Base64 encode 참조 : https://recordsoflife.tistory.com/331
@@ -280,19 +280,15 @@ public class FileUploadController {
                 .replaceAll("\\%28", "(")
                 .replaceAll("\\%29", ")")
                 .replaceAll("\\%7E", "~");
-        return String.format("/files/downloadForPerf.do?file=%s", encodedFileInfo + "&downloadName="+ downloadName +"&cmpName="+ cmpName);
+        return String.format("/files/downloadForPerf.do?file=%s", encodedFileInfo + "&downloadName="+ downloadName);
     }
     @RequestMapping(value="/files/downloadForPerf.do")
-    public void download(@RequestParam(value="file") String encodedFileInfo,@RequestParam(value="downloadName")String downloadName,
-                         @RequestParam(value="cmpName")String cmpName, HttpServletRequest request,
+    public void downloadForPerf(@RequestParam(value="file") String encodedFileInfo,@RequestParam(value="downloadName")String downloadName,
+                         HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         try {
-
-            // 파라미터로 넘어온 encodedFileInfo값은 Base64로 encode되어
-            // 있는 값이므로 Base64로 decode 한다.
-            // Base64 decode 참조 : https://recordsoflife.tistory.com/331
             String decodedFileInfo = new String(Base64.decodeBase64(encodedFileInfo.getBytes(StandardCharsets.UTF_8)));
-
+            decodedFileInfo = URLDecoder.decode(decodedFileInfo, "UTF-8");
             // 파일 정보 추출.
             String[] fileInfos = decodedFileInfo.split("\\|\\|");
             // 파일 저장 경로.
@@ -304,11 +300,10 @@ public class FileUploadController {
             // WildRain 수정 2022-06-07
             // IE 등에서 다운로드 시 한글 파일명 깨지는 문제 해결.
             downloadName = RequestUtils.encodeFileName(request, downloadName); // new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
-            cmpName = RequestUtils.encodeFileName(request, cmpName); // new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
 
             if (content != null && content.length > 0) {
                 response.setContentType("application/x-msdownload");
-                response.setHeader("Content-Disposition", "attachment;filename=(" + downloadName + ")_"+cmpName+ ".xlsx");
+                response.setHeader("Content-Disposition", "attachment;filename=" + downloadName);
                 response.setContentLength(content.length);
                 response.getOutputStream().write(content, 0, content.length);
                 response.getOutputStream().close();

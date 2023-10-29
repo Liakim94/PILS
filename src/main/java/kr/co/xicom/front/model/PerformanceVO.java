@@ -3,6 +3,7 @@ package kr.co.xicom.front.model;
 import com.google.gson.annotations.SerializedName;
 import lombok.*;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
@@ -68,15 +69,37 @@ public class PerformanceVO extends DefaultVO{
 
     /** 다운로드 파일명 변경*/
     public void setIntrlckDownloadFileNm(String cmp_nm) {
-//        String decodedFileInfo = new String(Base64.decodeBase64(this.intrlck.getBytes(StandardCharsets.UTF_8)));
         String[] fileInfos = this.intrlck.split("/");
         // 오리지널 파일명
         String fileName = fileInfos[1];
-        this.intrlckDownloadFileNm = "("+fileName+")_" + cmp_nm;
+        String fileExtension = FilenameUtils.getExtension(this.intrlck_file_nm);
+        this.intrlckDownloadFileNm = "("+fileName+")_" + cmp_nm+ "."+ fileExtension;
+    }
+    public void setChangeDownloadFileNm(String cmp_nm) {
+        String[] fileInfos = this.change.split("/");
+        // 오리지널 파일명
+        String fileName = fileInfos[1];
+        String fileExtension = FilenameUtils.getExtension(this.change_file_nm);
+        this.changeDownloadFileNm = "("+fileName+")_" + cmp_nm+ "."+ fileExtension;
+    }
+    public void setIntrlckPerfDownloadFileNm(String cmp_nm) {
+        String[] fileInfos = this.intrlck_perf.split("/");
+        // 오리지널 파일명
+        String fileName = fileInfos[1];
+        String fileExtension = FilenameUtils.getExtension(this.intrlck_perf_file_nm);
+        this.intrlckPerfDownloadFileNm = "("+fileName+")_" + cmp_nm+ "."+ fileExtension;
+    }
+    public void setEtcDownloadFileNm(String cmp_nm) {
+        String[] fileInfos = this.etc.split("/");
+        // 오리지널 파일명
+        String fileName = fileInfos[1];
+        String fileExtension = FilenameUtils.getExtension(this.etc_file_nm);
+        this.etcDownloadFileNm = "("+fileName+")_" + cmp_nm+ "."+ fileExtension;
     }
     private String intrlckDownloadFileNm;
     private String changeDownloadFileNm;
     private String intrlckPerfDownloadFileNm;
+    private String etcDownloadFileNm;
 
     private String tag="";
     private String keyword="";

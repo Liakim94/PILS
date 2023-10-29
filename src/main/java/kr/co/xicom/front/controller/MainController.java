@@ -291,35 +291,35 @@ public class MainController {
         }
         return mav;
     }
-    @GetMapping("/mem/memAdd.do")
-    public ModelAndView memAdd(HttpSession session) throws Exception{
-        ModelAndView mav = new ModelAndView("myPage/member_add");
-        return mav;
-    }
+//    @GetMapping("/mem/memAdd.do")
+//    public ModelAndView memAdd(HttpSession session) throws Exception{
+//        ModelAndView mav = new ModelAndView("myPage/member_add");
+//        return mav;
+//    }
 
-    @RequestMapping(value = "/mem/memAdd.do",method = {RequestMethod.POST})
-    public void doMemAdd(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
-                          , HttpSession session
-                          , HttpServletResponse response
-                          , HttpServletRequest request) throws Exception {
-        cmpVO.setManagement_cd("M502");
-        cmpVO.setBizNo((String) session.getAttribute("sessionBizNo"));
-        String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
-        cmpVO.setEmail(email);
-            int result = mainService.memAdd(cmpVO);
-            if(result>0){
-                response.sendRedirect(request.getContextPath() + "/main/management.do");
-            }
-                PrintWriter writer = response.getWriter();
-
-                response.setContentType("text/html; charset=UTF-8;");
-                request.setCharacterEncoding("utf-8");
-                writer.println("<script type='text/javascript'>");
-                writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
-                writer.println("history.back();");
-                writer.println("</script>");
-                writer.flush();
-        }
+//    @RequestMapping(value = "/mem/memAdd.do",method = {RequestMethod.POST})
+//    public void doMemAdd(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
+//                          , HttpSession session
+//                          , HttpServletResponse response
+//                          , HttpServletRequest request) throws Exception {
+//        cmpVO.setManagement_cd("M502");
+//        cmpVO.setBizNo((String) session.getAttribute("sessionBizNo"));
+//        String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
+//        cmpVO.setEmail(email);
+//            int result = mainService.memAdd(cmpVO);
+//            if(result>0){
+//                response.sendRedirect(request.getContextPath() + "/main/management.do");
+//            }
+//                PrintWriter writer = response.getWriter();
+//
+//                response.setContentType("text/html; charset=UTF-8;");
+//                request.setCharacterEncoding("utf-8");
+//                writer.println("<script type='text/javascript'>");
+//                writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
+//                writer.println("history.back();");
+//                writer.println("</script>");
+//                writer.flush();
+//        }
     //수정 화면
     @GetMapping(value = "/mem/memEdit.do")
     public ModelAndView memEdit(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
@@ -445,6 +445,18 @@ public class MainController {
         ModelAndView mav = new ModelAndView("myPage/perf_view");
         PerformanceVO rs = mainService.perfView(vo);
         if(rs != null) {
+            if(!rs.getIntrlck().equals("")) {
+                rs.setIntrlckDownloadFileNm(rs.getCmp_nm());
+            }
+            if(!rs.getChange().equals("")) {
+                rs.setChangeDownloadFileNm(rs.getCmp_nm());
+            }
+            if(!rs.getIntrlck_perf().equals("")){
+                rs.setIntrlckPerfDownloadFileNm(rs.getCmp_nm());
+            }
+            if(!rs.getEtc().equals("")){
+                rs.setEtcDownloadFileNm(rs.getCmp_nm());
+            }
             mav.addObject("rs", rs);
             return mav;
         }else {
