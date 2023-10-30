@@ -135,7 +135,7 @@
 
             if (intrlckFile.length > 0) {
                 let formData = new FormData();
-                formData.append("targetFolderPath", "perf/intrlck");
+                formData.append("targetFolderPath", "perf/연동표");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
                 formData.append("maxFileCount", 1);
                 formData.append("savedFileSize", calcTotalSize(intrlckFile));
@@ -181,7 +181,7 @@
 
             if (changeFile.length > 0) {
                 let formData = new FormData();
-                formData.append("targetFolderPath", "perf/change");
+                formData.append("targetFolderPath", "perf/변동표");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
                 formData.append("maxFileCount", 1);
                 formData.append("savedFileSize", calcTotalSize(changeFile));
@@ -226,7 +226,7 @@
 
             if (intrlck_perf.length > 0) {
                 let formData = new FormData();
-                formData.append("targetFolderPath", "perf/intrlck_perf");
+                formData.append("targetFolderPath", "perf/연동실적");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
                 formData.append("maxFileCount", 1);
                 formData.append("savedFileSize", calcTotalSize(intrlck_perf));
@@ -269,7 +269,7 @@
 
             if (etc.length > 0) {
                 let formData = new FormData();
-                formData.append("targetFolderPath", "perf/etc");
+                formData.append("targetFolderPath", "perf/기타");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
                 formData.append("maxFileCount", 1);
                 formData.append("savedFileSize", calcTotalSize(etc));

@@ -117,15 +117,9 @@
              , A.cmp_mbr_cd                   as mem_cd
              , A.cmp_nm                       as cmpNm
              , to_char(A.appdt, 'YYYY-MM-DD') as appdate
-             , B.nm                           as name
-             , B.user_id                      as id
-             , B.pswd                         as passwd
              , a.logo_img_path                as logoImgPath
         from tb_pils_cmpmbr A
-                 join tb_pils_mbr B
-                      on A.bizno = B.bizno
         where cmp_mbr_cd = #{mem_cd}
-          and b.manage_cd = 'M501'
         order by joincmp desc
     </select>
     <select id="mainCount" resultType="int">

@@ -85,27 +85,33 @@
                     </div>
                     <div class="line-wrap">
                         <div class="fx2">
-                            <div class="label">소속부서</div>
-                            <div class="input-wrap">${rs.deptNm}</div>
+                            <div class="label">회사명</div>
+                            <div class="input-wrap">${rs.cmpNm}</div>
                         </div>
                         <div class="fx2">
-                            <div class="label">직위</div>
-                            <div class="input-wrap">${rs.position}</div>
+                            <div class="label">소속부서</div>
+                            <div class="input-wrap">${rs.deptNm}</div>
                         </div>
                     </div>
                     <div class="line-wrap">
                         <div class="fx2">
-                            <div class="label">이메일</div>
-                            <div class="input-wrap ">${rs.email}</div>
+                            <div class="label">직위</div>
+                            <div class="input-wrap ">${rs.position}</div>
                         </div>
+                        <div class="fx2">
+                            <div class="label">이메일</div>
+                            <div class="input-wrap">${rs.email}</div>
+                        </div>
+                    </div>
+                    <div class="line-wrap">
                         <div class="fx2">
                             <div class="label">사무실 전화</div>
                             <div class="input-wrap">${rs.memTelNo}</div>
                         </div>
-                    </div>
-                    <div class="line-wrap">
-                        <div class="label">팩스</div>
-                        <div class="input-wrap">${rs.memFaxNo}</div>
+                        <div class="fx2">
+                            <div class="label">팩스</div>
+                            <div class="input-wrap">${rs.memFaxNo}</div>
+                        </div>
                     </div>
                 </div>
                 <div class="write-bottom">

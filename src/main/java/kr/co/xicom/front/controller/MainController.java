@@ -8,6 +8,7 @@ import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.MainService;
 import kr.go.smes.ems.EmsClient;
 import kr.go.smes.ems.EmsResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -272,13 +273,13 @@ public class MainController {
     }
 
     /**
-     * 담당자 관리 메뉴
+     * 담당자 관리 메뉴 (개인정보 수정)
      */
     @GetMapping("/mem/management.do")
     public ModelAndView memManage(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                                     ,HttpSession session) throws Exception {
         ModelAndView mav = new ModelAndView("myPage/member_list");
-        cmpVO.setBizNo((String) session.getAttribute("sessionBizNo"));
+        cmpVO.setId((String) session.getAttribute("sessionId"));
         try {
             List<CmpMemberVo> result = mainService.memManage(cmpVO);
             if (result == null) {
@@ -291,35 +292,35 @@ public class MainController {
         }
         return mav;
     }
-    @GetMapping("/mem/memAdd.do")
-    public ModelAndView memAdd(HttpSession session) throws Exception{
-        ModelAndView mav = new ModelAndView("myPage/member_add");
-        return mav;
-    }
+//    @GetMapping("/mem/memAdd.do")
+//    public ModelAndView memAdd(HttpSession session) throws Exception{
+//        ModelAndView mav = new ModelAndView("myPage/member_add");
+//        return mav;
+//    }
 
-    @RequestMapping(value = "/mem/memAdd.do",method = {RequestMethod.POST})
-    public void doMemAdd(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
-                          , HttpSession session
-                          , HttpServletResponse response
-                          , HttpServletRequest request) throws Exception {
-        cmpVO.setManagement_cd("M502");
-        cmpVO.setBizNo((String) session.getAttribute("sessionBizNo"));
-        String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
-        cmpVO.setEmail(email);
-            int result = mainService.memAdd(cmpVO);
-            if(result>0){
-                response.sendRedirect(request.getContextPath() + "/main/management.do");
-            }
-                PrintWriter writer = response.getWriter();
-
-                response.setContentType("text/html; charset=UTF-8;");
-                request.setCharacterEncoding("utf-8");
-                writer.println("<script type='text/javascript'>");
-                writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
-                writer.println("history.back();");
-                writer.println("</script>");
-                writer.flush();
-        }
+//    @RequestMapping(value = "/mem/memAdd.do",method = {RequestMethod.POST})
+//    public void doMemAdd(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
+//                          , HttpSession session
+//                          , HttpServletResponse response
+//                          , HttpServletRequest request) throws Exception {
+//        cmpVO.setManagement_cd("M502");
+//        cmpVO.setBizNo((String) session.getAttribute("sessionBizNo"));
+//        String email = cmpVO.getEmail1() + '@' + cmpVO.getEmail2();
+//        cmpVO.setEmail(email);
+//            int result = mainService.memAdd(cmpVO);
+//            if(result>0){
+//                response.sendRedirect(request.getContextPath() + "/main/management.do");
+//            }
+//                PrintWriter writer = response.getWriter();
+//
+//                response.setContentType("text/html; charset=UTF-8;");
+//                request.setCharacterEncoding("utf-8");
+//                writer.println("<script type='text/javascript'>");
+//                writer.println("alert('데이터 저장 중 오류가 발생하였습니다.');");
+//                writer.println("history.back();");
+//                writer.println("</script>");
+//                writer.flush();
+//        }
     //수정 화면
     @GetMapping(value = "/mem/memEdit.do")
     public ModelAndView memEdit(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
@@ -445,6 +446,18 @@ public class MainController {
         ModelAndView mav = new ModelAndView("myPage/perf_view");
         PerformanceVO rs = mainService.perfView(vo);
         if(rs != null) {
+            if(!rs.getIntrlck().equals("")) {
+                rs.setIntrlckDownloadFileNm(rs.getCmp_nm());
+            }
+            if(!rs.getChange().equals("")) {
+                rs.setChangeDownloadFileNm(rs.getCmp_nm());
+            }
+            if(!rs.getIntrlck_perf().equals("")){
+                rs.setIntrlckPerfDownloadFileNm(rs.getCmp_nm());
+            }
+            if(!rs.getEtc().equals("")){
+                rs.setEtcDownloadFileNm(rs.getCmp_nm());
+            }
             mav.addObject("rs", rs);
             return mav;
         }else {
@@ -504,11 +517,15 @@ public class MainController {
     }
 
     @RequestMapping(value = "/mailTest.do")
-    public void mailTest(HttpServletResponse response) {
+    public void mailTest(@RequestParam String target,
+                         HttpServletResponse response) {
 
         try {
+            if (StringUtils.isEmpty(target)) {
+                target = "wildrain@u-cube.kr";
+            }
 
-            EmsResponse result = emsClient.send("do942003@u-cube.kr", "납품대금 연동제 클라우드 이메일 발송 테스트", "납품대금 연동제 클라우드 이메일 발송 테스트");
+            EmsResponse result = emsClient.send(target, "납품대금 연동제 클라우드 이메일 발송 테스트", "납품대금 연동제 클라우드 이메일 발송 테스트");
 
             String status = result.isSuccess() ? "SUCCESS" : "FAIL";
 

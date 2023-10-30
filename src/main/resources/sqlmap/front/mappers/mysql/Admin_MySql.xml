@@ -87,7 +87,7 @@
             <when test="sort == 'cmp_nm' or sort == 'nm'">
                order by ${sort} asc
             </when>
-            <when test="sort == 'joincmp' or sort == 'appdt' or sort == 'upd_dt'">
+            <when test="sort == 'joincmp' or sort == 'appdt' or sort == 'updt'">
                 order by ${sort} desc
             </when>
             <otherwise>
@@ -168,19 +168,22 @@
             , cmp_nm         as cmpNm
             , user_id        as id
         from tb_pils_mbr tpm
-        <if test="tag != null and tag != ''">
-            where ${tag} like CONCAT('%',#{keyword},'%')
-        </if>
-        <if test="sort != null and sort != ''">
-            order by ${sort} asc, cd='M501'desc
-        </if>
-        <if test="tag = null and tag = '' and sort = null and sort = ''">
-            order by
+        <choose>
+            <when test="tag != null and tag != ''">
+                where ${tag} like CONCAT('%',#{keyword},'%')
+            </when>
+            <when test="sort != null and sort != ''">
+                order by ${sort} desc
+            </when>
+            <otherwise>
+                order by
                 case when user_id='admin'then 0
-                    when auth_cd ='M103' then 1
+                when auth_cd ='M103' then 1
                 end
-            , upd_dt desc
-        </if>
+                , upd_dt desc
+            </otherwise>
+        </choose>
+
         <if test="pageIndex > 0">
             LIMIT #{pageUnit} OFFSET #{firstIndex}
         </if>
@@ -208,7 +211,8 @@
              , faxno         as memFaxNo
              , user_id       as id
              , bizno         as bizNo
-             ,auth_cd        as auth_cd
+             , auth_cd        as auth_cd
+             , cmp_nm         as cmpNm
         from tb_pils_mbr
         where user_id =#{id}
     </select>
@@ -455,12 +459,14 @@
                  join tb_pils_mbr B
                       on A.user_id = B.user_id
         where A.user_id = B.user_id
-        <if test="tag != null and tag != ''">
-            and ${tag} like CONCAT('%',#{keyword},'%')
-        </if>
-        <if test="tag = null and tag = '' and sort = null and sort = ''">
-            order by regist_dt desc
-        </if>
+        <choose>
+            <when test="tag != null and tag != ''">
+                and ${tag} like CONCAT('%',#{keyword},'%')
+            </when>
+            <otherwise>
+                order by regist_dt desc
+            </otherwise>
+        </choose>
         <if test="pageIndex > 0">
             LIMIT #{pageUnit} OFFSET #{firstIndex}
         </if>

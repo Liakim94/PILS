@@ -459,10 +459,17 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Map<String, Object> perfList(PerformanceVO vo) throws Exception{
         Map<String, Object> map = new HashMap<String, Object>();
-        List<PerformanceVO> list = adminMapper.perfListSort(vo);
-        int cnt = adminMapper.perfCount(vo);
-        map.put("resultList", list);
-        map.put("resultCnt", cnt);
+
+        List<PerformanceVO> list = null;
+        int cnt = 0;
+        try{
+            list = adminMapper.perfListSort(vo);
+            cnt = adminMapper.perfCount(vo);
+            map.put("resultList",list);
+            map.put("resultCnt", cnt);
+        } catch (Exception e){
+            System.out.println(e.toString());
+        }
         return map;
     }
     @Override

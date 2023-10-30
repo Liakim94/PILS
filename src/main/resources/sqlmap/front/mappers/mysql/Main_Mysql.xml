@@ -70,7 +70,7 @@
              , psitn_dept_nm as deptNm
              , pstn          as position
         from tb_pils_mbr tpm
-        where bizno = #{bizNo}
+        where user_id = #{id}
         order by join_dt asc
     </select>
     <insert id="memAdd">
