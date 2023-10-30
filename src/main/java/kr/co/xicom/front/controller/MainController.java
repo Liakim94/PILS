@@ -8,6 +8,7 @@ import kr.co.xicom.front.service.ConsultingService;
 import kr.co.xicom.front.service.MainService;
 import kr.go.smes.ems.EmsClient;
 import kr.go.smes.ems.EmsResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -516,11 +517,15 @@ public class MainController {
     }
 
     @RequestMapping(value = "/mailTest.do")
-    public void mailTest(HttpServletResponse response) {
+    public void mailTest(@RequestParam String target,
+                         HttpServletResponse response) {
 
         try {
+            if (StringUtils.isEmpty(target)) {
+                target = "wildrain@u-cube.kr";
+            }
 
-            EmsResponse result = emsClient.send("do942003@u-cube.kr", "납품대금 연동제 클라우드 이메일 발송 테스트", "납품대금 연동제 클라우드 이메일 발송 테스트");
+            EmsResponse result = emsClient.send(target, "납품대금 연동제 클라우드 이메일 발송 테스트", "납품대금 연동제 클라우드 이메일 발송 테스트");
 
             String status = result.isSuccess() ? "SUCCESS" : "FAIL";
 
