@@ -5,8 +5,10 @@ import com.google.gson.GsonBuilder;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import kr.co.xicom.front.model.*;
 import kr.co.xicom.front.service.AdminService;
+import kr.co.xicom.front.service.AgreementService;
 import kr.co.xicom.front.service.BoardService;
 import kr.co.xicom.front.service.ConsultingService;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,8 +32,12 @@ public class adminController {
     AdminService adminService;
     @Autowired
     BoardService boardService;
+    @Autowired
+    AgreementService agreementService;
 
-    //동행기업 신청 현황
+    /**
+     * 동행기업 신청 현황
+     */
     @GetMapping(value = "/join/list.do")
     public ModelAndView joinList(ModelMap model,
                                  @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
@@ -164,7 +170,9 @@ public class adminController {
         return "forward:/common/error.jsp";
     }
 
-    //동행기업 추천 현황
+    /**
+     * 동행기업 추천 현황
+     */
     @GetMapping(value = "/recom/list.do")
     public ModelAndView recomList(@ModelAttribute("RcmdVO")RcmdVO vo) throws Exception {
 
@@ -215,7 +223,9 @@ public class adminController {
         return mav;
     }
 
-    //컨설팅 신청 현황
+    /**
+     * 컨설팅 신청 현황
+     * */
     @GetMapping(value = "/consulting/list.do")
     public ModelAndView conList(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                                 HttpSession session,
@@ -248,7 +258,9 @@ public class adminController {
         return mav;
     }
 
-    //담당자 현황
+    /**
+     * 담당자 현황
+     */
     @GetMapping("/management/list.do")
     public ModelAndView memManage(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                                   ) throws Exception {
@@ -386,7 +398,6 @@ public class adminController {
         mav.addObject("rs", cmpVO);
         return mav;
     }
-
     @RequestMapping(value = "/changePw.do", method = {RequestMethod.POST})
     public void changePw(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO
                         ,HttpServletResponse response
@@ -407,7 +418,9 @@ public class adminController {
         writer.flush();
     }
 
-    //걸어온 발자취 게시판 관리
+    /**
+     * 걸어온 발자취 게시판 관리
+     * */
     @RequestMapping("/trace/list.do")
     public ModelAndView traceList(@ModelAttribute("TraceVo") TraceVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("admin/trace_list");
@@ -490,7 +503,6 @@ public class adminController {
         return "forward:/common/error.jsp";
     }
 
-
     @RequestMapping("/trace/delete.do")
     public String traceDelete(@RequestParam(value = "seq") int seq
             , @ModelAttribute("TraceVO") TraceVO vo) throws Exception {
@@ -501,7 +513,9 @@ public class adminController {
         }
         return "forward:/common/error.jsp";
     }
-    //카드뉴스
+    /**
+     * 카드뉴스
+     * */
     @RequestMapping(value = "/ready/list.do", method = {RequestMethod.GET})
     public ModelAndView readyList(@ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
 
@@ -539,7 +553,6 @@ public class adminController {
 
         return mav;
     }
-
     @GetMapping(value = "/ready/view.do")
     public ModelAndView readyView(@ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
 
@@ -582,7 +595,6 @@ public class adminController {
         else {
             return "forward:/common/error.jsp";
         }
-
     }
 
     @GetMapping(value = "/ready/edit.do")
@@ -630,7 +642,9 @@ public class adminController {
         return "forward:/common/error.jsp";
     }
 
-    //원재료 가격정보 관리
+    /**
+     * 원재료 가격정보 관리
+     * */
     @RequestMapping(value = "/price/list.do", method = {RequestMethod.GET})
     public ModelAndView priceInfoList(@ModelAttribute("BoardVO") BoardVO boardVO) throws Exception {
 
@@ -663,8 +677,6 @@ public class adminController {
         mav.addObject("paginationInfo", paginationInfo);
         mav.addObject("bbsId", bbsId);
         mav.addObject("bbsNm", menu);
-
-
         return mav;
     }
 
@@ -756,7 +768,9 @@ public class adminController {
         return "forward:/common/error.jsp";
     }
 
-    // 메인 배너 관리
+    /**
+     *  메인 배너 관리
+     *  */
     @RequestMapping(value = "/banner/list.do", method = {RequestMethod.GET})
     public ModelAndView banList(@ModelAttribute("BannerVo") BannerVO vo) throws Exception {
 
@@ -775,9 +789,7 @@ public class adminController {
 
         Map<String, Object> result = adminService.banList(vo);
 
-        int totalCnt = 0;
-        totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
-
+        int totalCnt = Integer.parseInt(String.valueOf(result.get("resultCnt")));
         paginationInfo.setTotalRecordCount(totalCnt);
 
         mav.addObject("rs", result.get("resultList"));
@@ -788,9 +800,7 @@ public class adminController {
     }
     @GetMapping(value = "/banner/post.do")
     public ModelAndView banPost(@ModelAttribute("post") BannerVO vo) throws Exception {
-
         ModelAndView mav =  new ModelAndView("admin/banner_post");
-
         return mav;
     }
     @PostMapping(value = "/banner/post.do")
@@ -844,7 +854,9 @@ public class adminController {
         return "forward:/common/error.jsp";
     }
 
-    // 상담하기 연락처 관리
+    /**
+     *  상담하기 연락처 관리
+     *  */
     @RequestMapping(value = "/qna/contact.do", method = {RequestMethod.GET})
     public ModelAndView contact(@ModelAttribute("ContactVO") ContactVO vo) throws Exception {
 
@@ -862,9 +874,7 @@ public class adminController {
 
         Map<String, Object> rs = adminService.contact(vo);
 
-        int totalCnt = 0;
-        totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
-
+        int totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
         paginationInfo.setTotalRecordCount(totalCnt);
 
         mav.addObject("rs", rs.get("resultList"));
@@ -875,9 +885,7 @@ public class adminController {
     }
     @GetMapping(value = "/qna/conPost.do")
     public ModelAndView conPost(@ModelAttribute("post") ContactVO vo) throws Exception {
-
         ModelAndView mav =  new ModelAndView("admin/contact_post");
-
         return mav;
     }
     @PostMapping(value = "/qna/conPost.do")
@@ -929,8 +937,10 @@ public class adminController {
         }
         return "forward:/common/error.jsp";
     }
-    //동행기업 실적 관리
 
+    /**
+     * 동행기업 실적 관리
+    */
     @GetMapping("/perf/list.do")
     public ModelAndView perfList(@ModelAttribute("vo") PerformanceVO vo
             ,HttpSession session) throws Exception {
@@ -963,17 +973,22 @@ public class adminController {
         ModelAndView mav = new ModelAndView("admin/perf_view");
         PerformanceVO rs = adminService.perfView(vo);
         if(rs != null) {
+            //첨부파일 다운로드명 변경
             if(!rs.getIntrlck().equals("")) {
-                rs.setIntrlckDownloadFileNm(rs.getCmp_nm());
+                String fileExtension = FilenameUtils.getExtension(rs.getIntrlck_file_nm());
+                rs.setIntrlckDownloadFileNm(rs.getCmp_nm()+ "."+ fileExtension);
             }
             if(!rs.getChange().equals("")) {
-                rs.setChangeDownloadFileNm(rs.getCmp_nm());
+                String fileExtension = FilenameUtils.getExtension(rs.getChange_file_nm());
+                rs.setChangeDownloadFileNm(rs.getCmp_nm()+ "."+ fileExtension);
             }
             if(!rs.getIntrlck_perf().equals("")){
-                rs.setIntrlckPerfDownloadFileNm(rs.getCmp_nm());
+                String fileExtension = FilenameUtils.getExtension(rs.getIntrlck_perf_file_nm());
+                rs.setIntrlckPerfDownloadFileNm( rs.getCmp_nm()+ "."+ fileExtension);
             }
             if(!rs.getEtc().equals("")){
-                rs.setEtcDownloadFileNm(rs.getCmp_nm());
+                String fileExtension = FilenameUtils.getExtension(rs.getEtc_file_nm());
+                rs.setEtcDownloadFileNm( rs.getCmp_nm()+ "."+ fileExtension);
             }
             mav.addObject("rs", rs);
             return mav;
@@ -1023,4 +1038,130 @@ public class adminController {
         }
         return "forward:/common/error.jsp";
     }
+    /**
+     * 연동표 작성예시 관리
+     */
+    @GetMapping(value = "/agree/list.do")
+    public ModelAndView agree(@ModelAttribute("agreeVO")AgreementVO vo) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/agree_list");
+
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());
+        paginationInfo.setRecordCountPerPage(15);
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
+
+        Map<String, Object> rs = agreementService.agreeList(vo);
+        int totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", rs.get("resultList"));
+        mav.addObject("totalCnt", rs.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+        return mav;
+    }
+    @GetMapping(value = "/agree/post.do")
+    public ModelAndView agreePost(@ModelAttribute("agreeVO")AgreementVO vo) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/agree_post");
+        return mav;
+    }
+    @RequestMapping(value = "/agree/post.do", method = {RequestMethod.POST})
+    public void doAgreePost(HttpSession session,
+                        HttpServletRequest request,
+                        HttpServletResponse response,
+                        @ModelAttribute("agreeVO") AgreementVO vo
+    ) throws Exception {
+        vo.setId((String)session.getAttribute("sessionId"));
+        vo.setType_cd("M101");
+        try {
+            int result = agreementService.apply(vo);
+            if (result > 0) {
+
+                response.sendRedirect(request.getContextPath() + "/admin/agree/view.do?seq="+vo.getSeq());
+
+            } else {
+                PrintWriter writer = response.getWriter();
+                response.setContentType("text/html; charset=UTF-8;");
+                request.setCharacterEncoding("utf-8");
+                writer.println("<script type='text/javascript'>");
+                writer.println("alert('데이터 저장 중 오류가 발생하였습니다.'); history.back(); </script>");
+                writer.flush();
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+    @GetMapping(value = "/agree/view.do")
+    public ModelAndView agreeView(@ModelAttribute("agreeVO") AgreementVO vo,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) throws Exception {
+
+        ModelAndView mav = new ModelAndView("admin/agree_view");
+
+        try {
+            AgreementVO rs = agreementService.agreeViewAdmin(vo);
+
+            if (rs == null) {
+                PrintWriter writer = response.getWriter();
+                response.setContentType("text/html; charset=UTF-8;");
+                request.setCharacterEncoding("utf-8");
+                writer.println("<script type='text/javascript'>");
+                writer.println("alert('데이터 저장 중 오류가 발생하였습니다.'); history.back(); </script>");
+                writer.flush();
+            }
+
+            mav.addObject("rs", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+    @GetMapping(value = "/agree/edit.do")
+    public ModelAndView agreeEdit(@ModelAttribute("agreeVO") AgreementVO vo) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/agree_edit");;
+        try {
+            AgreementVO rs = agreementService.agreeViewAdmin(vo);
+            if (rs == null) {
+                return new ModelAndView("common/error.jsp");
+            }
+            mav.addObject("agreeVO", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+    //수정 처리
+    @RequestMapping(value = "/agree/edit.do", method = {RequestMethod.POST})
+    public String doAgreeEdit(@ModelAttribute("agreeVO") AgreementVO vo) throws Exception {
+        try {
+            int result = agreementService.agreeEdit(vo);
+
+            if (result > 0) {
+                return "redirect:/admin/agree/view.do?seq="+vo.getSeq();
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
+    //삭제 처리
+    @RequestMapping(value = "/agree/delete.do", method = {RequestMethod.POST})
+    public String doAgreeDelete(@ModelAttribute("agreeVO") AgreementVO vo) throws Exception {
+        try {
+            int result = agreementService.agreeDeleteAdmin(vo);
+
+            if (result > 0) {
+                return "redirect:/admin/agree/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
+
 }

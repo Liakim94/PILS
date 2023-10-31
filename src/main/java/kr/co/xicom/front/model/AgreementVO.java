@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter@Setter
-public class AgreementVO {
+public class AgreementVO extends DefaultVO{
 
     private String id="";
     private String name ="";
@@ -20,5 +20,8 @@ public class AgreementVO {
     private String ratio="";
     private String etc="";
     private String type_cd="";
+    private String ex_nm="";
+    private String regist_dt="";
+    private Integer seq;
 
 }

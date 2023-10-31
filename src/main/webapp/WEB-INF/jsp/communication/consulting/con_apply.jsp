@@ -145,6 +145,14 @@
             </div>
             <div id="company-write" class="content">
                 <!-- 컨텐츠 start -->
+                <div class="info-link">
+                    <div class="item">
+                        <a href="<c:url value="/files/원가분석 컨설팅 공고문＋신청서 양식.zip"/>" download>
+                            <img class="hover" src="<c:url value="/images/common/download-icon2.png"/>" >
+                            <img class="unhover" src="<c:url value="/images/common/download-icon.png"/>" >
+                            모집공고&필수 서류 제출 양식</a>
+                    </div>
+                </div>
                 <form name="frmWrite" id="frmWrite" method="post" action="<c:url value="/front/consulting/apply.do"/>">
 
                     <h2 class="title">기업 정보</h2>

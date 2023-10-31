@@ -473,7 +473,10 @@
     </select>
     <select id="perfCount" resultType="int">
         select count(1)
-        from tb_pils_perf
+        from tb_pils_perf A
+                 join tb_pils_mbr B
+                      on A.user_id = B.user_id
+        where A.user_id = B.user_id
     </select>
     <select id="perfView" resultType="kr.co.xicom.front.model.PerformanceVO">
         select seq,

@@ -105,7 +105,7 @@
                             <c:if test="${rs.intrlck ne null && rs.intrlck ne ''}">
                                 <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck, rs.intrlck_file_nm, rs.intrlckDownloadFileNm)}"/>"
                                    class="file"  download>
-                                    <c:out value="${rs.intrlckDownloadFileNm}"/>
+                                    <c:out value="(연동표)_${rs.intrlckDownloadFileNm}"/>
                                 </a>
                             </c:if>
                         </ul>
@@ -116,7 +116,7 @@
                             <c:if test="${rs.change ne null && rs.change ne ''}">
                                 <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.change, rs.change_file_nm, rs.changeDownloadFileNm)}"/>"
                                    class="file" download>
-                                    <c:out value="${rs.changeDownloadFileNm}"/>
+                                    <c:out value="(변동표)_${rs.changeDownloadFileNm}"/>
                                 </a>
                             </c:if>
                         </ul>
@@ -127,7 +127,7 @@
                             <c:if test="${rs.intrlckPerfDownloadFileNm ne null && rs.intrlckPerfDownloadFileNm ne ''}">
                                 <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.intrlck_perf,rs.intrlck_perf_file_nm, rs.intrlckPerfDownloadFileNm)}"/>"
                                    class="file" download>
-                                    <c:out value="${rs.intrlckPerfDownloadFileNm}"/>
+                                    <c:out value="(연동실적)_${rs.intrlckPerfDownloadFileNm}"/>
                                 </a>
                             </c:if>
                         </ul>
@@ -138,7 +138,7 @@
                             <c:if test="${rs.etcDownloadFileNm ne null && rs.etcDownloadFileNm ne ''}">
                                 <a href="<c:url value="${FileUploadController.makeDownloadLink(rs.etc, rs.etc_file_nm, rs.etcDownloadFileNm)}"/>"
                                    class="file" download>
-                                    <c:out value="${rs.etcDownloadFileNm}"/>
+                                    <c:out value="(기타)_${rs.etcDownloadFileNm}"/>
                                 </a>
                             </c:if>
                         </ul>

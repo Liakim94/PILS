@@ -40,7 +40,7 @@
                             온라인 상담 신청</a>
                     </div>
                     <div class="item">
-                        <a href="<c:url value="/front/board/11/view.do?boardSeq=82"/>">
+                        <a href="<c:url value="/front/consulting/apply.do"/>">
                             <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" >
                             <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>">
                             원가분석 컨설팅 신청</a>

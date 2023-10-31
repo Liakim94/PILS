@@ -37,11 +37,23 @@ COMMENT ON COLUMN pis.tb_pils_perf.intrlck_perf IS '연동실적';
 COMMENT ON COLUMN pis.tb_pils_perf.etc IS '기타';
 COMMENT ON COLUMN pis.tb_pils_perf.regist_dt IS '작성일자';
 
-----------추가
-
-
-
-UPDATE tb_pils_mbr a
-SET cmp_nm = b.cmp_nm
-    FROM tb_pils_cmpmbr b
-WHERE a.bizno = b.bizno;
+----------추가 (10.30)
+ALTER TABLE pis.tb_pils_cmp_agre DROP CONSTRAINT tb_pils_cmp_agre_pk;
+ALTER TABLE pis.tb_pils_cmp_agre ADD seq bigserial NOT NULL;
+ALTER TABLE pis.tb_pils_cmp_agre ADD CONSTRAINT tb_pils_cmp_agre_pk PRIMARY KEY (seq);
+ALTER TABLE pis.tb_pils_cmp_agre ADD ex_nm varchar(100) NULL;
+ALTER TABLE pis.tb_pils_cmp_agre ADD regist_dt timestamp NULL;
+COMMENT ON COLUMN pis.tb_pils_cmp_agre.ex_nm IS '작성예시명';
+COMMENT ON COLUMN pis.tb_pils_cmp_agre.type_cd IS '구분코드(관리자:M101,회원:M102)';
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN ratio TYPE varchar(100) USING ratio::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN etc TYPE varchar(500) USING etc::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN formula TYPE varchar(500) USING formula::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN reflect_point TYPE varchar(100) USING reflect_point::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN rqrm_date TYPE varchar(100) USING rqrm_date::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN rqrm_cycl TYPE varchar(100) USING rqrm_cycl::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN rqrm_ust TYPE varchar(100) USING rqrm_ust::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN change_point TYPE varchar(100) USING change_point::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN std_point TYPE varchar(100) USING std_point::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN prmy_mat_std TYPE varchar(500) USING prmy_mat_std::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN prmy_mat TYPE varchar(500) USING prmy_mat::varchar;
+ALTER TABLE pis.tb_pils_cmp_agre ALTER COLUMN name TYPE varchar(500) USING name::varchar;

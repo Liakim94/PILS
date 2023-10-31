@@ -17,7 +17,23 @@
     <result property="ratio" column="ratio"/>
     <result property="etc" column="etc"/>
     <result property="type_cd" column="type_cd"/>
+    <result property="ex_nm" column="ex_nm"/>
+    <result property="regist_dt" column="regist_dt"/>
+    <result property="seq" column="seq"/>
 </resultMap>
+    <select id="agreeList" resultMap="AgreementVO">
+        select type_cd
+             ,ex_nm
+             ,regist_dt
+             ,seq
+        from tb_pils_cmp_agre
+        where type_cd = #{type_cd}
+    </select>
+    <select id="agreeListCount" resultType="int">
+        SELECT COUNT(1)
+        from tb_pils_cmp_agre
+        where type_cd = #{type_cd}
+    </select>
     <insert id="apply">
         insert into tb_pils_cmp_agre
             (id
@@ -34,6 +50,8 @@
             ,ratio
             ,etc
             ,type_cd
+            ,ex_nm
+            ,regist_dt
         ) values (
              #{id}
             ,#{name}
@@ -49,26 +67,70 @@
             ,#{ratio}
             ,#{etc}
             ,#{type_cd}
+            ,#{ex_nm}
+            ,NOW()
         )
     </insert>
-<select id="agreeView" resultMap="AgreementVO">
-    select id as id
-         , name as name
-         , prmy_mat as prmy_mat
-         , prmy_mat_std  as prmy_mat_std
-         , std_point as std_point
-         , change_point as change_point
-         , rqrm_ust  as rqrm_ust
-         , rqrm_cycl as rqrm_cycl
-         , rqrm_date as rqrm_date
-         , reflect_point as reflect_point
-         , formula  as formula
-         , ratio  as ratio
-         , etc as etc
-         ,type_cd as type_cd
-    from tb_pils_cmp_agre
-    where id = #{id}
-</select>
+    <select id="agreeViewAdmin" resultMap="AgreementVO">
+        select id as id
+             , name as name
+             , prmy_mat as prmy_mat
+             , prmy_mat_std  as prmy_mat_std
+             , std_point as std_point
+             , change_point as change_point
+             , rqrm_ust  as rqrm_ust
+             , rqrm_cycl as rqrm_cycl
+             , rqrm_date as rqrm_date
+             , reflect_point as reflect_point
+             , formula  as formula
+             , ratio  as ratio
+             , etc as etc
+             , type_cd as type_cd
+             , ex_nm
+             ,seq
+        from tb_pils_cmp_agre
+        where seq = #{seq}
+    </select>
+    <select id="agreeView" resultMap="AgreementVO">
+        select id as id
+             , name as name
+             , prmy_mat as prmy_mat
+             , prmy_mat_std  as prmy_mat_std
+             , std_point as std_point
+             , change_point as change_point
+             , rqrm_ust  as rqrm_ust
+             , rqrm_cycl as rqrm_cycl
+             , rqrm_date as rqrm_date
+             , reflect_point as reflect_point
+             , formula  as formula
+             , ratio  as ratio
+             , etc as etc
+             ,type_cd as type_cd
+             ,seq
+        from tb_pils_cmp_agre
+        where id = #{id}
+    </select>
+    <update id="agreeEdit">
+        update tb_pils_cmp_agre
+        set name = #{name}
+            , prmy_mat = #{prmy_mat}
+            , prmy_mat_std  = #{prmy_mat_std}
+            , std_point = #{std_point}
+            , change_point = #{change_point}
+            , rqrm_ust  = #{rqrm_ust}
+            , rqrm_cycl = #{rqrm_cycl}
+            , rqrm_date = #{rqrm_date}
+            , reflect_point = #{reflect_point}
+            , formula  = #{formula}
+            , ratio  = #{ratio}
+            , etc = #{etc}
+            , ex_nm  = #{ex_nm}
+            , regist_dt =NOW()
+        where seq = #{seq}
+    </update>
+    <delete id="agreeDeleteAdmin">
+        delete from tb_pils_cmp_agre where seq = #{seq}
+    </delete>
     <select id="agreeChk" resultType="String">
         select coalesce(max(id), '0') as id
         from  tb_pils_cmp_agre

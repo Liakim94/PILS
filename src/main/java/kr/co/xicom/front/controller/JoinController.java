@@ -264,6 +264,7 @@ public class JoinController extends Alerts{
                         @ModelAttribute("AgreementVO") AgreementVO vo
     ) throws Exception {
         vo.setId(session.getId());
+        vo.setType_cd("M102");
         try {
             int result = agreementService.apply(vo);
             if (result > 0) {

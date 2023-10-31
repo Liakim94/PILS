@@ -48,6 +48,9 @@
             <li class="<c:if test="${URI.contains('/admin/perf')}">on</c:if>">
                 <a href ="${pageContext.request.contextPath}/admin/perf/list.do">동행기업 실적 제출 현황</a>
             </li>
+            <li class="<c:if test="${URI.contains('/admin/agree')}">on</c:if>">
+                <a href ="${pageContext.request.contextPath}/admin/agree/list.do">연동표 작성예시 관리</a>
+            </li>
         </ul>
     </div>
 </aside>
