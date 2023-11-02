@@ -97,7 +97,7 @@
         <constructor-arg name="defaultCategory" type="java.lang.String" value="${Ems.DefaultCategory}" />
     </bean>
 
-    <beans profile="cloud">
+    <beans profile="cloud,cloud-dev,dev">
         <bean id="nasFileService" class="kr.go.smes.fileservice.MinioFileService">
             <constructor-arg name="endPoint" type="java.lang.String" value="${FileService.EndPoint}" />
             <constructor-arg name="accessKey" type="java.lang.String" value="${FileService.AccessKey}" />
@@ -105,7 +105,7 @@
             <constructor-arg name="bucketName" type="java.lang.String" value="${FileService.BucketName}" />
         </bean>
     </beans>
-
+    <!--
     <beans profile="cloud-dev">
         <bean id="nasFileService" class="kr.go.smes.fileservice.MinioFileService">
             <constructor-arg name="endPoint" type="java.lang.String" value="${FileService.EndPoint}" />
@@ -122,14 +122,21 @@
             <constructor-arg name="bucketName" type="java.lang.String" value="${FileService.BucketName}" />
         </bean>
     </beans>
+    -->
     <beans profile="local">
         <bean id="nasFileService" class="kr.go.smes.fileservice.LocalFileService">
             <constructor-arg name="rootPath" type="java.lang.String" value="/Library/Tomcat/bin/PILS"/>
         </bean>
     </beans>
     <beans profile="mac">
-        <bean id="nasFileService" class="kr.go.smes.fileservice.LocalFileService">
+        <!--<bean id="nasFileService" class="kr.go.smes.fileservice.LocalFileService">
             <constructor-arg name="rootPath" type="java.lang.String" value="/Library/Tomcat/bin/PILS"/>
+        </bean>-->
+        <bean id="nasFileService" class="kr.go.smes.fileservice.MinioFileService">
+            <constructor-arg name="endPoint" type="java.lang.String" value="${FileService.EndPoint}" />
+            <constructor-arg name="accessKey" type="java.lang.String" value="${FileService.AccessKey}" />
+            <constructor-arg name="secretKey" type="java.lang.String" value="${FileService.SecretKey}" />
+            <constructor-arg name="bucketName" type="java.lang.String" value="${FileService.BucketName}" />
         </bean>
     </beans>
 
