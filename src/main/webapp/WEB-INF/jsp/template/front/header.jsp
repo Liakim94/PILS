@@ -71,7 +71,7 @@
                 <div class="submenu">
                     <a href="<c:url value="/join/ready.do"/>">도입 준비하기</a>
                     <a href="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
-                    <a href="<c:url value="/join/ex/temp.do"/>">연동표 작성 예시 보기</a>
+                    <a href="<c:url value="/join/ex/list.do"/>">연동표 작성 예시 보기</a>
                     <a href="<c:url value="/join/notice.do"/>">납품대금 연동 관련 유의사항</a>
                     <a href="<c:url value="/join/agreeMain.do"/>">연동표 작성하기</a>
                     <a href="<c:url value="/join/contract.do"/>">표준 미연동계약서 작성하기</a>
@@ -113,7 +113,7 @@
             <a class="login font14 point2-text inline-focus" tabindex="0"
                href="${pageContext.request.contextPath}/main/login.do">로그인</a><br>
                 <a class="login font14 point2-text inline-focus" tabindex="0"
-                   href="${pageContext.request.contextPath}/main/mbrApply.do">신규담당자등록</a>
+                   href="${pageContext.request.contextPath}/main/mbrApply.do">담당자등록</a>
 
             <div class="mobile-menu" tabindex="0" onclick="mobileMenuOpen(this)">
                 <span></span>
@@ -144,7 +144,7 @@
             <div>
                 <a class="login font14 point2-text inline-focus" tabindex="0"
                    href="${pageContext.request.contextPath}/admin/join/list.do"
-                >관리자 페이지</a>
+                >관리자</a>
             </div>
             <div>
                 <a class="login font14 point2-text inline-focus" tabindex="0"
@@ -213,7 +213,7 @@
                     <div class="submenu">
                         <a href="<c:url value="/join/ready.do"/>">도입 준비하기</a>
                         <a href="<c:url value="/join/process/info.do"/>">연동 절차 알아보기</a>
-                        <a href="<c:url value="/join/ex/temp.do"/>">연동표 작성 예시 보기</a>
+                        <a href="<c:url value="/join/ex/list.do"/>">연동표 작성 예시 보기</a>
                         <a href="<c:url value="/join/notice.do"/>">납품대금 연동 관련 유의사항</a>
                         <a href="<c:url value="/join/agreeMain.do"/>">연동표 작성하기</a>
                         <a href="<c:url value="/join/contract.do"/>">표준 미연동계약서 작성하기</a>

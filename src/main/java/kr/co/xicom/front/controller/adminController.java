@@ -227,7 +227,7 @@ public class adminController {
      * 컨설팅 신청 현황
      * */
     @GetMapping(value = "/consulting/list.do")
-    public ModelAndView conList(@ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
+    public ModelAndView conList(@ModelAttribute("consultingVO") ConsultingVO vo,
                                 HttpSession session,
                                 HttpServletRequest request,
                                 HttpServletResponse response) throws Exception {
@@ -236,17 +236,16 @@ public class adminController {
 
         /*페이징 초기설정*/
         PaginationInfo paginationInfo = new PaginationInfo();
-        paginationInfo.setCurrentPageNo(cmpVO.getPageIndex());    // 현재페이지
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());    // 현재페이지
         paginationInfo.setRecordCountPerPage(15);                    // 한 페이지당 게시물갯수
-        paginationInfo.setPageSize(cmpVO.getPageSize());
+        paginationInfo.setPageSize(vo.getPageSize());
 
-        cmpVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-        cmpVO.setLastIndex(paginationInfo.getLastRecordIndex());
-        cmpVO.setPageUnit(paginationInfo.getRecordCountPerPage());
-        cmpVO.setMem_cd("M301"); //회원구분
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setPageUnit(paginationInfo.getRecordCountPerPage());
 
         Map<String, Object> rs = new HashMap<String, Object>();
-        rs = adminService.conList(cmpVO);
+        rs = adminService.consultList(vo);
 
         int totalCnt = 0;
         totalCnt = Integer.parseInt(String.valueOf(rs.get("resultCnt")));
@@ -257,6 +256,91 @@ public class adminController {
         mav.addObject("paginationInfo", paginationInfo);
         return mav;
     }
+    @GetMapping(value = "/consulting/view.do")
+    public ModelAndView conView(ModelMap model,
+                                @ModelAttribute("consultingVO") ConsultingVO vo,
+                                HttpServletRequest request,
+                                HttpServletResponse response) throws Exception {
+
+        ModelAndView mav = new ModelAndView("/admin/con_view");
+
+        try {
+            ConsultingVO rs = consultingService.viewConsulting(vo);
+
+            if (rs == null) {
+                return new ModelAndView("common/error.jsp");
+            }
+            mav.addObject("rs", rs);
+//            mav.addObject("st", sttus);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+
+    //수정 화면
+    @RequestMapping(value = "/consulting/edit.do", method = {RequestMethod.GET})
+    public ModelAndView consultEdit( @ModelAttribute("consultingVO") ConsultingVO vo,
+                                     HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ModelAndView mav = new ModelAndView("admin/con_edit");
+
+
+        try {
+            ConsultingVO rs = consultingService.viewConsulting(vo);
+            rs.setBizNo1(rs.getBizNo().substring(0, 3));
+            rs.setBizNo2(rs.getBizNo().substring(3, 5));
+            rs.setBizNo3(rs.getBizNo().substring(5, 10));
+            String[] email = rs.getEmail().split("@");
+            rs.setEmail1(email[0]);
+            rs.setEmail2(email[1]);
+            if (rs == null) {
+                return new ModelAndView("common/error.jsp");
+            }
+            mav.addObject("rs", rs);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return mav;
+    }
+
+    //수정 처리
+    @RequestMapping(value = "/consulting/edit.do", method = {RequestMethod.POST})
+    public String doConsultEdit(@ModelAttribute("consultingVO") ConsultingVO vo) throws Exception {
+
+        try {
+            String bizNo = vo.getBizNo1() + vo.getBizNo2() + vo.getBizNo3();
+            vo.setBizNo(bizNo);
+            String email = vo.getEmail1() + '@' + vo.getEmail2();
+            vo.setEmail(email);
+
+            int result = consultingService.consultEdit(vo);
+
+            if (result > 0) {
+                return "redirect:/admin/consulting/view.do?seq=" + vo.getSeq();
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
+    //수정 처리
+    @RequestMapping(value = "/consulting/delete.do", method = {RequestMethod.POST})
+    public String consultDelete(@ModelAttribute("consultingVO") ConsultingVO vo) throws Exception {
+
+        try {
+            int result = consultingService.consultDelete(vo);
+
+            if (result > 0) {
+                return "redirect:/admin/consulting/list.do";
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return "forward:/common/error.jsp";
+    }
+
 
     /**
      * 담당자 현황

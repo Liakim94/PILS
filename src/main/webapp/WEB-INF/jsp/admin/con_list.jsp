@@ -41,9 +41,9 @@
                     <table class="tbl-list01">
                         <colgroup>
                             <col width="10%">
-                            <col width="65%">
+                            <col width="55%">
                             <col width="15%">
-                            <col width="10%">
+                            <col width="20%">
                         </colgroup>
                         <thead>
                         <tr>
@@ -58,12 +58,12 @@
                             <tr>
                                 <td class="txt_alcnt">${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
                                 <td class="al">
-                                    <a href="<c:url value="/front/consulting/view.do?bizNo=${list.bizNo}"/>">
-                                            ${list.cmpNm }
+                                    <a href="<c:url value="/admin/consulting/view.do?seq=${list.seq}"/>">
+                                            ${list.cmp_nm }
                                     </a>
                                 </td>
-                                <td class="txt_alcnt"> ${list.name }</td>
-                                <td class="txt_alcnt">${list.appdate }</td>
+                                <td class="txt_alcnt"> ${list.mem_nm }</td>
+                                <td class="txt_alcnt">${fn:substring(list.regist_dt,0,10)}</td>
                             </tr>
                         </c:forEach>
                         <c:if test="${empty list }">

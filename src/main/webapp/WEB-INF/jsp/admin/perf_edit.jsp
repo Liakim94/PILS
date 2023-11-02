@@ -445,7 +445,7 @@
                             </div>
                         </div>
                         <div class="line-wrap">
-                            <div class="label">연동약정 계약 건 수(총합)</div>
+                            <div class="label">연동 약정체결 (수탁)기업 수</div>
                             <div class="input-wrap" >
                                 <form:input type="text" path="cmp_numb"/>
                             </div>

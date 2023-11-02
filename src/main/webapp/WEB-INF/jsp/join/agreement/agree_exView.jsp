@@ -1,3 +1,4 @@
+<%@ page trimDirectiveWhitespaces="true" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
@@ -5,23 +6,16 @@
 <%@ taglib uri="http://egovframework.gov/ctl/ui" prefix="ui" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib uri="fx" prefix="fx" %>
+
 <head>
-    <title>관리자 | 연동표 작성예시 관리</title>
+    <title></title>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 </head>
-<script>
-    function deleteAgree() {
-        if (confirm("정말 삭제하시겠습니까?")) {
-            $("#agreeVO").submit();
-        } else {
-            return false;
-        }
-    }
-</script>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu_admin"/>
+        <page:applyDecorator name="menu2"/>
         <div class="article">
             <br>
             <ul class="loc-list">
@@ -29,30 +23,20 @@
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="/">홈</a></li>
                 <li>
-                    관리자페이지
+                    납품대금 연동제 도입하기
                 </li>
                 <li>
-                    연동표 작성예시 관리
+                    연동표 작성예시
                 </li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">연동표 작성예시 관리</h1>
+                <h1 class="fw700">연동표 작성예시</h1>
                 <div class="side-wrap">
                 </div>
             </div>
             <div id="agreement" class="content">
                 <!-- 컨텐츠 start -->
-                <form:form modelAttribute="agreeVO" action="delete.do" method="post">
-                    <form:hidden path="seq"/>
                 <div class="write-container">
-                    <div class="line-wrap">
-                        <div class="label">
-                            작성예시명
-                        </div>
-                        <div class="value-wrap">
-                            ${rs.ex_nm}
-                        </div>
-                    </div>
                     <div class="line-wrap">
                         <div class="label">
                             1. 하도급대금등 연동 대상 목적물등의 명칭
@@ -154,13 +138,28 @@
                     </div>
                 </div>
                 <div class="write-bottom">
-                    <a class="submit" href="<c:url value="/admin/agree/edit.do?seq=${rs.seq}"/>">수정</a>
-                    <a class="submit" onclick="deleteAgree()">삭제</a>
-                    <a href="<c:url value="/admin/agree/list.do"/>" class="back">목록</a>
+                    <a href="<c:url value="/join/ex/list.do"/>" class="back">목록</a>
                 </div>
-                </form:form>
                 <!-- 컨텐츠 end -->
             </div>
         </div>
     </div>
 </div>
+<script>
+
+    function previewOpen(){
+        var options = 'top=10, left=10, width=1000, height=750, status=no, menubar=no, toolbar=no, resizable=no';
+        window.open('<c:url value="/join/agree/preview.do"/>', '연동표 미리보기', options);
+    }
+
+    function infoOpen(i){
+        if(!$(i).hasClass("open")){
+            $(i).addClass("open");
+            $(i).parents(".line-wrap").find(".info-box").slideDown();
+        }
+        else{
+            $(i).removeClass("open");
+            $(i).parents(".line-wrap").find(".info-box").slideUp();
+        }
+    }
+</script>

@@ -17,7 +17,7 @@ public interface AdminService {
     int deleteCmp(String bizNo) throws Exception;
 
     //컨설팅 list
-    Map<String, Object> conList(CmpMemberVo vo) throws Exception;
+    Map<String, Object> consultList(ConsultingVO vo) throws Exception;
 
     //관리자페이지
     Map<String, Object> memManageList(CmpMemberVo vo) throws Exception;

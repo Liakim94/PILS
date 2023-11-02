@@ -430,35 +430,25 @@
 </style>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu"/>
+        <page:applyDecorator name="menu_admin"/>
         <div class="article">
             <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>소통·상담</li>
-                <li>컨설팅 신청</li>
+                <li>관리자페이지</li>
+                <li>컨설팅 신청 현황</li>
             </ul>
             <div class="article-header">
-                <h1 class="fw700">컨설팅 신청</h1>
+                <h1 class="fw700">컨설팅 신청 현황</h1>
                 <div class="side-wrap">
-                </div>
-            </div>
-            <div id="about">
-                <div class="info-link">
-                    <div class="item">
-                        <a href="<c:url value="/files/원가분석 컨설팅 공고문＋신청서 양식.zip"/>" download style="width: 300px;">
-                            <img class="hover" src="<c:url value="/images/common/download-icon2.png"/>" >
-                            <img class="unhover" src="<c:url value="/images/common/download-icon.png"/>" >
-                            모집공고&필수 서류 제출 양식</a>
-                    </div>
                 </div>
             </div>
             <div id="company-write" class="content">
                 <!-- 컨텐츠 start -->
-                <form:form modelAttribute="consultingVO" method="post" action="apply.do">
-
+                <form:form modelAttribute="consultingVO" method="post" action="edit.do">
+                    <form:hidden path="seq"/>
                     <h2 class="title">기업 정보</h2>
                     <div class="write-container">
                         <div class="line-wrap ">
@@ -467,12 +457,14 @@
                                 <p style="color: blue;">※ 둘 다 혹은 택1 지원 가능</p>
                             </div>
                             <div class="input-wrap" style="border-right: 1px solid #505050; padding-top: 18px;text-align: center;">
-                                <input type="checkbox" name="checkbox" id="const_ty1" value="원재료 비중 확인서 발급" style="width: 25%">
+                                <input type="checkbox" name="const_ty1" id="const_ty1" value="원재료 비중 확인서 발급" style="width: 25%"
+                                       <c:if test='${rs.const_ty1 == "원재료 비중 확인서 발급"}'>checked</c:if>>
                                 <div style="vertical-align: middle;">원재료 비중 확인서 발급 &nbsp;<p style="color: blue;">*수탁기업(수급사업자)만 지원가능</p></div>
 
                             </div>
                             <div class="input-wrap" style="text-align: center;">
-                                <input type="checkbox" name="checkbox" id="const_ty2" value="연동 약정 컨설팅" style="width: 25%;">
+                                <input type="checkbox" name="const_ty2" id="const_ty2" value="연동 약정 컨설팅" style="width: 25%;"
+                                       <c:if test='${rs.const_ty2 == "연동 약정 컨설팅"}'>checked</c:if>>
                                 연동 약정 컨설팅
                             </div>
                             <input type="hidden" name="const_ty" id="const_ty" value="">
@@ -485,7 +477,7 @@
                                     기업명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" name="cmp_nm" id="cmp_nm">
+                                    <input type="text" name="cmp_nm" id="cmp_nm"  value="  ${rs.cmp_nm}">
                                     <label class="error" for="cmp_nm" generated="true" style="display:none;"/>
 
                                 </div>
@@ -495,11 +487,11 @@
                                     사업자 번호
                                 </div>
                                 <div class="input-wrap non-flex ">
-                                    <input class="multi" type="text" name="bizNo1" id="bizNo1" maxlength="3" style="width: 103px !important;">
+                                    <input value="${rs.bizNo1}" class="multi" type="text" name="bizNo1" id="bizNo1" maxlength="3" style="width: 103px !important;">
                                     <span>-</span>
-                                    <input class="multi" type="text" name="bizNo2" id="bizNo2" maxlength="2" style="width: 103px !important;">
+                                    <input value="${rs.bizNo2}" class="multi" type="text" name="bizNo2" id="bizNo2" maxlength="2" style="width: 103px !important;">
                                     <span>-</span>
-                                    <input class="multi" type="text" name="bizNo3" id="bizNo3" maxlength="5" style="width: 103px !important;">
+                                    <input value="${rs.bizNo3}" class="multi" type="text" name="bizNo3" id="bizNo3" maxlength="5" style="width: 103px !important;">
                                     <input type="hidden" name="bizNo" id="bizNo" value="">
                                     <label class="error" for="bizNo" generated="true" style="display:none;"/>
                                 </div>
@@ -511,7 +503,7 @@
                                     대표자명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="ceo" name="ceo" required/>
+                                    <input type="text" id="ceo" name="ceo" value=" ${rs.ceo}" required/>
                                 </div>
                             </div>
                             <div class="fx2">
@@ -519,7 +511,7 @@
                                     법인등록번호<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="regist_num" name="regist_num" required/>
+                                    <input type="text" id="regist_num" name="regist_num" value=" ${rs.regist_num}"/>
                                 </div>
                             </div>
                         </div>
@@ -528,9 +520,9 @@
                                 본사 주소<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex address-input-wrap">
-                                <input type="text" name="addr" id="addr" onclick="execPostCode()" readonly/>
+                                <input type="text" name="addr" id="addr" onclick="execPostCode()" value="${rs.addr}" readonly/>
                                 <button type="button" class="btn" onclick="execPostCode()">주소찾기</button>
-                                <input type="text" name="addr_dtl" id="addr_dtl"  placeholder="상세주소"/>
+                                <input type="text" name="addr_dtl" id="addr_dtl" value="${rs.addr_dtl}"  placeholder="상세주소"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -538,11 +530,13 @@
                                 수탁위탁거래 시 대상여부<span class="required">*</span>
                             </div>
                             <div class="input-wrap" style="border-right: 1px solid #505050;">
-                                <input type="radio" id="biz_ty" name="biz_ty" value="위탁기업" style="width: 40%;">
+                                <input type="radio" id="biz_ty" name="biz_ty" value="위탁기업" style="width: 40%;"
+                                       <c:if test='${rs.biz_ty == "위탁기업"}'>checked</c:if>>
                                 위탁기업(원사업자)
                             </div>
                             <div class="input-wrap" >
-                                <input type="radio" id="consign" name="biz_ty"  value="수탁기업" style="width: 40%;">
+                                <input type="radio" id="consign" name="biz_ty"  value="수탁기업" style="width: 40%;"
+                                       <c:if test='${rs.biz_ty == "수탁기업"}'>checked</c:if>>
                                 수탁기업(수급사업자)
                             </div>
                             <label class="error" for="biz_ty" generated="true" style="display:none;padding-top: 15px;"/>
@@ -552,8 +546,8 @@
                                 수위탁거래 대상물품명<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex">
-                                <input type="text" id="product" name="product"
-                                placeholder="* 추후 연동 희망 예정인 대상 물품명"/>
+                                <input type="text" id="product" name="product" value=" ${rs.product}"
+                                       placeholder="* 추후 연동 희망 예정인 대상 물품명"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -561,7 +555,7 @@
                                 주요 원재료 후보<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex">
-                                <input type="text" id="prmy_mat" name="prmy_mat"/>
+                                <input type="text" id="prmy_mat" name="prmy_mat" value="${rs.prmy_mat}"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -576,7 +570,7 @@
                                     성명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="mem_nm" name="mem_nm" required/>
+                                    <input type="text" id="mem_nm" name="mem_nm" value="${rs.mem_nm}"/>
                                 </div>
                             </div>
                             <div class="fx2">
@@ -584,7 +578,7 @@
                                     직위<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="pstn" name="pstn" required/>
+                                    <input type="text" id="pstn" name="pstn" value=" ${rs.pstn}"/>
                                 </div>
                             </div>
                         </div>
@@ -593,7 +587,7 @@
                                 연락처<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex">
-                                <input type="text" id="mbphno" name="mbphno" required/>
+                                <input type="text" id="mbphno" name="mbphno" value="${rs.mbphno}"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -601,9 +595,9 @@
                                 이메일<span class="required">*</span>
                             </div>
                             <div class="input-wrap flex">
-                                <input type="text" class="multi" name="email1" id="email1" required/>
+                                <input type="text" class="multi" name="email1" id="email1" value=" ${rs.email1}"/>
                                 <span>@</span>
-                                <input type="text" style="width: 130px" name="email2" id="email2" required/>
+                                <input type="text" style="width: 130px" name="email2" id="email2"  value=" ${rs.email2}"/>
                                 <select id="selectEmail" style="width: 130px" name="selectEmail">
                                     <option value="1">직접입력</option>
                                     <option value="naver.com">naver.com</option>
@@ -640,10 +634,10 @@
                     <div class="box-container">
                         <ul style="padding-left: 30px;">
                             <li style="list-style: disc;">필수 제출(업로드) 서류(pdf, hwp, docx 활용)</li>
-                        &nbsp;&nbsp;1. 사업신청서(활용계획서 포함, 신청서 날인본)<br>
-                        &nbsp;&nbsp;2. 개인 또는 법인(신용)정보 수집·이용·제공 조회 동의서(날인본)<br>
-                        &nbsp;&nbsp;3. 사업자등록증(신청일로부터 3개월이내) 및 중소기업확인서(유효기간 내) 각 1부<br>
-                        &nbsp;&nbsp;4. 국세 및 지방세 완납 증명서 각 1부(접수일 기준 유효기간 내)
+                            &nbsp;&nbsp;1. 사업신청서(활용계획서 포함, 신청서 날인본)<br>
+                            &nbsp;&nbsp;2. 개인 또는 법인(신용)정보 수집·이용·제공 조회 동의서(날인본)<br>
+                            &nbsp;&nbsp;3. 사업자등록증(신청일로부터 3개월이내) 및 중소기업확인서(유효기간 내) 각 1부<br>
+                            &nbsp;&nbsp;4. 국세 및 지방세 완납 증명서 각 1부(접수일 기준 유효기간 내)
                         </ul>
                     </div>
                     <div class="write-container">
@@ -694,9 +688,9 @@
                     </div>
                 </form:form>
                 <div class="write-bottom">
-                        <button  id="apply" class="submit">등록</button>
-                        <a href="<c:url value="/front/qna/main.do"/>" class="back">취소</a>
-                    </div>
+                    <button  id="apply" class="submit">등록</button>
+                    <a href="<c:url value="/admin/consulting/view.do?seq=${rs.seq}"/>" class="back">취소</a>
+                </div>
 
             </div>
         </div>

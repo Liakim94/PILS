@@ -50,7 +50,7 @@ public class CmpMemberVo extends DefaultVO {
     private String auth_cd = ""; //권한코드
     private String management_cd = ""; //담당자구분코드
     private int joinCmp =0; //참여기업
-    private String mainProduct =""; //주요 적용 제품
+    private String mainProduct =""; //주요 적용 제품 & 수위탁거래 대상물품명
     private String bizcd=""; //업종구분코드
 
     /**

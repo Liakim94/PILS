@@ -9,12 +9,20 @@ import java.util.Map;
 @Service
 public interface ConsultingService {
 
-    int insertConsulting(CmpMemberVo vo,CmpSttusVO stVO) throws Exception;
+    int insertConsulting(ConsultingVO vo) throws Exception;
+
+    int consultEdit(ConsultingVO vo) throws Exception;
+
+    int consultDelete(ConsultingVO vo) throws Exception;
+
     Map<String, Object> list(CmpMemberVo vo) throws Exception;
+
+    ConsultingVO viewConsulting(ConsultingVO vo) throws Exception;
+
     int conChkPw(CmpMemberVo vo) throws Exception;
     CmpMemberVo getViewByBizNo(CmpMemberVo vo) throws Exception;
     int update(CmpMemberVo vo,CmpSttusVO stVO) throws Exception;
-    int conCheck(CmpMemberVo vo) throws Exception;
+    Integer consultCheck(ConsultingVO vo) throws Exception;
 
 
 

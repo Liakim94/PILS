@@ -32,19 +32,19 @@
 </style>
 <div id="content">
     <div id="board">
-        <page:applyDecorator name="menu"/>
+        <page:applyDecorator name="menu_admin"/>
         <div class="article">
             <br>
             <ul class="loc-list">
                 <li>
                     <img class="home-icon" src="${pageContext.request.contextPath}/images/common/home-icon.png" alt="홈">
                     <a href="${pageContext.request.contextPath}">홈</a></li>
-                <li>소통·상담</li>
-                <li>컨설팅 신청 확인</li>
+                <li>관리자페이지</li>
+                <li>컨설팅 신청 현황</li>
             </ul>
             <div class="article-header">
                 <div class="article-header">
-                    <h1 class="fw700">컨설팅 신청 확인</h1>
+                    <h1 class="fw700">컨설팅 신청 현황</h1>
                     <div class="side-wrap">
                     </div>
                 </div>
@@ -60,14 +60,14 @@
                                 <p style="color: blue;">※ 둘 다 혹은 택1 지원 가능</p>
                             </div>
                             <div class="input-wrap" style="border-right: 1px solid #505050; padding-top: 18px;text-align: center;">
-                                <input type="checkbox" name="const_ty1" id="const_ty1" value="원재료 비중 확인서 발급" style="width: 25%"
-                                       <c:if test='${rs.const_ty1 == "원재료 비중 확인서 발급"}'>checked disabled</c:if>>
+                                <input disabled type="checkbox" name="const_ty1" id="const_ty1" value="원재료 비중 확인서 발급" style="width: 25%"
+                                       <c:if test='${rs.const_ty1 == "원재료 비중 확인서 발급"}'>checked </c:if>>
                                 <div style="vertical-align: middle;">원재료 비중 확인서 발급 &nbsp;<p style="color: blue;">*수탁기업(수급사업자)만 지원가능</p></div>
 
                             </div>
                             <div class="input-wrap" style="text-align: center;">
-                                <input type="checkbox" name="const_ty2" id="const_ty2" value="연동 약정 컨설팅" style="width: 25%;"
-                                       <c:if test='${rs.const_ty2 == "연동 약정 컨설팅"}'>checked disabled</c:if>>
+                                <input disabled type="checkbox" name="const_ty2" id="const_ty2" value="연동 약정 컨설팅" style="width: 25%;"
+                                       <c:if test='${rs.const_ty2 == "연동 약정 컨설팅"}'>checked </c:if>>
                                 연동 약정 컨설팅
                             </div>
                             <input type="hidden" name="const_ty" id="const_ty" value="">
@@ -123,13 +123,13 @@
                                 수탁위탁거래 시 대상여부
                             </div>
                             <div class="input-wrap" style="border-right: 1px solid #505050;">
-                                <input disabled type="radio" id="biz_ty" name="biz_ty" value="위탁기업" style="width: 40%;"
-                                       <c:if test='${rs.biz_ty == "위탁기업"}'>checked</c:if>>
+                                <input type="radio" id="biz_ty1" name="biz_ty" value="위탁기업" style="width: 40%;"
+                                       <c:if test='${rs.biz_ty == "위탁기업"}'>checked</c:if> disabled>
                                 위탁기업(원사업자)
                             </div>
                             <div class="input-wrap" >
-                                <input disabled type="radio" id="consign" name="biz_ty"  value="수탁기업 "style="width: 40%;"
-                                       <c:if test='${rs.biz_ty == "수탁기업"}'>checked</c:if>>
+                                <input type="radio" id="biz_ty2" name="biz_ty" value="수탁기업" style="width: 40%;"
+                                       <c:if test='${rs.biz_ty == "수탁기업"}'>checked</c:if> disabled>
                                 수탁기업(수급사업자)
                             </div>
                         </div>
@@ -237,9 +237,9 @@
                     </div>
                     </form:form>
                     <div class="write-bottom">
-                        <a href="<c:url value="/front/consulting/edit.do?seq=${rs.seq}"/>" class="submit">수정</a>
+                        <a href="<c:url value="/admin/consulting/edit.do?seq=${rs.seq}"/>" class="submit">수정</a>
                         <a onclick="javascript:deleteCon();return false;" class="submit">삭제</a>
-                        <a class="back" href="<c:url value="/front/qna/main.do"/>">뒤로</a>
+                        <a class="back" href="<c:url value="/admin/consulting/list.do"/>">목록</a>
                     </div>
                     <!-- 컨텐츠 end -->
                 </div>

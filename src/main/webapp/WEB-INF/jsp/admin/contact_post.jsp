@@ -26,7 +26,7 @@
             alert("정렬순서를 입력하세요.");
             return false;
         }
-        if(isNaN(frm.sortSeq.value)){
+        if(만frm.sortSeq.value)){
             alert("정렬순서는 숫자만 입력하세요.");
             return false;
         }

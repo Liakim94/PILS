@@ -46,13 +46,19 @@
                         </div>
                         <table class="table-form">
                             <colgroup>
+                                <col width="25%"/>
                                 <col width="20%"/>
                                 <col width="20%"/>
                                 <col width="20%"/>
+                                <col width="15%"/>
+                                <col width="15%"/>
                             </colgroup>
                             <thead>
                             <th class="txt_alcnt" scope="col">번호</th>
                             <th class="txt_alcnt" scope="col">기업명</th>
+                            <th class="txt_alcnt" scope="col">계약기간</th>
+                            <th class="txt_alcnt" scope="col">계약건수</th>
+                            <th class="txt_alcnt" scope="col">수탁기업수</th>
                             <th class="txt_alcnt" scope="col">제출일자</th>
                             </thead>
                             <tbody>
@@ -64,12 +70,21 @@
                                     <td>
                                         <a href="${pageContext.request.contextPath}/main/perf/view.do?seq=${rs.seq}" style="color: rgb(0, 72, 255);">${rs.cmp_nm}</a>
                                     </td>
+                                    <td>
+                                            ${rs.cntr_pd}
+                                    </td>
+                                    <td>
+                                            ${rs.cntr_numb}
+                                    </td>
+                                    <td>
+                                            ${rs.cmp_numb}
+                                    </td>
                                     <td>${fn:substring(rs.regist_dt,0,10)}</td>
                                 </tr>
                             </c:forEach>
                             <c:if test="${empty rs }">
                                 <tr>
-                                    <td colspan="3" class="text-center">조회된 데이터가 없습니다.</td>
+                                    <td colspan="5" class="text-center">조회된 데이터가 없습니다.</td>
                                 </tr>
                             </c:if>
                             </tbody>

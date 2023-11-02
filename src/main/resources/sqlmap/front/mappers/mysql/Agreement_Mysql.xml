@@ -70,6 +70,9 @@
             ,#{ex_nm}
             ,NOW()
         )
+        <selectKey keyProperty="seq" resultType="integer" order="AFTER">
+            SELECT MAX(seq) FROM tb_pils_cmp_agre;
+        </selectKey>
     </insert>
     <select id="agreeViewAdmin" resultMap="AgreementVO">
         select id as id
@@ -139,5 +142,41 @@
     <delete id="agreeDelete">
         delete from tb_pils_cmp_agre where id = #{id}
     </delete>
-
+    <select id="agreeExList" resultMap="AgreementVO">
+        select seq
+                ,prmy_mat
+                ,rqrm_cycl
+                ,type_cd
+                ,ex_nm
+        from (select *
+        from tb_pils_cmp_agre where type_cd = 'M101') a
+        <trim prefix="where" prefixOverrides="or">
+            <if test="prmy_mat != null and prmy_mat != ''">
+                or prmy_mat like CONCAT('%',#{prmy_mat},'%')
+            </if>
+            <if test="rqrm_date != null and rqrm_date != ''">
+                or rqrm_date like CONCAT('%',#{rqrm_date},'%')
+            </if>
+            <if test="prmy_mat_std != null and prmy_mat_std != ''">
+                or prmy_mat_std like CONCAT('%',#{prmy_mat_std},'%')
+            </if>
+            <if test="rqrm_ust != null and rqrm_ust != ''">
+                or rqrm_ust like CONCAT('%',#{rqrm_ust},'%')
+            </if>
+            <if test="rqrm_cycl != null and rqrm_cycl != ''">
+                or rqrm_cycl like CONCAT('%',#{rqrm_cycl},'%')
+            </if>
+            <if test="ratio != null and ratio != ''">
+                or ratio like CONCAT('%',#{ratio},'%')
+            </if>
+        </trim>
+        <if test="pageIndex > 0">
+            LIMIT #{pageUnit} OFFSET #{firstIndex}
+        </if>
+    </select>
+    <select id="agreeExListCount" resultType="int">
+        select count(1)cnt
+        from tb_pils_cmp_agre
+        where type_cd = 'M101'
+    </select>
 </mapper>

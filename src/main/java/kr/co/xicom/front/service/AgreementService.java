@@ -3,6 +3,7 @@ package kr.co.xicom.front.service;
 import kr.co.xicom.front.model.AgreementVO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -23,4 +24,6 @@ public interface AgreementService {
     int agreeDelete(String id) throws Exception;
 
     int agreeDeleteAdmin(AgreementVO vo) throws Exception;
+
+    Map<String, Object> agreeExList(AgreementVO vo) throws Exception;
 }

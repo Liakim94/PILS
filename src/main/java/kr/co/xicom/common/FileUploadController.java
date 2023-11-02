@@ -298,27 +298,9 @@ public class FileUploadController {
             // 파일 추출
             byte[] content = fileService.getBytes(savedFilePath);
 
-            // 파일명 인코딩
-            // WildRain 수정 2022-06-07
-            // IE 등에서 다운로드 시 한글 파일명 깨지는 문제 해결.
-            downloadName = RequestUtils.encodeFileName(request, downloadName); // new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
-            String[] file = savedFilePath.split("/");
-            String changedNm = file[1];
-            if(changedNm == "intrlck"){
-                changedNm = "연동표";
-            }
-            if(changedNm == "change"){
-                changedNm = "변동표";
-            }
-            if(changedNm == "intrlck_perf"){
-                changedNm = "연동실적";
-            }
-            if(changedNm == "etc"){
-                changedNm = "기타";
-            }
             if (content != null && content.length > 0) {
                 response.setContentType("application/x-msdownload");
-                response.setHeader("Content-Disposition", "attachment;filename= ("+ changedNm+")_" + downloadName);
+                response.setHeader("Content-Disposition", "attachment;filename="+ new String(downloadName.getBytes("UTF-8"), "ISO-8859-1"));
                 response.setContentLength(content.length);
                 response.getOutputStream().write(content, 0, content.length);
                 response.getOutputStream().close();

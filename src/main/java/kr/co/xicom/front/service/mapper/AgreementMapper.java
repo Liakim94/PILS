@@ -14,6 +14,8 @@ public interface AgreementMapper {
     int agreeEdit(AgreementVO vo) throws Exception;
     AgreementVO agreeViewAdmin(AgreementVO vo) throws Exception;
     AgreementVO agreeView(String id) throws Exception;
+    List<AgreementVO> agreeExList(AgreementVO vo) throws Exception;
+    int agreeExListCount(AgreementVO vo) throws Exception;
     String agreeChk(String id) throws Exception;
     int agreeDelete(String id) throws Exception;
     int agreeDeleteAdmin(AgreementVO vo) throws Exception;

@@ -69,12 +69,12 @@ public class AdminServiceImpl implements AdminService {
     }
     //컨설팅 list
     @Override
-    public  Map<String, Object> conList(CmpMemberVo vo) throws Exception {
+    public  Map<String, Object> consultList(ConsultingVO vo) throws Exception {
         Map<String, Object> map = new HashMap<String, Object>();
-        List<CmpMemberVo> list = null;
+        List<ConsultingVO> list = null;
         int cnt = 0;
         try{
-            list = consultingMapper.list(vo);
+            list = consultingMapper.consultList(vo);
             cnt = consultingMapper.listCount(vo);
             map.put("resultList",list);
             map.put("resultCnt", cnt);

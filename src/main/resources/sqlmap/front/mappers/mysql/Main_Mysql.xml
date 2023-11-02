@@ -208,9 +208,12 @@
         </selectKey>
     </insert>
     <select id="perfList" resultType="kr.co.xicom.front.model.PerformanceVO">
-        select seq,
-               cmp_nm,
-               regist_dt
+        select  regist_dt,
+                seq,
+                cntr_pd,
+                cntr_numb,
+                cmp_numb,
+                cmp_nm
         from tb_pils_perf
         where user_id= #{user_id}
         order by regist_dt desc

@@ -453,6 +453,9 @@
         select a.user_id,
                a.regist_dt,
                a.seq,
+               a.cntr_pd,
+               a.cntr_numb,
+               a.cmp_numb,
                a.cmp_nm,
                b.nm
         from tb_pils_perf A

@@ -40,78 +40,168 @@
         <result property="rgdate" column="rgdate"/>
         <result property="update" column="update"/>
     </resultMap>
+    <resultMap id="ConsultingVO" type="kr.co.xicom.front.model.ConsultingVO">
+        <result property="seq" column="seq"/>
+        <result property="const_ty1" column="const_ty1"/>
+        <result property="const_ty2" column="const_ty2"/>
+        <result property="cmp_nm" column="cmp_nm"/>
+        <result property="ceo" column="ceo"/>
+        <result property="bizNo" column="bizNo"/>
+        <result property="regist_num" column="regist_num"/>
+        <result property="addr" column="addr"/>
+        <result property="addr_dtl" column="addr_dtl"/>
+        <result property="biz_ty" column="biz_ty"/>
+        <result property="product" column="product"/>
+        <result property="prmy_mat" column="prmy_mat"/>
+        <result property="mem_nm" column="mem_nm"/>
+        <result property="pstn" column="pstn"/>
+        <result property="mbphno" column="mbphno"/>
+        <result property="email" column="email"/>
+        <result property="pswd" column="pswd"/>
+        <result property="regist_dt" column="regist_dt"/>
+        <result property="filenm1" column="filenm1"/>
+        <result property="filenm2" column="filenm2"/>
+        <result property="filenm3" column="filenm3"/>
+        <result property="filenm4" column="filenm4"/>
+        <result property="filenm1_path" column="filenm1_path"/>
+        <result property="filenm2_path" column="filenm2_path"/>
+        <result property="filenm3_path" column="filenm3_path"/>
+        <result property="filenm4_path" column="filenm4_path"/>
+    </resultMap>
+
 
     <insert id="insertConsulting">
-        insert into tb_pils_cmpmbr
-        ( cmp_nm
-        , bizno
-        , cmp_mbr_cd
+        insert into tb_pils_cmp_const
+        ( const_ty1
+        , const_ty2
+        , cmp_nm
         , ceo
-        , fdate
+        , bizno
+        , regist_num
         , addr
         , addr_dtl
-        , telno
-        , faxno
         , biz_ty
-        , capl
-        , deal_ty
-        , yr_deal_scale
-        , prmy_mat
-        , con_q
-        , appdt
         , product
-        , joincmp
-        , main_product)
-        values ( #{cmpNm}
-               , #{bizNo}
-               , #{mem_cd}
-               , #{ceo}
-               , #{fdate}
-               , #{address}
-               , #{address_dtl}
-               , #{telNo}
-               , #{telNo}
-               , #{bizType}
-               , #{capital}
-               , #{deal_type}
-               , #{deal_scale}
-               , #{material}
-               , #{conQ}
-               , current_timestamp
-               , #{product}
-               , #{joinCmp}
-               , #{mainProduct})
-    </insert>
-    <insert id="insertMemberInfo">
-        insert into tb_pils_mbr
-        ( nm
-        , mbphno
-        , psitn_dept_nm
+        , prmy_mat
+        , mem_nm
         , pstn
-        , email_addr
-        , telno
-        , faxno
-        , auth_cd
-        , bizno
-        , user_id
+        , mbphno
+        , email
+        , regist_dt
         , pswd
-        , join_dt
-        , manage_cd)
-        values ( #{name}
-               , #{mbphno}
-               , #{deptNm}
-               , #{position}
-               , #{email}
-               , #{memTelNo}
-               , #{memFaxNo}
-               , 'M103'
+        , filenm1
+        , filenm2
+        , filenm3
+        , filenm4
+        , filenm1_path
+        , filenm2_path
+        , filenm3_path
+        , filenm4_path)
+        values ( #{const_ty1}
+               , #{const_ty2}
+               , #{cmp_nm}
+               , #{ceo}
                , #{bizNo}
-               , #{id}
-               , encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
-               , current_date
-               , #{management_cd})
+               , #{regist_num}
+               , #{addr}
+               , #{addr_dtl}
+               , #{biz_ty}
+               , #{product}
+               , #{prmy_mat}
+               , #{mem_nm}
+               , #{pstn}
+               , #{mbphno}
+               , #{email}
+               , NOW()
+               , encode(encrypt(convert_to(#{pswd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+               , #{filenm1}
+               , #{filenm2}
+               , #{filenm3}
+               , #{filenm4}
+               , #{filenm1_path}
+               , #{filenm2_path}
+               , #{filenm3_path}
+               , #{filenm4_path})
+        <selectKey keyProperty="seq" resultType="integer" order="AFTER">
+            SELECT MAX(seq) FROM tb_pils_cmp_const;
+        </selectKey>
     </insert>
-
+    <select id="consultCheck" resultType="int">
+        select seq
+        from tb_pils_cmp_const
+        where email = #{email}
+          and pswd = encode(encrypt(convert_to(#{pswd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+    </select>
+    <select id="viewConsulting" resultType="kr.co.xicom.front.model.ConsultingVO">
+        select seq
+             , const_ty1
+             , const_ty2
+             , cmp_nm
+             , ceo
+             , bizno
+             , regist_num
+             , addr
+             , addr_dtl
+             , biz_ty
+             , product
+             , prmy_mat
+             , mem_nm
+             , pstn
+             , mbphno
+             , email
+             , regist_dt
+             , pswd
+             , filenm1
+             , filenm2
+             , filenm3
+             , filenm4
+             , filenm1_path
+             , filenm2_path
+             , filenm3_path
+             , filenm4_path
+        from tb_pils_cmp_const
+        where seq = #{seq}
+    </select>
+    <update id="consultEdit">
+        update tb_pils_cmp_const
+        set const_ty1 = #{const_ty1}
+          , const_ty2 =#{const_ty2}
+          , cmp_nm =#{cmp_nm}
+          , ceo= #{ceo}
+          , bizno =#{bizNo}
+          , regist_num =#{regist_num}
+          , addr =#{addr}
+          , addr_dtl =#{addr_dtl}
+          , biz_ty =#{biz_ty}
+          , product =#{product}
+          , prmy_mat =#{prmy_mat}
+          , mem_nm =#{mem_nm}
+          , pstn =#{pstn}
+          , mbphno =#{mbphno}
+          , email =#{email}
+          , regist_dt =NOW()
+          , pswd =encode(encrypt(convert_to(#{pswd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
+          , filenm1 =#{filenm1}
+          , filenm2 =#{filenm2}
+          , filenm3 =#{filenm3}
+          , filenm4 =#{filenm4}
+          , filenm1_path =#{filenm1_path}
+          , filenm2_path =#{filenm2_path}
+          , filenm3_path =#{filenm3_path}
+          , filenm4_path =#{filenm4_path}
+        where seq = ${seq}
+    </update>
+    <delete id="consultDelete">
+        delete from tb_pils_cmp_const where seq = #{seq}
+    </delete>
+    <select id="consultList" resultMap="ConsultingVO">
+        select seq
+             , cmp_nm
+             , regist_dt
+             , mem_nm
+        from tb_pils_cmp_const
+        order by regist_dt desc
+    </select>
     <select id="list" resultMap="CmpMemberVo">
         select A.bizno                        as bizNo
              , A.cmp_mbr_cd                   as mem_cd
@@ -122,20 +212,21 @@
         where cmp_mbr_cd = #{mem_cd}
         order by joincmp desc
     </select>
-    <select id="mainCount" resultType="int">
-        SELECT COUNT(1)
-        FROM tb_pils_cmpmbr A
-        where cmp_mbr_cd = #{mem_cd}
-
-    </select>
     <select id="listCount" resultType="int">
         SELECT COUNT(1)
-        FROM tb_pils_cmpmbr A
-                 join tb_pils_mbr B
-                      ON A.bizno = B.bizno
+        FROM tb_pils_cmpmbr
         WHERE 1 = 1
-          and cmp_mbr_cd = #{mem_cd}
+    </select>
 
+    <select id="mainCount" resultType="int">
+        select A.bizno                        as bizNo
+             , A.cmp_mbr_cd                   as mem_cd
+             , A.cmp_nm                       as cmpNm
+             , to_char(A.appdt, 'YYYY-MM-DD') as appdate
+             , a.logo_img_path                as logoImgPath
+        from tb_pils_cmpmbr A
+        where cmp_mbr_cd = #{mem_cd}
+        order by joincmp desc
     </select>
     <select id="joinCmp" resultType="int">
         SELECT sum(joincmp)
@@ -329,14 +420,4 @@
           , main_product  = #{mainProduct}
         where bizno = #{bizNo}
     </update>
-    <select id="conCheck" resultType="int">
-        select case
-                   when inPass = pswd then 1
-                   else 0 end as rslt
-        from (select encode(encrypt(convert_to(#{passwd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex') as inPass
-                   , pswd
-              from tb_pils_mbr
-              where bizno = #{bizNo}
-             ) a;
-    </select>
 </mapper>

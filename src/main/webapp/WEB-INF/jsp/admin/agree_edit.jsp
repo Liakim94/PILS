@@ -6,9 +6,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib uri="fx" prefix="fx" %>
 <head>
     <title>관리자 | 연동표 작성예시 관리</title>
+    <script src="${pageContext.request.contextPath }/js/front/jquery.validate.js"></script>
+
 </head>
 <script>
     function fn_submit() {
@@ -18,8 +21,44 @@
             alert("작성예시명을 입력하세요.");
             return false;
         }
+
         frm.submit();
     }
+    $(function () {
+        $("select[name=select_prmy_mat_std]").on("change", function(){
+            var input = $('input[name=prmy_mat_std]');
+            if ($(this).val() == "1") {
+                input.val('');
+                input.prop("readonly",false);
+
+            } else {
+                input.val($(this).val());
+                input.prop("readonly",true);
+            }
+        });
+        $("select[name=select_rqrm_date]").on("change", function(){
+            var input = $('input[name=rqrm_date]');
+            if ($(this).val() == "1") {
+                input.val('');
+                input.prop("readonly",false);
+
+            } else {
+                input.val($(this).val());
+                input.prop("readonly",true);
+            }
+        });
+        $("select[name=select_rqrm_cycl]").on("change", function(){
+            var input = $('input[name=rqrm_cycl]');
+            if ($(this).val() == "1") {
+                input.val('');
+                input.prop("readonly",false);
+
+            } else {
+                input.val($(this).val());
+                input.prop("readonly",true);
+            }
+        });
+    });
 </script>
 <style>
     .line-wrap .label .required {
@@ -82,7 +121,18 @@
                                     3. 원재료 가격의 기준 지표
                                 </div>
                                 <div class="input-wrap">
-                                    <form:input type="text" path="prmy_mat_std" />
+                                    <div class="input-wrap">
+                                        <form:input type="text" path="prmy_mat_std" style="width: 130px"/>
+                                        <select id="select_prmy_mat_std" name="select_prmy_mat_std" value ="">
+                                            <option value="">선택</option>
+                                            <option value="LME"> LME</option>
+                                            <option value="e-나라지표"> e-나라지표</option>
+                                            <option value="한국은행"> 한국은행 </option>
+                                            <option value="조달청">조달청</option>
+                                            <option value="산업통상자원부">산업통상자원부</option>
+                                            <option value="1">기타</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="line-wrap">
@@ -118,6 +168,14 @@
                                 </div>
                                 <div class="input-wrap">
                                     <form:input type="text" path="rqrm_cycl" />
+                                    <select id="select_rqrm_cycl" name="select_rqrm_cycl" value ="">
+                                        <option value="">선택</option>
+                                        <option value="n개월"> n개월</option>
+                                        <option value="분기별"> 분기별</option>
+                                        <option value="반기별"> 반기별</option>
+                                        <option value="1년">1년</option>
+                                        <option value="1">기타</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="line-wrap">
@@ -125,12 +183,20 @@
                                     7. 조정일
                                 </div>
                                 <div class="input-wrap">
-                                    <form:input type="text" path="rqrm_date" />
+                                    <form:input type="text" path="rqrm_date" style="width:130px" />
+                                    <select id="select_rqrm_date" name="select_rqrm_date" value ="">
+                                        <option value="">선택</option>
+                                        <option value="매월 1일"> 매월 1일</option>
+                                        <option value="매월 말일"> 매월 말일</option>
+                                        <option value="짝수달"> 짝수달</option>
+                                        <option value="홀수달">홀수달</option>
+                                        <option value="1">기타</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="line-wrap">
                                 <div class="label">
-                                    8. 조정대금 반영일
+                                    8. 조정대금 반영시점
                                 </div>
                                 <div class="input-wrap">
                                     <form:input type="text" path="reflect_point" />

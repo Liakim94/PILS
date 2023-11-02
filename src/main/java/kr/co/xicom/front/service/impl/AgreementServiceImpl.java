@@ -5,6 +5,7 @@ import kr.co.xicom.front.service.AgreementService;
 import kr.co.xicom.front.service.mapper.AgreementMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.HashMap;
 import java.util.List;
@@ -81,5 +82,20 @@ public class AgreementServiceImpl implements AgreementService {
     @Override
     public int agreeDeleteAdmin(AgreementVO vo) throws Exception{
         return mapper.agreeDeleteAdmin(vo);
+    }
+    @Override
+    public Map<String, Object> agreeExList(AgreementVO vo) throws Exception{
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<AgreementVO> list = null;
+        int cnt = 0;
+        try{
+            list = mapper.agreeExList(vo);
+            cnt = mapper.agreeExListCount(vo);
+            map.put("resultList",list);
+            map.put("resultCnt", cnt);
+        } catch (Exception e){
+            System.out.println(e.toString());
+        }
+        return map;
     }
 }

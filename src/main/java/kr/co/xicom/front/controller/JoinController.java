@@ -269,7 +269,7 @@ public class JoinController extends Alerts{
             int result = agreementService.apply(vo);
             if (result > 0) {
 
-                response.sendRedirect(request.getContextPath() + "/join/agreeView.do");
+                response.sendRedirect(request.getContextPath() + "/join/agree/view.do");
 
             } else {
                 writeAlert("데이터 저장 중 오류가 발생하였습니다.", request, response);
@@ -280,7 +280,7 @@ public class JoinController extends Alerts{
 
     }
 
-    @GetMapping(value = "/agreeView.do")
+    @GetMapping(value = "/agree/view.do")
     public ModelAndView agreeView(@ModelAttribute("AgreementVO") AgreementVO vo,
                                   HttpSession session,
                                   HttpServletRequest request,
@@ -324,9 +324,36 @@ public class JoinController extends Alerts{
     }
 
     //연동표 작성 예시 보기
-    @GetMapping(value = "/ex/temp.do")
-    public ModelAndView agreeTemp() throws Exception {
-        ModelAndView mav = new ModelAndView("join/agreement/agree_temp");
+    @GetMapping(value = "/ex/list.do")
+    public ModelAndView agreeExList(@ModelAttribute("agreeVO") AgreementVO vo) throws Exception {
+        ModelAndView mav = new ModelAndView("join/agreement/agree_exList");
+
+        PaginationInfo paginationInfo = new PaginationInfo();
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());
+        paginationInfo.setRecordCountPerPage(10);
+        paginationInfo.setPageSize(vo.getPageSize());
+
+        Map<String, Object> rs = new HashMap<String, Object>();
+        try {
+            rs = agreementService.agreeExList(vo);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        int totalCnt =Integer.parseInt(String.valueOf(rs.get("resultCnt")));
+        paginationInfo.setTotalRecordCount(totalCnt);
+
+        mav.addObject("rs", rs.get("resultList"));
+        mav.addObject("cnt", rs.get("resultCnt"));
+        mav.addObject("paginationInfo", paginationInfo);
+        mav.addObject("vo", vo);
+        return mav;
+    }
+    @GetMapping(value = "/ex/view.do")
+    public ModelAndView agreeExView(@ModelAttribute("agreeVO") AgreementVO vo) throws Exception {
+        ModelAndView mav = new ModelAndView("join/agreement/agree_exView");
+        AgreementVO rs = agreementService.agreeViewAdmin(vo);
+        mav.addObject("rs", rs);
         return mav;
     }
 

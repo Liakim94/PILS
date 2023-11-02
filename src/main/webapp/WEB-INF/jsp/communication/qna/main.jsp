@@ -40,10 +40,16 @@
                             온라인 상담 신청</a>
                     </div>
                     <div class="item">
-                        <a href="<c:url value="/front/consulting/apply.do"/>">
+                        <a href="${pageContext.request.contextPath}/front/consulting/apply.do">
                             <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" >
                             <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>">
                             원가분석 컨설팅 신청</a>
+                    </div>
+                    <div class="item">
+                        <a href="${pageContext.request.contextPath}/front/consulting/confirm.do">
+                            <img class="hover" src="<c:url value="/images/common/document-icon.png"/>" >
+                            <img class="unhover" src="<c:url value="/images/common/document-icon2.png"/>">
+                            원가분석 컨설팅 신청 확인</a>
                     </div>
                 </div>
                 <section>
