@@ -477,7 +477,7 @@
                                     기업명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" name="cmp_nm" id="cmp_nm"  value="  ${rs.cmp_nm}">
+                                    <input type="text" name="cmp_nm" id="cmp_nm"  value="${rs.cmp_nm}">
                                     <label class="error" for="cmp_nm" generated="true" style="display:none;"/>
 
                                 </div>
@@ -503,7 +503,7 @@
                                     대표자명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="ceo" name="ceo" value=" ${rs.ceo}" required/>
+                                    <input type="text" id="ceo" name="ceo" value="${rs.ceo}" required/>
                                 </div>
                             </div>
                             <div class="fx2">
@@ -511,7 +511,7 @@
                                     법인등록번호<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="regist_num" name="regist_num" value=" ${rs.regist_num}"/>
+                                    <input type="text" id="regist_num" name="regist_num" value="${rs.regist_num}"/>
                                 </div>
                             </div>
                         </div>
@@ -546,7 +546,7 @@
                                 수위탁거래 대상물품명<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex">
-                                <input type="text" id="product" name="product" value=" ${rs.product}"
+                                <input type="text" id="product" name="product" value="${rs.product}"
                                        placeholder="* 추후 연동 희망 예정인 대상 물품명"/>
                             </div>
                         </div>
@@ -578,7 +578,7 @@
                                     직위<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="pstn" name="pstn" value=" ${rs.pstn}"/>
+                                    <input type="text" id="pstn" name="pstn" value="${rs.pstn}"/>
                                 </div>
                             </div>
                         </div>
@@ -595,9 +595,9 @@
                                 이메일<span class="required">*</span>
                             </div>
                             <div class="input-wrap flex">
-                                <input type="text" class="multi" name="email1" id="email1" value=" ${rs.email1}"/>
+                                <input type="text" class="multi" name="email1" id="email1" value="${rs.email1}"/>
                                 <span>@</span>
-                                <input type="text" style="width: 130px" name="email2" id="email2"  value=" ${rs.email2}"/>
+                                <input type="text" style="width: 130px" name="email2" id="email2"  value="${rs.email2}"/>
                                 <select id="selectEmail" style="width: 130px" name="selectEmail">
                                     <option value="1">직접입력</option>
                                     <option value="naver.com">naver.com</option>

@@ -15,7 +15,6 @@
         <result property="bizType" column="bizType"/>
         <result property="capital" column="capital"/>
         <result property="product" column="product"/>
-        <result property="conQ" column="conQ"/>
         <result property="deal_type" column="deal_type"/>
         <result property="deal_scale" column="deal_scale"/>
         <result property="material" column="material"/>
@@ -126,7 +125,7 @@
         </selectKey>
     </insert>
     <select id="consultCheck" resultType="int">
-        select seq
+        select MAX(seq)
         from tb_pils_cmp_const
         where email = #{email}
           and pswd = encode(encrypt(convert_to(#{pswd}, 'utf8'), 'ENC_KEY', 'aes'), 'hex')
@@ -259,7 +258,6 @@
              , A.deal_ty       as deal_type
              , A.yr_deal_scale as deal_scale
              , A.prmy_mat      as material
-             , A.con_q         as conQ
              , A.product       as product
              , A.joincmp       as joinCmp
              , A.main_product  as mainProduct
@@ -283,7 +281,6 @@
           , deal_ty       = #{deal_type}
           , yr_deal_scale = #{deal_scale}
           , prmy_mat      = #{material}
-          , con_q         = #{conQ}
           , product       = #{product}
           , updt          = current_timestamp
           , joincmp       = #{joinCmp}
@@ -412,7 +409,6 @@
           , deal_ty       = #{deal_type}
           , yr_deal_scale = #{deal_scale}
           , prmy_mat      = #{material}
-          , con_q         = #{conQ}
           , product       = #{product}
           , updt          = current_timestamp
           , joincmp       = #{joinCmp}

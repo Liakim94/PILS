@@ -168,7 +168,7 @@
                     <div class="line-wrap">
                         <div class="label">첨부서류</div>
                         <div class="input-wrap" style="margin:5px">
-                            <div class="upload-list">
+                            <div>
                                 <c:forEach var="attach" items="${attachList}">
                                     <a href="<c:url value="${FileUploadController.makeDownloadLink(attach.savedFilePath, attach.fileNm)}"/>">
                                         <c:out value="${attach.fileNm}"/>
@@ -189,6 +189,18 @@
         <!-- 컨텐츠 end -->
     </div>
 </div>
+<style>
+    .input-wrap .a{
+        font-size: 14px;
+        color: #333;
+        display: table-cell;
+        min-height: 30px;
+        line-height: 1.2;
+        vertical-align: middle;
+        padding: 5px 20px;
+        border: 1px solid #ccc;
+    }
+</style>
 <script>
     function deleteMem() {
         if (confirm("정말 동행기업 삭제하시겠습니까?")) {

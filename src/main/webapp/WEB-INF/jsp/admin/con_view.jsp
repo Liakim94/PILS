@@ -8,6 +8,7 @@
 <%@ taglib uri="fx" prefix="fx" %>
 <%pageContext.setAttribute("crcf", "\r\n"); %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page import="kr.co.xicom.common.FileUploadController" %>
 
 <head>
     <title></title>

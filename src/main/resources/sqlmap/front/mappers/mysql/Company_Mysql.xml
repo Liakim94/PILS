@@ -39,7 +39,6 @@
             A.deal_ty       as deal_type,
             A.yr_deal_scale as deal_scale,
             A.prmy_mat      as material,
-            A.con_q         as conQ,
             A.product       as product,
             A.joincmp       as joinCmp,
             A.main_product  as mainProduct,

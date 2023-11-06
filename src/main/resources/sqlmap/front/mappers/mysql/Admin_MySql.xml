@@ -21,7 +21,6 @@
         <result property="bizType" column="bizType"/>
         <result property="capital" column="capital"/>
         <result property="product" column="product"/>
-        <result property="conQ" column="conQ"/>
         <result property="deal_type" column="deal_type"/>
         <result property="deal_scale" column="deal_scale"/>
         <result property="material" column="material"/>
@@ -113,7 +112,6 @@
              , deal_ty       as deal_type
              , yr_deal_scale as deal_scale
              , prmy_mat      as material
-             , con_q         as conQ
              , product       as product
              , joincmp       as joinCmp
              , main_product   as mainProduct

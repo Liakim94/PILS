@@ -461,7 +461,7 @@
                                 <p style="color: blue;">※ 둘 다 혹은 택1 지원 가능</p>
                             </div>
                             <div class="input-wrap" style="border-right: 1px solid #505050; padding-top: 18px;text-align: center;">
-                                <input type="checkbox" name="checkbox" id="const_ty1" value="원재료 비중 확인서 발급" style="width: 25%">
+                                <input type="checkbox" name="const_ty1" id="const_ty1" value="원재료 비중 확인서 발급" style="width: 25%">
                                 <div style="vertical-align: middle;">원재료 비중 확인서 발급 &nbsp;<p style="color: blue;">*수탁기업(수급사업자)만 지원가능</p></div>
 
                             </div>
@@ -542,7 +542,7 @@
                             <label class="error" for="biz_ty" generated="true" style="display:none;padding-top: 15px;"/>
                         </div>
                         <div class="line-wrap">
-                            <div class="label">
+                            <div class="label" style="width: 149px;">
                                 수위탁거래 대상물품명<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex">
@@ -595,7 +595,7 @@
                                 이메일<span class="required">*</span>
                             </div>
                             <div class="input-wrap flex">
-                                <input type="text" class="multi" name="email1" id="email1" required/>
+                                <input type="text" class="multi" name="email1" id="email1" style="width: 100px !important;"/>
                                 <span>@</span>
                                 <input type="text" style="width: 130px" name="email2" id="email2" required/>
                                 <select id="selectEmail" style="width: 130px" name="selectEmail">
