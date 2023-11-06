@@ -18,6 +18,7 @@ public interface ConsultingMapper {
 
     List<ConsultingVO> consultList(ConsultingVO vo) throws Exception;
     List<CmpMemberVo> list(CmpMemberVo vo) throws Exception;
+    int consultListCount(ConsultingVO vo) throws Exception;
     int mainCount(CmpMemberVo vo) throws Exception;
     int listCount(ConsultingVO vo) throws Exception;
     int joinCmp(CmpMemberVo vo) throws Exception;

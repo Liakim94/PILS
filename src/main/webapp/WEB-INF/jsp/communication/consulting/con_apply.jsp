@@ -40,7 +40,8 @@
         return regexpr.test(value);
     });
 
-    $(function () {
+    $(document).ready(function() {
+
         $("select[name=selectEmail]").on("change", function(){
             var $email2 = $('input[name=email2]');
             if ($(this).val() == "1") {
@@ -52,71 +53,6 @@
                 $email2.prop("readonly",true);
             }
         });
-
-        $('#apply').on('click', function () {
-
-            var bizNo = $("#bizNo1").val() + $("#bizNo2").val() + $("#bizNo3").val();
-            $('input[name=bizNo]').attr('value', bizNo);
-
-            if($('input[type=checkbox]').each(function (index) {
-                if($(this).is(":checked")==true){
-                    $('input[name=const_ty]').attr('value',$(this).val());
-                }
-            })
-            );
-
-            var email =$("#email1").val() + $("#email2").val();
-            $('input[name=email]').attr('value', email);
-            $('#consultingVO').submit();
-        });
-
-        $("#consultingVO").validate({
-            ignore: "",
-            rules: {
-                cmp_nm: {required: true},
-                bizNo: {required: true, digits : true, minlength :10},
-                ceo: {required: true},
-                const_ty: {required: true},
-                regist_num: {required: true},
-                addr: {required: true},
-                biz_ty: {required: true},
-                product: {required: true},
-                prmy_mat: {required: true},
-                mem_nm: {required: true},
-                pstn: {required: true},
-                mbphno: {required: true},
-                email1: {required: true},
-                email2: {required: true},
-                pswd: {required: true, regex: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,10}$/ },
-                passwdChk: {required: true, equalTo: "#pswd"},
-            },
-            onkeyup: false,
-            onclick: false,
-            onfocusout: false,
-            messages: {
-                cmp_nm: {required: "기업명을 입력하세요."},
-                bizNo: {required: "사업자번호를 확인하세요.", digits : "숫자만 입력하세요", minlength: "사업자번호를 확인하세요."},
-                ceo: {required: "대표자명을 입력하세요."},
-                const_ty: {required: "신청분야를 선택하세요."},
-                regist_num: {required: "법인등록번호를 입력하세요."},
-                addr: {required: "본사 주소를 입력하세요."},
-                biz_ty: {required: "대상여부를 입력하세요."},
-                product: {required: "수위탁거래 대상물품명을 입력하세요."},
-                prmy_mat: {required: "주요 원재료 후보를 입력하세요."},
-                mem_nm: {required: "담당자 성명을 입력하세요."},
-                pstn: {required: "담당자 직위를 입력하세요."},
-                mbphno: {required: "담당자 연락처를 입력하세요."},
-                email1: {required: "이메일을 입력하세요."},
-                email2: {required: "이메일을 입력하세요."},
-                pswd: {required: "비밀번호를 입력하세요.",
-                    regex:"비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."},
-                passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
-            },
-        });
-    });
-
-    $(document).ready(function() {
-
         /* 사업신청서&활용계획서 */
         $('#file1-selector').find('input[type=file]').on('change', function(evt) {
 
@@ -206,8 +142,20 @@
             }
         });
 
-        /* 저장 버튼 처리 */
-        $('#apply').on('click', function() {
+        $('#apply').on('click', function () {
+
+            var bizNo = $("#bizNo1").val() + $("#bizNo2").val() + $("#bizNo3").val();
+            $('input[name=bizNo]').attr('value', bizNo);
+
+            if($('input[type=checkbox]').each(function (index) {
+                if($(this).is(":checked")==true){
+                    $('input[name=const_ty]').attr('value',$(this).val());
+                }
+            })
+            );
+
+            var email =$("#email1").val() + $("#email2").val();
+            $('input[name=email]').attr('value', email);
 
             let file1 = $('#file1')[0].files;
 
@@ -366,9 +314,55 @@
                 });
                 console.log("file4");
             }
-            // $('#consultingVO').submit();
+            $('#consultingVO').submit();
+        });
+
+        $("#consultingVO").validate({
+            ignore: "",
+            rules: {
+                cmp_nm: {required: true},
+                bizNo: {required: true, digits : true, minlength :10},
+                ceo: {required: true},
+                const_ty: {required: true},
+                regist_num: {required: true},
+                addr: {required: true},
+                biz_ty: {required: true},
+                product: {required: true},
+                prmy_mat: {required: true},
+                mem_nm: {required: true},
+                pstn: {required: true},
+                mbphno: {required: true},
+                email1: {required: true},
+                email2: {required: true},
+                pswd: {required: true, regex: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,10}$/ },
+                passwdChk: {required: true, equalTo: "#pswd"},
+            },
+            onkeyup: false,
+            onclick: false,
+            onfocusout: false,
+            messages: {
+                cmp_nm: {required: "기업명을 입력하세요."},
+                bizNo: {required: "사업자번호를 확인하세요.", digits : "숫자만 입력하세요", minlength: "사업자번호를 확인하세요."},
+                ceo: {required: "대표자명을 입력하세요."},
+                const_ty: {required: "신청분야를 선택하세요."},
+                regist_num: {required: "법인등록번호를 입력하세요."},
+                addr: {required: "본사 주소를 입력하세요."},
+                biz_ty: {required: "대상여부를 입력하세요."},
+                product: {required: "수위탁거래 대상물품명을 입력하세요."},
+                prmy_mat: {required: "주요 원재료 후보를 입력하세요."},
+                mem_nm: {required: "담당자 성명을 입력하세요."},
+                pstn: {required: "담당자 직위를 입력하세요."},
+                mbphno: {required: "담당자 연락처를 입력하세요."},
+                email1: {required: "이메일을 입력하세요."},
+                email2: {required: "이메일을 입력하세요."},
+                pswd: {required: "비밀번호를 입력하세요.",
+                    regex:"비밀번호는 4~10자의 영문소문자, 숫자, 특수문자를 조합하여 사용해야 합니다."},
+                passwdChk: {required: "비밀번호를 재입력하세요.", equalTo: "비밀번호 불일치"},
+            },
         });
     });
+
+
     function calcTotalSize(files) {
         var totalSize = 0;
         if (files && files.length) {
@@ -472,7 +466,7 @@
 
                             </div>
                             <div class="input-wrap" style="text-align: center;">
-                                <input type="checkbox" name="checkbox" id="const_ty2" value="연동 약정 컨설팅" style="width: 25%;">
+                                <input type="checkbox" name="const_ty2" id="const_ty2" value="연동 약정 컨설팅" style="width: 25%;">
                                 연동 약정 컨설팅
                             </div>
                             <input type="hidden" name="const_ty" id="const_ty" value="">
@@ -492,14 +486,14 @@
                             </div>
                             <div class="fx2">
                                 <div class="label">
-                                    사업자 번호
+                                    사업자 번호<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex ">
-                                    <input class="multi" type="text" name="bizNo1" id="bizNo1" maxlength="3" style="width: 103px !important;">
+                                    <input class="multi" type="text" name="bizNo1" id="bizNo1" maxlength="3" style="width: 100px !important;">
                                     <span>-</span>
-                                    <input class="multi" type="text" name="bizNo2" id="bizNo2" maxlength="2" style="width: 103px !important;">
+                                    <input class="multi" type="text" name="bizNo2" id="bizNo2" maxlength="2" style="width: 100px !important;">
                                     <span>-</span>
-                                    <input class="multi" type="text" name="bizNo3" id="bizNo3" maxlength="5" style="width: 103px !important;">
+                                    <input class="multi" type="text" name="bizNo3" id="bizNo3" maxlength="5" style="width: 100px !important;">
                                     <input type="hidden" name="bizNo" id="bizNo" value="">
                                     <label class="error" for="bizNo" generated="true" style="display:none;"/>
                                 </div>

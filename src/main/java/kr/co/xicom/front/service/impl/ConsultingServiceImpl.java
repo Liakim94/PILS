@@ -49,43 +49,42 @@ public class ConsultingServiceImpl implements ConsultingService {
 
         try {// JSON 처리용 Gson
             Gson gson = new Gson();
-            Type listType = new com.google.common.reflect.TypeToken<List<ConsultingVO>>() {
-            }.getType();
+            Type listType = new com.google.common.reflect.TypeToken<List<ConsultingVO>>() {}.getType();
 
             String file1 = vo.getJsonFile1();
             if (!StringUtils.isBlank(file1)) {
                 // HTMLTagFilter 적용 되돌리기
                 file1 = kr.go.smes.util.HtmlTagUtils.restore(file1);
-                List<ConsultingVO> logoAttachs = gson.fromJson(file1, listType);
-                if (logoAttachs != null && logoAttachs.size() > 0) {
-                    vo.setFilenm1_path(logoAttachs.get(0).getSavedFilepath());
+                List<ConsultingVO> attachs = gson.fromJson(file1, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setFilenm1_path(attachs.get(0).getSavedFilepath());
                 }
             }
             String file2 = vo.getJsonFile2();
             if (!StringUtils.isBlank(file2)) {
                 // HTMLTagFilter 적용 되돌리기
                 file2 = kr.go.smes.util.HtmlTagUtils.restore(file2);
-                List<ConsultingVO> logoAttachs = gson.fromJson(file2, listType);
-                if (logoAttachs != null && logoAttachs.size() > 0) {
-                    vo.setFilenm2_path(logoAttachs.get(0).getSavedFilepath());
+                List<ConsultingVO> attachs = gson.fromJson(file2, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setFilenm2_path(attachs.get(0).getSavedFilepath());
                 }
             }
             String file3 = vo.getJsonFile3();
             if (!StringUtils.isBlank(file3)) {
                 // HTMLTagFilter 적용 되돌리기
                 file3 = kr.go.smes.util.HtmlTagUtils.restore(file3);
-                List<ConsultingVO> logoAttachs = gson.fromJson(file3, listType);
-                if (logoAttachs != null && logoAttachs.size() > 0) {
-                    vo.setFilenm3_path(logoAttachs.get(0).getSavedFilepath());
+                List<ConsultingVO> attachs = gson.fromJson(file3, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setFilenm3_path(attachs.get(0).getSavedFilepath());
                 }
             }
             String file4 = vo.getJsonFile4();
             if (!StringUtils.isBlank(file4)) {
                 // HTMLTagFilter 적용 되돌리기
                 file4 = kr.go.smes.util.HtmlTagUtils.restore(file4);
-                List<ConsultingVO> logoAttachs = gson.fromJson(file4, listType);
-                if (logoAttachs != null && logoAttachs.size() > 0) {
-                    vo.setFilenm4_path(logoAttachs.get(0).getSavedFilepath());
+                List<ConsultingVO> attachs = gson.fromJson(file4, listType);
+                if (attachs != null && attachs.size() > 0) {
+                    vo.setFilenm4_path(attachs.get(0).getSavedFilepath());
                 }
             }
         } catch (Exception ex) {

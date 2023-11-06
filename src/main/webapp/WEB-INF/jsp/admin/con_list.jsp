@@ -57,6 +57,7 @@
                         <c:forEach var="list" items="${list }" varStatus="status">
                             <tr>
                                 <td class="txt_alcnt">${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
+
                                 <td class="al">
                                     <a href="<c:url value="/admin/consulting/view.do?seq=${list.seq}"/>">
                                             ${list.cmp_nm }

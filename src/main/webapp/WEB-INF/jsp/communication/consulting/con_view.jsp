@@ -60,14 +60,14 @@
                                 <p style="color: blue;">※ 둘 다 혹은 택1 지원 가능</p>
                             </div>
                             <div class="input-wrap" style="border-right: 1px solid #505050; padding-top: 18px;text-align: center;">
-                                <input type="checkbox" name="const_ty1" id="const_ty1" value="원재료 비중 확인서 발급" style="width: 25%"
-                                       <c:if test='${rs.const_ty1 == "원재료 비중 확인서 발급"}'>checked disabled</c:if>>
+                                <input disabled type="checkbox" name="const_ty1" id="const_ty1" value="원재료 비중 확인서 발급" style="width: 25%"
+                                       <c:if test='${rs.const_ty1 == "원재료 비중 확인서 발급"}'>checked</c:if>>
                                 <div style="vertical-align: middle;">원재료 비중 확인서 발급 &nbsp;<p style="color: blue;">*수탁기업(수급사업자)만 지원가능</p></div>
 
                             </div>
                             <div class="input-wrap" style="text-align: center;">
-                                <input type="checkbox" name="const_ty2" id="const_ty2" value="연동 약정 컨설팅" style="width: 25%;"
-                                       <c:if test='${rs.const_ty2 == "연동 약정 컨설팅"}'>checked disabled</c:if>>
+                                <input disabled type="checkbox" name="const_ty2" id="const_ty2" value="연동 약정 컨설팅" style="width: 25%;"
+                                       <c:if test='${rs.const_ty2 == "연동 약정 컨설팅"}'>checked </c:if>>
                                 연동 약정 컨설팅
                             </div>
                             <input type="hidden" name="const_ty" id="const_ty" value="">
@@ -103,7 +103,7 @@
                             </div>
                             <div class="fx2">
                                 <div class="label">
-                                    법인등록번호<span class="required">*</span>
+                                    법인등록번호
                                 </div>
                                 <div class="input-wrap">
                                     ${rs.regist_num}

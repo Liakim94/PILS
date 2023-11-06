@@ -103,7 +103,7 @@
                             </div>
                             <div class="fx2">
                                 <div class="label">
-                                    법인등록번호<span class="required">*</span>
+                                    법인등록번호
                                 </div>
                                 <div class="input-wrap">
                                     ${rs.regist_num}

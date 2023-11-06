@@ -69,7 +69,6 @@
         <result property="filenm4_path" column="filenm4_path"/>
     </resultMap>
 
-
     <insert id="insertConsulting">
         insert into tb_pils_cmp_const
         ( const_ty1
@@ -202,6 +201,11 @@
         from tb_pils_cmp_const
         order by regist_dt desc
     </select>
+    <select id="consultListCount" resultType="int">
+        SELECT COUNT(1)
+        FROM tb_pils_cmp_const
+        WHERE 1 = 1
+    </select>
     <select id="list" resultMap="CmpMemberVo">
         select A.bizno                        as bizNo
              , A.cmp_mbr_cd                   as mem_cd
@@ -219,14 +223,9 @@
     </select>
 
     <select id="mainCount" resultType="int">
-        select A.bizno                        as bizNo
-             , A.cmp_mbr_cd                   as mem_cd
-             , A.cmp_nm                       as cmpNm
-             , to_char(A.appdt, 'YYYY-MM-DD') as appdate
-             , a.logo_img_path                as logoImgPath
-        from tb_pils_cmpmbr A
+        SELECT COUNT(1)
+        FROM tb_pils_cmpmbr A
         where cmp_mbr_cd = #{mem_cd}
-        order by joincmp desc
     </select>
     <select id="joinCmp" resultType="int">
         SELECT sum(joincmp)

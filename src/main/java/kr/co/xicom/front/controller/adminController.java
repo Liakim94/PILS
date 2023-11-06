@@ -1059,20 +1059,16 @@ public class adminController {
         if(rs != null) {
             //첨부파일 다운로드명 변경
             if(!rs.getIntrlck().equals("")) {
-                String fileExtension = FilenameUtils.getExtension(rs.getIntrlck_file_nm());
-                rs.setIntrlckDownloadFileNm(rs.getCmp_nm()+ "."+ fileExtension);
+                rs.setIntrlckDownloadFileNm(rs.getCmp_nm());
             }
             if(!rs.getChange().equals("")) {
-                String fileExtension = FilenameUtils.getExtension(rs.getChange_file_nm());
-                rs.setChangeDownloadFileNm(rs.getCmp_nm()+ "."+ fileExtension);
+                rs.setChangeDownloadFileNm(rs.getCmp_nm());
             }
             if(!rs.getIntrlck_perf().equals("")){
-                String fileExtension = FilenameUtils.getExtension(rs.getIntrlck_perf_file_nm());
-                rs.setIntrlckPerfDownloadFileNm( rs.getCmp_nm()+ "."+ fileExtension);
+                rs.setIntrlckPerfDownloadFileNm( rs.getCmp_nm());
             }
             if(!rs.getEtc().equals("")){
-                String fileExtension = FilenameUtils.getExtension(rs.getEtc_file_nm());
-                rs.setEtcDownloadFileNm( rs.getCmp_nm()+ "."+ fileExtension);
+                rs.setEtcDownloadFileNm( rs.getCmp_nm());
             }
             mav.addObject("rs", rs);
             return mav;

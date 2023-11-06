@@ -75,7 +75,7 @@ public class AdminServiceImpl implements AdminService {
         int cnt = 0;
         try{
             list = consultingMapper.consultList(vo);
-            cnt = consultingMapper.listCount(vo);
+            cnt = consultingMapper.consultListCount(vo);
             map.put("resultList",list);
             map.put("resultCnt", cnt);
         } catch (Exception e){
