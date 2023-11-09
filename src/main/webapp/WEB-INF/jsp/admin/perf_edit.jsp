@@ -268,7 +268,7 @@
 
             if (etc.length > 0) {
                 let totalSize = calcTotalSize(etc);
-                let maxSize = 1024 * 1024;
+                let maxSize = 1024 * 1024 * 100;
                 if (totalSize >= maxSize) {
                     alert("기타 파일 크기가 너무 큽니다.");
                     return false;
