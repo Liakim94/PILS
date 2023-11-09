@@ -267,12 +267,18 @@
             let etc = $('#etcFile')[0].files;
 
             if (etc.length > 0) {
+                let totalSize = calcTotalSize(etc);
+                let maxSize = 1024 * 1024;
+                if (totalSize >= maxSize) {
+                    alert("기타 파일 크기가 너무 큽니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "perf/etc");
-                formData.append("maxFileSize", 1024 * 1024 * 100);
+                formData.append("maxFileSize", maxSize);
                 formData.append("maxFileCount", 1);
-                formData.append("savedFileSize", calcTotalSize(etc));
-                formData.append("savedFileCount", 0);
+                formData.append("savedFileSize", totalSize);
+                formData.append("savedFileCount", 1);
                 for (const file of etc) {
                     formData.append("files", file);
                 }
