@@ -141,9 +141,9 @@
                 }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "perf/intrlck");
-                formData.append("maxFileSize", 1024 * 1024 * 100);
+                formData.append("maxFileSize", maxSize);
                 formData.append("maxFileCount", 1);
-                formData.append("savedFileSize", calcTotalSize(intrlckFile));
+                formData.append("savedFileSize", totalSize);
                 formData.append("savedFileCount", 0);
                 for (const file of intrlckFile) {
                     formData.append("files", file);
@@ -173,7 +173,12 @@
 
                     },
                     error: function(request, status, error) {
-                        alert(error);
+                        if (request.responseJSON.message) {
+                            alert(request.responseJSON.message);
+                        }
+                        else {
+                            alert(error);
+                        }
                     }
                 });
 
@@ -193,9 +198,9 @@
                 }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "perf/change");
-                formData.append("maxFileSize", 1024 * 1024 * 100);
+                formData.append("maxFileSize", maxSize);
                 formData.append("maxFileCount", 1);
-                formData.append("savedFileSize", calcTotalSize(changeFile));
+                formData.append("savedFileSize", totalSize);
                 formData.append("savedFileCount", 0);
                 for (const file of changeFile) {
                     formData.append("files", file);
@@ -225,7 +230,12 @@
 
                     },
                     error: function(request, status, error) {
-                        alert(error);
+                        if (request.responseJSON.message) {
+                            alert(request.responseJSON.message);
+                        }
+                        else {
+                            alert(error);
+                        }
                     }
                 });
 
@@ -244,9 +254,9 @@
                 }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "perf/intrlck_perf");
-                formData.append("maxFileSize", 1024 * 1024 * 100);
+                formData.append("maxFileSize", maxSize);
                 formData.append("maxFileCount", 1);
-                formData.append("savedFileSize", calcTotalSize(intrlck_perf));
+                formData.append("savedFileSize", totalSize);
                 formData.append("savedFileCount", 0);
                 for (const file of intrlck_perf) {
                     formData.append("files", file);
@@ -276,7 +286,12 @@
 
                     },
                     error: function(request, status, error) {
-                        alert(error);
+                        if (request.responseJSON.message) {
+                            alert(request.responseJSON.message);
+                        }
+                        else {
+                            alert(error);
+                        }
                     }
                 });
                 console.log("intrlck_perf,,,");
@@ -296,7 +311,7 @@
                 formData.append("maxFileSize", maxSize);
                 formData.append("maxFileCount", 1);
                 formData.append("savedFileSize", totalSize);
-                formData.append("savedFileCount", 1);
+                formData.append("savedFileCount", 0);
                 for (const file of etc) {
                     formData.append("files", file);
                 }
@@ -325,7 +340,12 @@
 
                     },
                     error: function(request, status, error) {
-                        alert(error);
+                        if (request.responseJSON.message) {
+                            alert(request.responseJSON.message);
+                        }
+                        else {
+                            alert(error);
+                        }
                     }
                 });
                 console.log("etc");
