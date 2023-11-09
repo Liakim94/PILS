@@ -47,6 +47,44 @@
     <%--	<script type="text/javascript" src="${pageContext.request.contextPath }/js/common/common.js"></script>--%>
 
 </head>
+<style>
+    .ri-earth-line:before {
+        content: url('https://api.iconify.design/ri/earth-line.svg');
+        color: #716eb7;
+    }
+    .english-wrap{
+        padding: 1px 10px;
+        border: 1px solid #716eb7;
+        border-radius: 18px;
+        width: 43px;
+        text-align: left;
+        color: #716eb7;
+        margin-top: 3px;
+        margin-left: 10px;
+    }
+    @media (max-width: 1181px) {
+        .english-wrap {
+            padding: 1px 4px;
+            border: 1px solid #716eb7;
+            border-radius: 18px;
+            width: 47px;
+            color: #716eb7;
+            margin-top: 2px;
+            margin-left: 2px;
+        }
+    }
+    @media (max-width: 768px) {
+        .english-wrap {
+            padding: 0px 4px;
+            border: 1px solid #716eb7;
+            border-radius: 18px;
+            width: 41px;
+            color: #716eb7;
+            margin-top: 1px;
+            margin-left: -14px;
+        }
+    }
+</style>
 <header class="gnb-container">
     <div class="gnb-wrap">
         <div class="logo-wrap">
@@ -87,12 +125,6 @@
                     <a href="<c:url value="/join/perf/main.do"/>">동행기업 실적 제출</a>
                 </div>
             </div>
-<%--            <div class="wrapper">--%>
-<%--                <a class="font18 menu" href="<c:url value="/front/material/temp.do"/>">원재료 정보</a>--%>
-<%--            </div>--%>
-<%--            <div class="wrapper">--%>
-<%--                <a class="font18 menu" href="<c:url value="/front/consulting/temp.do"/>">컨설팅 신청</a>--%>
-<%--            </div>--%>
             <div class="wrapper">
                 <a class="font18 menu" href="<c:url value="/front/board/11/list.do"/>">소통·상담</a>
                 <div class="submenu" style="left: -65px;">
@@ -112,20 +144,25 @@
             <c:if test="${sessionId eq null }">
             <a class="login font14 point2-text inline-focus" tabindex="0"
                href="${pageContext.request.contextPath}/main/login.do">로그인</a><br>
-                <a class="login font14 point2-text inline-focus" tabindex="0"
-                   href="${pageContext.request.contextPath}/main/mbrApply.do">담당자등록</a>
-
+            <a class="login font14 point2-text inline-focus" tabindex="0"
+               href="${pageContext.request.contextPath}/main/mbrApply.do">담당자등록</a>
             <div class="mobile-menu" tabindex="0" onclick="mobileMenuOpen(this)">
                 <span></span>
                 <span></span>
                 <span></span>
+            </div>
+            <div class="english-wrap">
+                <a href="${pageContext.request.contextPath}/en/index.do">
+                    <i class="ri-earth-line"></i>
+                    <span style="color: #716eb7;">EN</span>
+                </a>
             </div>
         </div>
         </c:if>
         <c:if test="${sessionId ne null  && sessionId ne 'admin'}">
             <div>
                 <a class="login font14 point2-text inline-focus" tabindex="0"
-                   href="${pageContext.request.contextPath}/main/myPage.do"
+                   href="${pageContext.request.contextPath}/main/mem/management.do"
                 >마이페이지</a>
             </div>
             <div>
@@ -133,12 +170,18 @@
                    href="${pageContext.request.contextPath}/main/logout.do"
                 >로그아웃</a>
             </div>
-                <div class="mobile-menu" tabindex="0" onclick="mobileMenuOpen(this)">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+            <div class="mobile-menu" tabindex="0" onclick="mobileMenuOpen(this)">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+            <div class="english-wrap">
+                <a href="${pageContext.request.contextPath}/en/index.do" target="_blank">
+                    <i class="ri-earth-line"></i>
+                    <span style="color: #716eb7;">EN</span>
+                </a>
+            </div>
+        </div>
         </c:if>
         <c:if test="${sessionId eq 'admin' }">
             <div>
@@ -151,12 +194,18 @@
                    href="${pageContext.request.contextPath}/main/logout.do"
                 >로그아웃</a>
             </div>
-                <div class="mobile-menu" tabindex="0" onclick="mobileMenuOpen(this)">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+            <div class="mobile-menu" tabindex="0" onclick="mobileMenuOpen(this)">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+            <div class="english-wrap">
+                <a href="${pageContext.request.contextPath}/en/index.do" target="_blank">
+                    <i class="ri-earth-line"></i>
+                    <span style="color: #716eb7;">EN</span>
+                </a>
+            </div>
+        </div>
         </c:if>
     </div>
     <div class="mobile-gnb-container">
@@ -168,7 +217,7 @@
                 </c:if>
                 <c:if test="${sessionId ne null && sessionId ne 'admin' }">
                     <div>
-                        <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/myPage.do"
+                        <a class="login font14 point2-text" href="${pageContext.request.contextPath}/main/mem/management.do"
                         >마이페이지</a>
                     </div>
                     <div>

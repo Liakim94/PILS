@@ -413,6 +413,7 @@
           , updt          = current_timestamp
           , joincmp       = #{joinCmp}
           , main_product  = #{mainProduct}
+          , cmp_mbr_cd    ='M302'
         where bizno = #{bizNo}
     </update>
 </mapper>

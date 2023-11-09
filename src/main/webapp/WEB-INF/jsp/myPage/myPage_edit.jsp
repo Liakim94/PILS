@@ -169,6 +169,7 @@
                                     사업자 번호
                                 </div>
                                 <div class="input-wrap">
+                                    <form:input path="bizNo"/>
                                         ${fn:substring(frmEdit.bizNo,0,3)}-${fn:substring(frmEdit.bizNo,3,5)}-${fn:substring(frmEdit.bizNo,5,10)}
                                 </div>
                             </div>

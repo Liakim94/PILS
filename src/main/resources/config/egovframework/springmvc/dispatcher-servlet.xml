@@ -133,6 +133,7 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/main/index.do"/>
+            <mvc:mapping path="/en/index.do"/>
             <bean class="kr.co.xicom.VisitLogInterceptor">
                 <constructor-arg ref="visitLogService"/>
             </bean>

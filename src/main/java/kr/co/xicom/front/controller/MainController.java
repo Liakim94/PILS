@@ -186,7 +186,7 @@ public class MainController {
     public ModelAndView view(ModelMap model,
                              @ModelAttribute("CmpMemberVo") CmpMemberVo cmpVO,
                              @ModelAttribute("CmpSttusVO") CmpSttusVO stVO,
-                             HttpSession session) throws Exception {
+                             HttpSession session, HttpServletResponse response, HttpServletRequest request) throws Exception {
 
         ModelAndView mav = new ModelAndView("myPage/myPage");
         String bizNo = (String) session.getAttribute("sessionBizNo");
@@ -195,19 +195,25 @@ public class MainController {
         cmpVO.setMem_cd("M302");
         stVO.setBizNo(bizNo);
         try {
-            cmpVO = mainService.getMemInfo(cmpVO);
+            CmpMemberVo rs = mainService.getMemInfo(cmpVO);
+            if(rs == null){
+                response.setContentType("text/html;charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.println("<script>alert('동행기업 신청 후 확인 가능합니다.'); history.back(); </script>");
+                out.flush();
+            }
             List<AttachVO> attachList = consultingService.getAttachList(cmpVO);
 //            List<CmpSttusVO> sttus = consultingService.getCmpSttus(stVO);
 
-            cmpVO.setBizNo1(cmpVO.getBizNo().substring(0, 3));
-            cmpVO.setBizNo2(cmpVO.getBizNo().substring(3, 5));
-            cmpVO.setBizNo3(cmpVO.getBizNo().substring(5, 10));
+            rs.setBizNo1(cmpVO.getBizNo().substring(0, 3));
+            rs.setBizNo2(cmpVO.getBizNo().substring(3, 5));
+            rs.setBizNo3(cmpVO.getBizNo().substring(5, 10));
 //            if (cmpVO == null && sttus == null) {
                 if (cmpVO == null) {
                 System.out.println("비정상적인 접근입니다.");
             }
 
-            mav.addObject("rs", cmpVO);
+            mav.addObject("rs", rs);
 //            mav.addObject("st", sttus);
             mav.addObject("attachList", attachList);
 

@@ -55,6 +55,7 @@ public class JoinController extends Alerts{
         HttpSession session = request.getSession();
         String userId=(String)session.getAttribute("sessionId");
         String bizNo=(String)session.getAttribute("sessionBizNo");
+        String authCd=(String)session.getAttribute("auth_cd");
 
         if(userId==null || userId==""){
             response.setContentType("text/html;charset=UTF-8");
@@ -71,6 +72,7 @@ public class JoinController extends Alerts{
         ModelAndView mav = new ModelAndView("join/apply/join_apply");
 
         mav.addObject("bizNo", bizNo);
+        mav.addObject("authCd",authCd );
         return mav;
     }
 

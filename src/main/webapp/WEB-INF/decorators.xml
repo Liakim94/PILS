@@ -83,6 +83,23 @@
     <decorator name="layout" page="/WEB-INF/jsp/template/front/layout.jsp">
         <pattern>/front/material</pattern>
     </decorator>
-
+    <decorator name="header_en" page="/en/header.do"/>
+    <decorator name="footer_en" page="/footer.do"/>
+    <decorator name="menu_join_en" page="/en/menu_join.do"/>
+    <decorator name="layout_en" page="/WEB-INF/jsp/english/layout.jsp">
+        <pattern>/en/index.do</pattern>
+    </decorator>
+    <decorator name="header_en" page="/en/header.do"/>
+    <decorator name="footer_en" page="/footer.do"/>
+    <decorator name="menu_join_en" page="/en/menu_join.do"/>
+    <decorator name="layout_en" page="/WEB-INF/jsp/english/layout.jsp">
+        <pattern>/en/join/*</pattern>
+    </decorator>
+    <decorator name="header_en" page="/en/header.do"/>
+    <decorator name="footer" page="/footer.do"/>
+    <decorator name="menu_guide_en" page="/en/menu_guide.do"/>
+    <decorator name="layout_en" page="/WEB-INF/jsp/english/layout.jsp">
+        <pattern>/en/guide/*</pattern>
+    </decorator>
 
 </decorators>

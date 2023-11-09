@@ -7,24 +7,25 @@
 <%@ taglib uri="http://egovframework.gov/ctl/ui"                prefix="ui"         %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"         prefix="fn"         %>
 <%@ taglib uri="http://www.springframework.org/tags"            prefix="spring"     %>
+<c:set var="URI" value="${requestScope['javax.servlet.forward.request_uri']}" />
 <%
 String uploadPath = "";
 uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString().trim()).equals("")?"upload":EgovProperties.getProperty("UploadPath").toString();
 %>
-<c:set var="URI" value="${requestScope['javax.servlet.forward.request_uri']}" />
 
-<aside class="main-sidebar">
+
+<aside class="sidebar">
     <div class ="lnb">
-        <h2>마이페이지</h2>
+        <h2>Partner company</h2>
         <ul>
-            <li class="<c:if test="${URI.contains('/main/mem')}">on</c:if>">
-                <a href ="${pageContext.request.contextPath}/main/mem/management.do">담당자 관리</a>
+            <li class="<c:if test="${URI.contains('/en/join/concept.do')}">on</c:if>">
+                <a href="<c:url value="/en/join/concept.do"/>">What is a partner company?</a>
             </li>
-            <li class="<c:if test="${URI.contains('/main/myPage')}">on</c:if>">
-                <a href ="${pageContext.request.contextPath}/main/myPage.do">동행기업 신청 정보</a>
+            <li class="<c:if test="${URI.contains('/en/join/incentive.do')}">on</c:if>">
+                <a href="<c:url value="/en/join/incentive.do"/>">Incentive offered to partner company</a>
             </li>
-            <li class="<c:if test="${URI.contains('/main/perf')}">on</c:if>">
-                <a href ="${pageContext.request.contextPath}/main/perf/list.do">동행기업 실적 제출</a>
+            <li class="<c:if test="${URI.contains('/en/join/apply.do')}">on</c:if>">
+                <a href="<c:url value="/en/join/apply.do"/>">Partner company application</a>
             </li>
         </ul>
     </div>

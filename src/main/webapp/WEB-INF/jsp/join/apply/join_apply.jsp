@@ -102,6 +102,21 @@
         $("#frmApply").validate({
             ignore: "",
             rules: {
+                bizNo1: {required: true, digits : true},
+                bizNo2: {required: true, digits : true},
+                bizNo3: {required: true, digits : true},
+                bizNo: {
+                    remote: {
+                        type: "post"
+                        , url: "${pageContext.request.contextPath}/join/checkBizno.do"
+                        , data: {
+                            username: function () {
+                                return $("#bizNo").val();
+                            }
+                        }
+                    },
+                    digits : true
+                },
                 cmpNm: {required: true},
                 ceo: {required: true},
                 fdate: {required: true},
@@ -116,6 +131,10 @@
                 material: {required: true},
             },
             messages: {
+                bizNo1: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
+                bizNo2: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
+                bizNo3: {required: "사업자번호를 확인하세요.",  digits : "숫자만 입력하세요"},
+                bizNo: {remote: "이미 존재하는 사업자번호입니다.",  digits : "숫자만 입력하세요"},
                 cmpNm: {required: "기업명을 입력하세요."},
                 ceo: {required: "대표자명을 입력하세요."},
                 fdate: {required: "설립일자를 입력하세요."},
@@ -182,8 +201,20 @@
                             <div class="label">
                                 사업자 번호
                             </div>
-                            <div class="input-wrap">
-                                    ${fn:substring(bizNo,0,3)}-${fn:substring(bizNo,3,5)}-${fn:substring(bizNo,5,10)}
+                            <div class="input-wrap non-flex">
+                                <c:choose>
+                                    <c:when test="${authCd eq 'M101'}">
+                                        <input class="multi" type="text" id="bizNo1" name="bizNo1"  maxlength="3"/>
+                                        <span style="padding: 4px 6px;">-</span>
+                                        <input class="multi" type="text" id="bizNo2" name="bizNo2"  maxlength="2"/>
+                                        <span style="padding: 4px 6px;">-</span>
+                                        <input class="multi" type="text" id="bizNo3" name="bizNo3"  maxlength="5"/>
+                                        <input type="hidden" id="bizNo" name=bizNo value="">
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${fn:substring(bizNo,0,3)}-${fn:substring(bizNo,3,5)}-${fn:substring(bizNo,5,10)}
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
