@@ -296,7 +296,7 @@
             let file4 = $('#file4')[0].files;
 
             if (file4.length > 0) {
-                let totalSize = calcTotalSize(file1]4);
+                let totalSize = calcTotalSize(file4);
                 let maxSize = 1024 * 1024 * 20;
                 if (totalSize >= maxSize) {
                     alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
@@ -385,7 +385,6 @@
             },
         });
     });
-
 
     function calcTotalSize(files) {
         var totalSize = 0;
