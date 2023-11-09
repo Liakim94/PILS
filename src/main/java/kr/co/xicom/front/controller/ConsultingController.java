@@ -140,7 +140,7 @@ public class ConsultingController extends Alerts {
             if (rs == null) {
                 writeAlert("비정상적인 접근입니다.", request, response);
             }
-            mav.addObject("rs", rs);
+            mav.addObject("consultingVO", rs);
 
         } catch (Exception e) {
             System.out.println(e.toString());

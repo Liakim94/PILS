@@ -297,7 +297,7 @@ public class adminController {
             if (rs == null) {
                 return new ModelAndView("common/error.jsp");
             }
-            mav.addObject("rs", rs);
+            mav.addObject("consultingVO", rs);
 
         } catch (Exception e) {
             System.out.println(e.toString());

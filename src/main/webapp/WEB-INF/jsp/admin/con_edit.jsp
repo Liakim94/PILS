@@ -482,13 +482,13 @@
                             </div>
                             <div class="input-wrap" style="border-right: 1px solid #505050; padding-top: 18px;text-align: center;">
                                 <input type="checkbox" name="const_ty1" id="const_ty1" value="원재료 비중 확인서 발급" style="width: 25%"
-                                       <c:if test='${rs.const_ty1 == "원재료 비중 확인서 발급"}'>checked</c:if>>
+                                       <c:if test='${consultingVO.const_ty1 == "원재료 비중 확인서 발급"}'>checked</c:if>>
                                 <div style="vertical-align: middle;">원재료 비중 확인서 발급 &nbsp;<p style="color: blue;">*수탁기업(수급사업자)만 지원가능</p></div>
 
                             </div>
                             <div class="input-wrap" style="text-align: center;">
                                 <input type="checkbox" name="const_ty2" id="const_ty2" value="연동 약정 컨설팅" style="width: 25%;"
-                                       <c:if test='${rs.const_ty2 == "연동 약정 컨설팅"}'>checked</c:if>>
+                                       <c:if test='${consultingVO.const_ty2 == "연동 약정 컨설팅"}'>checked</c:if>>
                                 연동 약정 컨설팅
                             </div>
                             <input type="hidden" name="const_ty" id="const_ty" value="">
@@ -501,7 +501,7 @@
                                     기업명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" name="cmp_nm" id="cmp_nm"  value="${rs.cmp_nm}">
+                                    <input type="text" name="cmp_nm" id="cmp_nm"  value="${consultingVO.cmp_nm}">
                                     <label class="error" for="cmp_nm" generated="true" style="display:none;"/>
 
                                 </div>
@@ -511,11 +511,11 @@
                                     사업자 번호
                                 </div>
                                 <div class="input-wrap non-flex ">
-                                    <input value="${rs.bizNo1}" class="multi" type="text" name="bizNo1" id="bizNo1" maxlength="3" style="width: 103px !important;">
+                                    <input value="${consultingVO.bizNo1}" class="multi" type="text" name="bizNo1" id="bizNo1" maxlength="3" style="width: 103px !important;">
                                     <span>-</span>
-                                    <input value="${rs.bizNo2}" class="multi" type="text" name="bizNo2" id="bizNo2" maxlength="2" style="width: 103px !important;">
+                                    <input value="${consultingVO.bizNo2}" class="multi" type="text" name="bizNo2" id="bizNo2" maxlength="2" style="width: 103px !important;">
                                     <span>-</span>
-                                    <input value="${rs.bizNo3}" class="multi" type="text" name="bizNo3" id="bizNo3" maxlength="5" style="width: 103px !important;">
+                                    <input value="${consultingVO.bizNo3}" class="multi" type="text" name="bizNo3" id="bizNo3" maxlength="5" style="width: 103px !important;">
                                     <input type="hidden" name="bizNo" id="bizNo" value="">
                                     <label class="error" for="bizNo" generated="true" style="display:none;"/>
                                 </div>
@@ -527,7 +527,7 @@
                                     대표자명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="ceo" name="ceo" value="${rs.ceo}" required/>
+                                    <input type="text" id="ceo" name="ceo" value="${consultingVO.ceo}" required/>
                                 </div>
                             </div>
                             <div class="fx2">
@@ -535,7 +535,7 @@
                                     법인등록번호<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="regist_num" name="regist_num" value="${rs.regist_num}"/>
+                                    <input type="text" id="regist_num" name="regist_num" value="${consultingVO.regist_num}"/>
                                 </div>
                             </div>
                         </div>
@@ -544,9 +544,9 @@
                                 본사 주소<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex address-input-wrap">
-                                <input type="text" name="addr" id="addr" onclick="execPostCode()" value="${rs.addr}" readonly/>
+                                <input type="text" name="addr" id="addr" onclick="execPostCode()" value="${consultingVO.addr}" readonly/>
                                 <button type="button" class="btn" onclick="execPostCode()">주소찾기</button>
-                                <input type="text" name="addr_dtl" id="addr_dtl" value="${rs.addr_dtl}"  placeholder="상세주소"/>
+                                <input type="text" name="addr_dtl" id="addr_dtl" value="${consultingVO.addr_dtl}"  placeholder="상세주소"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -555,12 +555,12 @@
                             </div>
                             <div class="input-wrap" style="border-right: 1px solid #505050;">
                                 <input type="radio" id="biz_ty" name="biz_ty" value="위탁기업" style="width: 40%;"
-                                       <c:if test='${rs.biz_ty == "위탁기업"}'>checked</c:if>>
+                                       <c:if test='${consultingVO.biz_ty == "위탁기업"}'>checked</c:if>>
                                 위탁기업(원사업자)
                             </div>
                             <div class="input-wrap" >
                                 <input type="radio" id="consign" name="biz_ty"  value="수탁기업" style="width: 40%;"
-                                       <c:if test='${rs.biz_ty == "수탁기업"}'>checked</c:if>>
+                                       <c:if test='${consultingVO.biz_ty == "수탁기업"}'>checked</c:if>>
                                 수탁기업(수급사업자)
                             </div>
                             <label class="error" for="biz_ty" generated="true" style="display:none;padding-top: 15px;"/>
@@ -570,7 +570,7 @@
                                 수위탁거래 대상물품명<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex">
-                                <input type="text" id="product" name="product" value="${rs.product}"
+                                <input type="text" id="product" name="product" value="${consultingVO.product}"
                                        placeholder="* 추후 연동 희망 예정인 대상 물품명"/>
                             </div>
                         </div>
@@ -579,7 +579,7 @@
                                 주요 원재료 후보<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex">
-                                <input type="text" id="prmy_mat" name="prmy_mat" value="${rs.prmy_mat}"/>
+                                <input type="text" id="prmy_mat" name="prmy_mat" value="${consultingVO.prmy_mat}"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -594,7 +594,7 @@
                                     성명<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="mem_nm" name="mem_nm" value="${rs.mem_nm}"/>
+                                    <input type="text" id="mem_nm" name="mem_nm" value="${consultingVO.mem_nm}"/>
                                 </div>
                             </div>
                             <div class="fx2">
@@ -602,7 +602,7 @@
                                     직위<span class="required">*</span>
                                 </div>
                                 <div class="input-wrap non-flex">
-                                    <input type="text" id="pstn" name="pstn" value="${rs.pstn}"/>
+                                    <input type="text" id="pstn" name="pstn" value="${consultingVO.pstn}"/>
                                 </div>
                             </div>
                         </div>
@@ -611,7 +611,7 @@
                                 연락처<span class="required">*</span>
                             </div>
                             <div class="input-wrap non-flex">
-                                <input type="text" id="mbphno" name="mbphno" value="${rs.mbphno}"/>
+                                <input type="text" id="mbphno" name="mbphno" value="${consultingVO.mbphno}"/>
                             </div>
                         </div>
                         <div class="line-wrap">
@@ -619,9 +619,9 @@
                                 이메일<span class="required">*</span>
                             </div>
                             <div class="input-wrap flex">
-                                <input type="text" class="multi" name="email1" id="email1" value="${rs.email1}"/>
+                                <input type="text" class="multi" name="email1" id="email1" value="${consultingVO.email1}"/>
                                 <span>@</span>
-                                <input type="text" style="width: 130px" name="email2" id="email2"  value="${rs.email2}"/>
+                                <input type="text" style="width: 130px" name="email2" id="email2"  value="${consultingVO.email2}"/>
                                 <select id="selectEmail" style="width: 130px" name="selectEmail">
                                     <option value="1">직접입력</option>
                                     <option value="naver.com">naver.com</option>
@@ -671,7 +671,8 @@
                                 1. 사업신청서&활용계획서
                             </div>
                             <div id="file1-selector" class="input-box file-selector">
-                                <input name="filenm1" type="text" readonly="true" value="${rs.filenm1}"/>
+                                <form:input path="filenm1" readonly="true" />
+                                <form:hidden path="filenm1_path" readonly="true" />
                                 <input type="file" name="file1" id="file1"/>
                                 <label for="file1" class="button">선택...</label>
                             </div>
@@ -682,7 +683,8 @@
                                 2. 사업자등록증&중소기업확인서
                             </div>
                             <div id="file2-selector" class="input-box file-selector">
-                                <input name="filenm2" type="text" readonly="true" value="${rs.filenm2}"/>
+                                <form:input path="filenm2" readonly="true" />
+                                <form:hidden path="filenm2_path" readonly="true" />
                                 <input type="file" name="file2" id="file2"/>
                                 <label for="file2" class="button">선택...</label>
                             </div>
@@ -693,7 +695,8 @@
                                 3. 개인 또는 법인(신용)정보 수집·이용·제공 조회 동의서
                             </div>
                             <div id="file3-selector" class="input-box file-selector">
-                                <input name="filenm3" type="text" readonly="true" value="${rs.filenm3}"/>
+                                <form:input path="filenm3" readonly="true" />
+                                <form:hidden path="filenm3_path" readonly="true" />
                                 <input type="file" name="file3" id="file3"/>
                                 <label for="file3" class="button">선택...</label>
                             </div>
@@ -704,7 +707,8 @@
                                 4.국세&지방세 완납증명서
                             </div>
                             <div id="file4-selector" class="input-box file-selector">
-                                <input name="filenm4" type="text" readonly="true" value="${rs.filenm4}"/>
+                                <form:input path="filenm4" readonly="true" />
+                                <form:hidden path="filenm4_path" readonly="true" />
                                 <input type="file" name="file4" id="file4"/>
                                 <label for="file4" class="button">선택...</label>
                             </div>
