@@ -160,6 +160,12 @@
             let file1 = $('#file1')[0].files;
 
             if (file1.length > 0) {
+                let totalSize = calcTotalSize(file1);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "con/file1");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
@@ -199,6 +205,12 @@
             let file2 = $('#file2')[0].files;
 
             if (file2.length > 0) {
+                let totalSize = calcTotalSize(file2);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "con/file2");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
@@ -239,6 +251,12 @@
             let file3 = $('#file3')[0].files;
 
             if (file3.length > 0) {
+                let totalSize = calcTotalSize(file3);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "con/file3");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
@@ -278,6 +296,12 @@
             let file4 = $('#file4')[0].files;
 
             if (file4.length > 0) {
+                let totalSize = calcTotalSize(file1]4);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "con/file4");
                 formData.append("maxFileSize", 1024 * 1024 * 100);

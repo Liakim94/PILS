@@ -212,6 +212,12 @@
             let file1 = $('#file1')[0].files;
 
             if (file1.length > 0) {
+                let totalSize = calcTotalSize(file1);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "con/file1");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
@@ -251,6 +257,12 @@
             let file2 = $('#file2')[0].files;
 
             if (file2.length > 0) {
+                let totalSize = calcTotalSize(file2);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "con/file2");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
@@ -291,6 +303,12 @@
             let file3 = $('#file3')[0].files;
 
             if (file3.length > 0) {
+                let totalSize = calcTotalSize(file3);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "con/file3");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
@@ -330,6 +348,12 @@
             let file4 = $('#file4')[0].files;
 
             if (file4.length > 0) {
+                let totalSize = calcTotalSize(file4);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "con/file4");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
@@ -647,7 +671,7 @@
                                 1. 사업신청서&활용계획서
                             </div>
                             <div id="file1-selector" class="input-box file-selector">
-                                <form:input path="filenm1" readonly="true"/>
+                                <input name="filenm1" type="text" readonly="true" value="${rs.filenm1}"/>
                                 <input type="file" name="file1" id="file1"/>
                                 <label for="file1" class="button">선택...</label>
                             </div>
@@ -658,7 +682,7 @@
                                 2. 사업자등록증&중소기업확인서
                             </div>
                             <div id="file2-selector" class="input-box file-selector">
-                                <form:input path="filenm2" readonly="true"/>
+                                <input name="filenm2" type="text" readonly="true" value="${rs.filenm2}"/>
                                 <input type="file" name="file2" id="file2"/>
                                 <label for="file2" class="button">선택...</label>
                             </div>
@@ -669,7 +693,7 @@
                                 3. 개인 또는 법인(신용)정보 수집·이용·제공 조회 동의서
                             </div>
                             <div id="file3-selector" class="input-box file-selector">
-                                <form:input path="filenm3" readonly="true"/>
+                                <input name="filenm3" type="text" readonly="true" value="${rs.filenm3}"/>
                                 <input type="file" name="file3" id="file3"/>
                                 <label for="file3" class="button">선택...</label>
                             </div>
@@ -680,7 +704,7 @@
                                 4.국세&지방세 완납증명서
                             </div>
                             <div id="file4-selector" class="input-box file-selector">
-                                <form:input path="filenm4" readonly="true"/>
+                                <input name="filenm4" type="text" readonly="true" value="${rs.filenm4}"/>
                                 <input type="file" name="file4" id="file4"/>
                                 <label for="file4" class="button">선택...</label>
                             </div>

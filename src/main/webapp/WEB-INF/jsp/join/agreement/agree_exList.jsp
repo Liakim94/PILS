@@ -337,7 +337,7 @@
                                 <c:forEach var="rs" items="${rs }" varStatus="status">
                                     <tr>
                                         <td>${paginationInfo.totalRecordCount - ((paginationInfo.currentPageNo-1) * paginationInfo.recordCountPerPage + status.index) }</td>
-                                        <td class="al">
+                                        <td>
                                             <a href="${pageContext.request.contextPath}/join/ex/view.do?seq=${rs.seq}" style="color: rgb(0, 72, 255);">${rs.ex_nm }</a>
                                         </td>
                                         <td>${rs.prmy_mat}</td>

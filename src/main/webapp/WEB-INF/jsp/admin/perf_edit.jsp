@@ -130,9 +130,15 @@
             let intrlckFile = $('#intrlckFile')[0].files;
 
             console.log('intrlck');
-            console.dir(intrlckFile);
+            // console.dir(intrlckFile);
 
             if (intrlckFile.length > 0) {
+                let totalSize = calcTotalSize(intrlckFile);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "perf/intrlck");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
@@ -179,6 +185,12 @@
             console.dir(changeFile);
 
             if (changeFile.length > 0) {
+                let totalSize = calcTotalSize(changeFile);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "perf/change");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
@@ -224,6 +236,12 @@
             let intrlck_perf = $('#intrlck_perfFile')[0].files;
 
             if (intrlck_perf.length > 0) {
+                let totalSize = calcTotalSize(intrlck_perf);
+                let maxSize = 1024 * 1024 * 20;
+                if (totalSize >= maxSize) {
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
+                    return false;
+                }
                 let formData = new FormData();
                 formData.append("targetFolderPath", "perf/intrlck_perf");
                 formData.append("maxFileSize", 1024 * 1024 * 100);
@@ -268,9 +286,9 @@
 
             if (etc.length > 0) {
                 let totalSize = calcTotalSize(etc);
-                let maxSize = 1024 * 1024 * 100;
+                let maxSize = 1024 * 1024 * 20;
                 if (totalSize >= maxSize) {
-                    alert("기타 파일 크기가 너무 큽니다.");
+                    alert("첨부파일 사이즈는 20MB 이내로 등록 가능합니다.");
                     return false;
                 }
                 let formData = new FormData();

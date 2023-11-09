@@ -201,21 +201,23 @@
                             <div class="label">
                                 사업자 번호
                             </div>
-                            <div class="input-wrap non-flex">
                                 <c:choose>
                                     <c:when test="${authCd eq 'M101'}">
+                                    <div class="input-wrap non-flex">
                                         <input class="multi" type="text" id="bizNo1" name="bizNo1"  maxlength="3"/>
                                         <span style="padding: 4px 6px;">-</span>
                                         <input class="multi" type="text" id="bizNo2" name="bizNo2"  maxlength="2"/>
                                         <span style="padding: 4px 6px;">-</span>
                                         <input class="multi" type="text" id="bizNo3" name="bizNo3"  maxlength="5"/>
                                         <input type="hidden" id="bizNo" name=bizNo value="">
+                                     </div>
                                     </c:when>
                                     <c:otherwise>
+                                        <div class="input-wrap">
                                         ${fn:substring(bizNo,0,3)}-${fn:substring(bizNo,3,5)}-${fn:substring(bizNo,5,10)}
+                                        </div>
                                     </c:otherwise>
                                 </c:choose>
-                            </div>
                         </div>
                     </div>
                     <div class="line-wrap">
