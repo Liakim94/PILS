@@ -80,8 +80,8 @@
             border-radius: 18px;
             width: 50px;
             color: #716eb7;
-            margin-top: 1px;
-            margin-left: -14px;
+            margin-top: -2px;
+            margin-left: -23px;
         }
     }
 </style>

@@ -46,7 +46,10 @@
                     <div class="pc-process-wrap">
                         <img style="width: 100%" class="process" src="<c:url value="/images/english/price%20indexation%20process.png"/>">
                     </div>
-                    <h2 class="title">① Provision of Indexation Agreement</h2>
+                    <div class="mobile-process-wrap mobile">
+                        <img class="process" src="<c:url value="/images/english/price%20indexation%20process.png"/>">
+                    </div>
+                        <h2 class="title">① Provision of Indexation Agreement</h2>
                     <h4>
                       <ul class="disc">
                           <li class="mb20">

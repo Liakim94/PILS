@@ -41,7 +41,7 @@
                         <div class="label">
                             1. 하도급대금등 연동 대상 목적물등의 명칭
                         </div>
-                        <div class="value-wrap">
+                        <div class="value-wrap" style="padding-top: 30px;">
                             ${rs.name}
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         <div class="label">
                             2. 하도급대금등 연동 대상 주요 원재료
                         </div>
-                        <div class="value-wrap">
+                        <div class="value-wrap" style="padding-top: 30px;">
                             ${rs.prmy_mat}
                         </div>
                     </div>
