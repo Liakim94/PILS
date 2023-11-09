@@ -173,7 +173,7 @@
 
                     },
                     error: function(request, status, error) {
-                        if (request.responseJSON.message) {
+                        if (request.responseJSON && request.responseJSON.message) {
                             alert(request.responseJSON.message);
                         }
                         else {
@@ -230,7 +230,7 @@
 
                     },
                     error: function(request, status, error) {
-                        if (request.responseJSON.message) {
+                        if (request.responseJSON && request.responseJSON.message) {
                             alert(request.responseJSON.message);
                         }
                         else {
@@ -286,7 +286,7 @@
 
                     },
                     error: function(request, status, error) {
-                        if (request.responseJSON.message) {
+                        if (request.responseJSON && request.responseJSON.message) {
                             alert(request.responseJSON.message);
                         }
                         else {
@@ -340,7 +340,7 @@
 
                     },
                     error: function(request, status, error) {
-                        if (request.responseJSON.message) {
+                        if (request.responseJSON && request.responseJSON.message) {
                             alert(request.responseJSON.message);
                         }
                         else {
