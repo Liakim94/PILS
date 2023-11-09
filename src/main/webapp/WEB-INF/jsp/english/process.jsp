@@ -44,27 +44,7 @@
                 <!-- 컨텐츠 start -->
                 <section class="font16 point4-text">
                     <div class="pc-process-wrap">
-                        <img class="process" src="<c:url value="/images/common/process1.png"/>">
-                        <img class="next" src="<c:url value="/images/common/next.png"/>">
-                        <img class="process" src="<c:url value="/images/common/process2.png"/>">
-                        <img class="next" src="<c:url value="/images/common/next.png"/>">
-                        <img class="process" src="<c:url value="/images/common/process3.png"/>">
-                        <img class="next" src="<c:url value="/images/common/next.png"/>">
-                        <img class="process" src="<c:url value="/images/common/process4.png"/>">
-                    </div>
-                    <div class="mobile-process-wrap mobile">
-                        <div class="img-wrap">
-                            <img class="process" src="<c:url value="/images/common/process1.png"/>">
-                        </div>
-                        <div class="img-wrap">
-                            <img class="process" src="<c:url value="/images/common/process2.png"/>">
-                        </div>
-                        <div class="img-wrap">
-                            <img class="process" src="<c:url value="/images/common/process4.png"/>">
-                        </div>
-                        <div class="img-wrap">
-                            <img class="process" src="<c:url value="/images/common/process3.png"/>">
-                        </div>
+                        <img style="width: 100%" class="process" src="<c:url value="/images/english/price%20indexation%20process.png"/>">
                     </div>
                     <h2 class="title">① Provision of Indexation Agreement</h2>
                     <h4>
