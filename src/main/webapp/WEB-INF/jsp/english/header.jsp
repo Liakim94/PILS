@@ -147,7 +147,7 @@
                 <span></span>
             </div>
             <div class="english-wrap">
-                <a href="${pageContext.request.contextPath}/main/index.do" target="_blank">
+                <a href="${pageContext.request.contextPath}/main/index.do">
                     <i class="ri-earth-line"></i>
                     <span style="color: #716eb7;">KOR</span>
                 </a>
