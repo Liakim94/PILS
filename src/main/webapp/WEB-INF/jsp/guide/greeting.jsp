@@ -47,7 +47,7 @@
                             <h3 class="tr pc">중소벤처기업부 장관 <strong>이영</strong></h3>
                         </div>
                         <div class="img-wrap">
-                            <img src="<c:url value="/images/common/welcome.png"/>" alt="중소벤처기업부 장관 이영">
+                            <%--img src="<c:url value="/images/common/welcome.png"/>" alt="중소벤처기업부 장관 이영"--%>
                             <h3 class="mobile mt15">중소벤처기업부 장관 <strong>이영</strong></h3>
                         </div>
                     </div>

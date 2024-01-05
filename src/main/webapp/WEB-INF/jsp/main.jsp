@@ -93,7 +93,7 @@
             <div class="pc">
                 <div class="main-slide-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"
+                        <%--div class="swiper-slide"
                              style="background: url(<c:url value='/images/main/main-banner.png'/>)">
                             <div class="text-wrap">
                                 <h1 class="slide-text">
@@ -114,7 +114,7 @@
                                 <a href="<c:url value="/front/guide/concept.do"/>" class="more-btn">납품대금 연동제 소개 바로가기<i
                                         class="fas fa-chevron-right"></i></a>
                             </div>
-                        </div>
+                        </div--%>
                         <c:forEach var="ban" items="${banner}">
                         <div class="swiper-slide"
                              style="background: url(<c:url value="${FileUploadController.makeDownloadLink(ban.pcImgPath)}"/>)"

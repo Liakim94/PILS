@@ -15,7 +15,6 @@
     <script type="text/javascript" src="<c:url value="/js/front/common.js"/>"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-
 </head>
 <body>
 <div id="intro">
@@ -33,7 +32,7 @@
                 </div>
                 <a class="go-main" href="<c:url value="/main/index.do"/>">바로가기</a>
             </div>
-            <div class="swiper-slide">
+            <%--div class="swiper-slide">
                 <div class="intro-bg intro2"></div>
                 <div class="text-wrap">
                     <p>
@@ -44,7 +43,7 @@
                     </p>
                 </div>
                 <a class="go-main" href="<c:url value="/main/index.do"/>">바로가기</a>
-            </div>
+            </div--%>
             <div class="swiper-slide">
                 <div class="intro-bg intro1"></div>
                 <div class="text-wrap">
