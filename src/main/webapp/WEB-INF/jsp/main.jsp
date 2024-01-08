@@ -224,6 +224,7 @@
                 </div>
             </div>
         </section>
+        <%-- 2024-01-08 중기부 요청으로 참여기업 현황 제거
         <section class="gray-bg py-60">
             <h1 class="title"><strong>참여기업</strong> 현황</h1>
             <h3 class="fw400">현재 ${cnt}개 위탁기업, ${joinCmpCnt}개 수탁기업이 납품대금 연동제에 동참하고 있습니다.</h3>
@@ -244,6 +245,7 @@
                 </c:forEach>
             </div>
         </section>
+        --%>
     </div>
 </div>
 <div class="modal-background" onclick="modalClose()"></div>

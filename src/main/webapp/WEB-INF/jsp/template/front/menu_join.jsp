@@ -24,9 +24,11 @@ uploadPath = EgovWebUtil.nvl(EgovProperties.getProperty("UploadPath").toString()
             <li class="<c:if test="${URI.contains('/front/guide/company')}">on</c:if>">
                 <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
             </li>
+            <%-- 2024-01-08 중기부 요청으로 동행기업 신청 메뉴 제거
             <li class="<c:if test="${URI.contains('/join/join')}">on</c:if>">
                 <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
             </li>
+            --%>
             <li class="<c:if test="${URI.contains('/join/perf')}">on</c:if>">
                 <a href="<c:url value="/join/perf/main.do"/>">동행기업 실적 제출</a>
             </li>

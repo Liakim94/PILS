@@ -43,7 +43,10 @@ public class JoinController extends Alerts{
     //동행기업 신청 main
     @GetMapping(value = "/joinMain.do")
     public ModelAndView main() throws Exception {
-        ModelAndView mav = new ModelAndView("join/apply/join_apply_main");
+        // 2024-01-08 중기부 요청으로 동행기업 신청 메뉴 제거
+        //ModelAndView mav = new ModelAndView("join/apply/join_apply_main");
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("redirect:/main/index.do");
         return mav;
     }
 

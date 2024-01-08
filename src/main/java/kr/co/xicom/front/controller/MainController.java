@@ -519,7 +519,9 @@ public class MainController {
      */
     @RequestMapping("/intro.do")
     public String intro() throws Exception {
-        return "intro";
+        // 2024-01-08 중기부 요청으로 intro 제거
+        //return "intro";
+        return "redirect:/main/index.do";
     }
 
     @RequestMapping(value = "/mailTest.do")

@@ -94,12 +94,16 @@
         <%-- 23.01.18 DO 메뉴 구성 변경 --%>
         <nav class="nav-wrap">
             <div class="wrapper">
-                <a class="font18 menu" href="<c:url value="/front/guide/greeting.do"/>">납품대금 연동제란?</a>
+                <a class="font18 menu" href="<c:url value="/front/guide/background.do"/>">납품대금 연동제란?</a>
                 <div class="submenu">
+                    <%-- 2024-01-08 중기부 요청으로 인사말 메뉴 제거
                     <a href="<c:url value="/front/guide/greeting.do"/>" class="">인사말</a>
+                    --%>
                     <a href="<c:url value="/front/guide/background.do"/>">추진경과</a>
                     <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
+                    <%-- 2024-01-08 중기부 요청으로 걸어온 발자취 메뉴 제거
                     <a href="<c:url value="/front/guide/trace.do"/>">걸어온 발자취</a>
+                    --%>
                     <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
                     <a href="<c:url value="/front/guide/statistics.do"/>">시범운영 분석 결과</a>
                 </div>
@@ -121,7 +125,9 @@
                 <div class="submenu">
                     <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
                     <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
+                    <%-- 2024-01-08 중기부 요청으로 동행기업 신청 메뉴 제거
                     <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
+                    --%>
                     <a href="<c:url value="/join/perf/main.do"/>">동행기업 실적 제출</a>
                 </div>
             </div>
@@ -244,10 +250,14 @@
                         <span></span>
                     </div>
                     <div class="submenu">
+                        <%-- 2024-01-08 중기부 요청으로 인사말 메뉴 제거
                         <a href="<c:url value="/front/guide/greeting.do"/>" class="">인사말</a>
+                        --%>
                         <a href="<c:url value="/front/guide/background.do"/>">추진경과</a>
                         <a href="<c:url value="/front/guide/concept.do"/>">개념</a>
+                        <%-- 2024-01-08 중기부 요청으로 걸어온 발자취 메뉴 제거
                         <a href="<c:url value="/front/guide/trace.do"/>">걸어온 발자취</a>
+                        --%>
                         <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
                         <a href="<c:url value="/front/guide/ordinance.do"/>">관련 법령</a>
                         <a href="<c:url value="/front/guide/statistics.do"/>">시범운영 분석 결과</a>
@@ -278,7 +288,9 @@
                     <div class="submenu">
                         <a href="<c:url value="/join/concept.do"/>">제도 설명</a>
                         <a href="<c:url value="/front/guide/company/list.do"/>">참여기업 현황</a>
+                        <%-- 2024-01-08 중기부 요청으로 동행기업 신청 메뉴 제거
                         <a href="<c:url value="/join/joinMain.do"/>">동행기업 신청</a>
+                        --%>
                         <a href="<c:url value="/join/perf/main.do"/>">동행기업 실적 제출</a>
                     </div>
                 </div>

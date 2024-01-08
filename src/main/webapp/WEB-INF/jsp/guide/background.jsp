@@ -25,7 +25,7 @@
             </div>
             <div id="about" class="content">
                 <!-- 컨텐츠 start -->
-<br><br>
+                <br><br>
                 <section>
                     <div class="history-container">
                         <div class="item img-top">
@@ -62,9 +62,11 @@
                                     <span>납품대금 연동제 TF 출범</span>
                                     <span class="date">06.17</span>
                                 </div>
+                                <%-- 2024-01-08 중기부 요청으로 이미지 제거
                                 <div class="img-wrap">
                                     <img src="<c:url value="/images/introduction/220617.png"/>" alt="납품대금 연동제 TF 출범" />
                                 </div>
+                                --%>
                             </div>
                             <div class="right">
                                 <div class="content">
@@ -73,18 +75,22 @@
                                         납품대금 연동 특별약정서 제정, <br>납품대금 연동제 시범운영 방안 발표
                                     </span>
                                 </div>
+                                <%-- 2024-01-08 중기부 요청으로 이미지 제거
                                 <div class="img-wrap">
                                     <img src="<c:url value="/images/introduction/220811.png"/>" alt="납품대금 연동 특별약정서 제정" />
                                 </div>
+                                --%>
                             </div>
                             <div class="left">
                                 <div class="content">
                                     <span>납품대금 연동제 자율추진 협약식 개최</span>
                                     <span class="date">09.14</span>
                                 </div>
+                                <%-- 2024-01-08 중기부 요청으로 이미지 제거
                                 <div class="img-wrap">
                                     <img src="<c:url value="/images/introduction/220914.png"/>" alt="납품대금 연동제 자율추진 협약식 개최" />
                                 </div>
+                                --%>
                             </div>
                             <div class="right">
                                 <div class="content">
@@ -93,18 +99,22 @@
                                         납품대금 연동제 민당정협의회 개최
                                     </span>
                                 </div>
+                                <%-- 2024-01-08 중기부 요청으로 이미지 제거
                                 <div class="img-wrap">
                                     <img src="<c:url value="/images/introduction/221109.png"/>" alt="납품대금 연동제 민당정협의회 개최" />
                                 </div>
+                                --%>
                             </div>
                             <div class="left">
                                 <div class="content">
                                     <span>납품대금 연동제 도입을 내용으로 하는 [상생협력법] 개정안 국회 통과</span>
                                     <span class="date">12.08</span>
                                 </div>
+                                <%-- 2024-01-08 중기부 요청으로 이미지 제거
                                 <div class="img-wrap">
                                     <img src="<c:url value="/images/introduction/221208.png"/>" alt="납품대금 연동제 도입을 내용으로 하는 [상생협력법] 개정안 국회 통과" />
                                 </div>
+                                --%>
                             </div>
                         </div>
                     </div>

@@ -40,7 +40,8 @@ public class GuideController extends Alerts {
     @RequestMapping("/guide/greeting.do")
     public ModelAndView greeting() throws Exception {
         ModelAndView mav = new ModelAndView("guide/greeting");
-
+        // 2024-01-08 중기부 요청으로 걸어온 발자취 메뉴 삭제
+        mav.setViewName("redirect:/main/index.do");
         return mav;
     }
     /**
@@ -65,6 +66,8 @@ public class GuideController extends Alerts {
     @RequestMapping("/guide/trace.do")
     public ModelAndView trace(@ModelAttribute("TraceVo")TraceVO vo) throws Exception {
         ModelAndView mav = new ModelAndView("guide/trace");
+        // 2024-01-08 중기부 요청으로 걸어온 발자취 메뉴 삭제
+        mav.setViewName("redirect:/main/index.do");
         PaginationInfo paginationInfo = new PaginationInfo();
         paginationInfo.setCurrentPageNo(vo.getPageIndex());
         paginationInfo.setRecordCountPerPage(15);
