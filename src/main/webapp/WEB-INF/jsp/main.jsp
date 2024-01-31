@@ -134,6 +134,7 @@
             <div class="mobile">
                 <div class="main-slide-container">
                     <div class="swiper-wrapper">
+                        <%--
                         <div class="swiper-slide"
                              style="background-image: url(<c:url value='/images/mobile/mobile_banner01.png'/>)">
                             <div class="text-wrap">
@@ -156,6 +157,7 @@
                                         class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
+                        --%>
                         <c:forEach var="ban" items="${banner}">
                         <div class="swiper-slide"
                              style="background-image: url(<c:url value="${FileUploadController.makeDownloadLink(ban.mobileImgPath)}"/>)"
